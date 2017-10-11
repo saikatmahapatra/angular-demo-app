@@ -1,4 +1,12 @@
 <h1>{{title}}</h1>
 <p>{{subtitle}}</p>
 <!--intepolation-->
-<p>The sum of 1+1 is {{1+1}}</p>
+<div class="demo">
+<p class="txt-lg">The sum of 1+1+9 is {{1+1+9}}</p>
+<button class="btn {{buttonCss}}" (click)="buttonClick(e)" >Button Style</button>
+
+<div *ngFor="let fruit of fruits">{{fruit.name}} is {{fruit.color}}</div>
+</div>
+<h3>Highlight Directive Demo</h3>
+
+<p highlight class="">Test</p>

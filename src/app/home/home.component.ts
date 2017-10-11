@@ -11,13 +11,32 @@ import {ExampleService} from '../example.service';
 export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'welcome';
+  btnHidden = true;
+  buttonCss = 'btn-danger';
+  fruits = [{"name":"Banana","color":"yellow"},{"name":"Mango","color":"green"},{"name":"Apple","color":"Red"}];
   constructor(private _exampleService : ExampleService) { }
 
-  ngOnInit() {
-    this.getSomeMethod();
-  }
+  
   getSomeMethod(){
     this.subtitle = this._exampleService.someMethod();
+  }
+
+  buttonClick(e){
+    console.log(e);
+    window.alert("Button Clicked");
+  }
+  /**
+   * Life cycle hooks
+   */
+  ngOnInit() {
+    this.getSomeMethod();
+    console.log("ngOnInit()");
+  }
+  ngAfterViewInit(){
+    console.log("ngAfterViewInit()");
+  }
+  ngOnChanges(){
+    console.log("ngOnChanges()");
   }
 
 }

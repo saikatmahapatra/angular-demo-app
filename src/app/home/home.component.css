@@ -1,0 +1,10 @@
+/*
+* Import thr global css
+*/
+
+@import '../../assets/css/global.css';
+
+/*Module specific style*/
+.txt-lg{
+    font-size: 18px
+}

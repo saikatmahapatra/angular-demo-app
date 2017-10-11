@@ -1,0 +1,15 @@
+.container{
+    padding-top: 70px;
+}
+.txt-bold{
+    font-weight: bold;
+}
+.txt-lower{
+    text-transform: lowercase;
+}
+.txt-upper{
+    text-transform: uppercase;
+}
+.txt-lg{
+    font-size: 28px;
+}
