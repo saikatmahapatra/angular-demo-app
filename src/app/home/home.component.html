@@ -3,10 +3,25 @@
 <!--intepolation-->
 <div class="demo">
 <p class="txt-lg">The sum of 1+1+9 is {{1+1+9}}</p>
-<button class="btn {{buttonCss}}" (click)="buttonClick(e)" >Button Style</button>
+<button class="btn {{buttonCss}}" (click)="buttonClick(e)" >Button</button>
 
 <div *ngFor="let fruit of fruits">{{fruit.name}} is {{fruit.color}}</div>
 </div>
-<h3>Highlight Directive Demo</h3>
+<h4>Pipes</h4>
+<p>{{birthday|date:"MM/dd/yyyy"}}</p>
 
-<p highlight class="">Test</p>
+<h4>Highlight Directive</h4>
+<div highlight class="">This is a sample text</div>
+
+<h4>Pipe | Custom Pipe </h4>
+<div>Custom pipe (Exponential Strength): {{2|exponentialStrength:'2'}}</div>
+<div>
+    <input type="number" [(ngModel)]="val" placeholder="value">
+    <input type="number" [(ngModel)]="pow" placeholder="exponential">
+    <input type="text" [(ngModel)]="testInput" placeholder="test">
+    <input type="text" [(ngModel)]="testInput" placeholder="test">
+    <p>Your val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
+</div>
+
+<h4>Pipe | Mask </h4>
+{{'saikat.mahapatra@gmail.com'|mask:'email'}}

@@ -6,19 +6,19 @@ import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 export class HighlightDirective {
   
   constructor(private el: ElementRef) { 
-    this.el.nativeElement.style.backgroundColor='';
+    this.el.nativeElement.style.backgroundColor='#f2f2f2';
   }
 
   highlight(color:string,txtColor:string){
     this.el.nativeElement.style.backgroundColor = color;
-    this.el.nativeElement.style.color = txtColor;
+    //this.el.nativeElement.style.color = txtColor;
   }
 
   @HostListener('mouseenter') onmouseenter(){
-    this.highlight('green','#fff');   
+    this.highlight('#a0d875','#fff');   
   }  
 
   @HostListener('mouseleave') onmouseleave(){
-   this.highlight('red','#fff');   
+   this.highlight('#e2b9b9','#fff');   
   }
 }

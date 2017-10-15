@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HighlightDirective } from './highlight.directive';
+import { ExponentialStrengthPipe } from './exponential-strength.pipe';
+import { MaskPipe } from './mask.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HighlightDirective } from './highlight.directive';
     HomeComponent,
     UserComponent,
     AboutUsComponent,
-    HighlightDirective,    
+    HighlightDirective,
+    ExponentialStrengthPipe,
+    MaskPipe,    
   ],
   imports: [
     BrowserModule,

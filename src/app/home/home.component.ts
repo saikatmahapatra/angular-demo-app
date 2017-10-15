@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'welcome';
   btnHidden = true;
-  buttonCss = 'btn-danger';
+  buttonCss = 'btn-default';
+  birthday = new Date(1988, 3, 15); 
   fruits = [{"name":"Banana","color":"yellow"},{"name":"Mango","color":"green"},{"name":"Apple","color":"Red"}];
   constructor(private _exampleService : ExampleService) { }
 
