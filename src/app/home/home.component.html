@@ -47,12 +47,13 @@
 {{diagonostic}}
 <div class="row">
     <div class="col-md-4">
-        <form>
+        <form #userForm="ngForm">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName">
+                    <input type="text" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #spy>
+                    {{spy.className}}
                 </div>
             </div>
         </div>
@@ -60,7 +61,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName">
+                    <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName" #spy2>
+                    {{spy2.className}}
                 </div>
             </div>
         </div>
@@ -68,7 +70,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="email" [(ngModel)]="model.email" name="email">
+                    <input type="text" class="form-control" placeholder="email" [(ngModel)]="model.email" name="email" #spy3>
+                    {{spy3.className}}
                 </div>
             </div>
         </div>
@@ -76,7 +79,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Phone</label>
-                    <input type="text" class="form-control" placeholder="phone" [(ngModel)]="model.phoneNumber" name="phoneNumber">
+                    <input type="text" class="form-control" placeholder="phone" [(ngModel)]="model.phoneNumber" name="phoneNumber" #spy4>
+                    {{spy4.className}}
                 </div>
             </div>
         </div>
@@ -84,13 +88,14 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Phone Type</label>
-                    <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType">
+                    <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType" #spy5>
                             <option *ngFor="let phoneType of phoneTypes" value="{{phoneType.val}}">{{phoneType.txt}}</option>                            
                     </select>
+                    {{spy5.className}}
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+        <button class="btn btn-primary btn-block" type="submit" (click)="onSubmit($event)">Submit</button>
         </form>
     </div>
 </div>

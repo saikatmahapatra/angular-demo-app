@@ -1,6 +1,6 @@
-.container{
-    padding-top: 70px;
-    
+.container.main{
+    padding-top: 50px;    
+    margin-bottom: 50px;
 }
 .txt-bold{
     font-weight: bold;
@@ -13,4 +13,11 @@
 }
 .txt-lg{
     font-size: 28px;
+}
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }
