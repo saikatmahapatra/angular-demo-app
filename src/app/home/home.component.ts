@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ExampleService} from '../example.service';
 
+/**
+ * Import the user class for form example
+ */
+import {User} from '../user';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,8 +14,10 @@ import {ExampleService} from '../example.service';
 })
 
 export class HomeComponent implements OnInit {
-  title = 'Home';
+  title = '';
   subtitle = 'welcome';
+  clickMessage = '';
+  keyUpInputData = '';
   btnHidden = true;
   buttonCss = 'btn-default';
   birthday = new Date(1988, 3, 15); 
@@ -22,10 +29,7 @@ export class HomeComponent implements OnInit {
     this.subtitle = this._exampleService.someMethod();
   }
 
-  buttonClick(e){
-    console.log(e);
-    window.alert("Button Clicked");
-  }
+  
   /**
    * Life cycle hooks
    */
@@ -39,5 +43,53 @@ export class HomeComponent implements OnInit {
   ngOnChanges(){
     console.log("ngOnChanges()");
   }
+
+  /**
+   * Form Interation - Click, Keyup, Keypress etc
+   */
+  buttonClick(e){
+    console.log(e);
+    this.clickMessage = 'You have clicked button';
+    //window.alert("Button Clicked");
+  }
+
+  keyUpGetInputData(event){
+    console.log(event);
+    this.keyUpInputData = event.target.value;
+    console.log(this.keyUpInputData);
+  }
+
+  txtBlur(event){
+    console.log("Blur");
+    console.log(event.target.value);
+  }
+
+  clickParentElm(e){
+    console.log(e);
+  }
+
+  clickChildElm(e){
+    console.log(e);
+    e.preventDefault(); 
+  }
+  
+  /**
+   * Template Driven Form
+   */
+  phoneTypes = [
+    {"val":"-1","txt":"-Select-"},
+  {"val":"m","txt":"Mobile"},
+  {"val":"w","txt":"Work"},
+  {"val":"h","txt":"Home"},
+];
+  isSubmitted = false;
+  model = new User(1,'Saikat','Mahapatra','mahapatra.saikat@gmail.com','9474550761','h');
+  onSubmit(){
+    this.isSubmitted = true;
+  }
+  get diagonostic(){
+    return JSON.stringify(this.model);
+  }
+
 
 }
