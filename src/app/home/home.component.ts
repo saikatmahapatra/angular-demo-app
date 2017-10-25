@@ -84,7 +84,8 @@ export class HomeComponent implements OnInit {
 ];
   isSubmitted = false;
   model = new User(1,'Saikat','Mahapatra','mahapatra.saikat@gmail.com','9474550761','h');
-  onSubmit(){
+  onSubmit(event){
+    console.log(event);
     this.isSubmitted = true;
   }
   get diagonostic(){

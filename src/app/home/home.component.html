@@ -47,22 +47,33 @@
 {{diagonostic}}
 <div class="row">
     <div class="col-md-4">
-        <form #userForm="ngForm">
+        <form (ngSubmit)="onSubmit($event)" #userForm="ngForm">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #spy>
-                    {{spy.className}}
+                    <input type="text" required minlength="4" maxlength="15" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #x="ngModel">
+                    {{x.class}}
+                </div> 
+                <div *ngIf="x.invalid && (x.dirty || x.touched)"class="alert alert-danger">
+                    <div *ngIf="x.errors.required">First name is required.</div>    
+                    <div *ngIf="x.errors.minlength">First name can not less than 4 characters.</div>    
+                    <div *ngIf="x.errors.maxlength">First name can not greater than 15 characters.</div>    
                 </div>
+
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName" #spy2>
-                    {{spy2.className}}
+                    <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName" required minlength="5" maxlength="15" #lastName="ngModel">
+                    {{lastName.className}}
+                </div>
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"class="alert alert-danger">
+                    <div *ngIf="lastName.errors.required">Last name is required.</div>    
+                    <div *ngIf="lastName.errors.minlength">Last name can not less than 5 characters.</div>    
+                    <div *ngIf="lastName.errors.maxlength">Last name can not greater than 15 characters.</div>    
                 </div>
             </div>
         </div>
@@ -95,7 +106,16 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary btn-block" type="submit" (click)="onSubmit($event)">Submit</button>
+        <button class="btn btn-primary btn-block" type="submit">Submit</button>
         </form>
     </div>
+    <div class="col-md-4" [hidden]="!isSubmitted">
+        <label>You have submitted the below data:</label>
+    <div class="row">First Name: {{model.firstName}}</div>
+    <div class="row">Last Name: {{model.lastName}}</div>
+    <div class="row">Email: {{model.email}}</div>
+    <div class="row">Phone: {{model.phoneNumber}}</div>
+    <div class="row">Phone Type: {{model.phoneType}}</div>
+    <div class="row"><a (click)="isSubmitted=false">Edit</a></div>
+</div>
 </div>
