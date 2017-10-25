@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   {"val":"h","txt":"Home"},
 ];
   isSubmitted = false;
-  model = new User(1,'Saikat','Mahapatra','mahapatra.saikat@gmail.com','9474550761','h');
+  model = new User(1,'Saikat','Mahapatra','mahapatra.saikat@gmail.com','','');
   onSubmit(event){
     console.log(event);
     this.isSubmitted = true;

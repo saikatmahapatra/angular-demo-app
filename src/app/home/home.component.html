@@ -89,9 +89,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" placeholder="phone" [(ngModel)]="model.phoneNumber" name="phoneNumber" #spy4>
-                    {{spy4.className}}
+                    <label>Phone(Optional)</label>
+                    <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="phone" [(ngModel)]="model.phoneNumber" name="phoneNumber" #phoneNumber="ngModel">
+                    {{phoneNumber.className}}
+                </div>
+                <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+                    <div *ngIf="phoneNumber.errors.minlength">Phone number should be minimum 10 digits</div>
+                    <div *ngIf="phoneNumber.errors.maxlength">Phone number can't exceed 10 digits</div>
                 </div>
             </div>
         </div>
@@ -99,10 +103,13 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Phone Type</label>
-                    <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType" #spy5>
+                    <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType" #phoneTypeDD="ngModel">
                             <option *ngFor="let phoneType of phoneTypes" value="{{phoneType.val}}">{{phoneType.txt}}</option>                            
                     </select>
-                    {{spy5.className}}
+                    {{phoneTypeDD.className}}
+                </div>
+                <div *ngIf="phoneNumber>0" class="alert alert-danger">
+                      <div *ngIf="!phoneTypeDD">Please select a Phone Type</div>
                 </div>
             </div>
         </div>
