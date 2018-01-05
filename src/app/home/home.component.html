@@ -52,13 +52,13 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" required minlength="4" maxlength="15" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #x="ngModel">
-                    {{x.class}}
+                    <input type="text" required minlength="4" maxlength="15" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+                    {{firstName.class}}
                 </div> 
-                <div *ngIf="x.invalid && (x.dirty || x.touched)"class="alert alert-danger">
-                    <div *ngIf="x.errors.required">First name is required.</div>    
-                    <div *ngIf="x.errors.minlength">First name can not less than 4 characters.</div>    
-                    <div *ngIf="x.errors.maxlength">First name can not greater than 15 characters.</div>    
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"class="alert alert-danger">
+                    <div *ngIf="firstName.errors.required">First name is required.</div>    
+                    <div *ngIf="firstName.errors.minlength">First name can not less than 4 characters.</div>    
+                    <div *ngIf="firstName.errors.maxlength">First name can not greater than 15 characters.</div>    
                 </div>
 
             </div>
@@ -126,3 +126,5 @@
     <div class="row"><a (click)="isSubmitted=false">Edit</a></div>
 </div>
 </div>
+
+<h4>Forms: Reactive Form</h4>

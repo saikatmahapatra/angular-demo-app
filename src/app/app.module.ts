@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 
 // Import routes
 import { router } from './app.router';
@@ -15,6 +14,9 @@ import { UserComponent } from './user/user.component';
 import { HighlightDirective } from './highlight.directive';
 import { ExponentialStrengthPipe } from './exponential-strength.pipe';
 import { MaskPipe } from './mask.pipe';
+import { PageComponent } from './page/page.component';
+import { ErrorComponent } from './error/error.component';
+import { ServicesComponent } from './page/services/services.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { MaskPipe } from './mask.pipe';
     UserComponent,    
     HighlightDirective,
     ExponentialStrengthPipe,
-    MaskPipe      
+    MaskPipe,
+    PageComponent,
+    ErrorComponent,
+    ServicesComponent      
   ],
   imports: [
     BrowserModule,

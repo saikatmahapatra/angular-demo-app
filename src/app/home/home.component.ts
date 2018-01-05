@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ExampleService} from '../example.service';
 
+import {FormBuilder, FormGroup, Validator} from '@angular/forms';
+
 /**
  * Import the user class for form example
  */
@@ -91,6 +93,9 @@ export class HomeComponent implements OnInit {
   get diagonostic(){
     return JSON.stringify(this.model);
   }
-
+  
+  /**
+   * Reactive Form 
+   */
 
 }
