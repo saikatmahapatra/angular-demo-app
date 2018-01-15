@@ -22,7 +22,7 @@ export class ExampleComponent implements OnInit {
   btnHidden = true;
   buttonCss = 'btn-default';
   birthday = new Date(1988, 3, 15); 
-  fruits = [{"name":"Banana","color":"yellow"},{"name":"Mango","color":"green"},{"name":"Apple","color":"Red"}];
+  
   constructor(private _exampleService : ExampleService) { }
 
   

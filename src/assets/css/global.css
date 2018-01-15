@@ -27,8 +27,8 @@ body{
 .validation-error{
     color: #a94442;
 }
-/*.example{
-   border: 1px #ccc solid;
-   border-radius: 4px;
-   padding: 15px;
-}*/
+
+.nav-inline li{
+    display: inline-block;
+    margin: 10px;
+}
