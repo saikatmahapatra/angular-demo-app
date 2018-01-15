@@ -1,130 +1,50 @@
 <h1>{{title}}</h1>
 <p>{{subtitle}}</p>
-<!--intepolation-->
-<div class="demo">
-    <p class="txt-lg">The sum of 1+1+9 is {{1+1+9}}</p>
 
-
-    <div *ngFor="let fruit of fruits">{{fruit.name}} is {{fruit.color}}</div>
-</div>
-<h4>Pipes</h4>
-<p>{{birthday|date:"MM/dd/yyyy"}}</p>
-
-<h4>Highlight Directive</h4>
-<div highlight class="">This is a sample text</div>
-
-<h4>Pipe | Custom Pipe </h4>
-<div>Custom pipe (Exponential Strength): {{2|exponentialStrength:'2'}}</div>
-<div>
-    <input type="number" [(ngModel)]="val" placeholder="value">
-    <input type="number" [(ngModel)]="pow" placeholder="exponential">
-    <input type="text" [(ngModel)]="testInput" placeholder="test">
-    <input type="text" [(ngModel)]="testInput" placeholder="test">
-    <p>Your val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
-</div>
-
-<h4>Pipe | Mask </h4>
-{{'saikat.mahapatra@gmail.com'|mask:'email'}}
-
-<h4>Forms: User Input Binding</h4>
-<p>
-    <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Button</button> {{clickMessage}}
-</p>
-<p>
-    <label>Username</label>
-    <input type="text" name="username" placeholder="Enter something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)">    {{keyUpInputData}}
-</p>
-
-<div>
-    Event Bubble
-    <div (click)="clickParentElm($event)">
-        parent div
-        <div (click)="clickChildElm($event)">child div</div>
-    </div>
-</div>
-
-<h4>Forms: Template Driven Form - User Registration</h4>
-{{diagonostic}}
-<div class="row">
-    <div class="col-md-4">
-        <form (ngSubmit)="onSubmit($event)" #userForm="ngForm">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" required minlength="4" maxlength="15" class="form-control" placeholder="first name" [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
-                    {{firstName.class}}
-                </div> 
-                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"class="alert alert-danger">
-                    <div *ngIf="firstName.errors.required">First name is required.</div>    
-                    <div *ngIf="firstName.errors.minlength">First name can not less than 4 characters.</div>    
-                    <div *ngIf="firstName.errors.maxlength">First name can not greater than 15 characters.</div>    
-                </div>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName" required minlength="5" maxlength="15" #lastName="ngModel">
-                    {{lastName.className}}
-                </div>
-                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"class="alert alert-danger">
-                    <div *ngIf="lastName.errors.required">Last name is required.</div>    
-                    <div *ngIf="lastName.errors.minlength">Last name can not less than 5 characters.</div>    
-                    <div *ngIf="lastName.errors.maxlength">Last name can not greater than 15 characters.</div>    
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" placeholder="email" [(ngModel)]="model.email" name="email" #spy3>
-                    {{spy3.className}}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Phone(Optional)</label>
-                    <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="phone" [(ngModel)]="model.phoneNumber" name="phoneNumber" #phoneNumber="ngModel">
-                    {{phoneNumber.className}}
-                </div>
-                <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
-                    <div *ngIf="phoneNumber.errors.minlength">Phone number should be minimum 10 digits</div>
-                    <div *ngIf="phoneNumber.errors.maxlength">Phone number can't exceed 10 digits</div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Phone Type</label>
-                    <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType" #phoneTypeDD="ngModel">
-                            <option *ngFor="let phoneType of phoneTypes" value="{{phoneType.val}}">{{phoneType.txt}}</option>                            
-                    </select>
-                    {{phoneTypeDD.className}}
-                </div>
-                <div *ngIf="phoneNumber>0" class="alert alert-danger">
-                      <div *ngIf="!phoneTypeDD">Please select a Phone Type</div>
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary btn-block" type="submit">Submit</button>
-        </form>
-    </div>
-    <div class="col-md-4" [hidden]="!isSubmitted">
-        <label>You have submitted the below data:</label>
-    <div class="row">First Name: {{model.firstName}}</div>
-    <div class="row">Last Name: {{model.lastName}}</div>
-    <div class="row">Email: {{model.email}}</div>
-    <div class="row">Phone: {{model.phoneNumber}}</div>
-    <div class="row">Phone Type: {{model.phoneType}}</div>
-    <div class="row"><a (click)="isSubmitted=false">Edit</a></div>
-</div>
-</div>
-
-<h4>Forms: Reactive Form</h4>
+<h1>Angular CLI Commands</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Scaffold</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-component">Component</a></td>
+            <td><code>ng g component my-new-component</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-directive">Directive</a></td>
+            <td><code>ng g directive my-new-directive</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-pipe">Pipe</a></td>
+            <td><code>ng g pipe my-new-pipe</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-service">Service</a></td>
+            <td><code>ng g service my-new-service</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-class">Class</a></td>
+            <td><code>ng g class my-new-class</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-guard">Guard</a></td>
+            <td><code>ng g guard my-new-guard</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-interface">Interface</a></td>
+            <td><code>ng g interface my-new-interface</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-enum">Enum</a></td>
+            <td><code>ng g enum my-new-enum</code></td>
+        </tr>
+        <tr>
+            <td><a href="https://github.com/angular/angular-cli/wiki/generate-module">Module</a></td>
+            <td><code>ng g module my-module</code></td>
+        </tr>
+    </tbody>
+</table>
