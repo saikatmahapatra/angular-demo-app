@@ -50,4 +50,27 @@
         </div>
         <p>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</p>
     </div>
+
+    <div class="col-md-12">
+        <h4>OrderBy Custom Pipe </h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th [class.active]="order === 'id'" (click)="setOrder('id')">ID <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
+                    <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">Name <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
+                    <th [class.active]="order === 'age'" (click)="setOrder('age')">Age <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
+                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone<span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students | orderBy: order:reverse:'case-insensitive'">
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.mobile }}</td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

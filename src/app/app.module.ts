@@ -25,6 +25,7 @@ import { FormInputBindingComponent } from './example/form-input-binding/form-inp
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './example/reactive-form/reactive-form.component';
 import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
+import { OrderByPipe } from './order-by.pipe';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { TemplateDataBindingComponent } from './example/template-data-binding/te
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
     TemplateDataBindingComponent,
+    OrderByPipe,
           
   ],
   imports: [
