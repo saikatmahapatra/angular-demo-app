@@ -1,16 +1,17 @@
 <div class="row example">
-    <h3>Forms: User Input Binding</h3>
     <div class="col-md-12">
-        <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Button</button> {{clickMessage}}
+        <h4>Forms: User Input Binding</h4>
+        <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Click this Button</button> {{clickMessage}}
 
         <h4>Event Bubble</h4>
-        <div>            
-            <div (click)="clickParentElm($event)">
-                parent div
-                <div (click)="clickChildElm($event)">child div</div>
-            </div>
+        <div (click)="clickParentElm($event)" style="border:1px solid red; padding: 15px; margin: 15px;">
+            parent div
+            <div (click)="clickChildElm($event)" style="border:1px solid blue; padding: 15px; margin: 15px;">child div</div>
         </div>
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Enter something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)"> {{keyUpInputData}}
+        <h4>Keyboard Events</h4>
+        <div class="form-group col-md-3">            
+            <label>Username</label>
+            <input class="form-control" type="text" name="username" placeholder="Enter Something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)">            {{keyUpInputData}}
+        </div>
     </div>
 </div>

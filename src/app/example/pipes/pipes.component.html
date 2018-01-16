@@ -1,13 +1,53 @@
 <div class="row example">
-  <h3>Pipes, Custom Pipes</h3>
-  <div class="col-md-12">
-      <p>{{birthday|date:"MM/dd/yyyy"}}</p>
-      <div>Custom pipe (Exponential Strength): {{2|exponentialStrength:'2'}}</div>
-      <div>
-          <input type="number" [(ngModel)]="val" placeholder="value">
-          <input type="number" [(ngModel)]="pow" placeholder="exponential">          
-          <p>Entered val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
-      </div>
-      <div>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</div>
-  </div>
+
+    <div class="col-md-12">
+        <h4>Built-in pipes |</h4>
+        <p>Angular comes with a stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe.
+            They are all available for use in any template.</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Pipe Name/Syntax</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>date</td>
+                    <td>{{birthday}}</td>
+                    <td>{{birthday|date:"MM/dd/yyyy"}}</td>
+                </tr>
+                <tr>
+                    <td>lowercase</td>
+                    <td>{{name}}</td>
+                    <td>{{name|lowercase}}</td>
+                </tr>
+                <tr>
+                    <td>uppercase</td>
+                    <td>{{name}}</td>
+                    <td>{{name|uppercase}}</td>
+                </tr>
+                <tr>
+                    <td>currency</td>
+                    <td>{{productPrice}}</td>
+                    <td>
+                        <p>{{productPrice|currency}}</p>
+                        <p>{{productPrice|currency:'INR'}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <h4>Custom pipe (Exponential Strength): {{2|exponentialStrength:'2'}}</h4>
+        <div>
+            <input type="number" [(ngModel)]="val" placeholder="value">
+            <input type="number" [(ngModel)]="pow" placeholder="exponential">
+            <p>Entered val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
+        </div>
+        <p>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</p>
+    </div>
 </div>
