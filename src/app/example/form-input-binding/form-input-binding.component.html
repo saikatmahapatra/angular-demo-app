@@ -1,15 +1,16 @@
 <div class="row example">
-  <h3>Forms: User Input Binding</h3>
-  <div class="col-md-12">
-      <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Button</button> {{clickMessage}}
-      <div>
-          Event Bubble
-          <div (click)="clickParentElm($event)">
-              parent div
-              <div (click)="clickChildElm($event)">child div</div>
-          </div>
-      </div>
-      <label>Username</label>
-      <input type="text" name="username" placeholder="Enter something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)">        {{keyUpInputData}}
-  </div>
+    <h3>Forms: User Input Binding</h3>
+    <div class="col-md-12">
+        <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Button</button> {{clickMessage}}
+
+        <h4>Event Bubble</h4>
+        <div>            
+            <div (click)="clickParentElm($event)">
+                parent div
+                <div (click)="clickChildElm($event)">child div</div>
+            </div>
+        </div>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)"> {{keyUpInputData}}
+    </div>
 </div>

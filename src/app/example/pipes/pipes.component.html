@@ -5,9 +5,7 @@
       <div>Custom pipe (Exponential Strength): {{2|exponentialStrength:'2'}}</div>
       <div>
           <input type="number" [(ngModel)]="val" placeholder="value">
-          <input type="number" [(ngModel)]="pow" placeholder="exponential">
-          <input type="text" [(ngModel)]="testInput" placeholder="test">
-          <input type="text" [(ngModel)]="testInput" placeholder="test">
+          <input type="number" [(ngModel)]="pow" placeholder="exponential">          
           <p>Entered val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
       </div>
       <div>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</div>

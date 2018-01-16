@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pipes.component.css']
 })
 export class PipesComponent implements OnInit {
-
+  birthday = new Date(1988, 3, 15); 
   constructor() { }
 
   ngOnInit() {
+    console.log('ngOnInit');
   }
 
 }
