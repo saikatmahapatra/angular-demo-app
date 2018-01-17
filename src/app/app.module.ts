@@ -17,14 +17,18 @@ import { MaskPipe } from './mask.pipe';
 import { PageComponent } from './page/page.component';
 import { ErrorComponent } from './error/error.component';
 import { ExampleComponent } from './example/example.component';
-import { InterpolationComponent } from './example/interpolation/interpolation.component';
 import { CustomdirectiveComponent } from './example/customdirective/customdirective.component';
 import { PipesComponent } from './example/pipes/pipes.component';
 import { FormInputBindingComponent } from './example/form-input-binding/form-input-binding.component';
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './example/reactive-form/reactive-form.component';
+<<<<<<< HEAD
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { AngularServicesComponent } from './example/angular-services/angular-services.component';
+=======
+import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
+import { OrderByPipe } from './order-by.pipe';
+>>>>>>> c19e969a8f6f33dd0a562d0bd0485ddd429f0b6c
 
 
 @NgModule({
@@ -38,14 +42,18 @@ import { AngularServicesComponent } from './example/angular-services/angular-ser
     PageComponent,
     ErrorComponent,
     ExampleComponent,
-    InterpolationComponent,
     CustomdirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
+<<<<<<< HEAD
     AboutUsComponent,
     AngularServicesComponent,
+=======
+    TemplateDataBindingComponent,
+    OrderByPipe,
+>>>>>>> c19e969a8f6f33dd0a562d0bd0485ddd429f0b6c
           
   ],
   imports: [

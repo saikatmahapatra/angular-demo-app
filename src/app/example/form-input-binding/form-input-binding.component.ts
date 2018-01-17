@@ -9,7 +9,7 @@ export class FormInputBindingComponent implements OnInit {
   clickMessage = '';
   keyUpInputData = '';
   btnHidden = true;
-  buttonCss = 'btn-default';
+  buttonCss = 'btn-primary';
   constructor() { }
 
   ngOnInit() {
@@ -32,12 +32,14 @@ export class FormInputBindingComponent implements OnInit {
 
   clickParentElm(e) {
     console.log(e);
-    console.log("clickParentElm");
+    console.log("Parent Div Clicked");
+    window.alert("Parent Div Clicked");
   }
 
   clickChildElm(e) {
     console.log(e);
-    e.preventDefault();
-    console.log("clickChildElm");
+    e.stopPropagation(); // to prevent event bubbling
+    console.log("Child Div Clicked");
+    window.alert("Child Div Clicked");
   }
 }
