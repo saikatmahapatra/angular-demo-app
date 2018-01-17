@@ -17,7 +17,7 @@ import { MaskPipe } from './mask.pipe';
 import { PageComponent } from './page/page.component';
 import { ErrorComponent } from './error/error.component';
 import { ExampleComponent } from './example/example.component';
-import { CustomdirectiveComponent } from './example/customdirective/customdirective.component';
+import { AngularDirectiveComponent } from './example/angular-directive/angular-directive.component';
 import { PipesComponent } from './example/pipes/pipes.component';
 import { FormInputBindingComponent } from './example/form-input-binding/form-input-binding.component';
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
@@ -26,6 +26,7 @@ import { AboutUsComponent } from './page/about-us/about-us.component';
 import { AngularServicesComponent } from './example/angular-services/angular-services.component';
 import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
 import { OrderByPipe } from './order-by.pipe';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +39,6 @@ import { OrderByPipe } from './order-by.pipe';
     PageComponent,
     ErrorComponent,
     ExampleComponent,
-    CustomdirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
@@ -46,7 +46,8 @@ import { OrderByPipe } from './order-by.pipe';
     AboutUsComponent,
     AngularServicesComponent,
     TemplateDataBindingComponent,
-    OrderByPipe,          
+    OrderByPipe,
+    AngularDirectiveComponent,          
   ],
   imports: [
     BrowserModule,

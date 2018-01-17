@@ -8,7 +8,7 @@ import { UserComponent } from './user/user.component';
 import { PageComponent } from './page/page.component';
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
-import { CustomdirectiveComponent } from './example/customdirective/customdirective.component';
+import { AngularDirectiveComponent } from './example/angular-directive/angular-directive.component';
 import { PipesComponent } from './example/pipes/pipes.component';
 import { FormInputBindingComponent } from './example/form-input-binding/form-input-binding.component';
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
@@ -24,7 +24,7 @@ export const router: Routes = [
     
     { path: 'example', component: ExampleComponent, children: [
         {path:'template-basic', component: TemplateDataBindingComponent},
-        {path:'customdirective', component: CustomdirectiveComponent},
+        {path:'types-of-angular-directive', component: AngularDirectiveComponent},
         {path:'pipes', component: PipesComponent},
         {path:'user-input-binding', component: FormInputBindingComponent},
         {path:'template-driven-form', component: TemplateDrivenFormComponent},

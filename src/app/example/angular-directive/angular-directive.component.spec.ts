@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomdirectiveComponent } from './customdirective.component';
+import { AttributeDirectiveComponent } from './attribute-directive.component';
 
-describe('CustomdirectiveComponent', () => {
-  let component: CustomdirectiveComponent;
-  let fixture: ComponentFixture<CustomdirectiveComponent>;
+describe('AttributeDirectiveComponent', () => {
+  let component: AttributeDirectiveComponent;
+  let fixture: ComponentFixture<AttributeDirectiveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomdirectiveComponent ]
+      declarations: [ AttributeDirectiveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomdirectiveComponent);
+    fixture = TestBed.createComponent(AttributeDirectiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
