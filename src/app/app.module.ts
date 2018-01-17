@@ -22,14 +22,10 @@ import { PipesComponent } from './example/pipes/pipes.component';
 import { FormInputBindingComponent } from './example/form-input-binding/form-input-binding.component';
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './example/reactive-form/reactive-form.component';
-<<<<<<< HEAD
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { AngularServicesComponent } from './example/angular-services/angular-services.component';
-=======
 import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
 import { OrderByPipe } from './order-by.pipe';
->>>>>>> c19e969a8f6f33dd0a562d0bd0485ddd429f0b6c
-
 
 @NgModule({
   declarations: [
@@ -47,14 +43,10 @@ import { OrderByPipe } from './order-by.pipe';
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
-<<<<<<< HEAD
     AboutUsComponent,
     AngularServicesComponent,
-=======
     TemplateDataBindingComponent,
-    OrderByPipe,
->>>>>>> c19e969a8f6f33dd0a562d0bd0485ddd429f0b6c
-          
+    OrderByPipe,          
   ],
   imports: [
     BrowserModule,
