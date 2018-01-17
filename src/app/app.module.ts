@@ -16,17 +16,16 @@ import { ExponentialStrengthPipe } from './exponential-strength.pipe';
 import { MaskPipe } from './mask.pipe';
 import { PageComponent } from './page/page.component';
 import { ErrorComponent } from './error/error.component';
-import { ServicesComponent } from './page/services/services.component';
-
 import { ExampleComponent } from './example/example.component';
 import { CustomdirectiveComponent } from './example/customdirective/customdirective.component';
 import { PipesComponent } from './example/pipes/pipes.component';
 import { FormInputBindingComponent } from './example/form-input-binding/form-input-binding.component';
 import { TemplateDrivenFormComponent } from './example/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './example/reactive-form/reactive-form.component';
+import { AboutUsComponent } from './page/about-us/about-us.component';
+import { AngularServicesComponent } from './example/angular-services/angular-services.component';
 import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
 import { OrderByPipe } from './order-by.pipe';
-
 
 @NgModule({
   declarations: [
@@ -38,16 +37,16 @@ import { OrderByPipe } from './order-by.pipe';
     MaskPipe,
     PageComponent,
     ErrorComponent,
-    ServicesComponent,
     ExampleComponent,
     CustomdirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
+    AboutUsComponent,
+    AngularServicesComponent,
     TemplateDataBindingComponent,
-    OrderByPipe,
-          
+    OrderByPipe,          
   ],
   imports: [
     BrowserModule,
