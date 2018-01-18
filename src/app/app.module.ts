@@ -4,10 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-// Import routes
-import { router } from './app.router';
-
-//Import components
+import { router } from './app.router'; // Import routes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
@@ -47,7 +44,7 @@ import { OrderByPipe } from './order-by.pipe';
     AngularServicesComponent,
     TemplateDataBindingComponent,
     OrderByPipe,
-    AngularDirectiveComponent,          
+    AngularDirectiveComponent
   ],
   imports: [
     BrowserModule,
