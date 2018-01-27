@@ -5,12 +5,18 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { router } from './app.router'; // Import routes
+
+
+// Import Shared
+import { HighlightDirective } from './shared/directives/highlight.directive';
+import { ExponentialStrengthPipe } from './shared/pipes/exponential-strength.pipe';
+import { MaskPipe } from './shared/pipes/mask.pipe';
+import { OrderByPipe } from './shared/pipes/order-by.pipe';
+
+// Import Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { HighlightDirective } from './highlight.directive';
-import { ExponentialStrengthPipe } from './exponential-strength.pipe';
-import { MaskPipe } from './mask.pipe';
 import { PageComponent } from './page/page.component';
 import { ErrorComponent } from './error/error.component';
 import { ExampleComponent } from './example/example.component';
@@ -22,7 +28,7 @@ import { ReactiveFormComponent } from './example/reactive-form/reactive-form.com
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { AngularServicesComponent } from './example/angular-services/angular-services.component';
 import { TemplateDataBindingComponent } from './example/template-data-binding/template-data-binding.component';
-import { OrderByPipe } from './order-by.pipe';
+
 
 
 @NgModule({
