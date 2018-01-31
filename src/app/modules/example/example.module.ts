@@ -26,13 +26,13 @@ import { AngularServicesComponent } from './angular-services/angular-services.co
 
   ],
   declarations: [
+    ExampleComponent,
     AngularDirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
     AngularServicesComponent
-  ],
-  bootstrap: [AngularDirectiveComponent]
+  ]
 })
 export class ExampleModule { }
