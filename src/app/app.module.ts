@@ -13,7 +13,7 @@ import { OrderByPipe } from './shared/pipes/order-by.pipe';
 
 // Import Components
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { router } from './app.router';
 
 @NgModule({
   declarations: [
@@ -24,13 +24,13 @@ import { AppRoutingModule } from './app-routing.module';
     OrderByPipe
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    BrowserModule,    
+    RouterModule.forRoot(router),
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: ([AppComponent])
 })
 export class AppModule { }
