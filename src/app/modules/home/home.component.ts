@@ -10,9 +10,7 @@ export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'Welcome to Angular2 development';
   constructor() { }  
-  /**
-   * Life cycle hooks
-   */
+  
   ngOnInit() {
   }
 }

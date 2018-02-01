@@ -10,23 +10,28 @@ import { TemplateDataBindingComponent } from './template-data-binding/template-d
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 
-import {ExponentialStrengthPipe} from '../../shared/pipes/exponential-strength.pipe';
-import {MaskPipe} from '../../shared/pipes/mask.pipe';
-import {OrderByPipe} from '../../shared/pipes/order-by.pipe';
-import {HighlightDirective} from '../../shared/directives/highlight.directive';
+// import { ExponentialStrengthPipe } from '../../shared/pipes/exponential-strength.pipe';
+// import { MaskPipe } from '../../shared/pipes/mask.pipe';
+// import { OrderByPipe } from '../../shared/pipes/order-by.pipe';
+// import { HighlightDirective } from '../../shared/directives/highlight.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: ExampleComponent },
-      { path: 'template-basic', component: TemplateDataBindingComponent },
-      { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
-      { path: 'pipes', component: PipesComponent },
-      { path: 'user-input-binding', component: FormInputBindingComponent },
-      { path: 'template-driven-form', component: TemplateDrivenFormComponent },
-      { path: 'reactive-form', component: ReactiveFormComponent },
-      { path: 'angular-services', component: AngularServicesComponent },
+      {
+        path: '', component: ExampleComponent,
+        children: [
+          { path: 'template-basic', component: TemplateDataBindingComponent },
+          { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
+          { path: 'pipes', component: PipesComponent },
+          { path: 'user-input-binding', component: FormInputBindingComponent },
+          { path: 'template-driven-form', component: TemplateDrivenFormComponent },
+          { path: 'reactive-form', component: ReactiveFormComponent },
+          { path: 'angular-services', component: AngularServicesComponent },
+          { path: '', component: ExampleComponent }
+        ]
+      }
     ])
 
   ],
@@ -39,10 +44,10 @@ import {HighlightDirective} from '../../shared/directives/highlight.directive';
     ReactiveFormComponent,
     AngularServicesComponent,
     TemplateDataBindingComponent,
-    ExponentialStrengthPipe,
-    MaskPipe,
-    OrderByPipe,
-    HighlightDirective
+    // ExponentialStrengthPipe,
+    // MaskPipe,
+    // OrderByPipe,
+    // HighlightDirective
   ]
 })
 export class ExampleModule { }

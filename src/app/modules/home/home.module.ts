@@ -11,7 +11,8 @@ import { HomeComponent } from './home.component';
       { path: '', component: HomeComponent }
     ])
   ],
-  declarations: [HomeComponent]
+  declarations: [HomeComponent],
+  bootstrap: [HomeComponent]
 
 })
 export class HomeModule { }
