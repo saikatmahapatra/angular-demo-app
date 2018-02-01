@@ -27,8 +27,17 @@ body{
 .validation-error{
     color: #a94442;
 }
-
 .nav-inline li{
     display: inline-block;
     margin: 10px;
+}
+.navbar-inverse{
+    background-color: #286090;
+    color: #fff;
+}
+.navbar-inverse .navbar-brand{
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a{
+  color: #fff;  
 }

@@ -4,13 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HighlightDirective } from './shared/directives/highlight.directive';
-import { ExponentialStrengthPipe } from './shared/pipes/exponential-strength.pipe';
-import { MaskPipe } from './shared/pipes/mask.pipe';
-import { OrderByPipe } from './shared/pipes/order-by.pipe';
+
+
 import { AppComponent } from './app.component';
 import { router } from './app.router';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+
+// Shared
+import { HighlightDirective } from './shared/highlight.directive';
+import { ExponentialStrengthPipe } from './shared/exponential-strength.pipe';
+import { MaskPipe } from './shared/mask.pipe';
+import { OrderByPipe } from './shared/order-by.pipe';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [

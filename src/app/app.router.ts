@@ -3,8 +3,8 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 export const router: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    //{ path: '**', loadChildren: 'app/modules/error/error.module#ErrorModule' },
-    { path: '**', component: PageNotFoundComponent },
+    //{ path: '**', loadChildren: 'appx/modules/error/error.module#ErrorModule' },
+    //{ path: '**', component: PageNotFoundComponent},
     { path: 'home', loadChildren: 'app/modules/home/home.module#HomeModule' },
     { path: 'example', loadChildren: 'app/modules/example/example.module#ExampleModule' },
     { path: 'user', loadChildren: 'app/modules/user/user.module#UserModule' }
