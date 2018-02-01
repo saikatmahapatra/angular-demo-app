@@ -10,27 +10,27 @@ import { AppComponent } from './app.component';
 import { router } from './app.router';
 
 // Shared
-import { HighlightDirective } from './shared/highlight.directive';
-import { ExponentialStrengthPipe } from './shared/exponential-strength.pipe';
-import { MaskPipe } from './shared/mask.pipe';
-import { OrderByPipe } from './shared/order-by.pipe';
+// import { HighlightDirective } from './shared/highlight.directive';
+// import { ExponentialStrengthPipe } from './shared/exponential-strength.pipe';
+// import { MaskPipe } from './shared/mask.pipe';
+// import { OrderByPipe } from './shared/order-by.pipe';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective,
-    ExponentialStrengthPipe,
-    MaskPipe,
-    OrderByPipe,
+    // HighlightDirective,
+    // ExponentialStrengthPipe,
+    // MaskPipe,
+    // OrderByPipe,
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule,    
+    BrowserModule,
     RouterModule.forRoot(router),
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: ([AppComponent])
