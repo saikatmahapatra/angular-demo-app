@@ -5,6 +5,7 @@ export const router: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
     { path: '**', loadChildren: './modules/error/error.module#ErrorModule' },
-    { path: 'example', loadChildren: './modules/example/example.module#ExampleModule' }
+    { path: 'example', loadChildren: './modules/example/example.module#ExampleModule' },
+    { path: 'user', loadChildren: './modules/user/user.module#UserModule' }
     
 ];
