@@ -6,6 +6,5 @@ export const router: Routes = [
     { path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
     { path: '**', loadChildren: './modules/error/error.module#ErrorModule' },
     { path: 'example', loadChildren: './modules/example/example.module#ExampleModule' },
-    { path: 'user', loadChildren: './modules/user/user.module#UserModule' }
-    
+    { path: 'user', loadChildren: './modules/user/user.module#UserModule' }    
 ];

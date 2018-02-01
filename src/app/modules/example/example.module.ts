@@ -10,6 +10,11 @@ import { TemplateDataBindingComponent } from './template-data-binding/template-d
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 
+import {ExponentialStrengthPipe} from '../../shared/pipes/exponential-strength.pipe';
+import {MaskPipe} from '../../shared/pipes/mask.pipe';
+import {OrderByPipe} from '../../shared/pipes/order-by.pipe';
+import {HighlightDirective} from '../../shared/directives/highlight.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +37,12 @@ import { AngularServicesComponent } from './angular-services/angular-services.co
     FormInputBindingComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
-    AngularServicesComponent
+    AngularServicesComponent,
+    TemplateDataBindingComponent,
+    ExponentialStrengthPipe,
+    MaskPipe,
+    OrderByPipe,
+    HighlightDirective
   ]
 })
 export class ExampleModule { }
