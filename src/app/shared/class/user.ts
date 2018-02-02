@@ -1,10 +1,51 @@
 export class User {
     constructor(
         public id: number,
-        public firstName : string,
-        public lastName : string,
-        public email : string,
-        public phoneNumber : string,
+        public firstName: string,
+        public lastName: string,
+        public email: string,
+        public phoneNumber: string,
         public phoneType: string
-    ){}
+    ) { }
+}
+
+export class CreditCustomer {
+    id: number;
+    email: string;
+    // name: {
+    //     firstName: string,
+    //     middleName: string,
+    //     lastName: string
+    // };    
+    // address: {
+    //     streetAddress: string,
+    //     AptSuite: string,
+    //     city: string,
+    //     state: string,
+    //     zip: string
+    // };
+    // phone: {
+    //     phoneNumber: number,
+    //     phoneType: string
+    // };
+    // finInfo: {
+    //     monthlyMortgage: number,
+    //     residenceType: string,
+    //     totalAnualIncome: string
+    // };
+    // identification: {
+    //     idNumber: string,
+    //     idType: string
+    // };
+    // dateOfBirth: string;
+    password: {
+        password: string,
+        confirmPassword: string
+    };
+    gender: string;
+    terms: boolean;
+
+    constructor(values: Object = {}) { 
+        Object.assign(this, values)
+    }
 }
