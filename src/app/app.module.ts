@@ -8,21 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { router } from './app.router';
-
-// Shared
-// import { HighlightDirective } from './shared/highlight.directive';
-// import { ExponentialStrengthPipe } from './shared/exponential-strength.pipe';
-// import { MaskPipe } from './shared/mask.pipe';
-// import { OrderByPipe } from './shared/order-by.pipe';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // HighlightDirective,
-    // ExponentialStrengthPipe,
-    // MaskPipe,
-    // OrderByPipe,
     PageNotFoundComponent
   ],
   imports: [
@@ -30,7 +20,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     RouterModule.forRoot(router),
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: ([AppComponent])
