@@ -18,7 +18,7 @@ import { AngularServicesComponent } from './angular-services/angular-services.co
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
     HttpModule,
     SharedModule,
     RouterModule.forChild([
@@ -32,7 +32,7 @@ import { AngularServicesComponent } from './angular-services/angular-services.co
           { path: 'template-driven-form', component: TemplateDrivenFormComponent },
           { path: 'reactive-form', component: ReactiveFormComponent },
           { path: 'angular-services', component: AngularServicesComponent },
-          
+
         ]
       }
     ])

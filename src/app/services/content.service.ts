@@ -164,4 +164,12 @@ export class ContentService {
     ];
   }
 
+  getPhoneType() {
+    return [
+      { "val": "", "txt": "Phone Type" },
+      { "val": "m", "txt": "Mobile" },
+      { "val": "w", "txt": "Work" },
+      { "val": "r", "txt": "Home" }
+    ];
+  }
 }

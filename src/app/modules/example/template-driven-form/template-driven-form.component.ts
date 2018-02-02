@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { User } from '../../../shared/class/user'; // Import the user class for form example
-
+import { ContentService } from '../../../services/content.service';
 
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
-  styleUrls: ['./template-driven-form.component.css']
+  styleUrls: ['./template-driven-form.component.css'],
+  providers: [ContentService]
 })
 export class TemplateDrivenFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
   }
-  
-  /**
-   * Template Driven Form
-   */
+
   phoneTypes = [
     { "val": "-1", "txt": "-Select-" },
     { "val": "m", "txt": "Mobile" },
