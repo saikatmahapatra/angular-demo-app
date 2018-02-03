@@ -8,6 +8,11 @@
         <div class="form-group">
           <label>Email</label>
           <input type="text" class="form-control" placeholder="Email" formControlName="email">
+          <div class="error-group">
+            <div *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">
+              <div *ngIf="signupForm.controls.email.errors?.required" class="validation-error">{{errMsg.email.required}}</div>
+            </div>
+          </div>
         </div>
 
         <div formGroupName="createPassword">

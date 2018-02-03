@@ -21,11 +21,9 @@ body{
   border-left: 5px solid #42A948; /* green */
 }
 
-/* .ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-} */
 .validation-error{
-    color: #a94442;
+    color:#ff0000;
+    font-size: 12px;
 }
 .nav-inline li{
     display: inline-block;

@@ -179,4 +179,13 @@ export class ContentService {
       {"val":"transgender", "txt":"Transgender"}
     ];
   }
+
+  getValidationErrorMessagesContent(){
+    return [{
+      "email":{
+        "required":"The email address field is required",
+        "invalid": "Please enter a valid email address. Ex. jhon@domain.com",        
+      }
+    }];
+  }
 }
