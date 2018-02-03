@@ -165,11 +165,18 @@ export class ContentService {
   }
 
   getPhoneType() {
-    return [
-      { "val": "", "txt": "Phone Type" },
+    return [      
       { "val": "m", "txt": "Mobile" },
       { "val": "w", "txt": "Work" },
       { "val": "r", "txt": "Home" }
+    ];
+  }
+
+  getGenders(){
+    return [
+      {"val":"male", "txt":"Male"},
+      {"val":"female", "txt":"Female"},
+      {"val":"transgender", "txt":"Transgender"}
     ];
   }
 }

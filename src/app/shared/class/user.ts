@@ -38,7 +38,7 @@ export class CreditCustomer {
     //     idType: string
     // };
     // dateOfBirth: string;
-    password: {
+    createPassword: {
         password: string,
         confirmPassword: string
     };
