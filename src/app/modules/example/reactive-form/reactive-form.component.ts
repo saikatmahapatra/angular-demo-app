@@ -12,7 +12,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
   providers: [ContentService, ValidationService]
 })
 export class ReactiveFormComponent implements OnInit {
-
+  private cms: any[];
   private genderList: any[];
   private errMsg = [];
   private user: CreditCustomer;
@@ -23,9 +23,12 @@ export class ReactiveFormComponent implements OnInit {
   constructor(private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.genderList = this._contentService.getGenders();
-    this.errMsg = this._contentService.getValidationErrorMessagesContent();
-    this.errMsg = this.errMsg [0];    
+
+    this.cms = this._contentService.getCMSContent();
+    this.genderList = this.cms[0].gender;
+    this.errMsg = this.cms[0].error;
+
+
     // Using formgroup, formcontrol
     /*this.signupForm = new FormGroup({
       email: new FormControl('', Validators.required),
@@ -40,13 +43,13 @@ export class ReactiveFormComponent implements OnInit {
     // Using formbuilder
     this.signupForm = this.fb.group({
 
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       createPassword: this.fb.group({
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required]
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]]
       }),
-      gender: ['', Validators.required],
-      terms: [false, Validators.requiredTrue]
+      gender: ['', [Validators.required]],
+      terms: [false, [Validators.requiredTrue]]
     });
   }
 

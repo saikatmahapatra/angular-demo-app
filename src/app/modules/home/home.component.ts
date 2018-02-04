@@ -10,10 +10,12 @@ import { ContentService } from '../../services/content.service';
 export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'Welcome to Angular2 development';
-  private page = {};
-  constructor(private _page: ContentService) { }
+  cms: any[];
+  pageData: any[];
+  constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
-    this.page = this._page.getCMSContent();
+    this.cms = this._contentService.getCMSContent();
+    this.pageData = this.cms[0].page.home;
   }
 }

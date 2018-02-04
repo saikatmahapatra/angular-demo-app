@@ -10,8 +10,11 @@
           <input type="text" class="form-control" placeholder="Email" formControlName="email">
           <div class="error-group">
             <div *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">
-              <div *ngIf="signupForm.controls.email.errors?.required" class="validation-error">{{errMsg.email.required}}</div>
+              <div *ngIf="signupForm.controls.email.errors?.required" class="validation-error">{{errMsg.email.required}}</div>              
             </div>
+            <div *ngIf="signupForm.controls.email.value != '' && signupForm.controls.email.touched">
+              <div *ngIf="signupForm.controls.email.errors?.email" class="validation-error">{{errMsg.email.invalid}}</div>
+            </div>            
           </div>
         </div>
 
@@ -19,10 +22,20 @@
           <div class="form-group">
             <label>Password</label>
             <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <div class="error-group">
+              <div *ngIf="signupForm.controls.createPassword.controls.password.invalid && signupForm.controls.createPassword.controls.password.touched">
+                <div *ngIf="signupForm.controls.createPassword.controls.password.errors?.required" class="validation-error">{{errMsg.password.required}}</div>              
+              </div>                         
+            </div>
           </div>
           <div class="form-group">
             <label>Confirm Password</label>
             <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+            <div class="error-group">
+              <div *ngIf="signupForm.controls.createPassword.controls.confirmPassword.invalid && signupForm.controls.createPassword.controls.confirmPassword.touched">
+                <div *ngIf="signupForm.controls.createPassword.controls.confirmPassword.errors?.required" class="validation-error">{{errMsg.confirmPassword.required}}</div>              
+              </div>                         
+            </div>
           </div>
         </div>
 
@@ -31,11 +44,21 @@
           <select class="form-control" id="gender" formControlName="gender">
             <option *ngFor="let g of genderList" [value]="g.val"> {{g.txt}}</option>
           </select>
+          <div class="error-group">
+            <div *ngIf="signupForm.controls.gender.invalid && signupForm.controls.gender.touched">
+              <div *ngIf="signupForm.controls.gender.errors?.required" class="validation-error">{{errMsg.gender.required}}</div>              
+            </div>                         
+           </div>
         </div>
 
         <div class="form-group">
           <label>
             <input type="checkbox" formControlName="terms">Terms - I have read and acccepted Terms & Conditions</label>
+            <!-- <div class="error-group">
+              <div *ngIf="signupForm.controls.terms.invalid && signupForm.controls.terms.touched">
+                <div *ngIf="signupForm.controls.terms.errors?.required" class="validation-error">{{errMsg.terms.required}}</div>              
+              </div>                         
+             </div> -->
         </div>
 
         <div class="form-group">
