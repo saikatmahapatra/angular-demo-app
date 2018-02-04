@@ -1,14 +1,14 @@
-import { WebApp2Page } from './app.po';
+import { AppPage } from './app.po';
 
-describe('web-app2 App', function() {
-  let page: WebApp2Page;
+describe('ang-struct App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new WebApp2Page();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
