@@ -1,5 +1,5 @@
 <div class="row example">
-  <div class="col-md-6">
+  <div class="col-md-8">
     <!-- <h4>Reactive Form</h4> -->
 
     <form [formGroup]="signupForm" (ngSubmit)="onFormSubmit()">
@@ -16,7 +16,7 @@
                   <div *ngIf="signupForm.controls.name.controls.firstName.errors?.required" class="validation-error">{{errMsg.firstName.required}}</div>
                 </div>
                 <div *ngIf="signupForm.controls.name.controls.firstName.value !='' && signupForm.controls.name.controls.firstName.touched">
-                  <div *ngIf="signupForm.controls.name.controls.firstName.errors?.minlength" class="validation-error">{{errMsg.firstName.min}}</div>
+                  <div *ngIf="signupForm.controls.name.controls.firstName.errors?.minlength" class="validation-error">{{errMsg.firstName.minlength}}</div>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@
       </fieldset>
     </form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <pre>Form Value: {{signupForm.value|json}}</pre>
     <p>Is Valid: {{signupForm.status|json}}</p>
   </div>

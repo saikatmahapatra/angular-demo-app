@@ -176,17 +176,17 @@ export class ContentService {
         },
         "firstName":{
           "required": "The first name field is required.",
-          "min": "The first name must be minimum 3 characters in length.",
-          "max": "The first name should not be 12 characters in length."
+          "minlength": "The first name must be minimum 3 characters in length.",
+          "maxlength": "The first name should not be 12 characters in length."
         },
         "middleName":{          
-          "min": "The middle initial should be 1 character in length.",
-          "max": "The middle initial should be 1 character in length."
+          "minlength": "The middle initial should be 1 character in length.",
+          "maxlength": "The middle initial should be 1 character in length."
         },
         "lastName":{
           "required": "The last name field is required.",
-          "min": "The last name must be minimum 3 characters in length.",
-          "max": "The last name should not be 12 characters in length.",
+          "minlength": "The last name must be minimum 3 characters in length.",
+          "maxlength": "The last name should not be 12 characters in length.",
         },
         "password":{
           "required": "The password field is required."
