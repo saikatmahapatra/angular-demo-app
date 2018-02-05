@@ -12,22 +12,15 @@ export class User {
 export class CreditCustomer {
     id: number;
     email: string;
-    // name: {
-    //     firstName: string,
-    //     middleName: string,
-    //     lastName: string
-    // };    
-    // address: {
-    //     streetAddress: string,
-    //     AptSuite: string,
-    //     city: string,
-    //     state: string,
-    //     zip: string
-    // };
-    // phone: {
-    //     phoneNumber: number,
-    //     phoneType: string
-    // };
+    name: {
+        firstName: string,
+        middleName: string,
+        lastName: string
+    };        
+    phone: {
+        phoneNumber: number,
+        phoneType: string
+    };
     // finInfo: {
     //     monthlyMortgage: number,
     //     residenceType: string,

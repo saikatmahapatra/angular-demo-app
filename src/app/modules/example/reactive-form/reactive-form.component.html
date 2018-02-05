@@ -6,6 +6,36 @@
       <fieldset>
         <legend>Create Account Online</legend>
         <div class="row">
+          <div formGroupName="name">
+
+            <div class="form-group col-md-6">
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+              <div class="error-group">
+                <div *ngIf="signupForm.controls.name.controls.firstName.invalid && signupForm.controls.name.controls.firstName.touched">
+                  <div *ngIf="signupForm.controls.name.controls.firstName.errors?.required" class="validation-error">{{errMsg.firstName.required}}</div>
+                </div>
+                <div *ngIf="signupForm.controls.name.controls.firstName.value !='' && signupForm.controls.name.controls.firstName.touched">
+                  <div *ngIf="signupForm.controls.name.controls.firstName.errors?.minlength" class="validation-error">{{errMsg.firstName.min}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+              <div class="error-group">
+                <div *ngIf="signupForm.controls.name.controls.lastName.invalid && signupForm.controls.name.controls.lastName.touched">
+                  <div *ngIf="signupForm.controls.name.controls.lastName.errors?.required" class="validation-error">{{errMsg.lastName.required}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="row">
           <div class="form-group col-md-12">
             <label>Email</label>
             <input type="text" class="form-control" placeholder="Email" formControlName="email">
