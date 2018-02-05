@@ -199,7 +199,12 @@ export class ContentService {
         },
         "terms":{
           "required": "The terms and condition acceptance is required."
-        }
+        },
+        "phoneNumber":{
+          "required": "The phone number field is required.",
+          "minlength": "The phone number should be a 10 digit a number.",
+          "maxlength": "Please enter a 10 digit phone number."
+        },
       },
     }];
   }

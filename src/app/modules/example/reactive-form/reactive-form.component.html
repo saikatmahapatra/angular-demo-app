@@ -36,7 +36,7 @@
 
 
         <div class="row">
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-6">
             <label>Email</label>
             <input type="text" class="form-control" placeholder="Email" formControlName="email">
             <div class="error-group">
@@ -45,6 +45,21 @@
               </div>
               <div *ngIf="signupForm.controls.email.value != '' && signupForm.controls.email.touched">
                 <div *ngIf="signupForm.controls.email.errors?.email" class="validation-error">{{errMsg.email.invalid}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" placeholder="10 digit mobile" formControlName="phoneNumber">
+            <div class="error-group">
+              <div *ngIf="signupForm.controls.phoneNumber.invalid && signupForm.controls.phoneNumber.touched">
+                <div *ngIf="signupForm.controls.phoneNumber.errors?.required" class="validation-error">{{errMsg.phoneNumber.required}}</div>
+              </div>
+              <div *ngIf="signupForm.controls.phoneNumber.value != '' && signupForm.controls.phoneNumber.touched">
+                <div *ngIf="signupForm.controls.phoneNumber.errors?.minlength" class="validation-error">{{errMsg.phoneNumber.minlength}}</div>
+              </div>
+              <div *ngIf="signupForm.controls.phoneNumber.value != '' && signupForm.controls.phoneNumber.touched">
+                <div *ngIf="signupForm.controls.phoneNumber.errors?.maxlength" class="validation-error">{{errMsg.phoneNumber.maxlength}}</div>
               </div>
             </div>
           </div>
@@ -76,9 +91,10 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label>Gender</label>
-            <select class="form-control" id="gender" formControlName="gender">
-            <option *ngFor="let g of genderList" [value]="g.val"> {{g.txt}}</option>
-          </select>
+            <label *ngFor="let g of genderList" for="{{g.val}}" class="radio-inline">
+              <input formControlName="gender" type="radio" id="{{g.val}}" value="{{g.val}}"> {{g.txt}}
+            </label>
+
             <div class="error-group">
               <div *ngIf="signupForm.controls.gender.invalid && signupForm.controls.gender.touched">
                 <div *ngIf="signupForm.controls.gender.errors?.required" class="validation-error">{{errMsg.gender.required}}</div>
@@ -90,7 +106,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label>
-            <input type="checkbox" formControlName="terms">Terms - I have read and acccepted Terms & Conditions</label>
+              <input type="checkbox" formControlName="terms">Terms - I have read and acccepted Terms & Conditions</label>
             <!-- <div class="error-group">
               <div *ngIf="signupForm.controls.terms.invalid && signupForm.controls.terms.touched">
                 <div *ngIf="signupForm.controls.terms.errors?.required" class="validation-error">{{errMsg.terms.required}}</div>              
