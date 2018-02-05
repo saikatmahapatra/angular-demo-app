@@ -49,9 +49,20 @@ export class ValidationService {
     dispute_charge_text: /^[^<>\"%]*$/,
     message_subject: /^[^=\"'<>]*$/,
     message_body: /^[^=\"'<>]*$/
-  }
-  
+  };
+
   constructor() {
   }
 
+  email(control) {
+    let inputValue = control.value;
+    let isInvalid = true;
+    console.log("inputValue=" + inputValue);
+    if (inputValue.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
+      isInvalid = false;
+    } else {
+      isInvalid = true;
+    }
+    return {'email':isInvalid}; // should return true to display errors
+  }
 }
