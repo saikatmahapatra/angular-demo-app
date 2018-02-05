@@ -1,28 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { router } from './app.router';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(router),
     FormsModule,
-    HttpModule,
-    ReactiveFormsModule
+    RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
+    SharedModule.forRoot(),
+
+    // Routing modules must be at the last and AppRouting Module must be the last one.
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: ([AppComponent])
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

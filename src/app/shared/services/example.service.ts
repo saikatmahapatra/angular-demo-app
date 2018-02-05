@@ -5,7 +5,7 @@ export class ExampleService {
 
   constructor() { }
 
-  someMethod(){
+  someMethod() {
     return 'Hey! Im ExampleService';
   }
 }
