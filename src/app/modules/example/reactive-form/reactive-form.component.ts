@@ -14,7 +14,7 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 export class ReactiveFormComponent implements OnInit {
   private cms: any[];
   private genderList: any[];
-  private skillList: any[];  
+  private allSkills: any[];  
   private errMsg = [];
   private user: CreditCustomer;
   signupForm: FormGroup; // Declare signup form
@@ -27,7 +27,7 @@ export class ReactiveFormComponent implements OnInit {
     this.cms = this._contentService.getCMSContent();
     this.genderList = this.cms[0].gender;
     this.errMsg = this.cms[0].error;
-    this.skillList = this.cms[0].skills;
+    this.allSkills = this.cms[0].skills;
     //this.createSignupFormX();
     this.createSignupForm();
   }

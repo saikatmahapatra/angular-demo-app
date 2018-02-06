@@ -170,10 +170,10 @@ export class ContentService {
         }
       ],
       "skills":[
-        {"key":"JavaScript","name":"JS"},
-        {"key":"jQuery","name":"jQuery"},
-        {"key":"HTML5","name":"HTML5"},
-        {"key":"CSS3","name":"CSS3"}
+        {"skillValue":"javascript","skillDisplayTxt":"JS"},
+        {"skillValue":"jquery","skillDisplayTxt":"jQuery"},
+        {"skillValue":"html5","skillDisplayTxt":"HTML5"},
+        {"skillValue":"css3","skillDisplayTxt":"CSS3"}
       ],
       "error": {
         "email": {

@@ -100,20 +100,14 @@
               </label>
             </div>
             <div class="form-group col-md-6">
-              <label>Select Skills</label>
-
-              <label class="checkbox-inline" *ngFor="let skill of skillList" for="{{skill.key}}">
-                <input type="checkbox" formArrayName="skill" value="{{skill.key}}" id="{{skill.key}}"> {{skill.name}}
+              <label>Skills</label>
+              <label class="checkbox-inline" *ngFor="let s of allSkills" for="{{s.skillValue}}">
+                <input type="checkbox" formArrayName="skill" value="{{s.skillValue}}" id="{{s.skillValue}}"> {{s.skillDisplayTxt}}
               </label>
-
-
-              <!-- <label class="checkbox-inline" *ngFor="let skill of skillList" for="{{skill.key}}">
-                <input type="checkbox" formControlName="skill" value="{{skill.key}}" id="{{skill.key}}"> {{skill.name}}
-              </label> -->
-
             </div>
           </div>
         </div>
+      
 
         <div class="row">
           <div class="form-group col-md-12">
