@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../../../services/content.service';
 import { ValidationService } from '../../../services/validation.service';
 import { CreditCustomer } from '../../../shared/class/user'; // Import the user class for form example
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 //https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
@@ -58,7 +58,7 @@ export class ReactiveFormComponent implements OnInit {
       gender: ['', [Validators.required]],
       jobExp: this.fb.group({
         experience: ['', [Validators.required]],
-        skill: ['']
+        skill: this.fb.array([])
       }),
       terms: [false, [Validators.requiredTrue]]
     });
