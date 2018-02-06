@@ -89,6 +89,26 @@
         </div>
 
         <div class="row">
+          <div formGroupName="jobLocation">
+            <div class="form-group col-md-6">
+              <label>Preferred Location</label>
+              <label class="radio-inline" for="y">
+                <input type="radio" formControlName="requiredPreference" value="Y" id="y">Yes
+              </label>
+              <label class="radio-inline" for="n">
+                <input type="radio" formControlName="requiredPreference" value="N" id="n">No
+              </label>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Select Preference</label>
+              <label class="checkbox-inline" *ngFor="let pl of preferenceList" for="{{pl.key}}">
+                <input type="checkbox" formControlName="preferences"  value="{{pl.key}}" id="{{pl.key}}"> {{pl.name}}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="form-group col-md-12">
             <label>Gender</label>
             <label *ngFor="let g of genderList" for="{{g.val}}" class="radio-inline">

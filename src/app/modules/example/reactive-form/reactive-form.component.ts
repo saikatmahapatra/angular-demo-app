@@ -14,6 +14,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class ReactiveFormComponent implements OnInit {
   private cms: any[];
   private genderList: any[];
+  private preferenceList: any[];
   private errMsg = [];
   private user: CreditCustomer;
   signupForm: FormGroup; // Declare signup form
@@ -27,6 +28,8 @@ export class ReactiveFormComponent implements OnInit {
     this.cms = this._contentService.getCMSContent();
     this.genderList = this.cms[0].gender;
     this.errMsg = this.cms[0].error;
+    this.preferenceList = this.cms[0].preferredCity;
+
 
 
     // Using formgroup, formcontrol
@@ -53,6 +56,10 @@ export class ReactiveFormComponent implements OnInit {
         confirmPassword: ['', [Validators.required]]
       }),
       gender: ['', [Validators.required]],
+      jobLocation: this.fb.group({
+        requiredPreference: ['', [Validators.required]],
+        preferences: ['']
+      }),
       terms: [false, [Validators.requiredTrue]]
     });
   }

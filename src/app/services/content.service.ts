@@ -169,6 +169,11 @@ export class ContentService {
           "name": "West Bengal"
         }
       ],
+      "preferredCity":[
+        {"key":"kol","name":"Kolkata"},
+        {"key":"chn","name":"Chennai"},
+        {"key":"mum","name":"Mumbai"},
+      ],
       "error": {
         "email": {
           "required": "The email address field is required.",
