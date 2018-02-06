@@ -169,10 +169,11 @@ export class ContentService {
           "name": "West Bengal"
         }
       ],
-      "preferredCity":[
-        {"key":"kol","name":"Kolkata"},
-        {"key":"chn","name":"Chennai"},
-        {"key":"mum","name":"Mumbai"},
+      "skills":[
+        {"key":"JavaScript","name":"JS"},
+        {"key":"jQuery","name":"jQuery"},
+        {"key":"HTML5","name":"HTML5"},
+        {"key":"CSS3","name":"CSS3"}
       ],
       "error": {
         "email": {
