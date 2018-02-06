@@ -14,7 +14,7 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 export class ReactiveFormComponent implements OnInit {
   private cms: any[];
   private genderList: any[];
-  private skillList: any[];
+  private skillList: any[];  
   private errMsg = [];
   private user: CreditCustomer;
   signupForm: FormGroup; // Declare signup form
@@ -24,25 +24,28 @@ export class ReactiveFormComponent implements OnInit {
   constructor(private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
 
   ngOnInit() {
-
     this.cms = this._contentService.getCMSContent();
     this.genderList = this.cms[0].gender;
     this.errMsg = this.cms[0].error;
     this.skillList = this.cms[0].skills;
+    //this.createSignupFormX();
+    this.createSignupForm();
+  }
 
+  // createSignupFormX() {
+  //   // Using formgroup, formcontrol
+  //   this.signupForm = new FormGroup({
+  //     email: new FormControl('', Validators.required),
+  //     createPassword: new FormGroup({
+  //       password: new FormControl('', Validators.required),
+  //       confirmPassword: new FormControl('', Validators.required)
+  //     }),
+  //     gender: new FormControl('', Validators.required),
+  //     terms: new FormControl(false, Validators.requiredTrue)
+  //   });
+  // }
 
-
-    // Using formgroup, formcontrol
-    /*this.signupForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      createPassword: new FormGroup({
-        password: new FormControl('', Validators.required),
-        confirmPassword: new FormControl('', Validators.required)
-      }),
-      gender: new FormControl('', Validators.required),
-      terms: new FormControl(false, Validators.requiredTrue)
-    });*/
-
+  createSignupForm() {
     // Using formbuilder
     this.signupForm = this.fb.group({
       name: this.fb.group({
@@ -63,7 +66,7 @@ export class ReactiveFormComponent implements OnInit {
       terms: [false, [Validators.requiredTrue]]
     });
   }
-
+  
   onFormSubmit() {
     if (this.signupForm.valid) {
       console.log("Sign Up Form Validated");

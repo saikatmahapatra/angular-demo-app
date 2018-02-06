@@ -106,6 +106,7 @@
                 <input type="checkbox" formArrayName="skill" value="{{skill.key}}" id="{{skill.key}}"> {{skill.name}}
               </label>
 
+
               <!-- <label class="checkbox-inline" *ngFor="let skill of skillList" for="{{skill.key}}">
                 <input type="checkbox" formControlName="skill" value="{{skill.key}}" id="{{skill.key}}"> {{skill.name}}
               </label> -->
@@ -143,7 +144,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Submit</button>
           </div>
         </div>
       </fieldset>
