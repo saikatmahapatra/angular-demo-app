@@ -1,17 +1,20 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from "rxjs/Observable";
+
+// const httpOptions = {
+//     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+// };
+
+
 @Injectable()
+export class UserService {
+    apiBaseUrl = 'mock_data';
 
-export class UserService{
-    constructor(){
-
+    constructor(private _http: HttpClient) {
     }
 
-    getUsers(){
-        return [
-            {"id":"1","name":"Saikat","email":"saikat@ex.com"},
-            {"id":"2","name":"John","email":"john@ex.com"},
-            {"id":"3","name":"Joe","email":"joe@ex.com"},
-            {"id":"5","name":"Smith","email":"joe@ex.com"}
-        ];
+    getUsers() {
+        return this._http.get('mock_data/user.json');
     }
 }

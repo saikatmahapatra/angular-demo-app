@@ -21,7 +21,12 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userList = this._userService.getUsers();
+    //this.userList = this._userService.getUsers();
+
+    this._userService.getUsers().subscribe(res => {
+      console.log("########## Service");
+      console.log(res);
+    });
 
     /*To add a validator, we must first convert the string value into an array.
     The first item in the array is the default value if any, 
@@ -30,20 +35,20 @@ export class UserComponent implements OnInit {
     name attribute must have a value in it.*/
     this.saveUserForm = this.formBuilder.group({
       name: [
-        '', 
+        '',
         Validators.compose([
-          <any>Validators.required, 
-          <any>Validators.minLength(5), 
+          <any>Validators.required,
+          <any>Validators.minLength(5),
           <any>Validators.maxLength(10)
-          ])
-          ],
+        ])
+      ],
       email: [
-        '', 
+        '',
         Validators.compose([
           <any>Validators.required,
           <any>this.isInvalidEmail
-          ])
-          ]
+        ])
+      ]
     });
 
     // subscribe to form changes
@@ -61,7 +66,7 @@ export class UserComponent implements OnInit {
     myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
     myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
   }
-  saveUserData(model, isValid:boolean) {
+  saveUserData(model, isValid: boolean) {
     this.submitted = true;
     console.log(model);
     console.log("Form Valid =", isValid);
@@ -74,15 +79,15 @@ export class UserComponent implements OnInit {
     //console.log(this.postData);
   }
 
-  isInvalidEmail(control){
+  isInvalidEmail(control) {
     //console.log("Control=", control.value);  
-   // if(control.value.lenght>0){
-      //return {isInvalidEmail:true};
-   // }
-    
+    // if(control.value.lenght>0){
+    //return {isInvalidEmail:true};
+    // }
+
     var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     if (control.value != "" && (control.value.length <= 5 || !EMAIL_REGEXP.test(control.value))) {
-        return {isInvalidEmail: true };
+      return { isInvalidEmail: true };
     }
     return null;
   }
