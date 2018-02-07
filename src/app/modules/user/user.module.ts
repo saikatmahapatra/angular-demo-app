@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { UserRoutingModule } from './user-routing.module';
     RouterModule,
     ReactiveFormsModule,
     SharedModule,
-
+    HttpClientModule,
     UserRoutingModule
   ],
   declarations: [UserComponent]
