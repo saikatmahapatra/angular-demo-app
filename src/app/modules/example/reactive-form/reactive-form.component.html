@@ -55,11 +55,8 @@
               <div *ngIf="signupForm.controls.phoneNumber.invalid && signupForm.controls.phoneNumber.touched">
                 <div *ngIf="signupForm.controls.phoneNumber.errors?.required" class="validation-error">{{errMsg.phoneNumber.required}}</div>
               </div>
-              <div *ngIf="signupForm.controls.phoneNumber.value != '' && signupForm.controls.phoneNumber.touched">
-                <div *ngIf="signupForm.controls.phoneNumber.errors?.minlength" class="validation-error">{{errMsg.phoneNumber.minlength}}</div>
-              </div>
-              <div *ngIf="signupForm.controls.phoneNumber.value != '' && signupForm.controls.phoneNumber.touched">
-                <div *ngIf="signupForm.controls.phoneNumber.errors?.maxlength" class="validation-error">{{errMsg.phoneNumber.maxlength}}</div>
+              <div *ngIf="signupForm.controls.phoneNumber.value.length != '' && signupForm.controls.phoneNumber.touched">
+                <div *ngIf="signupForm.controls.phoneNumber.errors?.phone_number" class="validation-error">{{errMsg.phoneNumber.phone_number}}</div>
               </div>
             </div>
           </div>
@@ -138,7 +135,7 @@
         <div class="row">
           <div class="form-group col-md-12">
             <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </fieldset>

@@ -53,7 +53,7 @@ export class ReactiveFormComponent implements OnInit {
         lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
       }),
       email: ['', [Validators.required, this._validator.email]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.required, this._validator.phone_number]],
       createPassword: this.fb.group({
         password: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]]

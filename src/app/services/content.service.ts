@@ -209,7 +209,8 @@ export class ContentService {
         "phoneNumber":{
           "required": "The phone number field is required.",
           "minlength": "The phone number should be a 10 digit a number.",
-          "maxlength": "Please enter a 10 digit phone number."
+          "maxlength": "Please enter a 10 digit phone number.",
+          "phone_number": "Phone number should be a 10 digit number"
         },
       },
     }];

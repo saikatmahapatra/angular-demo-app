@@ -67,4 +67,15 @@ export class ValidationService {
     }
     return { 'email': isInvalid }; // should return true to display errors
   }
+  phone_number(control) {
+    let inputValue = control.value;
+    let isInvalid = true;
+    console.log("inputValue=" + inputValue);
+    if (inputValue.match(/^\d{10}$/)) {
+      isInvalid = false;
+    } else {
+      isInvalid = true;
+    }
+    return { 'phone_number': isInvalid }; // should return true to display errors
+  }
 }
