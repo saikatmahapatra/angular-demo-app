@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // dont use old http
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 @Injectable()
 export class ContentService {
 
-  constructor() { }
+  private _apiBaseUrl: string = 'assets/mock_data/';
+
+  constructor(private _http: HttpClient) { }
 
   getCMSContent() {
     return [{
@@ -169,44 +177,44 @@ export class ContentService {
           "name": "West Bengal"
         }
       ],
-      "skills":[
-        {"skillValue":"javascript","skillDisplayTxt":"JS"},
-        {"skillValue":"jquery","skillDisplayTxt":"jQuery"},
-        {"skillValue":"html5","skillDisplayTxt":"HTML5"},
-        {"skillValue":"css3","skillDisplayTxt":"CSS3"}
+      "skills": [
+        { "skillValue": "javascript", "skillDisplayTxt": "JS" },
+        { "skillValue": "jquery", "skillDisplayTxt": "jQuery" },
+        { "skillValue": "html5", "skillDisplayTxt": "HTML5" },
+        { "skillValue": "css3", "skillDisplayTxt": "CSS3" }
       ],
       "error": {
         "email": {
           "required": "The email address field is required.",
           "invalid": "Please enter a valid email address."
         },
-        "firstName":{
+        "firstName": {
           "required": "The first name field is required.",
           "minlength": "The first name must be minimum 3 characters in length.",
           "maxlength": "The first name should not be 12 characters in length."
         },
-        "middleName":{          
+        "middleName": {
           "minlength": "The middle initial should be 1 character in length.",
           "maxlength": "The middle initial should be 1 character in length."
         },
-        "lastName":{
+        "lastName": {
           "required": "The last name field is required.",
           "minlength": "The last name must be minimum 3 characters in length.",
           "maxlength": "The last name should not be 12 characters in length.",
         },
-        "password":{
+        "password": {
           "required": "The password field is required."
         },
-        "confirmPassword":{
+        "confirmPassword": {
           "required": "The confirm password field is required."
         },
-        "gender":{
+        "gender": {
           "required": "The gender field is required."
         },
-        "terms":{
+        "terms": {
           "required": "The terms and condition acceptance is required."
         },
-        "phoneNumber":{
+        "phoneNumber": {
           "required": "The phone number field is required.",
           "minlength": "The phone number should be a 10 digit a number.",
           "maxlength": "Please enter a 10 digit phone number.",
@@ -214,5 +222,9 @@ export class ContentService {
         },
       },
     }];
+  }
+
+  getMockContent() {
+    return this._http.get(this._apiBaseUrl + 'content.json');
   }
 }
