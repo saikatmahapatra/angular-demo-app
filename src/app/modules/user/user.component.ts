@@ -23,7 +23,11 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     //this.userList = this._userService.getUsers();
 
-    this._userService.getUsers().subscribe(res => this.userList = res);
+    this._userService.getUsers().subscribe(
+      data => {
+        this.userList = data;
+      }
+    );
 
     /*To add a validator, we must first convert the string value into an array.
     The first item in the array is the default value if any, 
