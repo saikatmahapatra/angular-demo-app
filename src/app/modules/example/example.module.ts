@@ -24,7 +24,6 @@ import { ExampleRoutingModule } from './example-routing.module';
     HttpClientModule,
     RouterModule,
     SharedModule,
-
     ExampleRoutingModule
   ],
   declarations: [
