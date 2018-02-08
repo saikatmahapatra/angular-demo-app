@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   public saveUserForm: FormGroup;
   public submitted: boolean;
   public events: any[] = [];
-  public userList = {};
+  public userList:any = [];
   public postData = {};
 
   constructor(private _userService: UserService, public formBuilder: FormBuilder) {
