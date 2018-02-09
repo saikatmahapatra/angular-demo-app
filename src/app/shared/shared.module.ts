@@ -8,6 +8,7 @@ import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
 import { MaskPipe } from './pipes/mask.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ExampleService } from './services/example.service';
+import { AngularLoaderComponent } from './components/angular-loader/angular-loader.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ExampleService } from './services/example.service';
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
-    OrderByPipe
+    OrderByPipe,
+    AngularLoaderComponent
   ],
   exports: [
     HighlightDirective,
