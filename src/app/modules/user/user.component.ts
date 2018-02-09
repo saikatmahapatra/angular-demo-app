@@ -21,13 +21,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.userList = this._userService.getUsers();
-
-    this._userService.getUsers().subscribe(
-      data => {
-        this.userList = data;
-      }
-    );
+    this.getUsersList();
 
     /*To add a validator, we must first convert the string value into an array.
     The first item in the array is the default value if any, 
@@ -54,6 +48,14 @@ export class UserComponent implements OnInit {
 
     // subscribe to form changes
     this.subcribeToFormChanges();
+  }
+
+  getUsersList() {
+    this._userService.getUsers().subscribe(
+      data => {
+        this.userList = data;
+      }
+    );
   }
 
   showDetails() {

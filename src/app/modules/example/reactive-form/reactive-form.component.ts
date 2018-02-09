@@ -12,9 +12,9 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
   providers: [ContentService, ValidationService]
 })
 export class ReactiveFormComponent implements OnInit {
-  private cms: any[];
+  private cms: any = [];
   private genderList: any[];
-  private allSkills: any[];  
+  private allSkills: any[];
   private errMsg = [];
   private user: CreditCustomer;
   signupForm: FormGroup; // Declare signup form
@@ -24,12 +24,19 @@ export class ReactiveFormComponent implements OnInit {
   constructor(private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.cms = this._contentService.getCMSContent();
-    this.genderList = this.cms[0].gender;
-    this.errMsg = this.cms[0].error;
-    this.allSkills = this.cms[0].skills;
+    this.getContents();
     //this.createSignupFormX();
     this.createSignupForm();
+  }
+
+
+  getContents() {
+    this._contentService.getCMSContent().subscribe(data => {
+      this.cms = data;
+      this.genderList = this.cms[0].gender;
+      this.errMsg = this.cms[0].error;
+      this.allSkills = this.cms[0].skills;
+    });
   }
 
   // createSignupFormX() {
@@ -66,7 +73,7 @@ export class ReactiveFormComponent implements OnInit {
       terms: [false, [Validators.requiredTrue]]
     });
   }
-  
+
   onFormSubmit() {
     if (this.signupForm.valid) {
       console.log("Sign Up Form Validated");

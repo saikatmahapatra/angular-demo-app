@@ -10,20 +10,19 @@ import { ContentService } from '../../services/content.service';
 export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'Welcome to Angular2 development';
-  cms: any[];
-  pageData: any[];
-  mydata: any= [];
+  cms: any = [];
+  pageData: any = [];
+
   constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
-    this.cms = this._contentService.getCMSContent();
-    this.pageData = this.cms[0].page.home;
+    this.getContents();
+  }
 
-    this._contentService.getMockContent().subscribe(data=>{
-      console.log("Mock",data);
-      this.mydata = data
+  getContents() {
+    this._contentService.getCMSContent().subscribe(data => {
+      this.cms = data;
+      this.pageData = this.cms[0].page.home;
     });
-
-    console.log("Saikat",this.mydata);
   }
 }

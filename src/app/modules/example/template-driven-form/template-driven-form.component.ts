@@ -10,18 +10,21 @@ import { ContentService } from '../../../services/content.service';
   providers: [ContentService]
 })
 export class TemplateDrivenFormComponent implements OnInit {
-
+  cms: any = [];
+  private phoneTypes = [];
   constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
+    this.getContents();
   }
 
-  phoneTypes = [
-    { "val": "-1", "txt": "-Select-" },
-    { "val": "m", "txt": "Mobile" },
-    { "val": "w", "txt": "Work" },
-    { "val": "h", "txt": "Home" },
-  ];
+  getContents() {
+    this._contentService.getCMSContent().subscribe(data => {
+      this.cms = data;
+      this.phoneTypes = this.cms[0].phoneType;
+    });
+  }
+
   isSubmitted = false;
   model = new User(1, 'Saikat', 'Mahapatra', 'mahapatra.saikat@gmail.com', '', '');
   onSubmit(event) {
