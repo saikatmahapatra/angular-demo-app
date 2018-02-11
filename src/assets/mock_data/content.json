@@ -2,8 +2,9 @@
     {
         "page": {
             "home": {
-                "title": "Welcome To Angular 5 Project",
-                "subtitle": "This is a sample subtitle"
+                "title": "Angular 5",
+                "subtitle": "This is a project of Angular 5",
+                "heading_cli_cmds":"Angular CLI Commands"
             }
         },
         "gender": [
