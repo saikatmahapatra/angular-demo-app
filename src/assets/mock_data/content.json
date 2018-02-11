@@ -4,7 +4,20 @@
             "home": {
                 "title": "Angular 5",
                 "subtitle": "This is a project of Angular 5",
-                "heading_cli_cmds":"Angular CLI Commands"
+                "heading_cli_cmds":"Angular CLI Commands",
+                "cli_commands":[
+                    {"scafold":"Component","command":"ng g component my-new-component","url":"https://github.com/angular/angular-cli/wiki/generate-component"},
+                    {"scafold":"Component (without directory)","command":"ng g component my-new-component --flat","url":"https://github.com/angular/angular-cli/wiki/generate-component"},
+                    {"scafold":"Directive","command":"ng g directive my-new-directive","url":"https://github.com/angular/angular-cli/wiki/generate-directive"},
+                    {"scafold":"Pipe","command":"ng g pipe my-new-pipe","url":"https://github.com/angular/angular-cli/wiki/generate-pipe"},
+                    {"scafold":"Class","command":"ng g class my-new-class","url":"https://github.com/angular/angular-cli/wiki/generate-class"},
+                    {"scafold":"Service","command":"ng g service my-new-service","url":"https://github.com/angular/angular-cli/wiki/generate-service"},
+                    {"scafold":"Guard","command":"ng g guard my-new-guard","url":"https://github.com/angular/angular-cli/wiki/generate-guard"},
+                    {"scafold":"Interface","command":"ng g interface my-new-interface","url":"https://github.com/angular/angular-cli/wiki/generate-interface"},
+                    {"scafold":"Enum","command":"ng g enum my-new-enum","url":"https://github.com/angular/angular-cli/wiki/generate-enum "},
+                    {"scafold":"Module","command":"ng g module my-module","url":"https://github.com/angular/angular-cli/wiki/generate-module"},
+                    {"scafold":"Module (with routing module)","command":"ng g module my-module --routing","url":"https://github.com/angular/angular-cli/wiki/generate-module"}
+                ]
             }
         },
         "gender": [
