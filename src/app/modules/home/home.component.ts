@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   title = 'Home';
   subtitle = 'Welcome to Angular2 development';
   cms: any = [];
+  error: any = [];
   pageData: any = [];
 
   constructor(private _contentService: ContentService) { }
@@ -20,9 +21,12 @@ export class HomeComponent implements OnInit {
   }
 
   getContents() {
-    this._contentService.getCMSContent().subscribe(data => {
-      this.cms = data;
-      this.pageData = this.cms[0].page.home;
-    });
+    this._contentService.getCMSContent().subscribe(
+      data => {
+        this.cms = data;
+        this.pageData = this.cms[0].page.home;
+      },
+      error => this.error = error
+    );
   }
 }
