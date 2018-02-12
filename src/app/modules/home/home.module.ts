@@ -11,6 +11,7 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     HttpClientModule,
     HomeRoutingModule
   ],
