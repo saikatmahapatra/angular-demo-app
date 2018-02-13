@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { FieldConfig } from '../../models/field-config.interface';
+import { FieldConfig } from './field-config.interface';
 
 @Component({
   exportAs: 'dynamicForm',
@@ -9,7 +9,7 @@ import { FieldConfig } from '../../models/field-config.interface';
   styleUrls: ['dynamic-form.component.scss'],
   template: `
     <form
-      class="dynamic-form"
+      class="form dynamic-form"
       [formGroup]="form"
       (submit)="handleSubmit($event)">
       <ng-container

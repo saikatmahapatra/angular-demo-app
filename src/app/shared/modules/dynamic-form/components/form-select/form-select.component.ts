@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Field } from '../../models/field.interface';
-import { FieldConfig } from '../../models/field-config.interface';
+import { Field } from '../../field.interface';
+import { FieldConfig } from '../../field-config.interface';
 
 @Component({
   selector: 'form-select',
   styleUrls: ['form-select.component.scss'],
   template: `
-    <div 
-      class="dynamic-field form-select"
-      [formGroup]="group">
+    <div class="form-group dynamic-field form-select" [formGroup]="group">
       <label>{{ config.label }}</label>
-      <select [formControlName]="config.name">
+      <select [formControlName]="config.name" class="{{config.class}}">
         <option value="">{{ config.placeholder }}</option>
         <option *ngFor="let option of config.options">
           {{ option }}

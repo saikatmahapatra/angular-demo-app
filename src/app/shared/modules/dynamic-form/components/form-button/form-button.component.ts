@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Field } from '../../models/field.interface';
-import { FieldConfig } from '../../models/field-config.interface';
+import { Field } from '../../field.interface';
+import { FieldConfig } from '../../field-config.interface';
 
 @Component({
   selector: 'form-button',
@@ -13,7 +13,7 @@ import { FieldConfig } from '../../models/field-config.interface';
       [formGroup]="group">
       <button
         [disabled]="config.disabled"
-        type="submit">
+        type="{{config.type}}" class="{{config.class}}">
         {{ config.label }}
       </button>
     </div>

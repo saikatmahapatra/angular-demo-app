@@ -1,19 +1,20 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Field } from '../../models/field.interface';
-import { FieldConfig } from '../../models/field-config.interface';
+import { Field } from '../../field.interface';
+import { FieldConfig } from '../../field-config.interface';
 
 @Component({
   selector: 'form-input',
   styleUrls: ['form-input.component.scss'],
   template: `
     <div 
-      class="dynamic-field form-input" 
+      class="form-group dynamic-field form-input" 
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <input
         type="text"
+        class="{{config.class}}"
         [attr.placeholder]="config.placeholder"
         [formControlName]="config.name">
     </div>

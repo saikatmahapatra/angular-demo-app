@@ -2,8 +2,8 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 
 
-import { FieldConfig } from '../../shared/modules/dynamic-form/models/field-config.interface';
-import { DynamicFormComponent } from '../../shared/modules/dynamic-form/containers/dynamic-form/dynamic-form.component';
+import { FieldConfig } from '../../shared/modules/dynamic-form/field-config.interface';
+import { DynamicFormComponent } from '../../shared/modules/dynamic-form/dynamic-form.component';
 
 @Component({
   selector: 'app-sign-on',
@@ -16,6 +16,7 @@ export class SignOnComponent implements OnInit {
   config: FieldConfig[] = [
     {
       type: 'input',
+      class: 'form-control',
       label: 'Full name',
       name: 'name',
       placeholder: 'Enter your name',
@@ -24,15 +25,17 @@ export class SignOnComponent implements OnInit {
     {
       type: 'select',
       label: 'Favourite Food',
+      class: 'form-control',
       name: 'food',
       options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
       placeholder: 'Select an option',
       validation: [Validators.required]
     },
     {
+      type: 'button',
       label: 'Submit',
       name: 'submit',
-      type: 'button'
+      class: 'btn btn-primary'
     }
   ];
   constructor() { }
@@ -53,7 +56,7 @@ export class SignOnComponent implements OnInit {
     this.form.setValue('name', 'Todd Motto');
   }
 
-  submit(value: {[name: string]: any}) {
+  submit(value: { [name: string]: any }) {
     console.log(value);
   }
 

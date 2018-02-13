@@ -5,10 +5,10 @@ import { FormButtonComponent } from '../form-button/form-button.component';
 import { FormInputComponent } from '../form-input/form-input.component';
 import { FormSelectComponent } from '../form-select/form-select.component';
 
-import { Field } from '../../models/field.interface';
-import { FieldConfig } from '../../models/field-config.interface';
+import { Field } from '../../field.interface';
+import { FieldConfig } from '../../field-config.interface';
 
-const components: {[type: string]: Type<Field>} = {
+const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
   input: FormInputComponent,
   select: FormSelectComponent
@@ -29,7 +29,7 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   constructor(
     private resolver: ComponentFactoryResolver,
     private container: ViewContainerRef
-  ) {}
+  ) { }
 
   ngOnChanges() {
     if (this.component) {

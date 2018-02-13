@@ -10,12 +10,15 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { ExampleService } from './services/example.service';
 import { LoaderComponent } from './components/loader/loader.component';
 
+//import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // DynamicFormModule
   ],
   declarations: [
     HighlightDirective,
