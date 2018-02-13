@@ -13,7 +13,7 @@ import { FieldConfig } from '../../field-config.interface';
       [formGroup]="group">
       <label>{{ config.label }}</label>
       <input
-        type="text"
+        type="{{config.type}}"
         class="{{config.class}}"
         [attr.placeholder]="config.placeholder"
         [formControlName]="config.name">

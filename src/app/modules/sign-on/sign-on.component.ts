@@ -15,7 +15,7 @@ export class SignOnComponent implements OnInit {
 
   config: FieldConfig[] = [
     {
-      type: 'input',
+      type: 'text',
       class: 'form-control',
       label: 'Full name',
       name: 'name',
@@ -53,7 +53,7 @@ export class SignOnComponent implements OnInit {
     });
 
     this.form.setDisabled('submit', true);
-    this.form.setValue('name', 'Todd Motto');
+    //this.form.setValue('name', 'Todd Motto');
   }
 
   submit(value: { [name: string]: any }) {

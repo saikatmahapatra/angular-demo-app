@@ -10,7 +10,11 @@ import { FieldConfig } from '../../field-config.interface';
 
 const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
-  input: FormInputComponent,
+  text: FormInputComponent,
+  radio: FormInputComponent,
+  checkbox: FormInputComponent,
+  file: FormInputComponent,
+  date: FormInputComponent,
   select: FormSelectComponent
 };
 
