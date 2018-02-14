@@ -29,7 +29,7 @@ body{
     display: inline-block;
     margin: 10px;
 }
-.navbar-inverse{
+/* .navbar-inverse{
     background-color: #286090;
     color: #fff;
 }
@@ -46,4 +46,4 @@ body{
 
 .tootlbar-spacer {
   flex: 1 1 auto;
-}
+} */
