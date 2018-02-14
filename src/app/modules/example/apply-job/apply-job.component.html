@@ -1,0 +1,15 @@
+<div class="row example">
+  <p>
+    apply-job works!
+  </p>
+
+  <div class="col-md-9">
+    <dynamic-form [config]="config" #form="dynamicForm" (submit)="submit($event)"></dynamic-form>
+  </div>
+
+
+  <div class="col-md-3">
+    <div><label>Is Form Valid? </label> {{form.valid }}</div>
+    <pre>{{form.value | json }}</pre>
+  </div>
+</div>
