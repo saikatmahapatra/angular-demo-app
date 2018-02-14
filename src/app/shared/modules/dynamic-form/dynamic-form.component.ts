@@ -8,8 +8,9 @@ import { FieldConfig } from './field-config.interface';
   selector: 'dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
-    <form
-      class="form dynamic-form"
+  <!--<pre>{{config|json}}</pre>-->
+  <form
+      class="form"
       [formGroup]="form"
       (submit)="handleSubmit($event)">
       <ng-container

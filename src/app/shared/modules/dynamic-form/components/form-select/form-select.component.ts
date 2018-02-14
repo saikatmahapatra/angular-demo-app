@@ -8,7 +8,7 @@ import { FieldConfig } from '../../field-config.interface';
   selector: 'form-select',
   styleUrls: ['form-select.component.scss'],
   template: `
-    <div class="form-group dynamic-field form-select" [formGroup]="group">
+    <div class="form-group" [formGroup]="group">
       <label>{{ config.label }}</label>
       <select [formControlName]="config.name" class="{{config.class}}">
         <option value="">{{ config.placeholder }}</option>

@@ -9,7 +9,7 @@ import { FieldConfig } from '../../field-config.interface';
   styleUrls: ['form-button.component.scss'],
   template: `
     <div 
-      class="dynamic-field form-button"
+      class="form-group"
       [formGroup]="group">
       <button
         [disabled]="config.disabled"

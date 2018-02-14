@@ -44,7 +44,8 @@
   </div>
 </nav>
 
-<div class="container main">
+<div class="container main">  
+  <span *ngIf="showLoader" class="loading">ssssss</span>
   <router-outlet></router-outlet>
 </div>
 <!-- /.container -->

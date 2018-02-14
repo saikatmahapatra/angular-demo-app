@@ -43,10 +43,10 @@ export class ApplyJobComponent implements OnInit {
     },
     {
       type: 'select',
-      label: 'Favourite Food',
+      label: 'Job Role',
       class: 'form-control',
-      name: 'food',
-      options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+      name: 'jobrole',
+      options: ['UI Developer', 'UX Designer', 'Software Engineer', 'UI Architect'],
       placeholder: 'Select an option',
       validation: [Validators.required]
     },
@@ -75,7 +75,7 @@ export class ApplyJobComponent implements OnInit {
     //this.form.setValue('name', 'Todd Motto');
   }
 
-  submit(value: { [name: string]: any }) {
+  submitForm(value: { [name: string]: any }) {
     console.log(value);
   }
 
