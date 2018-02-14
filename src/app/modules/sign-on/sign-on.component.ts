@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+
 @Component({
   selector: 'app-sign-on',
   templateUrl: './sign-on.component.html',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   providers: []
 })
 export class SignOnComponent implements OnInit {
-
+  
   constructor() { }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
 }
