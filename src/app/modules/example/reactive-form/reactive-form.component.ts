@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentService } from '../../../services/content.service';
-import { ValidationService } from '../../../services/validation.service';
+import { ContentService } from '../../../shared/services/content.service';
+import { ValidationService } from '../../../shared/services/validation.service';
 import { CreditCustomer } from '../../../shared/class/user'; // Import the user class for form example
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 

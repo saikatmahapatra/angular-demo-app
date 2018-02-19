@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { User } from '../../../shared/class/user'; // Import the user class for form example
-import { ContentService } from '../../../services/content.service';
+import { ContentService } from '../../../shared/services/content.service';
 
 @Component({
   selector: 'app-template-driven-form',

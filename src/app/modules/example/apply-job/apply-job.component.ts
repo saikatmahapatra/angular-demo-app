@@ -2,8 +2,8 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from '../../../shared/modules/dynamic-form/field-config.interface';
 import { DynamicFormComponent } from '../../../shared/modules/dynamic-form/dynamic-form.component';
-import { ContentService } from '../../../services/content.service';
-import { ValidationService } from '../../../services/validation.service';
+import { ContentService } from '../../../shared/services/content.service';
+import { ValidationService } from '../../../shared/services/validation.service';
 
 @Component({
   selector: 'app-apply-job',
