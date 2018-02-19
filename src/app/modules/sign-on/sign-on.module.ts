@@ -10,7 +10,6 @@ import { SignOnRoutingModule } from './sign-on-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-
     SignOnRoutingModule,
     DynamicFormModule
   ],

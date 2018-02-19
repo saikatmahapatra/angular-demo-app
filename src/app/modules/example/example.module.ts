@@ -40,6 +40,9 @@ import { ExampleRoutingModule } from './example-routing.module';
     AngularServicesComponent,
     TemplateDataBindingComponent,
     ApplyJobComponent
+  ],
+  exports:[
+    
   ]
 })
 export class ExampleModule { }
