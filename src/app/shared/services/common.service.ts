@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ExampleService {
+export class CommonService {
 
   constructor() { }
 
   someMethod() {
-    return 'Hey! Im ExampleService';
+    return 'Hey! Im CommonService :)';
   }
+
 }
