@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoggerService } from '../../../shared/services/logger.service';
 @Component({
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',
-  styleUrls: ['./template-data-binding.component.css']
+  styleUrls: ['./template-data-binding.component.css'],
+  providers: [LoggerService]
 })
 export class TemplateDataBindingComponent implements OnInit {
   title = "Template basic";
@@ -12,10 +13,10 @@ export class TemplateDataBindingComponent implements OnInit {
     { "name": "Mango", "color": "green" },
     { "name": "Apple", "color": "Red" }
   ];
-  constructor() { }
+  constructor(private _logger: LoggerService) { }
 
   ngOnInit() {
-    console.log("ngOnInit");
+    this._logger.log("ngOnInit");
   }
 
 }

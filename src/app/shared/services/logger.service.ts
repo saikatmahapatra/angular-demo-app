@@ -2,19 +2,28 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LoggerService {
-
+  showAppLogs = true;
   constructor() { }
 
   log(msg: any) {
-    console.log(msg);
+    if (this.showAppLogs === true) {
+      console.log(msg);
+    }
+
   }
 
   warn(msg: any) {
-    console.warn(msg);
+    if (this.showAppLogs === true) {
+      console.warn(msg);
+    }
+
   }
 
   error(msg: any) {
-    console.error(msg);
+    if (this.showAppLogs === true) {
+      console.error(msg);
+    }
+
   }
 
 }

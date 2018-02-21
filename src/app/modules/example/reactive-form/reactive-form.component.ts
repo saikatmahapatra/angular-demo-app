@@ -3,13 +3,13 @@ import { ContentService } from '../../../shared/services/content.service';
 import { ValidationService } from '../../../shared/services/validation.service';
 import { CreditCustomer } from '../../../shared/class/user'; // Import the user class for form example
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-
+import { LoggerService } from '../../../shared/services/logger.service';
 //https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css'],
-  providers: [ContentService, ValidationService]
+  providers: [ContentService, ValidationService, LoggerService]
 })
 export class ReactiveFormComponent implements OnInit {
   private cms: any = [];
@@ -21,7 +21,7 @@ export class ReactiveFormComponent implements OnInit {
 
   // To use services, inject into constructor
   // To use Form Builder, inject formbuilder into constructor
-  constructor(private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
+  constructor(private _logger: LoggerService, private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.getContents();
@@ -76,9 +76,9 @@ export class ReactiveFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.signupForm.valid) {
-      console.log("Sign Up Form Validated");
+      this._logger.log("Sign Up Form Validated");
       this.user = this.signupForm.value;
-      console.log(this.user);
+      this._logger.log(this.user);
     }
   }
 

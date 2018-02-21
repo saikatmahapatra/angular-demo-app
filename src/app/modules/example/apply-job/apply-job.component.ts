@@ -4,12 +4,13 @@ import { FieldConfig } from '../../../shared/modules/dynamic-form/field-config.i
 import { DynamicFormComponent } from '../../../shared/modules/dynamic-form/dynamic-form.component';
 import { ContentService } from '../../../shared/services/content.service';
 import { ValidationService } from '../../../shared/services/validation.service';
+import { LoggerService } from '../../../shared/services/logger.service';
 
 @Component({
   selector: 'app-apply-job',
   templateUrl: './apply-job.component.html',
   styleUrls: ['./apply-job.component.css'],
-  providers: [ContentService, ValidationService]
+  providers: [ContentService, ValidationService, LoggerService]
 })
 export class ApplyJobComponent implements OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
@@ -17,7 +18,7 @@ export class ApplyJobComponent implements OnInit {
   private genderList: any[];
   private allSkills: any[];
 
-  constructor(private _contentService: ContentService, private _validator: ValidationService) { }
+  constructor(private _contentService: ContentService, private _validator: ValidationService, private _logger:LoggerService) { }
 
   ngOnInit() {
     this.getContents();
@@ -76,7 +77,7 @@ export class ApplyJobComponent implements OnInit {
   }
 
   submitForm(value: { [name: string]: any }) {
-    console.log(value);
+    this._logger.log(value);
   }
 
 }
