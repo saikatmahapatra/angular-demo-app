@@ -59,7 +59,7 @@ export class ValidationService {
   email(control) {
     let inputValue = control.value;
     let isInvalid = true;
-    console.log("inputValue=" + inputValue);
+    //console.log("inputValue=" + inputValue);
     if (inputValue.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
       isInvalid = false;
     } else {
@@ -70,7 +70,7 @@ export class ValidationService {
   phone_number(control) {
     let inputValue = control.value;
     let isInvalid = true;
-    console.log("inputValue=" + inputValue);
+    //console.log("inputValue=" + inputValue);
     if (inputValue.match(/^\d{10}$/)) {
       isInvalid = false;
     } else {
