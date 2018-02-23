@@ -4,7 +4,7 @@ import { LoggerService } from '../../../shared/services/logger.service';
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',
   styleUrls: ['./template-data-binding.component.css'],
-  providers: [LoggerService]
+  providers: []
 })
 export class TemplateDataBindingComponent implements OnInit {
   title = "Template basic";

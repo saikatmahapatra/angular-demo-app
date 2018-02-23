@@ -7,7 +7,7 @@ import { LoggerService } from '../../../shared/services/logger.service';
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
   styleUrls: ['./template-driven-form.component.css'],
-  providers: [ContentService, LoggerService]
+  providers: [ContentService]
 })
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];

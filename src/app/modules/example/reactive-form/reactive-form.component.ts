@@ -9,7 +9,7 @@ import { LoggerService } from '../../../shared/services/logger.service';
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css'],
-  providers: [ContentService, ValidationService, LoggerService]
+  providers: [ContentService, ValidationService]
 })
 export class ReactiveFormComponent implements OnInit {
   private cms: any = [];
@@ -68,7 +68,7 @@ export class ReactiveFormComponent implements OnInit {
       gender: ['', [Validators.required]],
       jobExp: this.fb.group({
         experience: ['', [Validators.required]],
-        skill: this.fb.array([])
+        //skill: this.fb.array([])
       }),
       terms: [false, [Validators.requiredTrue]]
     });

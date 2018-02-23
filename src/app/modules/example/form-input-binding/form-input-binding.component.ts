@@ -4,7 +4,7 @@ import { LoggerService } from '../../../shared/services/logger.service';
   selector: 'app-form-input-binding',
   templateUrl: './form-input-binding.component.html',
   styleUrls: ['./form-input-binding.component.css'],
-  providers: [LoggerService]
+  providers: []
 })
 export class FormInputBindingComponent implements OnInit {
   clickMessage = '';

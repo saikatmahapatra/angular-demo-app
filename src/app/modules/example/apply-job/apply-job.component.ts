@@ -10,7 +10,7 @@ import { LoggerService } from '../../../shared/services/logger.service';
   selector: 'app-apply-job',
   templateUrl: './apply-job.component.html',
   styleUrls: ['./apply-job.component.css'],
-  providers: [ContentService, ValidationService, LoggerService]
+  providers: [ContentService, ValidationService]
 })
 export class ApplyJobComponent implements OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
