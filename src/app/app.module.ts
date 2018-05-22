@@ -22,9 +22,7 @@ import { ValidationService } from './shared/services/validation.service';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-
     SharedModule.forRoot(),
-
     // Routing modules must be at the last and AppRouting Module must be the last one.
     AppRoutingModule
   ],

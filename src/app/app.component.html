@@ -1,53 +1,45 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-        aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="logo navbar-brand" routerLink="/">Angular</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="/home">Home</a>
-        </li>
-        <li>
-          <a routerLink="/example">Example Library</a>
-        </li>
-        <li>
-          <a routerLink="/user">Users</a>
-        </li>
-        <li class="dropdown">
-          <a href="/pages" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Pages
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a routerLink="/pages/our-services">Our Services</a>
-            </li>
-            <li>
-              <a routerLink="/pages/about-us">About Us</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a routerLink="/sign_on">Sign On</a>
-        </li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">        
+        <a class="logo navbar-brand" routerLink="/">Angular</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      </ul>
-    </div>
-    <!--/.nav-collapse -->
-  </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">                  
+                    <a routerLink="/home" class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" routerLink="/example">Example Library</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/user">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/sign_on">Sign On</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Pages</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" routerLink="/pages/our-services">Our Services</a>
+                        <a class="dropdown-item" routerLink="/pages/about-us">About Us</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
 
-<div class="container main">
+<main role="main" class="container">
   <!-- <span class="loading"></span> -->
   <router-outlet>
     <app-loader></app-loader>
   </router-outlet>
-</div>
-<!-- /.container -->
+</main><!-- /.container -->
