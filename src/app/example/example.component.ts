@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../shared/services/logger.service';
+import { LoggerService } from '../shared/services/logger.service';
 @Component({
   selector: 'app-example',
   templateUrl: './example.component.html',

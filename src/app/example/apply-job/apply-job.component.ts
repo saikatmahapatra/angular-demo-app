@@ -1,10 +1,10 @@
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FieldConfig } from '../../../shared/modules/dynamic-form/field-config.interface';
-import { DynamicFormComponent } from '../../../shared/modules/dynamic-form/dynamic-form.component';
-import { ContentService } from '../../../shared/services/content.service';
-import { ValidationService } from '../../../shared/services/validation.service';
-import { LoggerService } from '../../../shared/services/logger.service';
+import { FieldConfig } from '../../shared/modules/dynamic-form/field-config.interface';
+import { DynamicFormComponent } from '../../shared/modules/dynamic-form/dynamic-form.component';
+import { ContentService } from '../../shared/services/content.service';
+import { ValidationService } from '../../shared/services/validation.service';
+import { LoggerService } from '../../shared/services/logger.service';
 
 @Component({
   selector: 'app-apply-job',

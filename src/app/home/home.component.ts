@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentService } from '../../shared/services/content.service';
+import { ContentService } from '../shared/services/content.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

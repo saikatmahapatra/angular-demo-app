@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../../shared/shared.module';
-import { DynamicFormModule } from '../../shared/modules/dynamic-form/dynamic-form.module';
+import { SharedModule } from '../shared/shared.module';
+import { DynamicFormModule } from '../shared/modules/dynamic-form/dynamic-form.module';
 import { ExampleComponent } from './example.component';
 
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';

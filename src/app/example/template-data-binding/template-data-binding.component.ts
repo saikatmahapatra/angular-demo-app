@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../../shared/services/logger.service';
+import { LoggerService } from '../../shared/services/logger.service';
 @Component({
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',

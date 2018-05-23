@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared/services/user.service';
+import { UserService } from '../shared/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoggerService } from '../../shared/services/logger.service';
+import { LoggerService } from '../shared/services/logger.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -58,7 +58,8 @@ export class UserComponent implements OnInit {
     );
   }
 
-  showDetails() {
+  showDetails(e) {
+    e.preventDefault();
     alert("Show Details");
   }
 

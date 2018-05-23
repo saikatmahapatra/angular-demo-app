@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { LoggerService } from '../../../shared/services/logger.service';
+import { LoggerService } from '../../shared/services/logger.service';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',

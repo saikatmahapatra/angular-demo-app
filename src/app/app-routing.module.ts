@@ -7,22 +7,22 @@ const router: Routes = [{
   pathMatch: 'full'
 }, {
   path: 'home',
-  loadChildren: 'app/modules/home/home.module#HomeModule'
+  loadChildren: 'app/home/home.module#HomeModule'
 }, {
   path: 'example',
-  loadChildren: 'app/modules/example/example.module#ExampleModule'
+  loadChildren: 'app/example/example.module#ExampleModule'
 }, {
   path: 'user',
-  loadChildren: 'app/modules/user/user.module#UserModule'
+  loadChildren: 'app/user/user.module#UserModule'
 }, {
   path: 'pages',
-  loadChildren: 'app/modules/page/page.module#PageModule'
+  loadChildren: 'app/page/page.module#PageModule'
 }, {
   path: 'sign_on',
-  loadChildren: 'app/modules/sign-on/sign-on.module#SignOnModule'
+  loadChildren: 'app/sign-on/sign-on.module#SignOnModule'
 }, {
   path: 'sign_up',
-  loadChildren: 'app/modules/sign-up/sign-up.module#SignUpModule'
+  loadChildren: 'app/sign-up/sign-up.module#SignUpModule'
 }];
 
 @NgModule({
