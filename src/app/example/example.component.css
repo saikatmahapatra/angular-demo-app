@@ -1,4 +1,4 @@
-/*Module specific style*/
-.txt-lg{
-    font-size: 18px
+.example-nav li{
+    display: inline;
+    margin-right: 1rem;
 }
