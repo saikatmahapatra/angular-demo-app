@@ -56,10 +56,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th [class.active]="order === 'id'" (click)="setOrder('id')">ID <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
-                    <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">Name <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
-                    <th [class.active]="order === 'age'" (click)="setOrder('age')">Age <span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>
-                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone<span [hidden]="reverse"><i class="glyphicon glyphicon-triangle-bottom"></i></span><span [hidden]="!reverse"><i class="glyphicon glyphicon-triangle-top"></i></span></th>                    
+                    <th [class.active]="order === 'id'" (click)="setOrder('id')">ID <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">Name <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'age'" (click)="setOrder('age')">Age <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>                    
                 </tr>
             </thead>
             <tbody>
