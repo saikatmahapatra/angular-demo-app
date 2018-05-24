@@ -10,6 +10,7 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
+import { WebChatComponent } from './web-chat/web-chat.component';
 const router: Routes = [{
   path: '',
   component: ExampleComponent,
@@ -37,7 +38,11 @@ const router: Routes = [{
   }, {
     path: 'angular-services',
     component: AngularServicesComponent
-  }]
+  }, {
+    path: 'web-chat',
+    component: WebChatComponent
+  }
+  ]
 }];
 
 @NgModule({

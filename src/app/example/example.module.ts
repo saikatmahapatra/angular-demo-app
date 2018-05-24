@@ -17,6 +17,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { ExampleRoutingModule } from './example-routing.module';
+import { WebChatComponent } from './web-chat/web-chat.component';
 
 
 @NgModule({
@@ -39,10 +40,11 @@ import { ExampleRoutingModule } from './example-routing.module';
     ReactiveFormComponent,
     AngularServicesComponent,
     TemplateDataBindingComponent,
-    ApplyJobComponent
+    ApplyJobComponent,
+    WebChatComponent
   ],
   exports:[
-    
+    WebChatComponent
   ]
 })
 export class ExampleModule { }
