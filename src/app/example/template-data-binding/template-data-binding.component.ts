@@ -19,4 +19,8 @@ export class TemplateDataBindingComponent implements OnInit {
     this._logger.log("ngOnInit");
   }
 
+  getVal(){
+    return 3;
+  }
+
 }
