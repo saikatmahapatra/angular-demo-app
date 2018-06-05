@@ -23,6 +23,10 @@ const router: Routes = [{
 }, {
   path: 'sign_up',
   loadChildren: 'app/sign-up/sign-up.module#SignUpModule'
+},
+{
+  path: 'kore',
+  loadChildren: 'app/kore-ai/kore-ai.module#KoreAiModule'
 }];
 
 @NgModule({
