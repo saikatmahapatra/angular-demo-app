@@ -11,7 +11,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { WebChatComponent } from './web-chat/web-chat.component';
-const router: Routes = [{
+const routes: Routes = [{
   path: '',
   component: ExampleComponent,
   children: [{
@@ -47,7 +47,7 @@ const router: Routes = [{
 
 @NgModule({
   imports: [
-    RouterModule.forChild(router)
+    RouterModule.forChild(routes)
   ],
 })
 export class ExampleRoutingModule { }
