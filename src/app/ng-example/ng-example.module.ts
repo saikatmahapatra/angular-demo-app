@@ -19,6 +19,8 @@ import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { NgExampleRoutingModule } from './ng-example-routing.module';
 import { WebChatComponent } from './web-chat/web-chat.component';
 import { TestComponent } from './test/test.component';
+import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { TestComponent } from './test/test.component';
     TemplateDataBindingComponent,
     ApplyJobComponent,
     WebChatComponent,
-    TestComponent
+    TestComponent,
+    ChildComponent,
+    ParentComponent
   ],
   exports:[
     WebChatComponent

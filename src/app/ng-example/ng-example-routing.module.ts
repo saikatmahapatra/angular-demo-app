@@ -12,6 +12,8 @@ import { AngularServicesComponent } from './angular-services/angular-services.co
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { WebChatComponent } from './web-chat/web-chat.component';
 import { TestComponent } from './test/test.component';
+import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
 const routes: Routes = [{
   path: '',
   component: NgExampleComponent,
@@ -25,7 +27,9 @@ const routes: Routes = [{
     { path: 'dynamic-form', component: ApplyJobComponent },
     { path: 'angular-services', component: AngularServicesComponent },
     { path: 'web-chat', component: WebChatComponent },
-    { path: 'test', component: TestComponent }
+    { path: 'test', component: TestComponent },
+    { path: 'child-comp', component: ChildComponent },
+    { path: 'parent-comp', component: ParentComponent },
   ]
 }];
 
