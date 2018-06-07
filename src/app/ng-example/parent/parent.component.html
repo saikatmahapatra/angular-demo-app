@@ -4,9 +4,9 @@
 {{city}}
 
 <hr>
-
-Agreed? {{agreed}}
+<p class="font-weight-bold">Parent listen for child event-</p>
+Agreed? {{userAgreed}}
 
 
 <hr>
-<app-child-comp [department]="department" [mycity]="city"></app-child-comp>
+<app-child-comp [department]="department" [mycity]="city" (agreed)="isAgreed($event)"></app-child-comp>

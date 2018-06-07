@@ -8,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class ParentComponent implements OnInit {
   department = "Information Technology"; // pass from parent to child
   city = "KOLKATA"; // pass this to child component and covert it to lowercase
+  userAgreed : boolean;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  isAgreed($e){
+    this.userAgreed = $e;
   }
 
 }
