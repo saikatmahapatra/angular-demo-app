@@ -1,6 +1,11 @@
 <h5>Child Component</h5>
 <p>child works</p>
 
+<button (click)="IsUserAgreed(true)" class="btn btn-sm btn-primary">Agree</button>
+<button (click)="IsUserAgreed(false)" class="btn btn-sm btn-bark">Disagree</button>
+
+<p>user agreed ? {{userAgreed}}</p>
+
 <p class="font-weight-bold">Values from parent component</p>
 {{department}}<br>
 {{mycity}}

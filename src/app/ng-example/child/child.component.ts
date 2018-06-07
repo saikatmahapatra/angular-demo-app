@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-child-comp',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
   private _city;
+  userAgreed = false;
   @Input() department: string;
 
   @Input()
@@ -14,9 +15,17 @@ export class ChildComponent implements OnInit {
     this._city = city ? city.toLowerCase() : 'no city';
   }
   get mycity(): string { return this._city; }
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  @Output() agreed = new EventEmitter<boolean>();
+
+  IsUserAgreed(ag: boolean) {
+    this.userAgreed = ag;
+    this.agreed.emit(ag);
   }
 
 }
