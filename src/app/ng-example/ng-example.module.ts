@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { DynamicFormModule } from '../shared/modules/dynamic-form/dynamic-form.module';
-import { ExampleComponent } from './example.component';
+import { NgExampleComponent } from './ng-example.component';
 
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';
 import { AngularDirectiveComponent } from './angular-directive/angular-directive.component';
@@ -16,8 +16,9 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
-import { ExampleRoutingModule } from './example-routing.module';
+import { NgExampleRoutingModule } from './ng-example-routing.module';
 import { WebChatComponent } from './web-chat/web-chat.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -29,10 +30,10 @@ import { WebChatComponent } from './web-chat/web-chat.component';
     HttpClientModule,
     RouterModule,
     SharedModule,
-    ExampleRoutingModule
+    NgExampleRoutingModule
   ],
   declarations: [
-    ExampleComponent,
+    NgExampleComponent,
     AngularDirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
@@ -41,10 +42,11 @@ import { WebChatComponent } from './web-chat/web-chat.component';
     AngularServicesComponent,
     TemplateDataBindingComponent,
     ApplyJobComponent,
-    WebChatComponent
+    WebChatComponent,
+    TestComponent
   ],
   exports:[
     WebChatComponent
   ]
 })
-export class ExampleModule { }
+export class NgExampleModule { }

@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-student',
+  selector: 'app-child-comp-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
+  private _city;
+  @Input() department: string;
+
+  @Input()
+  set mycity(city: string) {
+    this._city = city ? city.toLowerCase() : 'no city';
+  }
+  get mycity(): string { return this._city; }
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  
 
 }
