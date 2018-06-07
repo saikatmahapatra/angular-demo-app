@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { KoreAiService } from './kore-ai.service';
 import { Observable } from 'rxjs/Rx';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
@@ -12,6 +12,14 @@ export class KoreAiComponent implements OnInit {
   public hookResponse: any = [];
   chatForm: FormGroup; // Declare formGroup
   htmlTxt: string = '';
+  isSubmitted = false;
+  @ViewChild('scrollToBottom') private myScrollContainer: ElementRef;
+  errorMessage = {
+    "messageTxt": {
+      "required": "Message text can't be empty"
+    }
+  };
+
 
   postData = {
     "from": {
@@ -23,12 +31,14 @@ export class KoreAiComponent implements OnInit {
       "groupInfo": {},
     },
     "message": {
-      "text": "Get mini statement"
+      "text": "hi"
     },
     "session": {
       "new": true
     },
-    "ACNumber": "921010"
+    "accountNumber": "123456789",
+    "messageTypeId": "greeting",
+    "transactionId": "06042018"
 
   };
 
@@ -37,8 +47,13 @@ export class KoreAiComponent implements OnInit {
   ngOnInit() {
     //this.getWebHook();
     this.createChatForm();
+    this.scrollToBottom();
   }
-  
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
 
   callBotWebHook() {
     console.log("Button Clicked");
@@ -52,13 +67,22 @@ export class KoreAiComponent implements OnInit {
     });
   }
 
+
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
+
   onChatFormSubmit() {
     if (this.chatForm.valid) {
       console.log("Submitted");
+      this.isSubmitted = true;
       this.postData.message.text = this.chatForm.value.messageTxt;
-      this.htmlTxt += '<div class="row chat-msg-container sent-msg-container"><div class="col-10 msg-txt"><div class="messages sent-msg-txt"><p>' + this.postData.message.text + '</p><time datetime="2009-11-13T20:00">You</time></div></div></div>';
+      this.htmlTxt += '<div class="row chat-msg-container sent-msg-container"><div class="col-11 msg-txt"><div class="messages sent-msg-txt"><p>' + this.postData.message.text + '</p><time datetime="">You</time></div></div></div>';
       this.chatForm.reset();
       this.getWebHook();
+      //this.scrollToBottom();
     }
   }
 
@@ -66,7 +90,8 @@ export class KoreAiComponent implements OnInit {
     this._koreAiService.getWebHookData(this.postData).subscribe(
       data => {
         this.hookResponse = data;
-        this.htmlTxt+='<div class="row chat-msg-container receive-msg-container"><div class="col-10 msg-txt"><div class="messages receive-msg-txt"><p>'+this.hookResponse.text+'</p><time datetime="2009-11-13T20:00">KoreBot</time></div></div></div>';
+        this.htmlTxt += '<div class="row chat-msg-container receive-msg-container"><div class="col-11 msg-txt"><div class="messages receive-msg-txt"><p>' + this.hookResponse.text + '</p><time datetime="">Kore.ai</time></div></div></div>';
+        //this.scrollToBottom();
         return true;
       },
       error => {

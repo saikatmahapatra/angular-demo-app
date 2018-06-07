@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TestComponent } from './test.component'
-const routes: Routes = [{
-  path: '',
-  component: TestComponent
-}];
+import { StudentComponent } from './student/student.component'
+const routes: Routes = [
+  { path: '', component: TestComponent },
+  { path: 'student', component: StudentComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
