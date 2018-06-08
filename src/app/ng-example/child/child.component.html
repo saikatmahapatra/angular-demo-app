@@ -1,11 +1,18 @@
-<h5>Child Component</h5>
-<p>child works</p>
+<div style="background-color:#eee; border: 1px solid #999; padding: 10px;">
+    <h5>Child Component</h5>
 
-<button (click)="IsUserAgreed(true)" class="btn btn-sm btn-primary">Agree</button>
-<button (click)="IsUserAgreed(false)" class="btn btn-sm btn-bark">Disagree</button>
+    <div class="font-weight-bold">1) Values received from parent component</div>
+    <div>Department : {{department}}</div>
+    <div>City : {{mycity}}</div>
 
-<p>user agreed ? {{userAgreed}}</p>
 
-<p class="font-weight-bold">Values from parent component</p>
-{{department}}<br>
-{{mycity}}
+    <div class="font-weight-bold">2) Parent listens for child event</div>
+    <button (click)="IsUserAgreed(true)" class="btn btn-sm btn-primary">Agree</button>
+    <button (click)="IsUserAgreed(false)" class="btn btn-sm btn-bark">Disagree</button>
+    <div>User Agreed ? <span class="badge badge-primary">{{userAgreed}}</span></div>
+
+
+    <div class="font-weight-bold">3) Parent can interact with child via local variable</div>
+    <div>Clicked from parent <span class="badge badge-dark">{{clickedFromParent}}</span> times</div>
+
+</div>

@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChildComponent implements OnInit {
   private _city;
   userAgreed = false;
+  clickedFromParent = 0; // parent interactes with child with local variable
   @Input() department: string;
 
   @Input()
@@ -27,5 +28,10 @@ export class ChildComponent implements OnInit {
     this.userAgreed = ag;
     this.agreed.emit(ag);
   }
+
+  testMethod(){
+    this.clickedFromParent++;
+  }
+
 
 }

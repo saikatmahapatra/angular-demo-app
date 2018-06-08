@@ -17,3 +17,6 @@ h1{
     display: inline-block;
     margin: 10px;
 }
+.bg-ng{
+    background: #1976d2;
+}
