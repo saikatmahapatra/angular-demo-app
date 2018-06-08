@@ -1,14 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { OrdersService } from '../parent/orders.service';
 @Component({
   selector: 'app-child-comp',
   templateUrl: './child.component.html',
-  styleUrls: ['./child.component.css']
+  styleUrls: ['./child.component.css'],
+  providers: [OrdersService]
 })
 export class ChildComponent implements OnInit {
   private _city;
   userAgreed = false;
   clickedFromParent = 0; // parent interactes with child with local variable
+  name = "Saikat";
+  result: string;
+  orders : any;
   @Input() department: string;
 
   @Input()
@@ -17,9 +21,11 @@ export class ChildComponent implements OnInit {
   }
   get mycity(): string { return this._city; }
 
-  constructor() { }
+  constructor(private _ordersService: OrdersService) { }
 
   ngOnInit() {
+    this.result = this.childMethod(this.name);
+    this.orders = this._ordersService.gerOrders();
   }
 
   @Output() agreed = new EventEmitter<boolean>();
@@ -29,8 +35,12 @@ export class ChildComponent implements OnInit {
     this.agreed.emit(ag);
   }
 
-  testMethod(){
+  testMethod() {
     this.clickedFromParent++;
+  }
+
+  childMethod(name) {
+    return "childMethod() called. My name is " + name;
   }
 
 

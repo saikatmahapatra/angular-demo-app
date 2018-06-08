@@ -12,6 +12,12 @@
     <div class="font-weight-bold">3) Parent can interact with child via local variable</div>
     <button class="btn btn-dark btn-sm" (click)="myChildComp.testMethod()">Click</button>
 
+    <div class="font-weight-bold">4) Parent Comp should read/write child method using @ViewChild</div>
+    <div>{{result}}</div>
+
+    <div class="font-weight-bold">5) Parent and children communicate via a service</div>
+    <div>{{orders}}</div>
+
     <br><br>
     <app-child-comp [department]="department" [mycity]="city" (agreed)="isAgreed($event)" #myChildComp></app-child-comp>
 </div>
