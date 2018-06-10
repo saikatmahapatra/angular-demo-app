@@ -11,7 +11,7 @@ export class FormInputBindingComponent implements OnInit {
   keyUpInputData = '';
   btnHidden = true;
   buttonCss = 'btn-primary';
-  constructor(private _logger : LoggerService) { }
+  constructor(private _logger: LoggerService) { }
 
   ngOnInit() {
   }
@@ -19,9 +19,9 @@ export class FormInputBindingComponent implements OnInit {
   /**
    * Form Interation - Click, Keyup, Keypress etc
    */
-  buttonClick(e) {
-    this._logger.log(e);
-    this.clickMessage = 'You have clicked button';
+  buttonClick(event: any) {
+    this._logger.log(event);
+    this.clickMessage = 'You have clicked button value';
     //window.alert("Button Clicked");
   }
 

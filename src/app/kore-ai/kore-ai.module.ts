@@ -14,6 +14,7 @@ import { KoreAiComponent } from './kore-ai.component';
     ReactiveFormsModule
   ],
   declarations: [KoreAiComponent],
-  providers: [KoreAiService]
+  providers: [KoreAiService],
+  exports: [KoreAiComponent]
 })
 export class KoreAiModule { }

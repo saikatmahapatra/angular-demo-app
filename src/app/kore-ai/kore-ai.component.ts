@@ -13,6 +13,7 @@ export class KoreAiComponent implements OnInit {
   chatForm: FormGroup; // Declare formGroup
   htmlTxt: string = '';
   isSubmitted = false;
+  chatWindowOpen = true;
   @ViewChild('scrollToBottom') private myScrollContainer: ElementRef;
   errorMessage = {
     "messageTxt": {
@@ -65,6 +66,10 @@ export class KoreAiComponent implements OnInit {
     this.chatForm = this._formBuilder.group({
       messageTxt: ['', [Validators.required]]
     });
+  }
+
+  closeChatWindow(event) {
+    this.chatWindowOpen = false;
   }
 
 

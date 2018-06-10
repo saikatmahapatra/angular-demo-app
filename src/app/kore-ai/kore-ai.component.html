@@ -1,15 +1,17 @@
-<h1>Kore Web Hook</h1>
+<!--<h1>Kore Web Hook</h1>
 <button class="btn btn-primary" (click)="callBotWebHook();">Call Chat Bot Web Hook</button>
 <div class="mt-3">HTTP Response : {{hookResponse.text|json}}</div>
-<div>{{hookResponse|json}}</div>
+<div>{{hookResponse|json}}</div>-->
 
 
-<div class="row fixed-bottom" id="chatWindow">
+<div class="row fixed-bottom" id="chatWindow" [hidden]="!chatWindowOpen">
     <div class="col-12 offset-sm-7 col-sm-5 offset-md-8 col-md-4">
         <div class="card">
             <div class="card-header bg-primary">
-                <h5 class="card-title txt-white">Chat
-                    <sup> Beta</sup>
+                <h5 class="card-title txt-white">Kore.ai Chat
+                    <button type="button" (click)="closeChatWindow($event)" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </h5>
             </div>
             <div class="panel-body messageContainer" #scrollToBottom>
@@ -20,7 +22,7 @@
                 <form [formGroup]="chatForm" (ngSubmit)="onChatFormSubmit()" id="messageForm">
                     <div class="input-group">
                         <input type="text" class="form-control" id="messageTxt" formControlName="messageTxt" placeholder="Type your message...">
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <!--<button type="submit" class="btn btn-primary">Send</button>-->
                     </div>
                 </form>
             </div>
