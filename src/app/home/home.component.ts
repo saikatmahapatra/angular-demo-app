@@ -13,11 +13,17 @@ export class HomeComponent implements OnInit {
   cms: any = [];
   error: any = [];
   pageData: any = [];
+  chatOpened = false;
 
   constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
     this.getContents();
+  }
+
+  openChat(event){
+    event.preventDefault();
+    this.chatOpened = true;
   }
 
   getContents() {

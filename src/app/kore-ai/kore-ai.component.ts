@@ -53,6 +53,7 @@ export class KoreAiComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.scrollToBottom();
+    this.chatWindowOpen = true;
   }
 
 

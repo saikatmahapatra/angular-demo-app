@@ -1,6 +1,8 @@
 <h1>{{pageData.title}}</h1>
 <p>{{pageData.subtitle}}</p>
 <h4>{{pageData.heading_cli_cmds}}</h4>
+<a href="#" (click)="openChat($event)">Chat Now</a>
+<app-kore-ai [hidden]="!chatOpened"></app-kore-ai>
 <table class="table table-bordered">
     <thead>
         <tr>
