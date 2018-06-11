@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentService } from '../../shared/services/content.service';
-import { ValidationService } from '../../shared/services/validation.service';
-import { CreditCustomer } from '../../shared/models/user'; // Import the user class for form example
+import { CreditCustomer } from '../../shared/models/index'; // Import the user class for form example
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { LoggerService } from '../../shared/services/logger.service';
+import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
 //https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',

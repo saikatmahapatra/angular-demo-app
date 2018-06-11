@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../shared/services/logger.service';
+import { LoggerService } from '../../shared/services/index';
 @Component({
   selector: 'app-form-input-binding',
   templateUrl: './form-input-binding.component.html',

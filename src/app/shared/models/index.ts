@@ -1,1 +1,2 @@
-import { User } from './user';
+export * from './user';
+export * from './credit-customer';
