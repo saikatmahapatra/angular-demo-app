@@ -8,8 +8,6 @@ import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
 import { MaskPipe } from './pipes/mask.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { CommonService } from './services/common.service';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -22,18 +20,14 @@ import { LoaderComponent } from './components/loader/loader.component';
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
-    OrderByPipe,
-    PageNotFoundComponent,
-    LoaderComponent
+    OrderByPipe
   ],
   providers: [],
   exports: [
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
-    OrderByPipe,
-    PageNotFoundComponent,
-    LoaderComponent
+    OrderByPipe
   ]
 })
 export class SharedModule {

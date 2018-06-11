@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator } from '@angular/forms';
-import { User } from '../../shared/class/user'; // Import the user class for form example
+import { User } from '../../shared/models/user'; // Import the user class for form example
 import { ContentService } from '../../shared/services/content.service';
 import { LoggerService } from '../../shared/services/logger.service';
 @Component({
@@ -9,6 +9,8 @@ import { LoggerService } from '../../shared/services/logger.service';
   styleUrls: ['./template-driven-form.component.css'],
   providers: [ContentService]
 })
+
+
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
   private phoneTypes = [];
@@ -27,11 +29,12 @@ export class TemplateDrivenFormComponent implements OnInit {
 
   isSubmitted = false;
   model = new User(1, 'Saikat', 'Mahapatra', 'mahapatra.saikat@gmail.com', '', '');
+  //model = new FormData('','','','','');
   onSubmit(event) {
     this._logger.log(event);
     this.isSubmitted = true;
   }
-  get diagonostic() {
+  get formData() {
     return JSON.stringify(this.model);
   }
 
