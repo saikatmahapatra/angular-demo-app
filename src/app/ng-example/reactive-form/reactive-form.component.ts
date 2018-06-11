@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreditCustomer } from '../../shared/models/index'; // Import the user class for form example
+import { SignUpDataModel } from '../../shared/models/index'; // Import the user class for form example
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
 //https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
@@ -14,7 +14,7 @@ export class ReactiveFormComponent implements OnInit {
   private genderList: any[];
   private allSkills: any[];
   private errMsg = [];
-  private user: CreditCustomer;
+  private user: SignUpDataModel;
   signupForm: FormGroup; // Declare signup form
 
   // To use services, inject into constructor
@@ -40,7 +40,7 @@ export class ReactiveFormComponent implements OnInit {
       this.allSkills = this.cms[0].skills;
     });
   }
-  
+
 
   createSignupForm() {
     // Using formbuilder
