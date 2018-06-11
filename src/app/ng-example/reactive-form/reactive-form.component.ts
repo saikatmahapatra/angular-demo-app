@@ -19,11 +19,15 @@ export class ReactiveFormComponent implements OnInit {
 
   // To use services, inject into constructor
   // To use Form Builder, inject formbuilder into constructor
-  constructor(private _logger: LoggerService, private _contentService: ContentService, private _validator: ValidationService, private fb: FormBuilder) { }
+  constructor(
+    private _logger: LoggerService,
+    private _contentService: ContentService,
+    private _validator: ValidationService,
+    private _formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
-    this.getContents();
-    //this.createSignupFormX();
+    this.getContents();    
     this.createSignupForm();
   }
 
@@ -36,37 +40,25 @@ export class ReactiveFormComponent implements OnInit {
       this.allSkills = this.cms[0].skills;
     });
   }
-
-  // createSignupFormX() {
-  //   // Using formgroup, formcontrol
-  //   this.signupForm = new FormGroup({
-  //     email: new FormControl('', Validators.required),
-  //     createPassword: new FormGroup({
-  //       password: new FormControl('', Validators.required),
-  //       confirmPassword: new FormControl('', Validators.required)
-  //     }),
-  //     gender: new FormControl('', Validators.required),
-  //     terms: new FormControl(false, Validators.requiredTrue)
-  //   });
-  // }
+  
 
   createSignupForm() {
     // Using formbuilder
-    this.signupForm = this.fb.group({
-      name: this.fb.group({
+    this.signupForm = this._formBuilder.group({
+      name: this._formBuilder.group({
         firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
         lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
       }),
       email: ['', [Validators.required, this._validator.email]],
       phoneNumber: ['', [Validators.required, this._validator.phone_number]],
-      createPassword: this.fb.group({
+      createPassword: this._formBuilder.group({
         password: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]]
       }),
       gender: ['', [Validators.required]],
-      jobExp: this.fb.group({
+      jobExp: this._formBuilder.group({
         experience: ['', [Validators.required]],
-        skill: this.fb.array([])
+        skill: this._formBuilder.array([])
       }),
       terms: [false, [Validators.requiredTrue]]
     });
