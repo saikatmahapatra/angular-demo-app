@@ -5,13 +5,8 @@ body{
 h1{
     font-size: 1.5rem;
 }
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
-
 .validation-error{
     color:#ff0000;
-    font-size: 12px;
 }
 .nav-inline li{
     display: inline-block;

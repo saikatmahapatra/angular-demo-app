@@ -7,8 +7,8 @@
                 <div class="form-group col-md-6">
                     <label>First Name</label>
                     <input type="text" required minlength="4" maxlength="15" class="form-control" placeholder="first name" [(ngModel)]="model.firstName"
-                        name="firstName" #firstName="ngModel"> {{firstName.class}}
-                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                        name="firstName" #firstName="ngModel"> {{firstName.className}}
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="validation-error">
                         <div *ngIf="firstName.errors.required">First name is required.</div>
                         <div *ngIf="firstName.errors.minlength">First name can not less than 4 characters.</div>
                         <div *ngIf="firstName.errors.maxlength">First name can not greater than 15 characters.</div>
@@ -19,7 +19,7 @@
                     <label>Last Name</label>
                     <input type="text" class="form-control" placeholder="last name" [(ngModel)]="model.lastName" name="lastName" required minlength="5"
                         maxlength="15" #lastName="ngModel"> {{lastName.className}}
-                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="validation-error">
                         <div *ngIf="lastName.errors.required">Last name is required.</div>
                         <div *ngIf="lastName.errors.minlength">Last name can not less than 5 characters.</div>
                         <div *ngIf="lastName.errors.maxlength">Last name can not greater than 15 characters.</div>
@@ -30,7 +30,8 @@
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" placeholder="email" [(ngModel)]="model.email" name="email" #spy3>                {{spy3.className}}
+                <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="model.email" name="email" #templateRefEmail>
+                {{templateRefEmail.className}}
             </div>
 
             <div class="form-row">
@@ -38,7 +39,7 @@
                     <label>Phone(Optional)</label>
                     <input type="text" class="form-control" minlength="10" maxlength="10" placeholder="phone" [(ngModel)]="model.phoneNumber"
                         name="phoneNumber" #phoneNumber="ngModel"> {{phoneNumber.className}}
-                    <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+                    <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="validation-error">
                         <div *ngIf="phoneNumber.errors.minlength">Phone number should be minimum 10 digits</div>
                         <div *ngIf="phoneNumber.errors.maxlength">Phone number can't exceed 10 digits</div>
                     </div>
@@ -49,7 +50,7 @@
                     <select class="form-control" [(ngModel)]="model.phoneType" name="phoneType" #phoneTypeDD="ngModel">
                             <option *ngFor="let phoneType of phoneTypes" value="{{phoneType.val}}">{{phoneType.txt}}</option>
                         </select> {{phoneTypeDD.className}}
-                    <div *ngIf="phoneNumber>0" class="alert alert-danger">
+                    <div *ngIf="phoneNumber>0" class="validation-error">
                         <div *ngIf="!phoneTypeDD">Please select a Phone Type</div>
                     </div>
                 </div>
