@@ -27,7 +27,7 @@ export class ReactiveFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContents();    
+    this.getContents();
     this.createSignupForm();
   }
 
