@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ContentService } from '../shared/services/index';
+import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,17 +14,17 @@ export class HomeComponent implements OnInit {
   cms: any = [];
   error: any = [];
   pageData: any = [];
-  chatOpened = false;
-
+  @ViewChild(KoreAiComponent) private _chat: KoreAiComponent;
   constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
+    this._chat.displayChatWindow = false;
     this.getContents();
   }
 
-  openChat(event){
+  openChatWindow(event) {
     event.preventDefault();
-    this.chatOpened = true;
+    this._chat.displayChatWindow = true;
   }
 
   getContents() {

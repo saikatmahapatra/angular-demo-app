@@ -1,4 +1,4 @@
-import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
 import { KoreAiService } from './kore-ai.service';
 import { Observable } from 'rxjs/Rx';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
@@ -13,7 +13,7 @@ export class KoreAiComponent implements OnInit {
   chatForm: FormGroup; // Declare formGroup
   htmlTxt: string = '';
   isSubmitted = false;
-  chatWindowOpen = true;
+  displayChatWindow = true;
   @ViewChild('scrollToBottom') private myScrollContainer: ElementRef;
   errorMessage = {
     "messageTxt": {
@@ -21,10 +21,11 @@ export class KoreAiComponent implements OnInit {
     }
   };
 
+  @Output() closeChat = new EventEmitter<boolean>();
 
   postData = {
     "from": {
-      "id": "saikat@test.com",
+      "id": "sender@domain.com",
       "userInfo": {}
     },
     "to": {
@@ -37,10 +38,13 @@ export class KoreAiComponent implements OnInit {
     "session": {
       "new": true
     },
-    "accountNumber": "123456789",
-    "messageTypeId": "greeting",
-    "transactionId": "06042018"
-
+    'accountId': '6148af2a-4c81-4fb7-be66-8b00cc632ca5',
+    'authorizationToken': this._koreAiService.getAuthToken(),
+    'bizToken': this._koreAiService.getBizToken(),
+    'uuid': 'Kore_060720181722',
+    'businessCode': 'CRS',
+    'clientId': 'd541a926-f74d-4fac-8516-4c84b76ccf57',
+    'siteId': 'PLCN_HOMEDEPOT'
   };
 
   constructor(private _koreAiService: KoreAiService, private _formBuilder: FormBuilder) { }
@@ -53,24 +57,19 @@ export class KoreAiComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.scrollToBottom();
-    this.chatWindowOpen = true;
   }
 
 
-  callBotWebHook() {
-    console.log("Button Clicked");
+  /*callBotWebHook() {
+    //console.log("Send Button Clicked");
     this.getWebHook();
-  }
+  }*/
 
   createChatForm() {
     // Using formbuilder
     this.chatForm = this._formBuilder.group({
       messageTxt: ['', [Validators.required]]
     });
-  }
-
-  closeChatWindow(event) {
-    this.chatWindowOpen = false;
   }
 
 
@@ -80,15 +79,14 @@ export class KoreAiComponent implements OnInit {
     } catch (err) { }
   }
 
-  onChatFormSubmit() {
+  onChatFormSubmit(event) {
     if (this.chatForm.valid) {
-      console.log("Submitted");
+      //console.log("Submitted");
       this.isSubmitted = true;
       this.postData.message.text = this.chatForm.value.messageTxt;
-      this.htmlTxt += '<div class="row chat-msg-container sent-msg-container"><div class="col-11 msg-txt"><div class="messages sent-msg-txt"><p>' + this.postData.message.text + '</p><time datetime="">You</time></div></div></div>';
+      this.htmlTxt += '<div class="row chat-msg-container sent-msg-container"><div class="col-12 msg-txt"><div class="messages sent-msg-txt"><p>' + this.postData.message.text + '</p><time datetime="">You</time></div></div></div>';
       this.chatForm.reset();
       this.getWebHook();
-      //this.scrollToBottom();
     }
   }
 
@@ -96,8 +94,7 @@ export class KoreAiComponent implements OnInit {
     this._koreAiService.getWebHookData(this.postData).subscribe(
       data => {
         this.hookResponse = data;
-        this.htmlTxt += '<div class="row chat-msg-container receive-msg-container"><div class="col-11 msg-txt"><div class="messages receive-msg-txt"><p>' + this.hookResponse.text + '</p><time datetime="">Kore.ai</time></div></div></div>';
-        //this.scrollToBottom();
+        this.htmlTxt += '<div class="row chat-msg-container receive-msg-container"><div class="col-12 msg-txt"><div class="messages receive-msg-txt"><p>' + this.hookResponse.text + '</p><time datetime="">Kore.ai</time></div></div></div>';
         return true;
       },
       error => {
@@ -107,6 +104,8 @@ export class KoreAiComponent implements OnInit {
     );
   }
 
-
+  closeChatWindow() {
+    this.displayChatWindow = false;
+  }
 
 }
