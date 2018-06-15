@@ -18,13 +18,13 @@ export class HomeComponent implements OnInit {
   constructor(private _contentService: ContentService) { }
 
   ngOnInit() {
-    this._chat.displayChatWindow = false;
+    this._chat.closeChatWindow();
     this.getContents();
   }
 
   openChatWindow(event) {
     event.preventDefault();
-    this._chat.displayChatWindow = true;
+    this._chat.openChatWindow();
   }
 
   getContents() {

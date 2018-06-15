@@ -14,6 +14,7 @@ export class KoreAiComponent implements OnInit {
   htmlTxt: string = '';
   isSubmitted = false;
   displayChatWindow = true;
+  isMinimized = false;
   @ViewChild('scrollToBottom') private myScrollContainer: ElementRef;
   errorMessage = {
     "messageTxt": {
@@ -105,7 +106,19 @@ export class KoreAiComponent implements OnInit {
   }
 
   closeChatWindow() {
+    console.log('closeChatWindow');
     this.displayChatWindow = false;
+  }
+
+  openChatWindow() {
+    console.log('openChatWindow');
+    this.isMinimized = false;
+    this.displayChatWindow = true;
+  }
+
+  minimizeChatWindow() {
+    console.log('minimizeChatWindow');
+    (this.isMinimized == true) ? this.isMinimized = false : this.isMinimized = true;
   }
 
 }

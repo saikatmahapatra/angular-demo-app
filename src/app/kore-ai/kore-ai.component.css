@@ -160,3 +160,8 @@ img {
 a.chat-action{
 	color: #fff;
 }
+.chat-close,.chat-minimize{
+    text-align: right;
+    color: transparent;
+    margin-left: 10px;
+}

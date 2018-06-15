@@ -1,25 +1,25 @@
 <div class="row fixed-bottom kore-web-chat" *ngIf="displayChatWindow">
     <div class="col-xs-12 offset-sm-6 col-sm-6 offset-md-8 col-md-4 offset-lg-9 col-lg-3">
-        <div class="card">
+        <div class="card">            
             <div class="card-header bg-primary">
-                <h5 class="card-title txt-white">Chat <button type="button" class="close chat-close" data-dismiss="chat" (click)="closeChatWindow()" aria-label="Close"><span aria-hidden="true">&times;</span></button></h5>
-            </div>
-            <!--/.card-header-->
-
-            <div class="panel-body messageContainer" #scrollToBottom>
+                <h5 class="card-title txt-white">Chat 
+                    <button type="button" class="close chat-minimize" data-dismiss="chat" (click)="minimizeChatWindow()"  aria-label="Minimize"><span aria-hidden="true">&minus;</span></button>
+                    <button type="button" class="close chat-close" data-dismiss="chat" (click)="closeChatWindow()"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    
+                </h5>                
+            </div><!--/.card-header-->
+            
+            <div class="panel-body messageContainer" #scrollToBottom [hidden]="isMinimized">
                 <div class="conversationMessages" [innerHtml]="htmlTxt"></div>
-            </div>
-            <!--/.card-body-->
+            </div><!--/.card-body-->
 
-            <div class="card-footer">
+            <div class="card-footer" [hidden]="isMinimized">
                 <form [formGroup]="chatForm" (ngSubmit)="onChatFormSubmit($event)">
                     <div class="input-group">
-                        <input type="text" formControlName="messageTxt" class="form-control messageTxt" placeholder="type your message...">
+                        <input type="text" formControlName="messageTxt" class="form-control messageTxt" placeholder="type your message...">                        
                     </div>
                 </form>
-            </div>
-            <!--/.card-footer-->
-        </div>
-        <!--/.card-->
+            </div><!--/.card-footer-->
+        </div><!--/.card-->
     </div>
 </div>
