@@ -1,12 +1,14 @@
-.chatWindowX{
-    bottom:0;
-    position:fixed;
-}
-.txt-white {
+/*SVG Icons*/
+
+
+/*Colors*/
+
+/*UI*/
+.ms-webchat .txt-white {
     color: #fff;
 }
 
-.bg-cux {
+.ms-webchat .bg-cux {
     background: linear-gradient(to bottom, #0256A0, #0D2B48);
     background: -moz-linear-gradient(top, #0256A0, #0D2B48);
     background: -ms-linear-gradient(top, #0256A0, #0D2B48);
@@ -14,11 +16,11 @@
     background: -webkit-linear-gradient(top, #0256A0, #0D2B48);
     background: -webkit-gradient(linear, left top, left bottom, from(#0256A0), to(#0D2B48));
 }
-.msg-txt{
+.ms-webchat .msg-txt{
     padding:0;
 }
 
-.messageContainer{  
+.ms-webchat .messageContainer{  
   margin: 0;
   padding: 0 10px 10px;
   height:300px;
@@ -27,47 +29,48 @@
 }
 
 
-.sent-msg-txt{
+.ms-webchat .my-msg-txt{
     padding-left:0;
     margin-left:0;
 }
-.receive-msg-txt{
+.ms-webchat .bot-msg-txt{
     padding-bottom:20px !important;
     margin-right:0;
+    color: #fff;
 }
-.messages {
-    background: #e1e1e1;
-    padding: 10px;
-    border-radius: 2px;
+.ms-webchat .messages {
+    background: #435f7a;
+    padding: 8px;
+    border-radius: 8px;
     /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
     max-width:100%;
 }
-.sent-msg-container .messages{
-    background: #bfd7ff;
+.ms-webchat .my-msg-container .messages{
+    background: #dee2e6;
 }
-.messages > p {
+.ms-webchat .messages > p {
     font-size: 13px;
     margin: 0 0 0.2rem 0;
   }
-.messages > time {
+.ms-webchat .messages > time {
     font-size: 11px;
     color: #999;
 }
-.chat-msg-container {
+.ms-webchat .chat-msg-container {
     padding: 10px;
     overflow: hidden;
     display: flex;
 	margin-left: 0px;
     margin-right: 0px;
 }
-img {
+.ms-webchat img {
     display: block;
     width: 100%;
 }
-.avatar {
+.ms-webchat .avatar {
     position: relative;
 }
-.receive-msg-container > .avatar:after {
+.ms-webchat .bot-msg-container > .avatar:after {
     content: "";
     position: absolute;
     top: 0;
@@ -81,11 +84,11 @@ img {
 
 
 
-.sent-msg-container {
+.ms-webchat .my-msg-container {
   justify-content: flex-end;
   align-items: flex-end;
 }
-.sent-msg-container > .avatar:after {
+.ms-webchat .my-msg-container > .avatar:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -97,26 +100,25 @@ img {
     border-top-color: transparent;
     box-shadow: 1px 1px 2px rgba(black, 0.2);
 }
-.receive-msg-container > .msg-txt:after {
+.ms-webchat .bot-msg-container > .msg-txt:after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -10px;
+    top: 0;   
     left: -10px;
     width: 0;
     height: 0;
-    border: 5px solid #e1e1e1;
+    border: 8px solid #435f7a;
     border-left-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
 }
-.sent-msg-container > .msg-txt:after {
+.ms-webchat .my-msg-container > .msg-txt:after {
     content: "";
     position: absolute;
     bottom: 0;
     right: -10px;
     width: 0;
     height: 0;
-    border: 5px solid #bfd7ff;
+    border: 8px solid #dee2e6;
     border-right-color: transparent;
     border-top-color: transparent;
     box-shadow: 1px 1px 2px rgba(black, 0.2); 
@@ -128,40 +130,56 @@ img {
     right: -10px; */
 }
 
-.receive-msg-txt > time{
+.ms-webchat .bot-msg-txt > time{
     float: left;
+    color: #dee2e6;
 }
 
-
-
-.messageContainer::-webkit-scrollbar-track
+.ms-webchat .messageContainer::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
 }
 
-.messageContainer::-webkit-scrollbar
+.ms-webchat .messageContainer::-webkit-scrollbar
 {
     width: 12px;
     background-color: #F5F5F5;
 }
 
-.messageContainer::-webkit-scrollbar-thumb
+.ms-webchat .messageContainer::-webkit-scrollbar-thumb
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }
 
-.btn-group.dropup{
+.ms-webchat .btn-group.dropup{
     position:fixed;
     left:0px;
     bottom:0;
 }
-a.chat-action{
+.ms-webchat a.chat-action{
 	color: #fff;
 }
-.chat-close,.chat-minimize{
+.ms-webchat .chat-close,.chat-minimize{
     text-align: right;
     color: transparent;
     margin-left: 10px;
+}
+.chat-close:hover,.chat-minimize:hover{
+    color: #fff;
+}
+
+.ms-webchat .messageContainer, .card-footer{
+    background-color: #fff;
+}
+.ms-webchat .card-footer{
+    padding: 0px;
+}
+.ms-webchat .messageTxt{
+    border-radius: 0px;   
+    border-color: transparent; 
+}
+.ms-webchat button{
+    min-width: auto;
 }
