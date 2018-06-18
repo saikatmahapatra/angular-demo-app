@@ -5,13 +5,13 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 @Component({
   selector: 'app-kore-ai',
   templateUrl: './kore-ai.component.html',
-  styleUrls: ['./kore-ai.component.css','./animations.css'],
+  styleUrls: ['./kore-ai.component.css', './animations.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class KoreAiComponent implements OnInit {
   public hookResponse: any = [];
   chatForm: FormGroup; // Declare formGroup
-  htmlTxt: string = '';
+  conversation: string = '';
   isSubmitted = false;
   displayChatWindow = true;
   isMinimized = false;
@@ -85,7 +85,7 @@ export class KoreAiComponent implements OnInit {
       //console.log("Submitted");
       this.isSubmitted = true;
       this.postData.message.text = this.chatForm.value.messageTxt;
-      this.htmlTxt += '<div class="row chat-msg-container my-msg-container"><div class="col-12 msg-txt"><div class="messages my-msg-txt"><p>' + this.postData.message.text + '</p><time datetime="">You</time></div></div></div>';
+      this.conversation += '<div class="row my-msg-container"><div class="col-12 msg-txt"><div class="messages"><p>' + this.postData.message.text + '</p><time datetime="">You</time></div></div></div>';
       this.chatForm.reset();
       this.getWebHook();
     }
@@ -95,7 +95,7 @@ export class KoreAiComponent implements OnInit {
     this._koreAiService.getWebHookData(this.postData).subscribe(
       data => {
         this.hookResponse = data;
-        this.htmlTxt += '<div class="row chat-msg-container bot-msg-container"><div class="col-12 msg-txt"><div class="messages bot-msg-txt"><p>' + this.hookResponse.text + '</p><time datetime="">Kore.ai</time></div></div></div>';
+        this.conversation += '<div class="row bot-msg-container"><div class="col-12 msg-txt"><div class="messages"><p>' + this.hookResponse.text + '</p><time datetime="">Kore.ai</time></div></div></div>';
         return true;
       },
       error => {
