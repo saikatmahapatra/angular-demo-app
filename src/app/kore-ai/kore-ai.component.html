@@ -2,12 +2,15 @@
     <div class="col-xs-12 offset-sm-6 col-sm-6 offset-md-8 col-md-4 offset-lg-9 col-lg-3">
         <div class="card">
             <div class="card-header bg-citi bg-partner-chat">
-                <h6 class="card-title text-white">Citi ChatBot
-                    <button type="button" class="close" data-dismiss="chat" (click)="closeChatWindow($event)" aria-label="Close">
+                <h6 class="card-title text-white icon-chat"> Citi ChatBot
+                    <button type="button" class="close" data-dismiss="chat" (click)="closeChatWindow($event)" aria-label="Close Chat">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <button type="button" class="close" data-dismiss="chat" (click)="minimizeChatWindow($event)" aria-label="Minimize">
-                        <span aria-hidden="true">&minus;</span>
+                    <button [hidden]="isMinimized" type="button" class="close" data-dismiss="chat" (click)="minimizeChatWindow($event)" aria-label="Minimize Chat">
+                        <span  aria-hidden="true">&minus;</span>
+                    </button>
+                    <button [hidden]="!isMinimized" type="button" class="close" data-dismiss="chat" (click)="minimizeChatWindow($event)" aria-label="Restore Chat">
+                        <span  aria-hidden="true">&#x2197;</span>
                     </button>
                 </h6>
             </div>
