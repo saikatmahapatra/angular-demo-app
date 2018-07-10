@@ -1,4 +1,5 @@
-<div style="background-color:#cfe1f5; border: 1px solid #999; padding: 10px;">
+<div class="row parent-div" style="background-color:#cfe1f5; border: 1px solid #999; padding: 10px;">
+    <div class="col-md-6">
     <h5>Parent Component</h5>
 
     <div class="font-weight-bold">1) Pass data from parent to child with input binding</div>
@@ -17,7 +18,11 @@
 
     <div class="font-weight-bold">5) Parent and children communicate via a service</div>
     <div>{{orders}}</div>
+    </div>
 
-    <br><br>
-    <app-child-comp [department]="department" [mycity]="city" (agreed)="isAgreed($event)" #myChildComp></app-child-comp>
-</div>
+
+    <div class="col-md-6 child-div">
+        <app-child-comp [department]="department" [mycity]="city" (agreed)="isAgreed($event)" #myChildComp></app-child-comp>
+    </div>
+    
+</div><!--/.parent-div-->
