@@ -22,16 +22,12 @@
         },
         "gender": [
             {
-                "val": "male",
+                "val": "m",
                 "txt": "Male"
             },
             {
-                "val": "female",
+                "val": "f",
                 "txt": "Female"
-            },
-            {
-                "val": "transgender",
-                "txt": "Transgender"
             }
         ],
         "phoneType": [

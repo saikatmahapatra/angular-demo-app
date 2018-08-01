@@ -24,7 +24,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> <!--/.form-row-->
 
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!--/.form-row-->
 
       <div class="form-row" formGroupName="createPassword">
         <div class="form-group col-md-6">
@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!--/.form-row-->
 
       <div class="form-row" formGroupName="jobExp">
         <div class="form-group col-md-6">
@@ -90,7 +90,7 @@
                 <input type="checkbox" formArrayName="skill" value="{{s.skillValue}}" id="{{s.skillValue}}"> {{s.skillDisplayTxt}}
               </label>
         </div>
-      </div>
+      </div><!--/.form-row-->
 
       <div class="form-group">
         <label>Gender</label>
@@ -102,7 +102,7 @@
             <div *ngIf="signupForm.controls.gender.errors?.required" class="validation-error">{{errMsg.gender.required}}</div>
           </div>
         </div>
-      </div>
+      </div><!--/.form-group-->
 
       <div class="form-group">
         <input id="tnc" type="checkbox" formControlName="terms">
@@ -112,7 +112,7 @@
             <div *ngIf="signupForm.controls.terms.errors?.required" class="validation-error">{{errMsg.terms.required}}</div>
           </div>
         </div>
-      </div>
+      </div><!--/.form-group-->
 
       <button type="submit" class="btn btn-primary">Submit</button>
       <button type="reset" class="btn btn-default">Cancel</button>
