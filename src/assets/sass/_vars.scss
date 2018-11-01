@@ -1,0 +1,54 @@
+// Primary font
+$body-font: 'Lato',
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif;
+//
+// Theme Colors
+//
+$white: #FFF;
+// Primary color is the main color of the application which is used for navbar, active links and primary button.
+// ------ Primary Colors from google material design color palette ------
+// Blue  : #2196F3
+// Teal  : #009688
+// Green : #4CAF50
+// Brown : #795548
+// Purple: #673AB7
+$black: #000;
+$gray-lightest: lighten($black, 97.25%);
+$gray-lighter: lighten($black, 93.5%);
+$gray-light: lighten($black, 60%);
+$gray: lighten($black, 33.5%);
+$gray-dark: lighten($black, 20%);
+$gray-darker: lighten($black, 13.5%);
+$red: #ff0000;
+//microsoft metro menu color
+$color_purple: #5133AB;
+$color_red: #AC193D;
+$color_orange: #DC572E;
+$color_green: #00A600;
+$color_blue: #2672EC;
+$color_blue_bs3: #337ab7;
+//Override primary color (Nav, Button, Link)
+$brand-color: #337ab7;
+$primary-color: $color_purple;
+// Complementry color is used to indecate the loading bar on the top
+// of the page with pace.js plugin
+$complementry-color: adjust_hue($primary-color, 180);
+//CI Calendar
+$calendar-border: $primary-color;
+$calendar-heading-bg: $primary-color;
+$day_selected: lighten($color_blue, 30%);
+$calendar-week-bg: $gray-light;
+$calendar-grid-border: lighten($black, 70%);
+$today-highlight: $color_blue;
+$holiday: lighten($color_red, 40%);
+$leave: lighten($color_orange, 20%);
+$has-data: lighten($color_green, 50%);
+// Validation Error Message Colors
+$validation-error-color: $red;
+$mandatory_field_star-color: $red;

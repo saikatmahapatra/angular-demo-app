@@ -2,12 +2,10 @@
   <p>
     apply-job works!
   </p>
-  <div class="col-md-9">
+  <div class="col-md-6">
     <dynamic-form [config]="config" #form="dynamicForm" (submit)="submitForm($event)"></dynamic-form>
   </div>
-
-
-  <div class="col-md-3">
+  <div class="col-md-6">
     <div><label>Is Form Valid? </label> {{form.valid }}</div>
     <pre>{{form.value | json }}</pre>
   </div>

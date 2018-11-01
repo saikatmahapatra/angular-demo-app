@@ -1,0 +1,395 @@
+// This files are essential for the theme
+@import 'fonts';
+@import 'vars';
+@import 'customize-bootstrap';
+@import 'assets/vendors/bootstrap/scss/bootstrap';
+body {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+body.login {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
+
+/*.navbar-collapse {
+    max-height: 340px;
+    overflow-y: auto;
+}*/
+
+@media (max-width: 576px) {
+    .navbar-collapse {
+        max-height: 340px;
+        overflow-y: auto;
+    }
+}
+
+h1.page-header {
+    font-size: 1.25rem;
+}
+
+.scrollup {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    padding: 6px 12px !important;
+    bottom: 50px;
+    right: 5px;
+    display: none;
+}
+
+.validation-error {
+    color: $validation-error-color;
+    font-size: .875rem;
+}
+
+.tnc-content {
+    font-size: .75rem;
+    h1,
+    h2 {
+        font-size: 1rem;
+    }
+}
+
+.required {
+    color: $mandatory_field_star-color;
+    font-weight: bold;
+}
+
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+select.form-control.dob-inline {
+    display: inline !important;
+    width: auto;
+}
+
+.dp {
+    //transition: all 0.2s ease-in-out;
+    height: 100px;
+    width: 100px;
+    &:hover {
+        //border:2px solid #eee;
+        //transform:rotate(360deg);
+        //-ms-transform:rotate(360deg);  
+        //-webkit-transform:rotate(360deg);  
+        /*-webkit-font-smoothing:antialiased;*/
+    }
+}
+
+.dp-sm {
+    height: 70px;
+    width: 70px;
+}
+
+.dp-xs {
+    height: 50px;
+    width: 50px;
+}
+
+.dp-xxs {
+    height: 32px;
+    width: 32px;
+}
+
+.more-less {
+    float: right;
+    color: #212121;
+}
+
+
+/*profile card link*/
+
+.content-wrap {
+    word-break: break-all;
+}
+
+a[data-link-type="user-profile-card"] {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-profile-card a {
+    text-decoration: none;
+}
+
+.heading-container {
+    .breadcrumb {
+        margin-top: 0px;
+        padding: 0px;
+        background: $white;
+    }
+}
+
+.ci-calendar {
+    border: 2px solid $calendar-border;
+    margin-top: 15px;
+    th {
+        background: $calendar-heading-bg;
+        font-size: 1rem;
+        color: $white;
+        vertical-align: center !important;
+        text-align: center;
+    }
+    tr.wk_nm {
+        background: $calendar-week-bg;
+        color: $white;
+        /*font-weight:bold;*/
+    }
+    td {
+        text-align: center;
+        border: 1px solid $calendar-grid-border;
+        vertical-align: center !important;
+    }
+    .allowed_m td.day {
+        cursor: pointer;
+    }
+    .highlight {
+        background: $today-highlight;
+        color: $white;
+    }
+    .prevcell a,
+    .nextcell a {
+        color: $white !important;
+        text-decoration: none !important;
+    }
+    .selected {
+        background: $day_selected !important;
+    }
+    .holiday {
+        background: $holiday;
+    }
+    .leave {
+        background: $leave;
+    }
+    .filled {
+        background: $has-data;
+    }
+}
+
+
+/*end .ci-calendar*/
+
+
+/*Calendar Indicator*/
+
+.i-today {
+    background-color: $today-highlight;
+}
+
+.i-selected {
+    background-color: $day_selected;
+}
+
+.i-leave {
+    background-color: $leave;
+}
+
+.i-holiday {
+    background-color: $holiday;
+}
+
+.i-has-data {
+    background-color: $has-data;
+}
+
+.disabled_m {
+    opacity: 0.5;
+    cursor: default !important;
+    background: $gray-lightest;
+}
+
+.ajax-loader-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.ajax-loader-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    /* -1 * image width / 2 */
+    margin-top: -32px;
+    /* -1 * image height / 2 */
+    display: block;
+}
+
+// Nav Tabs
+.nav-link.active {
+    border: 0;
+    border-bottom: 2px solid $nav-tabs-border-color;
+    font-weight: 700;
+}
+
+// Nav Bar 
+.navbar-nav {
+    .show>.nav-link,
+    .active>.nav-link,
+    .nav-link.show,
+    .nav-link.active {
+        font-weight: 700;
+    }
+}
+
+// Close Button
+
+/*.alert {
+    button.close {
+        color: $white;
+        &:hover {
+            color: $white;
+        }
+    }
+}*/
+
+.pace {
+    pointer-events: none;
+    user-select: none;
+    .pace-progress {
+        background: $complementry-color;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px
+    }
+    .pace-progress-inner {
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 100px;
+        height: 100%;
+        box-shadow: 0 0 10px $complementry-color, 0 0 5px $complementry-color;
+        opacity: 1;
+        transform: rotate(3deg) translate(0px, -4px)
+    }
+}
+
+.pace-inactive {
+    display: none
+}
+
+//CMS Feed Style
+.card-news {
+    border-left: 1px solid $primary-color;
+}
+
+[data-cms-type="notice"] {
+    border-left: 1px solid $color_blue;
+}
+
+[data-cms-type="news"] {
+    border-left: 1px solid $color_green;
+}
+
+[data-cms-type="policy"] {
+    border-left: 1px solid $color_red;
+}
+
+.bg-maroon {
+    background-color: $color_red;
+}
+
+.bg-blue {
+    background-color: $color_blue;
+}
+
+.disabled {
+    opacity: .5;
+}
+
+.no-pointer {
+    pointer-events: none;
+}
+
+.disabled-item {
+    border: 1px solid $red;
+}
+
+//Card Legend
+.card-legend {
+    border-top-width: 2px;
+    border-top-color: $primary-color;
+    .text-on-card {
+        background: #fff none repeat scroll 0 0;
+        height: auto;
+        padding: 3px 5px;
+        position: absolute;
+        margin-top: -43px;
+        border-radius: 8px;
+    }
+    .card-body {
+        padding-top: 30px !important;
+    }
+}
+
+// Custom Form Control
+.custom-control-label {
+    &::before {
+        border: $input-border-width solid $input-border-color;
+    }
+}
+
+// Select2 Style
+.select2-selection {
+    height: calc(2.0625rem + 2px) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 31px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: $input-border-width solid $input-border-color !important;
+    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+    @if $enable-rounded {
+        // Manually use the if/else instead of the mixin to account for iOS override
+        border-radius: $input-border-radius;
+    }
+    @else {
+        // Otherwise undo the iOS default
+        border-radius: 0;
+    }
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+    }
+    // Customize the `:focus` state to imitate native WebKit styles.
+    @include form-control-focus();
+}
