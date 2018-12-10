@@ -12,7 +12,7 @@ import { ContentService, LoggerService } from '../../shared/services/index';
 
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
-  private phoneTypes = [];
+  //private phoneTypes = [];
   constructor(private _contentService: ContentService, private _logger: LoggerService) { }
 
   ngOnInit() {
@@ -22,12 +22,12 @@ export class TemplateDrivenFormComponent implements OnInit {
   getContents() {
     this._contentService.getCMSContent().subscribe(data => {
       this.cms = data;
-      this.phoneTypes = this.cms[0].phoneType;
+      //this.phoneTypes = this.cms[0].phoneType;
     });
   }
 
   isSubmitted = false;
-  model = new User(1, 'Saikat', 'Mahapatra', 'mahapatra.saikat@gmail.com', '', '');
+  model = new User(1, 'Saikat', 'Mahapatra', 'mahapatra.saikat@gmail.com', '');
   //model = new FormData('','','','','');
   onSubmit(event) {
     this._logger.log(event);

@@ -10,6 +10,7 @@ module.exports = function (grunt) { // jshint ignore:line
         tasks: ['sass','notify:sass']
       }
     },
+	
     // Notify end of tasks
     notify: {      
 	  sass: {
@@ -39,17 +40,12 @@ module.exports = function (grunt) { // jshint ignore:line
 });
 
   // Load all grunt tasks
-
-  
-  //SASS Compiler
   grunt.loadNpmTasks('grunt-sass');
-  // Watch File Changes
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // Notify
   grunt.loadNpmTasks('grunt-notify');
-  // CSS Task
-  grunt.registerTask('css', ['sass']);
 
-  // The default task (running 'grunt' in console) is 'watch'
+  //Register Tasks
+  grunt.registerTask('css', ['sass']);
   grunt.registerTask('default', ['watch']);
 }

@@ -9,7 +9,6 @@ import { FormInputBindingComponent } from './form-input-binding/form-input-bindi
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
-import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { WebChatComponent } from './web-chat/web-chat.component';
 import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
@@ -24,7 +23,6 @@ const routes: Routes = [{
     { path: 'user-input-binding', component: FormInputBindingComponent },
     { path: 'template-driven-form', component: TemplateDrivenFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
-    { path: 'dynamic-form', component: ApplyJobComponent },
     { path: 'angular-services', component: AngularServicesComponent },
     { path: 'web-chat', component: WebChatComponent },
     { path: 'test', component: TestComponent },
