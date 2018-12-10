@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { User } from '../../shared/models/user'; // Import the user class for form example
-import { ContentService, LoggerService } from '../../shared/services/index';
+import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
   styleUrls: ['./template-driven-form.component.css'],
-  providers: [ContentService]
+  providers: [ContentService, ValidationService]
 })
 
 
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
   //private phoneTypes = [];
-  constructor(private _contentService: ContentService, private _logger: LoggerService) { }
+  constructor(private _contentService: ContentService,
+     private _logger: LoggerService,
+    private _validator : ValidationService) { }
 
   ngOnInit() {
     this.getContents();
