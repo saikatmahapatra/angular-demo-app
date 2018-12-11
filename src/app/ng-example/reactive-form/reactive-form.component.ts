@@ -11,9 +11,8 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 })
 export class ReactiveFormComponent implements OnInit {
   private cms: any = [];
-  private genderList: any[];
-  private allSkills: any[];
-  private errMsg = [];
+  private genderList: any = [];
+  private skills: any = [];
   private user: SignUpDataModel;
   signupForm: FormGroup; // Declare signup form
 
@@ -22,25 +21,15 @@ export class ReactiveFormComponent implements OnInit {
   constructor(
     private _logger: LoggerService,
     private _contentService: ContentService,
-    private _validator: ValidationService,
+    private _validationService: ValidationService,
     private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.getContents();
+    this.genderList = [{ "val": "m", "txt": "Male" }, { "val": "f", "txt": "Female" }];
+    this.skills = ['Angular', 'HTML', 'CSS'];
     this.createSignupForm();
   }
-
-
-  getContents() {
-    this._contentService.getCMSContent().subscribe(data => {
-      this.cms = data;
-      this.genderList = this.cms[0].gender;
-      this.errMsg = this.cms[0].error;
-      this.allSkills = this.cms[0].skills;
-    });
-  }
-
 
   createSignupForm() {
     // Using formbuilder
@@ -49,17 +38,13 @@ export class ReactiveFormComponent implements OnInit {
         firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
         lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
       }),
-      email: ['', [Validators.required, this._validator.email]],
-      phoneNumber: ['', [Validators.required, this._validator.phone_number]],
+      email: ['', [Validators.required, this._validationService.email_address]],
+      phoneNumber: ['', [Validators.required, this._validationService.phone_number]],
       createPassword: this._formBuilder.group({
         password: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]]
       }),
       gender: ['', [Validators.required]],
-      jobExp: this._formBuilder.group({
-        experience: ['', [Validators.required]],
-        skill: this._formBuilder.array([])
-      }),
       terms: [false, [Validators.requiredTrue]]
     });
   }

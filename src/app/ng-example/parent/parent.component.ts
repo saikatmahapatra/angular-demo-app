@@ -8,7 +8,7 @@ import { OrdersService } from './orders.service';
   providers: [OrdersService]
 })
 export class ParentComponent implements OnInit {
-  department = "Information Technology"; // pass from parent to child
+  department = "Information Technology 344"; // pass from parent to child
   city = "KOLKATA"; // pass this to child component and covert it to lowercase
   userAgreed: boolean;
   @ViewChild(ChildComponent) private _child_1: ChildComponent;

@@ -193,19 +193,23 @@
         "skills": [
             {
                 "skillValue": "javascript",
-                "skillDisplayTxt": "JS"
+                "skillDisplayTxt": "JS",
+                "checked": false
             },
             {
                 "skillValue": "jquery",
-                "skillDisplayTxt": "jQuery"
+                "skillDisplayTxt": "jQuery",
+                "checked": false
             },
             {
                 "skillValue": "html5",
-                "skillDisplayTxt": "HTML5"
+                "skillDisplayTxt": "HTML5",
+                "checked": true
             },
             {
                 "skillValue": "css3",
-                "skillDisplayTxt": "CSS3"
+                "skillDisplayTxt": "CSS3",
+                "checked": false
             }
         ],
         "error": {
