@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, LoggerService } from '../shared/services/index';
+import { LoggerService } from '../shared/services/index';
+import { UserService } from './user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-user',

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-ng fixed-top">        
-        <a class="logo navbar-brand" routerLink="/"><img src="assets/img/logo-nav@2x.png" style="width: 150px; height: 40px;"></a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">        
+        <a class="logo navbar-brand" routerLink="/"><img src="assets/img/logo-nav@2x.png" style="width: 100px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,3 +49,10 @@
   <!-- <span class="loading"></span> -->
   <router-outlet></router-outlet>
 </main><!-- /.container -->
+
+<footer class="footer my-5">
+    <div class="container">
+    <span class="text-muted small">Developed By - Saikat Mahapatra | Angular Version {{version|
+        json}}</span>
+    </div>
+</footer>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SignUpDataModel } from '../../shared/models/index'; // Import the user class for form example
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { SignUpDataModel } from '../../shared/models/index'; // Import the user class for form example
 import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
 //https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
@@ -22,7 +22,7 @@ export class ReactiveFormComponent implements OnInit {
     private _logger: LoggerService,
     private _contentService: ContentService,
     private _validationService: ValidationService,
-    private _formBuilder: FormBuilder
+    private _fb: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -33,18 +33,18 @@ export class ReactiveFormComponent implements OnInit {
 
   createSignupForm() {
     // Using formbuilder
-    this.signupForm = this._formBuilder.group({
-      name: this._formBuilder.group({
-        firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
-        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
+    this.signupForm = this._fb.group({
+      name: this._fb.group({
+        firstName: ['Saikat', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+        lastName: ['Mahapatra', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]]
       }),
-      email: ['', [Validators.required, this._validationService.email_address]],
-      phoneNumber: ['', [Validators.required, this._validationService.phone_number]],
-      createPassword: this._formBuilder.group({
-        password: ['', [Validators.required]],
-        confirmPassword: ['', [Validators.required]]
+      email: ['saikat@gmail.com', [Validators.required, this._validationService.email_address]],
+      phoneNumber: ['9830098300', [Validators.required, this._validationService.phone_number]],
+      createPassword: this._fb.group({
+        password: ['admin123', [Validators.required]],
+        confirmPassword: ['admin123', [Validators.required]]
       }),
-      gender: ['', [Validators.required]],
+      gender: ['m', [Validators.required]],
       terms: [false, [Validators.requiredTrue]]
     });
   }
