@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { User } from '../../shared/models/index'; // Import the user class for form example
 import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
 @Component({
@@ -12,32 +11,19 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
-  //private phoneTypes = [];
-  cities = [{"id":"-1","name":"Select City"}, {"id":"1","name":"Kolkata"}, {"id":"2","name":"Mumbai"}, {"id":"3","name":"Chennai"}];
-  constructor(private _contentService: ContentService,
-     private _logger: LoggerService,
-    private _validator : ValidationService) { }
+  // private phoneTypes = [];
+  cities = [{ 'id': '1', 'name': 'Delhi' }, { 'id': '2', 'name': 'Kolkata' }, { 'id': '3', 'name': 'Mumbai' }];
+  constructor(
+    private _contentService: ContentService,
+    private _logger: LoggerService,
+    private _validator: ValidationService) { }
+    formSubmit = false;
 
   ngOnInit() {
-    this.getContents();
+
   }
 
-  getContents() {
-    this._contentService.getCMSContent().subscribe(data => {
-      this.cms = data;
-      //this.phoneTypes = this.cms[0].phoneType;
-    });
+  saveUser(form){
+    console.log(form.value);
+    this.formSubmit = true;
   }
-
-  isSubmitted = false;
-  model = new User(1, 'Saikat', 'Mahapatra', 'mahapatra.saikat@gmail.com', '');
-  //model = new FormData('','','','','');
-  onSubmit(event) {
-    this._logger.log(event);
-    this.isSubmitted = true;
-  }
-  get formData() {
-    return this.model;
-  }
-
-}

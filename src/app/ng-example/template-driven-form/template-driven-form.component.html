@@ -1,123 +1,80 @@
 <h1 class="h3 mb-3 font-weight-normal">Template Driven Form</h1>
-<div class="row">
-<div class="col-md-6">
-    <h5>Track control state and validity with ngModel</h5>
-    <table class="table table-sm table-bordered">
-        <thead>
-            <tr>
-            <th scope="col">State</th>
-            <th scope="col">TRUE</th>
-            <th scope="col">FALSE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>The control has been visited.</td>
-                <td>ng-touched</td>
-                <td>ng-untouched</td>
-            </tr>
-            <tr>
-                <td>The control's value has changed.</td>
-                <td>ng-dirty</td>
-                <td>ng-pristine</td>
-            </tr>
-            <tr>
-                <td>The control's value is valid.</td>
-                <td>ng-valid</td>
-                <td>ng-invalid</td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-</div>
 
 <div class="row example">
     <div class="col-md-7">
-        <form (ngSubmit)="onSubmit($event)" #userForm="ngForm">
+        <form (ngSubmit)="saveUser(formCreateUser)" #formCreateUser="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>First Name {{firstName.className}}</label>
-                    <input 
-                    type="text"
-                    name="firstName"
-                    #firstName="ngModel"
-                    [(ngModel)]="model.firstName"
-                    class="form-control"
-                    required 
-                    minlength="4" 
-                    maxlength="15"
-                    placeholder="First Name">
-                    {{firstName.className}}
-                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="validation-error">
-                        <div *ngIf="firstName.errors.required">First name is required.</div>
-                        <div *ngIf="firstName.errors.minlength">First name can not less than 4 characters.</div>
-                        <div *ngIf="firstName.errors.maxlength">First name can not greater than 15 characters.</div>
-                    </div>
+                    <label>First Name</label>
+                    <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control" placeholder="First Name" required minlength="3" maxlength="15">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Last Name</label>
-                    <input 
-                    type="text"
-                    name="lastName"
-                    #lastName="ngModel"
-                    [(ngModel)]="model.lastName"
-                    class="form-control"
-                    required 
-                    minlength="4" 
-                    maxlength="15"
-                    placeholder="Last Name">
-                    {{lastName.className}}
-                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="validation-error">
-                        <div *ngIf="lastName.errors.required">Last name is required.</div>
-                        <div *ngIf="lastName.errors.minlength">Last name can not less than 5 characters.</div>
-                        <div *ngIf="lastName.errors.maxlength">Last name can not greater than 15 characters.</div>
-                    </div>
+                    <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control" placeholder="Last Name" required minlength="3" maxlength="15">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Email Address</label>
-                    <input 
-                    type="text"
-                    name="email"
-                    #templateRefEmail
-                    [(ngModel)]="model.email"
-                    class="form-control"
-                    required
-                    placeholder="Email Address">
-                    {{templateRefEmail.className}}
+                    <input type="text" name="email" [(ngModel)]="email" class="form-control" placeholder="Email Address" required>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Phone</label>
-                    <input 
-                    type="text"
-                    name="phoneNumber"
-                    #phoneNumber="ngModel"
-                    [(ngModel)]="model.phoneNumber"
-                    class="form-control"
-                    required 
-                    minlength="10" 
-                    maxlength="10"
-                    placeholder="10-digit phone number">
-                    
-                    {{phoneNumber.className}}
-                    <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="validation-error">
-                        <div *ngIf="phoneNumber.errors.minlength">Phone number should be minimum 10 digits</div>
-                        <div *ngIf="phoneNumber.errors.maxlength">Phone number can't exceed 10 digits</div>
+                    <label>Phone Number</label>
+                    <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber" class="form-control" placeholder="10-Digit Mobile Number" required minlength="10" maxlength="10">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Password</label>
+                    <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control" placeholder="Confirm Password" required minlength="10" maxlength="10">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>City</label>
+                    <select name="city" [(ngModel)]="city" class="form-control">
+                      <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Gender</label>
+                    <div class="form-check">
+                        <input type="radio" name="gender" value="M" [(ngModel)]="gender" class="form-check-input" id="m">
+                        <label class="form-check-label" for="m">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="gender" value="F" [(ngModel)]="gender" class="form-check-input" id="f">
+                        <label class="form-check-label" for="f">Female</label>
                     </div>
                 </div>
             </div>
-            
+
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="termsAccepted" value="a" [(ngModel)]="termsAccepted" class="form-check-input" id="terms">
+                        <label class="form-check-label" for="terms">I have read terms & conditions</label>
+                    </div>
+                </div>
+            </div>
+
+
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
     <div class="col-md-5">
-        <p>Form data : {{formData |json}}</p>
-        <p>Model : {{model | json}}</p>
-        <p>Form Submitted : {{isSubmitted}}</p>
+        <p>Form Value = {{formCreateUser.value | json}}</p>
+        <p>Form Submitted = {{formSubmit}}</p>
+        <p>Form Valid ? {{formCreateUser.invalid}}</p>
     </div>
-</div>
