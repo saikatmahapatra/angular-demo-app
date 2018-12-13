@@ -13,6 +13,7 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
   //private phoneTypes = [];
+  cities = [{"id":"-1","name":"Select City"}, {"id":"1","name":"Kolkata"}, {"id":"2","name":"Mumbai"}, {"id":"3","name":"Chennai"}];
   constructor(private _contentService: ContentService,
      private _logger: LoggerService,
     private _validator : ValidationService) { }
@@ -36,7 +37,7 @@ export class TemplateDrivenFormComponent implements OnInit {
     this.isSubmitted = true;
   }
   get formData() {
-    return JSON.stringify(this.model);
+    return this.model;
   }
 
 }

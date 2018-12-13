@@ -1,7 +1,0 @@
-
-.ng-valid[required], .ng-valid.required  {
-  border-bottom: 2px solid #42A948; /* green */
-}
-.ng-invalid[required], .ng-dirty.required  {
-  border-bottom: 2px solid red; /* green */
-}

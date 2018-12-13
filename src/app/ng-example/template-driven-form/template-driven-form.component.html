@@ -31,14 +31,12 @@
     </table>
 </div>
 </div>
-<div>Form data : {{formData}}</div>
-<div>Model : {{model | json}}</div>
-<div>Form Submitted : {{isSubmitted}}</div>
+
 <div class="row example">
-    <div class="col-md-12">
+    <div class="col-md-7">
         <form (ngSubmit)="onSubmit($event)" #userForm="ngForm">
             <div class="form-row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                     <label>First Name {{firstName.className}}</label>
                     <input 
                     type="text"
@@ -58,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                     <label>Last Name</label>
                     <input 
                     type="text"
@@ -77,8 +75,10 @@
                         <div *ngIf="lastName.errors.maxlength">Last name can not greater than 15 characters.</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group col-md-3">
+            <div class="form-row">
+                <div class="form-group col-md-6">
                     <label>Email Address</label>
                     <input 
                     type="text"
@@ -91,7 +91,7 @@
                     {{templateRefEmail.className}}
                 </div>
 
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                     <label>Phone</label>
                     <input 
                     type="text"
@@ -111,7 +111,13 @@
                     </div>
                 </div>
             </div>
+            
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
+    </div>
+    <div class="col-md-5">
+        <p>Form data : {{formData |json}}</p>
+        <p>Model : {{model | json}}</p>
+        <p>Form Submitted : {{isSubmitted}}</p>
     </div>
 </div>
