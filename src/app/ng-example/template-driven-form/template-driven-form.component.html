@@ -6,12 +6,12 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First Name</label>
-                    <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control" placeholder="First Name" required minlength="3" maxlength="15">
+                    <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control" placeholder="First Name" required minlength="2" maxlength="15">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control" placeholder="Last Name" required minlength="3" maxlength="15">
+                    <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control" placeholder="Last Name" required minlength="2" maxlength="15">
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
 
                 <div class="form-group col-md-6">
                     <label>Confirm Password</label>
-                    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control" placeholder="Confirm Password" required minlength="10" maxlength="10">
+                    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="form-control" placeholder="Confirm Password" required>
                 </div>
             </div>
 
@@ -43,25 +43,28 @@
                 <div class="form-group col-md-6">
                     <label>City</label>
                     <select name="city" [(ngModel)]="city" class="form-control">
-                      <option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</option>
+                      <option *ngFor="let city of cities" value="{{city.value}}">{{city.name}}</option>
                     </select>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label>Gender</label>
-                    <div class="form-check">
-                        <input type="radio" name="gender" value="M" [(ngModel)]="gender" class="form-check-input" id="m">
-                        <label class="form-check-label" for="m">Male</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" name="gender" value="F" [(ngModel)]="gender" class="form-check-input" id="f">
-                        <label class="form-check-label" for="f">Female</label>
+                    <div class="form-check-inline" *ngFor="let g of genders">
+                        <input type="radio" name="gender" value="{{g.value}}" [(ngModel)]="gender" class="form-check-input" id="{{g.value}}">
+                        <label class="form-check-label" for="{{g.value}}">{{g.name}}</label>
                     </div>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group">
+                <div class="form-group col-md-6">
+                    <label>Skills</label>
+                     <div class="form-check-inline" *ngFor="let skill of skillsets; let i = index;">
+                        <input type="checkbox" name="skill[{{skill.value}}]" value="{{skill.value}}" [(ngModel)]="skill[i]" class="form-check-input" id="{{skill.value}}">
+                        <label class="form-check-label" for="{{skill.value}}">{{skill.name}}</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
                     <div class="form-check">
                         <input type="checkbox" name="termsAccepted" value="a" [(ngModel)]="termsAccepted" class="form-check-input" id="terms">
                         <label class="form-check-label" for="terms">I have read terms & conditions</label>
@@ -76,5 +79,6 @@
     <div class="col-md-5">
         <p>Form Value = {{formCreateUser.value | json}}</p>
         <p>Form Submitted = {{formSubmit}}</p>
-        <p>Form Valid ? {{formCreateUser.invalid}}</p>
+        <p>Form Invalid = {{formCreateUser.invalid}}</p>
+        <p>User Model = {{model|json}}</p>
     </div>

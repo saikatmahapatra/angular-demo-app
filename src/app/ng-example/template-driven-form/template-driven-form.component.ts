@@ -10,20 +10,27 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 
 
 export class TemplateDrivenFormComponent implements OnInit {
+  model: User[] = []; // model is a type of User
   cms: any = [];
-  // private phoneTypes = [];
-  cities = [{ 'id': '1', 'name': 'Delhi' }, { 'id': '2', 'name': 'Kolkata' }, { 'id': '3', 'name': 'Mumbai' }];
-  constructor(
-    private _contentService: ContentService,
-    private _logger: LoggerService,
-    private _validator: ValidationService) { }
-    formSubmit = false;
+  selectedSkills = [];
+  genders = [{ 'name': 'Male', 'value': 'M' }, { 'name': 'Female', 'value': 'F' }];
+  cities = [{ 'name': 'Kolkata', 'value': 'CCU' }, { 'name': 'Delhi', 'value': 'DEL' }, { 'name': 'Chennai', 'value': 'CHN' }];
+  skillsets = [{ 'name': 'HTML', 'value': 'html' }, { 'name': 'JavaScript', 'value': 'js' }, { 'name': 'CSS', 'value': 'css' }];
+  constructor(private _contentService: ContentService, private _logger: LoggerService, private _validator: ValidationService) { }
+  formSubmit = false;
 
   ngOnInit() {
-
+    
   }
 
-  saveUser(form){
+  saveUser(form) {
     console.log(form.value);
     this.formSubmit = true;
+    this.model = form.value;
   }
+
+  getSelectedSkills(data){
+    console.log(data);
+  }
+
+}
