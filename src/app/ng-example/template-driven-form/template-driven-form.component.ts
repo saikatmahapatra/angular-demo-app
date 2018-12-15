@@ -14,18 +14,18 @@ export class TemplateDrivenFormComponent implements OnInit {
   cms: any = [];
   selectedSkills = [];
   genders = [{ 'name': 'Male', 'value': 'M' }, { 'name': 'Female', 'value': 'F' }];
-  cities = [{ 'name': 'Kolkata', 'value': 'CCU' }, { 'name': 'Delhi', 'value': 'DEL' }, { 'name': 'Chennai', 'value': 'CHN' }];
+  private cities = [{ 'name': 'Kolkata', 'value': 'CCU' }, { 'name': 'Delhi', 'value': 'DEL' }, { 'name': 'Chennai', 'value': 'CHN' }];
   skillsets = [{ 'name': 'HTML', 'value': 'html' }, { 'name': 'JavaScript', 'value': 'js' }, { 'name': 'CSS', 'value': 'css' }];
   constructor(private _contentService: ContentService, private _logger: LoggerService, private _validator: ValidationService) { }
-  formSubmit = false;
+  formSubmitted = false;
 
   ngOnInit() {
-    
+
   }
 
-  saveUser(form) {
+  addUser(form) {
     console.log(form.value);
-    this.formSubmit = true;
+    this.formSubmitted = true;
     this.model = form.value;
   }
 

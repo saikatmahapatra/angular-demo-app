@@ -1,72 +1,90 @@
 <h1 class="h3 mb-3 font-weight-normal">Reactive Form</h1>
 
 <div class="row example">
-  <div class="col-md-7">
-    <form [formGroup]="signupForm" (ngSubmit)="onFormSubmit()">
-      
-      <div class="form-row" formGroupName="name">
-        <div class="form-group col-md-6">
-          <label>First Name</label>
-          <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
-          <validation-error-message [control]="signupForm.controls.name.controls.firstName"></validation-error-message>
-        </div>
+    <div class="col-md-7">
+        <form [formGroup]="formAddUser">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+                    <!-- <validation-error-message [control]="formAddUser.controls.name.controls.firstName"></validation-error-message> -->
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+                    <!-- <validation-error-message [control]="formAddUser.controls.name.controls.lastName"></validation-error-message> -->
+                </div>
+            </div>
+            <!--/.form-row-->
 
-        <div class="form-group col-md-6">
-          <label>Last Name</label>
-          <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
-          <validation-error-message [control]="signupForm.controls.name.controls.lastName"></validation-error-message>          
-        </div>
-      </div> <!--/.form-row-->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Email Address</label>
+                    <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                    <!-- <validation-error-message [control]="formAddUser.controls.email"></validation-error-message> -->
+                </div>
 
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label>Email</label>
-          <input type="text" class="form-control" placeholder="Email" formControlName="email">         
-          <validation-error-message [control]="signupForm.controls.email"></validation-error-message>
-        </div>
+                <div class="form-group col-md-6">
+                    <label>Phone Number</label>
+                    <input type="text" formControlName="phoneNumber" class="form-control" placeholder="10-Digit Mobile Number">
+                    <!-- <validation-error-message [control]="formAddUser.controls.phoneNumber"></validation-error-message> -->
+                </div>
+            </div>
 
-        <div class="form-group col-md-6">
-          <label>Phone Number</label>
-          <input type="text" class="form-control" placeholder="10 digit mobile" formControlName="phoneNumber">          
-          <validation-error-message [control]="signupForm.controls.phoneNumber"></validation-error-message>
-        </div>
-      </div><!--/.form-row-->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    <!-- <validation-error-message [control]="formAddUser.controls.createPassword.controls.password"></validation-error-message> -->
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password">
+                    <!-- <validation-error-message [control]="formAddUser.controls.createPassword.controls.confirmPassword"></validation-error-message> -->
+                </div>
+            </div>
 
-      <div class="form-row" formGroupName="createPassword">
-        <div class="form-group col-md-6">
-          <label>Password</label>
-          <input type="password" class="form-control" placeholder="Password" formControlName="password">
-          <validation-error-message [control]="signupForm.controls.createPassword.controls.password"></validation-error-message>
-        </div>
-        <div class="form-group col-md-6">
-          <label>Confirm Password</label>
-          <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
-          <validation-error-message [control]="signupForm.controls.createPassword.controls.confirmPassword"></validation-error-message>
-        </div>
-      </div><!--/.form-row-->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>City</label>
+                    <select name="city" formControlName="city" class="form-control">
+                    <option *ngFor="let city of cities" value="{{city.value}}">{{city.name}}</option>
+                  </select>
+                </div>
 
-      <div class="form-group">
-        <label>Gender</label>
-        <label *ngFor="let g of genderList" for="{{g.val}}" class="radio-inline">
-              <input formControlName="gender" type="radio" id="{{g.val}}" value="{{g.val}}"> {{g.txt}}
-            </label>
-        <validation-error-message [control]="signupForm.controls.gender"></validation-error-message>
-      </div><!--/.form-group-->
+                <div class="form-group col-md-6">
+                    <label>Gender</label>
+                    <div class="form-check-inline" *ngFor="let g of genders">
+                        <input type="radio" formControlName="gender" value="{{g.value}}" class="form-check-input" id="{{g.value}}">
+                        <label class="form-check-label" for="{{g.value}}">{{g.name}}</label>
+                    </div>
+                </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Skills</label>
+                    <div class="form-check-inline" *ngFor="let skill of skillsets; let i = index;">
+                        <input type="checkbox" formControlName="skills" value="{{skill.value}}" class="form-check-input" id="{{skill.value}}">
+                        <label class="form-check-label" for="{{skill.value}}">{{skill.name}}</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="termsAccepted" value="a" class="form-check-input" id="terms">
+                        <label class="form-check-label" for="terms">I have read terms & conditions</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-default">Cancel</button>
+        </form>
+    </div>
 
-      <div class="form-group">
-        <input id="tnc" type="checkbox" formControlName="terms">
-        <label for="tnc">Terms - I have read and acccepted Terms & Conditions</label>
-        <validation-error-message [control]="signupForm.controls.terms"></validation-error-message>
-      </div><!--/.form-group-->
-
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <button type="reset" class="btn btn-default">Cancel</button>
-    </form>
-  </div>
-
-  <div class="col-md-5">
-    <pre>Form Value: {{signupForm.value|json}}</pre>
-    <p>Is Valid: {{signupForm.status|json}}</p>
-  </div>
+    <div class="col-md-5">
+        <p>Form Value = {{formAddUser.value | json}}</p>
+        <p>Form Submitted = {{formSubmitted}}</p>
+        <p>Form Invalid = <span [className]="formAddUser.invalid ? 'font-weight-bold text-danger' : 'font-weight-bold text-success'">{{formAddUser.invalid}}</span></p>
+        <p>User Model = {{userData|json}}</p>
+    </div>
 </div>

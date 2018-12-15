@@ -1,58 +1,57 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">        
-        <a class="logo navbar-brand" routerLink="/"><img src="assets/img/logo-nav@2x.png" style="width: 100px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-            aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="logo navbar-brand" routerLink="/"><img src="assets/img/logo-nav@2x.png" style="width: 100px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a routerLink="/home" class="nav-link" href="#">Home
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a routerLink="/home" class="nav-link" href="#">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/angular-example">Example Library</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/user">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/sign_on">Sign On</a>
-                </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/angular-example">Example Library</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/user">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/sign_on">Sign On</a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/kore">Kore.ai</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/kore">Kore.ai</a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/test_module">Test Module</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/test_module/student">Student</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/test_module">Test Module</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/test_module/student">Student</a>
+            </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">Pages</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" routerLink="/pages/our-services">Our Services</a>
-                        <a class="dropdown-item" routerLink="/pages/about-us">About Us</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" routerLink="/pages/our-services">Our Services</a>
+                    <a class="dropdown-item" routerLink="/pages/about-us">About Us</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <main role="main" class="container">
-  <!-- <span class="loading"></span> -->
-  <router-outlet></router-outlet>
-</main><!-- /.container -->
+    <!-- <span class="loading"></span> -->
+    <router-outlet></router-outlet>
+</main>
+<!-- /.container -->
 
 <footer class="footer my-5">
-    <div class="container">
-    <span class="text-muted small">Developed By - Saikat Mahapatra | Angular Version {{version|
+    <div class="container text-center">
+        <span class="text-muted small">Developed By - Saikat Mahapatra | Angular Version {{version|
         json}}</span>
     </div>
 </footer>

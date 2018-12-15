@@ -2,7 +2,7 @@
 
 <div class="row example">
     <div class="col-md-7">
-        <form (ngSubmit)="saveUser(formCreateUser)" #formCreateUser="ngForm">
+        <form (ngSubmit)="addUser(formAddUser)" #formAddUser="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First Name</label>
@@ -59,7 +59,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Skills</label>
-                     <div class="form-check-inline" *ngFor="let skill of skillsets; let i = index;">
+                    <div class="form-check-inline" *ngFor="let skill of skillsets; let i = index;">
                         <input type="checkbox" name="skill[{{skill.value}}]" value="{{skill.value}}" [(ngModel)]="skill[i]" class="form-check-input" id="{{skill.value}}">
                         <label class="form-check-label" for="{{skill.value}}">{{skill.name}}</label>
                     </div>
@@ -77,8 +77,8 @@
         </form>
     </div>
     <div class="col-md-5">
-        <p>Form Value = {{formCreateUser.value | json}}</p>
+        <p>Form Value = {{formAddUser.value | json}}</p>
         <p>Form Submitted = {{formSubmit}}</p>
-        <p>Form Invalid = {{formCreateUser.invalid}}</p>
+        <p>Form Invalid = <span [className]="formAddUser.invalid ? 'font-weight-bold text-danger' : 'font-weight-bold text-success'">{{formAddUser.invalid}}</span></p>
         <p>User Model = {{model|json}}</p>
     </div>

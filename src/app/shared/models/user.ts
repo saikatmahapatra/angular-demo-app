@@ -6,10 +6,11 @@ export class User {
         public email: string,
         public phoneNumber: string,
         public password: string,
+        public confirmPassword: string,
         public city: string,
         public gender: string,
         public skills: any,
-        public termsAccepted : any
+        public termsAccepted : boolean
 
     ) { }
 }
