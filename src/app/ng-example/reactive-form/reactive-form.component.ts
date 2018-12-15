@@ -49,7 +49,7 @@ export class ReactiveFormComponent implements OnInit {
     });
   }
 
-  addUser(){
+  addUser() {
     this._logger.log(this.formAddUser.value);
     this.userData = this.formAddUser.value;
   }

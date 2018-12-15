@@ -10,7 +10,7 @@ export class User {
         public city: string,
         public gender: string,
         public skills: any,
-        public termsAccepted : boolean
+        public termsAccepted: boolean
 
     ) { }
 }
