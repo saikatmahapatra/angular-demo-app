@@ -36,18 +36,22 @@ export class ReactiveFormComponent implements OnInit {
   createAddUserForm() {
     // Using formbuilder
     this.formAddUser = this._fb.group({
-      firstName: ['Saikat', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
-      lastName: ['Mahapatra', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+      firstName: ['Saikat', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
+      lastName: ['Mahapatra', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
       email: ['saikat@gmail.com', [Validators.required, this._validationService.email_address]],
       phoneNumber: ['9830098300', [Validators.required, this._validationService.phone_number]],
-      password: ['',[Validators.required]],
+      password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-      city: [''],
+      city: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       skills: [''],
       termsAccepted: [false, [Validators.requiredTrue]]
     });
   }
 
+  addUser(){
+    this._logger.log(this.formAddUser.value);
+    this.userData = this.formAddUser.value;
+  }
 
 }
