@@ -29,7 +29,7 @@ export class TemplateDrivenFormComponent implements OnInit {
     this.model = form.value;
   }
 
-  getSelectedSkills(data){
+  getSelectedSkills(data) {
     console.log(data);
   }
 

@@ -44,7 +44,7 @@ export class ReactiveFormComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
       city: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      skills: [''],
+      skills: [],
       termsAccepted: [false, [Validators.requiredTrue]]
     });
   }
