@@ -10,7 +10,7 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 
 
 export class TemplateDrivenFormComponent implements OnInit {
-  model: User[] = []; // model is a type of User
+  model: User[]; // model is a type of User
   cms: any = [];
   selectedSkills = [];
   genders = [{ 'name': 'Male', 'value': 'M' }, { 'name': 'Female', 'value': 'F' }];

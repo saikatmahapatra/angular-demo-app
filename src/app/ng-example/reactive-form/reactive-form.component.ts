@@ -24,8 +24,7 @@ export class ReactiveFormComponent implements OnInit {
   constructor(
     private _logger: LoggerService,
     private _contentService: ContentService,
-    private _validationService: ValidationService,
-    private _fb: FormBuilder
+    private _validationService: ValidationService
   ) { }
 
   ngOnInit() {
@@ -35,17 +34,18 @@ export class ReactiveFormComponent implements OnInit {
 
   createAddUserForm() {
     // Using formbuilder
-    this.formAddUser = this._fb.group({
-      firstName: ['Saikat', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
-      lastName: ['Mahapatra', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
-      email: ['saikat@gmail.com', [Validators.required, this._validationService.email_address]],
-      phoneNumber: ['9830098300', [Validators.required, this._validationService.phone_number]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      skills: [],
-      termsAccepted: [false, [Validators.requiredTrue]]
+
+    this.formAddUser = new FormGroup({
+      'firstName': new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
+      'lastName': new FormControl('Mahapatra', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
+      'email': new FormControl('saikat@gmail.com', [Validators.required, this._validationService.email_address]),
+      'phoneNumber': new FormControl('9830098300', [Validators.required, this._validationService.phone_number]),
+      'password': new FormControl('', [Validators.required]),
+      'confirmPassword': new FormControl('', [Validators.required]),
+      'city': new FormControl('', [Validators.required]),
+      'gender': new FormControl('', [Validators.required]),
+      'skills': new FormControl(),
+      'termsAccepted': new FormControl(false, [Validators.requiredTrue])
     });
   }
 

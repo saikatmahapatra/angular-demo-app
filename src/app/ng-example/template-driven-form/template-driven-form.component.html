@@ -6,19 +6,34 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>First Name</label>
-                    <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control" placeholder="First Name" required minlength="2" maxlength="15">
+                    <input type="text" name="firstName" [(ngModel)]="firstName" class="form-control" placeholder="First Name" required minlength="2" maxlength="15" #ref_firstName="ngModel" #fname>
+                    <small>{{fname.className}}</small>
+                    <div *ngIf="ref_firstName.invalid && (ref_firstName.dirty || ref_firstName.touched || formSubmitted)" class="validation-error text-danger">
+                        <div *ngIf="ref_firstName.errors.required">The field is required.</div>
+                        <div *ngIf="ref_firstName.errors.minlength">The field must be at least 2 characters long.</div>
+                        <div *ngIf="ref_firstName.errors.maxlength">The field must be at least 15 characters long.</div>
+                    </div>
                 </div>
+
 
                 <div class="form-group col-md-6">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control" placeholder="Last Name" required minlength="2" maxlength="15">
+                    <input type="text" name="lastName" [(ngModel)]="lastName" class="form-control" placeholder="Last Name" required minlength="2" maxlength="15" #ref_lastName="ngModel">
+                    <div *ngIf="ref_lastName.invalid && (ref_lastName.dirty || ref_lastName.touched || formSubmitted)" class="validation-error text-danger">
+                        <div *ngIf="ref_lastName.errors.required">The field is required.</div>
+                        <div *ngIf="ref_lastName.errors.minlength">The field must be at least 2 characters long.</div>
+                        <div *ngIf="ref_lastName.errors.maxlength">The field must be at least 15 characters long.</div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Email Address</label>
-                    <input type="text" name="email" [(ngModel)]="email" class="form-control" placeholder="Email Address" required>
+                    <input type="text" name="email" [(ngModel)]="email" class="form-control" placeholder="Email Address" required #ref_email="ngModel">
+                    <div *ngIf="ref_email.invalid && (ref_email.dirty || ref_email.touched || formSubmitted)" class="validation-error text-danger">
+                        <div *ngIf="ref_email.errors.required">The field is required.</div>
+                    </div>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -76,6 +91,23 @@
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="col-md-5">
         <p>Form Value = {{formAddUser.value | json}}</p>
         <p>Form Submitted = {{formSubmitted}}</p>
