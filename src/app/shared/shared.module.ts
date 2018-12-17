@@ -8,7 +8,7 @@ import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
 import { MaskPipe } from './pipes/mask.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { CommonService } from './services/common.service';
-import { ValidationErrorMessageComponent } from './validation-error-message.component';
+import { ValidationErrorComponent } from './validation-error/validation-error.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { ValidationErrorMessageComponent } from './validation-error-message.comp
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
-    ValidationErrorMessageComponent
+    ValidationErrorComponent
   ],
   providers: [],
   exports: [
@@ -30,7 +30,7 @@ import { ValidationErrorMessageComponent } from './validation-error-message.comp
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
-    ValidationErrorMessageComponent
+    ValidationErrorComponent
   ]
 })
 export class SharedModule {

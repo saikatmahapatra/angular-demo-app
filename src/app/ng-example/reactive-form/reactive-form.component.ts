@@ -24,22 +24,34 @@ export class ReactiveFormComponent implements OnInit {
   constructor(
     private _logger: LoggerService,
     private _contentService: ContentService,
-    private _validationService: ValidationService
+    private _validator: ValidationService,
+    private _fb : FormBuilder
   ) { }
 
   ngOnInit() {
-
     this.createAddUserForm();
   }
 
   createAddUserForm() {
     // Using formbuilder
+    // this.formAddUser = this._fb.group({
+    //   firstName: ['Saikat', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+    //   lastName: ['Mahapatra', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+    //   email: ['saikat@gmail.com', [Validators.required, this._validator.email_address]],
+    //   phoneNumber: ['9830098300', [Validators.required, this._validator.phone_number]],
+    //   password: ['',[Validators.required]],
+    //   confirmPassword: ['', [Validators.required]],
+    //   city: [''],
+    //   gender: ['', [Validators.required]],
+    //   skills: [''],
+    //   termsAccepted: [false, [Validators.requiredTrue]]
+    // });
 
     this.formAddUser = new FormGroup({
       'firstName': new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
-      'lastName': new FormControl('Mahapatra', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
-      'email': new FormControl('saikat@gmail.com', [Validators.required, this._validationService.email_address]),
-      'phoneNumber': new FormControl('9830098300', [Validators.required, this._validationService.phone_number]),
+      'lastName': new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
+      'email': new FormControl('', [Validators.required, this._validator.valid_email]),
+      'phoneNumber': new FormControl('', [Validators.required, this._validator.phone_number]),
       'password': new FormControl('', [Validators.required]),
       'confirmPassword': new FormControl('', [Validators.required]),
       'city': new FormControl('', [Validators.required]),
