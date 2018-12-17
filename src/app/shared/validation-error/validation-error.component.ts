@@ -17,10 +17,11 @@ export class ValidationErrorComponent implements OnInit {
   }
 
   get errorMessage() {
-    for (let validation_rule in this.control.errors) {
-      //if ((this.control.dirty || this.control.touched) && this.control.invalid) {
-      if (this.control.errors.hasOwnProperty(validation_rule) && (this.control.touched || this.control.dirty) && this.control.errors[validation_rule] == true) {
-        return this._validator.getValidatorErrorMessage(validation_rule, this.control.errors[validation_rule]);
+    for (const validation_rule in this.control.errors) {
+      if (this.control.errors.hasOwnProperty(validation_rule)) {
+        if ((this.control.touched || this.control.dirty) && this.control.errors[validation_rule] === true) {
+          return this._validator.getValidatorErrorMessage(validation_rule, this.control.errors[validation_rule]);
+        }
       }
     }
     return null;

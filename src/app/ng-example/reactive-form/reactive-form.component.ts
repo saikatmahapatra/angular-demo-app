@@ -25,7 +25,7 @@ export class ReactiveFormComponent implements OnInit {
     private _logger: LoggerService,
     private _contentService: ContentService,
     private _validator: ValidationService,
-    private _fb : FormBuilder
+    private _fb: FormBuilder
   ) { }
 
   ngOnInit() {
