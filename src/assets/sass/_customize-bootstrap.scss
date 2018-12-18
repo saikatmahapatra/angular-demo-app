@@ -2,7 +2,14 @@
 // Customize bootstrap variables to match
 // look and feel of the theme
 //-----------------------------------------------------
-$primary: $primary-color;
+$primary: $primary-color !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
 // Customize typographic styles
 $font-size-base: 0.875rem;
 $font-family-sans-serif: 'Lato',
@@ -41,11 +48,19 @@ $dropdown-item-padding-x: 20px;
 // Nav Tabs
 $nav-tabs-border-color: $primary-color;
 $nav-tabs-border-width: 1px;
-$nav-tabs-link-active-color: $primary-color;
-$nav-tabs-link-active-bg: transparent;
+$nav-tabs-link-active-color: $white;
+$nav-tabs-link-active-bg: $primary-color;
 $nav-tabs-link-active-border-color: $primary-color;
 $nav-tabs-link-hover-border-color: transparent;
 // Nav Bar Dark
 $navbar-dark-color: $gray-lighter;
 $navbar-dark-hover-color: $white;
 $navbar-dark-active-color: $white;
+$navbar-padding-y: 0.5rem;
+$navbar-padding-x: 0.5rem;
+
+//Nav Bar Light Color
+$navbar-light-color:                rgba($black, .7) !default;
+$navbar-light-hover-color:          rgba($black, .7) !default;
+$navbar-light-active-color:         rgba($black, .9) !default;
+$navbar-light-disabled-color:       rgba($black, .3) !default;
