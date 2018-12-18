@@ -10,13 +10,11 @@ import { SharedModule } from './shared/shared.module';
 
 //Import shared services and include in provider so that all app component can access the same singleton object
 import { LoggerService, ValidationService } from './shared/services/index';
-import { BootstrapthemeComponent } from './bootstraptheme/bootstraptheme.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BootstrapthemeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { LoggerService } from '../shared/services/index';
 @Component({
   selector: 'app-example',
   templateUrl: './ng-example.component.html',
-  styleUrls: ['./ng-example.component.css'],
+  styleUrls: ['./ng-example.component.scss'],
   providers: []
 })
 export class NgExampleComponent implements OnInit {
@@ -15,7 +15,7 @@ export class NgExampleComponent implements OnInit {
   /**
    * Life cycle hooks
    */
-  ngOnInit() {    
+  ngOnInit() {
     this._logger.log("ngOnInit() called");
   }
   ngAfterViewInit() {

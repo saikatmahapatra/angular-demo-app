@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BootstrapthemeComponent } from './bootstraptheme.component';
+import { BootstrapUiComponent } from './bootstrap-ui.component';
 
-describe('BootstrapthemeComponent', () => {
-  let component: BootstrapthemeComponent;
-  let fixture: ComponentFixture<BootstrapthemeComponent>;
+describe('BootstrapUiComponent', () => {
+  let component: BootstrapUiComponent;
+  let fixture: ComponentFixture<BootstrapUiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BootstrapthemeComponent ]
+      declarations: [ BootstrapUiComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BootstrapthemeComponent);
+    fixture = TestBed.createComponent(BootstrapUiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
