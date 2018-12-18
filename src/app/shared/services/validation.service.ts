@@ -8,8 +8,8 @@ export class ValidationService {
   getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
     let errorMessage = {
       'required': 'The field is required',
-      'minlength': 'The field must be at least ${validatorValue.requiredLength} characters long',
-      'maxlength': 'The field cannot be more than ${validatorValue.requiredLength} characters long',
+      'minlength': `The field must be at least ${validatorValue.requiredLength} characters long`,
+      'maxlength': `The field cannot be more than ${validatorValue.requiredLength} characters long`,
       'email_address': 'Please enter a valid email address',
       '10_digit_phone_number':'Please enter a 10 digit phone number',
       'valid_email': 'Please enter a valid email'
