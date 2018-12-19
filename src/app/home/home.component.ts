@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, VERSION } from '@angular/core';
 import { ContentService } from '../shared/services/index';
 import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
@@ -9,8 +9,7 @@ import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 })
 
 export class HomeComponent implements OnInit {
-  title = 'Home';
-  subtitle = 'Welcome to Angular2 development';
+  title = 'Angular '+VERSION.full;  
   cms: any = [];
   error: any = [];
   pageData: any = [];
