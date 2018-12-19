@@ -5,7 +5,7 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 @Component({
   selector: 'app-kore-ai',
   templateUrl: './kore-ai.component.html',
-  styleUrls: ['./kore-ai.component.scss'],
+  styleUrls: ['./kore-ai.component.scss','./animations.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class KoreAiComponent implements OnInit {
