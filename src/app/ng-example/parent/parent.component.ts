@@ -4,7 +4,7 @@ import { OrdersService } from './orders.service';
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css'],
+  styleUrls: ['./parent.component.scss'],
   providers: [OrdersService]
 })
 export class ParentComponent implements OnInit {

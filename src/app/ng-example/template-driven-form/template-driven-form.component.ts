@@ -4,7 +4,7 @@ import { ContentService, LoggerService, ValidationService } from '../../shared/s
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
-  styleUrls: ['./template-driven-form.component.css'],
+  styleUrls: ['./template-driven-form.component.scss'],
   providers: [ContentService, ValidationService]
 })
 
