@@ -16,7 +16,7 @@ import { ParentComponent } from './parent/parent.component';
 const routes: Routes = [{
   path: '',
   component: NgExampleComponent,
-  children: [
+  children: [   
     { path: 'template-basic', component: TemplateDataBindingComponent },
     { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
     { path: 'pipes', component: PipesComponent },
