@@ -3,40 +3,43 @@
     "project": {
         "name": "ang-struct"
     },
-    "apps": [{
-        "root": "src",
-        "outDir": "dist",
-        "assets": [
-            "assets",
-            "favicon.ico"
-        ],
-        "index": "index.html",
-        "main": "main.ts",
-        "polyfills": "polyfills.ts",
-        "test": "test.ts",
-        "tsconfig": "tsconfig.app.json",
-        "testTsconfig": "tsconfig.spec.json",
-        "prefix": "app",
-        "styles": [
-            "assets/sass/styles.scss"
-        ],
-        "scripts": [
-            "../node_modules/jquery/dist/jquery.min.js",
-            "../node_modules/popper.js/dist/umd/popper.min.js",
-            "../node_modules/bootstrap/dist/js/bootstrap.min.js"
-        ],
-        "environmentSource": "environments/environment.ts",
-        "environments": {
-            "dev": "environments/environment.ts",
-            "prod": "environments/environment.prod.ts"
+    "apps": [
+        {
+            "root": "src",
+            "outDir": "dist",
+            "assets": [
+                "assets",
+                "favicon.ico"
+            ],
+            "index": "index.html",
+            "main": "main.ts",
+            "polyfills": "polyfills.ts",
+            "test": "test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "assets/sass/styles.scss"
+            ],
+            "scripts": [
+                "../node_modules/jquery/dist/jquery.min.js",
+                "../node_modules/popper.js/dist/umd/popper.min.js",
+                "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
         }
-    }],
+    ],
     "e2e": {
         "protractor": {
             "config": "./protractor.conf.js"
         }
     },
-    "lint": [{
+    "lint": [
+        {
             "project": "src/tsconfig.app.json",
             "exclude": "**/node_modules/**"
         },
@@ -56,6 +59,9 @@
     },
     "defaults": {
         "styleExt": "scss",
-        "component": {}
+        "component": {},
+        "serve": {
+            "port": 8003
+        }
     }
 }
