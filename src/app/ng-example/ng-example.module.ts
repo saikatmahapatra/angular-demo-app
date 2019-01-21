@@ -17,10 +17,10 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 
 import { NgExampleRoutingModule } from './ng-example-routing.module';
-import { WebChatComponent } from './web-chat/web-chat.component';
 import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { EmployeeComponent } from './observable-in-angular/employee.component';
 
 
 @NgModule({
@@ -42,13 +42,11 @@ import { ParentComponent } from './parent/parent.component';
     ReactiveFormComponent,
     AngularServicesComponent,
     TemplateDataBindingComponent,
-    WebChatComponent,
     TestComponent,
     ChildComponent,
-    ParentComponent
+    ParentComponent,    
+    EmployeeComponent
   ],
-  exports:[
-    WebChatComponent
-  ]
+  exports:[]
 })
 export class NgExampleModule { }

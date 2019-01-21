@@ -9,10 +9,10 @@ import { FormInputBindingComponent } from './form-input-binding/form-input-bindi
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
-import { WebChatComponent } from './web-chat/web-chat.component';
 import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { EmployeeComponent } from './observable-in-angular/employee.component';
 const routes: Routes = [{
   path: '',
   component: NgExampleComponent,
@@ -24,10 +24,10 @@ const routes: Routes = [{
     { path: 'template-driven-form', component: TemplateDrivenFormComponent },
     { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'angular-services', component: AngularServicesComponent },
-    { path: 'web-chat', component: WebChatComponent },
     { path: 'test', component: TestComponent },
     { path: 'child-comp', component: ChildComponent },
     { path: 'parent-comp', component: ParentComponent },
+    { path: 'observable-in-angular', component: EmployeeComponent },
   ]
 }];
 
