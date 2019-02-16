@@ -12,7 +12,8 @@ const router: Routes = [
   { path: 'sign_up', loadChildren: 'app/sign-up/sign-up.module#SignUpModule' },
   { path: 'test_module', loadChildren: 'app/test/test.module#TestModule' },
   { path: 'kore', loadChildren: 'app/kore-ai/kore-ai.module#KoreAiModule' },
-  { path: 'bootstrap', loadChildren: 'app/bootstrap-ui/bootstrap-ui.module#BootstrapUiModule' }
+  { path: 'bootstrap', loadChildren: 'app/bootstrap-ui/bootstrap-ui.module#BootstrapUiModule' },
+  { path: 'payment', loadChildren: 'app/payment/payment.module#PaymentModule' }
 ];
 
 @NgModule({
