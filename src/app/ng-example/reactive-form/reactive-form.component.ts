@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { User } from '../../shared/models/index'; // Import the user class for form example
-import { ContentService, LoggerService, ValidationService } from '../../shared/services/index';
+import { User } from '../../shared/common-models/index'; // Import the user class for form example
+import { ContentService, LoggerService, ValidationService } from '../../shared/common-services/index';
 // https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, VERSION } from '@angular/core';
-import { ContentService } from '../shared/services/index';
+import { ContentService } from '../shared/common-services/index';
 import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 })
 
 export class HomeComponent implements OnInit {
-  title = 'Angular '+VERSION.full;  
+  title = 'Angular '+VERSION.full;
   cms: any = [];
   error: any = [];
   pageData: any = [];

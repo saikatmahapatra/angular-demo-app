@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../shared/services/index';
+import { LoggerService } from '../shared/common-services/index';
 import { UserService } from './user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
@@ -24,9 +24,9 @@ export class UserComponent implements OnInit {
     this.getUsersList();
 
     /*To add a validator, we must first convert the string value into an array.
-    The first item in the array is the default value if any, 
+    The first item in the array is the default value if any,
     then the next item in the array is the validator.
-    Here we are adding a required validator meaning that the 
+    Here we are adding a required validator meaning that the
     name attribute must have a value in it.*/
     this.saveUserForm = this.formBuilder.group({
       name: [
@@ -84,7 +84,7 @@ export class UserComponent implements OnInit {
   }
 
   isInvalidEmail(control) {
-    //this._logger.log("Control=", control.value);  
+    //this._logger.log("Control=", control.value);
     // if(control.value.lenght>0){
     //return {isInvalidEmail:true};
     // }

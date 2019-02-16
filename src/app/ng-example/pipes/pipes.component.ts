@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { LoggerService } from '../../shared/services/index';
+import { LoggerService } from '../../shared/common-services/index';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
@@ -17,7 +17,7 @@ export class PipesComponent implements OnInit {
 
 
   /**
-   * Order By 
+   * Order By
    */
   order: string = 'name'; //default orderby key name of a collection
   reverse: boolean = false;
