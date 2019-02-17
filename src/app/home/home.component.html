@@ -1,23 +1,49 @@
-<h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
-<p>{{pageData.heading_cli_cmds}}</p>
-<a href="#" (click)="openChatWindow($event)">Chat Now</a>
-<app-kore-ai></app-kore-ai>
+<header data-area="header">
+    <app-nav-default></app-nav-default>
+</header>
+<main role="main" class="container">
+    <section data-area="marquee" class="row">
+        <div class="col-md-12">
+            <ng-template #marquee></ng-template>
+        </div>
+    </section>
+    <section data-area="hero" class="row">
+        <div class="col-md-12">
+            <ng-template #hero></ng-template>
+        </div>
+    </section>
+    <section class="row">
+        <section data-area="main" class="col-sm-12 col-md-9">
+            <ng-template #main></ng-template>
+            <h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
+            <p>{{pageData.heading_cli_cmds}}</p>
+            <a href="#" (click)="openChatWindow($event)">Chat Now</a>
+            <app-kore-ai></app-kore-ai>
 
-<table class="table table-sm table-bordered">
-    <thead>
-        <tr>
-            <th>Scaffold</th>
-            <th>Usage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let cliCmd of pageData.cli_commands">
-            <td>
-                <a href="{{cliCmd.url}}">{{cliCmd.scafold}}</a>
-            </td>
-            <td>
-                <code>{{cliCmd.command}}</code>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>Scaffold</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliCmd of pageData.cli_commands">
+                        <td>
+                            <a href="{{cliCmd.url}}">{{cliCmd.scafold}}</a>
+                        </td>
+                        <td>
+                            <code>{{cliCmd.command}}</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section data-area="utility" class="col-sm-12 col-md-3">
+            <ng-template #utility></ng-template>
+        </section>
+    </section>
+</main>
+<footer class="footer my-5" data-area="footer">
+    <app-footer-default></app-footer-default>
+</footer>
