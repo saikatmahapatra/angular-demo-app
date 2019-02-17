@@ -11,23 +11,23 @@ import { DynamicComponentLoaderService } from '../shared/common-services/dynamic
 import { AutopayComponent } from './autopay/autopay.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 
+// Component Registry. Component Alias: Component Class
 const componentRegistry = {
   'autopay_comp': AutopayComponent,
   'payment_history_comp': PaymentHistoryComponent
 };
 
-const globalData = {
-  'eligibleModules': {
-    'cubby': [],
-    'heroPglt': ['autopay_comp'],
-    'mainPglt': [
-      'autopay_comp',
-      'payment_history_comp'
-    ],
-    'marqueePglt': [],
-    'navigationPglt': [],
-    'utilityPglt': []
-  }
+// In which layout block/pagelet block which component alias to load
+const eligibleModulesAtLayoutBlock = {
+  'cubbyPglt': [],
+  'marqueePglt': [],
+  'navigationPglt': [],
+  'heroPglt': ['autopay_comp'],
+  'mainPglt': [
+    'autopay_comp',
+    'payment_history_comp'
+  ],
+  'utilityPglt': ['payment_history_comp']
 };
 
 @Component({
@@ -44,7 +44,11 @@ export class PaymentLayoutComponent implements OnInit {
   constructor(private _dynamicComponent: DynamicComponentLoaderService) { }
 
   ngOnInit() {
-    this._dynamicComponent.loadComponent('authLayout', globalData, componentRegistry, this);
+    this.loadComponents();
+  }
+
+  loadComponents() {
+    this._dynamicComponent.loadComponent('authLayout', eligibleModulesAtLayoutBlock, componentRegistry, this);
   }
 
 }

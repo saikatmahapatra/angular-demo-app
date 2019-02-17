@@ -1,10 +1,26 @@
-<p>
-    payment-layout works!
-</p>
-<div class="row">
+<header data-area="header">
     <app-nav-default></app-nav-default>
-    <ng-template #marquee></ng-template>
-    <ng-template #hero></ng-template>
-    <ng-template #main></ng-template>
-    <ng-template #utility></ng-template>
-</div>
+</header>
+<main role="main" class="container">
+    <section data-area="marquee" class="row">
+        <div class="col-md-12">
+            <ng-template #marquee></ng-template>
+        </div>
+    </section>
+    <section data-area="hero" class="row">
+        <div class="col-md-12">
+            <ng-template #hero></ng-template>
+        </div>
+    </section>
+    <section class="row">
+        <section data-area="main" class="col-sm-12 col-md-9">
+            <ng-template #main></ng-template>
+        </section>
+        <section data-area="utility" class="col-sm-12 col-md-3">
+            <ng-template #utility></ng-template>
+        </section>
+    </section>
+</main>
+<footer class="footer my-5" data-area="footer">
+    <app-footer-default></app-footer-default>
+</footer>
