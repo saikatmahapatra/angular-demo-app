@@ -4,9 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 // Routing with lazy loading
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/error', pathMatch: 'full' },
+  //{ path: '**', redirectTo: '/error', pathMatch: 'full' },
   { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
   { path: 'bootstrap', loadChildren: 'app/bootstrap/twitterbootstrap.module#TwitterbootstrapModule' },
+  { path: 'error', loadChildren: 'app/error/error.module#ErrorModule' },
   { path: 'angular-example', loadChildren: 'app/ng-example/ng-example.module#NgExampleModule' },
   { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
   { path: 'pages', loadChildren: 'app/page/page.module#PageModule' },
