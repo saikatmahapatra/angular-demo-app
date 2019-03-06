@@ -1,26 +1,34 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HighlightDirective } from './common-directives/highlight.directive';
-import { ExponentialStrengthPipe } from './common-pipes/exponential-strength.pipe';
-import { MaskPipe } from './common-pipes/mask.pipe';
-import { OrderByPipe } from './common-pipes/order-by.pipe';
-import { CommonService } from './common-services/common.service';
-import { ValidationErrorComponent } from './common-components/validation-error/validation-error.component';
-import { HeaderDefaultComponent } from './common-components/header-default/header-default.component';
-import { NavDefaultComponent } from './common-components/nav-default/nav-default.component';
-import { FooterDefaultComponent } from './common-components/footer-default/footer-default.component';
-import { SidebarLeftDefaultComponent } from './common-components/sidebar-left-default/sidebar-left-default.component';
-import { SidebarRightDefaultComponent } from './common-components/sidebar-right-default/sidebar-right-default.component';
 import { SharedRoutingModule } from './shared-routing.module';
-import { SharedComponent } from './shared.component';
-import { ScrollToTopComponent } from './common-components/scroll-to-top/scroll-to-top.component';
-import { CheckCapsLockDirective } from './common-directives/check-caps-lock.directive';
+
+import{
+  HighlightDirective,
+  CheckCapsLockDirective
+} from './common-directives/index';
+
+import{
+  ExponentialStrengthPipe,
+  MaskPipe,
+  OrderByPipe
+} from './common-pipes/index';
+
+import {
+  ValidationErrorComponent,
+  ScrollToTopComponent,
+  DefaultHeaderComponent,
+  DefaultNavComponent,
+  DefaultFooterComponent
+} from './common-components/index';
+
+import {
+  CommonService
+} from './common-services/index';
+
 
 @NgModule({
   imports: [
@@ -32,34 +40,29 @@ import { CheckCapsLockDirective } from './common-directives/check-caps-lock.dire
     ReactiveFormsModule
   ],
   declarations: [
-    SharedComponent,
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
     ValidationErrorComponent,
-    HeaderDefaultComponent,
-    NavDefaultComponent,
-    FooterDefaultComponent,
-    SidebarLeftDefaultComponent,
-    SidebarRightDefaultComponent,
     ScrollToTopComponent,
-    CheckCapsLockDirective
+    CheckCapsLockDirective,
+    DefaultHeaderComponent,
+    DefaultFooterComponent,
+    DefaultNavComponent
   ],
   providers: [
 
   ],
   exports: [
-    HeaderDefaultComponent,
-    NavDefaultComponent,
-    FooterDefaultComponent,
-    SidebarLeftDefaultComponent,
-    SidebarRightDefaultComponent,
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
-    ValidationErrorComponent
+    ValidationErrorComponent,
+    DefaultHeaderComponent,
+    DefaultFooterComponent,
+    DefaultNavComponent
   ]
 })
 export class SharedModule {

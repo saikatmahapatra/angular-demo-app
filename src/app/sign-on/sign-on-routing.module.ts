@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SignOnComponent } from './sign-on.component';
+import {
+  SignOnFormComponent
+} from './index';
 
-const router: Routes = [{
+const routes: Routes = [{
   path: '',
-  component: SignOnComponent
+  component: SignOnFormComponent
 }];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(router)
+    RouterModule.forChild(routes)
   ],
 })
 export class SignOnRoutingModule { }

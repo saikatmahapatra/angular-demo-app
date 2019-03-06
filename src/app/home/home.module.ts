@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home.component';
+import { HomeComponent } from './index';
 import { HomeRoutingModule } from './home-routing.module';
 import { KoreAiModule } from '../kore-ai/kore-ai.module';
 @NgModule({

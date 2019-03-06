@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PageComponent } from './page.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import {
+  PageComponent,
+  AboutUsComponent
+} from './index';
 
-const router: Routes = [{
+const routes: Routes = [{
   path: '',
   component: PageComponent,
   children: [{
@@ -15,7 +17,7 @@ const router: Routes = [{
 
 @NgModule({
   imports: [
-    RouterModule.forChild(router)
+    RouterModule.forChild(routes)
   ],
 })
 export class PageRoutingModule { }

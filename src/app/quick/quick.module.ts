@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { SignOnRoutingModule } from './sign-on-routing.module';
+import { QuickRoutingModule } from './quick-routing.module';
 import {
-  SignOnFormComponent
+  IndexComponent
 } from './index';
+
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    SignOnRoutingModule,
+    QuickRoutingModule
   ],
-  declarations: [SignOnFormComponent],
+  declarations: [IndexComponent]
 })
-export class SignOnModule { }
+export class QuickModule { }

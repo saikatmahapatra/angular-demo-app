@@ -1,0 +1,23 @@
+<h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
+<p>{{pageData.heading_cli_cmds}}</p>
+<a href="#" (click)="openChatWindow($event)">Chat Now</a>
+<app-kore-ai></app-kore-ai>
+
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>Scaffold</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliCmd of pageData.cli_commands">
+            <td>
+                <a href="{{cliCmd.url}}">{{cliCmd.scafold}}</a>
+            </td>
+            <td>
+                <code>{{cliCmd.command}}</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
