@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { LoggerService } from '../../shared/common-services/index';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  selector: 'app-manage-users',
+  templateUrl: './manage-users.component.html',
+  styleUrls: ['./manage-users.component.scss'],
   providers: [UserService]
 })
+export class ManageUsersComponent implements OnInit {
 
-export class UserComponent implements OnInit {
   public saveUserForm: FormGroup;
   public submitted: boolean;
   public events: any[] = [];
