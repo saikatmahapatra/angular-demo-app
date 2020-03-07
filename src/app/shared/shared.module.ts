@@ -9,25 +9,25 @@ import { SharedRoutingModule } from './shared-routing.module';
 import{
   HighlightDirective,
   CheckCapsLockDirective
-} from './common-directives/index';
+} from './directives/index';
 
 import{
   ExponentialStrengthPipe,
   MaskPipe,
   OrderByPipe
-} from './common-pipes/index';
+} from './pipes/index';
 
 import {
   ValidationErrorComponent,
   ScrollToTopComponent,
-  DefaultHeaderComponent,
-  DefaultNavComponent,
-  DefaultFooterComponent
-} from './common-components/index';
+  HeaderComponent,
+  NavbarComponent,
+  FooterComponent
+} from './components/index';
 
 import {
-  CommonService
-} from './common-services/index';
+  AppService
+} from './services/index';
 
 
 @NgModule({
@@ -47,9 +47,9 @@ import {
     ValidationErrorComponent,
     ScrollToTopComponent,
     CheckCapsLockDirective,
-    DefaultHeaderComponent,
-    DefaultFooterComponent,
-    DefaultNavComponent
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   providers: [
 
@@ -60,9 +60,9 @@ import {
     MaskPipe,
     OrderByPipe,
     ValidationErrorComponent,
-    DefaultHeaderComponent,
-    DefaultFooterComponent,
-    DefaultNavComponent
+    HeaderComponent,
+    NavbarComponent,
+    FooterComponent
   ]
 })
 export class SharedModule {
@@ -75,7 +75,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        CommonService
+        AppService
       ]
     };
   }

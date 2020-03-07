@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../shared/common-services/index';
+import { AppService } from '../../shared/services/index';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +17,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private _userService: UserService, public formBuilder: FormBuilder, private _logger: LoggerService) {
+  constructor(private _userService: UserService, public formBuilder: FormBuilder, private _appService: AppService) {
 
   }
 
@@ -73,19 +73,19 @@ export class ManageUsersComponent implements OnInit {
   }
   saveUserData(model, isValid: boolean) {
     this.submitted = true;
-    this._logger.log(model);
-    this._logger.log("Form Valid =" + isValid);
-    this._logger.log("Name Error=" + this.saveUserForm.controls['name'].errors);
-    this._logger.log("Email Error=" + this.saveUserForm.controls['email'].errors);
-    //this._logger.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
-    //this._logger.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
-    //this._logger.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
+    this._appService.log(model);
+    this._appService.log("Form Valid =" + isValid);
+    this._appService.log("Name Error=" + this.saveUserForm.controls['name'].errors);
+    this._appService.log("Email Error=" + this.saveUserForm.controls['email'].errors);
+    //this._appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
+    //this._appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
+    //this._appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
     //this.postData = this.saveUserForm.value;
-    //this._logger.log(this.postData);
+    //this._appService.log(this.postData);
   }
 
   isInvalidEmail(control) {
-    //this._logger.log("Control=", control.value);
+    //this._appService.log("Control=", control.value);
     // if(control.value.lenght>0){
     //return {isInvalidEmail:true};
     // }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { LoggerService } from '../../shared/common-services/index';
+import { AppService } from '../../shared/services/index';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
   styleUrls: ['./pipes.component.css'],
-  providers: [LoggerService]
+  providers: [AppService]
 })
 export class PipesComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class PipesComponent implements OnInit {
   name = 'Saikat Mahapatra';
   productPrice = 1999.3;
   homeLoan = 7;
-  constructor(private _logger: LoggerService) { }
+  constructor(private _appService: AppService) { }
 
 
   /**
@@ -40,7 +40,7 @@ export class PipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._logger.log('ngOnInit');
+    this._appService.log('ngOnInit');
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../shared/common-services/index';
+import { AppService } from '../../shared/services/index';
 @Component({
   selector: 'app-example',
   templateUrl: './ng-example.component.html',
@@ -10,18 +10,18 @@ export class NgExampleComponent implements OnInit {
   title = 'Angular4';
   subtitle = 'Fundamental of Angular 2';
 
-  constructor(private _logger: LoggerService) { }
+  constructor(private _appService: AppService) { }
 
   /**
    * Life cycle hooks
    */
   ngOnInit() {
-    this._logger.log("ngOnInit() called");
+    this._appService.log("ngOnInit() called");
   }
   ngAfterViewInit() {
-    this._logger.log("ngAfterViewInit() called");
+    this._appService.log("ngAfterViewInit() called");
   }
   ngOnChanges() {
-    this._logger.log("ngOnChanges() called");
+    this._appService.log("ngOnChanges() called");
   }
 }

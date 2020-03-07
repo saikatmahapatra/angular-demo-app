@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
-//Import shared services and include in provider so that all app component can access the same singleton object
-import { LoggerService, ValidationService } from './shared/common-services/index';
+// Import shared services and include in provider so that all app component can access the same singleton object
+import { AppService, GlobalDataService, ValidationService } from './shared/services/index';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { LoggerService, ValidationService } from './shared/common-services/index
     // Routing modules must be at the last and AppRouting Module must be the last one.
     AppRoutingModule
   ],
-  providers: [LoggerService, ValidationService],
+  providers: [AppService, GlobalDataService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

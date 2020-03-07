@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild, VERSION } from '@angular/core';
-import { ContentService } from '../../shared/common-services/index';
+import { GlobalDataService } from '../../shared/services/index';
 import { KoreAiComponent } from '../../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [ContentService]
+  providers: [GlobalDataService]
 })
 
 export class HomeComponent implements OnInit {
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   error: any = [];
   pageData: any = [];
   @ViewChild(KoreAiComponent) private _chat: KoreAiComponent;
-  constructor(private _contentService: ContentService) { }
+  constructor(private _globalDataService: GlobalDataService) { }
 
   ngOnInit() {
     this._chat.closeChatWindow();
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   getContents() {
-    this._contentService.getCMSContent().subscribe(
+    this._globalDataService.getCMSContent().subscribe(
       data => {
         this.cms = data;
         this.pageData = this.cms[0].page.home;

@@ -7,7 +7,7 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver
 } from '@angular/core';
-import { DynamicComponentLoaderService } from '../shared/common-services/dynamic-component-loader.service';
+import { AppService } from '../shared/services/index';
 import { AutopayComponent } from './autopay/autopay.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 
@@ -41,14 +41,14 @@ export class PaymentLayoutComponent implements OnInit {
   @ViewChild('main', { read: ViewContainerRef }) mainPglt: ViewContainerRef;
   @ViewChild('utility', { read: ViewContainerRef }) utilityPglt: ViewContainerRef;
 
-  constructor(private _dynamicComponent: DynamicComponentLoaderService) { }
+  constructor(private _appService: AppService) { }
 
   ngOnInit() {
     this.loadComponents();
   }
 
   loadComponents() {
-    this._dynamicComponent.loadComponent('authLayout', eligibleModulesAtLayoutBlock, componentRegistry, this);
+    this._appService.loadComponent('authLayout', eligibleModulesAtLayoutBlock, componentRegistry, this);
   }
 
 }

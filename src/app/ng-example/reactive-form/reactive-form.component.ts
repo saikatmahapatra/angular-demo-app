@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { User } from '../../shared/common-models/index'; // Import the user class for form example
-import { ContentService, LoggerService, ValidationService } from '../../shared/common-services/index';
+import { User } from '../../shared/models/index'; // Import the user class for form example
+import { AppService, GlobalDataService, ValidationService } from '../../shared/services/index';
+
 // https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css'],
-  providers: [ContentService]
+  providers: [GlobalDataService]
 })
 export class ReactiveFormComponent implements OnInit {
   cms: any = [];
@@ -22,8 +23,8 @@ export class ReactiveFormComponent implements OnInit {
   // To use services, inject into constructor
   // To use Form Builder, inject formbuilder into constructor
   constructor(
-    private _logger: LoggerService,
-    private _contentService: ContentService,
+    private _appService: AppService,
+    private _globalDataService: GlobalDataService,
     private _validator: ValidationService,
     private _fb: FormBuilder
   ) { }
@@ -62,7 +63,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   addUser() {
-    this._logger.log(this.formAddUser.value);
+    this._appService.log(this.formAddUser.value);
     this.userData = this.formAddUser.value;
   }
 

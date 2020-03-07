@@ -7,7 +7,7 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentLayoutComponent } from './payment-layout.component';
 import { AutopayComponent } from './autopay/autopay.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
-import { DynamicComponentLoaderService } from '../shared/common-services/dynamic-component-loader.service';
+import { AppService } from '../shared/services/index';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +16,7 @@ import { DynamicComponentLoaderService } from '../shared/common-services/dynamic
     SharedModule
   ],
   providers: [
-    DynamicComponentLoaderService
+    AppService
   ],
   declarations: [
     PaymentLayoutComponent,

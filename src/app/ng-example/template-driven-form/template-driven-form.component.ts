@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/common-models/index'; // Import the user class for form example
-import { ContentService, LoggerService, ValidationService } from '../../shared/common-services/index';
+import { User } from '../../shared/models/index'; // Import the user class for form example
+import { AppService, GlobalDataService, ValidationService } from '../../shared/services/index';
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
   styleUrls: ['./template-driven-form.component.scss'],
-  providers: [ContentService, ValidationService]
+  providers: [AppService, GlobalDataService, ValidationService]
 })
 
 
@@ -16,7 +16,10 @@ export class TemplateDrivenFormComponent implements OnInit {
   genders = [{ 'name': 'Male', 'value': 'M' }, { 'name': 'Female', 'value': 'F' }];
   private cities = [{ 'name': 'Kolkata', 'value': 'CCU' }, { 'name': 'Delhi', 'value': 'DEL' }, { 'name': 'Chennai', 'value': 'CHN' }];
   skillsets = [{ 'name': 'HTML', 'value': 'html' }, { 'name': 'JavaScript', 'value': 'js' }, { 'name': 'CSS', 'value': 'css' }];
-  constructor(private _contentService: ContentService, private _logger: LoggerService, private _validator: ValidationService) { }
+  constructor(
+    private _globalDataService: GlobalDataService,
+    private _appService: AppService,
+    private _validator: ValidationService) { }
   formSubmitted = false;
 
   ngOnInit() {

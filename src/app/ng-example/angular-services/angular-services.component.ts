@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../shared/common-services/index';
+import { AppService } from '../../shared/services/index';
 
 @Component({
   selector: 'app-angular-services',
   templateUrl: './angular-services.component.html',
   styleUrls: ['./angular-services.component.css'],
-  providers: [CommonService]
+  providers: [AppService]
 })
 export class AngularServicesComponent implements OnInit {
   subtitle = 'This is a sub title';
-  constructor(private _commSv: CommonService) { }
+  constructor(private _appService: AppService) { }
 
   testSomeMethod(str){
-    this.subtitle = str+' - '+this._commSv.someMethod();
+    this.subtitle = str+' - '+this._appService.someMethod();
   }
 
   ngOnInit() {
