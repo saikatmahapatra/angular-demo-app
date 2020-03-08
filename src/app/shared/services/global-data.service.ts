@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class GlobalDataService {
 
-  private _apiBaseUrl: string = 'api_mock_data/';
+  private _apiBaseUrl: string = 'proxy-mock-server/';
 
   constructor(private _http: HttpClient) { }
 
