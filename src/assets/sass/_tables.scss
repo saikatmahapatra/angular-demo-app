@@ -1,0 +1,19 @@
+.table.ci-table.dataTable {
+    clear: both;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+}
+
+.table.ci-table {
+    thead th,
+    tfoot th {
+        font-weight: 400;
+        font-size: 80%;
+    }
+    // th,
+    // td {
+    //     padding: $table-cell-padding-sm;
+    // }
+}

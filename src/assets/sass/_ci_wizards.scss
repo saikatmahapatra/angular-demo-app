@@ -1,0 +1,104 @@
+.ci-wizard {
+    padding: 0 0 10px 0;
+    >.ci-wizard-step {
+        padding: 0;
+        position: relative;
+        @media(max-width: 575px) {
+            margin-top: 15px;
+            margin-bottom: 30px;
+            padding-top: 15px;
+        }
+        +.ci-wizard-step {}
+        .ci-wizard-stepnum {
+            color: $gray-700;
+        }
+        .ci-wizard-info {
+            color: $gray-700;
+            label {
+                cursor: pointer;
+            }
+        }
+        > {
+            .ci-wizard-dot {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                display: block;
+                background: lighten($yellow, 30%);
+                top: 45px;
+                left: 50%;
+                margin-top: -15px;
+                margin-left: -15px;
+                border-radius: 50%;
+                @media(max-width: 575px) {
+                    top: 0px;
+                }
+                &:after {
+                    content: ' ';
+                    width: 14px;
+                    height: 14px;
+                    background: $yellow;
+                    border-radius: 50px;
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                }
+            }
+            .ci-wizard-dot.A {
+                background: lighten($green, 30%);
+                &:after {
+                    background: $green;
+                }
+            }
+            .ci-wizard-dot.R {
+                background: lighten($red, 30%);
+                &:after {
+                    background: $red;
+                }
+            }
+            .progress {
+                position: relative;
+                border-radius: 0px;
+                height: 8px;
+                box-shadow: none;
+                margin: 20px 0;
+                @media(max-width: 575px) {
+                    display: none;
+                }
+                >.progress-bar {
+                    width: 0px;
+                    box-shadow: none;
+                    background: lighten($yellow, 30%);
+                }
+            }
+        }
+        &.complete>.progress>.progress-bar {
+            width: 100%;
+        }
+        &.active>.progress>.progress-bar {
+            width: 50%;
+        }
+        &:first-child.active>.progress>.progress-bar {
+            width: 0%;
+        }
+        &:last-child.active>.progress>.progress-bar {
+            width: 100%;
+        }
+        &.disabled>.ci-wizard-dot {
+            background-color: $gray-300;
+            &:after {
+                opacity: 0;
+            }
+        }
+        &:first-child>.progress {
+            left: 50%;
+            width: 50%;
+        }
+        &:last-child>.progress {
+            width: 50%;
+        }
+        &.disabled a.ci-wizard-dot {
+            pointer-events: none;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+#ci_full_calendar {
+    .fc-header-toolbar {
+        h2 {
+            font-size: 1.25rem;
+        }
+    }
+    .fc-title {
+        font-size: 13px;
+    }
+    .fc-header-toolbar {
+        h2 {
+            font-size: 1rem;
+        }
+        .fc-button {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    }
+    .fc-widget-header {
+        font-size: .875rem;
+    }
+    // Worked
+    // .fc-event {
+    //     width: 17px;
+    //     border-radius: 11px;
+    // }
+    // .fc-content {
+    //     color: rgba(255, 0, 0, 0.01);
+    // }
+}

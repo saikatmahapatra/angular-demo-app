@@ -1,0 +1,178 @@
+// This files are essential for the theme
+@import './fonts';
+@import './vars';
+@import './root';
+@import './customize-bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.logo-2x {
+    width: 150px;
+}
+
+.logo {
+    width: 100px;
+}
+
+@mixin linear-gradient($from, $to) {
+    background: $to;
+    background: -moz-linear-gradient(top, $from 0%, $to 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
+    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
+    background: -o-linear-gradient(top, $from 0%, $to 100%);
+    background: linear-gradient(to bottom, $from 0%, $to 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to})
+}
+
+.navbar {
+    /*min-height: 4rem;*/
+    //@include linear-gradient(lighten($primary-color,35%),$white);
+}
+
+.nav-colorgraph {
+    border-bottom: 2px solid lighten($primary-color, 10%);
+    .nav-link {
+        font-weight: bold;
+        color: $black;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
+
+/*.navbar-collapse {
+    max-height: 340px;
+    overflow-y: auto;
+}*/
+
+@media (max-width: 576px) {
+    .navbar-collapse {
+        max-height: 340px;
+        overflow-y: auto;
+    }
+}
+
+.scrollup {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    padding: 6px 12px !important;
+    bottom: 50px;
+    right: 5px;
+    display: none;
+}
+
+.validation-error {
+    color: $validation-error-color;
+    font-size: .875rem;
+}
+
+.ajax-loader-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.ajax-loader-img {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    /* -1 * image width / 2 */
+    margin-top: -32px;
+    /* -1 * image height / 2 */
+    display: block;
+    /* If using image them remove background-image attribute */
+    background-image: url("data:image/svg+xml,%3Csvg width='100px' height='100px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='lds-ring' style='background: none;'%3E%3Ccircle cx='50' cy='50' ng-attr-r='%7B%7Bconfig.radius%7D%7D' ng-attr-stroke='%7B%7Bconfig.base%7D%7D' ng-attr-stroke-width='%7B%7Bconfig.width%7D%7D' fill='none' r='30' stroke='%23cfcfcf' stroke-width='10'%3E%3C/circle%3E%3Ccircle cx='50' cy='50' ng-attr-r='%7B%7Bconfig.radius%7D%7D' ng-attr-stroke='%7B%7Bconfig.stroke%7D%7D' ng-attr-stroke-width='%7B%7Bconfig.innerWidth%7D%7D' ng-attr-stroke-linecap='%7B%7Bconfig.linecap%7D%7D' fill='none' r='30' stroke='"+$ajaxloader-color+"' stroke-width='10' stroke-linecap='square' transform='rotate(304.375 50 50)'%3E%3CanimateTransform attributeName='transform' type='rotate' calcMode='linear' values='0 50 50;180 50 50;720 50 50' keyTimes='0;0.5;1' dur='1s' begin='0s' repeatCount='indefinite'%3E%3C/animateTransform%3E%3Canimate attributeName='stroke-dasharray' calcMode='linear' values='18.84955592153876 169.64600329384882;94.2477796076938 94.24777960769377;18.84955592153876 169.64600329384882' keyTimes='0;0.5;1' dur='1' begin='0s' repeatCount='indefinite'%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E");
+}
+
+.colorgraph {
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+
+
+/* Floating Label */
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group {
+    label,
+    input {
+        padding: #{$input-padding-y} #{$input-padding-x};
+    }
+
+    label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        margin-bottom: 0; /* Override default `<label>` margin */
+        line-height: 1.5;
+        color: $gray-700;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        transition: all .1s ease-in-out;
+    }
+
+    input:-ms-input-placeholder,
+    input::-ms-input-placeholder,
+    input::-moz-placeholder,
+    input::placeholder {
+        color: transparent;
+    }
+
+    input:not(:placeholder-shown) {
+        padding-top: calc(#{$input-padding-y} + #{$input-padding-y} * (2 / 3));
+        padding-bottom: calc(#{$input-padding-y} / 3);
+    }
+
+    input:not(:placeholder-shown) ~ label {
+        padding-top: calc(#{$input-padding-y} / 3);
+        padding-bottom: calc(#{$input-padding-y} / 3);
+        font-size: 12px;
+        color: $gray-600;
+    }
+
+    .form-control{
+        height: auto;
+    }
+}

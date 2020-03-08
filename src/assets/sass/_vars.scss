@@ -40,6 +40,8 @@ $color_orange: #DC572E;
 $color_green: #00A600;
 $color_blue: #2672EC;
 $bootstrap3_blue: #337ab7;
+//Override Default Colors
+//$blue: $bootstrap3_blue;
 //Generate Light Dark Colors
 $gray-lightest: lighten($black, 97.25%);
 $gray-lighter: lighten($black, 93.5%);
@@ -48,23 +50,67 @@ $gray: lighten($black, 33.5%);
 $gray-dark: lighten($black, 20%);
 $gray-darker: lighten($black, 13.5%);
 //Override primary color (Nav, Button, Link)
-$brand-color: #0b1372;
-$primary-color: $bootstrap3_blue;
+$brand-color: $blue;
+$primary-color: #0052CC;
 // Complementry color is used to indecate the loading bar on the top
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
 //CI Calendar
-$calendar-border: $primary-color;
-$calendar-heading-bg: $primary-color;
+$calendar-border: $gray-400;
+$calendar-heading-bg: $gray-400;
 $day_selected: lighten($color_blue, 30%);
-$calendar-week-bg: $gray-light;
+$calendar-week-bg: $gray-400;
 $calendar-grid-border: lighten($black, 70%);
 $today-highlight: $color_blue;
 $holiday: lighten($color_red, 40%);
 $leave: lighten($orange, 20%);
 $has-data: lighten($color_green, 50%);
 // Validation Error Message Colors
-$validation-error-color: $red;
-$mandatory_field_star-color: $red;
-//Ajax Loader
-$ajaxloader-color: $primary-color;
+$validation-error-color: #ff0000;
+$mandatory_field_star-color: #ff0000;
+// Colorgraph
+$from_color: #a8ff1b;
+$to_color: #cf1180;
+// CI Bootstrap Mega Menu Style
+$mega_menu_theme: dark;
+// CI Bootstrap Mega Menu - Dark Theme
+$bs_mega_menu_dark_background_color: $gray-900;
+$bs_mega_menu_dark_dropdown_item_box_hover_bg_color: $gray-900;
+$bs_mega_menu_dark_dropdown_header_color: $white;
+$bs_mega_menu_dark_dropdown_header_hover_color: $white;
+$bs_mega_menu_dark_nav_link_color: $gray-500;
+$bs_mega_menu_dark_nav_link_hover_color: $gray-300;
+$bs_mega_menu_dark_nav_link_hover_bg_color: $gray-700;
+$bs_mega_menu_dark_nav_link_active_color: $gray-100;
+$bs_mega_menu_dark_nav_link_active_bg_color: $gray-700;
+// CI Bootstrap Mega Menu - Light Theme
+$bs_mega_menu_light_background_color: $white;
+$bs_mega_menu_light_dropdown_item_box_hover_bg_color: $gray-100;
+$bs_mega_menu_light_dropdown_header_color: $gray-900;
+$bs_mega_menu_light_dropdown_header_hover_color: $gray-900;
+$bs_mega_menu_light_nav_link_color: $gray-900;
+$bs_mega_menu_light_nav_link_hover_color: $gray-700;
+$bs_mega_menu_light_nav_link_hover_bg_color: $gray-200;
+$bs_mega_menu_light_nav_link_active_color: $white;
+$bs_mega_menu_light_nav_link_active_bg_color: $primary-color;
+$sidebar-width: 260px;
+// ------- Sidebar --------
+$sidebar-accent: dark;
+//Sidebar dark
+$sidebar-dark-bg-color: $gray-900;
+$sidebar-dark-link-color: $gray-500;
+$sidebar-dark-text-color: $sidebar-dark-link-color;
+$sidebar-dark-link-color-hover: $white;
+$sidebar-dark-nested-menu-bg: $sidebar-dark-bg-color; // lighten($sidebar-color, 4);
+//Sidebar light
+$sidebar-light-bg-color: $gray-200;
+$sidebar-light-link-color: $gray-900;
+$sidebar-light-text-color: $sidebar-light-link-color;
+$sidebar-light-link-color-hover: $primary-color;
+$sidebar-light-nested-menu-bg: $sidebar-light-bg-color; //darken($sidebar-color, 4);
+$sidebar-border-left-color: none; // $primary-color
+$sidebar-active-hover-focus-bg-color: $sidebar-dark-bg-color;
+// ------- Nav Toggle Button ------------
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
+$table-cell-padding-sm :.3rem;

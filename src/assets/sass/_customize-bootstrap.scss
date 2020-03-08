@@ -11,15 +11,15 @@ $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
 // Customize typographic styles
-$font-size-base: 1rem;
-$font-family-sans-serif: 'Lato',
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-"Helvetica Neue",
-Arial,
-sans-serif;
+//$font-size-base: 0.875rem;
+// $font-family-sans-serif: 'Lato',
+// -apple-system,
+// BlinkMacSystemFont,
+// "Segoe UI",
+// Roboto,
+// "Helvetica Neue",
+// Arial,
+// sans-serif;
 $link-color: $primary-color;
 $headings-font-weight: bold;
 //Font Sizes
@@ -39,13 +39,6 @@ $dropdown-item-padding-x: 20px;
 //$btn-transition: box-shadow 0.3s cubic-bezier(0.35, 0, 0.25, 1), transform 0.2s cubic-bezier(0.35, 0, 0.25, 1), background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 // Custmize form component styles
 //$input-border-radius: 4px;
-
-$input-padding-y: 0.75rem;
-$input-padding-x: 0.75rem;
-
-//$input-btn-padding-y: 0.75rem;
-//$input-btn-padding-x: 0.75rem;
-
 //$input-border-radius-lg: 4px;
 //$input-border-radius-sm: 4px;
 //$input-focus-border-color: $primary-color;
@@ -53,18 +46,20 @@ $input-padding-x: 0.75rem;
 //$input-btn-focus-box-shadow: none;
 //$input-btn-focus-width: 0;
 // Nav Tabs
-$nav-tabs-border-color: $primary-color;
-$nav-tabs-border-width: 1px;
-$nav-tabs-link-active-color: $white;
-$nav-tabs-link-active-bg: $primary-color;
+//$nav-tabs-border-color: $primary-color;
+$nav-tabs-border-width: 2px;
+$nav-tabs-link-active-color: $primary-color;
+//$nav-tabs-link-active-bg: $primary-color;
 $nav-tabs-link-active-border-color: $primary-color;
-$nav-tabs-link-hover-border-color: transparent;
+//$nav-tabs-link-hover-border-color: transparent;
 // Nav Bar Dark
-$navbar-dark-color: $gray-lighter;
-$navbar-dark-hover-color: $white;
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $gray-lighter;
 $navbar-dark-active-color: $white;
-$navbar-padding-y: 0.5rem;
-$navbar-padding-x: 0.5rem;
+// $dropdown-link-hover-color: $white;
+// $dropdown-link-hover-bg: $black;
+//$navbar-padding-y: 4px;
+//$navbar-padding-x: 0.5rem;
 //Nav Bar Light Color
 $navbar-light-color: rgba($black, .7) !default;
 $navbar-light-hover-color: rgba($black, .7) !default;

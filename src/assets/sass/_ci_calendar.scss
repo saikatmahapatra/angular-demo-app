@@ -1,0 +1,78 @@
+.ci-calendar {
+    border: 1px solid $calendar-grid-border;
+    th {
+        //background: $calendar-heading-bg;
+        color: $gray-700;
+        vertical-align: center !important;
+        text-align: center;
+        border-top: 1px solid $calendar-grid-border;
+        //border-top: none;
+    }
+    tr.wk_nm {
+        //background: $calendar-week-bg;
+    }
+    td {
+        text-align: center;
+        border: 1px solid $calendar-grid-border;
+        vertical-align: center !important;
+    }
+    td[data-calday='allowed_day'].day {
+        cursor: pointer;
+        a {
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    td[data-calday='disabled_day'] {
+        opacity: 0.5;
+        cursor: default !important;
+        background: $gray-200;
+    }
+    .highlight {
+        background: $today-highlight;
+        color: $white;
+    }
+    .prevcell a,
+    .nextcell a {
+        color: $gray-900 !important;
+        text-decoration: none !important;
+    }
+    .day.selected {
+        background: $day_selected !important;
+    }
+    .day.holiday {
+        background: $holiday;
+    }
+    .day.leave {
+        background: $leave;
+    }
+    .day.filled {
+        background: $has-data;
+    }
+}
+
+.i-today {
+    background-color: $today-highlight;
+}
+
+.i-selected {
+    background-color: $day_selected;
+}
+
+.i-leave {
+    background-color: $leave;
+}
+
+.i-holiday {
+    background-color: $holiday;
+}
+
+.i-disabled-date {
+    background-color: $gray-200;
+}
+
+.i-has-data {
+    background-color: $has-data;
+}

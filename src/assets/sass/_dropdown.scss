@@ -1,0 +1,17 @@
+.no-toggle-icon {
+    .dropdown-toggle::after {
+        display: none;
+    }
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: -.3em 0 0 .4em;
+    vertical-align: middle;
+    content: "";
+    border: .3em solid;
+    border-width: 0 .15em .15em 0;
+    transform: rotatez(45deg);
+}

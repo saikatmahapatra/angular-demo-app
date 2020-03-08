@@ -1,0 +1,15 @@
+.ci-nav-tab {
+    .nav-link {
+        &:hover,
+        &:focus {
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-right-color: transparent;
+        }
+    }
+    .nav-link.active {
+        border: 0;
+        border-bottom: 5px solid $primary-color;
+        color: inherit;
+    }
+}

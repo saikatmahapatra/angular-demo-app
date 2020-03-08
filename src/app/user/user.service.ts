@@ -14,7 +14,7 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class UserService {
-    private _apiBaseUrl: string = 'assets/mock_data/';
+    private _apiBaseUrl: string = 'assets/api_mock_data/';
 
     constructor(private _http: HttpClient) { }
 
