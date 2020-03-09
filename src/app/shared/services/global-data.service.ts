@@ -10,12 +10,16 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class GlobalDataService {
 
-  private _apiBaseUrl: string = 'proxy-mock-server/';
+  private _apiBaseUrl: string = 'http://localhost:7878/';
 
   constructor(private _http: HttpClient) { }
 
   getCMSContent() {
-    return this._http.get(this._apiBaseUrl + 'content.json');
+    return this._http.get(this._apiBaseUrl + 'content');
+  }
+
+  getUsers() {
+    return this._http.get(this._apiBaseUrl + 'user');
   }
 
 }
