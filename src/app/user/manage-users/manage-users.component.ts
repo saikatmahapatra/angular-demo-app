@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../shared/services/index';
-import { UserService } from '../user.service';
+import { GlobalDataService } from '../../shared/services/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.scss'],
-  providers: [UserService]
+  providers: [GlobalDataService]
 })
 export class ManageUsersComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private _userService: UserService, public formBuilder: FormBuilder, private _appService: AppService) {
+  constructor(private _globalDataService: GlobalDataService, public formBuilder: FormBuilder, private _appService: AppService) {
 
   }
 
@@ -52,7 +52,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this._userService.getUsers().subscribe(
+    this._globalDataService.getUsers().subscribe(
       data => {
         this.userList = data;
       }
