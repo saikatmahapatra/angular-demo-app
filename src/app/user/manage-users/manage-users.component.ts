@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../shared/services/index';
-import { GlobalDataService } from '../../shared/services/index';
+import { AppService } from 'app/services/index';
+import { GlobalDataService } from 'app/services/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

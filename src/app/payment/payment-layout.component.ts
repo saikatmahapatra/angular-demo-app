@@ -7,7 +7,7 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver
 } from '@angular/core';
-import { AppService } from '../shared/services/index';
+import { AppService } from 'app/services';
 import { AutopayComponent } from './autopay/autopay.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 

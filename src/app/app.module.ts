@@ -1,16 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'environments/environment';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-
-// Import shared services and include in provider so that all app component can access the same singleton object
-import { AppService, GlobalDataService, ValidationService } from './shared/services/index';
-
+import { CoreModule } from 'app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +12,12 @@ import { AppService, GlobalDataService, ValidationService } from './shared/servi
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    SharedModule.forRoot(),
-    // Routing modules must be at the last and AppRouting Module must be the last one.
-    AppRoutingModule
+    BrowserAnimationsModule,
+    CoreModule,
+    SharedModule
   ],
-  providers: [AppService, GlobalDataService, ValidationService],
+  exports: [BrowserAnimationsModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

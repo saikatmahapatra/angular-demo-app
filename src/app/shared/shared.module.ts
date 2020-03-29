@@ -4,18 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { SharedRoutingModule } from './shared-routing.module';
-
-import{
+import {
   HighlightDirective,
   CheckCapsLockDirective
-} from './directives/index';
+} from './directives';
 
-import{
+import {
   ExponentialStrengthPipe,
   MaskPipe,
   OrderByPipe
-} from './pipes/index';
+} from './pipes';
 
 import {
   ValidationErrorComponent,
@@ -23,18 +21,12 @@ import {
   HeaderComponent,
   NavbarComponent,
   FooterComponent
-} from './components/index';
-
-import {
-  AppService
-} from './services/index';
-
+} from './components';
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
-    SharedRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
@@ -51,9 +43,7 @@ import {
     FooterComponent,
     NavbarComponent
   ],
-  providers: [
-
-  ],
+  providers: [],
   exports: [
     HighlightDirective,
     ExponentialStrengthPipe,
@@ -66,17 +56,4 @@ import {
   ]
 })
 export class SharedModule {
-  /**
-   * IMPORTANT:
-   * SharedModule.forRoot() must be used in AppModule only to ensure all the providers are included at the time of bootstrap.
-   * Other child modules should include SharedModule directly.
-   */
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [
-        AppService
-      ]
-    };
-  }
 }

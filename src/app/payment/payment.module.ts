@@ -7,7 +7,7 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentLayoutComponent } from './payment-layout.component';
 import { AutopayComponent } from './autopay/autopay.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
-import { AppService } from '../shared/services/index';
+import { AppService } from 'app/services';
 @NgModule({
   imports: [
     CommonModule,

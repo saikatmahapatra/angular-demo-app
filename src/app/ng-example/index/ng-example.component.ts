@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../shared/services/index';
+import { AppService } from 'app/services/index';
 @Component({
   selector: 'app-example',
   templateUrl: './ng-example.component.html',
