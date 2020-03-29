@@ -1,0 +1,11 @@
+{
+	"success": true,
+	"data": "Dummy response",
+	"content":{
+			"static_test":{
+				"copy$$content2":{
+					"TEXT":"content1 sample dynamic data"
+				}
+			}
+		}
+}
