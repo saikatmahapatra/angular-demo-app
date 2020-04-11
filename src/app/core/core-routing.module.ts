@@ -12,12 +12,8 @@ export const routes: Routes = [
     loadChildren: 'app/home/home.module#HomeModule'
   },
   {
-    path: 'bootstrap',
-    loadChildren: 'app/bootstrap/twitterbootstrap.module#TwitterbootstrapModule'
-  },
-  {
-    path: 'error',
-    loadChildren: 'app/error/error.module#ErrorModule'
+    path: 'pages',
+    loadChildren: 'app/page/page.module#PageModule'
   },
   {
     path: 'angular-example',
@@ -28,28 +24,8 @@ export const routes: Routes = [
     loadChildren: 'app/user/user.module#UserModule'
   },
   {
-    path: 'pages',
-    loadChildren: 'app/page/page.module#PageModule'
-  },
-  {
-    path: 'sign_on',
-    loadChildren: 'app/sign-on/sign-on.module#SignOnModule'
-  },
-  {
-    path: 'test_module',
-    loadChildren: 'app/test/test.module#TestModule'
-  },
-  {
-    path: 'kore',
-    loadChildren: 'app/kore-ai/kore-ai.module#KoreAiModule'
-  },
-  {
     path: 'payment',
     loadChildren: 'app/payment/payment.module#PaymentModule'
-  },
-  {
-    path: 'quick',
-    loadChildren: 'app/quick/quick.module#QuickModule'
   },
   {
     path: '**',
