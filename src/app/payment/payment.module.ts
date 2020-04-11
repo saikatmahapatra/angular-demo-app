@@ -10,6 +10,7 @@ import { PaymentInputComponent } from './payment-input/payment-input.component';
 import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
 import { PaymentConfirmComponent } from './payment-confirm/payment-confirm.component';
 import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayment-offers.component';
+import { PaymentComponent } from './payment.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayme
     PaymentInputComponent,
     PaymentVerifyComponent,
     PaymentConfirmComponent,
-    OnlinepaymentOffersComponent
+    OnlinepaymentOffersComponent,
+    PaymentComponent
   ],
   entryComponents: [
     PaymentLayoutComponent,
