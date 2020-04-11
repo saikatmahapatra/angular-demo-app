@@ -8,13 +8,16 @@ import {
   ComponentFactoryResolver
 } from '@angular/core';
 import { AppService, DynamicComponentService } from '../services';
-import { AutopayComponent } from './autopay/autopay.component';
-import { PaymentHistoryComponent } from './payment-history/payment-history.component';
+
+import { PaymentInputComponent } from './payment-input/payment-input.component';
+import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
+import { PaymentConfirmComponent } from './payment-confirm/payment-confirm.component';
+import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayment-offers.component';
 
 // Component Registry. Component Alias: Component Class
 const componentRegistry = {
-  'autopay_comp': AutopayComponent,
-  'payment_history_comp': PaymentHistoryComponent
+  'payment_offers': OnlinepaymentOffersComponent,
+  'init_payment': PaymentInputComponent
 };
 
 // In which layout block/pagelet block which component alias to load
@@ -22,12 +25,12 @@ const componentList = {
   'cubbyPglt': [],
   'marqueePglt': [],
   'navigationPglt': [],
-  'heroPglt': ['autopay_comp'],
+  'heroPglt': ['payment_offers'],
   'mainPglt': [
-    'autopay_comp',
-    'payment_history_comp'
+    'init_payment',
+    'payment_offers'
   ],
-  'utilityPglt': ['payment_history_comp']
+  'utilityPglt': ['payment_offers']
 };
 
 @Component({

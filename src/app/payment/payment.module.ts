@@ -5,9 +5,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentLayoutComponent } from './payment-layout.component';
-import { AutopayComponent } from './autopay/autopay.component';
-import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 import { AppService, DynamicComponentService } from '../services';
+import { PaymentInputComponent } from './payment-input/payment-input.component';
+import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
+import { PaymentConfirmComponent } from './payment-confirm/payment-confirm.component';
+import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayment-offers.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,12 +23,17 @@ import { AppService, DynamicComponentService } from '../services';
   ],
   declarations: [
     PaymentLayoutComponent,
-    AutopayComponent,
-    PaymentHistoryComponent
+    PaymentInputComponent,
+    PaymentVerifyComponent,
+    PaymentConfirmComponent,
+    OnlinepaymentOffersComponent
   ],
   entryComponents: [
-    AutopayComponent,
-    PaymentHistoryComponent
+    PaymentLayoutComponent,
+    PaymentInputComponent,
+    PaymentVerifyComponent,
+    PaymentConfirmComponent,
+    OnlinepaymentOffersComponent
   ]
 })
 export class PaymentModule { }
