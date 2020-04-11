@@ -3,7 +3,6 @@ import { OrdersService } from '../parent/orders.service';
 @Component({
   selector: 'app-child-comp',
   templateUrl: './child.component.html',
-  styleUrls: ['./child.component.css'],
   providers: [OrdersService]
 })
 export class ChildComponent implements OnInit {

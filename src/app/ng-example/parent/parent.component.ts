@@ -4,7 +4,6 @@ import { OrdersService } from './orders.service';
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.scss'],
   providers: [OrdersService]
 })
 export class ParentComponent implements OnInit {
@@ -18,7 +17,7 @@ export class ParentComponent implements OnInit {
   constructor(private _oredsrService: OrdersService) { }
 
   ngOnInit() {
-    this.name += this._child_1.name; // reading child's variable 
+    this.name += this._child_1.name; // reading child's variable
     this.result = this._child_1.childMethod(this.name); // reading child's method
     this.orders = this._oredsrService.gerOrders();
   }

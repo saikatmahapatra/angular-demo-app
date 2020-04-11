@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-parent-comp-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  templateUrl: './test.component.html'
 })
 export class TestComponent implements OnInit {
   department = "Information Technology"; // pass from parent to child

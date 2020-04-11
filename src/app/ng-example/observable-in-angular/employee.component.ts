@@ -9,15 +9,14 @@ import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  templateUrl: './employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }

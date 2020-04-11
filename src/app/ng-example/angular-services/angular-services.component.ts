@@ -4,7 +4,6 @@ import { AppService } from 'app/services/index';
 @Component({
   selector: 'app-angular-services',
   templateUrl: './angular-services.component.html',
-  styleUrls: ['./angular-services.component.css'],
   providers: [AppService]
 })
 export class AngularServicesComponent implements OnInit {

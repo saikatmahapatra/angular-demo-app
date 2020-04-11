@@ -4,7 +4,6 @@ import { KoreAiComponent } from '../../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
   providers: [GlobalDataService]
 })
 

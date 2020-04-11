@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child-comp-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  templateUrl: './student.component.html'
 })
 export class StudentComponent implements OnInit {
   private _city;
@@ -20,6 +19,6 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
   }
 
-  
+
 
 }

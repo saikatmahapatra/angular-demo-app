@@ -7,7 +7,6 @@ import { AppService, GlobalDataService, ValidationService } from 'app/services/i
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.css'],
   providers: [GlobalDataService]
 })
 export class ReactiveFormComponent implements OnInit {

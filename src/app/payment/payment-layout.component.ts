@@ -32,8 +32,7 @@ const componentList = {
 
 @Component({
   selector: 'app-payment-layout',
-  templateUrl: './payment-layout.component.html',
-  styleUrls: ['./payment-layout.component.scss']
+  templateUrl: './payment-layout.component.html'
 })
 export class PaymentLayoutComponent implements OnInit {
   @ViewChild('marquee', { read: ViewContainerRef }) marqueePglt: ViewContainerRef;

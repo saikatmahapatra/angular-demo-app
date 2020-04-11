@@ -4,7 +4,6 @@ import { AppService } from 'app/services/index';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
-  styleUrls: ['./pipes.component.css'],
   providers: [AppService]
 })
 export class PipesComponent implements OnInit {

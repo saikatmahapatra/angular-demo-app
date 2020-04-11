@@ -3,7 +3,6 @@ import { AppService } from 'app/services/index';
 @Component({
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',
-  styleUrls: ['./template-data-binding.component.css'],
   providers: []
 })
 export class TemplateDataBindingComponent implements OnInit {

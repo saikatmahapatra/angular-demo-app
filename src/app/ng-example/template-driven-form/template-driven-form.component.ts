@@ -4,7 +4,6 @@ import { AppService, GlobalDataService, ValidationService } from 'app/services/i
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
-  styleUrls: ['./template-driven-form.component.scss'],
   providers: [AppService, GlobalDataService, ValidationService]
 })
 

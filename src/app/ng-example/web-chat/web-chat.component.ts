@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-web-chat',
-  templateUrl: './web-chat.component.html',
-  styleUrls: ['./web-chat.component.scss']
+  templateUrl: './web-chat.component.html'
 })
 export class WebChatComponent implements OnInit {
   msgContainer = document.getElementsByClassName('messageContainer');
