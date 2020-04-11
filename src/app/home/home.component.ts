@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, VERSION } from '@angular/core';
 import { GlobalDataService } from 'app/services';
-import { KoreAiComponent } from '../../kore-ai/kore-ai.component';
+import { KoreAiComponent } from 'app/kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -12,6 +12,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { UserComponent } from './user.component';
+import { UserLayoutComponent } from './user-layout.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { MyAccountComponent } from './my-account/my-account.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ManageUsersComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    UserComponent,
+    UserLayoutComponent
   ]
 })
 export class UserModule { }

@@ -1,2 +1,2 @@
+export * from './test.component';
 export * from './student/student.component';
-export * from './index/test.component';
