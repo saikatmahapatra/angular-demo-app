@@ -3,16 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {
   PageComponent,
-  AboutUsComponent
+  AboutUsComponent,
+  PageLayoutComponent
 } from './index';
 
 const routes: Routes = [{
   path: '',
-  component: PageComponent,
-  children: [{
-    path: 'about-us',
-    component: AboutUsComponent
-  }]
+  component: PageLayoutComponent,
+  children: [
+    { path: '', component: PageComponent },
+    { path: 'about-us', component: AboutUsComponent }
+  ]
 }];
 
 @NgModule({

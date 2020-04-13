@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // dont use old Http
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { Observable } from "rxjs";
+
+
+
+
+
 
 /**
  * Authorization Token : This should be pass to HTTP header
- * Should be dynamic. Get from cookie. 
+ * Should be dynamic. Get from cookie.
  * Do not place word 'Bearer' before the token string.
  */
 const authorizationToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYXBwSWQiOiJjcy02NzQ4ZGZhYy05ZWQ3LTUyYWMtOTg3Ny00YzBhNWNjZDBlZjYifQ.WLT6bwpkwwdW5wYGdZZdOmKO9kYp1JyTMQFtC7AHoO0';
@@ -30,34 +30,34 @@ export class KoreAiService {
    */
 
   // Bot ID
-  private _botId: string = 'st-cf3806b6-5c56-5529-b576-544a8751b527';
+  private botId: string = 'st-cf3806b6-5c56-5529-b576-544a8751b527';
 
   // Client ID
-  private _clientId: string = '';
+  private clientId: string = '';
 
   // Client Secret key
-  private _clientSecret: string = '';
+  private clientSecret: string = '';
 
   // Kore AI webhook URL with Bot ID
-  private _webHookUrl: string = 'https://bots.kore.ai/chatbot/hooks/' + this._botId;
+  private webHookUrl: string = 'https://bots.kore.ai/chatbot/hooks/' + this.botId;
 
   //HTTP Header
-  private _httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getAuthToken()
     })
   };
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getWebHookData(postData) {
     let body = JSON.stringify(postData);
-    return this._http.post(this._webHookUrl, body, this._httpOptions);
+    return this.http.post(this.webHookUrl, body, this.httpOptions);
   }
 
   getBotId() {
-    return this._botId;
+    return this.botId;
   }
 
   getBizToken() {

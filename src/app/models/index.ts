@@ -1,6 +1,6 @@
-import { from } from 'rxjs/observable/from';
+import { from } from 'rxjs';
 
-export * from './action.model';
+export * from './state.model';
 export * from './session.model';
 export * from './user.model';
 export * from './payment.model';

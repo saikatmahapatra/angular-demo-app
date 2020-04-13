@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 export const routes: Routes = [
   {
     path: '',
@@ -9,27 +9,27 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: 'app/home/home.module#HomeModule'
+    loadChildren: '../home/home.module#HomeModule'
   },
   {
     path: 'pages',
-    loadChildren: 'app/page/page.module#PageModule'
+    loadChildren: '../page/page.module#PageModule'
   },
   {
     path: 'angular-example',
-    loadChildren: 'app/ng-example/ng-example.module#NgExampleModule'
+    loadChildren: '../ng-example/ng-example.module#NgExampleModule'
   },
   {
     path: 'user',
-    loadChildren: 'app/user/user.module#UserModule'
+    loadChildren: '../user/user.module#UserModule'
   },
   {
     path: 'payment',
-    loadChildren: 'app/payment/payment.module#PaymentModule'
+    loadChildren: '../payment/payment.module#PaymentModule'
   },
   {
     path: '**',
-    component: PagenotfoundComponent
+    component: PageNotFoundComponent
   }
 ];
 

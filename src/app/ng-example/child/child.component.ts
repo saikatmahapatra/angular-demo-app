@@ -6,25 +6,25 @@ import { OrdersService } from '../parent/orders.service';
   providers: [OrdersService]
 })
 export class ChildComponent implements OnInit {
-  private _city;
+  private city;
   userAgreed = false;
   clickedFromParent = 0; // parent interactes with child with local variable
-  name = "Saikat";
+  name = 'Saikat';
   result: string;
-  orders : any;
+  orders: any;
   @Input() department: string;
 
   @Input()
   set mycity(city: string) {
-    this._city = city ? city.toLowerCase() : 'no city';
+    this.city = city ? city.toLowerCase() : 'no city';
   }
-  get mycity(): string { return this._city; }
+  get mycity(): string { return this.city; }
 
-  constructor(private _ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.result = this.childMethod(this.name);
-    this.orders = this._ordersService.gerOrders();
+    this.orders = this.ordersService.gerOrders();
   }
 
   @Output() agreed = new EventEmitter<boolean>();

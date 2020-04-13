@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgExampleRoutingModule } from './ng-example-routing.module';
 
 import {
+  NgExampleLayoutComponent,
   NgExampleComponent,
   TemplateDataBindingComponent,
   AngularDirectiveComponent,
@@ -35,6 +36,7 @@ import {
     NgExampleRoutingModule
   ],
   declarations: [
+    NgExampleLayoutComponent,
     NgExampleComponent,
     AngularDirectiveComponent,
     PipesComponent,

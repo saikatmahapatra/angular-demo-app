@@ -2,7 +2,7 @@
     {
         "page": {
             "home": {
-                "title": "Angular 5",
+                "title": "Angular",
                 "subtitle": "This is a project of Angular 5",
                 "heading_cli_cmds":"Angular CLI Commands",
                 "cli_commands":[

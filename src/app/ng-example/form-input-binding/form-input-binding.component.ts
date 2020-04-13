@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'app/services/index';
+import { AppService } from '../../services';
 @Component({
   selector: 'app-form-input-binding',
   templateUrl: './form-input-binding.component.html',
@@ -10,7 +10,7 @@ export class FormInputBindingComponent implements OnInit {
   keyUpInputData = '';
   btnHidden = true;
   buttonCss = 'btn-primary';
-  constructor(private _appService: AppService) { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
   }
@@ -19,27 +19,27 @@ export class FormInputBindingComponent implements OnInit {
    * Form Interation - Click, Keyup, Keypress etc
    */
   buttonClick(event: any) {
-    this._appService.log(event);
+    this.appService.log(event);
     this.clickMessage = 'You have clicked button value';
     //window.alert("Button Clicked");
   }
 
   keyUpGetInputData(event) {
-    this._appService.log(event);
+    this.appService.log(event);
     this.keyUpInputData = event.target.value;
-    this._appService.log(this.keyUpInputData);
+    this.appService.log(this.keyUpInputData);
   }
 
   clickParentElm(e) {
-    this._appService.log(e);
-    this._appService.log("Parent Div Clicked");
+    this.appService.log(e);
+    this.appService.log("Parent Div Clicked");
     window.alert("Parent Div Clicked");
   }
 
   clickChildElm(e) {
-    this._appService.log(e);
+    this.appService.log(e);
     e.stopPropagation(); // to prevent event bubbling
-    this._appService.log("Child Div Clicked");
+    this.appService.log("Child Div Clicked");
     window.alert("Child Div Clicked");
   }
 }

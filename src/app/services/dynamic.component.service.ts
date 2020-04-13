@@ -1,11 +1,13 @@
 import {Injectable, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  // we declare that this service should be created
+  // by the root application injector.
+  providedIn: 'root'
+})
 
 export class DynamicComponentService {
-  constructor (private _componentFactoryResolver :  ComponentFactoryResolver) {
-
-  }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {  }
 
   authLayout = [
     'marqueePglt',
@@ -26,16 +28,16 @@ export class DynamicComponentService {
     const currentLayout = this[layoutType];
     let componentClass;
     let componentFactory;
-    let componentAliasName;
+    let mapComponent;
     for (let countLayoutBlock = 0; countLayoutBlock < currentLayout.length; countLayoutBlock++) {
       for (let countModules = 0; countModules < componentList[currentLayout[countLayoutBlock]].length; countModules++) {
-        componentAliasName = componentList[currentLayout[countLayoutBlock]][countModules];
-        componentClass = registeredComponent[componentAliasName];
+        mapComponent = componentList[currentLayout[countLayoutBlock]][countModules];
+        componentClass = registeredComponent[mapComponent];
         if (componentClass !== undefined) {
-          componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentClass);
+          componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
           viewContainers[currentLayout[countLayoutBlock]].createComponent(componentFactory);
         } else {
-          console.error('Error :  ' + componentAliasName + ' is not found in component registry');
+          console.error('Error :  ' + mapComponent + ' is not found in component registry');
         }
       }
 

@@ -8,7 +8,8 @@ import { PageRoutingModule } from './page-routing.module';
 
 import {
   PageComponent,
-  AboutUsComponent
+  AboutUsComponent,
+  PageLayoutComponent
 } from './index';
 
 @NgModule({
@@ -23,7 +24,8 @@ import {
   ],
   declarations: [
     PageComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    PageLayoutComponent
   ]
 })
 export class PageModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'app/services/index';
+import { AppService } from '../../services';
 
 @Component({
   selector: 'app-angular-services',
@@ -8,10 +8,10 @@ import { AppService } from 'app/services/index';
 })
 export class AngularServicesComponent implements OnInit {
   subtitle = 'This is a sub title';
-  constructor(private _appService: AppService) { }
+  constructor(private appService: AppService) { }
 
   testSomeMethod(str){
-    this.subtitle = str+' - '+this._appService.someMethod();
+    this.subtitle = str+' - '+this.appService.someMethod();
   }
 
   ngOnInit() {

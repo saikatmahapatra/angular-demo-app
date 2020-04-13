@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { AppService } from 'app/services/index';
+import { AppService } from '../../services';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
@@ -12,7 +12,7 @@ export class PipesComponent implements OnInit {
   name = 'Saikat Mahapatra';
   productPrice = 1999.3;
   homeLoan = 7;
-  constructor(private _appService: AppService) { }
+  constructor(private appService: AppService) { }
 
 
   /**
@@ -39,7 +39,7 @@ export class PipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._appService.log('ngOnInit');
+    this.appService.log('ngOnInit');
   }
 
 }

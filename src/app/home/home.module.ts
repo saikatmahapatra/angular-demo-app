@@ -4,9 +4,10 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './index';
+import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { KoreAiModule } from '../kore-ai/kore-ai.module';
+import { HomeLayoutComponent } from './home-layout.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,7 @@ import { KoreAiModule } from '../kore-ai/kore-ai.module';
     HomeRoutingModule,
     KoreAiModule
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, HomeLayoutComponent],
   bootstrap: [HomeComponent]
 
 })

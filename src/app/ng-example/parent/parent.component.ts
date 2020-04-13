@@ -7,19 +7,19 @@ import { OrdersService } from './orders.service';
   providers: [OrdersService]
 })
 export class ParentComponent implements OnInit {
-  department = "Information Technology 344"; // pass from parent to child
-  city = "KOLKATA"; // pass this to child component and covert it to lowercase
+  department = 'Information Technology 344'; // pass from parent to child
+  city = 'KOLKATA'; // pass this to child component and covert it to lowercase
   userAgreed: boolean;
-  @ViewChild(ChildComponent) private _child_1: ChildComponent;
-  name = "John";
-  result = "";
+  @ViewChild(ChildComponent) private child1: ChildComponent;
+  name = 'John';
+  result = '';
   orders: any;
-  constructor(private _oredsrService: OrdersService) { }
+  constructor(private orderService: OrdersService) { }
 
   ngOnInit() {
-    this.name += this._child_1.name; // reading child's variable
-    this.result = this._child_1.childMethod(this.name); // reading child's method
-    this.orders = this._oredsrService.gerOrders();
+    this.name += this.child1.name; // reading child's variable
+    this.result = this.child1.childMethod(this.name); // reading child's method
+    this.orders = this.orderService.gerOrders();
   }
 
   isAgreed($e) {

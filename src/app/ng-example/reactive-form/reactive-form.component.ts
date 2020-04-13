@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { User } from 'app/models'; // Import the user class for form example
-import { AppService, GlobalDataService, ValidationService } from 'app/services/index';
+import { User } from '../../models'; // Import the user class for form example
+import { AppService, GlobalDataService, ValidationService } from '../../services';
 
 // https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
@@ -22,10 +22,10 @@ export class ReactiveFormComponent implements OnInit {
   // To use services, inject into constructor
   // To use Form Builder, inject formbuilder into constructor
   constructor(
-    private _appService: AppService,
-    private _globalDataService: GlobalDataService,
-    private _validator: ValidationService,
-    private _fb: FormBuilder
+    private appService: AppService,
+    private globalDataService: GlobalDataService,
+    private validator: ValidationService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -34,11 +34,11 @@ export class ReactiveFormComponent implements OnInit {
 
   createAddUserForm() {
     // Using formbuilder
-    // this.formAddUser = this._fb.group({
+    // this.formAddUser = this.fb.group({
     //   firstName: ['Saikat', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
     //   lastName: ['Mahapatra', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
-    //   email: ['saikat@gmail.com', [Validators.required, this._validator.email_address]],
-    //   phoneNumber: ['9830098300', [Validators.required, this._validator.phone_number]],
+    //   email: ['saikat@gmail.com', [Validators.required, this.validator.email_address]],
+    //   phoneNumber: ['9830098300', [Validators.required, this.validator.phone_number]],
     //   password: ['',[Validators.required]],
     //   confirmPassword: ['', [Validators.required]],
     //   city: [''],
@@ -50,8 +50,8 @@ export class ReactiveFormComponent implements OnInit {
     this.formAddUser = new FormGroup({
       'firstName': new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
       'lastName': new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]),
-      'email': new FormControl('', [Validators.required, this._validator.valid_email]),
-      'phoneNumber': new FormControl('', [Validators.required, this._validator.phone_number]),
+      'email': new FormControl('', [Validators.required, this.validator.valid_email]),
+      'phoneNumber': new FormControl('', [Validators.required, this.validator.phone_number]),
       'password': new FormControl('', [Validators.required]),
       'confirmPassword': new FormControl('', [Validators.required]),
       'city': new FormControl('', [Validators.required]),
@@ -62,7 +62,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   addUser() {
-    this._appService.log(this.formAddUser.value);
+    this.appService.log(this.formAddUser.value);
     this.userData = this.formAddUser.value;
   }
 

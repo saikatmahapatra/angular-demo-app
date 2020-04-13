@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import {
+  NgExampleLayoutComponent,
   NgExampleComponent,
   TemplateDataBindingComponent,
   AngularDirectiveComponent,
@@ -19,8 +20,9 @@ import {
 
 const routes: Routes = [{
   path: '',
-  component: NgExampleComponent,
+  component: NgExampleLayoutComponent,
   children: [
+    { path: '', component: NgExampleComponent },
     { path: 'template-basic', component: TemplateDataBindingComponent },
     { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
     { path: 'pipes', component: PipesComponent },

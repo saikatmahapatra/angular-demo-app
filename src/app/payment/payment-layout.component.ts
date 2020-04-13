@@ -7,8 +7,15 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver
 } from '@angular/core';
-import { AppService, DynamicComponentService } from '../services';
-
+import {
+  AppService,
+  DynamicComponentService,
+  ActionsService,
+  StateService,
+  SessionService
+} from '../services';
+import paymentActions from './actions';
+import { PaymentComponent } from './payment.component';
 import { PaymentInputComponent } from './payment-input/payment-input.component';
 import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
 import { PaymentConfirmComponent } from './payment-confirm/payment-confirm.component';
@@ -16,8 +23,7 @@ import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayme
 
 // Component Registry. Component Alias: Component Class
 const componentRegistry = {
-  'payment_offers': OnlinepaymentOffersComponent,
-  'init_payment': PaymentInputComponent
+  'payment': PaymentComponent
 };
 
 // In which layout block/pagelet block which component alias to load
@@ -25,12 +31,9 @@ const componentList = {
   'cubbyPglt': [],
   'marqueePglt': [],
   'navigationPglt': [],
-  'heroPglt': ['payment_offers'],
-  'mainPglt': [
-    'init_payment',
-    'payment_offers'
-  ],
-  'utilityPglt': ['payment_offers']
+  'heroPglt': [],
+  'mainPglt': ['payment'],
+  'utilityPglt': []
 };
 
 @Component({
@@ -44,16 +47,37 @@ export class PaymentLayoutComponent implements OnInit {
   @ViewChild('utility', { read: ViewContainerRef }) utilityPglt: ViewContainerRef;
 
   constructor(
-    private _appService: AppService,
-    private _dynamicComponentService: DynamicComponentService
+    private appService: AppService,
+    private dynamicComponentService: DynamicComponentService,
+    private actions: ActionsService,
+    private stateService: StateService,
     ) { }
 
+  data: any;
+  globalData: any;
+  isLoaded = false;
+  state: any;
+
   ngOnInit() {
+    this.stateService.addReducers(paymentActions, 'payments');
     this.loadComponents();
+    this.stateService.states
+    .subscribe(state => {
+      this.state = state;
+      console.log(state);
+      if (state) {
+        this.actions.send({
+          type: 'PAYMENT_INITIALIZED',
+          value: {
+            refreshFlag: false
+          }
+        });
+      }
+    });
   }
 
   loadComponents() {
-    this._dynamicComponentService.loadComponent('authLayout', componentList, componentRegistry, this);
+    this.dynamicComponentService.loadComponent('authLayout', componentList, componentRegistry, this);
   }
 
 }

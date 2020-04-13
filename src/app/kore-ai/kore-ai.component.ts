@@ -1,6 +1,7 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
 import { KoreAiService } from './kore-ai.service';
-import { Observable } from 'rxjs/Rx';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-kore-ai',
@@ -43,9 +44,9 @@ export class KoreAiComponent implements OnInit {
     'authorizationToken': this._koreAiService.getAuthToken(),
     'bizToken': this._koreAiService.getBizToken(),
     'uuid': 'Kore_060720181722',
-    'businessCode': 'CRS',
+    'businessCode': 'XXX',
     'clientId': 'd541a926-f74d-4fac-8516-4c84b76ccf57',
-    'siteId': 'PLCN_HOMEDEPOT'
+    'siteId': 'ANGULAR'
   };
 
   constructor(private _koreAiService: KoreAiService, private _formBuilder: FormBuilder) { }
@@ -100,7 +101,7 @@ export class KoreAiComponent implements OnInit {
       },
       error => {
         console.error("Error in fetching data from KORE AI BOT URL");
-        return Observable.throw(error);
+        return observableThrowError(error);
       }
     );
   }

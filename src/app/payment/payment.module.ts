@@ -2,15 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentLayoutComponent } from './payment-layout.component';
 import { AppService, DynamicComponentService } from '../services';
-import { PaymentInputComponent } from './payment-input/payment-input.component';
-import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
-import { PaymentConfirmComponent } from './payment-confirm/payment-confirm.component';
-import { OnlinepaymentOffersComponent } from './onlinepayment-offers/onlinepayment-offers.component';
-import { PaymentComponent } from './payment.component';
+
+import {
+  PaymentComponent,
+  PaymentInputComponent,
+  PaymentVerifyComponent,
+  PaymentConfirmComponent,
+  OnlinepaymentOffersComponent
+ } from './index';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +36,7 @@ import { PaymentComponent } from './payment.component';
     PaymentComponent
   ],
   entryComponents: [
-    PaymentLayoutComponent,
+    PaymentComponent,
     PaymentInputComponent,
     PaymentVerifyComponent,
     PaymentConfirmComponent,

@@ -1,3 +1,15 @@
-<p>
-  payment works!
-</p>
+<main class="payment" data-component="payment" *ngIf="moduleLoaded" data-module="payment">
+    <ng-container [ngSwitch]="currentPaymentStep">
+        <ng-container *ngSwitchCase="paymentStep.PAYMENT_INPUT">
+            <app-payment-input></app-payment-input>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="paymentStep.PAYMENT_VERIFY">
+            <app-payment-verify></app-payment-verify>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="paymentStep.PAYMENT_CONFIRM">
+            <app-payment-confirm></app-payment-confirm>
+        </ng-container>
+    </ng-container>
+</main>

@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // dont use old http
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { Observable } from "rxjs";
+
+
+
+
+
 
 @Injectable()
 export class GlobalDataService {
 
-  private _apiBaseUrl: string = 'http://localhost:7878/';
+  private apiBaseUrl: string = 'http://localhost:7878/';
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCMSContent() {
-    return this._http.get(this._apiBaseUrl + 'content');
+    return this.http.get(this.apiBaseUrl + 'content');
   }
 
   getUsers() {
-    return this._http.get(this._apiBaseUrl + 'user');
+    return this.http.get(this.apiBaseUrl + 'user');
   }
 
 }

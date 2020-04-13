@@ -1,4 +1,6 @@
-export * from './index/ng-example.component';
+
+export * from './ng-example-layout.component';
+export * from './ng-example.component';
 export * from './template-data-binding/template-data-binding.component';
 export * from './angular-directive/angular-directive.component';
 export * from './pipes/pipes.component';
