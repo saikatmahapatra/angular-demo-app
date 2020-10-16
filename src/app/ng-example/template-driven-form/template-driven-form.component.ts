@@ -12,9 +12,9 @@ export class TemplateDrivenFormComponent implements OnInit {
   model: User[]; // model is a type of User
   cms: any = [];
   selectedSkills = [];
-  genders = [{ 'name': 'Male', 'value': 'M' }, { 'name': 'Female', 'value': 'F' }];
-  private cities = [{ 'name': 'Kolkata', 'value': 'CCU' }, { 'name': 'Delhi', 'value': 'DEL' }, { 'name': 'Chennai', 'value': 'CHN' }];
-  skillsets = [{ 'name': 'HTML', 'value': 'html' }, { 'name': 'JavaScript', 'value': 'js' }, { 'name': 'CSS', 'value': 'css' }];
+  genders = [{ name: 'Male', value: 'M' }, { name: 'Female', value: 'F' }];
+  private cities = [{ name: 'Kolkata', value: 'CCU' }, { name: 'Delhi', value: 'DEL' }, { name: 'Chennai', value: 'CHN' }];
+  skillsets = [{ name: 'HTML', value: 'html' }, { name: 'JavaScript', value: 'js' }, { name: 'CSS', value: 'css' }];
   constructor(
     private globalDataService: GlobalDataService,
     private appService: AppService,
