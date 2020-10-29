@@ -15,7 +15,7 @@ import {
 
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { PaymentStep } from '../../models';
+//import { PaymentStep } from '../../models';
 
 @Component({
   selector: 'app-payment-input',
@@ -27,7 +27,7 @@ export class PaymentInputComponent implements OnInit {
   moduleLoaded = false;
   errormessage: string = 'This module is temporarily unavailable';
   componentName: string = 'payment';
-  paymentStep = PaymentStep;
+  paymentStep = 'INPUT'; // INPUT|VERIFY|CONFIRM
   currentPaymentStep: any = undefined;
   state: any;
 

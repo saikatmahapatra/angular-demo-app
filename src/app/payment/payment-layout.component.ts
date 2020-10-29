@@ -10,11 +10,11 @@ import {
 import {
   AppService,
   DynamicComponentService,
-  ActionsService,
-  StateService,
-  SessionService
+  //ActionsService,
+  //StateService,
+  //SessionService
 } from '../services';
-import paymentActions from './actions';
+//import paymentActions from './actions';
 import { PaymentComponent } from './payment.component';
 import { PaymentInputComponent } from './payment-input/payment-input.component';
 import { PaymentVerifyComponent } from './payment-verify/payment-verify.component';
@@ -49,8 +49,8 @@ export class PaymentLayoutComponent implements OnInit {
   constructor(
     private appService: AppService,
     private dynamicComponentService: DynamicComponentService,
-    private actions: ActionsService,
-    private stateService: StateService,
+    //private actions: ActionsService,
+    p//rivate stateService: StateService,
     ) { }
 
   data: any;
@@ -59,21 +59,21 @@ export class PaymentLayoutComponent implements OnInit {
   state: any;
 
   ngOnInit() {
-    this.stateService.addReducers(paymentActions, 'payments');
+    //this.stateService.addReducers(paymentActions, 'payments');
     this.loadComponents();
-    this.stateService.states
-    .subscribe(state => {
-      this.state = state;
-      console.log(state);
-      if (state) {
-        this.actions.send({
-          type: 'PAYMENT_INITIALIZED',
-          value: {
-            refreshFlag: false
-          }
-        });
-      }
-    });
+    // this.stateService.states
+    // .subscribe(state => {
+    //   this.state = state;
+    //   console.log(state);
+    //   if (state) {
+    //     this.actions.send({
+    //       type: 'PAYMENT_INITIALIZED',
+    //       value: {
+    //         refreshFlag: false
+    //       }
+    //     });
+    //   }
+    // });
   }
 
   loadComponents() {

@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log('home ngAfterViewInit');
     this.appService.componentLoaded.emit(true);
     this.appService.scrollToTop();
   }

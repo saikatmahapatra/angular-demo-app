@@ -1,1 +1,5 @@
-<app-core></app-core>
+<!-- <app-core></app-core> -->
+<div class="container-fluid" [class.ui-body-disabled]="!loaded">
+    <span class="loader" [hidden]="loaded"></span>
+    <router-outlet></router-outlet>
+</div>
