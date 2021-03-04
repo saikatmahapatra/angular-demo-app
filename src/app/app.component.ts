@@ -16,12 +16,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.appService.someMethod();
-  }
-
-  ngAfterViewInit() {
-    console.log('app.component.ts:ngAfterViewInit called');
+    this.loaded = true;
+    console.log('app.component.ts:ngOnInit called');
     this.appService.componentLoaded.subscribe((data) => {
-      console.log('app.component.ts:ngAfterViewInit: ', data);
+      console.log('app.component.ts:ngOnInit: ', data);
       this.loaded = data;
       this.changeDect.detectChanges();
     });
