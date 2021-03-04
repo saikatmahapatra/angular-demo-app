@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.chat.closeChatWindow();
     this.getContents();
+    console.log(this.appService.getDeviceType());
   }
 
   ngAfterViewInit() {

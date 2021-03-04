@@ -1,4 +1,4 @@
-import { Inject, Injectable, EventEmitter, Output, HostListener} from '@angular/core';
+import { Inject, Injectable, EventEmitter, Output, HostListener } from '@angular/core';
 import { Response } from '@angular/http';
 import {
   HttpClient,
@@ -33,8 +33,6 @@ export class AppService {
   @Output() issubmitClicked = new EventEmitter<any>();
   @Output() currentStep = new EventEmitter<boolean>();
 
-
-
   @HostListener('window:resize', ['$event'])
 
   log(msg: any) {
@@ -65,7 +63,7 @@ export class AppService {
     return this.screenOrientation = this.screenWidth > this.screenHeight ? 'landscape' : 'portrait';
   }
   getDeviceType() {
-    let check = window.navigator.userAgent;
+    const check = window.navigator.userAgent;
     if (check.match(/Mobile/) && (check.match(/iPhone/) || check.match(/Android/))) {
       console.log('mobile');
       return 'mobile';
@@ -77,14 +75,14 @@ export class AppService {
       return 'tablet';
     }
   }
-  getScreenView() : string {
-    var width = window.screen.width;
-    var screenView = 'min';
+  getScreenView(): string {
+    const width: number = window.screen.width;
+    let screenView = 'min ';
     if (width >= 576 && width < 769) {
       screenView = 'small';
-    } else if (width >=769 && width < 1012) {
+    } else if (width >= 769 && width < 1012) {
       screenView = 'medium';
-    } else if (width >=1012 && width < 1200) {
+    } else if (width >= 1012 && width < 1200) {
       screenView = 'large';
     } else if (width >= 1200) {
       screenView = 'max';
@@ -92,7 +90,7 @@ export class AppService {
     return screenView;
   }
   getCookieValue(key: string) {
-    let cookie = document.cookie.split(';');
+    const cookie = document.cookie.split(';');
     for (let i = 0; i < cookie.length; i++) {
 
       if (cookie[i].trim().startsWith(key)) {

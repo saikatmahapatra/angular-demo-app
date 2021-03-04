@@ -4,7 +4,7 @@ import { AppService } from './services/app.service';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'app';
   version = VERSION;
   loaded = false;
@@ -12,16 +12,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private appService: AppService,
     private changeDect: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.appService.someMethod();
     this.loaded = true;
-    console.log('app.component.ts:ngOnInit called');
-    this.appService.componentLoaded.subscribe((data) => {
-      console.log('app.component.ts:ngOnInit: ', data);
-      this.loaded = data;
-      this.changeDect.detectChanges();
-    });
+    console.log('loaded = ' + this.loaded);
+    // this.appService.componentLoaded.subscribe((data: any) => {
+    //   console.log('loaded in subscribe = ' + data);
+    //   this.loaded = data;
+    //   this.changeDect.detectChanges();
+    // });
   }
 }
