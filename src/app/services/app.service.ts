@@ -50,6 +50,9 @@ export class AppService {
       console.error(msg);
     }
   }
+  testFn() {
+    return 'Im a test function';
+  }
   someMethod() {
     console.log('===========> someMethod() called from app.service.ts', this.componentLoaded);
   }
