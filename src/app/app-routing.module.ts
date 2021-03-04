@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'pages', loadChildren: 'src/app/page/page.module#PageModule' },
   { path: 'angular-example', loadChildren: 'src/app/ng-example/ng-example.module#NgExampleModule' },
   { path: 'user', loadChildren: 'src/app/user/user.module#UserModule' },
-  { path: 'payment', loadChildren: 'src/app/payment/payment.module#PaymentModule' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
