@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page',
-  templateUrl: './page.component.html'
+  templateUrl: './page.component.html',
+  styleUrls: []
 })
 export class PageComponent implements OnInit {
 

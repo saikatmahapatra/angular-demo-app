@@ -1,17 +1,21 @@
-<h1 class="h3 mb-3 font-weight-normal">Child Component</h1>
-    <div class="row example">
+<h1 class="h3 mb-3 font-weight-normal">Event Binding () - oneway, Property Binding [] - oneway, Twoway Binding [(ngModel)]="name"</h1>
+Remember that HTML attributes (name, value, id, class) and DOM properties (data-*) are different things, even when they have the same name.
+
+<div class="row example">
     <div class="col-md-12">
+
         <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Click this Button</button> {{clickMessage}}
 
-        <h4>Event Bubble</h4>
-        <div (click)="clickParentElm($event)" style="border:1px solid red; padding: 15px; margin: 15px;">
-            parent div
-            <div (click)="clickChildElm($event)" style="border:1px solid blue; padding: 15px; margin: 15px;">child div</div>
+        <input class="form-control my-4" type="text" name="username" placeholder="Enter Username" (keyup)="onInputKeyUp($event)" (focus)="onInputFocus($event)" (blur)="onInputBlur($event)"> {{keyUpInputData}}
+
+        <div class="my-4">
+            <h5>Property and attribute comparison</h5>
+            <input type="text" placeholder="first name" name="fname" [disabled]="isDisabled ? true : false">
+            <input type="text" placeholder="last name" name="lname" [attr.disabled]="isDisabled ? 'disabled' : 'null' ">
         </div>
-        <h4>Keyboard Events</h4>
-        <div class="form-group col-md-3">            
-            <label>Username</label>
-            <input class="form-control" type="text" name="username" placeholder="Enter Something" (keyup)="keyUpGetInputData($event)" (blur)="txtBlur($event)">            {{keyUpInputData}}
-        </div>
+
+        <button [attr.aria-label]="Submit">Submit</button>
+
+
     </div>
 </div>

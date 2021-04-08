@@ -8,11 +8,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { UserLayoutComponent } from './user-layout.component';
 
 const routes: Routes = [
   {
-    path: '', component: UserLayoutComponent,
+    path: '', component: UserComponent,
     children: [
       { path: '', component: LoginComponent },
       { path: 'login', component: LoginComponent },

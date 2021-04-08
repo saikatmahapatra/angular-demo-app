@@ -10,36 +10,30 @@ export class FormInputBindingComponent implements OnInit {
   keyUpInputData = '';
   btnHidden = true;
   buttonCss = 'btn-primary';
+  isDisabled: boolean = false;
   constructor(private appService: AppService) { }
 
   ngOnInit() {
   }
 
-  /**
-   * Form Interation - Click, Keyup, Keypress etc
-   */
   buttonClick(event: any) {
     this.appService.log(event);
     this.clickMessage = 'You have clicked button value';
-    //window.alert("Button Clicked");
   }
 
-  keyUpGetInputData(event) {
+  onInputFocus(event) {
     this.appService.log(event);
-    this.keyUpInputData = event.target.value;
+    this.keyUpInputData = 'Focus Event===>' + event.target.value;
+  }
+
+  onInputKeyUp(event) {
+    this.appService.log(event);
+    this.keyUpInputData = 'Keyup Event===>' + event.target.value;
     this.appService.log(this.keyUpInputData);
   }
 
-  clickParentElm(e) {
-    this.appService.log(e);
-    this.appService.log("Parent Div Clicked");
-    window.alert("Parent Div Clicked");
-  }
-
-  clickChildElm(e) {
-    this.appService.log(e);
-    e.stopPropagation(); // to prevent event bubbling
-    this.appService.log("Child Div Clicked");
-    window.alert("Child Div Clicked");
+  onInputBlur(event) {
+    this.appService.log(event);
+    this.keyUpInputData = 'Blur Event===>' + event.target.value;
   }
 }

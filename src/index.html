@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <base href="/">
-    <link type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         .loader {
@@ -23,58 +22,14 @@
             margin: -16px 0 0 -16px;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
     <app-root>
         <span class="loader-wrapper">
-      <span class="loader"></span>
+          <span class="loader"></span>
         </span>
     </app-root>
 </body>
-
-<script>
-    var styleConfig = {
-        themeName: [{
-            themeId: "blue",
-            cssName: "blue_stye"
-        }, {
-            themeId: "red",
-            cssName: "red_style"
-        }]
-    }
-    var a = document.createElement('link');
-    a.setAttribute('type', 'text/css');
-    a.setAttribute('rel', 'stylesheet');
-
-    var b = document.createElement('link');
-    b.setAttribute('rel', 'shortcut icon');
-    b.setAttribute('type', 'image/x-icon');
-
-    document.addEventListener('DOMContentLoaded', function() {
-        setStylesheet();
-    });
-
-    function setStylesheet() {
-        var queryparams = window.location.search.substring(1);
-        var querys = queryparams.split('&');
-        for (var i = 0; i < querys.length; i++) {
-            var siteid = querys[i].split('=');
-            if (siteid[0] == 'themeId') {
-                for (var j = 0; j < styleConfig.themeName.length; j++) {
-                    if (siteid[1].toLowerCase() == styleConfig.themeName[j].themeId.toLowerCase()) {
-                        a.setAttribute('href', 'assets/css/' + styleConfig.themeName[j].cssName + '/' + styleConfig.themeName[j].cssName + '.css');
-                        b.setAttribute('href', 'assets/images/' + styleConfig.themeName[j].cssName + '/icons/' + styleConfig.themeName[j].cssName + '-favicon.ico');
-                        document.querySelector('head').appendChild(b);
-                        document.querySelector('head').appendChild(a);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-</script>
 
 </html>
