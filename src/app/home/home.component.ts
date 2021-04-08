@@ -19,7 +19,6 @@ import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
-  title = 'Angular';
   cms: any = [];
   error: any = [];
   pageData: any = [];
