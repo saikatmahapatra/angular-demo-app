@@ -1,8 +1,8 @@
-// Import Custom variable first
-@import 'vars';
-// Import variables to override bootstrap 4 built in variables
+//Override Bootstrap framework's variables here (before importing Bootstrap's _variables.scss)
 @import 'customize-bootstrap';
-// Bootstrap 4.1.3 SCSS
-@import '../vendors/bootstrap/scss/bootstrap.scss';
-//Custom CSS - This App Specific CSS
-@import '_app';
+// Import user defined custom variables
+@import "vars";
+// Import Bootstrap.scss so that bootstrap css rendered with customized styles.
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+// Import Custom SCSS
+@import "app";

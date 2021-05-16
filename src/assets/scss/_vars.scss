@@ -1,54 +1,7 @@
-// Primary font
-// $body-font: 'Lato',
-// -apple-system,
-// BlinkMacSystemFont,
-// "Segoe UI",
-// Roboto,
-// "Helvetica Neue",
-// Arial,
-// sans-serif;
-//
-// Color system
-//
-// stylelint-disable
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
-// BS4 Default
-$blue: #007bff;
-$indigo: #6610f2;
-$purple: #6f42c1;
-$pink: #e83e8c;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #28a745;
-$teal: #20c997;
-$cyan: #17a2b8;
-// Microsoft metro menu color
-$color_purple: #5133AB;
-$color_red: #AC193D;
-$color_orange: #DC572E;
-$color_green: #00A600;
-$color_blue: #2672EC;
-$bootstrap3_blue: #337ab7;
-//Generate Light Dark Colors
-$gray-lightest: lighten($black, 97.25%);
-$gray-lighter: lighten($black, 93.5%);
-$gray-light: lighten($black, 60%);
-$gray: lighten($black, 33.5%);
-$gray-dark: lighten($black, 20%);
-$gray-darker: lighten($black, 13.5%);
-//Override primary color (Nav, Button, Link)
-$primary-color: $blue;
-// Complementry color is used to indecate the loading bar on the top
-// of the page with pace.js plugin
-$complementry-color: adjust_hue($primary-color, 180);
+// Import Bootstrap variables for use within theme
+@import "../../../node_modules/bootstrap/scss/functions.scss";
+@import "../../../node_modules/bootstrap/scss/variables.scss";
+//-----------------------------------------------------------------------------------
+// Custom user defined variables- You can use Bootstrap defined functions, variables
+//-----------------------------------------------------------------------------------
+$light_blue: lighten($blue, 30%);
