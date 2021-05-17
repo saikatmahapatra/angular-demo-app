@@ -24,5 +24,8 @@ Remember that HTML attributes (name, value, id, class) and DOM properties (data-
         <button class="btn btn-primary" [attr.aria-label]="Submit">Submit</button>
 
 
+        <input type="text" (input)="getValue($event)" class="form-control" placeholder="test">
+        <div>value = {{inputVal}}</div>
+
     </div>
 </div>

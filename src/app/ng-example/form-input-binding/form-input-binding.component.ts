@@ -12,6 +12,7 @@ export class FormInputBindingComponent implements OnInit {
   buttonCss = 'btn-primary';
   isDisabled: boolean = false;
   userName = 'johnsmith';
+  inputVal: any;
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -22,8 +23,7 @@ export class FormInputBindingComponent implements OnInit {
     this.clickMessage = 'You have clicked button value';
   }
 
-  onIn
-putFocus(event) {
+  onInputFocus(event) {
     this.appService.log(event);
     this.keyUpInputData = 'Focus Event===>' + event.target.value;
   }
@@ -38,4 +38,10 @@ putFocus(event) {
     this.appService.log(event);
     this.keyUpInputData = 'Blur Event===>' + event.target.value;
   }
+
+  getValue(event): string {
+    this.inputVal =  (event.target as HTMLInputElement).value;
+    return this.inputVal;
+  }
+
 }
