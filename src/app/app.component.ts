@@ -1,5 +1,6 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
 import { AppService } from './services/app.service';
+import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
@@ -11,17 +12,30 @@ export class AppComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private changeDect: ChangeDetectorRef
-  ) { }
+    private changeDect: ChangeDetectorRef,
+    private router: Router
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      console.log('Router Event', event);
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loaded = false;
+          break;
+        }
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loaded = true;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     this.appService.someMethod();
-    this.loaded = true;
-    console.log('loaded = ' + this.loaded);
-    // this.appService.componentLoaded.subscribe((data: any) => {
-    //   console.log('loaded in subscribe = ' + data);
-    //   this.loaded = data;
-    //   this.changeDect.detectChanges();
-    // });
   }
 }
