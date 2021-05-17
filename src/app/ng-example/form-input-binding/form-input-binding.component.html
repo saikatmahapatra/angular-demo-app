@@ -10,11 +10,18 @@ Remember that HTML attributes (name, value, id, class) and DOM properties (data-
 
         <div class="my-4">
             <h5>Property and attribute comparison</h5>
-            <input type="text" placeholder="first name" name="fname" [disabled]="isDisabled ? true : false">
-            <input type="text" placeholder="last name" name="lname" [attr.disabled]="isDisabled ? 'disabled' : 'null' ">
+            <label>disabled property <code>[disabled]="isDisabled ? true : false"</code></label>
+            <input class="form-control" type="text" placeholder="first name" name="fname" [disabled]="isDisabled ? true : false">
+
+            <label>disabled attribute <code>[attr.disabled]="isDisabled ? 'disabled' : 'null' "</code></label>
+            <input class="form-control" type="text" placeholder="last name" name="lname" [attr.disabled]="isDisabled ? 'disabled' : 'null' ">
+
+            <label>value property binding <code>[value]="userName"</code></label>
+            <input type="text" class="form-control" [value]="userName" placeholder="name">
+
         </div>
 
-        <button [attr.aria-label]="Submit">Submit</button>
+        <button class="btn btn-primary" [attr.aria-label]="Submit">Submit</button>
 
 
     </div>

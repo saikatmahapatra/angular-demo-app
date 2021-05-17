@@ -11,6 +11,7 @@ export class FormInputBindingComponent implements OnInit {
   btnHidden = true;
   buttonCss = 'btn-primary';
   isDisabled: boolean = false;
+  userName = 'johnsmith';
   constructor(private appService: AppService) { }
 
   ngOnInit() {
@@ -21,7 +22,8 @@ export class FormInputBindingComponent implements OnInit {
     this.clickMessage = 'You have clicked button value';
   }
 
-  onInputFocus(event) {
+  onIn
+putFocus(event) {
     this.appService.log(event);
     this.keyUpInputData = 'Focus Event===>' + event.target.value;
   }
