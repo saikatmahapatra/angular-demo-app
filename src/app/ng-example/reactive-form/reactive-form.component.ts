@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { User } from '../../models';
 import { AppService, GlobalDataService, ValidationService } from '../../services';
-
+import * as _ from 'lodash';
 // https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',
@@ -12,7 +12,7 @@ import { AppService, GlobalDataService, ValidationService } from '../../services
 export class ReactiveFormComponent implements OnInit {
   cms: any = [];
   userData: User;
-  selectedSkills = [];
+  selectedSkillsNames = [];
   genders = [
     { name: 'Male', value: 'male' },
     { name: 'Female', value: 'female' }
@@ -22,9 +22,12 @@ export class ReactiveFormComponent implements OnInit {
     { name: 'Delhi', value: 'delhi' },
     { name: 'Chennai', value: 'chennai' },
   ];
-  skillsets = [
+  skillsets: any = [
     { name: 'HTML', value: 'html' },
-    { name: 'JavaScript', value: 'js' },
+    { name: 'JavaScript', value: 'js', selected: true },
+    { name: 'Python', value: 'python', selected: true },
+    { name: 'PHP', value: 'php', selected: false },
+    { name: 'MySQL', value: 'mysql'},
     { name: 'CSS', value: 'css' }
   ];
   signUpForm: FormGroup; // declare that signUpForm is type of FormGroup
@@ -53,9 +56,38 @@ export class ReactiveFormComponent implements OnInit {
       confirmPassword: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
-      skills: new FormControl(),
+      skills: this.createFormArraySkills(this.skillsets),
       termsAccepted: new FormControl(false, [Validators.requiredTrue])
     });
+    this.onCBChange();
+  }
+
+  createFormArraySkills(dataArray) {
+    const arr = dataArray.map(item => {
+      return new FormControl(item.selected || false);
+    });
+    return new FormArray(arr);
+  }
+
+  onCBChange() {
+    this.selectedSkillsNames = _.map(
+      this.signUpForm.controls.skills['controls'],
+      (skill, i) => {
+        return skill.value && this.skillsets[i].value;
+      }
+    );
+    this.getSelectedSkillsName();
+  }
+
+  getSelectedSkillsName() {
+    this.selectedSkillsNames = _.filter(
+      this.selectedSkillsNames,
+      (skill) => {
+        if (skill !== false) {
+          return skill;
+        }
+      }
+    );
   }
 
   addUser() {

@@ -65,14 +65,22 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                     <label>Skills</label>
-                    <div class="form-check-inline" *ngFor="let skill of skillsets; let i = index;">
-                        <input type="checkbox" formControlName="skills" value="{{skill.value}}" class="form-check-input" id="{{skill.value}}">
-                        <label class="form-check-label" for="{{skill.value}}">{{skill.name}}</label>
+                    <div class="form-check-inline" *ngFor="let skill of signUpForm.controls.skills.controls; let i=index;">
+                        <input type="checkbox" id="{{skillsets[i].value}}" [formControl]="skill" (change)="onCBChange(skill, skillsets[i].name);">
+                        <label class="form-check-label" for="{{skillsets[i].value}}"> {{skillsets[i].name}}</label>
                     </div>
+
+                    <div>Selected Skills</div>
+                    <label class="mx-2" *ngFor="let skill of selectedSkillsNames;">
+                        {{skill}}
+                    </label>
                 </div>
-                <div class="form-group col-md-6">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     <div class="form-check">
                         <input type="checkbox" formControlName="termsAccepted" value="a" class="form-check-input" id="terms">
                         <label class="form-check-label" for="terms">I have read terms & conditions</label>
@@ -80,6 +88,7 @@
                     </div>
                 </div>
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default">Cancel</button>
         </form>
