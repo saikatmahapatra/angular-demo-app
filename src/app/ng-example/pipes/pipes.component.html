@@ -1,10 +1,9 @@
-<h1 class="h3 mb-3 font-weight-normal">Pipes</h1>
+<h1 class="h2 mb-3 font-weight-normal">Pipes</h1>
 <div class="row example">
 
     <div class="col-md-12">
         <h6>Built-in pipes |</h6>
-        <p>Angular comes with a stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe.
-            They are all available for use in any template.</p>
+        <p>Angular comes with a stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe. They are all available for use in any template.</p>
 
         <table class="table">
             <thead>
@@ -60,7 +59,7 @@
                     <th [class.active]="order === 'id'" (click)="setOrder('id')">ID <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
                     <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">Name <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
                     <th [class.active]="order === 'age'" (click)="setOrder('age')">Age <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
-                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>                    
+                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -68,7 +67,7 @@
                     <td>{{ student.id }}</td>
                     <td>{{ student.name }}</td>
                     <td>{{ student.age }}</td>
-                    <td>{{ student.mobile }}</td>                    
+                    <td>{{ student.mobile }}</td>
                 </tr>
             </tbody>
         </table>
