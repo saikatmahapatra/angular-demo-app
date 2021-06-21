@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../services';
+import { NgExampleService } from '../ng-example.service';
 
 @Component({
   selector: 'app-angular-services',
   templateUrl: './angular-services.component.html',
-  providers: [AppService]
+  providers: [NgExampleService]
 })
 export class AngularServicesComponent implements OnInit {
-  subtitle = 'This is a sub title';
-  constructor(private appService: AppService) { }
-
-  testSomeMethod(str){
-    this.subtitle = str+' - '+this.appService.someMethod();
-  }
+  subtitle = 'This is AngularServicesComponent. ';
+  constructor(private mySvc: NgExampleService) { }
 
   ngOnInit() {
-    this.testSomeMethod('Welcome');
+    this.subtitle += this.mySvc.test();
   }
 
 }
