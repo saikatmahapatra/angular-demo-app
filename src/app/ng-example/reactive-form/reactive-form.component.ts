@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 export class ReactiveFormComponent implements OnInit {
   cms: any = [];
   userData: User;
-  selectedSkillsNames = [];
+  selectedSkills = [];
   genders = [
     { name: 'Male', value: 'male' },
     { name: 'Female', value: 'female' }
@@ -70,7 +70,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onCBChange() {
-    this.selectedSkillsNames = _.map(
+    this.selectedSkills = _.map(
       this.signUpForm.controls.skills['controls'],
       (skill, i) => {
         return skill.value && this.skillsets[i].value;
@@ -80,8 +80,8 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   getSelectedSkillsName() {
-    this.selectedSkillsNames = _.filter(
-      this.selectedSkillsNames,
+    this.selectedSkills = _.filter(
+      this.selectedSkills,
       (skill) => {
         if (skill !== false) {
           return skill;

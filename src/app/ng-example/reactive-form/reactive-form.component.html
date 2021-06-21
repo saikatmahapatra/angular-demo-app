@@ -71,11 +71,10 @@
                         <input type="checkbox" id="{{skillsets[i].value}}" [formControl]="skill" (change)="onCBChange(skill, skillsets[i].name);">
                         <label class="form-check-label" for="{{skillsets[i].value}}"> {{skillsets[i].name}}</label>
                     </div>
-
-                    <div>Selected Skills</div>
-                    <label class="mx-2" *ngFor="let skill of selectedSkillsNames;">
-                        {{skill}}
-                    </label>
+                    <div class="my-2">You have selected : <span class="mx-2" *ngFor="let selectedSkill of selectedSkills;">
+                        {{selectedSkill}}
+                    </span>
+                    </div>
                 </div>
             </div>
 
