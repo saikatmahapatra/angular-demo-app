@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {
     this.router.events.subscribe((event: Event) => {
-      console.log('Router Event', event);
+      //console.log('Router Event', event);
       switch (true) {
         case event instanceof NavigationStart: {
           this.loaded = false;
