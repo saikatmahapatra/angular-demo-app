@@ -1,11 +1,6 @@
 import { Inject, Injectable, EventEmitter, Output, HostListener } from '@angular/core';
-import { Response } from '@angular/http';
-import {
-  HttpClient,
-  HttpHeaders
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError, forkJoin, BehaviorSubject } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Injectable({
@@ -14,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   providedIn: 'root'
 })
 
-export class AppService {
+export class CommonService {
 
   constructor(
     private http: HttpClient,

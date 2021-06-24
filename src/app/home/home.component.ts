@@ -10,12 +10,12 @@ import {
   ViewContainerRef,
   VERSION
 } from '@angular/core';
-import { AppService, GlobalDataService } from '../services';
+import { CommonService, BackendService } from '../services';
 import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  providers: [AppService, GlobalDataService]
+  providers: [CommonService, BackendService]
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
@@ -24,20 +24,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   pageData: any = [];
   @ViewChild(KoreAiComponent) private chat: KoreAiComponent;
   constructor(
-    private globalDataService: GlobalDataService,
-    private appService: AppService
+    private globalDataService: BackendService,
+    private commonSvc: CommonService
     ) { }
 
   ngOnInit() {
     this.chat.closeChatWindow();
     this.getContents();
-    console.log(this.appService.getDeviceType());
+    console.log(this.commonSvc.getDeviceType());
   }
 
   ngAfterViewInit() {
     console.log('home ngAfterViewInit');
-    this.appService.componentLoaded.emit(true);
-    this.appService.scrollToTop();
+    this.commonSvc.componentLoaded.emit(true);
+    this.commonSvc.scrollToTop();
   }
 
   openChatWindow(event) {

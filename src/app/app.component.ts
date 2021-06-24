@@ -1,5 +1,5 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
-import { AppService } from './services/app.service';
+import { CommonService } from './services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   loaded = false;
 
   constructor(
-    private appService: AppService,
+    private commonSvc: CommonService,
     private changeDect: ChangeDetectorRef,
     private router: Router
   ) {
@@ -36,6 +36,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appService.someMethod();
+    this.commonSvc.someMethod();
   }
 }

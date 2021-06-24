@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../services';
+import { CommonService } from '../../services';
 @Component({
   selector: 'app-form-input-binding',
   templateUrl: './form-input-binding.component.html',
@@ -10,32 +10,32 @@ export class FormInputBindingComponent implements OnInit {
   keyUpInputData = '';
   btnHidden = true;
   buttonCss = 'btn-primary';
-  isDisabled: boolean = false;
+  isDisabled = false;
   userName = 'johnsmith';
   inputVal: any;
-  constructor(private appService: AppService) { }
+  constructor(private commonSvc: CommonService) { }
 
   ngOnInit() {
   }
 
   buttonClick(event: any) {
-    this.appService.log(event);
+    this.commonSvc.log(event);
     this.clickMessage = 'You have clicked button value';
   }
 
   onInputFocus(event) {
-    this.appService.log(event);
+    this.commonSvc.log(event);
     this.keyUpInputData = 'Focus Event===>' + event.target.value;
   }
 
   onInputKeyUp(event) {
-    this.appService.log(event);
+    this.commonSvc.log(event);
     this.keyUpInputData = 'Keyup Event===>' + event.target.value;
-    this.appService.log(this.keyUpInputData);
+    this.commonSvc.log(this.keyUpInputData);
   }
 
   onInputBlur(event) {
-    this.appService.log(event);
+    this.commonSvc.log(event);
     this.keyUpInputData = 'Blur Event===>' + event.target.value;
   }
 

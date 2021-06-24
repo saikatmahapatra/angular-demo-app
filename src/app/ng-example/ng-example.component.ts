@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../services';
+import { CommonService } from '../services';
 @Component({
   selector: 'app-example',
   templateUrl: './ng-example.component.html',
@@ -9,18 +9,18 @@ export class NgExampleComponent implements OnInit {
   title = 'Angular4';
   subtitle = 'Fundamental of Angular 2';
 
-  constructor(private appService: AppService) { }
+  constructor(private commonSvc: CommonService) { }
 
   /**
    * Life cycle hooks
    */
   ngOnInit() {
-    this.appService.log("ngOnInit() called");
+    this.commonSvc.log("ngOnInit() called");
   }
   ngAfterViewInit() {
-    this.appService.log("ngAfterViewInit() called");
+    this.commonSvc.log("ngAfterViewInit() called");
   }
   ngOnChanges() {
-    this.appService.log("ngOnChanges() called");
+    this.commonSvc.log("ngOnChanges() called");
   }
 }

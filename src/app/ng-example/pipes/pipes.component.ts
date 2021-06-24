@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { AppService } from '../../services';
+import { CommonService } from '../../services';
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
-  providers: [AppService]
+  providers: [CommonService]
 })
 export class PipesComponent implements OnInit {
 
@@ -12,7 +12,7 @@ export class PipesComponent implements OnInit {
   name = 'Saikat Mahapatra';
   productPrice = 1999.3;
   homeLoan = 7;
-  constructor(private appService: AppService) { }
+  constructor(private commonSvc: CommonService) { }
 
 
   /**
@@ -39,7 +39,7 @@ export class PipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.appService.log('ngOnInit');
+    this.commonSvc.log('ngOnInit');
   }
 
 }

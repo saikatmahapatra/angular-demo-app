@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../services';
+import { CommonService } from '../../services';
 @Component({
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',
@@ -12,10 +12,10 @@ export class TemplateDataBindingComponent implements OnInit {
     { "name": "Mango", "color": "green" },
     { "name": "Apple", "color": "Red" }
   ];
-  constructor(private appService: AppService) { }
+  constructor(private commonSvc: CommonService) { }
 
   ngOnInit() {
-    this.appService.log("ngOnInit");
+    this.commonSvc.log("ngOnInit");
   }
 
   getVal(){
@@ -23,7 +23,7 @@ export class TemplateDataBindingComponent implements OnInit {
   }
 
   getSomeFnSvc() {
-    this.appService.testFn();
+    this.commonSvc.testFn();
   }
 
 }

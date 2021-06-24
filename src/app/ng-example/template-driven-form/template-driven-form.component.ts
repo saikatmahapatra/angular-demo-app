@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/index'; // Import the user class for form example
-import { AppService, GlobalDataService, ValidationService } from '../../services';
+import { CommonService, BackendService, ValidationService } from '../../services';
 @Component({
   selector: 'app-template-driven-form',
   templateUrl: './template-driven-form.component.html',
-  providers: [AppService, GlobalDataService, ValidationService]
+  providers: [CommonService, BackendService, ValidationService]
 })
 
 
@@ -16,8 +16,8 @@ export class TemplateDrivenFormComponent implements OnInit {
   private cities = [{ name: 'Kolkata', value: 'CCU' }, { name: 'Delhi', value: 'DEL' }, { name: 'Chennai', value: 'CHN' }];
   skillsets = [{ name: 'HTML', value: 'html' }, { name: 'JavaScript', value: 'js' }, { name: 'CSS', value: 'css' }];
   constructor(
-    private globalDataService: GlobalDataService,
-    private appService: AppService,
+    private globalDataService: BackendService,
+    private commonSvc: CommonService,
     private validator: ValidationService) { }
   formSubmitted = false;
 

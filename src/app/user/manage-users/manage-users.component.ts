@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../services/index';
-import { GlobalDataService } from '../../services/index';
+import { CommonService } from '../../services/index';
+import { BackendService } from '../../services/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
-  providers: [GlobalDataService]
+  providers: [BackendService]
 })
 export class ManageUsersComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private globalDataService: GlobalDataService, public formBuilder: FormBuilder, private appService: AppService) {
+  constructor(private globalDataService: BackendService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
 
   }
 
@@ -72,19 +72,19 @@ export class ManageUsersComponent implements OnInit {
   }
   saveUserData(model, isValid: boolean) {
     this.submitted = true;
-    this.appService.log(model);
-    this.appService.log("Form Valid =" + isValid);
-    this.appService.log("Name Error=" + this.saveUserForm.controls['name'].errors);
-    this.appService.log("Email Error=" + this.saveUserForm.controls['email'].errors);
-    //this.appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
-    //this.appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
-    //this.appService.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
+    this.commonSvc.log(model);
+    this.commonSvc.log("Form Valid =" + isValid);
+    this.commonSvc.log("Name Error=" + this.saveUserForm.controls['name'].errors);
+    this.commonSvc.log("Email Error=" + this.saveUserForm.controls['email'].errors);
+    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
+    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
+    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
     //this.postData = this.saveUserForm.value;
-    //this.appService.log(this.postData);
+    //this.commonSvc.log(this.postData);
   }
 
   isInvalidEmail(control) {
-    //this.appService.log("Control=", control.value);
+    //this.commonSvc.log("Control=", control.value);
     // if(control.value.lenght>0){
     //return {isInvalidEmail:true};
     // }
