@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   pageData: any = [];
   @ViewChild(KoreAiComponent) private chat: KoreAiComponent;
   constructor(
-    private globalDataService: BackendService,
+    private backendSvc: BackendService,
     private commonSvc: CommonService
     ) { }
 
@@ -32,6 +32,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.chat.closeChatWindow();
     this.getContents();
     console.log(this.commonSvc.getDeviceType());
+    this.test();
+  }
+
+  test() {
+    this.backendSvc.createUsers({name: 'XXX', email: 'aaaa@aaa.com', password: 'aaaaa'});
   }
 
   ngAfterViewInit() {
@@ -46,7 +51,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getContents() {
-    this.globalDataService.getCMSContent().subscribe(
+    this.backendSvc.getCMSContent().subscribe(
       data => {
         this.cms = data;
         this.pageData = this.cms[0].page.home;

@@ -18,4 +18,8 @@ export class BackendService {
     return this.http.get(this.APIBaseURL + 'user');
   }
 
+  createUsers(data) {
+    return this.http.post(this.APIBaseURL + 'user', data);
+  }
+
 }

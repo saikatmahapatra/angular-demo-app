@@ -16,7 +16,7 @@ export class TemplateDrivenFormComponent implements OnInit {
   private cities = [{ name: 'Kolkata', value: 'CCU' }, { name: 'Delhi', value: 'DEL' }, { name: 'Chennai', value: 'CHN' }];
   skillsets = [{ name: 'HTML', value: 'html' }, { name: 'JavaScript', value: 'js' }, { name: 'CSS', value: 'css' }];
   constructor(
-    private globalDataService: BackendService,
+    private backendSvc: BackendService,
     private commonSvc: CommonService,
     private validator: ValidationService) { }
   formSubmitted = false;

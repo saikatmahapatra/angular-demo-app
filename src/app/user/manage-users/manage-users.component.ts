@@ -16,7 +16,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private globalDataService: BackendService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
+  constructor(private backendSvc: BackendService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
 
   }
 
@@ -51,7 +51,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.globalDataService.getUsers().subscribe(
+    this.backendSvc.getUsers().subscribe(
       data => {
         this.userList = data;
       }
@@ -60,7 +60,7 @@ export class ManageUsersComponent implements OnInit {
 
   showDetails(e) {
     e.preventDefault();
-    alert("Show Details");
+    alert('details');
   }
 
   subcribeToFormChanges() {
