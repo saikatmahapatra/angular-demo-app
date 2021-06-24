@@ -1,107 +1,124 @@
 {
-  "hospitals": [
-    {
-      "id": 1,
-      "hospitalname": "KIMS-123",
-      "contactnumber": "9632587410"
-    },
-    {
-      "id": 2,
-      "hospitalname": "CSI Mission Hospital",
-      "contactnumber": "9632587410"
-    },
-    {
-      "hospitalname": "ILS Hospital, Dumdum Kol 70002",
-      "contactnumber": "9999999999",
-      "id": 3
-    },
-    {
-      "hospitalname": "XIIMS Hospital Kol",
-      "contactnumber": "7878787878",
-      "id": 4
-    },
-    {
-      "hospitalname": "Fortis Hospital",
-      "contactnumber": "3738738738",
-      "id": 5
-    },
-    {
-      "hospitalname": "AMRI Hospital Kol",
-      "contactnumber": "3748573857",
-      "id": 6
-    }
-  ],
-  "departments": [
-    {
-      "id": 1,
-      "departmentname": "nephrology",
-      "head": "Dr. A P Kulashekhar",
-      "contactnumber": "9876543210",
-      "hospitalId": 1,
-      "hospitalname": "KIMS"
-    },
-    {
-      "id": 2,
-      "departmentname": "neurology",
-      "head": "Dr.B Raj Kumar",
-      "contactnumber": "9876543210",
-      "hospitalId": 1,
-      "hospitalname": "KIMS"
-    },
-    {
-      "id": 3,
-      "departmentname": "cardiology",
-      "head": "Dr. L Sri Devi",
-      "contactnumber": "9876543210",
-      "hospitalId": 1,
-      "hospitalname": "KIMS"
-    },
-    {
-      "id": 4,
-      "departmentname": "ENT",
-      "head": "Dr. K Ram Prasad",
-      "contactnumber": "9876543210",
-      "hospitalId": 2,
-      "hospitalname": "CSI Mission Hospital"
-    },
-    {
-      "id": 5,
-      "departmentname": "opthalmology",
-      "head": "Dr. J Sirisha",
-      "contactnumber": "9876543210",
-      "hospitalId": 2,
-      "hospitalname": "CSI Mission Hospital"
-    },
-    {
-      "id": 6,
-      "departmentname": "opthalmology",
-      "head": "Dr. J Sirisha",
-      "contactnumber": "9876543210",
-      "hospitalId": 4,
-      "hospitalname": "XIIMS Hospital Kol"
-    },
-    {
-      "id": 7,
-      "departmentname": "ENT",
-      "head": "Dr. J SS",
-      "contactnumber": "9876543210",
-      "hospitalId": 5,
-      "hospitalname": "Fortis Hospital"
-    },
-    {
-      "id": 8,
-      "departmentname": "Heart",
-      "head": "Dr. J ABC",
-      "contactnumber": "9876543210",
-      "hospitalId": 6,
-      "hospitalname": "AMRI Hospital Kol"
-    },
-    {
-      "hospitalId": "1",
-      "departmentname": "TEST",
-      "head": "oom",
-      "contactnumber": "9808098080",
-      "id": 9
-    }
-  ]
+    "posts": [{
+        "id": "1",
+        "title": "Angular",
+        "subtitle": "This is a project of Angular 5",
+        "heading_cli_cmds": "Angular CLI Commands",
+        "cli_commands": [
+            { "scafold": "Component", "command": "ng g component my-new-component", "url": "https://github.com/angular/angular-cli/wiki/generate-component" },
+            { "scafold": "Component (without directory)", "command": "ng g component my-new-component --flat", "url": "https://github.com/angular/angular-cli/wiki/generate-component" },
+            { "scafold": "Directive", "command": "ng g directive my-new-directive", "url": "https://github.com/angular/angular-cli/wiki/generate-directive" },
+            { "scafold": "Pipe", "command": "ng g pipe my-new-pipe", "url": "https://github.com/angular/angular-cli/wiki/generate-pipe" },
+            { "scafold": "Class", "command": "ng g class my-new-class", "url": "https://github.com/angular/angular-cli/wiki/generate-class" },
+            { "scafold": "Service", "command": "ng g service my-new-service", "url": "https://github.com/angular/angular-cli/wiki/generate-service" },
+            { "scafold": "Guard", "command": "ng g guard my-new-guard", "url": "https://github.com/angular/angular-cli/wiki/generate-guard" },
+            { "scafold": "Interface", "command": "ng g interface my-new-interface", "url": "https://github.com/angular/angular-cli/wiki/generate-interface" },
+            { "scafold": "Enum", "command": "ng g enum my-new-enum", "url": "https://github.com/angular/angular-cli/wiki/generate-enum " },
+            { "scafold": "Module", "command": "ng g module my-module", "url": "https://github.com/angular/angular-cli/wiki/generate-module" },
+            { "scafold": "Module (with routing module)", "command": "ng g module my-module --routing", "url": "https://github.com/angular/angular-cli/wiki/generate-module" }
+        ]
+    }],
+    "hospitals": [{
+            "id": 1,
+            "hospitalname": "KIMS-123",
+            "contactnumber": "9632587410"
+        },
+        {
+            "id": 2,
+            "hospitalname": "CSI Mission Hospital",
+            "contactnumber": "9632587410"
+        },
+        {
+            "hospitalname": "ILS Hospital, Dumdum Kol 70002",
+            "contactnumber": "9999999999",
+            "id": 3
+        },
+        {
+            "hospitalname": "XIIMS Hospital Kol",
+            "contactnumber": "7878787878",
+            "id": 4
+        },
+        {
+            "hospitalname": "Fortis Hospital",
+            "contactnumber": "3738738738",
+            "id": 5
+        },
+        {
+            "hospitalname": "AMRI Hospital Kol",
+            "contactnumber": "3748573857",
+            "id": 6
+        }
+    ],
+    "departments": [{
+            "id": 1,
+            "departmentname": "nephrology",
+            "head": "Dr. A P Kulashekhar",
+            "contactnumber": "9876543210",
+            "hospitalId": 1,
+            "hospitalname": "KIMS"
+        },
+        {
+            "id": 2,
+            "departmentname": "neurology",
+            "head": "Dr.B Raj Kumar",
+            "contactnumber": "9876543210",
+            "hospitalId": 1,
+            "hospitalname": "KIMS"
+        },
+        {
+            "id": 3,
+            "departmentname": "cardiology",
+            "head": "Dr. L Sri Devi",
+            "contactnumber": "9876543210",
+            "hospitalId": 1,
+            "hospitalname": "KIMS"
+        },
+        {
+            "id": 4,
+            "departmentname": "ENT",
+            "head": "Dr. K Ram Prasad",
+            "contactnumber": "9876543210",
+            "hospitalId": 2,
+            "hospitalname": "CSI Mission Hospital"
+        },
+        {
+            "id": 5,
+            "departmentname": "opthalmology",
+            "head": "Dr. J Sirisha",
+            "contactnumber": "9876543210",
+            "hospitalId": 2,
+            "hospitalname": "CSI Mission Hospital"
+        },
+        {
+            "id": 6,
+            "departmentname": "opthalmology",
+            "head": "Dr. J Sirisha",
+            "contactnumber": "9876543210",
+            "hospitalId": 4,
+            "hospitalname": "XIIMS Hospital Kol"
+        },
+        {
+            "id": 7,
+            "departmentname": "ENT",
+            "head": "Dr. J SS",
+            "contactnumber": "9876543210",
+            "hospitalId": 5,
+            "hospitalname": "Fortis Hospital"
+        },
+        {
+            "id": 8,
+            "departmentname": "Heart",
+            "head": "Dr. J ABC",
+            "contactnumber": "9876543210",
+            "hospitalId": 6,
+            "hospitalname": "AMRI Hospital Kol"
+        },
+        {
+            "hospitalId": "1",
+            "departmentname": "TEST",
+            "head": "oom",
+            "contactnumber": "9808098080",
+            "id": 9
+        }
+    ]
 }

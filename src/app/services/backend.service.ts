@@ -6,20 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BackendService {
-  private APIBaseURL = 'http://localhost:7878/';
+  private APIBaseURL = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
   getCMSContent() {
-    return this.http.get(this.APIBaseURL + 'content');
+    return this.http.get(this.APIBaseURL + 'posts');
   }
 
   getUsers() {
-    return this.http.get(this.APIBaseURL + 'user');
+    return this.http.get(this.APIBaseURL + 'users');
   }
 
   createUsers(data) {
-    return this.http.post(this.APIBaseURL + 'user', data);
+    return this.http.post(this.APIBaseURL + 'users', data);
   }
 
 }

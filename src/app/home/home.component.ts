@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.backendSvc.getCMSContent().subscribe(
       data => {
         this.cms = data;
-        this.pageData = this.cms[0].page.home;
+        this.pageData = this.cms[0];
       },
       error => this.error = error
     );
