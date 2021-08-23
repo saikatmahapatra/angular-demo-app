@@ -13,10 +13,15 @@ import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs
 })
 export class EmployeeComponent implements OnInit {
 
+  showShubhead = true;
   constructor() { }
 
   ngOnInit() {
 
+  }
+  
+  ctaClick(event) {
+    alert('you have clicked');
   }
 
 }

@@ -1,2 +1,11 @@
 <h1 class="mb-3">Observable & RxJS</h1>
 <p>Observable are the respose that we get from any services. </p>
+
+<app-test [showShubhead]="showShubhead">
+    <h1>Single-slot, multi-slot, conditional content projection</h1>
+    <section slot3><button class="btn btn-primary" (click)="ctaClick($event)">CTA Button</button></section>
+    <section slot2>sub heading1</section>
+    <section slot1>
+      <h2>Get 5% off on purchase</h2>
+    </section>
+  </app-test>
