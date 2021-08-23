@@ -17,6 +17,7 @@ import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
 import { EmployeeComponent } from './observable-in-angular/employee.component';
+import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { EmployeeComponent } from './observable-in-angular/employee.component';
     TestComponent,
     ChildComponent,
     ParentComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    TransferFundComponent
   ],
   exports: []
 })
