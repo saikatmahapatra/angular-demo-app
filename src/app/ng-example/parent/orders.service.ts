@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // dont use old http
-import { Observable } from "rxjs";
-
-
-
-
-
-
-// const httpOptions = {
-//     headers: new HttpHeaders({ 'Content-Type': 'application/json' });
-// };
+import { Observable, Subject } from 'rxjs';
 @Injectable()
 export class OrdersService {
 
+  private totalAddedQtySource = new Subject<any>(); // source
+  totalAddedQtyToDisplay$ = this.totalAddedQtySource.asObservable(); // stream
+
   constructor() { }
 
-  gerOrders(){
-    return "You have 10 orders";
+  notifyAddToCart(qty) {
+    this.totalAddedQtySource.next(qty);
+    console.log(qty, this.totalAddedQtyToDisplay$);
   }
 
 }

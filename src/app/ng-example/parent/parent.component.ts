@@ -9,21 +9,27 @@ import { OrdersService } from './orders.service';
 export class ParentComponent implements OnInit {
   department = 'Information Technology 344'; // pass from parent to child
   city = 'KOLKATA'; // pass this to child component and covert it to lowercase
+  colorName: any = ''; // pass to child
   userAgreed: boolean;
   @ViewChild(ChildComponent) private child1: ChildComponent;
   name = 'John';
   result = '';
-  orders: any;
+  cartQty = 0;
+  
   constructor(private orderService: OrdersService) { }
 
   ngOnInit() {
     this.name += this.child1.name; // reading child's variable
     this.result = this.child1.childMethod(this.name); // reading child's method
-    this.orders = this.orderService.gerOrders();
   }
 
   isAgreed($e) {
     this.userAgreed = $e;
+  }
+
+  addToCart() {
+    this.cartQty++;
+    this.orderService.notifyAddToCart(this.cartQty);
   }
 
 }

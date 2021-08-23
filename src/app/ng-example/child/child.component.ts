@@ -6,13 +6,11 @@ import { OrdersService } from '../parent/orders.service';
   providers: [OrdersService]
 })
 export class ChildComponent implements OnInit {
-  private city;
-  userAgreed = false;
-  clickedFromParent = 0; // parent interactes with child with local variable
-  name = 'Saikat';
-  result: string;
-  orders: any;
-  @Input() department: string;
+  @Input()
+  set mycolor(str) {
+    this.colorToDisplay = str ? str : 'no color';
+  }
+  get mycolor(): any {return this.colorToDisplay; }
 
   @Input()
   set mycity(city: string) {
@@ -20,18 +18,29 @@ export class ChildComponent implements OnInit {
   }
   get mycity(): string { return this.city; }
 
-  constructor(private ordersService: OrdersService) { }
+  private city;
+  userAgreed = false;
+  clickedFromParent = 0; // parent interactes with child with local variable
+  name = 'Saikat';
+  result: string;
+  @Input() department: string;
+  totalAddedToCart: any;
+  colorToDisplay: any; // for using in setter, using getter, setter for showing default val
+  @Output() agreed = new EventEmitter<boolean>();
+
+  constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
     this.result = this.childMethod(this.name);
-    this.orders = this.ordersService.gerOrders();
+    this.ordersService.totalAddedQtyToDisplay$.subscribe(data => {
+      console.log('child comp', data);
+      this.totalAddedToCart = data;
+    });
   }
 
-  @Output() agreed = new EventEmitter<boolean>();
-
-  IsUserAgreed(ag: boolean) {
-    this.userAgreed = ag;
-    this.agreed.emit(ag);
+  IsUserAgreed(isAgree: boolean) {
+    this.userAgreed = isAgree;
+    this.agreed.emit(isAgree);
   }
 
   testMethod() {
@@ -39,7 +48,7 @@ export class ChildComponent implements OnInit {
   }
 
   childMethod(name) {
-    return "childMethod() called. My name is " + name;
+    return 'childMethod() called. My name is ' + name;
   }
 
 

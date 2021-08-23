@@ -1,0 +1,13 @@
+.myparagraph {
+    color: blue;
+}
+
+:host {
+    border: 2px solid black;
+}
+
+// based on parents css class or attribute add style to your component
+// if ancestor has data-module="ng-example" then apply css
+:host-context([data-module="ng-example"]) h1 {
+    color: #b20000;
+}
