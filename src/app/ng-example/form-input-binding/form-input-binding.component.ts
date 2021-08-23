@@ -13,6 +13,9 @@ export class FormInputBindingComponent implements OnInit {
   isDisabled = false;
   userName = 'johnsmith';
   inputVal: any;
+  myClassExpression: any = 'text-danger mx-3 text-underline';
+  isDanger = true;
+  productQty = 2;
   constructor(private commonSvc: CommonService) { }
 
   ngOnInit() {

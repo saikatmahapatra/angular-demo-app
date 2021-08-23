@@ -27,5 +27,17 @@ Remember that HTML attributes (name, value, id, class) and DOM properties (data-
         <input type="text" (input)="getValue($event)" class="form-control" placeholder="test">
         <div>value = {{inputVal}}</div>
 
+        <h5>CSS/Style binding</h5>
+        <div [class]="myClassExpression" >This is a saple text where we are appliying multiple CSS class [class]="myClassExpression"</div>
+        <div [class.text-danger]="isDanger" >This is a saple text where we are appliying single CSS class [class.text-danger]="isDanger"</div>
+
+
+        <h5 class="mt-3">Two Way binding</h5>
+
+        <app-add-to-cart [(qty)]="productQty"></app-add-to-cart>
+
+        <p>De-sugared two-way binding</p>
+        <app-add-to-cart [qty]="productQty" (qtyChange)="productQty=$event"></app-add-to-cart>
+
     </div>
 </div>

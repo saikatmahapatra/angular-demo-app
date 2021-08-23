@@ -18,6 +18,7 @@ import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
 import { EmployeeComponent } from './observable-in-angular/employee.component';
 import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
+import { AddToCartComponent } from './form-input-binding/add-to-cart/add-to-cart.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
     ChildComponent,
     ParentComponent,
     EmployeeComponent,
-    TransferFundComponent
+    TransferFundComponent,
+    AddToCartComponent
   ],
   exports: []
 })
