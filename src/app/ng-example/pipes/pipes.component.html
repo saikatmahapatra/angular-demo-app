@@ -49,9 +49,13 @@
             <p>Entered val={{val}}, pow={{pow}}. Exponential = {{val|exponentialStrength:pow}}</p>
         </div>
         <p>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</p>
+
+        <h6>Sum of digits in mumber</h6>
+        <input type="text" placeholder="enter number" [(ngModel)]="defaultNum">
+        Sum of number in {{defaultNum}} is <span class="text-bold text-primary h5">{{defaultNum|sumDigit:'arg1':'arg2'}}</span> 
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
         <h6>OrderBy Custom Pipe </h6>
         <table class="table">
             <thead>
