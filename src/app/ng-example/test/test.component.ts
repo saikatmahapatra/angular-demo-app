@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -9,9 +9,15 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 export class TestComponent implements OnInit {
 
   @Input() showShubhead: boolean;
-  constructor() { }
+  routeData: any;
+  constructor(private route: ActivatedRoute) { 
+
+  }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(data => {
+      console.log('====>ActivatedRoute=====>', data);
+    })
   }
 
 }

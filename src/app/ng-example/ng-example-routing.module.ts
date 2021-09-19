@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+// import ActivateRoute, ParamMap for query string related things
+import { Routes, RouterModule, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { NgExampleComponent } from './ng-example.component';
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';
