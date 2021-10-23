@@ -26,7 +26,7 @@ class Api extends REST_Controller {
         parent::__construct();
 
         // Common Response Array
-        $this->api_response = array();
+        $this->api_response = [];
         $this->api_response['time'] = time();        
         $this->api_response['screen_id'] = NULL;
         $this->api_response['code'] = 1000; //1000 =success, 1001 = error

@@ -22,4 +22,8 @@ export class BackendService {
     return this.http.post(this.APIBaseURL + 'users', data);
   }
 
+  getUsersTest() {
+    return this.http.get('http://localhost/angular-demo-app/app_backend/rest/example/users');
+  }
+
 }

@@ -51,9 +51,10 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.backendSvc.getUsers().subscribe(
+    this.backendSvc.getUsersTest().subscribe(
       data => {
         this.userList = data;
+        console.log("Real backend", this.userList.data);
       }
     );
   }
