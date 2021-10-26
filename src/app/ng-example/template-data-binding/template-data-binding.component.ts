@@ -15,7 +15,7 @@ export class TemplateDataBindingComponent implements OnInit {
   constructor(private commonSvc: CommonService) { }
 
   ngOnInit() {
-    this.commonSvc.log("ngOnInit");
+    console.log("ngOnInit");
   }
 
   getVal(){

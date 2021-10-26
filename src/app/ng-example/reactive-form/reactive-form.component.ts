@@ -93,7 +93,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   addUser() {
-    this.commonSvc.log(this.signUpForm.value);
+    console.log(this.signUpForm.value);
     this.userData = this.signUpForm.value;
   }
 

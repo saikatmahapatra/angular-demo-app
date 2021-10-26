@@ -53,8 +53,7 @@ export class ManageUsersComponent implements OnInit {
   getUsersList() {
     this.apiSvc.getUsersTest().subscribe(
       response => {
-        this.userList = response;
-        console.log("Real backend", this.userList.data);
+        this.userList = response['data'];
       },
       (error) => {                              //Error callback
         console.error('error caught in component. Err Msg => ', error);
@@ -79,19 +78,19 @@ export class ManageUsersComponent implements OnInit {
   }
   saveUserData(model, isValid: boolean) {
     this.submitted = true;
-    this.commonSvc.log(model);
-    this.commonSvc.log("Form Valid =" + isValid);
-    this.commonSvc.log("Name Error=" + this.saveUserForm.controls['name'].errors);
-    this.commonSvc.log("Email Error=" + this.saveUserForm.controls['email'].errors);
-    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
-    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
-    //this.commonSvc.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
+    console.log(model);
+    console.log("Form Valid =" + isValid);
+    console.log("Name Error=" + this.saveUserForm.controls['name'].errors);
+    console.log("Email Error=" + this.saveUserForm.controls['email'].errors);
+    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
+    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
+    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
     //this.postData = this.saveUserForm.value;
-    //this.commonSvc.log(this.postData);
+    //console.log(this.postData);
   }
 
   isInvalidEmail(control) {
-    //this.commonSvc.log("Control=", control.value);
+    //console.log("Control=", control.value);
     // if(control.value.lenght>0){
     //return {isInvalidEmail:true};
     // }

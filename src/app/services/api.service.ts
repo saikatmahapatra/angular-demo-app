@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   getUsersTest() {
-    return this.http.get('http://localhost/angular-demo-app/app_backend/rest/example/users').pipe(
+    return this.http.get('http://localhost/angular-demo-app/api_server/rest/api/users').pipe(
       catchError((err) => {
         err.statusText = 'This is a custom error message from angular service';
         return throwError(err); //Rethrow it back to component

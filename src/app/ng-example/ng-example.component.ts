@@ -15,12 +15,12 @@ export class NgExampleComponent implements OnInit {
    * Life cycle hooks
    */
   ngOnInit() {
-    this.commonSvc.log("ngOnInit() called");
+    console.log("ngOnInit() called");
   }
   ngAfterViewInit() {
-    this.commonSvc.log("ngAfterViewInit() called");
+    console.log("ngAfterViewInit() called");
   }
   ngOnChanges() {
-    this.commonSvc.log("ngOnChanges() called");
+    console.log("ngOnChanges() called");
   }
 }

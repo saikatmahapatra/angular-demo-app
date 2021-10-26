@@ -39,7 +39,7 @@ export class PipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commonSvc.log('ngOnInit');
+    console.log('ngOnInit');
   }
 
 }

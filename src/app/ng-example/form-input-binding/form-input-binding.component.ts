@@ -22,23 +22,23 @@ export class FormInputBindingComponent implements OnInit {
   }
 
   buttonClick(event: any) {
-    this.commonSvc.log(event);
+    console.log(event);
     this.clickMessage = 'You have clicked button value';
   }
 
   onInputFocus(event) {
-    this.commonSvc.log(event);
+    console.log(event);
     this.keyUpInputData = 'Focus Event===>' + event.target.value;
   }
 
   onInputKeyUp(event) {
-    this.commonSvc.log(event);
+    console.log(event);
     this.keyUpInputData = 'Keyup Event===>' + event.target.value;
-    this.commonSvc.log(this.keyUpInputData);
+    console.log(this.keyUpInputData);
   }
 
   onInputBlur(event) {
-    this.commonSvc.log(event);
+    console.log(event);
     this.keyUpInputData = 'Blur Event===>' + event.target.value;
   }
 
