@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,12 @@ export class BackendService {
   }
 
   getUsersTest() {
-    return this.http.get('http://localhost/angular-demo-app/app_backend/rest/example/users');
+    return this.http.get('http://localhost/angular-demo-app/app_backend/rest/example/users').pipe(
+      catchError((err) => {
+        err.statusText = 'This is a custom error message from angular service';
+        return throwError(err); //Rethrow it back to component
+      })
+    );
   }
 
 }

@@ -52,9 +52,15 @@ export class ManageUsersComponent implements OnInit {
 
   getUsersList() {
     this.backendSvc.getUsersTest().subscribe(
-      data => {
-        this.userList = data;
+      response => {
+        this.userList = response;
         console.log("Real backend", this.userList.data);
+      },
+      (error) => {                              //Error callback
+        console.error('error caught in component. Err Msg => ', error);
+        //this.errorMessage = error;
+        //this.loading = false;
+        throw error;
       }
     );
   }
