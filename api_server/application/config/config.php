@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/angular-demo-app/app_backend/';
+$config['base_url'] = 'http://localhost/angular-demo-app/api_server/';
 
 /*
 |--------------------------------------------------------------------------
