@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../services';
+import { CommonService } from '../../services/common.service';
 @Component({
   selector: 'app-form-input-binding',
   templateUrl: './form-input-binding.component.html',

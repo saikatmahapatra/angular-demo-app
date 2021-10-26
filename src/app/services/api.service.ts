@@ -5,7 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BackendService {
+export class ApiService {
   private APIBaseURL = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }

@@ -10,12 +10,13 @@ import {
   ViewContainerRef,
   VERSION
 } from '@angular/core';
-import { CommonService, BackendService } from '../services';
+import { CommonService } from '../services/common.service';
+import { ApiService } from '../services/api.service';
 import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  providers: [CommonService, BackendService]
+  providers: [CommonService, ApiService]
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   pageData: any = [];
   @ViewChild(KoreAiComponent) private chat: KoreAiComponent;
   constructor(
-    private backendSvc: BackendService,
+    private apiSvc: ApiService,
     private commonSvc: CommonService
     ) { }
 
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   test() {
-    this.backendSvc.createUsers({name: 'XXX', email: 'aaaa@aaa.com', password: 'aaaaa'});
+    this.apiSvc.createUsers({name: 'XXX', email: 'aaaa@aaa.com', password: 'aaaaa'});
   }
 
   ngAfterViewInit() {
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getContents() {
-    this.backendSvc.getCMSContent().subscribe(
+    this.apiSvc.getCMSContent().subscribe(
       data => {
         this.cms = data;
         this.pageData = this.cms[0];

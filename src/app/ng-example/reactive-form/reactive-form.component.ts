@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { User } from '../../models';
-import { CommonService, BackendService, ValidationService } from '../../services';
+import { CommonService } from '../../services/common.service';
+import { ApiService } from '../../services/api.service';
+import { ValidationService } from '../../services/validation.service';
 import * as _ from 'lodash';
 // https://code.tutsplus.com/tutorials/introduction-to-forms-in-angular-4-reactive-forms--cms-29787
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  providers: [BackendService, ValidationService, CommonService]
+  providers: [ApiService, ValidationService, CommonService]
 })
 export class ReactiveFormComponent implements OnInit {
   cms: any = [];
@@ -37,7 +39,7 @@ export class ReactiveFormComponent implements OnInit {
   // To use Form Builder, inject formbuilder into constructor
   constructor(
     private commonSvc: CommonService,
-    private backendSvc: BackendService,
+    private apiSvc: ApiService,
     private validator: ValidationService,
     private fb: FormBuilder
   ) { }

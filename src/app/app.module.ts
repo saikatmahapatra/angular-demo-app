@@ -10,7 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SharedModule } from './shared/shared.module';
-import { CommonService, BackendService } from './services';
+import { ApiService } from './services/api.service';
+import { CommonService } from './services/common.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CommonService, BackendService } from './services';
   exports: [BrowserAnimationsModule, PageNotFoundComponent],
   providers: [
     CommonService,
-    BackendService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

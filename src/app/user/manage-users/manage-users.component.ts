@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common.service';
-import { BackendService } from '../../services/backend.service';
+import { ApiService } from '../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
-  providers: [BackendService]
+  providers: [ApiService]
 })
 export class ManageUsersComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private backendSvc: BackendService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
+  constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
 
   }
 
@@ -51,7 +51,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.backendSvc.getUsersTest().subscribe(
+    this.apiSvc.getUsersTest().subscribe(
       response => {
         this.userList = response;
         console.log("Real backend", this.userList.data);
