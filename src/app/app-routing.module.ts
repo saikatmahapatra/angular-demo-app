@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'pages', loadChildren: 'src/app/page/page.module#PageModule' },
   { path: 'angular-example', loadChildren: 'src/app/ng-example/ng-example.module#NgExampleModule' },
   { path: 'user', loadChildren: 'src/app/user/user.module#UserModule' },
+  { path: 'signin', loadChildren: 'src/app/login/login.module#LoginModule' },
   { path: '**', component: PageNotFoundComponent } // wildcard will be at always last
 ];
 
