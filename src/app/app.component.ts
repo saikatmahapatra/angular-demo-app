@@ -1,9 +1,10 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
-import { CommonService } from './services/common.service';
+import { CommonService } from './shared/services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls : ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'app';

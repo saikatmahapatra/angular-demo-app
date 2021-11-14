@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 
 // Routing with lazy loading
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', loadChildren: 'src/app/home/home.module#HomeModule' },
-  { path: 'pages', loadChildren: 'src/app/page/page.module#PageModule' },
-  { path: 'angular-example', loadChildren: 'src/app/ng-example/ng-example.module#NgExampleModule' },
-  { path: 'user', loadChildren: 'src/app/user/user.module#UserModule' },
-  { path: 'signin', loadChildren: 'src/app/login/login.module#LoginModule' },
+  { path: 'home', loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) },
+  { path: 'pages', loadChildren: () => import('./features/page/page.module').then(m => m.PageModule) },
+  { path: 'angular-example', loadChildren: () => import('./features/ng-example/ng-example.module').then(m => m.NgExampleModule) },
+  { path: 'user', loadChildren: () => import('./features/user/user.module').then(m => m.UserModule) },
+  { path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) },
   { path: '**', component: PageNotFoundComponent } // wildcard will be at always last
 ];
 

@@ -1,9 +1,0 @@
-RewriteEngine On
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE"
-Header set Access-Control-Allow-Headers "Content-Type, Authorization"
-RewriteBase /angular-demo-app/api_server/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond $1 !^(index\.php)
-RewriteRule ^(.+)$ index.php?$1 [PT,L,QSA]

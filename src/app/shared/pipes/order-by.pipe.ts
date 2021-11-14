@@ -158,12 +158,12 @@ export class OrderByPipe implements PipeTransform {
   private transformObject(value: any | any[], expression?: any, reverse?: boolean, isCaseInsensitive?: boolean, comparator?: Function): any {
 
     let parsedExpression = OrderByPipe.parseExpression(expression);
-    let lastPredicate = parsedExpression.pop();
+    let lastPredicate: any= parsedExpression.pop() ? parsedExpression.pop() : '';
     let oldValue = OrderByPipe.getValue(value, parsedExpression);
-
+ 
     if (!Array.isArray(oldValue)) {
       parsedExpression.push(lastPredicate);
-      lastPredicate = null;
+      lastPredicate = '';
       oldValue = OrderByPipe.getValue(value, parsedExpression);
     }
 
