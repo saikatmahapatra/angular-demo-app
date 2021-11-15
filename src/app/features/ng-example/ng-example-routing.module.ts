@@ -7,8 +7,8 @@ import { TemplateDataBindingComponent } from './template-data-binding/template-d
 import { AngularDirectiveComponent } from './angular-directive/angular-directive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { FormInputBindingComponent } from './form-input-binding/form-input-binding.component';
-//import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
-//import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
@@ -25,8 +25,8 @@ const routes: Routes = [{
     { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
     { path: 'pipes', component: PipesComponent },
     { path: 'user-input-binding', component: FormInputBindingComponent },
-    //{ path: 'template-driven-form', component: TemplateDrivenFormComponent },
-    //{ path: 'reactive-form', component: ReactiveFormComponent },
+    { path: 'template-driven-form', component: TemplateDrivenFormComponent },
+    { path: 'reactive-form', component: ReactiveFormComponent },
     { path: 'angular-services', component: AngularServicesComponent },
     { path: 'test', component: TestComponent },
     { path: 'child-comp', component: ChildComponent },

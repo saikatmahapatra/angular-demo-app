@@ -10,8 +10,8 @@ import { TemplateDataBindingComponent } from './template-data-binding/template-d
 import { AngularDirectiveComponent } from './angular-directive/angular-directive.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { FormInputBindingComponent } from './form-input-binding/form-input-binding.component';
-//import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
-//import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { AngularServicesComponent } from './angular-services/angular-services.component';
 import { TestComponent } from './test/test.component';
 import { ChildComponent } from './child/child.component';
@@ -37,8 +37,8 @@ import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
     AngularDirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
-    //TemplateDrivenFormComponent,
-    //ReactiveFormComponent,
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent,
     AngularServicesComponent,
     TemplateDataBindingComponent,
     TestComponent,
