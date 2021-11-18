@@ -7,16 +7,18 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 })
 export class ReactiveFormComponent implements OnInit {
 
-  myForm = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    email: new FormControl(),
-    phone: new FormControl(),
-    city: new FormControl(),
-    gender: new FormControl(),
-    skill: new FormControl(),
-    termsAccepted: new FormControl()
+  myForm = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+    email: [''],
+    phone: [''],
+    city: [''],
+    gender: [''],
+    skill: [''],
+    termsAccepted: ['']
   });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     // this.name.setValue('Saikat');
