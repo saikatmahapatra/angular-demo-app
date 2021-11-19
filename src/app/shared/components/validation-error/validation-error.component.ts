@@ -9,7 +9,8 @@ import { ValidationService } from '../../services/validation.service';
 })
 export class ValidationErrorComponent implements OnInit {
 
-  @Input() control: any;
+  @Input()
+  control!: AbstractControl;
 
   constructor(private validator: ValidationService) { }
 
@@ -21,6 +22,9 @@ export class ValidationErrorComponent implements OnInit {
       if (this.control.errors.hasOwnProperty(validationRule)) {
         if ((this.control.touched || this.control.dirty) && this.control.errors[validationRule] === true) {
           return this.validator.getValidatorErrorMessage(validationRule, this.control.errors[validationRule]);
+        }
+        if(this.control.errors[validationRule] === false) {
+          return this.control.setErrors(null);
         }
       }
     }

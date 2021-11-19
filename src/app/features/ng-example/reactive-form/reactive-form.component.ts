@@ -11,7 +11,7 @@ export class ReactiveFormComponent implements OnInit {
   myForm = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: [''],
-    email: ['', [this.validator.validEmail]],
+    email: ['', [Validators.required, this.validator.validEmail]],
     phone: [''],
     city: [''],
     gender: [''],
@@ -29,7 +29,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('onSubmit===', this.myForm.value);
+    console.log('onSubmit===', this.myForm);
   }
 
 }

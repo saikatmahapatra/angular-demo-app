@@ -5,19 +5,22 @@
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" class="form-control" id="firstName" formControlName="firstName">
-                <!-- <app-validation-error [control]="myForm.controls.firstName"></app-validation-error> -->
+                <app-validation-error [control]="myForm.controls['firstName']"></app-validation-error>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
                 <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                <app-validation-error [control]="myForm.controls['lastName']"></app-validation-error>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" formControlName="email">
+                <app-validation-error [control]="myForm.controls['email']"></app-validation-error>
             </div>
             <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="text" class="form-control" id="phone" formControlName="phone">
+                <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
             </div>
 
             <div class="form-group">
@@ -28,6 +31,7 @@
                     <option value="hyderabad">Hyderabad</option>
                     <option value="chennai">Chennai</option>
                 </select>
+                <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
             </div>
 
             <div class="form-group">
@@ -41,6 +45,7 @@
                         formControlName="gender">
                     <label class="form-check-label" for="inlineRadio2">Female</label>
                 </div>
+                <app-validation-error [control]="myForm.controls['gender']"></app-validation-error>
             </div>
 
             <div class="form-group">
@@ -59,6 +64,7 @@
                         formControlName="skill">
                     <label class="form-check-label" for="defaultCheck3">Angular</label>
                 </div>
+                <app-validation-error [control]="myForm.controls['skill']"></app-validation-error>
             </div>
 
             <div class="form-group">
@@ -67,6 +73,7 @@
                         formControlName="termsAccepted">
                     <label class="form-check-label" for="defaultCheck4">I have accepted T&C</label>
                 </div>
+                <app-validation-error [control]="myForm.controls['termsAccepted']"></app-validation-error>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -75,7 +82,7 @@
     </div>
     <div class="col-md-6">
         <h2>Form Values</h2>
-        <p>Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <!-- <p>Form Status: <span class="text-bold">{{ myForm.status }}</span></p> -->
         <p>{{myForm.value|json}}</p>
     </div>
 </div>

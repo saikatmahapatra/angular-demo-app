@@ -14,6 +14,7 @@ export class ValidationService {
       'email': 'Please enter a valid email address.',
       'validEmail': 'Please enter a valid email address i.e yourname@domain.com.',
       'phoneNumber':'Please enter a 10 digit phone number.',
+      'foo': 'foo error'
       
     };
     if(errorMessage[ruleName]){
@@ -23,7 +24,7 @@ export class ValidationService {
     }
   }
 
-  validEmail(control: { value: any; }) {
+  validEmail(control: AbstractControl) {
     let inputValue = control.value;
     let hasError = true;
 
@@ -35,7 +36,7 @@ export class ValidationService {
     return { 'validEmail': hasError };
   }
 
-  phoneNumber(control: { value: any; }) {
+  phoneNumber(control: AbstractControl) {
     let inputValue = control.value;
     let hasError = true;
     if (inputValue.match(/^\d{10}$/)) {
@@ -46,7 +47,7 @@ export class ValidationService {
     return { 'phoneNumber': hasError };
   }
 
-  foo(control: any) {
-    return { 'foo': true }; // should return true to display errors
+  foo(control: AbstractControl) {
+    return { 'foo': false }; // should return true to display errors
   }
 }
