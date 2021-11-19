@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ValidationService } from 'src/app/shared/services/validation.service';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  providers: []
+  providers: [ValidationService]
 })
 export class ReactiveFormComponent implements OnInit {
 
   myForm = this.fb.group({
-    firstName: [''],
+    firstName: ['', [Validators.required]],
     lastName: [''],
-    email: [''],
+    email: ['', [this.validator.validEmail]],
     phone: [''],
     city: [''],
     gender: [''],
@@ -18,7 +19,7 @@ export class ReactiveFormComponent implements OnInit {
     termsAccepted: ['']
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private validator: ValidationService) { }
 
   ngOnInit() {
     // this.name.setValue('Saikat');
@@ -28,7 +29,7 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('onSubmit===',this.myForm.value);
+    console.log('onSubmit===', this.myForm.value);
   }
 
 }

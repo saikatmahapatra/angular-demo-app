@@ -1,49 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, AbstractControl } from '@angular/forms';
 @Injectable()
 export class ValidationService {
 
   constructor() { }
 
   getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
-    let errorMessage = {
-      required: 'The field is required',
-      minlength: `The field must be at least ${validatorValue.requiredLength} characters long`,
-      maxlength: `The field cannot be more than ${validatorValue.requiredLength} characters long`,
-      email_address: 'Please enter a valid email address',
-      phone:'Please enter a 10 digit phone number',
-      valid_email: 'Please enter a valid email'
+    let errorMessage: any = {
+      'required': 'The field is required.',
+      'minLength': `The field must be at least ${validatorValue.requiredLength} characters long.`,
+      'maxLength': `The field cannot be more than ${validatorValue.requiredLength} characters long.`,
+      'email': 'Please enter a valid email address.',
+      'validEmail': 'Please enter a valid email address i.e yourname@domain.com.',
+      'phoneNumber':'Please enter a 10 digit phone number.',
+      
     };
-    // if(errorMessage[ruleName]){
-    //   return errorMessage[ruleName];
-    // }else{
-    //   return 'No error message found corresponding to rule <'+ruleName+'>';
-    // }
-    return 'error message 1234';
+    if(errorMessage[ruleName]){
+      return errorMessage[ruleName];
+    }else{
+      return 'No error message found corresponding to rule <'+ruleName+'>';
+    }
   }
 
-  valid_email(control: { value: any; }) {
+  validEmail(control: { value: any; }) {
     let inputValue = control.value;
-    let has_error = true;
+    let hasError = true;
 
     if (inputValue.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
-      has_error = false;
+      hasError = false;
     } else {
-      has_error = true;
+      hasError = true;
     }
-    //console.log("inputValue=" + inputValue+' Is Invalid ='+has_error);
-    return { 'valid_email': has_error }; // should return true to display errors
+    return { 'validEmail': hasError };
   }
 
-  phone_number(control: { value: any; }) {
+  phoneNumber(control: { value: any; }) {
     let inputValue = control.value;
-    let has_error = true;
+    let hasError = true;
     if (inputValue.match(/^\d{10}$/)) {
-      has_error = false;
+      hasError = false;
     } else {
-      has_error = true;
+      hasError = true;
     }
-    return { '10_digit_phone_number': has_error }; // should return true to display errors
+    return { 'phoneNumber': hasError };
   }
 
   foo(control: any) {
