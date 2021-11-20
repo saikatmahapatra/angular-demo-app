@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, AbstractControl } from '@angular/forms';
+import { FormGroup, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 @Injectable()
 export class ValidationService {
 
@@ -9,70 +9,78 @@ export class ValidationService {
   getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
     let errorMessage: any = {
       'required': 'The field is required.',
-      'minLength': `The field must be at least ${validatorValue.requiredLength} characters long.`,
-      'maxLength': `The field cannot be more than ${validatorValue.requiredLength} characters long.`,
+      'minlength': `The field must be at least ${validatorValue.requiredLength} characters long.`,
+      'maxlength': `The field cannot be more than ${validatorValue.requiredLength} characters long.`,
       'email': 'Please enter a valid email address.',
       'validEmail': 'Please enter a valid email address i.e yourname@domain.com.',
       'phoneNumber': 'Please enter a 10 digit phone number.',
       'ruleOne': 'error message 1',
       'ruleTwo': 'error message 2',
-      'ruleThree': 'error message 3'
+      'ruleThreec': 'error message 3',
+      'invalidPassword': 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
+      'invalidDomain': 'Please enter email with @gmail.com only',
+      'matching': 'Password must match'
     };
     if (errorMessage[ruleName]) {
       return errorMessage[ruleName];
     } else {
-      return 'No error message found corresponding to rule <' + ruleName + '>';
+      return 'No error message found for <' + ruleName + '>';
     }
   }
 
   validEmail(control: AbstractControl) {
-    let error: any = null;
-    if (control?.value?.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
-      error = null;
-    } else {
-      error = { 'validEmail': true };
-    }
-    return error;
+    const valid = control?.value?.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/);
+    return valid ? null : { 'validEmail': true };
   }
 
   phoneNumber(control: AbstractControl) {
-    let error: any = null;
-    if (control?.value?.match(/^\d{10}$/)) {
-      error = null;
-    } else {
-      error = { 'phoneNumber': true };
-    }
-    return error;
+    const valid = control?.value?.match(/^\d{10}$/);
+    return valid ? null : { 'phoneNumber': true };
   }
 
   test1(control: AbstractControl) {
-    let error: any = null;
-    if (control?.value == 'one') {
-      error = { 'ruleOne': true };
-    } else {
-      error = null;
-    }
-    return error;
+    return (control?.value == 'one') ? { 'ruleOne': true } : null;
   }
 
   test2(control: AbstractControl) {
-    let error: any = null;
-    if (control?.value == 'two') {
-      error = { 'ruleTwo': true };
-    } else {
-      error = null;
+    return (control?.value == 'two') ? { 'ruleTwo': true } : null;
+  }
+
+  test3(control: AbstractControl) {
+    return (control?.value == 'three') ? { 'ruleThree': true } : null;
+  }
+
+  strongPassword(control: AbstractControl) {
+    // password should have minimum 8 chars long with 1 lower case, 1 upper case & 1 number
+    const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidPassword': true };
+  }
+
+  validEmailDomain(control: AbstractControl) {
+    let error = null;
+    if (control?.value && control?.value.indexOf("@") != -1) {
+      let [_, domain] = control?.value.split("@");
+      if (domain == "gmail.com") {
+        error = null;
+      } else {
+        error = { 'invalidDomain': true };
+      }
     }
     return error;
   }
 
-  test3(control: AbstractControl) {
-    let error: any = null;
-    if (control?.value == 'three') {
-      error = { 'ruleThree': true };
-    } else {
-      error = null;
-    }
-    return error;
+  matchValidator(matchTo: string, reverse?: boolean): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.parent && reverse) {
+        const c = (control.parent?.controls as any)[matchTo] as AbstractControl;
+        if (c) {
+          c.updateValueAndValidity();
+        }
+        return null;
+      }
+      return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { matching: true };
+    };
   }
 
 }

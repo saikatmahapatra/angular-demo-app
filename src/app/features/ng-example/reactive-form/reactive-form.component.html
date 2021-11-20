@@ -24,6 +24,18 @@
             </div>
 
             <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" formControlName="password">
+                <app-validation-error [control]="myForm.controls['password']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+                <app-validation-error [control]="myForm.controls['confirmPassword']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
                 <label for="city">City</label>
                 <select class="form-control" id="city" formControlName="city">
                     <option value="">Select</option>
