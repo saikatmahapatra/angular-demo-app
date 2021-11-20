@@ -8,6 +8,32 @@ import { ValidationService } from 'src/app/shared/services/validation.service';
 })
 export class ReactiveFormComponent implements OnInit {
 
+  DataGender: Array<any> = [
+    { name: 'Male', value: 'M' },
+    { name: 'Female', value: 'F' },
+    { name: 'Transgender', value: 'T' },
+    { name: 'Not willing to disclose', value: 'U' }
+  ];
+
+  DataCity: Array<any> = [
+    { name: 'Select', value: '' },
+    { name: 'Kolkata', value: 'kolkata' },
+    { name: 'Bangalore', value: 'bangalore' },
+    { name: 'Chennai', value: 'chennai' },
+    { name: 'Mumbai', value: 'mumbai' },
+    { name: 'Hyderabad', value: 'hyderabad' },
+    { name: 'Delhi', value: 'delhi' }
+  ];
+
+  DataSkills: Array<any> = [
+    { name: 'JavaScript', value: 'js' },
+    { name: 'HTML5', value: 'html5' },
+    { name: 'CSS3', value: 'css3' },
+    { name: 'Node.js', value: 'nodejs' },
+    { name: 'Angular', value: 'angular' },
+    { name: 'MongoDB', value: 'mongodb' }
+  ];
+
   myForm = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: [''],
@@ -15,9 +41,9 @@ export class ReactiveFormComponent implements OnInit {
     phone: ['', [Validators.required, this.validator.phoneNumber]],
     password: ['', [Validators.required, this.validator.strongPassword, this.validator.matchValidator('confirmPassword', true)]],
     confirmPassword: ['', [Validators.required, this.validator.matchValidator('password')]],
-    city: [''],
+    city: ['', [Validators.required]],
     gender: ['', [Validators.required]],
-    skill: [''],
+    checkArraySkill: this.fb.array([], [Validators.required]),
     termsAccepted: ['', [Validators.requiredTrue]]
   });
 
@@ -28,6 +54,22 @@ export class ReactiveFormComponent implements OnInit {
     // this.name.valueChanges.subscribe((val) => {
     //   console.log('Changed Value =', val)
     // })
+  }
+
+  onCheckboxChange(e: any) {
+    const checkArray: FormArray = this.myForm.get('checkArraySkill') as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 
   onSubmit() {
