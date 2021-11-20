@@ -11,14 +11,14 @@ export class ReactiveFormComponent implements OnInit {
   myForm = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: [''],
-    email: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
-    phone: [''],
+    email: ['', [Validators.required, this.validator.validEmail]],
+    phone: ['', [Validators.required, this.validator.phoneNumber]],
     password: ['', [Validators.required, this.validator.strongPassword, this.validator.matchValidator('confirmPassword', true)]],
     confirmPassword: ['', [Validators.required, this.validator.matchValidator('password')]],
     city: [''],
-    gender: [''],
+    gender: ['', [Validators.required]],
     skill: [''],
-    termsAccepted: ['']
+    termsAccepted: ['', [Validators.requiredTrue]]
   });
 
   constructor(private fb: FormBuilder, private validator: ValidationService) { }

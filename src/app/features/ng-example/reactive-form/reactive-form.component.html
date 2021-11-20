@@ -25,13 +25,13 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" formControlName="password">
+                <input type="password" class="form-control" id="password" formControlName="password">
                 <app-validation-error [control]="myForm.controls['password']"></app-validation-error>
             </div>
 
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="text" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
                 <app-validation-error [control]="myForm.controls['confirmPassword']"></app-validation-error>
             </div>
 
