@@ -9,7 +9,7 @@ import { ValidationService } from 'src/app/shared/services/validation.service';
 export class ReactiveFormComponent implements OnInit {
 
   myForm = this.fb.group({
-    firstName: ['', [Validators.required]],
+    firstName: ['', [Validators.required, this.validator.test1, this.validator.test2, this.validator.test3]],
     lastName: [''],
     email: ['', [Validators.required, this.validator.validEmail]],
     phone: [''],

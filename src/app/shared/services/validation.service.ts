@@ -13,41 +13,66 @@ export class ValidationService {
       'maxLength': `The field cannot be more than ${validatorValue.requiredLength} characters long.`,
       'email': 'Please enter a valid email address.',
       'validEmail': 'Please enter a valid email address i.e yourname@domain.com.',
-      'phoneNumber':'Please enter a 10 digit phone number.',
-      'foo': 'foo error'
-      
+      'phoneNumber': 'Please enter a 10 digit phone number.',
+      'ruleOne': 'error message 1',
+      'ruleTwo': 'error message 2',
+      'ruleThree': 'error message 3'
     };
-    if(errorMessage[ruleName]){
+    if (errorMessage[ruleName]) {
       return errorMessage[ruleName];
-    }else{
-      return 'No error message found corresponding to rule <'+ruleName+'>';
+    } else {
+      return 'No error message found corresponding to rule <' + ruleName + '>';
     }
   }
 
   validEmail(control: AbstractControl) {
-    let inputValue = control.value;
-    let hasError = true;
-
-    if (inputValue.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
-      hasError = false;
+    let error: any = null;
+    if (control?.value?.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/)) {
+      error = null;
     } else {
-      hasError = true;
+      error = { 'validEmail': true };
     }
-    return { 'validEmail': hasError };
+    return error;
   }
 
   phoneNumber(control: AbstractControl) {
-    let inputValue = control.value;
-    let hasError = true;
-    if (inputValue.match(/^\d{10}$/)) {
-      hasError = false;
+    let error: any = null;
+    if (control?.value?.match(/^\d{10}$/)) {
+      error = null;
     } else {
-      hasError = true;
+      error = { 'phoneNumber': true };
     }
-    return { 'phoneNumber': hasError };
+    return error;
   }
 
-  foo(control: AbstractControl) {
-    return { 'foo': false }; // should return true to display errors
+  test1(control: AbstractControl) {
+    let error: any = null;
+    if (control?.value == 'one') {
+      error = { 'ruleOne': true };
+    } else {
+      error = null;
+    }
+    return error;
   }
+
+  test2(control: AbstractControl) {
+    let error: any = null;
+    if (control?.value == 'two') {
+      error = { 'ruleTwo': true };
+    } else {
+      error = null;
+    }
+    return error;
+  }
+
+  test3(control: AbstractControl) {
+    let error: any = null;
+    if (control?.value == 'three') {
+      error = { 'ruleThree': true };
+    } else {
+      error = null;
+    }
+    return error;
+  }
+
 }

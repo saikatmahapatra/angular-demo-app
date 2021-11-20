@@ -17,14 +17,17 @@ export class ValidationErrorComponent implements OnInit {
   ngOnInit() {
   }
 
+  // update form control value & validity
+
+
+
+  
+  //get err message
   get errorMessage() {
     for (const validationRule in this.control.errors) {
       if (this.control.errors.hasOwnProperty(validationRule)) {
         if ((this.control.touched || this.control.dirty) && this.control.errors[validationRule] === true) {
           return this.validator.getValidatorErrorMessage(validationRule, this.control.errors[validationRule]);
-        }
-        if(this.control.errors[validationRule] === false) {
-          return this.control.setErrors(null);
         }
       }
     }
