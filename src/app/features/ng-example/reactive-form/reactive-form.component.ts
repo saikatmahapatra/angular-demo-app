@@ -89,7 +89,7 @@ export class ReactiveFormComponent implements OnInit {
   onSubmit() {
     console.log('onSubmit===', this.myForm);
     if (this.myForm.valid) {
-      console.log('form submitted', this.myForm);
+      console.log('form submitted', this.myForm.value);
     } else {
       this.validateAllFormFields(this.myForm);
     }
@@ -99,7 +99,7 @@ export class ReactiveFormComponent implements OnInit {
     const city = this.myForm.controls['city'];
     const note = this.myForm.controls['note'];
     city?.valueChanges.subscribe((data) => {
-      if(data.value != '') {
+      if(data != '') {
         note.setValidators([Validators.required]);
       } else{
         note.setErrors(null);
