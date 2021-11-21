@@ -44,7 +44,8 @@ export class ReactiveFormComponent implements OnInit {
     city: ['', [Validators.required]],
     gender: ['', [Validators.required]],
     checkArraySkill: this.fb.array([], [Validators.required]),
-    termsAccepted: ['', [Validators.requiredTrue]]
+    termsAccepted: ['', [Validators.requiredTrue]],
+    note: ['']
   });
 
   constructor(private fb: FormBuilder, private validator: ValidationService) { }

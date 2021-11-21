@@ -59,6 +59,7 @@
                     <label class="form-check-label" for="defaultCheck_{{i}}">{{data.name}}</label>
                 </div>                
                 <app-validation-error [control]="myForm.controls['checkArraySkill']"></app-validation-error>
+                <p *ngIf="myForm.controls['checkArraySkill'].errors" class="validation-error-message">Please select one</p>
             </div>
 
             <div class="form-group">
@@ -68,6 +69,12 @@
                     <label class="form-check-label" for="defaultCheck4">I have accepted T&C</label>
                 </div>
                 <app-validation-error [control]="myForm.controls['termsAccepted']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label for="note">What is the version you have worked?</label>
+                <input type="text" class="form-control" id="note" formControlName="note">
+                <app-validation-error [control]="myForm.controls['note']"></app-validation-error>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
