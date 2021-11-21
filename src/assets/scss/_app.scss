@@ -23,3 +23,7 @@ body {
     right: 5px;
     display: none;
 }
+
+.validation-error-message {
+    color: darken(#ff0000, 5%);
+}

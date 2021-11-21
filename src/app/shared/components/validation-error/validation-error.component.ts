@@ -4,7 +4,7 @@ import { ValidationService } from '../../services/validation.service';
 @Component({
   selector: 'app-validation-error',
   templateUrl: './validation-error.component.html',
-  styleUrls: ['./validation-error.component.css'],
+  styleUrls: ['./validation-error.component.scss'],
   providers: [ValidationService]
 })
 export class ValidationErrorComponent implements OnInit {
