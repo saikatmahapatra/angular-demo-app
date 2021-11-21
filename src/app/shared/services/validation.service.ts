@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { regEx } from '../utils/regEx';
 @Injectable()
 export class ValidationService {
 
@@ -29,12 +30,12 @@ export class ValidationService {
   }
 
   validEmail(control: AbstractControl) {
-    const valid = control?.value?.match(/^(?!.*([.])\1{1})([\w\.\-\+\<\>\{\}\=\`\|\?]+)@(?![.-])([a-zA-Z\d.-]+)\.([a-zA-Z.][a-zA-Z]{1,6})$/);
+    const valid = control?.value?.match(regEx.email);
     return valid ? null : { 'validEmail': true };
   }
 
   phoneNumber(control: AbstractControl) {
-    const valid = control?.value?.match(/^\d{10}$/);
+    const valid = control?.value?.match(regEx.phone_number_US);
     return valid ? null : { 'phoneNumber': true };
   }
 
@@ -52,7 +53,7 @@ export class ValidationService {
 
   strongPassword(control: AbstractControl) {
     // password should have minimum 8 chars long with 1 lower case, 1 upper case & 1 number
-    const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+    const regex = new RegExp(regEx.strong_password);
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidPassword': true };
   }
