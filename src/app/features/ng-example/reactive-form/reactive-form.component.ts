@@ -48,7 +48,9 @@ export class ReactiveFormComponent implements OnInit {
     note: ['']
   });
 
-  constructor(private fb: FormBuilder, private validator: ValidationService) { }
+  constructor(private fb: FormBuilder, private validator: ValidationService) {
+    this.conditionalValidation();
+  }
 
   ngOnInit() {
     // this.name.setValue('Saikat');
@@ -91,6 +93,19 @@ export class ReactiveFormComponent implements OnInit {
     } else {
       this.validateAllFormFields(this.myForm);
     }
+  }
+
+  conditionalValidation(){
+    const city = this.myForm.controls['city'];
+    const note = this.myForm.controls['note'];
+    city?.valueChanges.subscribe((data) => {
+      if(data.value != '') {
+        note.setValidators([Validators.required]);
+      } else{
+        note.setErrors(null);
+      }
+    });
+    note.updateValueAndValidity();
   }
 
 }
