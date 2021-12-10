@@ -6,6 +6,7 @@ import { LoginComponent } from './login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [LoginComponent],
   imports: [
@@ -14,7 +15,8 @@ import { MatCommonModule } from '@angular/material/core';
     SharedModule,
     MatCommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
