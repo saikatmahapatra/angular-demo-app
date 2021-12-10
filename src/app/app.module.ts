@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MatSliderModule } from '@angular/material/slider';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -30,7 +29,6 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     MatDialogModule,
     MatSliderModule,
-    FlexLayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
