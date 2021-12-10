@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-import { MatIconModule } from '@angular/material/icon';
+
+import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCommonModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [LoginComponent],
   imports: [
@@ -15,7 +20,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SharedModule,
     MatCommonModule,
     MatButtonModule,
-    MatIconModule,
+    MatCommonModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDatepickerModule,
     MatFormFieldModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
