@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { DefaultLayoutComponent } from './core/layouts/default-layout/default-layout.component';
+import { UnauthenticatedLayoutComponent } from './core/layouts/unauthenticated-layout/unauthenticated-layout.component';
+import { AuthenticatedLayoutComponent } from './core/layouts/authenticated-layout/authenticated-layout.component';
 
 // Routing with lazy loading
 const routes: Routes = [
