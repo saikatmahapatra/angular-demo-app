@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
-import { menu } from '../../features/ui/model/menu';
+import { menu } from '../model/menu';
 import { filter, map, distinctUntilChanged } from 'rxjs/operators';
-import { NavItem } from '../../features/ui/model/nav-item';
+import { NavItem } from '../model/nav-item';
 import { Breadcrumb } from './breadcrumb';
-import { UrlService } from 'carey-url-util';
+//import { UrlService } from 'carey-url-util';
 import { BreadcrumbService } from './breadcrumb.service';
 
 @Component({
