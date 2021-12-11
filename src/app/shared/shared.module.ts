@@ -24,6 +24,9 @@ import {
   MaskPipe,
   OrderByPipe
 } from './pipes';
+import { DefaultLayoutComponent } from './components/layouts/default-layout/default-layout.component';
+import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
+import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 
 
 
@@ -43,7 +46,10 @@ import {
     ScrollToTopComponent,
     CheckCapsLockDirective,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DefaultLayoutComponent,
+    UnauthenticatedLayoutComponent,
+    AuthenticatedLayoutComponent
   ],
   providers: [],
   exports: [
@@ -53,7 +59,10 @@ import {
     OrderByPipe,
     ValidationErrorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DefaultLayoutComponent,
+    UnauthenticatedLayoutComponent,
+    AuthenticatedLayoutComponent
   ]
 })
 export class SharedModule {
