@@ -8,7 +8,7 @@ import { AuthenticatedLayoutComponent } from './shared/components/layouts/authen
 
 // Routing with lazy loading
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path: '',
     component: DefaultLayoutComponent,
