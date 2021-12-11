@@ -10,9 +10,9 @@ import {
   ViewContainerRef,
   VERSION
 } from '@angular/core';
-import { CommonService } from '../../../shared/services/common.service';
-import { ApiService } from '../../../shared/services/api.service';
-import { KoreAiComponent } from '../../kore-ai/kore-ai.component';
+import { CommonService } from '../../shared/services/common.service';
+import { ApiService } from '../../shared/services/api.service';
+import { KoreAiComponent } from '../kore-ai/kore-ai.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
