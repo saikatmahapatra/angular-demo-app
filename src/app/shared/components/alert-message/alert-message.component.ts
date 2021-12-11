@@ -12,7 +12,6 @@ export class AlertMessageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.alertService.
   }
 
 }
