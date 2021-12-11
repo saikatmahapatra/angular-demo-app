@@ -35,6 +35,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
+import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
-    MenuListItemComponent
+    MenuListItemComponent,
+    AlertMessageComponent
   ],
   providers: [],
   exports: [
@@ -74,11 +76,12 @@ import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.
     MaskPipe,
     OrderByPipe,
     ValidationErrorComponent,
-    // HeaderComponent,
-    // FooterComponent,
-    // DefaultLayoutComponent,
-    // UnauthenticatedLayoutComponent,
-    // AuthenticatedLayoutComponent
+    HeaderComponent,
+    FooterComponent,
+    DefaultLayoutComponent,
+    UnauthenticatedLayoutComponent,
+    AuthenticatedLayoutComponent,
+    AlertMessageComponent
   ]
 })
 export class SharedModule {
