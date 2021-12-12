@@ -1,50 +1,28 @@
-<div fxFlex fxLayout="column" fxLayoutGap="0px">
-  <div fxLayout="row wrap">
-    <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column">
-      <div fxLayoutAlign="center">
-        <img style="width: 130px;" src="/assets/img/angular.png" alt="logo" />
+<div class="row">
+  <div class="col-md-6 text-center">
+    <img style="width: 130px;" src="/assets/img/angular.png" alt="logo" />
+    <h2 style="margin-top:20px" class="my-primary-text">CRM App</h2>
+    <div class="text-center"><img class="img-fluid" src="assets/img/3.jpg" alt="sign in image" /></div>
+  </div>
+  <div class="col-md-6 text-center">
+    <h3 style="margin-top: 30px;">Welcome to the CRM App</h3>
+    <h4 style="margin-top: 30px;">Please sign in below</h4>
+    <form class="form-container justify-content-center">
+      
+      <div class="form-row text-center">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter username">
+        </mat-form-field>
       </div>
 
-      <div fxLayout="row" fxLayoutAlign="center">
-        <h2 style="margin-top:20px" class="my-primary-text">CRM App</h2>
+      <div class="form-row text-center">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter password">
+        </mat-form-field>
       </div>
 
-      <div fxLayout="row" fxLayoutAlign="center">
-        <div class="text-center"><img src="assets/img/3.jpg" alt="sign in image" /></div>
-      </div>
-    </div>
+      <button mat-raised-button color="primary">Save</button>
 
-    <div fxFlex="50" fxFlex.lt-md="100" fxLayout="column" class="mat-app-background">
-      <div fxLayout="column" fxLayoutAlign="center" style="margin-top:30px">
-        <div fxLayout="row" fxLayoutAlign="center">
-          <h3>Welcome to the CRM App</h3>
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center">
-          <h4>Please sign in below</h4>
-        </div>
-
-        <div fxLayout="row" fxLayoutAlign="center">
-          <form class="form-container">
-            <div fxLayout="row">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Enter username">
-              </mat-form-field>
-            </div>
-
-            <div fxLayout="row">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Enter password">
-              </mat-form-field>
-            </div>
-
-            <div fxLayout="row">
-              <button mat-raised-button color="primary">Save</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
