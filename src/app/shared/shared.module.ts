@@ -27,15 +27,9 @@ import {
 import { DefaultLayoutComponent } from './components/layouts/default-layout/default-layout.component';
 import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
 import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
+import { MaterialUiModule } from './material-ui/material-ui.module';
 
 
 @NgModule({
@@ -44,13 +38,7 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatDialogModule,
-    MatButtonModule,
-    FlexLayoutModule
+    MaterialUiModule
     
   ],
   declarations: [
@@ -81,7 +69,8 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    MaterialUiModule
   ]
 })
 export class SharedModule {
