@@ -29,7 +29,7 @@ import { UnauthenticatedLayoutComponent } from './components/layouts/unauthentic
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
-import { MaterialUiModule } from './material-ui/material-ui.module';
+import { MaterialUiModule } from './modules/material-ui/material-ui.module';
 
 
 @NgModule({
