@@ -12,13 +12,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path: '',
-    component: DefaultLayoutComponent,
-    children: [
-      { path: 'home', canActivate: [AuthGuard], loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule) },
-    ]
-  },
-  {
-    path: '',
     component: UnauthenticatedLayoutComponent,
     children: [
       { path: 'login', loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule) },
