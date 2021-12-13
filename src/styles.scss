@@ -2,7 +2,6 @@
 @import 'assets/scss/customize-bootstrap';
 @import "assets/scss/vars";
 @import '../node_modules/bootstrap/scss/bootstrap';
-
-//Material Style
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin-top: 5rem;
+}

@@ -4,25 +4,30 @@
     <h2 style="margin-top:20px" class="my-primary-text">CRM App</h2>
     <div class="text-center"><img class="img-fluid" src="assets/img/3.jpg" alt="sign in image" /></div>
   </div>
-  <div class="col-md-6 text-center">
+  <div class="col-md-6 justify-content-center">
     <h3 style="margin-top: 30px;">Welcome to the CRM App</h3>
     <h4 style="margin-top: 30px;">Please sign in below</h4>
-    <form class="form-container justify-content-center">
-      
-      <div class="form-row text-center">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Enter username">
-        </mat-form-field>
+    
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="form-row mb-2">
+          <div class="col">
+              <label for="userName">Username / Email</label>
+              <input type="text" class="form-control" id="userName" formControlName="userName">
+              <app-validation-error [control]="myForm.controls['userName']"></app-validation-error>
+          </div>
       </div>
 
-      <div class="form-row text-center">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Enter password">
-        </mat-form-field>
+      <div class="form-row mb-2">
+          <div class="col">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+              <app-validation-error [control]="myForm.controls['password']"></app-validation-error>
+          </div>
       </div>
 
-      <button mat-raised-button color="primary">Save</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    
 
-    </form>
   </div>
 </div>

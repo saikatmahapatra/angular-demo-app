@@ -1,20 +1,6 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" fxShow.lt-md>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>CRM Application</span>
-  </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" [opened]="opened">
-      <mat-nav-list>
-        <app-menu-list-item *ngFor="let item of menu" [item]="item"></app-menu-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!-- <app-breadcrumb></app-breadcrumb> -->
-      <app-alert-message></app-alert-message>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  <app-footer></app-footer>
-  
+<div class="container-fluid">
+    <app-header></app-header>
+    <app-alert-message></app-alert-message>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>
