@@ -9,7 +9,6 @@ import { menu } from '../../../utils/ui/model/menu';
   styleUrls: ['./authenticated-layout.component.scss']
 })
 export class AuthenticatedLayoutComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
   }
 }

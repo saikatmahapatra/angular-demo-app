@@ -9,7 +9,7 @@ export class DefaultLayoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

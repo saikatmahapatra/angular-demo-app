@@ -9,7 +9,7 @@ export class UnauthenticatedLayoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
