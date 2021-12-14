@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../../shared/services/common.service';
 import { ApiService } from '../../../shared/services/api.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { of } from 'rxjs';
 
 @Component({
@@ -17,7 +18,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any = [];
   public postData = {};
 
-  constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService) {
+  constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
 
   }
 
@@ -57,7 +58,7 @@ export class ManageUsersComponent implements OnInit {
         this.userList = val;
       },
       error: (err) => {
-        console.error('error caught in component. Err Msg => ', err);
+        this.alertService.error(err, false);
         //this.errorMessage = error;
         //this.loading = false;
         throw err;
