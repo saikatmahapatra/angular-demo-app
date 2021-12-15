@@ -1,37 +1,22 @@
-/**
- * Shared module: for our commonly used shared components.
- */
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import {
-  ValidationErrorComponent,
-  ScrollToTopComponent,
-  HeaderComponent,
-  FooterComponent
-} from './components';
-
-import {
-  HighlightDirective,
-  CheckCapsLockDirective
-} from './directives';
-
-import {
-  ExponentialStrengthPipe,
-  MaskPipe,
-  OrderByPipe
-} from './pipes';
+import { HighlightDirective } from './directives/highlight.directive';
+import { CheckCapsLockDirective } from './directives/check-caps-lock.directive';
+import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
+import { MaskPipe } from './pipes/mask.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DefaultLayoutComponent } from './components/layouts/default-layout/default-layout.component';
 import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
+import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { MaterialUiModule } from './modules/material-ui/material-ui.module';
-
-
 @NgModule({
   imports: [
     RouterModule,
@@ -39,23 +24,22 @@ import { MaterialUiModule } from './modules/material-ui/material-ui.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialUiModule
-    
   ],
   declarations: [
     HighlightDirective,
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
-    ValidationErrorComponent,
-    ScrollToTopComponent,
     CheckCapsLockDirective,
-    HeaderComponent,
+    NavbarComponent,
     FooterComponent,
+    ValidationErrorComponent,
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     MenuListItemComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    SidenavComponent
   ],
   providers: [],
   exports: [
@@ -63,13 +47,16 @@ import { MaterialUiModule } from './modules/material-ui/material-ui.module';
     ExponentialStrengthPipe,
     MaskPipe,
     OrderByPipe,
-    ValidationErrorComponent,
-    HeaderComponent,
+    CheckCapsLockDirective,
+    NavbarComponent,
     FooterComponent,
+    ValidationErrorComponent,
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
+    MenuListItemComponent,
     AlertMessageComponent,
+    SidenavComponent,
     MaterialUiModule
   ]
 })
