@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { LoginService } from 'src/app/core/services/login.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { ValidationService } from 'src/app/shared/services/validation.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [ValidationService]
+  providers: [ValidationService, LoginService]
 })
 export class LoginComponent implements OnInit {
   
@@ -14,13 +16,27 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]],
   });
 
-  constructor(private fb: FormBuilder, private validator: ValidationService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private validator: ValidationService, 
+    private loginSvc: LoginService,
+    private alertSvc: AlertService
+    ) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.myForm.value);
+    const postData = this.myForm.value;
+    this.loginSvc.login(postData).subscribe({
+      next: (val) => {
+        console.log('next', val);
+      }, 
+      error: (err) => {
+        this.alertSvc.error(err, false);
+      },
+      complete: ()=> {}
+    });
   }
 
 }
