@@ -10,9 +10,7 @@ export class ReactiveFormComponent implements OnInit {
 
   DataGender: Array<any> = [
     { name: 'Male', value: 'M' },
-    { name: 'Female', value: 'F' },
-    { name: 'Transgender', value: 'T' },
-    { name: 'Not willing to disclose', value: 'U' }
+    { name: 'Female', value: 'F' }
   ];
 
   DataCity: Array<any> = [
