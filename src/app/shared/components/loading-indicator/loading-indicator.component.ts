@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-loading-indicator',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingIndicatorComponent implements OnInit {
 
-  constructor() { }
+  showLoader = false;
+  private subscription: Subscription = new Subscription;
+
+  constructor(private spinnerSvc: SpinnerService) { }
 
   ngOnInit(): void {
+    this.subscription = this.spinnerSvc.getAlert()
+      .subscribe(data => {
+        this.showLoader = data.showLoader;
+      });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
