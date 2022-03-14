@@ -17,6 +17,7 @@ import { ValidationErrorComponent } from './components/validation-error/validati
 import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { MaterialUiModule } from './modules/material-ui/material-ui.module';
+import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -39,7 +40,8 @@ import { MaterialUiModule } from './modules/material-ui/material-ui.module';
     AuthenticatedLayoutComponent,
     MenuListItemComponent,
     AlertMessageComponent,
-    SidenavComponent
+    SidenavComponent,
+    LoadingIndicatorComponent
   ],
   providers: [],
   exports: [
@@ -57,7 +59,8 @@ import { MaterialUiModule } from './modules/material-ui/material-ui.module';
     MenuListItemComponent,
     AlertMessageComponent,
     SidenavComponent,
-    MaterialUiModule
+    MaterialUiModule,
+    LoadingIndicatorComponent
   ]
 })
 export class SharedModule {
