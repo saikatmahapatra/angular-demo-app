@@ -20,6 +20,7 @@ import { EmployeeComponent } from './observable-in-angular/employee.component';
 import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
 import { AddToCartComponent } from './form-input-binding/add-to-cart/add-to-cart.component';
 import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
+import { ContentCardComponent } from './content-card/content-card.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
     TransferFundComponent,
     AddToCartComponent,
     SumDigitPipePipe,
+    ContentCardComponent,
   ],
   exports: [
     SumDigitPipePipe

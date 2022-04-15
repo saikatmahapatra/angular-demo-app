@@ -15,6 +15,7 @@ import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
 import { EmployeeComponent } from './observable-in-angular/employee.component';
 import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
+import { ContentCardComponent } from './content-card/content-card.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,8 +32,9 @@ const routes: Routes = [{
     { path: 'test', component: TestComponent },
     { path: 'child-comp', component: ChildComponent },
     { path: 'parent-comp', component: ParentComponent },
-    { path: 'observable-in-angular', component: EmployeeComponent },
-    { path: 'tranfer-fund', component: TransferFundComponent }
+    { path: 'employee', component: EmployeeComponent },
+    { path: 'tranfer-fund', component: TransferFundComponent },
+    { path: 'content-projection', component: ContentCardComponent },
   ]
 }];
 
