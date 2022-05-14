@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
@@ -148,6 +147,27 @@ class Api extends REST_Controller {
                 $newResponse = array('code' => '0', 'message' => 'Unable to delete user', 'data' => '');
                 $this->response($newResponse, REST_Controller::HTTP_BAD_REQUEST);
             }
+        }
+    }
+
+    public function login_post(){
+        $newResponse = array('code' => '', 'message' => '', 'data' => '');
+        $email = $this->input->post('userName');
+        $password = md5($this->input->post('password'));
+
+        $validate = TRUE;
+        if ($validate == TRUE) {
+            $login_result = $this->user_model->authenticate_user($email, $password);
+            if (isset($login_result)) {
+                $newResponse = array('code' => '1', 'message' => 'Login Successfull', 'data' => $login_result['data']);
+                $this->response($newResponse, REST_Controller::HTTP_OK);
+            } else {
+                $newResponse = array('code' => '0', 'message' => 'Login Error', 'data' => '');
+                $this->response($newResponse, REST_Controller::HTTP_BAD_REQUEST);
+            }
+        } else {
+            $newResponse = array('code' => '0', 'message' => 'Validation Error', 'data' => '');
+            $this->response($newResponse, REST_Controller::HTTP_OK);
         }
     }
 
