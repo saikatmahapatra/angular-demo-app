@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { ValidationService } from 'src/app/shared/services/validation.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray, NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/login.service';
 import { AlertService } from 'src/app/core/services/alert.service';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
-import { ValidationService } from 'src/app/shared/services/validation.service';
+import { SpinnerService } from 'src/app/core/services/spinner.service';
+import { ValidationService } from 'src/app/core/services/validation.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

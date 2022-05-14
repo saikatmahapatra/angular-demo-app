@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SpinnerService } from '../../services/spinner.service';
+import { SpinnerService } from '../../../core/services/spinner.service';
 
 @Component({
   selector: 'app-loading-indicator',

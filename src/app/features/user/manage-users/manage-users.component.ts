@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonService } from '../../../shared/services/common.service';
-import { ApiService } from '../../../shared/services/api.service';
+import { CommonService } from '../../../core/services/common.service';
+import { ApiService } from '../../../core/services/api.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { of } from 'rxjs';
 

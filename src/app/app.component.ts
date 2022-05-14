@@ -1,5 +1,5 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
-import { CommonService } from './shared/services/common.service';
+import { CommonService } from './core/services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 @Component({
   selector: 'app-root',

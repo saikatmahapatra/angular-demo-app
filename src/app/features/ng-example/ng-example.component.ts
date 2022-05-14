@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../shared/services/common.service';
+import { CommonService } from '../../core/services/common.service';
 @Component({
   selector: 'app-example',
   templateUrl: './ng-example.component.html',
