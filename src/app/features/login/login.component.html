@@ -1,33 +1,45 @@
-<div class="row">
-  <div class="col-md-7 text-center">
-    <img style="width: 130px;" src="/assets/img/angular.png" alt="logo" />
-    <h2>CRM App</h2>
-    <div class="text-center"><img class="img-fluid" src="assets/img/3.jpg" alt="sign in image" /></div>
-  </div>
-  <div class="col-md-5 justify-content-center">
-    <h1>Welcome to the CRM App</h1>
-    <h4>Please sign in to continue...</h4>
-    
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-      <div class="form-row mb-2">
-          <div class="col">
-              <label for="userName">Username / Email</label>
-              <input type="text" class="form-control" id="userName" formControlName="userName">
-              <app-validation-error [control]="myForm.controls['userName']"></app-validation-error>
-          </div>
+<div class="row d-flex justify-content-center">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-7 text-center">
+        <img style="width: 130px;" src="/assets/img/angular.png" alt="logo" />
+        <h2>CRM App</h2>
+        <div class="text-center"><img class="img-fluid" src="assets/img/3.jpg" alt="sign in image" /></div>
       </div>
-
-      <div class="form-row mb-2">
-          <div class="col">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" formControlName="password">
-              <app-validation-error [control]="myForm.controls['password']"></app-validation-error>
+      <div class="col-md-5">
+        <h1>Login</h1>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+          <div class="form-row mb-2">
+              <div class="col">
+                  <label for="userName">Username / Email</label>
+                  <input type="text" class="form-control" name="userName" ngModel required minlength="4" maxlength="255">
+                  <!-- <app-validation-error [control]="loginForm.controls['userName']"></app-validation-error> -->
+                  <div *ngIf="loginForm.submitted || loginForm.touched && loginForm.dirty" class="text-danger">
+                    <div *ngIf="loginForm.controls['userName'].hasError('required')">This field is required</div>
+                    <div *ngIf="loginForm.controls['userName'].hasError('minlength')">Username should be at least 4 characters length</div>
+                    <div *ngIf="loginForm.controls['userName'].hasError('maxlength')">Username should not be more than 255 characters</div>
+                  </div>
+              </div>
           </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
     
-
+          <div class="form-row mb-2">
+              <div class="col">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" ngModel required minlength="4" maxlength="20">
+                  <!-- <app-validation-error [control]="loginForm.controls['password']"></app-validation-error> -->
+                  <div *ngIf="loginForm.submitted || loginForm.touched && loginForm.dirty" class="text-danger">
+                    <div *ngIf="loginForm.controls['password'].hasError('required')">This field is required</div>
+                    <div *ngIf="loginForm.controls['password'].hasError('minlength')">Password should be at least 4 characters length</div>
+                    <div *ngIf="loginForm.controls['password'].hasError('maxlength')">Password should not be more than 20 characters</div>
+                  </div>
+              </div>
+          </div>
+    
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+        
+    
+      </div>
+    </div>
   </div>
 </div>
