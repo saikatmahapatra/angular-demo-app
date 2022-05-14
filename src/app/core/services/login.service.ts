@@ -22,7 +22,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(postData: any) {
-    return this.http.post('http://localhost/angular-demo-app/server/api_server/api/login', postData, this.httpOptions).pipe(
+    return this.http.post('http://localhost/angular-demo-app/server/api_server/api/login', postData).pipe(
       catchError((err) => {
         err.statusText = 'This is a custom error message from angular service'+ JSON.stringify(postData);
         return throwError(err.message); //Rethrow it back to component

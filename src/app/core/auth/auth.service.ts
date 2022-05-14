@@ -12,6 +12,6 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return true;
+    return sessionStorage.getItem('isLoggedIn');
   }
 }

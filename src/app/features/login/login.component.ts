@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     if(form.status === 'VALID') {
       const postData = form.value;
+      sessionStorage.setItem('isLoggedIn', 'true');
       this.loginSvc.login(postData).subscribe({
         next: (val) => {
           console.log('next', val);
