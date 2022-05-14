@@ -7,10 +7,6 @@ import { UserRoutingModule } from './user-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UserComponent } from './user.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 
@@ -26,10 +22,6 @@ import { MyAccountComponent } from './my-account/my-account.component';
     UserRoutingModule
   ],
   declarations: [
-    LoginComponent,
-    RegistrationComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
     ManageUsersComponent,
     MyAccountComponent,
     UserComponent
