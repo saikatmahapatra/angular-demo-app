@@ -3,15 +3,16 @@
     <div class="row">
       <div class="col-md-7 text-center">
         <img style="width: 130px;" src="/assets/img/angular.png" alt="logo" />
-        <h2>CRM App</h2>
+        <h1>CRM App</h1>
         <div class="text-center"><img class="img-fluid" src="assets/img/3.jpg" alt="sign in image" /></div>
       </div>
       <div class="col-md-5">
-        <h1>Login</h1>
+        <h2>Welcome to CRM App</h2>
+        <h5>Please sign in to continue</h5>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <div class="form-row mb-2">
               <div class="col">
-                  <label for="userName">Username / Email</label>
+                  <label for="userName">Username/Email</label>
                   <input type="text" class="form-control" name="userName" ngModel required minlength="4" maxlength="255">
                   <!-- <app-validation-error [control]="loginForm.controls['userName']"></app-validation-error> -->
                   <div *ngIf="loginForm.submitted || loginForm.touched && loginForm.dirty" class="text-danger">
@@ -35,7 +36,7 @@
               </div>
           </div>
     
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Sign In</button>
       </form>
         
     
