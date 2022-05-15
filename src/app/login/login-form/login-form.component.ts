@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
       const postData = form.value;
       this.authSvc.authenticate(postData).subscribe({
         next: (response: any) => {
-          if(response['status'] == 'success') {
+          if(response['status'] === '1') {
             sessionStorage.setItem('loginData', JSON.stringify(response.data));
             this.router.navigate(['./dashboard']);
           }

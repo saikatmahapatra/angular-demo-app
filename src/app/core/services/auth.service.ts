@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   authenticate(postData: any) {
-    return this.http.post('http://localhost/united-emp-portal/api/login', postData).pipe(
+    return this.http.post('http://localhost/united-emp-portal/api/v1/login', postData).pipe(
       catchError((err) => {
         //err.statusText = err?.error?.data?.message;
         return throwError(err); //Rethrow it back to component

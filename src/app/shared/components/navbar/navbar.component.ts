@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authSvc.isLoggedIn();
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('loginData');
+    this.authSvc.isLoggedIn();
   }
 
 
