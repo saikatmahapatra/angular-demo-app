@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { NgExampleRoutingModule } from './ng-example-routing.module';
 import { NgExampleComponent } from './ng-example.component';
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';
