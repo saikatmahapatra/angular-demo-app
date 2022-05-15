@@ -4,7 +4,7 @@
         <div class="col">
             <label for="userName">Username</label>
             <input type="text" class="form-control" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
-            <app-validation-error [submitted]="submitted" [control]="f['userName']"></app-validation-error>
+            <app-validation-error [control]="f['userName']"></app-validation-error>
         </div>
     </div>
 
@@ -12,7 +12,7 @@
         <div class="col">
             <label for="password">Password</label>
             <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-            <app-validation-error [submitted]="submitted" [control]="f['password']"></app-validation-error>
+            <app-validation-error [control]="f['password']"></app-validation-error>
         </div>
     </div>
 
