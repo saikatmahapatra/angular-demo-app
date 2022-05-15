@@ -35,7 +35,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authSvc.isLoggedIn()) {
-      this.router.navigate(['./dashboard']);
+      this.router.navigate(['/']);
     }
   }
 
@@ -46,13 +46,10 @@ export class LoginFormComponent implements OnInit {
     this.loading = true;
     if(this.loginForm.valid) {
       const postData = this.loginForm.value;
-      this.authSvc.authenticate(postData).subscribe({
+      this.authSvc.login(postData).subscribe({
         next: (response: any) => {
-          if(response['status'] === '1') {
-            sessionStorage.setItem('loginData', JSON.stringify(response.data));
-            this.router.navigate(['./dashboard']);
-          }
-          this.spinnerSvc.show();
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+          this.router.navigate([returnUrl]);
         }, 
         error: (err) => {
           this.loading = false;
