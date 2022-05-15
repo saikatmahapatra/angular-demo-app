@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { FormGroup,FormControl, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { regEx } from '../../shared/utils/ui/model/reg-ex';
 import { getErrorMessage } from 'src/app/config/app-config';
 @Injectable()
 export class FormValidationService {
 
   constructor() { }
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
 
   getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
     return getErrorMessage(ruleName, validatorValue);

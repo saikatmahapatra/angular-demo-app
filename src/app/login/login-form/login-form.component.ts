@@ -11,7 +11,7 @@ import { FormValidationService } from 'src/app/core/services/form-validation.ser
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, FormValidationService]
 })
 export class LoginFormComponent implements OnInit {
   submitted = false;
@@ -23,7 +23,8 @@ export class LoginFormComponent implements OnInit {
     private alertSvc: AlertService,
     private spinnerSvc: SpinnerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formValidationSvc: FormValidationService
   ) {
    }
 
@@ -43,7 +44,7 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if(this.loginForm.status === 'VALID') {
+    if(this.loginForm.valid) {
       const postData = this.loginForm.value;
       this.authSvc.authenticate(postData).subscribe({
         next: (response: any) => {
@@ -69,6 +70,7 @@ export class LoginFormComponent implements OnInit {
       });
     } else {
       this.loading = false;
+      this.formValidationSvc.validateAllFormFields(this.loginForm);
     }
     
   }
