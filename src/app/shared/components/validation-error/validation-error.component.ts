@@ -12,6 +12,8 @@ export class ValidationErrorComponent implements OnInit {
   @Input()
   control!: AbstractControl;
 
+  @Input() submitted: any;
+
   constructor(private formValidationSvc: FormValidationService) { }
 
   ngOnInit() {
@@ -24,9 +26,10 @@ export class ValidationErrorComponent implements OnInit {
   
   //get err message
   get errorMessage() {
+    const fG = this.control.parent;
     for (const validationRule in this.control.errors) {
       if (this.control.errors.hasOwnProperty(validationRule)) {
-        if ((this.control.touched || this.control.dirty) && this.control.errors[validationRule] === true) {
+        if ((this.submitted || this.control.touched) && this.control.errors[validationRule]) {
           return this.formValidationSvc.getValidatorErrorMessage(validationRule, this.control.errors[validationRule]);
         }
       }
