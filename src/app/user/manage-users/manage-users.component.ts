@@ -15,7 +15,7 @@ export class ManageUsersComponent implements OnInit {
   public saveUserForm!: FormGroup;
   public submitted!: boolean;
   public events: any[] = [];
-  public userList: any = [];
+  public userList: any;
   public postData = {};
 
   constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
@@ -23,7 +23,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userList = this.getUsersList();
+    this.getUsersList();
 
     /*To add a validator, we must first convert the string value into an array.
     The first item in the array is the default value if any,
@@ -54,9 +54,8 @@ export class ManageUsersComponent implements OnInit {
 
   getUsersList() {
     this.apiSvc.getUsersTest().subscribe({
-      next: (val) => {
-        this.userList = val;
-        console.log(this.userList);
+      next: (val: any) => {
+        this.userList = val?.data;
       },
       error: (err) => {
         this.alertService.error(err, false);
