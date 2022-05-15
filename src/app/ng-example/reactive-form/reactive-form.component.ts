@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { ValidationService } from 'src/app/core/services/validation.service';
+import { FormValidationService } from 'src/app/core/services/form-validation.service';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  providers: [ValidationService]
+  providers: [FormValidationService]
 })
 export class ReactiveFormComponent implements OnInit {
 
@@ -46,7 +46,7 @@ export class ReactiveFormComponent implements OnInit {
     note: ['']
   });
 
-  constructor(private fb: FormBuilder, private validator: ValidationService) {
+  constructor(private fb: FormBuilder, private validator: FormValidationService) {
     this.conditionalValidation();
   }
 

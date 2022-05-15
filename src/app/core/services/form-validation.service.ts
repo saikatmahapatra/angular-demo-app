@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { regEx } from '../../shared/utils/ui/model/reg-ex';
 @Injectable()
-export class ValidationService {
+export class FormValidationService {
 
   constructor() { }
 

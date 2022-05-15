@@ -1,18 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
-import { ValidationService } from '../../../core/services/validation.service';
+import { FormValidationService } from '../../../core/services/form-validation.service';
 @Component({
   selector: 'app-validation-error',
   templateUrl: './validation-error.component.html',
   styleUrls: ['./validation-error.component.scss'],
-  providers: [ValidationService]
+  providers: [FormValidationService]
 })
 export class ValidationErrorComponent implements OnInit {
 
   @Input()
   control!: AbstractControl;
 
-  constructor(private validator: ValidationService) { }
+  constructor(private formValidationSvc: FormValidationService) { }
 
   ngOnInit() {
   }
@@ -27,7 +27,7 @@ export class ValidationErrorComponent implements OnInit {
     for (const validationRule in this.control.errors) {
       if (this.control.errors.hasOwnProperty(validationRule)) {
         if ((this.control.touched || this.control.dirty) && this.control.errors[validationRule] === true) {
-          return this.validator.getValidatorErrorMessage(validationRule, this.control.errors[validationRule]);
+          return this.formValidationSvc.getValidatorErrorMessage(validationRule, this.control.errors[validationRule]);
         }
       }
     }
