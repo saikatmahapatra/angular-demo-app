@@ -23,7 +23,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsersList();
+    this.userList = this.getUsersList();
 
     /*To add a validator, we must first convert the string value into an array.
     The first item in the array is the default value if any,
@@ -56,6 +56,7 @@ export class ManageUsersComponent implements OnInit {
     this.apiSvc.getUsersTest().subscribe({
       next: (val) => {
         this.userList = val;
+        console.log(this.userList);
       },
       error: (err) => {
         this.alertService.error(err, false);
