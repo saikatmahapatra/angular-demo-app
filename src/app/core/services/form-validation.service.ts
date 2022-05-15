@@ -2,31 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { regEx } from '../../shared/utils/ui/model/reg-ex';
+import { getErrorMessage } from 'src/app/config/error-message';
 @Injectable()
 export class FormValidationService {
 
   constructor() { }
 
   getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
-    let errorMessage: any = {
-      'required': 'The field is required.',
-      'minlength': `The field must be at least ${validatorValue.requiredLength} characters long.`,
-      'maxlength': `The field cannot be more than ${validatorValue.requiredLength} characters long.`,
-      'email': 'Please enter a valid email address.',
-      'validEmail': 'Please enter a valid email address i.e yourname@domain.com.',
-      'phoneNumber': 'Please enter a 10 digit phone number.',
-      'ruleOne': 'error message 1',
-      'ruleTwo': 'error message 2',
-      'ruleThreec': 'error message 3',
-      'invalidPassword': 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
-      'invalidDomain': 'Please enter email with @gmail.com only',
-      'matching': 'Password must match'
-    };
-    if (errorMessage[ruleName]) {
-      return errorMessage[ruleName];
-    } else {
-      return 'No error message found for <' + ruleName + '>';
-    }
+    return getErrorMessage(ruleName, validatorValue);
   }
 
   validEmail(control: AbstractControl) {
