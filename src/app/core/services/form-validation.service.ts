@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup,FormControl, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { regEx } from '../../shared/utils/ui/model/reg-ex';
-import { getErrorMessage } from 'src/app/config/app-config';
 @Injectable()
 export class FormValidationService {
 
@@ -19,8 +18,27 @@ export class FormValidationService {
     });
   }
 
-  getValidatorErrorMessage(ruleName: string, validatorValue?: any) {
-    return getErrorMessage(ruleName, validatorValue);
+  getValidatorErrorMessage(rule: string, validatorValue?: any) {
+    const errorMessage: any = {
+      required: 'The field is required.',
+      minlength: `The field must be at least ${validatorValue?.requiredLength} characters long.`,
+      maxlength: `The field cannot be more than ${validatorValue?.requiredLength} characters long.`,
+      email: 'Please enter a valid email address.',
+      validEmail: 'Please enter a valid email address i.e yourname@domain.com.',
+      phoneNumber: 'Please enter a 10 digit phone number.',
+      ruleOne: 'error message 1',
+      ruleTwo: 'error message 2',
+      ruleThreec: 'error message 3',
+      invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
+      invalidDomain: 'Please enter email with @gmail.com only',
+      matching: 'Confirm Password should match with Password',
+      userNameExists: 'This username is already registered'
+  };
+  if(errorMessage[rule]) {
+      return errorMessage[rule];
+  } else {
+      return 'Rule: ' + rule + ' : This field has a generic error.';
+  }
   }
 
   validEmail(control: AbstractControl) {
