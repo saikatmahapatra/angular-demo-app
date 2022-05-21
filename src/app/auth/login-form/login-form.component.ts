@@ -37,6 +37,10 @@ export class LoginFormComponent implements OnInit {
     if(this.authSvc.isLoggedIn()) {
       this.router.navigate(['/']);
     }
+    const logout = this.route.snapshot.queryParamMap.get('logout');
+    if(logout) {
+      this.logout();
+    }
   }
 
   get f() { return this.loginForm.controls; }
@@ -70,6 +74,10 @@ export class LoginFormComponent implements OnInit {
       this.formValidationSvc.validateAllFormFields(this.loginForm);
     }
     
+  }
+
+  logout() {
+    this.authSvc.logout();
   }
 
 }

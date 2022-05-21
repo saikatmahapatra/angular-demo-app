@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,7 @@ export class AuthService {
     private loggedInUserSubject!: BehaviorSubject<any>;
     public loggedInUser!: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     const loggedInData: any = sessionStorage.getItem('loginData');
     this.loggedInUserSubject = new BehaviorSubject<any>(JSON.parse(loggedInData));
     this.loggedInUser = this.loggedInUserSubject.asObservable();
@@ -50,5 +51,6 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem('loginData');
     this.loggedInUserSubject.next(null);
+    this.router.navigate(['/']);
   }
 }
