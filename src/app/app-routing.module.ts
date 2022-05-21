@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: UnauthenticatedLayoutComponent,
     children: [
-      { path: 'auth', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) }
+      { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }
     ]
   },
   {
