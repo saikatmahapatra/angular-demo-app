@@ -7,6 +7,7 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
 import { AuthLayoutComponent } from './auth-layout.component';
 const routes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
+    { path: '', component: LoginFormComponent},
     { path: 'login', component: LoginFormComponent},
     { path: 'forgot-password', component: ForgotPasswordFormComponent},
     { path: 'reset-password', component: ResetPasswordFormComponent}
