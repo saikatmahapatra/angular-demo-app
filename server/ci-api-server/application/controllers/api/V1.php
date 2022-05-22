@@ -48,12 +48,15 @@ class V1 extends REST_Controller {
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
     }
 
-    function isAuthorized() {
-        // check token
+    function isLoggedIn() {
         $this->api_response['message'] = 'You are not logged in.';
         $this->http_status_code = REST_Controller::HTTP_UNAUTHORIZED;
         $this->response($this->api_response, $this->http_status_code);
         return false;
+    }
+
+    function isAuthorized() {
+
     }
 
     public function test_get() {
@@ -65,7 +68,7 @@ class V1 extends REST_Controller {
     }
 
     public function users_get(){
-        $this->isAuthorized();
+        $this->isLoggedIn();
         $data = array();        
         $id = $this->get('id') ? $this->get('id') : NULL;
         if ($id === NULL) {
