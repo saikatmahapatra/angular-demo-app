@@ -1,7 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavItem } from '../../../utils/ui/model/nav-item';
 import { Subscription } from 'rxjs';
-import { menu } from '../../../utils/ui/model/menu';
 
 @Component({
   selector: 'app-authenticated-layout',

@@ -14,7 +14,6 @@ import { DefaultLayoutComponent } from './components/layouts/default-layout/defa
 import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
-import { MenuListItemComponent } from './utils/ui/menu-list-item/menu-list-item.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { MaterialUiModule } from './modules/material-ui/material-ui.module';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
@@ -38,7 +37,6 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
-    MenuListItemComponent,
     AlertMessageComponent,
     SidenavComponent,
     LoadingIndicatorComponent
@@ -56,7 +54,6 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     DefaultLayoutComponent,
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
-    MenuListItemComponent,
     AlertMessageComponent,
     SidenavComponent,
     MaterialUiModule,
