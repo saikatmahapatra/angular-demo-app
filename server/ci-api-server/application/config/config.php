@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Kolkata');
 | environments.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/ci-demo-portal-api/';
+$config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/angular-demo-app/server/ci-api-server/';
 
 /*
 |--------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /ci-api-server/
+RewriteBase /angular-demo-app/server/ci-api-server/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond $1 !^(index\.php)
