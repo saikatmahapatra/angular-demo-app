@@ -36,6 +36,7 @@ export class AuthService {
     return this.http.post<any>('http://localhost/angular-demo-app/server/ci-api-server/api/v1/login', postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
+          sessionStorage.setItem('token', JSON.stringify(response.token));
           this.loggedInUserSubject.next(response.data);
           return response.data;
       }), catchError((err) => {
