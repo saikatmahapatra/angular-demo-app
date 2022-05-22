@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private APIBaseURL = 'http://localhost/united-emp-portal/api/v1/';
+  private APIBaseURL = 'http://localhost/ci-demo-portal-api/api/v1/';
 
   constructor(private http: HttpClient) { }
 
