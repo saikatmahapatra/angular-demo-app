@@ -24,6 +24,7 @@ require APPPATH . 'libraries/REST_Controller.php';
 class V1 extends REST_Controller {
     
     var $api_response = array();
+    var $http_status_code = '';
 
     function __construct(){
         // Construct the parent class
@@ -34,15 +35,25 @@ class V1 extends REST_Controller {
 
         // Common Response Array
         $this->api_response = [];
-        $this->api_response['status'] = '1'; // 1=success, 0=error
+        $this->api_response['status'] = '1';
         $this->api_response['message'] = '';           
         $this->api_response['data'] = '';
+        $this->api_response['token'] = '';
+        $this->http_status_code = REST_Controller::HTTP_INTERNAL_SERVER_ERROR; 
 
         // Configure limits on our controller methods
         // Ensure you have created the 'limits' table and enabled 'limits' within application/config/rest.php
         $this->methods['users_get']['limit'] = 500; // 500 requests per hour per user/key
         $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
+    }
+
+    public function test_get() {
+        $payload = array('username' => 'Saikat', 'role'=> 'admin');
+        $this->api_response['message'] = 'Its working, you can modify the API V1'; 
+        $tokenData = $this->authorization_token->generateToken($payload);  
+        $this->api_response['token'] = $tokenData;
+        $this->response($this->api_response, $this->http_status_code);
     }
 
     public function users_get(){
@@ -53,26 +64,27 @@ class V1 extends REST_Controller {
             $data = $result_array['data_rows'];
             if ($data) {                
                 $this->api_response['data'] = $data;
-                $this->response($this->api_response, REST_Controller::HTTP_OK);
+                $this->http_status_code = REST_Controller::HTTP_OK;
             } else {
                 $this->api_response = '0';
                 $this->api_response['message'] = 'No User Found';
                 $this->api_response['data'] = $data;
-                $this->response($this->api_response, REST_Controller::HTTP_BAD_REQUEST);
+                $this->http_status_code = REST_Controller::HTTP_BAD_REQUEST;
             }
         } else {
             $result_array = $this->user_model->get_rows(NULL, NULL, $id);
             $data = $result_array['data_rows'];
             if ($data) {                
                 $this->api_response['data'] = $data;
-                $this->response($this->api_response, REST_Controller::HTTP_OK);
+                $this->http_status_code = REST_Controller::HTTP_OK;
             } else {
                 $this->api_response = '0';
                 $this->api_response['message'] = 'No User Found';
                 $this->api_response['data'] = $data;
-                $this->response($this->api_response, REST_Controller::HTTP_BAD_REQUEST);
+                $this->http_status_code = REST_Controller::HTTP_BAD_REQUEST;
             }
         }
+        $this->response($this->api_response, $this->http_status_code);
     }
 
     public function login_post(){
@@ -86,20 +98,23 @@ class V1 extends REST_Controller {
                 $this->api_response['status'] = '1';
                 $this->api_response['message'] = 'Login Successfull';
                 $tokenData = $this->authorization_token->generateToken($login_result['data']);      
-                $this->api_response['data'] = $tokenData;
-                
-                $this->response($this->api_response, REST_Controller::HTTP_OK);
+                $this->api_response['data'] = $login_result['data'];
+                $this->api_response['token'] = $tokenData;
+                $this->http_status_code = REST_Controller::HTTP_OK;
             } else {
                 $this->api_response['status'] = '0';
                 $this->api_response['message'] = $login_result['message'];      
                 $this->api_response['data'] = $login_result;
-                $this->response($this->api_response, REST_Controller::HTTP_BAD_REQUEST);
+                $this->http_status_code = REST_Controller::HTTP_BAD_REQUEST;
             }
         } else {
             $this->api_response['status'] = '0';
             $this->api_response['message'] = 'Form validation Error';
-            $this->response($this->api_response, REST_Controller::HTTP_OK);
+            $this->http_status_code = REST_Controller::HTTP_OK;
         }
+
+        $this->response($this->api_response, $this->http_status_code);
     }
+
 
 }
