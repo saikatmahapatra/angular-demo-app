@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   login(postData: any) {
-    return this.http.post<any>('http://localhost/united-emp-portal/api/v1/login', postData)
+    return this.http.post<any>('http://localhost/angular-demo-app/ci-api-server/api/v1/login', postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
           this.loggedInUserSubject.next(response.data);
