@@ -29,6 +29,9 @@ class V1 extends REST_Controller {
         // Construct the parent class
         parent::__construct();
 
+        // Load JWT Auth Lib
+        $this->load->library('Authorization_Token');
+
         // Common Response Array
         $this->api_response = [];
         $this->api_response['status'] = '1'; // 1=success, 0=error
@@ -81,8 +84,10 @@ class V1 extends REST_Controller {
             $login_result = $this->user_model->authenticate_user($email, $password);
             if (isset($login_result) && $login_result['status'] != 'error') {
                 $this->api_response['status'] = '1';
-                $this->api_response['message'] = 'Login Successfull';      
-                $this->api_response['data'] = $login_result['data'];
+                $this->api_response['message'] = 'Login Successfull';
+                $tokenData = $this->authorization_token->generateToken($login_result['data']);      
+                $this->api_response['data'] = $tokenData;
+                
                 $this->response($this->api_response, REST_Controller::HTTP_OK);
             } else {
                 $this->api_response['status'] = '0';
