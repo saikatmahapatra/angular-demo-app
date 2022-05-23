@@ -21,22 +21,15 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    let isLoggedIn = false;
-    const loginData = sessionStorage.getItem('loginData');
-    if(loginData !== null) {
-      const data = JSON.parse(loginData);
-      if(data.id && data.user_email) {
-        isLoggedIn = true;
-      }
-    }
-    return isLoggedIn;
+    const authToken = this.getToken();
+    return (authToken !== null) ? true : false;
   }
 
   login(postData: any) {
     return this.http.post<any>('http://localhost/angular-demo-app/server/ci-api-server/api/v1/login', postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
-          sessionStorage.setItem('token', JSON.stringify(response.token));
+          sessionStorage.setItem('access_token', response.token);
           this.loggedInUserSubject.next(response.data);
           return response.data;
       }), catchError((err) => {
@@ -45,13 +38,17 @@ export class AuthService {
       }));
   }
 
+  getToken() {
+    return sessionStorage.getItem('access_token');
+  }
+
   getLogedInUserDetails() {
     return this.loggedInUserSubject;
   }
 
   logout() {
     sessionStorage.removeItem('loginData');
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('access_token');
     this.loggedInUserSubject.next(null);
     this.router.navigate(['/']);
   }
