@@ -68,7 +68,7 @@ class V1 extends REST_Controller {
     }
 
     public function users_get(){
-        $this->isLoggedIn();
+        //$this->isLoggedIn();
         $data = array();        
         $id = $this->get('id') ? $this->get('id') : NULL;
         if ($id === NULL) {

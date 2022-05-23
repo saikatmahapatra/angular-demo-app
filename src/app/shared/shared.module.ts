@@ -15,15 +15,13 @@ import { UnauthenticatedLayoutComponent } from './components/layouts/unauthentic
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
-import { MaterialUiModule } from './modules/material-ui/material-ui.module';
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    MaterialUiModule
+    ReactiveFormsModule
   ],
   declarations: [
     HighlightDirective,
@@ -56,7 +54,6 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
     SidenavComponent,
-    MaterialUiModule,
     LoadingIndicatorComponent
   ]
 })
