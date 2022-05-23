@@ -1,7 +1,4 @@
 import { Inject, Injectable, EventEmitter, Output, HostListener } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError, forkJoin, BehaviorSubject } from 'rxjs';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Injectable({
   // we declare that this service should be created
@@ -12,9 +9,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class CommonService {
 
   constructor(
-    private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router
   ) { }
   showAppLogs = true;
   pData: any;
