@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 /** @noinspection PhpIncludeInspection */
 require APPPATH . 'libraries/REST_Controller.php';
+require APPPATH . 'libraries/Common_lib.php';
 
 /**
  * This is an example of a few basic user interaction methods you could use
@@ -16,7 +17,7 @@ require APPPATH . 'libraries/REST_Controller.php';
  * @license         MIT
  * @link            
  */
-class V1 extends REST_Controller {
+class API extends REST_Controller {
     
     var $api_response = array();
     var $http_status_code = '';
@@ -51,7 +52,17 @@ class V1 extends REST_Controller {
     }
 
     function isAuthorized() {
+        $authTokenValidation = $this->authorization_token->validateToken();
+        if($authTokenValidation['status'] == FALSE) {
+            $this->api_response['message'] = $authTokenValidation['message'];
+            $this->http_status_code = REST_Controller::HTTP_UNAUTHORIZED;
+            $this->response($this->api_response, $this->http_status_code);
+            return false;
+        }
+    }
 
+    function validateToken_post(){
+        $this->isAuthorized();
     }
 
     public function test_get() {
@@ -64,6 +75,7 @@ class V1 extends REST_Controller {
 
     public function users_get(){
         //$this->isLoggedIn();
+        $this->isAuthorized();
         $data = array();        
         $id = $this->get('id') ? $this->get('id') : NULL;
         if ($id === NULL) {
@@ -104,7 +116,10 @@ class V1 extends REST_Controller {
             if (isset($login_result) && $login_result['status'] != 'error') {
                 $this->api_response['status'] = '1';
                 $this->api_response['message'] = 'Login Successfull';
-                $tokenData = $this->authorization_token->generateToken($login_result['data']);      
+                //print_r($login_result['data']); die();
+                $credData['userId'] = $login_result['data']['id'];
+                $credData['userEmail'] = $login_result['data']['user_email'];
+                $tokenData = $this->authorization_token->generateToken($credData);      
                 $this->api_response['data'] = $login_result['data'];
                 $this->api_response['token'] = $tokenData;
                 $this->http_status_code = REST_Controller::HTTP_OK;
