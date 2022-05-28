@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,11 +30,10 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     AppRoutingModule
   ],
   exports: [BrowserAnimationsModule, PageNotFoundComponent],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

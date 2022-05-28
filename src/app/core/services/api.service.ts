@@ -6,7 +6,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private APIBaseURL = 'http://localhost/angular-demo-app/server/ci-api-server/api/v1/';
+  private APIBaseURL = 'http://localhost/angular-demo-app/server/ci-api-server/api/';
 
   constructor(private http: HttpClient) {
     
