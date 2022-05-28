@@ -59,6 +59,8 @@ class API extends REST_Controller {
             $this->statusCode = REST_Controller::HTTP_UNAUTHORIZED;
             $this->response($this->apiResponse, $this->statusCode);
             return false;
+        } else{
+            return true;
         }
     }
 
@@ -66,7 +68,7 @@ class API extends REST_Controller {
         $this->isAuthorized();
     }
 
-    public function test_get() {
+    function test_get() {
         $payload = array('username' => 'Saikat', 'role'=> 'admin');
         $this->apiResponse['message'] = 'Its working, you can modify the API V1'; 
         $tokenData = $this->authorization_token->generateToken($payload);  
@@ -74,7 +76,7 @@ class API extends REST_Controller {
         $this->response($this->apiResponse, $this->statusCode);
     }
 
-    public function users_get(){
+    function users_get(){
         //$this->isLoggedIn();
         $this->isAuthorized();
         $data = array();        
@@ -107,7 +109,7 @@ class API extends REST_Controller {
         $this->response($this->apiResponse, $this->statusCode);
     }
 
-    public function login_post(){
+    function login_post(){
         $email = $this->post('userName');
         $password = md5($this->post('password'));
         //print_r($email); die();
@@ -138,6 +140,7 @@ class API extends REST_Controller {
 
         $this->response($this->apiResponse, $this->statusCode);
     }
+
 
 
 }
