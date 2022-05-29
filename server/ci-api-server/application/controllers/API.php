@@ -19,7 +19,7 @@ require APPPATH . 'libraries/Common_lib.php';
  */
 class API extends REST_Controller {
     
-    var $apiResponse = array();
+    var $responseData = array();
     var $statusCode = '';
 
     function __construct(){
@@ -30,11 +30,10 @@ class API extends REST_Controller {
         $this->load->library('Authorization_Token');
 
         // Common Response Array
-        $this->apiResponse = [];
-        $this->apiResponse['status'] = '1';
-        $this->apiResponse['message'] = '';           
-        $this->apiResponse['data'] = '';
-        $this->apiResponse['token'] = '';
+        $this->responseData = [];
+        $this->responseData['message'] = null;           
+        $this->responseData['data'] = null;
+        $this->responseData['token'] = null;
         $this->statusCode = REST_Controller::HTTP_INTERNAL_SERVER_ERROR; 
 
         // Configure limits on our controller methods
@@ -47,10 +46,9 @@ class API extends REST_Controller {
     function isAuthorized() {
         $authTokenValidation = $this->authorization_token->validateToken();
         if($authTokenValidation['status'] == FALSE) {
-            $this->apiResponse['status'] = '0';
-            $this->apiResponse['message'] = $authTokenValidation['message'];
+            $this->responseData['message'] = $authTokenValidation['message'];
             $this->statusCode = REST_Controller::HTTP_UNAUTHORIZED;
-            $this->response($this->apiResponse, $this->statusCode);
+            $this->response($this->responseData, $this->statusCode);
             return false;
         } else{
             return true;
@@ -68,10 +66,10 @@ class API extends REST_Controller {
 
     function test_get() {
         $payload = array('username' => 'Saikat', 'role'=> 'admin');
-        $this->apiResponse['message'] = 'Its working, you can modify the API V1'; 
+        $this->responseData['message'] = 'Its working, you can modify the API V1'; 
         $tokenData = $this->authorization_token->generateToken($payload);  
-        $this->apiResponse['token'] = $tokenData;
-        $this->response($this->apiResponse, $this->statusCode);
+        $this->responseData['token'] = $tokenData;
+        $this->response($this->responseData, $this->statusCode);
     }
 
     function users_get(){
@@ -83,28 +81,26 @@ class API extends REST_Controller {
             $result_array = $this->user_model->get_rows(NULL, NULL, NULL);
             $data = $result_array['data_rows'];
             if ($data) {                
-                $this->apiResponse['data'] = $data;
+                $this->responseData['data'] = $data;
                 $this->statusCode = REST_Controller::HTTP_OK;
             } else {
-                $this->apiResponse = '0';
-                $this->apiResponse['message'] = 'No User Found';
-                $this->apiResponse['data'] = $data;
+                $this->responseData['message'] = 'No User Found';
+                $this->responseData['data'] = null;
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
         } else {
             $result_array = $this->user_model->get_rows(NULL, NULL, $id);
             $data = $result_array['data_rows'];
             if ($data) {                
-                $this->apiResponse['data'] = $data;
+                $this->responseData['data'] = $data;
                 $this->statusCode = REST_Controller::HTTP_OK;
             } else {
-                $this->apiResponse = '0';
-                $this->apiResponse['message'] = 'No User Found';
-                $this->apiResponse['data'] = $data;
+                $this->responseData['message'] = 'No User Found';
+                $this->responseData['data'] = null;
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
         }
-        $this->response($this->apiResponse, $this->statusCode);
+        $this->response($this->responseData, $this->statusCode);
     }
 
     function login_post(){
@@ -115,28 +111,25 @@ class API extends REST_Controller {
         if ($validate == TRUE) {
             $login_result = $this->user_model->authenticate_user($email, $password);
             if (isset($login_result) && $login_result['status'] != 'error') {
-                $this->apiResponse['status'] = '1';
-                $this->apiResponse['message'] = 'Login Successfull';
+                $this->responseData['message'] = 'Login Successfull';
                 //print_r($login_result['data']); die();
                 $credData['userId'] = $login_result['data']['id'];
                 $credData['userEmail'] = $login_result['data']['user_email'];
                 $tokenData = $this->authorization_token->generateToken($credData);      
-                $this->apiResponse['data'] = $login_result['data'];
-                $this->apiResponse['token'] = $tokenData;
+                $this->responseData['data'] = $login_result['data'];
+                $this->responseData['token'] = $tokenData;
                 $this->statusCode = REST_Controller::HTTP_OK;
             } else {
-                $this->apiResponse['status'] = '0';
-                $this->apiResponse['message'] = $login_result['message'];      
-                $this->apiResponse['data'] = $login_result;
+                $this->responseData['message'] = $login_result['message'];      
+                $this->responseData['data'] = $login_result;
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
         } else {
-            $this->apiResponse['status'] = '0';
-            $this->apiResponse['message'] = 'Form validation Error';
+            $this->responseData['message'] = 'Form validation Error';
             $this->statusCode = REST_Controller::HTTP_OK;
         }
 
-        $this->response($this->apiResponse, $this->statusCode);
+        $this->response($this->responseData, $this->statusCode);
     }
 
     function dashboardStat_get(){
@@ -160,15 +153,15 @@ class API extends REST_Controller {
         array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Your Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet')));
         array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Your Average Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('project/timesheet')));
         if($dashboard_stat) {
-            $this->apiResponse['status'] = '1';
-            $this->apiResponse['data'] = $dashboard_stat;
+            $this->responseData['status'] = '1';
+            $this->responseData['data'] = $dashboard_stat;
             $this->statusCode = REST_Controller::HTTP_OK;
         } else {
-            $this->apiResponse['status'] = '0';
+            $this->responseData['status'] = '0';
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
         }
         
-        $this->response($this->apiResponse, $this->statusCode);
+        $this->response($this->responseData, $this->statusCode);
     }
 
 
