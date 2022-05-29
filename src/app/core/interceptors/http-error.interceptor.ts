@@ -41,7 +41,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     switch (error.status) {
       case 400:
-        this.alertSvc.warning('We\'re unable to process your request at this moment. Please try after some time', false);
+        this.alertSvc.error('We\'re unable to process your request at this moment. Please try after some time', false);
         this.authSvc.logout();
         handled = true;
         break;
