@@ -12,18 +12,6 @@ export class ApiService {
     
    }
 
-  getCMSContent() {
-    return this.http.get(this.APIBaseURL + 'posts');
-  }
-
-  getUsers() {
-    return this.http.get(this.APIBaseURL + 'users');
-  }
-
-  createUsers(data: any) {
-    return this.http.post(this.APIBaseURL + 'users', data);
-  }
-
   getUsersTest() {
     return this.http.get(this.APIBaseURL + 'users').pipe(
       catchError((err) => {
@@ -32,4 +20,13 @@ export class ApiService {
       })
     );
   }
+
+  getDashboardStat() {
+    return this.http.get(this.APIBaseURL + 'dashboardStat').pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
+  }
+
 }
