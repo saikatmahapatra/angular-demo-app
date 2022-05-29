@@ -1,4 +1,4 @@
 {
-    "appTitle" : "QQQ",
-    "apiBaseUrl": ""
+    "appTitle" : "Angular Prod App",
+    "apiBaseUrl": "http://nsroot.smportal.com/nextgen/api/"
 }
