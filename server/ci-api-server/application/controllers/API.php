@@ -44,20 +44,20 @@ class API extends REST_Controller {
     }
     
     function isAuthorized() {
-        $authTokenValidation = $this->authorization_token->validateToken();
-        if($authTokenValidation['status'] == FALSE) {
-            $this->responseData['message'] = $authTokenValidation['message'];
+        $res = $this->authorization_token->validateToken();
+        if($res['status'] == FALSE) {
+            $this->responseData['message'] = $res['message'];
             $this->statusCode = REST_Controller::HTTP_UNAUTHORIZED;
             $this->response($this->responseData, $this->statusCode);
-            return false;
-        } else{
-            return true;
+        }
+        if($res['status'] == TRUE) {
+            return $res['data'];
         }
     }
 
     function getUserId(){
-        $this->isAuthorized();
-        return '1' ;
+        $res = $this->isAuthorized();
+        return $res->userId;
     }
 
     function validateToken_post(){
