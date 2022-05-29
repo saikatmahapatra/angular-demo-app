@@ -7,12 +7,12 @@ import { AppConfig } from '../../common/const/app-config';
   providedIn: 'root'
 })
 export class ApiService {
-  private APIBaseURL = AppConfig.apiBaseUrl;
+  private apiBaseUrl = AppConfig.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
   getUsersTest() {
-    return this.http.get(AppConfig.apiBaseUrl + AppConfig.endPoints.getUsers).pipe(
+    return this.http.get(this.apiBaseUrl + AppConfig.url.getUsers).pipe(
       catchError((err) => {
         //err.statusText = 'This is a custom error message from angular service';
         return throwError(err.message);
@@ -21,7 +21,15 @@ export class ApiService {
   }
 
   getDashboardStat() {
-    return this.http.get(this.APIBaseURL + 'dashboardStat').pipe(
+    return this.http.get(this.apiBaseUrl + AppConfig.url.dashboardStat).pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
+  }
+
+  checkEmail(data?: any) {
+    return this.http.post(this.apiBaseUrl + AppConfig.url.checkEmail, data).pipe(
       catchError((err) => {
         return throwError(err.message);
       })

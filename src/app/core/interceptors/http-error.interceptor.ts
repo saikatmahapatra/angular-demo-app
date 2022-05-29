@@ -40,11 +40,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     let handled: boolean = false;
 
     switch (error.status) {
-      case 400:
-        this.alertSvc.error('We\'re unable to process your request at this moment. Please try after some time', false);
-        this.authSvc.logout();
-        handled = true;
-        break;
+      // case 400:
+      //   this.alertSvc.error('We\'re unable to process your request at this moment. Please try after some time', false);
+      //   this.authSvc.logout();
+      //   handled = true;
+      //   break;
 
       case 401:
         if (this.router.url != '/login') {

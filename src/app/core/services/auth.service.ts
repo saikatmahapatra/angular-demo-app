@@ -10,6 +10,7 @@ import { AppConfig } from '../../common/const/app-config';
 export class AuthService {
     private loggedInUserSubject!: BehaviorSubject<any>;
     public loggedInUser!: Observable<any>;
+    private apiBaseUrl = AppConfig.apiBaseUrl;
 
   constructor(private http: HttpClient, private router: Router) {
     const loggedInData: any = sessionStorage.getItem('loginData');
@@ -27,7 +28,7 @@ export class AuthService {
   }
 
   login(postData: any) {
-    return this.http.post<any>(AppConfig.apiBaseUrl + AppConfig.endPoints.login, postData)
+    return this.http.post<any>(this.apiBaseUrl + AppConfig.url.login, postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
           sessionStorage.setItem('access_token', response.token);

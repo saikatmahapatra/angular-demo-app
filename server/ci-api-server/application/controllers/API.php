@@ -31,6 +31,7 @@ class API extends REST_Controller {
 
         // Common Response Array
         $this->responseData = [];
+        $this->responseData['status'] = 'error';
         $this->responseData['message'] = null;           
         $this->responseData['data'] = null;
         $this->responseData['token'] = null;
@@ -204,16 +205,17 @@ class API extends REST_Controller {
                         $this->email->message($message_html);
                         $this->email->send();
                         //echo $this->email->print_debugger();
+                        $this->responseData['status'] = 'success';
                         $this->responseData['message'] = 'OTP has been sent to '.$email;
                         $this->statusCode = REST_Controller::HTTP_OK;
 
                     } else{
                         $this->responseData['message'] = 'Error';
-                        $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                        $this->statusCode = REST_Controller::HTTP_OK;
                     }
                 } else {
                     $this->responseData['message'] = 'Email is not registered';
-                    $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    $this->statusCode = REST_Controller::HTTP_OK;
                 }
                 
             } else {

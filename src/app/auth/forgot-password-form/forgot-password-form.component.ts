@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { AlertService } from 'src/app/core/services/alert.service';
+import { ApiService } from 'src/app/core/services/api.service';
+import { FormValidationService } from 'src/app/core/services/form-validation.service';
 
 @Component({
   selector: 'app-forgot-password-form',
@@ -8,15 +12,53 @@ import { NgForm } from '@angular/forms';
 })
 export class ForgotPasswordFormComponent implements OnInit {
 
-  constructor() { }
+  submitted = false;
+  loading = false;
+
+  constructor(
+    private alertSvc: AlertService,
+    private apiSvc: ApiService,
+    private fb: FormBuilder,
+    private formValidationSvc: FormValidationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm) {
-    if(form.status === 'VALID') {
-      const postData = form.value;
-      console.log(postData);
+  fpForm = this.fb.group({
+    action: ['forgotPassword'],
+    email: ['', [Validators.required, this.formValidationSvc.validEmail]],
+  });
+
+  get f() { return this.fpForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    if(this.fpForm.valid) {
+      const postData = this.fpForm.value;
+      this.apiSvc.checkEmail(postData).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status == 'success') {
+            this.alertSvc.success(response.message);
+          }
+          if(response.status == 'error') {
+            this.alertSvc.error(response.message);
+          }
+        }, 
+        error: (err) => {
+          this.alertSvc.error(err);
+          this.loading = false;
+        },
+        complete: ()=> {
+          this.loading = false;
+        }
+      });
+    } else {
+      this.loading = false;
+      this.formValidationSvc.validateAllFormFields(this.fpForm);
     }
     
   }

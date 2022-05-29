@@ -1,8 +1,10 @@
 export const AppConfig = {
     appTitle: '',
     apiBaseUrl: '',
-    endPoints: {
+    url: {
         login: 'login',
-        getUsers: 'users'
+        checkEmail: 'checkEmail',
+        getUsers: 'users',
+        dashboardStat: 'dashboardStat'
     }
 };
