@@ -1,4 +1,8 @@
 export const AppConfig = {
-    APP_TITLE: '',
-    API_BASE_URL: ''
+    appTitle: '',
+    apiBaseUrl: '',
+    endPoints: {
+        login: 'login',
+        getUsers: 'users'
+    }
 };

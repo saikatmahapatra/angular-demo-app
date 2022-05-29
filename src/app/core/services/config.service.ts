@@ -23,8 +23,8 @@ export class ConfigService {
       this.http.get('assets/config/config-dev.json')
         .subscribe(
           (config: any) => {
-            AppConfig.APP_TITLE = config.appTitle || 'My Angular App';
-            AppConfig.API_BASE_URL = config.apiBaseUrl;
+            AppConfig.appTitle = config.appTitle || 'My Angular App';
+            AppConfig.apiBaseUrl = config.apiBaseUrl;
             return resolve(config);
           },
           err => {
