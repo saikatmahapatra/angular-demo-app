@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { AppConfig } from '../config/app-config';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private APIBaseURL = 'http://localhost/angular-demo-app/server/ci-api-server/api/';
+  private APIBaseURL = AppConfig.API_BASE_URL;
 
   constructor(private http: HttpClient) { }
 

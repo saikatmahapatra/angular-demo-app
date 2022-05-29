@@ -1,4 +1,4 @@
 export const AppConfig = {
     APP_TITLE: '',
-    BASE_URL: ''
+    API_BASE_URL: ''
 };
