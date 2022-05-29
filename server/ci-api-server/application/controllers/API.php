@@ -141,7 +141,7 @@ class API extends REST_Controller {
 
     function dashboardStat_get(){
         $this->isAuthorized();
-        $dashboard_stat = array();
+        $dashboard_stat = [];
         $this->load->model('project_model');
         $this->load->model('home_model');
         $stat_user_count = $this->home_model->get_user_count();
@@ -151,22 +151,14 @@ class API extends REST_Controller {
         $stat_user_approved_leave = $this->home_model->get_user_approved_leave_count();
         $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->getUserId());
         $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->getUserId());
-
-        $dashboard_stat['user'] = array('targetRole' => '1', 'heading'=>'Employees', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
-
-        $dashboard_stat['project'] = array('targetRole' => '1', 'heading'=>'Projects', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project'));
-
-        $dashboard_stat['timesheet_user'] = array('targetRole' => '1', 'heading'=>'Logged Task Current Month', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('project/timesheet_report'));
-        
-        $dashboard_stat['user_applied_leave'] = array('targetRole' => '1', 'heading'=>'Leave Approved', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
-
-        $dashboard_stat['leave_to_approve'] = array('targetRole' => '', 'heading'=>'Leave to Approve', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage'));
-
-        $dashboard_stat['timesheet_days'] = array('targetRole' => '', 'heading'=>'Days You Logged *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('project/timesheet'));
-
-        $dashboard_stat['timesheet_hrs'] = array('targetRole' => '', 'heading'=>'Your Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet'));
-
-        $dashboard_stat['timesheet_avg_hrs'] = array('targetRole' => '', 'heading'=>'Your Average Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('project/timesheet'));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading'=>'Employees', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading'=>'Projects', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-secondary', 'icon'=>'', 'count'=>$stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading'=>'Logged Task Current Month', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-success', 'icon'=>'', 'count'=>$stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('project/timesheet_report')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading'=>'Leave Approved', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-info', 'icon'=>'', 'count'=>$stat_user_approved_leave['data_rows'][0]['total'].'/'.$stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage')));
+        array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Leave to Approve', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-warning', 'icon'=>'', 'count'=>$stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage')));
+        array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Days You Logged *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-danger', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('project/timesheet')));
+        array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Your Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet')));
+        array_push($dashboard_stat, array('targetRole' => '', 'heading'=>'Your Average Logged Hours *', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-secondary', 'icon'=>'', 'count'=>$stat_user_timesheet_stat['stat_data']['avg_hrs'] ? $stat_user_timesheet_stat['stat_data']['avg_hrs'] : 0, 'url' => base_url('project/timesheet')));
         if($dashboard_stat) {
             $this->apiResponse['status'] = '1';
             $this->apiResponse['data'] = $dashboard_stat;
