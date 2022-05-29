@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,26 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { ConfigService } from './core/services/config.service';
+import { AppConfig } from './core/config/app-config';
+
+export function init_app(configSvc: ConfigService) {
+  return () => configSvc.initializeApp();
+} 
+
+export function initializeApp(
+  configService: ConfigService
+) {
+  return async () => {
+    await configService.initializeApp();
+    // config.baseUrl = AppConfig.BASE_URL;
+    // config.applicationGearId = CommonConfig.gearId;
+    // await authService.initializePermissions();
+    // userService.setUserPermissions(authService.permissions);
+    // inactivityService.initialize();
+  };
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +51,7 @@ import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor
   ],
   exports: [BrowserAnimationsModule, PageNotFoundComponent],
   providers: [
+    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [ConfigService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],
