@@ -44,18 +44,21 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     let handled: boolean = false;
 
     switch (error.status) {
+      case 403:
+        this.alertSvc.warning('We\'re unable to process your request at this moment. Please try after some time', false);
+        this.authSvc.logout();
+        handled = true;
+        break;
+
       case 401:
-        //we don't want to redirect people to the login page when they're already on
-        //the login page
         if (this.router.url != '/login') {
-          this.alertSvc.info('Please login again.', false);
+          this.alertSvc.error('Please login again.', false);
           this.authSvc.logout();
           handled = true;
         }
-
         break;
       case 403:
-        this.alertSvc.info('Please login again.', false);
+        this.alertSvc.error('Please login again.', false);
         this.authSvc.logout();
         handled = true;
         break;

@@ -8,15 +8,13 @@ import { map, catchError } from 'rxjs/operators';
 export class ApiService {
   private APIBaseURL = 'http://localhost/angular-demo-app/server/ci-api-server/api/';
 
-  constructor(private http: HttpClient) {
-    
-   }
+  constructor(private http: HttpClient) { }
 
   getUsersTest() {
     return this.http.get(this.APIBaseURL + 'users').pipe(
       catchError((err) => {
-        err.statusText = 'This is a custom error message from angular service';
-        return throwError(err.message); //Rethrow it back to component
+        //err.statusText = 'This is a custom error message from angular service';
+        return throwError(err.message);
       })
     );
   }

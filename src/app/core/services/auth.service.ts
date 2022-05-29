@@ -50,6 +50,6 @@ export class AuthService {
     sessionStorage.removeItem('loginData');
     sessionStorage.removeItem('access_token');
     this.loggedInUserSubject.next(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['auth/login']);
   }
 }

@@ -43,14 +43,7 @@ class API extends REST_Controller {
         $this->methods['users_post']['limit'] = 100; // 100 requests per hour per user/key
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
     }
-
-    function isLoggedIn() {
-        $this->apiResponse['message'] = 'You are not logged in.';
-        $this->statusCode = REST_Controller::HTTP_UNAUTHORIZED;
-        $this->response($this->apiResponse, $this->statusCode);
-        return false;
-    }
-
+    
     function isAuthorized() {
         $authTokenValidation = $this->authorization_token->validateToken();
         if($authTokenValidation['status'] == FALSE) {
@@ -62,6 +55,11 @@ class API extends REST_Controller {
         } else{
             return true;
         }
+    }
+
+    function getUserId(){
+        $this->isAuthorized();
+        return '1' ;
     }
 
     function validateToken_post(){
@@ -141,15 +139,8 @@ class API extends REST_Controller {
         $this->response($this->apiResponse, $this->statusCode);
     }
 
-    function getLoggedInUserId(){
-
-    }
-
     function dashboardStat_get(){
-        //$this->isLoggedIn();
         $this->isAuthorized();
-        $data = array();     
-        // Dashboard Stats
         $dashboard_stat = array();
         $this->load->model('project_model');
         $this->load->model('home_model');
@@ -158,8 +149,8 @@ class API extends REST_Controller {
         $stat_timesheet_user = $this->home_model->get_user_of_timesheet();
         $stat_user_applied_leave = $this->home_model->get_user_applied_leave_count();
         $stat_user_approved_leave = $this->home_model->get_user_approved_leave_count();
-        $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count(1);
-        $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), 1);
+        $stat_pending_leave_action = $this->home_model->get_pending_leave_action_count($this->getUserId());
+        $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->getUserId());
 
         $dashboard_stat['user'] = array('targetRole' => '1', 'heading'=>'Employees', 'infoText'=>'','textCSS'=>'','bg_css'=>'', 'digitCSS'=>'text-primary', 'icon'=>'', 'count'=>$stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage'));
 
