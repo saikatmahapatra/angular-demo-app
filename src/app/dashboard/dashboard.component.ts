@@ -9,7 +9,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
 })
 export class DashboardComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
 }

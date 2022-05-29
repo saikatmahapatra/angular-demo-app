@@ -20,17 +20,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((returnedError) => {
         let errorMessage = null;
-        console.log('Returned error', returnedError.error);
-
         if (returnedError.error instanceof ErrorEvent) {
           errorMessage = `Error: ${returnedError.error.message}`;
         } else if (returnedError instanceof HttpErrorResponse) {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.message}`;
           handled = this.handleServerSideError(returnedError);
-        } 
-
+        }
         console.error(errorMessage ? errorMessage : returnedError);
-
         if (!handled) {
           return throwError(returnedError);
         } else {
@@ -44,7 +40,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     let handled: boolean = false;
 
     switch (error.status) {
-      case 403:
+      case 400:
         this.alertSvc.warning('We\'re unable to process your request at this moment. Please try after some time', false);
         this.authSvc.logout();
         handled = true;
@@ -52,11 +48,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
       case 401:
         if (this.router.url != '/login') {
-          this.alertSvc.error('Please login again.', false);
+          this.alertSvc.error('Unauthorized. Please login again.', false);
           this.authSvc.logout();
           handled = true;
         }
         break;
+        
       case 403:
         this.alertSvc.error('Please login again.', false);
         this.authSvc.logout();
