@@ -40,7 +40,6 @@ export class ForgotPasswordFormComponent implements OnInit {
       const postData = this.fpForm.value;
       this.apiSvc.checkEmail(postData).subscribe({
         next: (response: any) => {
-          console.log(response);
           if(response.status == 'success') {
             this.alertSvc.success(response.message);
           }
