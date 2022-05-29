@@ -9,13 +9,13 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export class DashboardStatComponent implements OnInit {
 
-  stat: any;
+  stats: any;
   constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
 
   ngOnInit(): void {
     this.apiSvc.getDashboardStat().subscribe({
       next: (response: any) => {
-        this.stat = response.data;
+        this.stats = response.data;
       }, 
       error: (err) => {
         console.log(err);
