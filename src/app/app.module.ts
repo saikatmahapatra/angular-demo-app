@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { ConfigService } from './core/services/config.service';
-import { AppConfig } from './core/config/app-config';
+import { AppConfig } from './common/const/app-config';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
