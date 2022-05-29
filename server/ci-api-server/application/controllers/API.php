@@ -164,5 +164,69 @@ class API extends REST_Controller {
         $this->response($this->responseData, $this->statusCode);
     }
 
+    function isEmailRegistered($email) {
+        $res = $this->user_model->check_is_email_registered($email);
+        if($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function checkEmail_post(){
+        $email = $this->post('email');
+        $action = $this->post('action');
+        //print_r($email); die();
+        $validate = TRUE;
+        if ($validate == TRUE) {
+            if($action === 'forgotPassword' && $email) {
+                if($this->isEmailRegistered($email)) {
+                    $password_reset_key = $this->common_lib->generate_rand_id(6, FALSE);
+                    $postdata = array('user_reset_password_key' => md5($password_reset_key));
+                    $where = array('user_email' => $email);
+                    $result = $this->user_model->update($postdata, $where);
+                    if ($result) {
+                        $to_email = $email;
+                        $message_html = '';
+                        $message_html.='<div id="message_wrapper" style="border-top: 2px solid #5133AB;">';
+                        $message_html.= $this->config->item('app_email_header');
+                        $message_html.='<div id="message_body" style="padding-top: 5px; padding-bottom:5px;">';
+                        $message_html.='<p>Dear User,</p>';
+                        $message_html.='<p>Your password reset OTP is '.$password_reset_key.'</p>';
+                        $message_html.='</div><!--/#message_body-->';
+                        $message_html.= $this->config->item('app_email_footer');
+                        $message_html.='</div><!--/#message_wrapper-->';
+                        $config['mailtype'] = 'html';
+                        $this->email->initialize($config);
+                        $this->email->to($email);
+                        $this->email->from($this->config->item('app_admin_email'), $this->config->item('app_admin_email_name'));
+                        $this->email->subject($this->config->item('app_email_subject_prefix') . ' Password Reset OTP is '.$password_reset_key);
+                        $this->email->message($message_html);
+                        $this->email->send();
+                        //echo $this->email->print_debugger();
+                        $this->responseData['message'] = 'OTP has been sent to '.$email;
+                        $this->statusCode = REST_Controller::HTTP_OK;
+
+                    } else{
+                        $this->responseData['message'] = 'Error';
+                        $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    }
+                } else {
+                    $this->responseData['message'] = 'Email is not registered';
+                    $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                }
+                
+            } else {
+                $this->responseData['message'] = 'Error';
+                $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            }
+        } else {
+            $this->responseData['message'] = 'Form validation Error';
+            $this->statusCode = REST_Controller::HTTP_OK;
+        }
+
+        $this->response($this->responseData, $this->statusCode);
+    }
+
 
 }
