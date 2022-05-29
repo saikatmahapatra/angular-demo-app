@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AppConfig } from '../config/app-config';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class AuthService {
   }
 
   login(postData: any) {
-    return this.http.post<any>('http://localhost/angular-demo-app/server/ci-api-server/api/login', postData)
+    return this.http.post<any>(AppConfig.API_BASE_URL + 'login', postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
           sessionStorage.setItem('access_token', response.token);
