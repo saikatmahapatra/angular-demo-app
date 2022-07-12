@@ -1,6 +1,8 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
 import { CommonService } from './core/services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
+import { LoadingService } from './core/services/loading.service';
+import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private commonSvc: CommonService,
     private changeDect: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private loadingSvc: LoadingService
   ) {
     this.router.events.subscribe((event: Event) => {
       //console.log('Router Event', event);
@@ -38,5 +41,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.commonSvc.someMethod();
+    this.checkLoadingSvc();
+  }
+
+  checkLoadingSvc() {
+    this.loadingSvc.loadingSub
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.loading = loading;
+      });
   }
 }

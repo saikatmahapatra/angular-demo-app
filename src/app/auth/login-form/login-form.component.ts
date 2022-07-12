@@ -21,7 +21,6 @@ export class LoginFormComponent implements OnInit {
     private fb: FormBuilder,
     private authSvc: AuthService,
     private alertSvc: AlertService,
-    private spinnerSvc: SpinnerService,
     private route: ActivatedRoute,
     private router: Router,
     private formValidationSvc: FormValidationService
@@ -65,7 +64,6 @@ export class LoginFormComponent implements OnInit {
           
         },
         complete: ()=> {
-          this.spinnerSvc.hide();
           this.loading = false;
         }
       });
