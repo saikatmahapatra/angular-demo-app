@@ -1,4 +1,4 @@
 {
     "appTitle" : "Angular Dev",
-    "apiBaseUrl": "http://localhost/angular-demo-app/server/ci-api-server/api/"
+    "apiBaseUrl": "http://localhost/ci-emp-portal-api/api/"
 }
