@@ -15,7 +15,6 @@ import { UnauthenticatedLayoutComponent } from './components/layouts/unauthentic
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
-import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -36,8 +35,7 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidenavComponent,
-    LoadingIndicatorComponent
+    SidenavComponent
   ],
   providers: [],
   exports: [
@@ -53,8 +51,7 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidenavComponent,
-    LoadingIndicatorComponent
+    SidenavComponent
   ]
 })
 export class SharedModule {

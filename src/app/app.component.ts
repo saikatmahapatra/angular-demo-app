@@ -9,7 +9,7 @@ import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, Naviga
 export class AppComponent implements OnInit {
   title = 'app';
   version = VERSION;
-  loaded = false;
+  loading = false;
 
   constructor(
     private commonSvc: CommonService,
@@ -20,13 +20,13 @@ export class AppComponent implements OnInit {
       //console.log('Router Event', event);
       switch (true) {
         case event instanceof NavigationStart: {
-          this.loaded = false;
+          this.loading = true;
           break;
         }
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.loaded = true;
+          this.loading = false;
           break;
         }
         default: {
