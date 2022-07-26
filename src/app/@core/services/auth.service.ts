@@ -23,7 +23,6 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return true;
     const authToken = this.getToken();
     return (authToken !== null) ? true : false;
   }
