@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../@shared/shared.module';
 import { NgExampleRoutingModule } from './ng-example-routing.module';
 import { NgExampleComponent } from './ng-example.component';
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';

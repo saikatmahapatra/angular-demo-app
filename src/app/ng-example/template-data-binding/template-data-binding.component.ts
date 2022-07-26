@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../core/services/common.service';
+import { CommonService } from '../../@core/services/common.service';
 @Component({
   selector: 'app-template-data-binding',
   templateUrl: './template-data-binding.component.html',

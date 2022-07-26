@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from 'src/app/core/services/alert.service';
-import { ApiService } from 'src/app/core/services/api.service';
+import { AlertService } from 'src/app/@core/services/alert.service';
+import { ApiService } from 'src/app/@core/services/api.service';
 
 @Component({
   selector: 'app-dashboard-stat',

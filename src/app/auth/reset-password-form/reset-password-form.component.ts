@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/core/services/alert.service';
-import { ApiService } from 'src/app/core/services/api.service';
-import { FormValidationService } from 'src/app/core/services/form-validation.service';
+import { AlertService } from 'src/app/@core/services/alert.service';
+import { ApiService } from 'src/app/@core/services/api.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
   selector: 'app-reset-password-form',
   templateUrl: './reset-password-form.component.html',

@@ -7,13 +7,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './@core/core.module';
+import { SharedModule } from './@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
-import { ConfigService } from './core/services/config.service';
-import { AppConfig } from './common/const/app-config';
+import { AuthInterceptor } from './@core/interceptors/auth.interceptor';
+import { HttpErrorInterceptor } from './@core/interceptors/http-error.interceptor';
+import { ConfigService } from './@core/services/config.service';
+import { AppConfig } from './@utils/const/app-config';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();

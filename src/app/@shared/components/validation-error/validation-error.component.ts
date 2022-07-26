@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
-import { FormValidationService } from '../../../core/services/form-validation.service';
+import { FormValidationService } from '../../../@core/services/form-validation.service';
 @Component({
   selector: 'app-validation-error',
   templateUrl: './validation-error.component.html',

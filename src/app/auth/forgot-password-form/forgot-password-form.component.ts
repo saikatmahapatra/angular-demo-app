@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
-import { AlertService } from 'src/app/core/services/alert.service';
-import { ApiService } from 'src/app/core/services/api.service';
-import { FormValidationService } from 'src/app/core/services/form-validation.service';
+import { AlertService } from 'src/app/@core/services/alert.service';
+import { ApiService } from 'src/app/@core/services/api.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 
 @Component({
   selector: 'app-forgot-password-form',

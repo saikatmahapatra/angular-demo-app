@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { AlertService } from 'src/app/core/services/alert.service';
-import { SpinnerService } from 'src/app/core/services/spinner.service';
-import { FormValidationService } from 'src/app/core/services/form-validation.service';
+import { AuthService } from 'src/app/@core/services/auth.service';
+import { AlertService } from 'src/app/@core/services/alert.service';
+import { SpinnerService } from 'src/app/@core/services/spinner.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 
 
 @Component({

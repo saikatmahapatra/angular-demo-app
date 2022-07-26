@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup,FormControl, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { regEx } from '../../common/const/regEx';
+import { regEx } from '../../@utils/const/regEx';
 @Injectable({
   providedIn: 'root'
 })
