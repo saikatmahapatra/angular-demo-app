@@ -1,5 +1,4 @@
-<!-- Sidebar -->
-<!-- <div class="bg-light border-right" id="sidebar-wrapper">
+<div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">Therichpost </div>
     <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
@@ -8,31 +7,5 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-    </div>
-</div> -->
-<!-- /#sidebar-wrapper -->
-
-
-<!-- side bar main wrapper -->
-<div class="side-nav-bar"
-    [ngClass]="{ 'side-nav-bar-collapsed': !(showSideNav | async) }">
-    
-    <!-- overlay -->
-    <div class="side-nav-bar-overlay" 
-    [ngStyle]="{ 'transition': 'background-color ' + duration + 's, visibility ' + duration + 's' }"
-    [ngClass]="{ 'side-nav-bar-overlay-collapsed': !(showSideNav | async) }"
-        (click)="onSidebarClose()"></div>
-    
-    <!-- side bar-->
-    <div class="side-nav-bar-menu-container" 
-    [ngStyle]="getSideNavBarStyle((showSideNav | async))">
-        
-        <!-- close button -->
-        <div><span class="side-nav-bar-close" (click)="onSidebarClose()">Close</span></div>
-
-        <!-- side bar content -->
-        <div class="side-nav-bar-content-container">
-            <ng-container *ngTemplateOutlet="sidenavTemplateRef"></ng-container>
-        </div>
     </div>
 </div>

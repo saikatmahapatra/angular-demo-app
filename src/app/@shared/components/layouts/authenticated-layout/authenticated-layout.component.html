@@ -1,16 +1,5 @@
-<!-- <div class="container-fluid">
-    <app-navbar></app-navbar>
-    <app-alert-message></app-alert-message>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-</div> -->
-<div class="" id="wrapper">
-  <!-- Sidebar -->
-  <app-sidebar [sidenavTemplateRef]="navContent"
-  [navWidth]="280" 
-  [duration]="0.5"></app-sidebar>
-  <!-- /#sidebar-wrapper -->
-  <!-- Page Content -->
+<div class="d-flex" id="wrapper" [ngClass]="{ 'toggled': !(showSideNav | async) }">
+  <app-sidebar></app-sidebar>
   <div id="page-content-wrapper">
     <app-navbar></app-navbar>
     <div class="container-fluid">
@@ -19,10 +8,4 @@
       <app-footer></app-footer>
     </div>
   </div>
-  <!-- /#page-content-wrapper -->
 </div>
-<!-- /#wrapper -->
-
-<ng-template #navContent>
-  Side Nav Bar Content Here
-</ng-template>
