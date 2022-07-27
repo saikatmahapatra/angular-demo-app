@@ -1,6 +1,6 @@
-<div class="d-flex" id="wrapper" [ngClass]="{ 'toggled': !(showSideNav | async) }">
+<div id="wrapper" class="d-flex" [ngClass]="{ 'toggled': !(showSideNav | async) }">
   <app-sidebar></app-sidebar>
-  <div id="page-content-wrapper">
+  <div id="page-content-wrapper" [ngClass]="{ 'toggled': !(showSideNav | async) }">
     <app-navbar></app-navbar>
     <div class="container-fluid">
       <app-alert-message></app-alert-message>
