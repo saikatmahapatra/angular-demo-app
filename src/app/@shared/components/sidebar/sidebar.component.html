@@ -1,11 +1,42 @@
 <div id="sidebar-wrapper" class="bg-light border-right">
     <div class="sidebar-heading">Therichpost </div>
-    <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
-    </div>
+
+    <ul class="nav flex-column flex-nowrap overflow-hidden">
+        <li class="nav-item">
+            <a class="nav-link text-truncate" href="#"><i class="fa fa-home"></i> <span class="d-sm-inline">Overview</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i> <span class="d-sm-inline">Reports</span></a>
+            <div class="collapse" id="submenu1" aria-expanded="false">
+                <ul class="flex-column pl-2 nav">
+                    <li class="nav-item"><a class="nav-link py-0" href="#"><span>Orders</span></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-truncate collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
+                        <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                            <ul class="flex-column nav pl-4">
+                                <li class="nav-item">
+                                    <a class="nav-link p-1 text-truncate" href="#">
+                                        <i class="fa fa-fw fa-clock-o"></i> Daily </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1 text-truncate" href="#">
+                                        <i class="fa fa-fw fa-dashboard"></i> Dashboard </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1 text-truncate" href="#">
+                                        <i class="fa fa-fw fa-bar-chart"></i> Charts </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link p-1 text-truncate" href="#">
+                                        <i class="fa fa-fw fa-compass"></i> Areas </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-truncate" href="#"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Analytics</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" href="#"><i class="fa fa-download"></i> <span class="d-sm-inline">Export</span></a></li>
+    </ul>
 </div>

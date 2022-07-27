@@ -17,7 +17,7 @@ body {
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
     //position: fixed;
-    //width: 240px;
+    min-width: 240px;
 }
 
 #sidebar-wrapper .sidebar-heading {
