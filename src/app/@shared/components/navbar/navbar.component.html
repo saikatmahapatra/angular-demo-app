@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom fixed-top">
-    <button class="btn btn-primary" id="menu-toggle" (click)="toggleSideNav()">Toggle Menu</button>
-    <a class="logo navbar-brand" [routerLink]="['/']"><img width="32px" src="assets/img/angular.png"> Angular</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <button class="btn" (click)="toggleSideNav()" type="button" data-toggle="collapse" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="logo navbar-brand" [routerLink]="['/']">
+        <!-- <img width="32px" src="assets/img/angular.png"> -->
+        blackOrange CRM
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
