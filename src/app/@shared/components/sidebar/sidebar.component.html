@@ -3,9 +3,9 @@
 
     <ul class="nav flex-column flex-nowrap overflow-hidden">
         <li class="nav-item">
-            <a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-home"></i> <span class="d-sm-inline">Overview</span></a>
+            <a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-home"></i> <span class="d-sm-inline">Dashboard</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i> <span class="d-sm-inline">Reports</span></a>
             <div class="collapse" id="submenu1" aria-expanded="false">
                 <ul class="flex-column pl-2 nav">
@@ -35,9 +35,33 @@
                     </li>
                 </ul>
             </div>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#submenu2" data-toggle="collapse" data-target="#submenu2"><i class="fa fa-table"></i> <span class="d-sm-inline">Pages</span></a>
+            <div class="collapse" id="submenu2" aria-expanded="false">
+                <ul class="flex-column pl-2 nav">
+                    <li class="nav-item"><a class="nav-link py-0" [routerLink]="['/pages/our-services']"><span>Our Services</span></a></li>
+                    <li class="nav-item"><a class="nav-link py-0" [routerLink]="['/pages/about-us']"><span>About Us</span></a></li>
+                </ul>
+            </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed text-truncate" href="#submenu3" data-toggle="collapse" data-target="#submenu3"><i class="fa fa-table"></i> <span class="d-sm-inline">Angular Example</span></a>
+            <div class="collapse" id="submenu3" aria-expanded="false">
+                <ul class="flex-column pl-2 nav">
+                    <li class="nav-item"><a class="nav-link py-0" [routerLink]="['/angular-example/template-basic']"><span>Template Basic</span></a></li>
+                    <li class="nav-item"><a class="nav-link py-0" [routerLink]="['/angular-example/types-of-angular-directive']"><span>Directives</span></a></li>
+                    <li class="nav-item"><a class="nav-link py-0" [routerLink]="['/angular-example/pipes']"><span>Pipes</span></a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/user']"><i class="fa fa-download"></i> <span class="d-sm-inline">User</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/cms']"><i class="fa fa-download"></i> <span class="d-sm-inline">CMS</span></a></li>
         <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/auth/login']"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Login</span></a></li>
-        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Analytics</span></a></li>
-        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-download"></i> <span class="d-sm-inline">Export</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/auth/login']" [queryParams]="{logout: true}"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Logout</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Other 1</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Other 2</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-bar-chart"></i> <span class="d-sm-inline">Other 3</span></a></li>
+        <li class="nav-item"><a class="nav-link text-truncate" [routerLink]="['/']"><i class="fa fa-download"></i> <span class="d-sm-inline">Other 4</span></a></li>
     </ul>
 </div>
