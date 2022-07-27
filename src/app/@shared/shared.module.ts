@@ -9,12 +9,12 @@ import { MaskPipe } from './pipes/mask.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DefaultLayoutComponent } from './components/layouts/default-layout/default-layout.component';
 import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { AuthenticatedLayoutComponent } from './components/layouts/authenticated-layout/authenticated-layout.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -35,7 +35,7 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidenavComponent
+    SidebarComponent
   ],
   providers: [],
   exports: [
@@ -51,7 +51,7 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidenavComponent
+    SidebarComponent
   ]
 })
 export class SharedModule {
