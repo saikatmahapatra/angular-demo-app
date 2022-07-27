@@ -17,6 +17,14 @@ export class NavbarComponent implements OnInit {
   }
   
   toggleSideNav() {
-    this.navService.setShowNav(true);
+    let isOpened = false;
+    this.navService.showNav$.subscribe((data)=>{
+      isOpened = data;
+    });
+    if(!isOpened) {
+      this.navService.setShowNav(true);
+    } else {
+      this.navService.setShowNav(false);
+    }
   }
 }

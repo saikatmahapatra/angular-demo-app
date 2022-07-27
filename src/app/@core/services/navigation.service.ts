@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavigationService {
 
-  private showNav$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public showNav$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
