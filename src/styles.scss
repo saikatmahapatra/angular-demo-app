@@ -7,9 +7,11 @@ body {
     margin-top: 4rem;
     overflow-x: hidden;
 }
+
 .navbar-dark {
     background-color: #000 !important;
 }
+
 #sidebar-wrapper {
     min-height: 100vh;
     height: 100%;
@@ -23,18 +25,14 @@ body {
     background-color: #fff;
 
     .sidebar-heading {
-        font-weight: 400;
+        font-weight: 500;
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        color: lighten(#000, 60%) !important;
+        cursor: pointer;
     }
 }
 
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-    width: 15rem;
-}
 
 #page-content-wrapper {
     min-width: 100vw;
@@ -45,6 +43,7 @@ body {
     transition: margin .25s ease-out;
     background-color: hsl(0, 0%, 98%);
 }
+
 #page-content-wrapper.toggled {
     margin-left: 0;
 }
@@ -67,6 +66,7 @@ body {
         margin-left: -15rem;
     }
 }
+
 .card-top-border {
     border-top: 4px solid $primary;
 }
