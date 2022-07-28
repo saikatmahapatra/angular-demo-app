@@ -28,9 +28,19 @@ body {
         font-weight: 500;
         padding: 0.5rem 0.75rem;
         font-size: 1rem;
-        color: lighten(#000, 60%) !important;
+        //color: lighten(#000, 60%) !important;
         cursor: pointer;
     }
+    // .sidebar-heading.collapsed {
+    //     .col-exp-icon:after {
+    //         content: " ▾";
+    //     }
+    // }
+    // .sidebar-heading {
+    //     .col-exp-icon:after {
+    //         content: " ▴";
+    //     }
+    // }
 }
 
 
