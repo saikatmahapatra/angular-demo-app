@@ -6,7 +6,7 @@
         <app-sidebar></app-sidebar>
       </div>
     </nav>
-    <main id="main-content-wrapper" role="main" class="col pt-3 px-4" [ngClass]="{ 'toggled': !(showSideNav | async) }">
+    <main id="main-content-wrapper" role="main" class="col pt-1 px-4" [ngClass]="{ 'toggled': !(showSideNav | async) }">
       <app-alert-message></app-alert-message>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
