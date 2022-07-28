@@ -2,12 +2,6 @@
 @import 'assets/scss/customize-bootstrap';
 @import "assets/scss/vars";
 @import '../node_modules/bootstrap/scss/bootstrap';
-
-body {
-    margin-top: 4rem;
-    overflow-x: hidden;
-}
-
 .navbar-dark {
     background-color: #000 !important;
 }
@@ -28,7 +22,7 @@ body {
         margin: 10px 0px;
     }
     .sidebar-heading {
-        font-weight: 500;
+        font-weight: 400;
         padding: 0.5rem 0.75rem;
         font-size: 1.125rem;
         //color: lighten(#000, 60%) !important;
