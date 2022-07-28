@@ -12,70 +12,75 @@ body {
 }
 
 #sidebar-wrapper {
-    min-height: 100vh;
-    height: 100%;
-    margin-left: -15rem;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+    width: 260px;
+    margin-left: -260px;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    //position: fixed;
-    min-width: 240px;
 
-    .sidebar-nav-section {
-        margin: 10px 0px;
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px;
+        height: calc(100vh - 48px);
+        padding-top: 0.5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .sidebar-nav-section {
+            margin: 10px 0px;
+        }
+
+        .sidebar-heading {
+            font-weight: 400;
+            padding: 0.5rem 0.75rem;
+            font-size: 1.125rem;
+            cursor: pointer;
+            margin-bottom: 0px;
+        }
     }
-    .sidebar-heading {
-        font-weight: 400;
-        padding: 0.5rem 0.75rem;
-        font-size: 1.125rem;
-        cursor: pointer;
-        margin-bottom: 0px;
+
+    &.toggled {
+        margin-left: 0px;
     }
-    // .sidebar-heading.collapsed {
-    //     .col-exp-icon:after {
-    //         content: " ▾";
-    //     }
-    // }
-    // .sidebar-heading {
-    //     .col-exp-icon:after {
-    //         content: " ▴";
-    //     }
-    // }
 }
 
-
-#page-content-wrapper {
-    min-width: 100vw;
-    //margin-left: 240px;
+#main-content-wrapper {
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-}
-
-#page-content-wrapper.toggled {
-    margin-left: 0;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
+    // &.toggled {
+    //     margin-left: -260px;
+    // }
 }
 
 @media (min-width: 768px) {
     #sidebar-wrapper {
-        margin-left: 0;
+        margin-left: 0px;
+
+        &.toggled {
+            margin-left: -260px;
+        }
     }
 
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
+    #main-content-wrapper {
+        margin-left: 260px;
 
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: -15rem;
+        &.toggled {
+            margin-left: 0px;
+        }
     }
 }
+
 
 .card-top-border {
     border-top: 4px solid $primary;

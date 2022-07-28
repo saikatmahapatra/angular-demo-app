@@ -1,11 +1,15 @@
-<div id="wrapper" class="d-flex" [ngClass]="{ 'toggled': !(showSideNav | async) }">
-  <app-sidebar></app-sidebar>
-  <div id="page-content-wrapper" [ngClass]="{ 'toggled': !(showSideNav | async) }">
-    <app-navbar></app-navbar>
-    <div class="container-fluid">
+<div class="container-fluid">
+  <app-navbar></app-navbar>
+  <div class="row">
+    <nav id="sidebar-wrapper" class="col bg-light"  [ngClass]="{ 'toggled': !(showSideNav | async) }">
+      <div class="sidebar-sticky">
+        <app-sidebar></app-sidebar>
+      </div>
+    </nav>
+    <main id="main-content-wrapper" role="main" class="col pt-3 px-4" [ngClass]="{ 'toggled': !(showSideNav | async) }">
       <app-alert-message></app-alert-message>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
-    </div>
+    </main>
   </div>
 </div>
