@@ -2,6 +2,11 @@
 @import 'assets/scss/customize-bootstrap';
 @import "assets/scss/vars";
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+body {
+    margin-top: 4rem;
+}
+
 .navbar-dark {
     background-color: #000 !important;
 }
@@ -16,7 +21,6 @@
     transition: margin .25s ease-out;
     //position: fixed;
     min-width: 240px;
-    background-color: #fff;
 
     .sidebar-nav-section {
         margin: 10px 0px;
@@ -25,7 +29,6 @@
         font-weight: 400;
         padding: 0.5rem 0.75rem;
         font-size: 1.125rem;
-        //color: lighten(#000, 60%) !important;
         cursor: pointer;
         margin-bottom: 0px;
     }
@@ -49,7 +52,6 @@
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    background-color: hsl(0, 0%, 98%);
 }
 
 #page-content-wrapper.toggled {
