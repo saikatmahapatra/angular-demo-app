@@ -22,7 +22,7 @@ export class PipesComponent implements OnInit {
   reverse: boolean = false;
   //Collection - It can be returned by any service
   students: any[] = [
-    { id: 1, name: 'Saikat', mobile: '9474550761', age: 30 },
+    { id: 1, name: 'Saikat', mobile: '1234567890', age: 30 },
     { id: 5, name: 'Suman', mobile: '7003700300', age: 12 },
     { id: 2, name: 'Mike', mobile: '99802545454', age: 21 },
     { id: 3, name: 'Julie', mobile: '7001202313', age: 29 },
