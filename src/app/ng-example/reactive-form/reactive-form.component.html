@@ -61,10 +61,12 @@
             <div class="form-row mb-2">
                 <div class="col">
                     <label>Gender</label>
-                    <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
-                        <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.value}}"
-                            formControlName="gender">
-                        <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                    <div>
+                        <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
+                            <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.value}}"
+                                formControlName="gender">
+                            <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                        </div>
                     </div>
                     <app-validation-error [control]="myForm.controls['gender']"></app-validation-error>
                 </div>

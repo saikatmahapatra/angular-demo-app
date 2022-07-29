@@ -11,6 +11,14 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getJSONData() {
+    return this.http.get('assets/json/data.json').pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
+  }
+
   getUsersTest() {
     return this.http.get(this.apiBaseUrl + AppConfig.url.getUsers).pipe(
       catchError((err) => {
