@@ -9,44 +9,33 @@
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">
-            <svg width="16" height="16" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <clipPath id="a">
-                  <path style="fill:none" d="M0 0h24v24H0z" />
-                </clipPath>
-              </defs>
-              <path
-                d="M20.51 21.83h-17a.75.75 0 0 1-.75-.75V9.86A.75.75 0 0 1 3 9.28l8.52-6.94a.73.73 0 0 1 .94 0L21 9.28a.75.75 0 0 1 .27.58v11.22a.75.75 0 0 1-.76.75Zm-16.27-1.5h15.52V10.21L12 3.89l-7.76 6.32Z"
-                style="clip-path:url(#a)" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              dashboard
+            </span>
             Dashboard
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/pages/about-us']">
-            <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path fill="none" stroke="#000" stroke-width="2"
-                d="M15 17c0-3 4-5 4-9s-3-7-7-7-7 3-7 7 4 6 4 9v3c0 2 1 3 3 3s3-1 3-3v-3Zm-6 1h6" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              info
+            </span>
             About Us
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/pages/our-services']">
-            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <path data-name="link-Regular"
-                d="m13.579 6.86-1.226 1.227a.5.5 0 1 1-.707-.707l1.227-1.227a2.143 2.143 0 0 0 0-3.026 2.191 2.191 0 0 0-3.025 0l-2.241 2.24a1.533 1.533 0 0 0-.2.238 2.125 2.125 0 0 0 .2 2.789.5.5 0 1 1-.707.707 3.109 3.109 0 0 1-.316-4.063 2.417 2.417 0 0 1 .316-.377l2.239-2.24a3.139 3.139 0 1 1 4.439 4.44Zm-5.186.04a.499.499 0 0 0 0 .707 2.115 2.115 0 0 1 .499 2.235 2.045 2.045 0 0 1-.499.791l-2.24 2.24a2.191 2.191 0 0 1-3.025 0 2.143 2.143 0 0 1 0-3.026L4.355 8.62a.5.5 0 1 0-.707-.707L2.421 9.14a3.139 3.139 0 1 0 4.439 4.44l2.239-2.24a3.031 3.031 0 0 0 .737-1.171 3.141 3.141 0 0 0-.737-3.267.5.5 0 0 0-.706-.002Z" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              task
+            </span>
             Our Services
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/cms']">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <path d="M14 2v6h6m-4 5H8m8 4H8m2-8H8" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              pages
+            </span>
             CMS
           </a>
         </li>
@@ -61,31 +50,65 @@
     </h6>
     <div id="c2" class="collapse" aria-labelledby="h2" data-parent="#accordionSidebar">
       <ul class="flex-column pl-2 nav">
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/template-basic']"><span>Template
-              Basic</span></a></li>
-        <li class="nav-item"><a class="nav-link "
-            [routerLink]="['/angular-example/types-of-angular-directive']"><span>Directives</span></a></li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/pipes']"><span>Pipes</span></a>
+        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/template-basic']">
+            Template Basic
+          </a>
         </li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/user-input-binding']"><span>Data
-              Binding</span></a></li>
-        <li class="nav-item"><a class="nav-link "
-            [routerLink]="['/angular-example/template-driven-form']"><span>Template Driven Form</span></a></li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/reactive-form']"><span>Reactive
-              Form</span></a></li>
-        <li class="nav-item"><a class="nav-link "
-            [routerLink]="['/angular-example/angular-services']"><span>Service</span></a></li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/parent-comp']"><span>Parent
-              Child
-              Components</span></a></li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/test']"><span>Test</span></a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/types-of-angular-directive']">
+            Directive
+          </a>
         </li>
-        <li class="nav-item"><a class="nav-link "
-            [routerLink]="['/angular-example/employee']"><span>Observable</span></a></li>
-        <li class="nav-item"><a class="nav-link "
-            [routerLink]="['/angular-example/tranfer-fund']"><span>Routing</span></a></li>
-        <li class="nav-item"><a class="nav-link " [routerLink]="['/angular-example/content-projection']"><span>Content
-              Projection</span></a></li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/pipes']">
+            Pipes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/angular-example/user-input-binding']">
+            Data Binding
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/template-driven-form']">
+            Template Driven Form
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/reactive-form']">
+            Reactive Form
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/angular-example/angular-services']">
+            Service
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/angular-example/parent-comp']">
+            Child Component
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/angular-example/test']">
+            Test
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/employee']">
+            Observable (RxJS Operators)
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/angular-example/tranfer-fund']">
+            Routing Basic
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/angular-example/content-projection']">
+            Content Projection
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -99,20 +122,17 @@
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">
-            <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path fill="none" stroke="#000" stroke-width="2"
-                d="M5 24v-5m6 5v-5M1 24v-6c0-4.97 3.134-7 7-7s7 2 7 7v6M8 11A5 5 0 1 0 8 1a5 5 0 0 0 0 10Zm8 0h8m-4-4v8" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              person_add
+            </span>
             Add Customer
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/user']">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M18 19v-1a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v1m17 0v-1a4 4 0 0 0-4-4h-.5M1 19v-1a4 4 0 0 1 4-4h.5M17 11a3 3 0 1 0 0-6M7 11a3 3 0 0 1 0-6m8 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              group
+            </span>
             Manage Customers
           </a>
         </li>
@@ -130,33 +150,25 @@
       <ul class="nav flex-column mb-2">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">
-            <svg width="16" height="16" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="#000" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2">
-                <circle cx="16" cy="16" r="15" />
-                <path d="M26 27c0-5.523-4.477-10-10-10S6 21.477 6 27" />
-                <circle cx="16" cy="11" r="6" />
-              </g>
-            </svg>
-            Update Profile
+            <span class="material-symbols-outlined align-middle">
+              manage_accounts
+            </span>
+            Manage Account
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']">
-            <svg width="16" height="16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M21 2a8.998 8.998 0 0 0-8.612 11.612L2 24v6h6l10.388-10.388A9 9 0 1 0 21 2Zm0 16a7.013 7.013 0 0 1-2.032-.302l-1.147-.348-.847.847-3.181 3.181L12.414 20 11 21.414l1.379 1.379-1.586 1.586L9.414 23 8 24.414l1.379 1.379L7.172 28H4v-3.172l9.802-9.802.848-.847-.348-1.147A7 7 0 1 1 21 18Z" />
-              <circle cx="22" cy="10" r="2" />
-              <path data-name="&lt;Transparent Rectangle&gt;" style="fill:none" d="M0 0h32v32H0z" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              key
+            </span>
             Change Password
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}">
-            <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14 5-5-5-5m5 5H9" />
-            </svg>
+            <span class="material-symbols-outlined align-middle">
+              logout
+            </span>
             Logout
           </a>
         </li>
