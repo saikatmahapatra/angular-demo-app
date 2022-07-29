@@ -38,7 +38,7 @@ export class AddUserComponent implements OnInit {
     action: ['createUser'],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
-    workEmail: ['', [Validators.required, this.validator.validEmail]],
+    workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
     workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', Validators.required],
     gender: ['', [Validators.required]],

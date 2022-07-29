@@ -32,7 +32,7 @@ export class FormValidationService {
       ruleTwo: 'error message 2',
       ruleThreec: 'error message 3',
       invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
-      invalidDomain: 'Please enter email with @gmail.com only',
+      invalidDomain: 'Please enter email with @ms.com only',
       matching: 'Confirm Password should match with Password',
       userNameExists: 'This username is already registered'
   };
@@ -76,7 +76,7 @@ export class FormValidationService {
     let error = null;
     if (control?.value && control?.value.indexOf("@") != -1) {
       let [_, domain] = control?.value.split("@");
-      if (domain == "gmail.com") {
+      if (domain == "ms.com") {
         error = null;
       } else {
         error = { 'invalidDomain': true };
