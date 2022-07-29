@@ -8,6 +8,7 @@ import { UserComponent } from './user.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { AuthInterceptor } from '../@core/interceptors/auth.interceptor';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AuthInterceptor } from '../@core/interceptors/auth.interceptor';
   declarations: [
     ManageUsersComponent,
     MyAccountComponent,
-    UserComponent
+    UserComponent,
+    AddUserComponent
   ]
 })
 export class UserModule { }
