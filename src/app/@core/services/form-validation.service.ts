@@ -26,7 +26,7 @@ export class FormValidationService {
       minlength: `The field must be at least ${validatorValue?.requiredLength} characters long.`,
       maxlength: `The field cannot be more than ${validatorValue?.requiredLength} characters long.`,
       email: 'Please enter a valid email address.',
-      validEmail: 'Please enter a valid email address i.e yourname@domain.com.',
+      validEmail: 'Please enter a valid email address i.e name@example.com.',
       phoneNumber: 'Please enter a 10 digit phone number.',
       ruleOne: 'error message 1',
       ruleTwo: 'error message 2',

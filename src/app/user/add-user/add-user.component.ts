@@ -9,23 +9,23 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 export class AddUserComponent implements OnInit {
 
   DataGender: Array<any> = [
-    { name: 'Male', value: 'M' },
-    { name: 'Female', value: 'F' }
+    { name: 'Male', id: 'M' },
+    { name: 'Female', id: 'F' }
   ];
 
   designationList: Array<any> = [
-    { name: 'Select', value: '' },
-    { name: '1', value: 'Engineer' }
+    { name: 'Select', id: '' },
+    { name: 'Engineer', id: '1' }
   ];
 
   departmentList: Array<any> = [
-    { name: 'Select', value: '' },
-    { name: '1', value: 'Dep1' }
+    { name: 'Select', id: '' },
+    { name: 'Physics', id: '1' }
   ];
 
   employmentTypeList: Array<any> = [
-    { name: 'Select', value: '' },
-    { name: '1', value: 'Full Time' }
+    { name: 'Select', id: '' },
+    { name: 'FTE', id: '2' }
   ];
 
   constructor(private fb: FormBuilder, private validator: FormValidationService) { }
@@ -34,6 +34,8 @@ export class AddUserComponent implements OnInit {
   }
 
   myForm = this.fb.group({
+    id: [null],
+    action: ['createUser'],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
     workEmail: ['', [Validators.required, this.validator.validEmail]],
