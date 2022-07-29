@@ -26,6 +26,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: $red;
 }
 
+label.required {
+    &::after {
+        content: '*';
+        margin-left: 2px;
+        color: $red;
+    }
+}
+
 #sidebar-wrapper {
     position: fixed;
     top: 0;

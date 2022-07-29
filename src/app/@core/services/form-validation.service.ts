@@ -44,12 +44,12 @@ export class FormValidationService {
   }
 
   validEmail(control: AbstractControl) {
-    const valid = control?.value?.match(regEx.email);
+    const valid = control?.value ? control?.value?.match(regEx.email) : true;
     return valid ? null : { 'validEmail': true };
   }
 
   phoneNumber(control: AbstractControl) {
-    const valid = control?.value?.match(regEx.phone_number_US);
+    const valid = control?.value ? control?.value?.match(regEx.phone_number_US) : true;
     return valid ? null : { 'phoneNumber': true };
   }
 

@@ -1,1 +1,64 @@
-<p>add-user works!</p>
+<h1>Add</h1>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-row mb-2">
+        <div class="col">
+            <label class="required" for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName">
+            <app-validation-error [control]="myForm.controls['firstName']"></app-validation-error>
+        </div>
+        <div class="col">
+            <label class="required" for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+            <app-validation-error [control]="myForm.controls['lastName']"></app-validation-error>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="col">
+            <label class="required" for="workEmail">Work Email</label>
+            <input type="text" class="form-control" id="workEmail" formControlName="workEmail">
+            <app-validation-error [control]="myForm.controls['workEmail']"></app-validation-error>
+        </div>
+        <div class="col">
+            <label for="personalPhone">Personal Phone</label>
+            <input type="text" class="form-control" id="personalPhone" formControlName="personalPhone" maxlength="10">
+            <app-validation-error [control]="myForm.controls['personalPhone']"></app-validation-error>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="col">
+            <label class="required" for="dateOfBirth">Date of Birth</label>
+            <input type="text" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+            <app-validation-error [control]="myForm.controls['dateOfBirth']"></app-validation-error>
+        </div>
+        <div class="col">
+            <label class="required" for="gender">Gender</label>
+            <div>
+                <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
+                    <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.value}}"
+                        formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                </div>
+            </div>
+            <app-validation-error [control]="myForm.controls['gender']"></app-validation-error>
+        </div>
+    </div>
+
+    <div class="form-row mb-2">
+        <div class="col">
+            <label for="personalEmail">Personal Email</label>
+            <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
+            <app-validation-error [control]="myForm.controls['personalEmail']"></app-validation-error>
+        </div>
+        <div class="col">
+            <label for="workPhone">Work Phone</label>
+            <input type="text" class="form-control" id="workPhone" formControlName="workPhone" maxlength="10">
+            <app-validation-error [control]="myForm.controls['workPhone']"></app-validation-error>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p>{{myForm.value|json}}</p>
