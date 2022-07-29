@@ -3,9 +3,8 @@
 @import "assets/scss/vars";
 @import '../node_modules/bootstrap/scss/bootstrap';
 
-body {
-    margin-top: 4rem;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .navbar-dark {
     background-color: #000 !important;
@@ -85,9 +84,7 @@ body {
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    // &.toggled {
-    //     margin-left: -260px;
-    // }
+    padding-top: 65px;
 }
 
 @media (min-width: 768px) {
@@ -112,3 +109,4 @@ body {
 .card-top-border {
     border-top: 4px solid $primary;
 }
+
