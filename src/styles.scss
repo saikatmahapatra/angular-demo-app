@@ -38,8 +38,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 label.required {
     &::after {
         content: '*';
-        margin-left: 2px;
+        margin-left: 5px;
         color: $red;
+    }
+}
+
+label.optional {
+    &::after {
+        content: 'optional';
+        margin-left: 5px;
+        color: $gray-500;
     }
 }
 

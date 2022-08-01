@@ -12,10 +12,16 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 })
 export class AddEditAddressComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router) { }
+
+  addressType: Array<any> = [
+    { id: 'P', name: 'Permanent' },
+    { id: 'C', name: 'Present' },
+    { id: 'W', name: 'Work' }
+  ];
 
   ngOnInit(): void {
     // get action name & id for PUT call
@@ -24,6 +30,7 @@ export class AddEditAddressComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
+    addressType: ['', [Validators.required]],
     addressLine1: ['', [Validators.required]],
     addressLine2: [''],
     city: ['', Validators.required],
