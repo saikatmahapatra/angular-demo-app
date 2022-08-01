@@ -15,5 +15,12 @@
   ],
   "profile": {
     "name": "typicode"
+  },
+  "users": {
+    "data": [
+      {"id": 1, "user_firstname": "John", "user_lastname": "smith", "user_email": "abc@aa.com"},
+      {"id": 2, "user_firstname": "John 2", "user_lastname": "smith", "user_email": "abc@aa.com"},
+      {"id": 3, "user_firstname": "John 3", "user_lastname": "smith", "user_email": "abc@aa.com"}
+    ]
   }
 }
