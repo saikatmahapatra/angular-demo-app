@@ -6,19 +6,19 @@
             <input type="hidden" formControlName="action">
 
             <div class="form-group">
-                <label class="required" for="addressLine1">Apt/Building/Street #</label>
-                <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1">
+                <label class="required" for="addressLine1">Address Line 1</label>
+                <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1" maxlength="80" placeholder="Apt/Suite/Building/Street">
                 <app-validation-error [control]="myForm.controls['addressLine1']"></app-validation-error>
             </div>
 
             <div class="form-group">
-                <label class="required" for="addressLine2">Address Line 2</label>
-                <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" maxlength="10">
+                <label class="optional" for="addressLine2">Address Line 2</label>
+                <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" maxlength="50">
                 <app-validation-error [control]="myForm.controls['addressLine2']"></app-validation-error>
             </div>
 
             <div class="form-group">
-                <label class="required" for="city">City</label>
+                <label class="required" for="city">City/District/Town</label>
                 <input type="text" class="form-control" id="city" formControlName="city" maxlength="10">
                 <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
             </div>
@@ -28,9 +28,19 @@
                 <app-validation-error [control]="myForm.controls['state']"></app-validation-error>
             </div>
             <div class="form-group">
-                <label class="required" for="zip">ZIP</label>
-                <input type="text" class="form-control" id="zip" formControlName="zip" maxlength="10">
+                <label class="required" for="zip">Postal ZIP</label>
+                <input type="text" class="form-control" id="zip" formControlName="zip" maxlength="8">
                 <app-validation-error [control]="myForm.controls['zip']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="optional" for="landmark">Landmark</label>
+                <input type="text" class="form-control" id="landmark" formControlName="landmark" maxlength="50">
+                <app-validation-error [control]="myForm.controls['landmark']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="optional" for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone" maxlength="10">
+                <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
             </div>
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>

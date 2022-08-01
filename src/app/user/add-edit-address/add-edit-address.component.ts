@@ -25,10 +25,12 @@ export class AddEditAddressComponent implements OnInit {
     id: [null],
     action: ['add'],
     addressLine1: ['', [Validators.required]],
-    addressLine2: ['', [Validators.required]],
+    addressLine2: [''],
     city: ['', Validators.required],
     state: ['', Validators.required],
-    zip: ['', Validators.required]
+    zip: ['', Validators.required],
+    landmark: [''],
+    phone: ['', this.validator.phoneNumber]
   });
 
   onSubmit() {
