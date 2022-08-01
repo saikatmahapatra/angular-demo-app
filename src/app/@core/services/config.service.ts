@@ -24,7 +24,7 @@ export class ConfigService {
         .subscribe(
           (config: any) => {
             AppConfig.appTitle = config.appTitle || 'My Angular App';
-            AppConfig.apiBaseUrl = config.apiBaseUrl;
+            AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
             return resolve(config);
           },
           err => {
