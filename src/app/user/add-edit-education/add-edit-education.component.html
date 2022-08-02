@@ -1,1 +1,72 @@
-<p>add-edit-education works!</p>
+<h1>Add Education Details</h1>
+<div class="row">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="action">
+
+            <div class="form-group">
+                <label class="required" for="qualification">Address Type</label>
+                <select class="form-control" id="qualification" formControlName="qualification">
+                    <option value="">Select</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['qualification']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="degree">Degree</label>
+                <select class="form-control" id="degree" formControlName="degree">
+                    <option value="">Select</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['degree']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="specialization">Specialization</label>
+                <select class="form-control" id="specialization" formControlName="specialization">
+                    <option value="">Select</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['specialization']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="institute">Institute/University/Board/Council</label>
+                <select class="form-control" id="institute" formControlName="institute">
+                    <option value="">Select</option>
+                    <option value="-1">Others</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['institute']"></app-validation-error>
+            </div>
+
+            <div class="form-group" *ngIf="myForm.value['institute'] === '-1'">
+                <label class="required" for="newInstitute">Enter</label>
+                <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute" maxlength="30">
+                <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="fromYear">From (Year)</label>
+                <input type="text" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
+                <app-validation-error [control]="myForm.controls['fromYear']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="toYear">To (Year)</label>
+                <input type="text" class="form-control" id="toYear" formControlName="toYear" maxlength="4">
+                <app-validation-error [control]="myForm.controls['toYear']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="marks">Marks</label>
+                <input type="text" class="form-control" id="marks" formControlName="marks" maxlength="5">
+                <app-validation-error [control]="myForm.controls['marks']"></app-validation-error>
+            </div>
+
+            
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
+        </form>
+        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p>
+    </div>
+</div>
