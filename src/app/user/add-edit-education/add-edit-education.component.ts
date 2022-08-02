@@ -26,11 +26,11 @@ export class AddEditEducationComponent implements OnInit {
     action: ['add'],
     qualification: ['', [Validators.required]],
     degree: ['', [Validators.required]],
-    newDegree: [''],
+    newDegree: [null],
     specialization: ['', [Validators.required]],
-    newSpecialization: [''],
+    newSpecialization: [null],
     institute: ['', Validators.required],
-    newInstitute: [''],
+    newInstitute: [null],
     fromYear: ['', Validators.required],
     toYear: ['', Validators.required],
     marks: ['', Validators.required]
@@ -52,6 +52,8 @@ export class AddEditEducationComponent implements OnInit {
       if (val === '-1') {
         field.setValidators([Validators.required]);
       } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
         field.setErrors(null);
       }
     });
@@ -65,6 +67,8 @@ export class AddEditEducationComponent implements OnInit {
       if (val === '-1') {
         field.setValidators([Validators.required]);
       } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
         field.setErrors(null);
       }
     });
@@ -78,6 +82,8 @@ export class AddEditEducationComponent implements OnInit {
       if (val === '-1') {
         field.setValidators([Validators.required]);
       } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
         field.setErrors(null);
       }
     });
