@@ -55,13 +55,14 @@ export class AddUserComponent implements OnInit {
         next: (response: any) => {
           if(response.status == 'success') {
             this.alertSvc.success(response.message);
+            this.myForm.reset();
           }
           if(response.status == 'error') {
             this.alertSvc.error(response.message);
           }
         }, 
         error: (err) => {
-          this.alertSvc.error(err);
+          this.alertSvc.error(err?.error?.message);
           this.loading = false;
         },
         complete: ()=> {
