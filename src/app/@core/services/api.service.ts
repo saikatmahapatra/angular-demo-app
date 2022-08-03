@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AppConfig } from '../../@utils/const/app-config';
@@ -58,6 +58,16 @@ export class ApiService {
         return throwError(err);
       })
     )
+  }
+
+  getUserDetails(userId?: any) {
+    let params = new HttpParams();
+    params.set('userId', userId);
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.userDetails, {params}).pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
   }
 
 }

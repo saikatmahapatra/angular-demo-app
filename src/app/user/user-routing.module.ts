@@ -20,7 +20,7 @@ const routes: Routes = [
     path: '', component: UserComponent,
     children: [
       { path: '', component: ViewProfileComponent },
-      { path: 'profile', component: ViewProfileComponent },
+      { path: 'my-profile', component: ViewProfileComponent },
       { path: 'view-profile/:id', component: ViewProfileComponent },
       { path: 'add', component: AddUserComponent },
       { path: 'manage', component: ManageUsersComponent },

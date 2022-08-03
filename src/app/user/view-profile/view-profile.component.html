@@ -1,9 +1,9 @@
 <h1>My Account</h1>
 <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
-<h2 class="display-4">John Smith</h2>
-<div>Software Engineer</div>
-<div>abc@domain.com</div>
-<div>+91 9830098300</div>
+<h2 class="display-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
+<div>{{userInfo?.user_firstname}}</div>
+<div>{{userInfo?.user_firstname}}</div>
+<div>{{userInfo?.user_firstname}}</div>
 
 <h3 class="mt-4 mb-2">Basic Info</h3>
 <a [routerLink]="['/user/edit-basic-info']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>

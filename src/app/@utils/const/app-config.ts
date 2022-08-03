@@ -11,6 +11,7 @@ export const AppConfig = {
         userFormData: 'userFormData',
         addUser: 'users',
         editUser: 'users',
-        deleteUser: 'users'
+        deleteUser: 'users',
+        userDetails: 'userDetails'
     }
 };
