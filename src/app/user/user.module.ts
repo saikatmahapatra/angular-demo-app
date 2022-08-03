@@ -15,9 +15,9 @@ import { UploadDocComponent } from './upload-doc/upload-doc.component';
 import { AddEditAddressComponent } from './add-edit-address/add-edit-address.component';
 import { AddEditEducationComponent } from './add-edit-education/add-edit-education.component';
 import { AddEditExperienceComponent } from './add-edit-experience/add-edit-experience.component';
-import { AddEditBankInfoComponent } from './add-edit-bank-info/add-edit-bank-info.component';
 import { AddEditEmergencyContactComponent } from './add-edit-emergency-contact/add-edit-emergency-contact.component';
 import { AddEditBasicInfoComponent } from './add-edit-basic-info/add-edit-basic-info.component';
+import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-payroll-info.component';
 
 
 @NgModule({
@@ -40,9 +40,9 @@ import { AddEditBasicInfoComponent } from './add-edit-basic-info/add-edit-basic-
     AddEditAddressComponent,
     AddEditEducationComponent,
     AddEditExperienceComponent,
-    AddEditBankInfoComponent,
     AddEditEmergencyContactComponent,
-    AddEditBasicInfoComponent
+    AddEditBasicInfoComponent,
+    AddEditPayrollInfoComponent
   ]
 })
 export class UserModule { }

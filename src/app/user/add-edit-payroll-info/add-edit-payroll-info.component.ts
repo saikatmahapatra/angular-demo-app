@@ -3,11 +3,11 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service'; ''
 @Component({
-  selector: 'app-add-edit-bank-info',
-  templateUrl: './add-edit-bank-info.component.html',
-  styleUrls: ['./add-edit-bank-info.component.scss']
+  selector: 'app-add-edit-payroll-info',
+  templateUrl: './add-edit-payroll-info.component.html',
+  styleUrls: ['./add-edit-payroll-info.component.scss']
 })
-export class AddEditBankInfoComponent implements OnInit {
+export class AddEditPayrollInfoComponent implements OnInit {
 
   // accountFor: Array<any> = [
   //   { id: 'G', name: 's' },
@@ -23,7 +23,7 @@ export class AddEditBankInfoComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['edit'],
-    panNo: [null, [Validators.required, Validators.maxLength(2)]],
+    panNo: [null, [Validators.required, Validators.maxLength(10)]],
     uanNo: [null, [Validators.required]],
     // accountFor: ['', [Validators.required]],
     bank: [null, Validators.required],
