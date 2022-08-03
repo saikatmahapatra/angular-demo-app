@@ -13,15 +13,18 @@ import { AddEditEmergencyContactComponent } from './add-edit-emergency-contact/a
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { UploadDocComponent } from './upload-doc/upload-doc.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
     path: '', component: UserComponent,
     children: [
-      { path: '', component: ManageUsersComponent },
+      { path: '', component: ViewProfileComponent },
       { path: 'profile', component: ViewProfileComponent },
       { path: 'view-profile/:id', component: ViewProfileComponent },
       { path: 'add', component: AddUserComponent },
+      { path: 'manage', component: ManageUsersComponent },
+      { path: 'edit/:id', component: ManageUsersComponent },
       { path: 'edit-basic-info', component: AddEditBasicInfoComponent },
       { path: 'add-address', component: AddEditAddressComponent },
       { path: 'edit-address/:id', component: AddEditAddressComponent },
@@ -35,6 +38,7 @@ const routes: Routes = [
       { path: 'edit-emergency-contact/:id', component: AddEditEmergencyContactComponent },
       { path: 'upload-profile-photo', component: UploadPhotoComponent },
       { path: 'upload-documents', component: UploadDocComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
     ]
   },
 
