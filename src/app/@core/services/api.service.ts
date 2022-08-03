@@ -20,7 +20,7 @@ export class ApiService {
   }
 
   getUsersTest() {
-    return this.http.get(this.apiBaseUrl + AppConfig.url.getUsers).pipe(
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.getUsers).pipe(
       catchError((err) => {
         //err.statusText = 'This is a custom error message from angular service';
         return throwError(err.message);
@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   getDashboardStat() {
-    return this.http.get(this.apiBaseUrl + AppConfig.url.dashboardStat).pipe(
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.dashboardStat).pipe(
       catchError((err) => {
         return throwError(err.message);
       })
@@ -37,11 +37,27 @@ export class ApiService {
   }
 
   checkEmail(data?: any) {
-    return this.http.post(this.apiBaseUrl + AppConfig.url.checkEmail, data).pipe(
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.checkEmail, data).pipe(
       catchError((err) => {
         return throwError(err.message);
       })
     );
+  }
+
+  getUserFormData() {
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.userFormData).pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
+  }
+
+  addUser(data: any) {
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.addUser, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
   }
 
 }

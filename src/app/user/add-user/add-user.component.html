@@ -34,7 +34,7 @@
             <div class="form-row mb-2">
                 <div class="col">
                     <label class="required" for="dateOfBirth">Date of Birth</label>
-                    <input type="text" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+                    <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" maxlength="10">
                     <app-validation-error [control]="myForm.controls['dateOfBirth']"></app-validation-error>
                 </div>
                 <div class="col">
@@ -67,6 +67,7 @@
                 <div class="col">
                     <label class="required" for="designation">Designation</label>
                     <select class="form-control" id="designation" formControlName="designation">
+                        <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of designationList; let i=index">{{data.name}}
                         </option>
                     </select>
@@ -76,6 +77,7 @@
                 <div class="col">
                     <label class="required" for="department">Department</label>
                     <select class="form-control" id="department" formControlName="department">
+                        <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of departmentList; let i=index">{{data.name}}
                         </option>
                     </select>
@@ -86,13 +88,14 @@
             <div class="form-row mb-2">
                 <div class="col">
                     <label class="required" for="dateOfJoining">Date of Joining</label>
-                    <input type="text" class="form-control" id="dateOfJoining" formControlName="dateOfJoining">
+                    <input type="date" class="form-control" id="dateOfJoining" formControlName="dateOfJoining" maxlength="10">
                     <app-validation-error [control]="myForm.controls['dateOfJoining']"></app-validation-error>
                 </div>
 
                 <div class="col">
                     <label class="required" for="employmentType">Employment Type</label>
                     <select class="form-control" id="employmentType" formControlName="employmentType">
+                        <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of employmentTypeList; let i=index">{{data.name}}
                         </option>
                     </select>
@@ -100,9 +103,12 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Submit
+            </button>
         </form>
-        <p>Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p>{{myForm.value|json}}</p>
+        <!-- <p>Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p>{{myForm.value|json}}</p> -->
     </div>
 </div>

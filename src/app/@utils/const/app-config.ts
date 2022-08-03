@@ -3,10 +3,14 @@ export const AppConfig = {
     apiBaseUrl: '',
     mockAPIUrl: '',
     useMockServer: false,
-    url: {
+    apiResource: {
         login: 'login',
         checkEmail: 'checkEmail',
         getUsers: 'users',
-        dashboardStat: 'dashboardStat'
+        dashboardStat: 'dashboardStat',
+        userFormData: 'userFormData',
+        addUser: 'users',
+        editUser: 'users',
+        deleteUser: 'users'
     }
 };

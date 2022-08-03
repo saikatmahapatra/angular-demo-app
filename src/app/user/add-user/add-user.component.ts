@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { AlertService } from 'src/app/@core/services/alert.service';
+import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
   selector: 'app-add-user',
@@ -7,30 +9,25 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  submitted = false;
+  loading = false;
 
   DataGender: Array<any> = [
     { name: 'Male', id: 'M' },
     { name: 'Female', id: 'F' }
   ];
+  departmentList: any;
+  employmentTypeList: any;
+  designationList: any;
 
-  designationList: Array<any> = [
-    { name: 'Select', id: '' },
-    { name: 'Engineer', id: '1' }
-  ];
-
-  departmentList: Array<any> = [
-    { name: 'Select', id: '' },
-    { name: 'Physics', id: '1' }
-  ];
-
-  employmentTypeList: Array<any> = [
-    { name: 'Select', id: '' },
-    { name: 'FTE', id: '2' }
-  ];
-
-  constructor(private fb: FormBuilder, private validator: FormValidationService) { }
+  constructor(private fb: FormBuilder, private validator: FormValidationService,
+    private apiSvc: ApiService,
+    private alertSvc: AlertService) {
+      this.getFormData();
+     }
 
   ngOnInit(): void {
+    
   }
 
   myForm = this.fb.group({
@@ -51,12 +48,45 @@ export class AddUserComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log('onSubmit===', this.myForm);
+    this.submitted = true;
+    this.loading = true;
     if (this.myForm.valid) {
-      console.log('form submitted', this.myForm.value);
+      this.apiSvc.addUser(this.myForm.value).subscribe({
+        next: (response: any) => {
+          if(response.status == 'success') {
+            this.alertSvc.success(response.message);
+          }
+          if(response.status == 'error') {
+            this.alertSvc.error(response.message);
+          }
+        }, 
+        error: (err) => {
+          this.alertSvc.error(err);
+          this.loading = false;
+        },
+        complete: ()=> {
+          this.loading = false;
+        }
+      });
     } else {
+      this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
+  }
+
+  getFormData() {
+    this.apiSvc.getUserFormData().subscribe({
+      next: (val: any) => {
+        this.designationList = val?.data.designations;
+        this.departmentList = val?.data?.departments,
+        this.employmentTypeList = val?.data?.employmentTypes
+      },
+      error: (err) => {
+        this.alertSvc.error(err, false);
+        throw err;
+      },
+      complete: () => { }
+    });
   }
 
 }
