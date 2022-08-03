@@ -1,7 +1,7 @@
 <h1>Onboard Employee</h1>
 <div class="row">
     <div class="2-col-form col-md-9 col-lg-6">
-        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
             <div class="form-row mb-2">
