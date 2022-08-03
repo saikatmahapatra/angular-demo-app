@@ -33,8 +33,10 @@ export class FormValidationService {
       ruleThreec: 'error message 3',
       invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
       invalidDomain: 'Please enter email with @ms.com only',
-      matching: 'Confirm Password should match with Password',
-      userNameExists: 'This username is already registered'
+      notMatching: 'Confirm Password should match with Password',
+      accountNoNotMatching: 'Confirm account no should match with Account no',
+      userNameExists: 'This username is already registered',
+      invalidPAN: 'Please enter a valid PAN number'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -94,8 +96,16 @@ export class FormValidationService {
         }
         return null;
       }
-      return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { matching: true };
+      if(matchTo === 'accountNo' || matchTo === 'confirmAccountNo') {
+        return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { accountNoNotMatching: true };
+      }
+      return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { notMatching: true };
     };
+  }
+
+  validPAN(control: AbstractControl) {
+    const valid = control?.value ? control?.value?.match(regEx.pan_number) : true;
+    return valid ? null : { 'invalidPAN': true };
   }
 
 }

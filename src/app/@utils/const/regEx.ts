@@ -44,5 +44,6 @@ export const regEx = {
     activation_code: /^[A-Za-z0-9]{8}$/,
     dispute_charge_text: /^[^<>\"%]*$/,
     message_subject: /^[^=\"'<>]*$/,
-    message_body: /^[^=\"'<>]*$/
+    message_body: /^[^=\"'<>]*$/,
+    pan_number: /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/
 };
