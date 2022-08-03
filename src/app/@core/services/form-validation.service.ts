@@ -33,7 +33,8 @@ export class FormValidationService {
       ruleThreec: 'error message 3',
       invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
       invalidDomain: 'Please enter email with @ms.com only',
-      notMatching: 'Confirm Password should match with Password',
+      notMatching: 'Confirm field value should match with Actual value',
+      passwordNotMatching: 'Confirm Password should match with Password',
       accountNoNotMatching: 'Confirm account no should match with Account no',
       userNameExists: 'This username is already registered',
       invalidPAN: 'Please enter a valid PAN number'
@@ -95,6 +96,9 @@ export class FormValidationService {
           c.updateValueAndValidity();
         }
         return null;
+      }
+      if(matchTo === 'password' || matchTo === 'confirmPassword') {
+        return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { passwordNotMatching: true };
       }
       if(matchTo === 'accountNo' || matchTo === 'confirmAccountNo') {
         return !!control.parent && !!control.parent.value && control.value === (control.parent?.controls as any)[matchTo].value ? null : { accountNoNotMatching: true };
