@@ -1,34 +1,104 @@
 <h1>My Account</h1>
 <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
 <h2 class="display-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
-<div>{{userInfo?.user_firstname}}</div>
-<div>{{userInfo?.user_firstname}}</div>
-<div>{{userInfo?.user_firstname}}</div>
+<div>{{userInfo?.designation_name}}</div>
+<div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+<div>{{userInfo?.user_phone1}}</div>
 
-<h3 class="mt-4 mb-2">Basic Info</h3>
-<a [routerLink]="['/user/edit-basic-info']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
+<section class="my-4">
+        <h3 class="my-2">Basic Info</h3>
+        <dl class="row">
+                <dt class="col-md-4 col-lg-3">Employee ID</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
+                <dt class="col-md-4 col-lg-3">Designation</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
+                <dt class="col-md-4 col-lg-3">Employment Type</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
+                <dt class="col-md-4 col-lg-3">Department</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.department_name}}</dd>
+                <dt class="col-md-4 col-lg-3">Date of Joining</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
+                <dt class="col-md-4 col-lg-3">Personal Email</dt>
+                <dd class="col-md-8 col-lg-9"><a
+                                href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
+                </dd>
+                <dt class="col-md-4 col-lg-3">Personal Phone</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
+                <dt class="col-md-4 col-lg-3">Date of Birth</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
+                <dt class="col-md-4 col-lg-3">Gender</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
+                <dt class="col-md-4 col-lg-3">Blood Group</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
+        </dl>
+        <a [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
+                        class="material-symbols-outlined md-16">edit</span> Edit Basic Info</a>
 
-<h3 class="mt-4 mb-2">Address</h3>
-<a [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add New</a>
-<a [routerLink]="['/user/edit-address/33']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
 
-<h3 class="mt-4 mb-2">Education</h3>
-<a [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add New</a>
-<a [routerLink]="['/user/edit-education/37']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
+</section>
 
-<h3 class="mt-4 mb-2">Experience</h3>
-<a [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add New</a>
-<a [routerLink]="['/user/edit-work-experience/91']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
+<section class="my-4">
+        <h3 class="my-2">Address</h3>
+        <div class="my-3" *ngFor="let addr of addressInfo">
+                <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
+                <address>
+                        {{addr.address}}<br>
+                        {{addr.locality}} <br>
+                        {{addr.city}}, {{addr.state_name}}, {{addr.zip}} <br>
+                        {{addr.landmark}}
+                </address>
+                <a [routerLink]="['/user/edit-address/', addr.id]" class="btn btn-light btn-sm mt-0 mr-2"><span
+                                class="material-symbols-outlined md-16">edit</span> Edit</a>
 
-<h3 class="mt-4 mb-2">Payroll Info</h3>
-<a [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add New</a>
-<a [routerLink]="['/user/edit-payroll-info/77']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
+                <a (click)="deleteAddress(addr.id)" class="btn btn-light btn-sm mt-0"><span
+                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+        </div>
+        <a [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
+                class="material-symbols-outlined md-16">add</span> Add New</a>
+</section>
 
-<h3 class="mt-4 mb-2">Emergency Contacts</h3>
-<a [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add New</a>
-<a [routerLink]="['/user/edit-emergency-contact/55']" class="btn btn-secondary btn-sm"><span class="material-symbols-outlined md-16">edit</span> Edit</a>
+<section class="my-4">
+        <h3 class="my-2">Education</h3>
+        <a [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
+                        class="material-symbols-outlined md-16">add</span> Add New</a>
+        <a [routerLink]="['/user/edit-education/37']" class="btn btn-light btn-sm"><span
+                        class="material-symbols-outlined md-16">edit</span> Edit</a>
+</section>
 
-<h3 class="mt-4 mb-2">Other</h3>
-<div>Last Login Time : 10.11am IST</div>
-<div>Location : Kolkata, India</div>
-<div>IP Address : 192.168.02.22</div>
+<section class="my-4">
+        <h3 class="my-2">Experience</h3>
+        <a [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
+                        class="material-symbols-outlined md-16">add</span> Add New</a>
+        <a [routerLink]="['/user/edit-work-experience/91']" class="btn btn-light btn-sm"><span
+                        class="material-symbols-outlined md-16">edit</span> Edit</a>
+</section>
+
+<section class="my-4">
+        <h3 class="my-2">Payroll Info</h3>
+        <a [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
+                        class="material-symbols-outlined md-16">add</span> Add New</a>
+        <a [routerLink]="['/user/edit-payroll-info/77']" class="btn btn-light btn-sm"><span
+                        class="material-symbols-outlined md-16">edit</span> Edit</a>
+</section>
+
+<section class="my-4">
+        <h3 class="my-2">Emergency Contacts</h3>
+        <a [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
+                        class="material-symbols-outlined md-16">add</span> Add New</a>
+        <a [routerLink]="['/user/edit-emergency-contact/55']" class="btn btn-light btn-sm"><span
+                        class="material-symbols-outlined md-16">edit</span> Edit</a>
+</section>
+
+<section class="my-4">
+        <h3 class="my-2">Other</h3>
+        <dl class="row">
+                <dt class="col-md-4 col-lg-3">Account Status</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_status}}</dd>
+                <dt class="col-md-4 col-lg-3">Role/Access</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+                <dt class="col-md-4 col-lg-3">User Since</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'full'}}</dd>
+                <dt class="col-md-4 col-lg-3">Last Login</dt>
+                <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'full'}}</dd>
+        </dl>
+</section>
