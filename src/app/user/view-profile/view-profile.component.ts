@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
@@ -17,16 +18,24 @@ export class ViewProfileComponent implements OnInit {
   approvers: any;
   userGovtIds: any;
   userPhoto: any;
-  orgName = 'UEIPL'
+  orgName = 'UEIPL';
+  selfAccount = false;
   
-  constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
+  constructor(private apiSvc: ApiService, private alertSvc: AlertService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getProfile();
+    let userId = null;
+    this.activatedRoute.paramMap.subscribe(params => {
+      //console.log('params =', params);
+      userId = params.get('id');
+      this.getProfile(userId);
+    })
+    
   }
 
-  getProfile() {
-    this.apiSvc.getUserDetails().subscribe({
+  getProfile(id?: any) {
+    this.apiSvc.getUserDetails(id).subscribe({
       next: (response: any) => {
         if(response.status == 'success') {
           //console.log(response?.data);
@@ -38,6 +47,7 @@ export class ViewProfileComponent implements OnInit {
           this.emergencyContact = response?.data?.econtact;
           this.userGovtIds = response?.data?.userGovtIds;
           this.userPhoto = response?.data?.profilePic;
+          this.selfAccount = response?.data?.selfAccount;
         }
         if(response.status == 'error') {
           this.alertSvc.error(response.message);

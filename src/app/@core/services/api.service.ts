@@ -62,8 +62,8 @@ export class ApiService {
 
   getUserDetails(userId?: any) {
     let params = new HttpParams();
-    params.set('userId', userId);
-    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.userDetails, {params}).pipe(
+    //params.set('userId', userId);
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.userDetails, {'userId': userId}).pipe(
       catchError((err) => {
         return throwError(err.message);
       })

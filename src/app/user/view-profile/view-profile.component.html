@@ -1,4 +1,5 @@
 <h1>My Account</h1>
+<ng-container>
 <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
 <h2 class="display-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
 <div>{{userInfo?.designation_name}}</div>
@@ -31,7 +32,7 @@
                 <dt class="col-md-4 col-lg-3">Blood Group</dt>
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
         </dl>
-        <a [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
                         class="material-symbols-outlined md-16">edit</span> Edit Basic Info</a>
 
 
@@ -47,14 +48,14 @@
                         Landmark: {{addr?.landmark}}
                 </address>
                 <div class="mt-1">
-                        <a [routerLink]="['/user/edit-address/', addr.id]" class="btn btn-light btn-sm mt-0 mr-2"><span
+                        <a *ngIf="selfAccount" [routerLink]="['/user/edit-address/', addr.id]" class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
 
-                        <a (click)="deleteAddress(addr.id)" class="btn btn-light btn-sm mt-0"><span
+                        <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)" class="btn btn-light btn-sm mt-0"><span
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
-        <a [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add New Address</a>
 </section>
 
@@ -67,7 +68,7 @@
                 <div [innerHTML]="education.specialization_name"></div>
                 <div [innerHTML]="education.institute_name"></div>
                 <div>{{education.academic_marks_percentage}}%</div>
-                <div class="mt-1">
+                <div class="mt-1" *ngIf="selfAccount">
                         <a [routerLink]="['/user/edit-education/', education.id]"
                                 class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
@@ -75,7 +76,7 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
-        <a [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add New Education</a>
 </section>
 
@@ -92,7 +93,7 @@
                 <h6>{{exp?.designation_name}}</h6>
                 <div [innerHTML]="exp.company_name"></div>
                 <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date: 'd-MMM-y'}}</div>
-                <div class="mt-1">
+                <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-work-experience/', exp.id]"
                                 class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
@@ -101,7 +102,7 @@
                 </div>
         </div>
 
-        <a [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add New Work Experience</a>
 </section>
 
@@ -119,7 +120,7 @@
                 <h6>{{payroll?.bank_name}}</h6>
                 <div [innerHTML]="payroll.bank_account_no"></div>
                 <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
-                <div class="mt-1">
+                <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
                                 class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
@@ -127,7 +128,7 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
-        <a [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add Payroll Info</a>
 </section>
 
@@ -138,7 +139,7 @@
                 <div class="text-muted" [innerHTML]="contact.relationship"></div>
                 <div>{{contact?.contact_person_address}}</div>
                 <div>Phone: {{contact?.contact_person_phone1}}</div>
-                <div class="mt-1">
+                <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-payroll-info/', contact.id]"
                                 class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
@@ -146,7 +147,7 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
-        <a [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
+        <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add New Emergency Contact</a>
 </section>
 
@@ -163,3 +164,4 @@
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'full'}}</dd>
         </dl>
 </section>
+</ng-container>
