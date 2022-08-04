@@ -70,4 +70,12 @@ export class ApiService {
     );
   }
 
+  changePassword(data: any) {
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.changePassword, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
 }
