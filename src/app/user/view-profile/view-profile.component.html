@@ -79,10 +79,26 @@
 
 <section class="my-4">
         <h3 class="my-2">Experience</h3>
+        <div class="my-3">
+            <h6>{{userInfo?.designation_name}}</h6>
+            <div [innerHTML]="orgName"></div>
+            <div class="text-muted">{{userInfo?.user_doj | date:'d-MMM-y'}} - {{userInfo?.user_dor ? userInfo.user_dor : 'Present'}}</div>
+        </div>
+
+        <div class="my-3" *ngFor="let exp of workExp">
+            <h6>{{exp?.designation_name}}</h6>
+            <div [innerHTML]="exp.company_name"></div>
+            <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date: 'd-MMM-y'}}</div>
+            <div>
+                    <a [routerLink]="['/user/edit-work-experience/', exp.id]" class="btn btn-light btn-sm mt-0 mr-2"><span
+                                    class="material-symbols-outlined md-16">edit</span> Edit</a>
+                    <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm mt-0"><span
+                                    class="material-symbols-outlined md-16">delete</span> Delete</a>
+            </div>
+        </div>
+
         <a [routerLink]="['/user/add-work-experience']" class="btn btn-outline-success btn-sm"><span
                         class="material-symbols-outlined md-16">add</span> Add New Work Experience</a>
-        <a [routerLink]="['/user/edit-work-experience/91']" class="btn btn-light btn-sm"><span
-                        class="material-symbols-outlined md-16">edit</span> Edit</a>
 </section>
 
 <section class="my-4">

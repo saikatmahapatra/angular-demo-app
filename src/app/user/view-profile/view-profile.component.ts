@@ -17,6 +17,7 @@ export class ViewProfileComponent implements OnInit {
   approvers: any;
   userGovtIds: any;
   userPhoto: any;
+  orgName = 'UEIPL'
   
   constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
 
@@ -60,6 +61,10 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteEducation(id: any) {
+    
+  }
+
+  deleteWorkExp(id: any) {
     
   }
 
