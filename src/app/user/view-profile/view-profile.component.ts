@@ -59,4 +59,8 @@ export class ViewProfileComponent implements OnInit {
     
   }
 
+  deleteEducation(id: any) {
+    
+  }
+
 }
