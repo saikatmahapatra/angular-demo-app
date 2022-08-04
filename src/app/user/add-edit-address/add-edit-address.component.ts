@@ -42,11 +42,14 @@ export class AddEditAddressComponent implements OnInit {
   });
 
   onSubmit() {
-    //console.log('onSubmit===', this.myForm);
+    this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
+      this.loading = false;
       console.log('form submitted', this.myForm.value);
     } else {
+      //setTimeout(()=>{this.loading = false;}, 2000);
+      this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
   }
