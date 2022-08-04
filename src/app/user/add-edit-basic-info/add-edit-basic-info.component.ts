@@ -8,6 +8,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-basic-info.component.scss']
 })
 export class AddEditBasicInfoComponent implements OnInit {
+  submitted = false;
+  loading = false;
   bloodGroupList: any;
   constructor(private fb: FormBuilder, private validator: FormValidationService, private apiSvc: ApiService) { }
 

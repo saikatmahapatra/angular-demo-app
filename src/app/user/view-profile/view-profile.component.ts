@@ -29,7 +29,7 @@ export class ViewProfileComponent implements OnInit {
     this.apiSvc.getUserDetails().subscribe({
       next: (response: any) => {
         if(response.status == 'success') {
-          console.log(response?.data);
+          //console.log(response?.data);
           this.userInfo = response?.data?.user[0];
           this.addressInfo = response?.data?.address;
           this.workExp = response?.data?.workExp;

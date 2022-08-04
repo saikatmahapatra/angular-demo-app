@@ -9,6 +9,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-education.component.scss']
 })
 export class AddEditEducationComponent implements OnInit {
+  submitted = false;
+  loading = false;
 
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,

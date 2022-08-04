@@ -8,12 +8,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-payroll-info.component.scss']
 })
 export class AddEditPayrollInfoComponent implements OnInit {
-
-  // accountFor: Array<any> = [
-  //   { id: 'G', name: 's' },
-  //   { id: 'Y', name: 's' }
-  // ];
-
+  submitted = false;
+  loading = false;
   constructor(private fb: FormBuilder, private validator: FormValidationService, private apiSvc: ApiService) { }
 
   ngOnInit(): void {

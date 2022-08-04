@@ -11,7 +11,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-address.component.scss']
 })
 export class AddEditAddressComponent implements OnInit {
-
+  submitted = false;
+  loading = false;
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
@@ -41,7 +42,8 @@ export class AddEditAddressComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log('onSubmit===', this.myForm);
+    //console.log('onSubmit===', this.myForm);
+    this.loading = true;
     if (this.myForm.valid) {
       console.log('form submitted', this.myForm.value);
     } else {

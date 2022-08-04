@@ -8,6 +8,7 @@
             <div class="form-group">
                 <label class="required" for="addressType">Address Type</label>
                 <select class="form-control" id="addressType" formControlName="addressType">
+                    <option value="">Select</option>
                     <option value="{{data.id}}" *ngFor="let data of addressType; let i=index">{{data.name}}</option>
                 </select>
                 <app-validation-error [control]="myForm.controls['addressType']"></app-validation-error>
@@ -50,10 +51,10 @@
                 <input type="text" class="form-control" id="phone" formControlName="phone" maxlength="10">
                 <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
             </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
             <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
         </form>
-        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p class="debug">{{myForm.value|json}}</p>
+        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p> -->
     </div>
 </div>

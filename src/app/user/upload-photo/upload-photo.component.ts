@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload-photo.component.scss']
 })
 export class UploadPhotoComponent implements OnInit {
-
+  submitted = false;
+  loading = false;
   constructor() { }
 
   ngOnInit(): void {

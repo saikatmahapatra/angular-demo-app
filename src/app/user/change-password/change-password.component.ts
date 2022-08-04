@@ -8,7 +8,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
-
+  submitted = false;
+  loading = false;
   myForm = this.fb.group({
     currentPassword: [null, [Validators.required]],
     password: [null, [Validators.required, this.validator.strongPassword, this.validator.matchValidator('confirmPassword', true)]],

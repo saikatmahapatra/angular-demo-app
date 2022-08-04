@@ -9,8 +9,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-emergency-contact.component.scss']
 })
 export class AddEditEmergencyContactComponent implements OnInit {
-
-
+  submitted = false;
+  loading = false;
   constructor(private fb: FormBuilder,
     private validator: FormValidationService) { }
 

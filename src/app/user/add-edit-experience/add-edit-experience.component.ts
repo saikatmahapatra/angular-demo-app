@@ -9,7 +9,8 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-experience.component.scss']
 })
 export class AddEditExperienceComponent implements OnInit {
-
+  submitted = false;
+  loading = false;
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
