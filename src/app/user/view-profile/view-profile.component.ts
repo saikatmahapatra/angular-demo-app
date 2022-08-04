@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
-import { AddressType } from 'src/app/@utils/enums/address-type';
+import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
   selector: 'app-view-profile',
   templateUrl: './view-profile.component.html',
@@ -52,8 +52,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   getAddressType(aChar: string) {
-    let dataCity: any = {'P' : 'Permanent Address', 'C' : 'Present Address'};
-    return dataCity[aChar];
+    return addressType[aChar];
   }
 
   deleteAddress(id: any) {
@@ -66,6 +65,13 @@ export class ViewProfileComponent implements OnInit {
 
   deleteWorkExp(id: any) {
     
+  }
+
+  deletePayrollInfo(id: any) {
+
+  }
+  deleteContact(id: any) {
+
   }
 
 }
