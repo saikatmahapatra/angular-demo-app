@@ -7,16 +7,16 @@ import {
 } from '@angular/common/http';
 import { finalize, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { SpinnerService } from '../services/spinner.service';
+import { LoaderService } from '../services/loader.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authSvc: AuthService, private spinnerSvc: SpinnerService) {}
+  constructor(private authSvc: AuthService, private loader: LoaderService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const authToken = this.authSvc.getToken();
-    this.spinnerSvc.show();
+    this.loader.show();
     if(authToken) {
       const clonedReq = request.clone({
         setHeaders: {
@@ -24,11 +24,11 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
       return next.handle(clonedReq).pipe(
-        finalize(() => this.spinnerSvc.hide()),
+        finalize(() => this.loader.hide()),
       );
     } else {
       return next.handle(request).pipe(
-        finalize(() => this.spinnerSvc.hide()),
+        finalize(() => this.loader.hide()),
       );
     }
   }

@@ -2,7 +2,7 @@ import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Ou
 import { CommonService } from './@core/services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { delay } from 'rxjs/operators';
-import { SpinnerService } from './@core/services/spinner.service';
+import { LoaderService } from './@core/services/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private spinnerSvc: SpinnerService
+    private loader: LoaderService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (!(event instanceof NavigationEnd)) {
@@ -24,13 +24,13 @@ export class AppComponent implements OnInit {
       window.scrollTo(0, 0);
       switch (true) {
         case event instanceof NavigationStart: {
-          this.spinnerSvc.show();
+          this.loader.show();
           break;
         }
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.spinnerSvc.hide();
+          this.loader.hide();
           break;
         }
         default: {
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   checkSpinner() {
-    this.spinnerSvc.getSpinner()
+    this.loader.getLoader()
       .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
       .subscribe((val: any) => {
         this.loading = val;
