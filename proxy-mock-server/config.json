@@ -1,7 +1,7 @@
 {
     "mockDirectory": "./responses",
     "quiet": false,
-    "port": "7878",
+    "port": "3000",
     "latency": 200,
     "enableSSL": false,
     "allowedHeaders": [
