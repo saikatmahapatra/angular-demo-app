@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
   ) {
     this.router.events.subscribe((event: Event) => {
       //console.log('Router Event', event);
+      if (!(event instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
       switch (true) {
         case event instanceof NavigationStart: {
           this.loading = true;
