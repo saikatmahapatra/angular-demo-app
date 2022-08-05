@@ -1,7 +1,7 @@
 {
     "mockDirectory": "./responses",
     "quiet": false,
-    "port": "3000",
+    "port": "7878",
     "latency": 200,
     "enableSSL": false,
     "allowedHeaders": [
@@ -39,7 +39,7 @@
                 "post"
             ]
         },
-        "content": {
+        "dashboardStat": {
             "mockFile": "content.json",
             "verbs": [
                 "get",

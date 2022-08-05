@@ -1,6 +1,6 @@
 {
     "appTitle" : "Angular Dev",
     "apiBaseUrl": "http://localhost/ci-emp-portal-api/api/",
-    "mockAPIUrl": "http://localhost:3000/",
+    "mockAPIUrl": "http://localhost:7878/",
     "useMockServer": true
 }
