@@ -1,8 +1,8 @@
 import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
 import { CommonService } from './@core/services/common.service';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
-import { LoadingService } from './@core/services/loading.service';
 import { delay } from 'rxjs/operators';
+import { SpinnerService } from './@core/services/spinner.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,26 +14,23 @@ export class AppComponent implements OnInit {
   loading = false;
 
   constructor(
-    private commonSvc: CommonService,
-    private changeDect: ChangeDetectorRef,
     private router: Router,
-    private loadingSvc: LoadingService
+    private spinnerSvc: SpinnerService
   ) {
     this.router.events.subscribe((event: Event) => {
-      //console.log('Router Event', event);
       if (!(event instanceof NavigationEnd)) {
         return;
       }
       window.scrollTo(0, 0);
       switch (true) {
         case event instanceof NavigationStart: {
-          this.loading = true;
+          this.spinnerSvc.show();
           break;
         }
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.loading = false;
+          this.spinnerSvc.hide();
           break;
         }
         default: {
@@ -44,15 +41,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commonSvc.someMethod();
-    this.checkLoadingSvc();
+    this.checkSpinner();
   }
 
-  checkLoadingSvc() {
-    this.loadingSvc.loadingSub
+  checkSpinner() {
+    this.spinnerSvc.getSpinner()
       .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
-      .subscribe((loading) => {
-        this.loading = loading;
+      .subscribe((val: any) => {
+        this.loading = val;
       });
   }
 }
