@@ -26,7 +26,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.message}`;
           handled = this.handleServerSideError(returnedError);
         }
-        console.error(errorMessage ? errorMessage : returnedError);
+        console.log("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
+        this.alertSvc.error(errorMessage ? errorMessage : returnedError);
         if (!handled) {
           return throwError(returnedError);
         } else {
