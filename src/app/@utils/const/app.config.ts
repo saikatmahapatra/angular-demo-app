@@ -1,5 +1,7 @@
 export const AppConfig = {
     appTitle: '',
+    brandName: '',
+    copyRight: '',
     apiBaseUrl: '',
     mockAPIUrl: '',
     useMockServer: false,

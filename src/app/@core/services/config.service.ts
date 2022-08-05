@@ -25,7 +25,8 @@ export class ConfigService {
       this.http.get(configJSONFile)
         .subscribe(
           (config: any) => {
-            AppConfig.appTitle = config.appTitle || 'My Angular App';
+            AppConfig.appTitle = config.appTitle;
+            AppConfig.brandName = config?.brandName;
             AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
             return resolve(config);
           },

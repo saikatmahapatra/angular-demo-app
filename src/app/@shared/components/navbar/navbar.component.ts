@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { NavigationService } from 'src/app/@core/services/navigation.service';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { NavigationService } from 'src/app/@core/services/navigation.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
+  brandName = AppConfig.brandName;
   constructor(private authSvc: AuthService, private navService: NavigationService) { }
 
   ngOnInit(): void {
