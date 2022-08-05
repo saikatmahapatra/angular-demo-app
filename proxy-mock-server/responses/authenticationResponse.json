@@ -1,0 +1,17 @@
+{
+    "status": "error",
+    "message": "Login Successfull",
+    "data": {
+      "id": "1",
+      "user_role": "1",
+      "user_role_name": "Super Admin",
+      "user_firstname": "Portal",
+      "user_lastname": "Admin",
+      "user_email": "webuidevs@gmail.com",
+      "user_profile_pic": null,
+      "user_login_date_time": "2022-08-05 14:23:40",
+      "user_emp_id": "0000",
+      "designation_name": "VP - Technical"
+    },
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIxIiwidXNlckVtYWlsIjoid2VidWlkZXZzQGdtYWlsLmNvbSIsIkFQSV9USU1FIjoxNjU5Njk3MTE2fQ.EpHBceRqEXZANX4PlZZrFLXJVCwDORybuy0KufvaoMo"
+  }
