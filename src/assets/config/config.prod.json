@@ -1,5 +1,6 @@
 {
     "appTitle" : "Angular Prod App",
     "brandName": "UEIPL MyApp",
-    "apiBaseUrl": "http://nsroot.smportal.com/nextgen/api/"
+    "apiBaseUrl": "http://nsroot.smportal.com/nextgen/api/",
+    "useMockServer": false
 }
