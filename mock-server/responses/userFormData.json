@@ -1,0 +1,233 @@
+{
+    "status": "error",
+    "message": null,
+    "data": {
+      "designations": [
+        {
+          "id": "4",
+          "name": "Accountant"
+        },
+        {
+          "id": "5",
+          "name": "Advisor"
+        },
+        {
+          "id": "46",
+          "name": "Assistant Manager"
+        },
+        {
+          "id": "6",
+          "name": "Assistant Surveyor"
+        },
+        {
+          "id": "44",
+          "name": "Associate"
+        },
+        {
+          "id": "28",
+          "name": "BD Executive"
+        },
+        {
+          "id": "1",
+          "name": "CEO"
+        },
+        {
+          "id": "3",
+          "name": "CFO"
+        },
+        {
+          "id": "2",
+          "name": "CTO"
+        },
+        {
+          "id": "26",
+          "name": "Data Analyst"
+        },
+        {
+          "id": "27",
+          "name": "Executive"
+        },
+        {
+          "id": "7",
+          "name": "Geologist"
+        },
+        {
+          "id": "8",
+          "name": "Geomatic"
+        },
+        {
+          "id": "43",
+          "name": "GIS Executive"
+        },
+        {
+          "id": "30",
+          "name": "HOD of Coal"
+        },
+        {
+          "id": "36",
+          "name": "HOD of Finance"
+        },
+        {
+          "id": "32",
+          "name": "HOD of Geophysics"
+        },
+        {
+          "id": "42",
+          "name": "HOD of GeoTech & HydroGeo"
+        },
+        {
+          "id": "34",
+          "name": "HOD of GIS"
+        },
+        {
+          "id": "29",
+          "name": "HOD of HR & Admin"
+        },
+        {
+          "id": "33",
+          "name": "HOD of Minor Minerals"
+        },
+        {
+          "id": "31",
+          "name": "HOD of Non Coal"
+        },
+        {
+          "id": "35",
+          "name": "HOD of Survey"
+        },
+        {
+          "id": "9",
+          "name": "HR Executive"
+        },
+        {
+          "id": "47",
+          "name": "Mining Engineer"
+        },
+        {
+          "id": "11",
+          "name": "Office Coordinator"
+        },
+        {
+          "id": "12",
+          "name": "Secretariate"
+        },
+        {
+          "id": "22",
+          "name": "Sr. Accountant"
+        },
+        {
+          "id": "13",
+          "name": "Sr. Consultant Geophysics"
+        },
+        {
+          "id": "14",
+          "name": "Sr. Geologist"
+        },
+        {
+          "id": "17",
+          "name": "Surveyor"
+        },
+        {
+          "id": "37",
+          "name": "Trainee"
+        },
+        {
+          "id": "19",
+          "name": "Trainee Geologist"
+        },
+        {
+          "id": "10",
+          "name": "Trainee HR Executive"
+        },
+        {
+          "id": "18",
+          "name": "Trainee Surveyor"
+        },
+        {
+          "id": "20",
+          "name": "VP - Operation"
+        },
+        {
+          "id": "21",
+          "name": "VP - Technical"
+        }
+      ],
+      "departments": [
+        {
+          "id": "7",
+          "name": "Accounts"
+        },
+        {
+          "id": "12",
+          "name": "Administration"
+        },
+        {
+          "id": "13",
+          "name": "Business Development"
+        },
+        {
+          "id": "1",
+          "name": "Coal"
+        },
+        {
+          "id": "10",
+          "name": "Geological Exploration"
+        },
+        {
+          "id": "11",
+          "name": "Geophysics"
+        },
+        {
+          "id": "4",
+          "name": "GIS"
+        },
+        {
+          "id": "6",
+          "name": "HR & Admin"
+        },
+        {
+          "id": "9",
+          "name": "Mine Plan"
+        },
+        {
+          "id": "3",
+          "name": "Minor Minerals"
+        },
+        {
+          "id": "2",
+          "name": "Non Coal"
+        },
+        {
+          "id": "8",
+          "name": "Others"
+        },
+        {
+          "id": "5",
+          "name": "Survey"
+        }
+      ],
+      "employmentTypes": [
+        {
+          "id": "1",
+          "name": "Employee Full Time"
+        },
+        {
+          "id": "2",
+          "name": "Employee Part Time"
+        },
+        {
+          "id": "4",
+          "name": "Non Employee"
+        },
+        {
+          "id": "5",
+          "name": "Probationary"
+        },
+        {
+          "id": "3",
+          "name": "Contractual"
+        }
+      ]
+    },
+    "token": null
+  }

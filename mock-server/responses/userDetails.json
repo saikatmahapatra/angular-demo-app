@@ -1,0 +1,230 @@
+{
+    "status": "success",
+    "message": null,
+    "data": {
+      "user": [
+        {
+          "id": "1",
+          "user_email": "webuidevs@gmail.com",
+          "user_email_secondary": "aaa@aaa.com",
+          "user_password": "21232f297a57a5a743894a0e4a801fc3",
+          "user_title": "Mr.",
+          "user_firstname": "Portal",
+          "user_midname": null,
+          "user_lastname": "Admin",
+          "user_gender": "M",
+          "user_role": "1",
+          "user_type": "S",
+          "user_department": "0",
+          "user_designation": "21",
+          "user_bio": null,
+          "user_dob": "1980-12-14",
+          "user_blood_group": "",
+          "user_doj": "2015-01-22",
+          "user_employment_type": "1",
+          "user_dor": null,
+          "user_emp_id": "0000",
+          "user_profile_pic": null,
+          "user_phone1": "9000000001",
+          "user_phone2": "9000000007",
+          "user_pan_no": "TESTW0000X",
+          "user_aadhar_no": null,
+          "user_passport_no": null,
+          "user_uan_no": "1234567890",
+          "user_registration_date": "2018-09-23 00:16:14",
+          "user_registration_ip": "50.7.184.98",
+          "user_reset_password_key": "d49447f800d266b2905b9f5febb2e972",
+          "user_activation_key": "c64addcea9ac7c8fedadecc2b60b9368",
+          "user_status": "Y",
+          "user_login_date_time": "2022-08-04 13:30:24",
+          "account_closed_by": null,
+          "account_closed_datetime": null,
+          "account_closed_by_system_datetime": null,
+          "account_close_comments": null,
+          "role_name": "Super Admin",
+          "role_weight": "100",
+          "department_name": null,
+          "designation_name": "VP - Technical",
+          "employment_type_name": "Employee Full Time"
+        }
+      ],
+      "profilePic": null,
+      "address": [
+        {
+          "id": "2",
+          "user_id": "1",
+          "address_type": "C",
+          "shipping_address_type": null,
+          "name": null,
+          "phone1": "000101010101010",
+          "locality": "test",
+          "address": "Nexus Tower, 8th Floor, Flat No 8C",
+          "city": "Kolkata",
+          "state": "28",
+          "zip": "700000",
+          "country": null,
+          "landmark": "Near Spencers",
+          "phone2": null,
+          "address_verification_status": "P",
+          "state_name": "West Bengal"
+        },
+        {
+          "id": "37",
+          "user_id": "1",
+          "address_type": "P",
+          "shipping_address_type": null,
+          "name": null,
+          "phone1": "111155555555",
+          "locality": "Airport",
+          "address": "FLAT 3/2 ABC Buildig",
+          "city": "North 24 Pgs",
+          "state": "28",
+          "zip": "700052",
+          "country": null,
+          "landmark": "",
+          "phone2": null,
+          "address_verification_status": "P",
+          "state_name": "West Bengal"
+        }
+      ],
+      "econtact": [
+        {
+          "id": "27",
+          "user_id": "1",
+          "contact_person_name": "Abc",
+          "contact_person_address": "Abc address",
+          "relationship_with_contact": "1",
+          "contact_person_phone1": "8898888989",
+          "contact_person_phone2": "",
+          "relationship": "Aunt"
+        },
+        {
+          "id": "28",
+          "user_id": "1",
+          "contact_person_name": "AXXXX",
+          "contact_person_address": "ghaghgahgahg address",
+          "relationship_with_contact": "3",
+          "contact_person_phone1": "8989898989",
+          "contact_person_phone2": "0090909090",
+          "relationship": "Child"
+        }
+      ],
+      "education": [
+        {
+          "id": "2",
+          "user_id": "1",
+          "academic_qualification": "5",
+          "academic_degree": "16",
+          "academic_from_year": "2018",
+          "academic_to_year": "2010",
+          "academic_institute": "1",
+          "academic_marks_percentage": "59.00",
+          "academic_specialization": "25",
+          "qualification_name": "Post Graduation",
+          "specialization_name": "Human Resources",
+          "institute_name": "Adamas University",
+          "degree_name": "Master Of Business Administration (M.B.A)"
+        },
+        {
+          "id": "33",
+          "user_id": "1",
+          "academic_qualification": "5",
+          "academic_degree": "9",
+          "academic_from_year": "2003",
+          "academic_to_year": "2003",
+          "academic_institute": "21",
+          "academic_marks_percentage": "60.00",
+          "academic_specialization": "2",
+          "qualification_name": "Post Graduation",
+          "specialization_name": "Agriculture & Food Engineering",
+          "institute_name": "University of Engineering & Management (UEM), Kolkata",
+          "degree_name": "Bachelor of Science (B.Sc.)"
+        },
+        {
+          "id": "1",
+          "user_id": "1",
+          "academic_qualification": "4",
+          "academic_degree": "2",
+          "academic_from_year": "2004",
+          "academic_to_year": "2008",
+          "academic_institute": "15",
+          "academic_marks_percentage": "72.57",
+          "academic_specialization": "15",
+          "qualification_name": "Graduation",
+          "specialization_name": "Information Technology Engineering",
+          "institute_name": "Maulana Abul Kalam Azad University of Technology",
+          "degree_name": "Bachelor of Engineering / Technology (B.E/B.Tech)"
+        }
+      ],
+      "workExp": [
+        {
+          "id": "19",
+          "user_id": "1",
+          "company_id": "12",
+          "from_date": "2022-06-15",
+          "to_date": "2022-08-05",
+          "designation_id": "4",
+          "job_description": "",
+          "company_name": "COSMOGRAPHY PVT LTD.",
+          "designation_name": "Accountant"
+        }
+      ],
+      "userGovtIds": [
+        {
+          "user_pan_no": "TESTW0000X",
+          "user_aadhar_no": null,
+          "user_passport_no": null,
+          "user_uan_no": "1234567890"
+        }
+      ],
+      "payrollInfo": [
+        {
+          "id": "1",
+          "user_id": "1",
+          "account_uses": "SAL",
+          "account_type": "SB",
+          "bank_id": "5",
+          "bank_account_no": "1234",
+          "ifsc_code": "HDFC0000001",
+          "bank_name": "HDFC Bank"
+        },
+        {
+          "id": "9",
+          "user_id": "1",
+          "account_uses": "REI",
+          "account_type": "SB",
+          "bank_id": "14",
+          "bank_account_no": "1234",
+          "ifsc_code": "CITI9000004",
+          "bank_name": "Citi Bank"
+        }
+      ],
+      "approvers": [
+        {
+          "id": "1",
+          "user_id": "1",
+          "user_supervisor_id": "1",
+          "user_hr_approver_id": "1",
+          "user_director_approver_id": "1",
+          "user_finance_approver_id": "14",
+          "supervisor_firstname": "Portal",
+          "supervisor_lastname": "Admin",
+          "supervisor_emp_id": "0000",
+          "supervisor_email": "webuidevs@gmail.com",
+          "hr_firstname": "Portal",
+          "hr_lastname": "Admin",
+          "hr_emp_id": "0000",
+          "hr_email": "webuidevs@gmail.com",
+          "director_firstname": "Portal",
+          "director_lastname": "Admin",
+          "director_emp_id": "0000",
+          "director_email": "webuidevs@gmail.com",
+          "finance_firstname": "Debkumar",
+          "finance_lastname": "Chatterjee",
+          "finance_emp_id": "0029",
+          "finance_email": "accounts@unitedexploration.co.in"
+        }
+      ]
+    },
+    "token": null
+  }

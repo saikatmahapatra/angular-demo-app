@@ -17,6 +17,28 @@
                 "put"
             ]
         },
+        "posts": {
+            "mockFile": "posts.json",
+            "verbs": [
+                "get",
+                "post",
+                "put"
+            ]
+        },
+        "comments": {
+            "mockFile": "comments.json",
+            "verbs": [
+                "get",
+                "post",
+                "put"
+            ]
+        },
+        "login": {
+            "mockFile": "login.json",
+            "verbs": [
+                "post"
+            ]
+        },
         "content": {
             "mockFile": "content.json",
             "verbs": [
@@ -25,12 +47,19 @@
                 "put"
             ]
         },
-        "user": {
+        "users": {
             "mockFile": "user.json",
             "verbs": [
                 "get",
                 "post",
                 "put"
+            ]
+        },
+        "userDetails": {
+            "mockFile": "userDetails.json",
+            "verbs": [
+                "get",
+                "post"
             ]
         },
         "/*": {
