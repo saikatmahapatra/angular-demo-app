@@ -3,7 +3,6 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray, NgForm } fr
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
-import { SpinnerService } from 'src/app/@core/services/spinner.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 
 
