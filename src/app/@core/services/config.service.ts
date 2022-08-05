@@ -27,6 +27,7 @@ export class ConfigService {
           (config: any) => {
             AppConfig.appTitle = config.appTitle;
             AppConfig.brandName = config?.brandName;
+            AppConfig.useMockServer = config.useMockServer;
             AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
             return resolve(config);
           },
