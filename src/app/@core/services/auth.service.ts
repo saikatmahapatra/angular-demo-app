@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../@utils/const/app-config';
+import { AppConfig } from '../../@utils/const/app.config';
 @Injectable({
   providedIn: 'root'
 })

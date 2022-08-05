@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { AppConfig } from '../../@utils/const/app-config';
+import { AppConfig } from '../../@utils/const/app.config';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,14 +10,6 @@ export class ApiService {
   private apiBaseUrl = AppConfig.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
-
-  getJSONData() {
-    return this.http.get('assets/json/data.json').pipe(
-      catchError((err) => {
-        return throwError(err.message);
-      })
-    );
-  }
 
   getUsersTest() {
     return this.http.get(this.apiBaseUrl + AppConfig.apiResource.getUsers).pipe(

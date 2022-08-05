@@ -10,21 +10,23 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 export class AddEditBasicInfoComponent implements OnInit {
   submitted = false;
   loading = false;
-  bloodGroupList: any;
+  bloodGroupList = [
+    { "id": "A+", "name": "A+" },
+    { "id": "A-", "name": "A-" },
+    { "id": "B+", "name": "B+" },
+    { "id": "B-", "name": "B-" },
+    { "id": "AB+", "name": "AB+" },
+    { "id": "AB-", "name": "AB-" },
+    { "id": "O+", "name": "O+" },
+    { "id": "O-", "name": "O-" },
+    { "id": "Unknown", "name": "Unknown" }
+  ]
   constructor(private fb: FormBuilder, private validator: FormValidationService, private apiSvc: ApiService) { }
 
   ngOnInit(): void {
-    this.apiSvc.getJSONData().subscribe({
-      next: (val: any) => {
-        this.bloodGroupList = val[0].bloodGr;
-      },
-      error: (err) => {
-        throw err;
-      },
-      complete: () => { }
-    })
+
   }
-  
+
 
   myForm = this.fb.group({
     id: [null],
