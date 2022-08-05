@@ -18,13 +18,12 @@ export class DashboardStatComponent implements OnInit {
         this.stats = response.data;
       }, 
       error: (err) => {
-        console.log(err);
         if(err?.error?.message) {
           this.alertSvc.error(err?.error?.message, false);
         } else {
           this.alertSvc.error(err.statusText, false);
         }
-        
+        this.alertSvc.error(err, false);
       },
       complete: ()=> {
       }

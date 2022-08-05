@@ -54,7 +54,7 @@ export class ViewProfileComponent implements OnInit {
         }
       }, 
       error: (err) => {
-        this.alertSvc.error(err?.error?.message);
+        this.alertSvc.error(err);
       },
       complete: ()=> {
       }

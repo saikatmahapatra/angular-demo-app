@@ -41,7 +41,7 @@ export class ForgotPasswordFormComponent implements OnInit {
       this.apiSvc.checkEmail(postData).subscribe({
         next: (response: any) => {
           if(response.status == 'success') {
-            this.alertSvc.success(response.message);
+            this.alertSvc.success(response.message, true);
             setTimeout(() => {
               this.router.navigate(['auth/reset-password']);
             }, 2000);
