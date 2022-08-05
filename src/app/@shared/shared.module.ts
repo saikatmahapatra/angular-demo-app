@@ -15,6 +15,7 @@ import { AuthenticatedLayoutComponent } from './components/layouts/authenticated
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -35,7 +36,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent
   ],
   providers: [],
   exports: [
@@ -51,7 +53,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     UnauthenticatedLayoutComponent,
     AuthenticatedLayoutComponent,
     AlertMessageComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule {

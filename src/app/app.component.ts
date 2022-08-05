@@ -41,14 +41,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkSpinner();
-  }
-
-  checkSpinner() {
-    this.loader.getLoader()
-      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
-      .subscribe((val: any) => {
-        this.loading = val;
-      });
   }
 }
