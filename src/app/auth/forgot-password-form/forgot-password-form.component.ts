@@ -42,6 +42,9 @@ export class ForgotPasswordFormComponent implements OnInit {
         next: (response: any) => {
           if(response.status == 'success') {
             this.alertSvc.success(response.message);
+            setTimeout(() => {
+              this.router.navigate(['auth/reset-password']);
+            }, 2000);
           }
           if(response.status == 'error') {
             this.alertSvc.error(response.message);
