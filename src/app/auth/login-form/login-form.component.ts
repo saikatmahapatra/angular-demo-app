@@ -48,7 +48,7 @@ export class LoginFormComponent implements OnInit {
     this.loading = true;
     if(this.loginForm.valid) {
       const postData = this.loginForm.value;
-      this.authSvc.login(postData).subscribe({
+      this.authSvc.authenticate(postData).subscribe({
         next: (response: any) => {
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigate([returnUrl]);

@@ -27,8 +27,8 @@ export class AuthService {
     return (authToken !== null) ? true : false;
   }
 
-  login(postData: any) {
-    return this.http.post<any>(this.apiBaseUrl + AppConfig.apiResource.login, postData)
+  authenticate(postData: any) {
+    return this.http.post<any>(this.apiBaseUrl + AppConfig.apiResource.authenticate, postData)
       .pipe(map(response => {
           sessionStorage.setItem('loginData', JSON.stringify(response.data));
           sessionStorage.setItem('access_token', response.token);

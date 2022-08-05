@@ -4,7 +4,7 @@ export const AppConfig = {
     mockAPIUrl: '',
     useMockServer: false,
     apiResource: {
-        login: 'login',
+        authenticate: 'login',
         checkEmail: 'checkEmail',
         getUsers: 'users',
         dashboardStat: 'dashboardStat',
