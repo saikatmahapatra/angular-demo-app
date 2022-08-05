@@ -1,0 +1,41 @@
+{
+    "mockDirectory": "./responses",
+    "quiet": false,
+    "port": "7878",
+    "latency": 200,
+    "enableSSL": false,
+    "allowedHeaders": [
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept,X-HTTP-Method-Override"
+    ],
+    "webServices": {
+        "test": {
+            "mockFile": "test.json",
+            "verbs": [
+                "get",
+                "post",
+                "put"
+            ]
+        },
+        "content": {
+            "mockFile": "content.json",
+            "verbs": [
+                "get",
+                "post",
+                "put"
+            ]
+        },
+        "user": {
+            "mockFile": "user.json",
+            "verbs": [
+                "get",
+                "post",
+                "put"
+            ]
+        },
+        "/*": {
+            "default": true,
+            "host": "http://localhost:4200"
+        }
+    }
+}
