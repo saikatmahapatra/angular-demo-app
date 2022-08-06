@@ -15,6 +15,7 @@ export const AppConfig = {
         editUser: 'users',
         deleteUser: 'users',
         userDetails: 'userDetails',
-        changePassword: 'changePassword'
+        changePassword: 'changePassword',
+        address: 'address'
     }
 };

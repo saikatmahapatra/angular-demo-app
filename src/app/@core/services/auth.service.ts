@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../@utils/const/app.config';
+import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,8 @@ export class AuthService {
     public loggedInUser!: Observable<any>;
     private apiBaseUrl = AppConfig.apiBaseUrl;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,
+    private alertSvc: AlertService) {
     const loggedInData: any = sessionStorage.getItem('loginData');
     this.loggedInUserSubject = new BehaviorSubject<any>(JSON.parse(loggedInData));
     this.loggedInUser = this.loggedInUserSubject.asObservable();
@@ -52,6 +54,7 @@ export class AuthService {
     sessionStorage.removeItem('loginData');
     sessionStorage.removeItem('access_token');
     this.loggedInUserSubject.next(null);
+    this.alertSvc.info('You have been logged out!', true);
     this.router.navigate(['auth/login']);
   }
 }

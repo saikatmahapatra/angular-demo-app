@@ -70,4 +70,33 @@ export class ApiService {
     )
   }
 
+  createAddress(data: any) {
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.address, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
+  updateAddress(data: any) {
+    return this.http.put(this.apiBaseUrl + AppConfig.apiResource.address, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
+  deleteAddress(id: any) {
+    // const options = {
+    //   body: {
+    //     id: id
+    //   }
+    // };
+    return this.http.delete(this.apiBaseUrl + AppConfig.apiResource.address + '/' + id).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
 }

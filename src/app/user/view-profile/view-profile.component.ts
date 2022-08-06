@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
@@ -22,16 +22,20 @@ export class ViewProfileComponent implements OnInit {
   selfAccount = false;
   
   constructor(private apiSvc: ApiService, private alertSvc: AlertService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.getProfileData();
+  }
+
+  getProfileData(){
     let userId = null;
     this.activatedRoute.paramMap.subscribe(params => {
       //console.log('params =', params);
       userId = params.get('id');
       this.getProfile(userId);
     })
-    
   }
 
   getProfile(id?: any) {
@@ -66,7 +70,23 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteAddress(id: any) {
-    
+    this.apiSvc.deleteAddress(id).subscribe({
+      next: (response: any) => {
+        if(response.status == 'success') {
+          this.alertSvc.success(response.message);
+          //this.router.navigate(['user/change-password']);
+          this.getProfileData();
+        }
+        if(response.status == 'error') {
+          this.alertSvc.error(response.message);
+        }
+      }, 
+      error: (err) => {
+        this.alertSvc.error(err?.error?.message);
+      },
+      complete: ()=> {
+      }
+    });
   }
 
   deleteEducation(id: any) {
