@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { State } from 'src/app/@utils/models/IState';
-
 
 @Component({
   selector: 'app-add-edit-address',
@@ -16,11 +15,16 @@ export class AddEditAddressComponent implements OnInit {
   submitted = false;
   loading = false;
   stateList: State[] = [];
+  addressId: any = '';
+  isAdd = true;
+  title = 'Add';
+  data: any = '';
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router,
-    private alertSvc: AlertService) { }
+    private alertSvc: AlertService,
+    private activatedRoute: ActivatedRoute) { }
 
   addressType: Array<any> = [
     { id: 'P', name: 'Permanent' },
@@ -29,8 +33,15 @@ export class AddEditAddressComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    // get action name & id for PUT call
     this.getFormData();
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.addressId  =  params.get('id');
+    });
+    if(this.addressId) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.getAddress();
+    }
   }
 
   myForm = this.fb.group({
@@ -52,7 +63,7 @@ export class AddEditAddressComponent implements OnInit {
         this.stateList = val?.data?.states;
       },
       error: (err) => {
-        this.alertSvc.error(err, false);
+        //this.alertSvc.error(err, false);
       },
       complete: () => { }
     });
@@ -62,29 +73,61 @@ export class AddEditAddressComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      this.apiSvc.createAddress(this.myForm.value).subscribe({
-        next: (response: any) => {
-          if(response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
+      if(this.myForm.get('id')?.value) {
+        console.log('EDIT');
+      } else {
+        this.apiSvc.createAddress(this.myForm.value).subscribe({
+          next: (response: any) => {
+            if(response.status == 'success') {
+              this.alertSvc.success(response.message, true);
+              this.myForm.reset();
+              this.router.navigate(['user/profile']);
+            }
+            if(response.status == 'error') {
+              this.alertSvc.error(response.message);
+            }
+          }, 
+          error: (err) => {
+            this.alertSvc.error(err?.error?.message);
+            this.loading = false;
+          },
+          complete: ()=> {
+            this.loading = false;
           }
-          if(response.status == 'error') {
-            this.alertSvc.error(response.message);
-          }
-        }, 
-        error: (err) => {
-          this.alertSvc.error(err?.error?.message);
-          this.loading = false;
-        },
-        complete: ()=> {
-          this.loading = false;
-        }
-      });
+        });
+      }
+      
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
+  }
+
+  getAddress() {
+    this.apiSvc.getAddress(this.addressId).subscribe({
+      next: (val: any) => {
+        this.patchFormValue(val?.data?.address[0]);
+      },
+      error: (err) => {
+        this.alertSvc.error(err, false);
+      },
+      complete: () => { }
+    });
+  }
+
+  patchFormValue(data: any) {
+    this.myForm.patchValue({
+      id: data?.id,
+      action: 'edit',
+      addressType: data?.address_type,
+      addressLine1: data?.address,
+      addressLine2: data?.locality,
+      city: data?.city,
+      state: data?.state,
+      zip: data?.zip,
+      landmark: data?.landmark,
+      phone: data?.phone1
+    });
   }
 
 }

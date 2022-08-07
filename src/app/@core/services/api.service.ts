@@ -78,6 +78,14 @@ export class ApiService {
     )
   }
 
+  getAddress(id: any) {
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.address + '/' + id).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
   updateAddress(data: any) {
     return this.http.put(this.apiBaseUrl + AppConfig.apiResource.address, data).pipe(
       catchError((err) => {
@@ -86,7 +94,7 @@ export class ApiService {
     )
   }
 
-  deleteAddress(id: any) {
+  deleteAddress(id: string) {
     // const options = {
     //   body: {
     //     id: id

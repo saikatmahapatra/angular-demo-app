@@ -16,7 +16,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let handled: boolean = false;
+    let handled = false;
     return next.handle(request).pipe(
       catchError((returnedError) => {
         let errorMessage = null;
@@ -26,9 +26,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.message}`;
           handled = this.handleServerSideError(returnedError);
         }
-        console.log("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
-        this.alertSvc.error(errorMessage ? errorMessage : returnedError);
+        
         if (!handled) {
+          console.error("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
+          this.alertSvc.error(errorMessage ? errorMessage : returnedError);
           return throwError(returnedError);
         } else {
           return of(returnedError);
@@ -41,15 +42,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     let handled: boolean = false;
 
     switch (error.status) {
-      // case 400:
-      //   this.alertSvc.error('We\'re unable to process your request at this moment. Please try after some time', false);
-      //   this.authSvc.logout();
-      //   handled = true;
-      //   break;
+      case 400:
+        this.alertSvc.error('<b>Sorry!</b> We\'re unable to process your request at this moment. Please try after some time.', false);
+        handled = true;
+        break;
 
       case 401:
         if (this.router.url != '/login') {
-          this.alertSvc.error('Unauthorized. Please login again.', false);
+          this.alertSvc.error('<b>Sorry!</b> You are unauthorized to access this page. Please login again.', false);
           this.authSvc.logout();
           handled = true;
         }
