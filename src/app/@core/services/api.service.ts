@@ -71,7 +71,7 @@ export class ApiService {
   }
 
   createAddress(data: any) {
-    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.address, data).pipe(
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.addAddress, data).pipe(
       catchError((err) => {
         return throwError(err);
       })
@@ -79,7 +79,7 @@ export class ApiService {
   }
 
   getAddress(id: any) {
-    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.address + '/' + id).pipe(
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.getAddress + '/' + id).pipe(
       catchError((err) => {
         return throwError(err);
       })
@@ -87,7 +87,7 @@ export class ApiService {
   }
 
   updateAddress(data: any) {
-    return this.http.put(this.apiBaseUrl + AppConfig.apiResource.address, data).pipe(
+    return this.http.put(this.apiBaseUrl + AppConfig.apiResource.updateAddress , data).pipe(
       catchError((err) => {
         return throwError(err);
       })
@@ -100,7 +100,7 @@ export class ApiService {
     //     id: id
     //   }
     // };
-    return this.http.delete(this.apiBaseUrl + AppConfig.apiResource.address + '/' + id).pipe(
+    return this.http.delete(this.apiBaseUrl + AppConfig.apiResource.deleteAddress + '/' + id).pipe(
       catchError((err) => {
         return throwError(err);
       })
