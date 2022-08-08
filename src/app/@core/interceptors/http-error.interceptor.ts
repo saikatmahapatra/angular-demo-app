@@ -26,10 +26,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.message}`;
           handled = this.handleServerSideError(returnedError);
         }
-        
+        console.error("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
         if (!handled) {
-          console.error("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
-          this.alertSvc.error(errorMessage ? errorMessage : returnedError);
           return throwError(returnedError);
         } else {
           return of(returnedError);
@@ -43,7 +41,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     switch (error.status) {
       case 400:
-        this.alertSvc.error('<b>Sorry!</b> We\'re unable to process your request at this moment. Please try after some time.', false);
+        console.log();
+        let message = error?.error?.message ? error.error.message : '<b>Sorry!</b> We\'re unable to process your request at this moment. Please try after some time.';
+        this.alertSvc.error(message, false);
         handled = true;
         break;
 
