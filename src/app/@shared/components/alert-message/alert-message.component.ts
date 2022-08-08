@@ -20,15 +20,19 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
         switch (message && message.type) {
           case 'success':
             message.cssClass = 'alert bg-success text-white';
+            message.icon = 'success';
             break;
           case 'error':
             message.cssClass = 'alert bg-danger text-white';
+            message.icon = 'error';
             break;
           case 'info':
             message.cssClass = 'alert bg-info text-white';
+            message.icon = 'info';
             break;
           case 'warning':
             message.cssClass = 'alert bg-warning text-white';
+            message.icon = 'warning';
             break;
         }
 
