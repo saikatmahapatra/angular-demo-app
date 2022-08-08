@@ -33,7 +33,7 @@
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
         </dl>
         <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
-                        class="material-symbols-outlined md-16">edit</span> Edit Basic Info</a>
+                        class="material-symbols-outlined">edit</span> Edit Basic Information</a>
 
 
 </section>
@@ -55,8 +55,14 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
+        <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
+                <div class="text-muted">
+                        <span
+                        class="material-symbols-outlined">info</span> You have not added any of your communication address. You can add it by clicking below "Add" button.
+                </div>
+        </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add New Address</a>
+                        class="material-symbols-outlined">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -76,8 +82,14 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
+        <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
+                <div class="text-muted">
+                        <span
+                        class="material-symbols-outlined">info</span> You have not added any of your education details. You can add it by clicking below "Add" button.
+                </div>
+        </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add New Education</a>
+                        class="material-symbols-outlined">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -102,8 +114,15 @@
                 </div>
         </div>
 
+        <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
+                <div class="text-muted">
+                        <span
+                        class="material-symbols-outlined">info</span> You have not added any prior work experience details. If you have any prior experience you can add it by clicking below "Add" button.
+                </div>
+        </div>
+
         <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add New Work Experience</a>
+                        class="material-symbols-outlined">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -128,8 +147,14 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
+        <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
+                <div class="text-muted">
+                        <span
+                        class="material-symbols-outlined">info</span> You have not added any Payroll information. You can add it by clicking below "Add" button.
+                </div>
+        </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add Payroll Info</a>
+                        class="material-symbols-outlined">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -147,8 +172,14 @@
                                         class="material-symbols-outlined md-16">delete</span> Delete</a>
                 </div>
         </div>
+        <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
+                <div class="text-muted">
+                        <span
+                        class="material-symbols-outlined">info</span> You have not added any of your emergency contact information. You can add it by clicking below "Add" button.
+                </div>
+        </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add New Emergency Contact</a>
+                        class="material-symbols-outlined">add</span> Add </a>
 </section>
 
 <section class="my-4">
