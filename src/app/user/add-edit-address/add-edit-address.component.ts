@@ -74,7 +74,22 @@ export class AddEditAddressComponent implements OnInit {
     this.loading = true;
     if (this.myForm.valid) {
       if(this.myForm.get('id')?.value) {
-        console.log('EDIT');
+        this.apiSvc.updateAddress(this.myForm.value).subscribe({
+          next: (response: any) => {
+            if(response.status == 'success') {
+              this.alertSvc.success(response.message, true);
+              this.myForm.reset();
+              this.router.navigate(['user/profile']);
+            }
+          }, 
+          error: (err) => {
+            this.alertSvc.error(err?.error?.message);
+            this.loading = false;
+          },
+          complete: ()=> {
+            this.loading = false;
+          }
+        });
       } else {
         this.apiSvc.createAddress(this.myForm.value).subscribe({
           next: (response: any) => {
