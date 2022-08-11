@@ -3,6 +3,9 @@
 @import "assets/scss/vars";
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+@import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
+@import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
