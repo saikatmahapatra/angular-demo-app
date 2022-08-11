@@ -16,10 +16,14 @@ export const AppConfig = {
         deleteUser: 'users',
         userDetails: 'userDetails',
         changePassword: 'changePassword',
+        userData: 'userData',
+        updateUserData: 'updateUserData',
+
         getAddress: 'getAddress',
         addAddress: 'addAddress',
         updateAddress: 'updateAddress',
         deleteAddress: 'deleteAddress',
+        
         getEducation: 'getEducation',
         addEducation: 'addEducation',
         updateEducation: 'updateEducation',

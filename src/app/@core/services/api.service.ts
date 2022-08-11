@@ -107,4 +107,20 @@ export class ApiService {
     )
   }
 
+  getUserData(id: string) {
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.userData + '/' + id).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
+  updateUserData(data: any) {
+    return this.http.patch(this.apiBaseUrl + AppConfig.apiResource.updateUserData, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
 }

@@ -4,6 +4,7 @@
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
+            
             <div class="form-group">
                 <label class="required" for="personalEmail">Personal Email</label>
                 <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
@@ -18,14 +19,14 @@
             </div>
 
             <div class="form-group">
-                <label class="required" for="workPhone">Personal Phone</label>
+                <label class="optional" for="workPhone">Work Phone</label>
                 <input type="text" class="form-control" id="workPhone" formControlName="workPhone"
                     maxlength="10">
                 <app-validation-error [control]="myForm.controls['workPhone']"></app-validation-error>
             </div>
 
             <div class="form-group">
-                <label class="required" for="bloodGroup">Blood Group</label>
+                <label class="optional" for="bloodGroup">Blood Group</label>
                 <select class="form-control" id="bloodGroup" formControlName="bloodGroup">
                     <option value="{{data.id}}" *ngFor="let data of bloodGroupList; let i=index">{{data.name}}
                     </option>
