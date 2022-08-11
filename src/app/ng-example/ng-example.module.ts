@@ -20,7 +20,8 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
 import { AddToCartComponent } from './form-input-binding/add-to-cart/add-to-cart.component';
 import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
 import { ContentCardComponent } from './content-card/content-card.component';
-
+import { AgGridModule } from 'ag-grid-angular';
+import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { ContentCardComponent } from './content-card/content-card.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    NgExampleRoutingModule
+    NgExampleRoutingModule,
+    AgGridModule
   ],
   declarations: [
     NgExampleComponent,
@@ -48,6 +50,7 @@ import { ContentCardComponent } from './content-card/content-card.component';
     AddToCartComponent,
     SumDigitPipePipe,
     ContentCardComponent,
+    AgGridTableExampleComponent,
   ],
   exports: [
     SumDigitPipePipe
