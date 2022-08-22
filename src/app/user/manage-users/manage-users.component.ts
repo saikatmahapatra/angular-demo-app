@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../@core/services/common.service';
 import { ApiService } from '../../@core/services/api.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
-import { of } from 'rxjs';
+import { of, Subscription, timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-users',
@@ -17,6 +18,7 @@ export class ManageUsersComponent implements OnInit {
   public events: any[] = [];
   public userList: any;
   public postData = {};
+  subscription !: Subscription;
 
   constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
 
@@ -103,6 +105,24 @@ export class ManageUsersComponent implements OnInit {
       return { isInvalidEmail: true };
     }
     return null;
+  }
+
+
+  getUserInterval() {
+    this.subscription = timer(0, 10000).pipe(
+      switchMap(() => this.apiSvc.getUsersTest())
+    ).subscribe({
+      next: (val: any) => {
+        this.userList = val?.data;
+      },
+      error: (err) => {
+        this.alertService.error(err, false);
+        //this.errorMessage = error;
+        //this.loading = false;
+        throw err;
+      },
+      complete: () => { }
+    });
   }
 
 }
