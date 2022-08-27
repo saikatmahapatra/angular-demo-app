@@ -12,6 +12,14 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.simpleObservable();
+    const Ob = this.arrayToObservableWrap();
+    Ob.subscribe(observer => {
+      console.log("Subscription 1 : ", observer);
+    })
+
+    Ob.subscribe(observer => {
+      console.log("Subscription 2 : ", observer);
+    })
   }
   
   ctaClick(event: any) {
@@ -20,13 +28,25 @@ export class EmployeeComponent implements OnInit {
 
   //Example #1: Invoking Observable in JavaScript
   simpleObservable() {
-    let O = new Observable(observer => {
+    let O = new Observable(subscriber => {
       setTimeout(function(){
-        observer.next(1);
+        subscriber.next(1);
       }, 2000);
     });
     console.log('Observable invoked');
     O.subscribe();
     console.log("Observable", O);
   }
+
+  //Example #2: Observable JavaScript for Wrapping Array to Observable
+  arrayToObservableWrap() {
+    const arr = [6, 7, 5, 4, 3, 2, 9];
+    return new Observable(subscriber => {
+      for(let i =0; i<arr.length; i++) {
+        subscriber.next(arr[i]);
+      }
+    });
+
+  }
+
 }
