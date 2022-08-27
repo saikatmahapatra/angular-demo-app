@@ -18,6 +18,7 @@ export class EmployeeComponent implements OnInit {
     alert('you have clicked');
   }
 
+  //Example #1: Invoking Observable in JavaScript
   simpleObservable() {
     let O = new Observable(observer => {
       setTimeout(function(){
@@ -28,13 +29,4 @@ export class EmployeeComponent implements OnInit {
     O.subscribe();
     console.log("Observable", O);
   }
-
-  subscribe() {
-    console.log('subscribe btn clicked');
-  }
-
-  unsubscribe() {
-    console.log('unsubscribe btn clicked');
-  }
-
 }
