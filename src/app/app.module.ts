@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS,HttpClient } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,8 @@ import { AuthInterceptor } from './@core/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './@core/interceptors/http-error.interceptor';
 import { ConfigService } from './@core/services/config.service';
 import { AppConfig } from './@utils/const/app.config';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
@@ -31,7 +33,10 @@ export function initializeApp(
     // inactivityService.initialize();
   };
 }
-
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +51,13 @@ export function initializeApp(
     ReactiveFormsModule,
     CoreModule,
     SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
     // Routing modules must be at the last and AppRouting Module must be the last one.
     AppRoutingModule
   ],

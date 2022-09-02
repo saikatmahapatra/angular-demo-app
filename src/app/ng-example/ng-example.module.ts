@@ -22,6 +22,8 @@ import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
 import { ContentCardComponent } from './content-card/content-card.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-tab
     RouterModule,
     SharedModule,
     NgExampleRoutingModule,
-    AgGridModule
+    AgGridModule,
+    TranslateModule
   ],
   declarations: [
     NgExampleComponent,
@@ -51,6 +54,7 @@ import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-tab
     SumDigitPipePipe,
     ContentCardComponent,
     AgGridTableExampleComponent,
+    TranslationDemoComponent,
   ],
   exports: [
     SumDigitPipePipe

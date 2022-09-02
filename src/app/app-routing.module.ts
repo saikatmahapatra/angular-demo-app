@@ -23,7 +23,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'pages', canActivate: [AuthGuard], loadChildren: () => import('./page/page.module').then(m => m.PageModule) },
-      { path: 'angular-example', loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule) },
+      { path: 'example', loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule) },
       { path: 'user', canActivate: [AuthGuard], loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
       { path: 'cms', canActivate: [AuthGuard], loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule) }
 

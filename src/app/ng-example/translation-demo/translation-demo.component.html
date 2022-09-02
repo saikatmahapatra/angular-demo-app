@@ -1,0 +1,17 @@
+<h1>i18n Example</h1>
+
+<select (change)="languageSwitch($event)">
+    <option value="">Language</option>
+    <option value="en_US">en_US</option>
+    <option value="es_US">es_US</option>
+</select>
+
+<p>{{ 'welcomeMessage' | translate: user }}</p>
+
+<!-- <label>{{ 'login.username' | translate: user }}</label> -->
+
+<label translate="login.username"></label>
+<input type="text" class="form-control">
+<br>
+<label translate='login.password'></label>
+<input type="password" class="form-control">
