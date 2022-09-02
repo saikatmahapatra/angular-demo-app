@@ -13,10 +13,12 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.simpleObservable();
     const Ob = this.arrayToObservableWrap();
+
+    //Subscription: represents the execution of an Observable, is primarily useful for cancelling the execution.
     Ob.subscribe(observer => {
       console.log("Subscription 1 : ", observer);
     })
-
+    //Subscription: represents the execution of an Observable, is primarily useful for cancelling the execution.
     Ob.subscribe(observer => {
       console.log("Subscription 2 : ", observer);
     })
