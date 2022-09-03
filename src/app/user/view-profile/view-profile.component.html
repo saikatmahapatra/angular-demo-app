@@ -1,7 +1,7 @@
-<h1>My Account</h1>
+<h1>Profile</h1>
 <ng-container>
 <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
-<h2 class="display-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
+<h2 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
 <div>{{userInfo?.designation_name}}</div>
 <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
 <div>{{userInfo?.user_phone1}}</div>
@@ -62,7 +62,7 @@
                 </div>
         </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined">add</span> Add </a>
+                        class="material-symbols-outlined md-16">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -89,7 +89,7 @@
                 </div>
         </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined">add</span> Add </a>
+                        class="material-symbols-outlined md-16">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -122,7 +122,7 @@
         </div>
 
         <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined">add</span> Add </a>
+                        class="material-symbols-outlined md-16">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -154,7 +154,7 @@
                 </div>
         </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined">add</span> Add </a>
+                        class="material-symbols-outlined md-16">add</span> Add </a>
 </section>
 
 <section class="my-4">
@@ -179,7 +179,7 @@
                 </div>
         </div>
         <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined">add</span> Add </a>
+                        class="material-symbols-outlined md-16">add</span> Add </a>
 </section>
 
 <section class="my-4">

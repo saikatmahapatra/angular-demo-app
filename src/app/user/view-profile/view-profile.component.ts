@@ -63,14 +63,18 @@ export class ViewProfileComponent implements OnInit {
     this.apiSvc.deleteAddress(id).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
-        //this.router.navigate(['user/change-password']);
         this.getProfileData();
       }
     });
   }
 
   deleteEducation(id: any) {
-
+    this.apiSvc.deleteEducation(id).subscribe((response: any) => {
+      if (response.status == 'success') {
+        this.alertSvc.success(response.message);
+        this.getProfileData();
+      }
+    });
   }
 
   deleteWorkExp(id: any) {

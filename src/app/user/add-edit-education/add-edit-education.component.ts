@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -13,6 +13,9 @@ export class AddEditEducationComponent implements OnInit {
   [x: string]: any;
   submitted = false;
   loading = false;
+  id: any = '';
+  isAdd = true;
+  title = 'Add';
   qualificationList!: Array<any>;
   degreeList!: Array<any>;
   institutionList!: Array<any>;
@@ -22,13 +25,22 @@ export class AddEditEducationComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router,
-    private alertSvc: AlertService) { }
+    private alertSvc: AlertService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.addNewDegreeValidator();
     this.addNewInstituteValidator();
     this.addNewSpecializationValidator();
     this.getFormData();
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
+    if (this.id) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.getEducation();
+    }
   }
 
   myForm = this.fb.group({
@@ -126,6 +138,29 @@ export class AddEditEducationComponent implements OnInit {
       }
     });
     field.updateValueAndValidity();
+  }
+
+  getEducation() {
+    this.apiSvc.getEducation(this.id).subscribe((val: any) => {
+      this.patchFormValue(val?.data?.education[0]);
+    });
+  }
+
+  patchFormValue(data: any) {
+    this.myForm.patchValue({
+      id: data?.id,
+      action: 'edit',
+      qualification: data?.academic_qualification,
+      degree: data?.academic_degree,
+      newDegree: null,
+      specialization: data?.academic_specialization,
+      newSpecialization: null,
+      institute: data?.academic_institute,
+      newInstitute: null,
+      fromYear: data?.academic_from_year,
+      toYear: data?.academic_to_year,
+      marks: data?.academic_marks_percentage
+    });
   }
 
 }

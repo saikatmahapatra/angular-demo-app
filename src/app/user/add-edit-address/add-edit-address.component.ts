@@ -15,7 +15,7 @@ export class AddEditAddressComponent implements OnInit {
   submitted = false;
   loading = false;
   stateList: State[] = [];
-  addressId: any = '';
+  id: any = '';
   isAdd = true;
   title = 'Add';
   data: any = '';
@@ -35,9 +35,9 @@ export class AddEditAddressComponent implements OnInit {
   ngOnInit(): void {
     this.getFormData();
     this.activatedRoute.paramMap.subscribe(params => {
-      this.addressId = params.get('id');
+      this.id = params.get('id');
     });
-    if (this.addressId) {
+    if (this.id) {
       this.isAdd = false;
       this.title = 'Edit';
       this.getAddress();
@@ -92,7 +92,7 @@ export class AddEditAddressComponent implements OnInit {
   }
 
   getAddress() {
-    this.apiSvc.getAddress(this.addressId).subscribe((val: any) => {
+    this.apiSvc.getAddress(this.id).subscribe((val: any) => {
       this.patchFormValue(val?.data?.address[0]);
     });
   }

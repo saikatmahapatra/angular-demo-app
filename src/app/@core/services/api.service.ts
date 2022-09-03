@@ -138,6 +138,15 @@ export class ApiService {
       })
     )
   }
+  
+  getEducation(id: any) {
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.getEducation + '/' + id).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
   updateEducation(data: any) {
     return this.http.put(this.apiBaseUrl + AppConfig.apiResource.updateEducation, data).pipe(
       catchError((err) => {
@@ -145,6 +154,7 @@ export class ApiService {
       })
     )
   }
+  
   deleteEducation(id: string) {
     return this.http.delete(this.apiBaseUrl + AppConfig.apiResource.deleteEducation + '/' + id).pipe(
       catchError((err) => {
