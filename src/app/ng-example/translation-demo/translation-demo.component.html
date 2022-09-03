@@ -1,11 +1,11 @@
 <h1>i18n Example</h1>
 
-<select (change)="languageSwitch($event)">
+<select (change)="languageSwitch($event)" class="my-4">
     <option value="">Language</option>
     <option *ngFor="let lang of availableLanguageList" [value]="lang" [selected]="lang == selectedLang">{{lang}}</option>
 </select>
 
-<p>{{ 'welcomeMessage' | translate: user }}</p>
+<h4>{{ 'welcomeMessage' | translate: user }}</h4>
 
 <!-- <label>{{ 'login.username' | translate: user }}</label> -->
 

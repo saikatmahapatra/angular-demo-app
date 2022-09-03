@@ -1,0 +1,7 @@
+{
+    "welcomeMessage": "স্বাগত, {{ firstName }}!",
+    "login": {
+      "username": "আপনার ব্যবহারকারীর নাম লিখুন",
+      "password": "আপনার পাসওয়ার্ড লিখুন"
+    }
+  }
