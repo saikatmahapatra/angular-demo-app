@@ -36,31 +36,22 @@ export class ForgotPasswordFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if(this.fpForm.valid) {
+    if (this.fpForm.valid) {
       const postData = this.fpForm.value;
-      this.apiSvc.checkEmail(postData).subscribe({
-        next: (response: any) => {
-          if(response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.router.navigate(['auth/reset-password']);
-          }
-          if(response.status == 'error') {
-            this.alertSvc.error(response.message);
-          }
-        }, 
-        error: (err) => {
-          this.alertSvc.error(err);
-          this.loading = false;
-        },
-        complete: ()=> {
-          this.loading = false;
+      this.apiSvc.checkEmail(postData).subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.alertSvc.success(response.message, true);
+          this.router.navigate(['auth/reset-password']);
+        }
+        if (response.status == 'error') {
+          this.alertSvc.error(response.message);
         }
       });
     } else {
       this.loading = false;
       this.formValidationSvc.validateAllFormFields(this.fpForm);
     }
-    
+
   }
 
 }

@@ -24,19 +24,19 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private formValidationSvc: FormValidationService
   ) {
-   }
+  }
 
-   loginForm = this.fb.group({
-     userName: ['', Validators.required],
-     password: ['', Validators.required]
-   })
+  loginForm = this.fb.group({
+    userName: ['', Validators.required],
+    password: ['', Validators.required]
+  })
 
   ngOnInit(): void {
-    if(this.authSvc.isLoggedIn()) {
+    if (this.authSvc.isLoggedIn()) {
       this.router.navigate(['/']);
     }
     const logout = this.route.snapshot.queryParamMap.get('logout');
-    if(logout) {
+    if (logout) {
       this.logout();
     }
   }
@@ -45,32 +45,16 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loading = true;
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       const postData = this.loginForm.value;
-      this.authSvc.authenticate(postData).subscribe({
-        next: (response: any) => {
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          this.router.navigate([returnUrl]);
-        }, 
-        error: (err) => {
-          this.loading = false;
-          if(err?.error?.message) {
-            this.alertSvc.error(err?.error?.message, false);
-          } else {
-            this.alertSvc.error(err.statusText, false);
-          }
-          
-        },
-        complete: ()=> {
-          this.loading = false;
-        }
+      this.authSvc.authenticate(postData).subscribe((response) => {
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigate([returnUrl]);
       });
     } else {
-      this.loading = false;
       this.formValidationSvc.validateAllFormFields(this.loginForm);
     }
-    
+
   }
 
   logout() {

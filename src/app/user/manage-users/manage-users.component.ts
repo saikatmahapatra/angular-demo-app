@@ -55,17 +55,8 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.apiSvc.getUsersTest().subscribe({
-      next: (val: any) => {
-        this.userList = val?.data;
-      },
-      error: (err) => {
-        this.alertService.error(err, false);
-        //this.errorMessage = error;
-        //this.loading = false;
-        throw err;
-      },
-      complete: () => { }
+    this.apiSvc.getUsersTest().subscribe((val: any) => {
+      this.userList = val?.data;
     });
   }
 
@@ -111,17 +102,8 @@ export class ManageUsersComponent implements OnInit {
   getUserInterval() {
     this.subscription = timer(0, 10000).pipe(
       switchMap(() => this.apiSvc.getUsersTest())
-    ).subscribe({
-      next: (val: any) => {
-        this.userList = val?.data;
-      },
-      error: (err) => {
-        this.alertService.error(err, false);
-        //this.errorMessage = error;
-        //this.loading = false;
-        throw err;
-      },
-      complete: () => { }
+    ).subscribe((val: any) => {
+      this.userList = val?.data;
     });
   }
 

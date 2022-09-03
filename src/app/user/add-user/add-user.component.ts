@@ -23,11 +23,11 @@ export class AddUserComponent implements OnInit {
   constructor(private fb: FormBuilder, private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService) {
-      this.getFormData();
-     }
+    this.getFormData();
+  }
 
   ngOnInit(): void {
-    
+
   }
 
   myForm = this.fb.group({
@@ -51,22 +51,13 @@ export class AddUserComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      this.apiSvc.addUser(this.myForm.value).subscribe({
-        next: (response: any) => {
-          if(response.status == 'success') {
-            this.alertSvc.success(response.message);
-            this.myForm.reset();
-          }
-          if(response.status == 'error') {
-            this.alertSvc.error(response.message);
-          }
-        }, 
-        error: (err) => {
-          this.alertSvc.error(err?.error?.message);
-          this.loading = false;
-        },
-        complete: ()=> {
-          this.loading = false;
+      this.apiSvc.addUser(this.myForm.value).subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.alertSvc.success(response.message);
+          this.myForm.reset();
+        }
+        if (response.status == 'error') {
+          this.alertSvc.error(response.message);
         }
       });
     } else {
@@ -76,17 +67,10 @@ export class AddUserComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.getUserFormData().subscribe({
-      next: (val: any) => {
-        this.designationList = val?.data.designations;
-        this.departmentList = val?.data?.departments,
+    this.apiSvc.getUserFormData().subscribe((val: any) => {
+      this.designationList = val?.data.designations;
+      this.departmentList = val?.data?.departments,
         this.employmentTypeList = val?.data?.employmentTypes
-      },
-      error: (err) => {
-        this.alertSvc.error(err, false);
-        throw err;
-      },
-      complete: () => { }
     });
   }
 

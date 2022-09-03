@@ -13,20 +13,8 @@ export class DashboardStatComponent implements OnInit {
   constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
 
   ngOnInit(): void {
-    this.apiSvc.getDashboardStat().subscribe({
-      next: (response: any) => {
-        this.stats = response.data;
-      }, 
-      error: (err) => {
-        //Over-ride error
-        // if(err?.error?.message) {
-        //   this.alertSvc.error(err?.error?.message, false);
-        // } else {
-        //   this.alertSvc.error(err.statusText, false);
-        // }
-      },
-      complete: ()=> {
-      }
+    this.apiSvc.getDashboardStat().subscribe((response: any) => {
+      this.stats = response.data;
     });
   }
 

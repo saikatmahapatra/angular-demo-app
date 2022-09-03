@@ -32,23 +32,14 @@ export class ChangePasswordComponent implements OnInit {
     this.submitted = true;
     if (this.myForm.valid) {
       //console.log('form submitted', this.myForm.value);
-      this.apiSvc.changePassword(this.myForm.value).subscribe({
-        next: (response: any) => {
-          if(response.status == 'success') {
-            this.alertSvc.success(response.message);
-            this.myForm.reset();
-          }
-          if(response.status == 'error') {
-            this.alertSvc.error(response.message);
-            this.myForm.reset();
-          }
-        }, 
-        error: (err) => {
-          this.alertSvc.error(err?.error?.message);
-          this.loading = false;
-        },
-        complete: ()=> {
-          this.loading = false;
+      this.apiSvc.changePassword(this.myForm.value).subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.alertSvc.success(response.message);
+          this.myForm.reset();
+        }
+        if (response.status == 'error') {
+          this.alertSvc.error(response.message);
+          this.myForm.reset();
         }
       });
     } else {

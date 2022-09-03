@@ -45,17 +45,11 @@ export class AddEditBasicInfoComponent implements OnInit {
   });
 
   getUserData(userId: string) {
-    this.apiSvc.getUserData(userId).subscribe({
-      next: (val: any) => {
-        this.userData = val?.data?.user;
-        if(this.userData[0]?.id) {
-          this.patchFormValue(this.userData[0]);
-        }
-      },
-      error: (err) => {
-        this.alertSvc.error(err, false);
-      },
-      complete: () => { }
+    this.apiSvc.getUserData(userId).subscribe((val: any) => {
+      this.userData = val?.data?.user;
+      if (this.userData[0]?.id) {
+        this.patchFormValue(this.userData[0]);
+      }
     });
   }
 
@@ -72,21 +66,12 @@ export class AddEditBasicInfoComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid) {
-      if(this.myForm.get('id')?.value) {
-        this.apiSvc.updateUserData(this.myForm.value).subscribe({
-          next: (response: any) => {
-            if(response.status == 'success') {
-              this.alertSvc.success(response.message, true);
-              this.myForm.reset();
-              this.router.navigate(['user/profile']);
-            }
-          }, 
-          error: (err) => {
-            this.alertSvc.error(err?.error?.message);
-            this.loading = false;
-          },
-          complete: ()=> {
-            this.loading = false;
+      if (this.myForm.get('id')?.value) {
+        this.apiSvc.updateUserData(this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
           }
         });
       }

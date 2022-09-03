@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -50,45 +50,27 @@ export class AddEditEducationComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      if(this.myForm.get('id')?.value) {
-        this.apiSvc.updateEducation(this.myForm.value).subscribe({
-          next: (response: any) => {
-            if(response.status == 'success') {
-              this.alertSvc.success(response.message, true);
-              this.myForm.reset();
-              this.router.navigate(['user/profile']);
-            }
-          }, 
-          error: (err) => {
-            this.alertSvc.error(err?.error?.message);
-            this.loading = false;
-          },
-          complete: ()=> {
-            this.loading = false;
+      if (this.myForm.get('id')?.value) {
+        this.apiSvc.updateEducation(this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
           }
         });
       } else {
-        this.apiSvc.createEducation(this.myForm.value).subscribe({
-          next: (response: any) => {
-            if(response.status == 'success') {
-              this.alertSvc.success(response.message, true);
-              this.myForm.reset();
-              this.router.navigate(['user/profile']);
-            }
-            if(response.status == 'error') {
-              this.alertSvc.error(response.message);
-            }
-          }, 
-          error: (err) => {
-            this.alertSvc.error(err?.error?.message);
-            this.loading = false;
-          },
-          complete: ()=> {
-            this.loading = false;
+        this.apiSvc.createEducation(this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+          if (response.status == 'error') {
+            this.alertSvc.error(response.message);
           }
         });
       }
-      
+
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
@@ -96,17 +78,11 @@ export class AddEditEducationComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.getAcademicFormData().subscribe({
-      next: (val: any) => {
-        this.qualificationList = val?.data?.qualification;
-        this.degreeList = val?.data?.degree;
-        this.institutionList = val?.data?.inst;
-        this.specializationList = val?.data?.specialization;
-      },
-      error: (err) => {
-        //this.alertSvc.error(err, false);
-      },
-      complete: () => { }
+    this.apiSvc.getAcademicFormData().subscribe((val: any) => {
+      this.qualificationList = val?.data?.qualification;
+      this.degreeList = val?.data?.degree;
+      this.institutionList = val?.data?.inst;
+      this.specializationList = val?.data?.specialization;
     });
   }
 

@@ -35,9 +35,9 @@ export class AddEditAddressComponent implements OnInit {
   ngOnInit(): void {
     this.getFormData();
     this.activatedRoute.paramMap.subscribe(params => {
-      this.addressId  =  params.get('id');
+      this.addressId = params.get('id');
     });
-    if(this.addressId) {
+    if (this.addressId) {
       this.isAdd = false;
       this.title = 'Edit';
       this.getAddress();
@@ -58,14 +58,8 @@ export class AddEditAddressComponent implements OnInit {
   });
 
   getFormData() {
-    this.apiSvc.getUserFormData().subscribe({
-      next: (val: any) => {
-        this.stateList = val?.data?.states;
-      },
-      error: (err) => {
-        //this.alertSvc.error(err, false);
-      },
-      complete: () => { }
+    this.apiSvc.getUserFormData().subscribe((val: any) => {
+      this.stateList = val?.data?.states;
     });
   }
 
@@ -73,45 +67,27 @@ export class AddEditAddressComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      if(this.myForm.get('id')?.value) {
-        this.apiSvc.updateAddress(this.myForm.value).subscribe({
-          next: (response: any) => {
-            if(response.status == 'success') {
-              this.alertSvc.success(response.message, true);
-              this.myForm.reset();
-              this.router.navigate(['user/profile']);
-            }
-          }, 
-          error: (err) => {
-            this.alertSvc.error(err?.error?.message);
-            this.loading = false;
-          },
-          complete: ()=> {
-            this.loading = false;
+      if (this.myForm.get('id')?.value) {
+        this.apiSvc.updateAddress(this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
           }
         });
       } else {
-        this.apiSvc.createAddress(this.myForm.value).subscribe({
-          next: (response: any) => {
-            if(response.status == 'success') {
-              this.alertSvc.success(response.message, true);
-              this.myForm.reset();
-              this.router.navigate(['user/profile']);
-            }
-            if(response.status == 'error') {
-              this.alertSvc.error(response.message);
-            }
-          }, 
-          error: (err) => {
-            this.alertSvc.error(err?.error?.message);
-            this.loading = false;
-          },
-          complete: ()=> {
-            this.loading = false;
+        this.apiSvc.createAddress(this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+          if (response.status == 'error') {
+            this.alertSvc.error(response.message);
           }
         });
       }
-      
+
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
@@ -119,14 +95,8 @@ export class AddEditAddressComponent implements OnInit {
   }
 
   getAddress() {
-    this.apiSvc.getAddress(this.addressId).subscribe({
-      next: (val: any) => {
-        this.patchFormValue(val?.data?.address[0]);
-      },
-      error: (err) => {
-        this.alertSvc.error(err, false);
-      },
-      complete: () => { }
+    this.apiSvc.getAddress(this.addressId).subscribe((val: any) => {
+      this.patchFormValue(val?.data?.address[0]);
     });
   }
 
