@@ -65,9 +65,6 @@ export class AddEditEducationComponent implements OnInit {
             this.myForm.reset();
             this.router.navigate(['user/profile']);
           }
-          if (response.status == 'error') {
-            this.alertSvc.error(response.message);
-          }
         });
       }
 

@@ -41,27 +41,27 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     switch (error.status) {
       case 400:
-        let message = error?.error?.message ? error.error.message : '<b>Sorry!</b> We\'re unable to process your request at this moment. Please try after some time.';
-        this.alertSvc.error(message, false);
+        let message = error?.error?.message ? error.error.message : 'We are not able to process your request at this moment. Please try after some time.';
+        this.alertSvc.error('Error: ' + message, false);
         handled = true;
         break;
 
       case 401:
         if (this.router.url != '/login') {
-          this.alertSvc.error('<b>Sorry!</b> You are unauthorized to access this page. Please login again.', false);
+          this.alertSvc.error('Error: You are unauthorized to access this page. Please login again.', false);
           this.authSvc.logout();
           handled = true;
         }
         break;
 
       case 403:
-        this.alertSvc.error('Please login again.', false);
+        this.alertSvc.error('Error: Please login again.', false);
         this.authSvc.logout();
         handled = true;
         break;
 
       default:
-        this.alertSvc.error('ERROR : ' + error.message, false);
+        this.alertSvc.error('Error: ' + error.message, false);
         break;
     }
 

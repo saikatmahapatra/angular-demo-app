@@ -37,10 +37,6 @@ export class ChangePasswordComponent implements OnInit {
           this.alertSvc.success(response.message);
           this.myForm.reset();
         }
-        if (response.status == 'error') {
-          this.alertSvc.error(response.message);
-          this.myForm.reset();
-        }
       });
     } else {
       this.loading = false;

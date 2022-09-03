@@ -52,9 +52,6 @@ export class ViewProfileComponent implements OnInit {
         this.userPhoto = response?.data?.profilePic;
         this.selfAccount = response?.data?.selfAccount;
       }
-      if (response.status == 'error') {
-        this.alertSvc.error(response.message);
-      }
     });
   }
 
@@ -68,9 +65,6 @@ export class ViewProfileComponent implements OnInit {
         this.alertSvc.success(response.message);
         //this.router.navigate(['user/change-password']);
         this.getProfileData();
-      }
-      if (response.status == 'error') {
-        this.alertSvc.error(response.message);
       }
     });
   }
