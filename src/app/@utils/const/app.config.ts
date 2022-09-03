@@ -18,32 +18,26 @@ export const AppConfig = {
         changePassword: 'changePassword',
         userData: 'userData',
         updateUserData: 'updateUserData',
-
         getAddress: 'getAddress',
         addAddress: 'addAddress',
         updateAddress: 'updateAddress',
         deleteAddress: 'deleteAddress',
-        
+        academicFormData: 'academicFormData',
         getEducation: 'getEducation',
         addEducation: 'addEducation',
         updateEducation: 'updateEducation',
         deleteEducation: 'deleteEducation',
-
         getExperience: 'getExperience',
         addExperience: 'addExperience',
         updateExperience: 'updateExperience',
         deleteExperience: 'deleteExperience',
-
-
         getPayroll: 'getPayroll',
         addPayroll: 'addPayroll',
         updatePayroll: 'updatePayroll',
         deletePayroll: 'deletePayroll',
-
         getEmergencyContact: 'getEmergencyContact',
         addEmergencyContact: 'addEmergencyContact',
         updateEmergencyContact: 'updateEmergencyContact',
-        deleteEmergencyContact: 'deleteEmergencyContact',
-        
+        deleteEmergencyContact: 'deleteEmergencyContact',       
     }
 };

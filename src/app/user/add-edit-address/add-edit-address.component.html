@@ -58,7 +58,7 @@
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
             <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
         </form>
-        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p class="debug">{{myForm.value|json}}</p>
+        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p> -->
     </div>
 </div>

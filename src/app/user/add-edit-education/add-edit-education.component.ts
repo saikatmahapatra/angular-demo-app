@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
@@ -9,18 +10,25 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-education.component.scss']
 })
 export class AddEditEducationComponent implements OnInit {
+  [x: string]: any;
   submitted = false;
   loading = false;
+  qualificationList!: Array<any>;
+  degreeList!: Array<any>;
+  institutionList!: Array<any>;
+  specializationList!: Array<any>;
 
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
-    private router: Router) { }
+    private router: Router,
+    private alertSvc: AlertService) { }
 
   ngOnInit(): void {
     this.addNewDegreeValidator();
     this.addNewInstituteValidator();
     this.addNewSpecializationValidator();
+    this.getFormData();
   }
 
   myForm = this.fb.group({
@@ -39,12 +47,67 @@ export class AddEditEducationComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log('onSubmit===', this.myForm);
+    this.submitted = true;
+    this.loading = true;
     if (this.myForm.valid) {
-      console.log('form submitted', this.myForm.value);
+      if(this.myForm.get('id')?.value) {
+        this.apiSvc.updateEducation(this.myForm.value).subscribe({
+          next: (response: any) => {
+            if(response.status == 'success') {
+              this.alertSvc.success(response.message, true);
+              this.myForm.reset();
+              this.router.navigate(['user/profile']);
+            }
+          }, 
+          error: (err) => {
+            this.alertSvc.error(err?.error?.message);
+            this.loading = false;
+          },
+          complete: ()=> {
+            this.loading = false;
+          }
+        });
+      } else {
+        this.apiSvc.createEducation(this.myForm.value).subscribe({
+          next: (response: any) => {
+            if(response.status == 'success') {
+              this.alertSvc.success(response.message, true);
+              this.myForm.reset();
+              this.router.navigate(['user/profile']);
+            }
+            if(response.status == 'error') {
+              this.alertSvc.error(response.message);
+            }
+          }, 
+          error: (err) => {
+            this.alertSvc.error(err?.error?.message);
+            this.loading = false;
+          },
+          complete: ()=> {
+            this.loading = false;
+          }
+        });
+      }
+      
     } else {
+      this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
+  }
+
+  getFormData() {
+    this.apiSvc.getAcademicFormData().subscribe({
+      next: (val: any) => {
+        this.qualificationList = val?.data?.qualification;
+        this.degreeList = val?.data?.degree;
+        this.institutionList = val?.data?.inst;
+        this.specializationList = val?.data?.specialization;
+      },
+      error: (err) => {
+        //this.alertSvc.error(err, false);
+      },
+      complete: () => { }
+    });
   }
 
   addNewInstituteValidator() {

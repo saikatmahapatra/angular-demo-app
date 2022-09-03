@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AppConfig } from '../../@utils/const/app.config';
 @Injectable({
@@ -117,6 +117,36 @@ export class ApiService {
 
   updateUserData(data: any) {
     return this.http.patch(this.apiBaseUrl + AppConfig.apiResource.updateUserData, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+
+  getAcademicFormData() {
+    return this.http.get(this.apiBaseUrl + AppConfig.apiResource.academicFormData).pipe(
+      catchError((err) => {
+        return throwError(err.message);
+      })
+    );
+  }
+
+  createEducation(data: any) {
+    return this.http.post(this.apiBaseUrl + AppConfig.apiResource.addEducation, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+  updateEducation(data: any) {
+    return this.http.put(this.apiBaseUrl + AppConfig.apiResource.updateEducation, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    )
+  }
+  deleteEducation(id: string) {
+    return this.http.delete(this.apiBaseUrl + AppConfig.apiResource.deleteEducation + '/' + id).pipe(
       catchError((err) => {
         return throwError(err);
       })

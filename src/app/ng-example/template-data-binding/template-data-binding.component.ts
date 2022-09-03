@@ -22,8 +22,4 @@ export class TemplateDataBindingComponent implements OnInit {
     return 3;
   }
 
-  getSomeFnSvc() {
-    this.commonSvc.testFn();
-  }
-
 }
