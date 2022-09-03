@@ -13,16 +13,15 @@ export class TranslationDemoComponent implements OnInit {
   usernameLabel!: string;
   passwordLabel!: string;
   availableLanguageList = languageList;
+  selectedLang: string = localStorage.getItem('appLang') || 'en_US';
 
   constructor(private tranlateSvc: TranslateService) { 
     tranlateSvc.addLangs(languageList);
     tranlateSvc.setDefaultLang('en_US');
-    tranlateSvc.use(localStorage.getItem('appLang') || 'en_US');
+    tranlateSvc.use(this.selectedLang);
   }
 
   ngOnInit(): void {
-
-    console.log(this.availableLanguageList);
     // hardcoded example
     this.user = { firstName: 'Saikat', lastName: 'Mahapatra' };
 

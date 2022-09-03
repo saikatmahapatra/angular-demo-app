@@ -2,8 +2,7 @@
 
 <select (change)="languageSwitch($event)">
     <option value="">Language</option>
-    <option value="en_US">en_US</option>
-    <option value="es_US">es_US</option>
+    <option *ngFor="let lang of availableLanguageList" [value]="lang" [selected]="lang == selectedLang">{{lang}}</option>
 </select>
 
 <p>{{ 'welcomeMessage' | translate: user }}</p>
