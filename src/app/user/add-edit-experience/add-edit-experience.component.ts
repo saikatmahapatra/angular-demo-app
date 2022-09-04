@@ -1,8 +1,11 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-add-edit-experience',
   templateUrl: './add-edit-experience.component.html',
@@ -11,14 +14,32 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 export class AddEditExperienceComponent implements OnInit {
   submitted = false;
   loading = false;
+  designations: any;
+  employers: any;
+  minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toLocaleDateString();// 100 yrs ago from today
+  maxDate = new Date().toLocaleDateString(); //today
+  itemId!: any;
+  isAdd = true;
+  title = 'Add';
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRouters: ActivatedRoute,
+    private alertSvc: AlertService) { }
 
   ngOnInit(): void {
     this.addNewEmployerValidator();
     this.addNewDesignationValidator();
+    this.getFormData();
+    this.activatedRouters.paramMap.subscribe((param) => {
+      this.itemId = param.get('id');
+    });
+    if (this.itemId) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.getWorkExperience();
+    }
   }
 
   myForm = this.fb.group({
@@ -33,10 +54,29 @@ export class AddEditExperienceComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log('onSubmit===', this.myForm);
+    this.submitted = true;
+    this.loading = true;
     if (this.myForm.valid) {
-      console.log('form submitted', this.myForm.value);
+      if (this.myForm.get('id')?.value) {
+        this.apiSvc.put(AppConfig.apiUrl.updateExperience, this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+        });
+      } else {
+        this.apiSvc.post(AppConfig.apiUrl.addExperience, this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+        });
+      }
+
     } else {
+      this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
   }
@@ -69,6 +109,38 @@ export class AddEditExperienceComponent implements OnInit {
       }
     });
     field.updateValueAndValidity();
+  }
+
+  getFormData() {
+    this.apiSvc.get(AppConfig.apiUrl.experienceFormData).subscribe((val: any) => {
+      this.employers = val?.data?.employer;
+      this.designations = val?.data?.designation;
+    });
+  }
+
+  getWorkExperience() {
+    let queryParams = new HttpParams();
+    if (this.itemId) {
+      queryParams = queryParams.append('id', this.itemId);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getExperience, options).subscribe((val: any) => {
+      this.patchFormValue(val?.data?.jobExp[0]);
+    });
+  }
+
+  patchFormValue(data: any) {
+    this.myForm.patchValue({
+      id: data?.id,
+      action: 'edit',
+      employer: data?.id,
+      newEmployer: null,
+      designation: data?.id,
+      newDesignation: null,
+      fromDate: data?.id,
+      toDate: data?.id
+    });
   }
 
 }
