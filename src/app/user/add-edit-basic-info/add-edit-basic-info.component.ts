@@ -75,7 +75,7 @@ export class AddEditBasicInfoComponent implements OnInit {
   onSubmit() {
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(AppConfig.apiBaseUrl + AppConfig.apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.patch(AppConfig.apiBaseUrl + AppConfig.apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
