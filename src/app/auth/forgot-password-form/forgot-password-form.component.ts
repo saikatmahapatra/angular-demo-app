@@ -4,7 +4,7 @@ import { Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
   selector: 'app-forgot-password-form',
@@ -39,7 +39,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.loading = true;
     if (this.fpForm.valid) {
       const postData = this.fpForm.value;
-      this.apiSvc.post(apiUrl.checkEmail, postData).subscribe((response: any) => {
+      this.apiSvc.post(AppConfig.apiBaseUrl + AppConfig.apiUrl.checkEmail, postData).subscribe((response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message, true);
           this.router.navigate(['auth/reset-password']);

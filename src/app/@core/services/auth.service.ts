@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { apiUrl } from '../../@utils/const/app.config';
+import { AppConfig } from '../../@utils/const/app.config';
 import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   authenticate(postData: any) {
-    return this.http.post<any>(apiUrl.authenticate, postData)
+    return this.http.post<any>(AppConfig.apiBaseUrl + AppConfig.apiUrl.authenticate, postData)
       .pipe(map(response => {
         sessionStorage.setItem('loginData', JSON.stringify(response.data));
         sessionStorage.setItem('access_token', response.token);

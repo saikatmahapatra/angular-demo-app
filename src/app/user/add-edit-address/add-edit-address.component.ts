@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 import { State } from 'src/app/@utils/models/IState';
 
 @Component({
@@ -60,7 +60,7 @@ export class AddEditAddressComponent implements OnInit {
   });
 
   getFormData() {
-    this.apiSvc.get(apiUrl.userFormData).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userFormData).subscribe((val: any) => {
       this.stateList = val?.data?.states;
     });
   }
@@ -70,7 +70,7 @@ export class AddEditAddressComponent implements OnInit {
     this.loading = true;
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.put(AppConfig.apiBaseUrl + AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -78,7 +78,7 @@ export class AddEditAddressComponent implements OnInit {
           }
         });
       } else {
-        this.apiSvc.post(apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.post(AppConfig.apiBaseUrl + AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -97,7 +97,7 @@ export class AddEditAddressComponent implements OnInit {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.id);
     const options = { params: queryParams };
-    this.apiSvc.get(apiUrl.getAddress, options).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.getAddress, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.address[0]);
     });
   }

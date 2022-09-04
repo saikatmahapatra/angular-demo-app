@@ -5,7 +5,7 @@ import { ApiService } from '../../@core/services/api.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
   selector: 'app-manage-users',
@@ -56,7 +56,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.apiSvc.get(apiUrl.getUsers).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.getUsers).subscribe((val: any) => {
       this.userList = val?.data;
     });
   }
@@ -102,7 +102,7 @@ export class ManageUsersComponent implements OnInit {
 
   getUserInterval() {
     this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.apiSvc.get(apiUrl.getUsers))
+      switchMap(() => this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.getUsers))
     ).subscribe((val: any) => {
       this.userList = val?.data;
     });

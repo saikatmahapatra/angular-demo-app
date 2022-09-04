@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
   selector: 'app-view-profile',
@@ -47,7 +47,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(apiUrl.userDetails, options).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userDetails, options).subscribe((response: any) => {
       if (response.status == 'success') {
         //console.log(response?.data);
         this.userInfo = response?.data?.user[0];
@@ -74,7 +74,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.delete(apiUrl.deleteAddress, options).subscribe((response: any) => {
+    this.apiSvc.delete(AppConfig.apiBaseUrl + AppConfig.apiUrl.deleteAddress, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();
@@ -89,7 +89,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.delete(apiUrl.deleteEducation, options).subscribe((response: any) => {
+    this.apiSvc.delete(AppConfig.apiBaseUrl + AppConfig.apiUrl.deleteEducation, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();

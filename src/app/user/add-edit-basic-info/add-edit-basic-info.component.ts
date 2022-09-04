@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-add-edit-basic-info',
   templateUrl: './add-edit-basic-info.component.html',
@@ -53,7 +53,7 @@ export class AddEditBasicInfoComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(apiUrl.userData, options).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userData, options).subscribe((val: any) => {
       this.userData = val?.data?.user;
       if (this.userData[0]?.id) {
         this.patchFormValue(this.userData[0]);
@@ -75,7 +75,7 @@ export class AddEditBasicInfoComponent implements OnInit {
   onSubmit() {
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.put(AppConfig.apiBaseUrl + AppConfig.apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();

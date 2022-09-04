@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { apiUrl } from 'src/app/@utils/const/app.config';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -33,7 +33,7 @@ export class ChangePasswordComponent implements OnInit {
     this.submitted = true;
     if (this.myForm.valid) {
       //console.log('form submitted', this.myForm.value);
-      this.apiSvc.post(apiUrl.changePassword, this.myForm.value).subscribe((response: any) => {
+      this.apiSvc.post(AppConfig.apiBaseUrl + AppConfig.apiUrl.changePassword, this.myForm.value).subscribe((response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message);
           this.myForm.reset();

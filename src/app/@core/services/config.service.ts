@@ -29,7 +29,6 @@ export class ConfigService {
             AppConfig.useMockServer = config.useMockServer;
             AppConfig.appTitle = config.appTitle;
             AppConfig.brandName = config?.brandName;
-            console.log(AppConfig);
             return resolve(config);
           },
           err => {
