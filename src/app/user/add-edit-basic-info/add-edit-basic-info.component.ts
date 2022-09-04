@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -46,7 +47,13 @@ export class AddEditBasicInfoComponent implements OnInit {
   });
 
   getUserData(userId: string) {
-    this.apiSvc.get(apiUrl.userData, userId).subscribe((val: any) => {
+    let queryParams = new HttpParams();
+    if(userId) {
+      queryParams = queryParams.append('id', userId);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(apiUrl.userData, options).subscribe((val: any) => {
       this.userData = val?.data?.user;
       if (this.userData[0]?.id) {
         this.patchFormValue(this.userData[0]);

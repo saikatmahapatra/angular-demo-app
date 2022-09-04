@@ -1,6 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -93,7 +94,10 @@ export class AddEditAddressComponent implements OnInit {
   }
 
   getAddress() {
-    this.apiSvc.get(apiUrl.getAddress, this.id).subscribe((val: any) => {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('id', this.id);
+    const options = { params: queryParams };
+    this.apiSvc.get(apiUrl.getAddress, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.address[0]);
     });
   }

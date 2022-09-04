@@ -41,7 +41,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
     switch (error.status) {
       case 400:
-        let message = error?.error?.message ? error.error.message : 'We are not able to process your request at this moment. Please try after some time.';
+        let message = error?.error?.message ? error.error.message : 'We are unable to process your request at this moment. Please try after sometime.';
         this.alertSvc.error('Error: ' + message, false);
         handled = true;
         break;

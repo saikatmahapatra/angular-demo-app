@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -142,7 +143,13 @@ export class AddEditEducationComponent implements OnInit {
   }
 
   getEducation() {
-    this.apiSvc.get(apiUrl.getEducation, this.id).subscribe((val: any) => {
+    let queryParams = new HttpParams();
+    if(this.id) {
+      queryParams = queryParams.append('id', this.id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(apiUrl.getEducation, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.education[0]);
     });
   }

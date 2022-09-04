@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
@@ -40,7 +41,13 @@ export class ViewProfileComponent implements OnInit {
   }
 
   getProfile(id?: any) {
-    this.apiSvc.get(apiUrl.userDetails, id).subscribe((response: any) => {
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(apiUrl.userDetails, options).subscribe((response: any) => {
       if (response.status == 'success') {
         //console.log(response?.data);
         this.userInfo = response?.data?.user[0];
@@ -61,7 +68,13 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteAddress(id: any) {
-    this.apiSvc.delete(apiUrl.deleteAddress, id).subscribe((response: any) => {
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(apiUrl.deleteAddress, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();
@@ -70,7 +83,13 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteEducation(id: any) {
-    this.apiSvc.delete(apiUrl.deleteEducation, id).subscribe((response: any) => {
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(apiUrl.deleteEducation, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();
