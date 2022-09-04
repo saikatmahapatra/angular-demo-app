@@ -4,6 +4,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { apiUrl } from 'src/app/@utils/const/app.config';
 import { State } from 'src/app/@utils/models/IState';
 
 @Component({
@@ -58,7 +59,7 @@ export class AddEditAddressComponent implements OnInit {
   });
 
   getFormData() {
-    this.apiSvc.getUserFormData().subscribe((val: any) => {
+    this.apiSvc.get(apiUrl.userFormData).subscribe((val: any) => {
       this.stateList = val?.data?.states;
     });
   }
@@ -68,7 +69,7 @@ export class AddEditAddressComponent implements OnInit {
     this.loading = true;
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.updateAddress(this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.put(apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -76,7 +77,7 @@ export class AddEditAddressComponent implements OnInit {
           }
         });
       } else {
-        this.apiSvc.createAddress(this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.post(apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -92,7 +93,7 @@ export class AddEditAddressComponent implements OnInit {
   }
 
   getAddress() {
-    this.apiSvc.getAddress(this.id).subscribe((val: any) => {
+    this.apiSvc.get(apiUrl.getAddress, this.id).subscribe((val: any) => {
       this.patchFormValue(val?.data?.address[0]);
     });
   }

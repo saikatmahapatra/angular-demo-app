@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { apiUrl } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
   selector: 'app-view-profile',
@@ -39,7 +40,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   getProfile(id?: any) {
-    this.apiSvc.getUserDetails(id).subscribe((response: any) => {
+    this.apiSvc.get(apiUrl.userDetails, id).subscribe((response: any) => {
       if (response.status == 'success') {
         //console.log(response?.data);
         this.userInfo = response?.data?.user[0];
@@ -60,7 +61,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteAddress(id: any) {
-    this.apiSvc.deleteAddress(id).subscribe((response: any) => {
+    this.apiSvc.delete(apiUrl.deleteAddress, id).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();
@@ -69,7 +70,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deleteEducation(id: any) {
-    this.apiSvc.deleteEducation(id).subscribe((response: any) => {
+    this.apiSvc.delete(apiUrl.deleteEducation, id).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();

@@ -3,15 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../@utils/const/app.config';
+import { apiUrl } from '../../@utils/const/app.config';
 import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-    private loggedInUserSubject!: BehaviorSubject<any>;
-    public loggedInUser!: Observable<any>;
-    private apiBaseUrl = AppConfig.apiBaseUrl;
+  private loggedInUserSubject!: BehaviorSubject<any>;
+  public loggedInUser!: Observable<any>;
 
   constructor(private http: HttpClient, private router: Router,
     private alertSvc: AlertService) {
@@ -30,12 +29,12 @@ export class AuthService {
   }
 
   authenticate(postData: any) {
-    return this.http.post<any>(this.apiBaseUrl + AppConfig.apiResource.authenticate, postData)
+    return this.http.post<any>(apiUrl.authenticate, postData)
       .pipe(map(response => {
-          sessionStorage.setItem('loginData', JSON.stringify(response.data));
-          sessionStorage.setItem('access_token', response.token);
-          this.loggedInUserSubject.next(response.data);
-          return response.data;
+        sessionStorage.setItem('loginData', JSON.stringify(response.data));
+        sessionStorage.setItem('access_token', response.token);
+        this.loggedInUserSubject.next(response.data);
+        return response.data;
       }), catchError((err) => {
         //err.statusText = err?.error?.data?.message;
         return throwError(err); //Rethrow it back to component

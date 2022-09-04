@@ -25,10 +25,11 @@ export class ConfigService {
       this.http.get(configJSONFile)
         .subscribe(
           (config: any) => {
+            AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
+            AppConfig.useMockServer = config.useMockServer;
             AppConfig.appTitle = config.appTitle;
             AppConfig.brandName = config?.brandName;
-            AppConfig.useMockServer = config.useMockServer;
-            AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
+            console.log(AppConfig);
             return resolve(config);
           },
           err => {

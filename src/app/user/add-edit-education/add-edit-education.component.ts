@@ -4,6 +4,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { apiUrl } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-add-edit-education',
   templateUrl: './add-edit-education.component.html',
@@ -63,7 +64,7 @@ export class AddEditEducationComponent implements OnInit {
     this.loading = true;
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.updateEducation(this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.put(apiUrl.updateEducation, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -71,7 +72,7 @@ export class AddEditEducationComponent implements OnInit {
           }
         });
       } else {
-        this.apiSvc.createEducation(this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.post(apiUrl.addEducation, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
@@ -87,7 +88,7 @@ export class AddEditEducationComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.getAcademicFormData().subscribe((val: any) => {
+    this.apiSvc.get(apiUrl.academicFormData).subscribe((val: any) => {
       this.qualificationList = val?.data?.qualification;
       this.degreeList = val?.data?.degree;
       this.institutionList = val?.data?.inst;
@@ -141,7 +142,7 @@ export class AddEditEducationComponent implements OnInit {
   }
 
   getEducation() {
-    this.apiSvc.getEducation(this.id).subscribe((val: any) => {
+    this.apiSvc.get(apiUrl.getEducation, this.id).subscribe((val: any) => {
       this.patchFormValue(val?.data?.education[0]);
     });
   }

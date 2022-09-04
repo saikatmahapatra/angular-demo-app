@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { apiUrl } from 'src/app/@utils/const/app.config';
 
 @Component({
   selector: 'app-dashboard-stat',
@@ -13,7 +14,7 @@ export class DashboardStatComponent implements OnInit {
   constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
 
   ngOnInit(): void {
-    this.apiSvc.getDashboardStat().subscribe((response: any) => {
+    this.apiSvc.get(apiUrl.dashboardStat).subscribe((response: any) => {
       this.stats = response.data;
     });
   }
