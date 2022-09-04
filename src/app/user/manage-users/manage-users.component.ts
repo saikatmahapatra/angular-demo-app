@@ -56,7 +56,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.getUsers).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.getUsers).subscribe((val: any) => {
       this.userList = val?.data;
     });
   }
@@ -102,7 +102,7 @@ export class ManageUsersComponent implements OnInit {
 
   getUserInterval() {
     this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.getUsers))
+      switchMap(() => this.apiSvc.get(AppConfig.apiUrl.getUsers))
     ).subscribe((val: any) => {
       this.userList = val?.data;
     });

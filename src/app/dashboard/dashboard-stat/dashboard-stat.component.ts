@@ -14,7 +14,7 @@ export class DashboardStatComponent implements OnInit {
   constructor(private apiSvc: ApiService, private alertSvc: AlertService) { }
 
   ngOnInit(): void {
-    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.dashboardStat).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.dashboardStat).subscribe((response: any) => {
       this.stats = response.data;
     });
   }

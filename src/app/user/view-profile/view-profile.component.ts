@@ -47,7 +47,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userDetails, options).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.userDetails, options).subscribe((response: any) => {
       if (response.status == 'success') {
         //console.log(response?.data);
         this.userInfo = response?.data?.user[0];
@@ -74,7 +74,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.delete(AppConfig.apiBaseUrl + AppConfig.apiUrl.deleteAddress, options).subscribe((response: any) => {
+    this.apiSvc.delete(AppConfig.apiUrl.deleteAddress, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();
@@ -89,7 +89,7 @@ export class ViewProfileComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.delete(AppConfig.apiBaseUrl + AppConfig.apiUrl.deleteEducation, options).subscribe((response: any) => {
+    this.apiSvc.delete(AppConfig.apiUrl.deleteEducation, options).subscribe((response: any) => {
       if (response.status == 'success') {
         this.alertSvc.success(response.message);
         this.getProfileData();

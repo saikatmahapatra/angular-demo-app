@@ -53,7 +53,7 @@ export class AddEditBasicInfoComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userData, options).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.userData, options).subscribe((val: any) => {
       this.userData = val?.data?.user;
       if (this.userData[0]?.id) {
         this.patchFormValue(this.userData[0]);
@@ -75,7 +75,7 @@ export class AddEditBasicInfoComponent implements OnInit {
   onSubmit() {
     if (this.myForm.valid) {
       if (this.myForm.get('id')?.value) {
-        this.apiSvc.patch(AppConfig.apiBaseUrl + AppConfig.apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
+        this.apiSvc.patch(AppConfig.apiUrl.updateUserData, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();

@@ -52,7 +52,7 @@ export class AddUserComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      this.apiSvc.post(AppConfig.apiBaseUrl + AppConfig.apiUrl.addUser, this.myForm.value).subscribe((response: any) => {
+      this.apiSvc.post(AppConfig.apiUrl.addUser, this.myForm.value).subscribe((response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message);
           this.myForm.reset();
@@ -65,7 +65,7 @@ export class AddUserComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.userFormData).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
       this.designationList = val?.data.designations;
       this.departmentList = val?.data?.departments,
         this.employmentTypeList = val?.data?.employmentTypes
