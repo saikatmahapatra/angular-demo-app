@@ -147,6 +147,9 @@ label.optional {
 .card-top-border {
     border-top: 4px solid $primary;
 }
+.card-header {
+    font-weight: bold;
+}
 
 @mixin linear-gradient($from, $to) {
     background: $to;

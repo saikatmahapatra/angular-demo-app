@@ -1,1 +1,12 @@
-<p>news-details works!</p>
+<div class="card">
+    <div class="card-header text-bold">
+        <span class="material-symbols-outlined align-middle">notifications</span>
+        Organizational News
+    </div>
+    <div class="card-body">
+        <h4 [innerHTML]="news?.content_title"></h4>
+        <div class="text-muted small my-2" [innerHTML]="getTimeStampInfo(news)"></div>
+        <div [innerHTML]="news?.content_text"></div>
+        <!-- <a [routerLink]="['dashboard']" class="my-4">Go back to dashboard</a> -->
+    </div>
+</div>

@@ -9,6 +9,7 @@ export const AppConfig = {
         checkEmail: 'user/checkEmail',
         getUsers: 'user/users',
         dashboardStat: 'dashboardStat',
+        getNews: 'news',
         userFormData: 'user/userFormData',
         addUser: 'user/users',
         editUser: 'user/users',

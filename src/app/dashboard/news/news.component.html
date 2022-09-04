@@ -1,1 +1,9 @@
-<p>news works!</p>
+<ng-container *ngIf="news.length > 0">
+    <div class="my-2" *ngFor="let item of news; let i = index;">
+        <a [routerLink]="['news-details', item.id]">{{item?.content_title}}</a>
+        <span class="text-muted small ml-2" [innerHTML]="getTimeStampInfo(item)"></span>
+    </div>
+</ng-container>
+<ng-container *ngIf="news.length === 0">
+    <p>There are not latest news for you!</p>
+</ng-container>
