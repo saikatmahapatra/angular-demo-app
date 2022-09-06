@@ -1,1 +1,34 @@
-<h1>Add CMS Content</h1>
+<h1> <span>{{title}}</span> News</h1>
+<div class="row">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="action">
+
+            <div class="form-group">
+                <label class="required" for="contentCategory">Address Type</label>
+                <select class="form-control" id="contentCategory" formControlName="contentCategory">
+                    <option value="">Select</option>
+                    <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['contentCategory']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="contentHeadline">Head Line</label>
+                <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline" maxlength="180">
+                <app-validation-error [control]="myForm.controls['contentHeadline']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="contentDescription">Content</label>
+                <textarea class="form-control" id="contentDescription" formControlName="contentDescription"></textarea>
+                <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
+        </form>
+        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p>
+    </div>
+</div>
