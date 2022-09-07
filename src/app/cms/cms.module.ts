@@ -7,7 +7,6 @@ import { CmsRoutingModule } from './cms-routing.module';
 import { CmsLayoutComponent } from './cms-layout.component';
 import { ManageCmsComponent } from './manage-cms/manage-cms.component';
 import { AddContentComponent } from './add-content/add-content.component';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
@@ -16,8 +15,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     SharedModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    AngularEditorModule
+    ReactiveFormsModule
   ],
   declarations: [
     CmsLayoutComponent,
