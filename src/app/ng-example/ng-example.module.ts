@@ -24,6 +24,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
+import { D3DataDrivenDocumentComponent } from './d3-data-driven-document/d3-data-driven-document.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { TranslationDemoComponent } from './translation-demo/translation-demo.co
     ContentCardComponent,
     AgGridTableExampleComponent,
     TranslationDemoComponent,
+    D3DataDrivenDocumentComponent,
   ],
   exports: [
     SumDigitPipePipe
