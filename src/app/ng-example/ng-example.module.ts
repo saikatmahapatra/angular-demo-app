@@ -26,6 +26,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 import { D3DataDrivenDocumentComponent } from './d3-data-driven-document/d3-data-driven-document.component';
 import { BarChartComponent } from './d3-data-driven-document/bar-chart/bar-chart.component';
+import { MultiLineChartComponent } from './d3-data-driven-document/multi-line-chart/multi-line-chart.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { BarChartComponent } from './d3-data-driven-document/bar-chart/bar-chart
     TranslationDemoComponent,
     D3DataDrivenDocumentComponent,
     BarChartComponent,
+    MultiLineChartComponent,
   ],
   exports: [
     SumDigitPipePipe
