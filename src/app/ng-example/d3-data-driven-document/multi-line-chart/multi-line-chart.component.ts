@@ -7,7 +7,7 @@ import * as d3 from "d3";
 })
 export class MultiLineChartComponent implements OnInit {
   private svg: any;
-  private data = [
+  private mockData = [
     {
       name: "USA",
       values: [
@@ -83,24 +83,25 @@ export class MultiLineChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.formatData(this.data);
+    this.formatData();
     this.createSvg();
   }
 
-  private formatData(data: Array<any>) {
+  private formatData() {
     let parseDate = d3.timeParse("%Y");
-    this.data.forEach(function (d: any) {
-      d.values.forEach(function (item: any) {
-        item.date = parseDate(item.date);
-        item.price = +item.price;
+    this.mockData.forEach(function (parent: any) {
+      parent.values.forEach(function (childNode: any) {
+        childNode.date = parseDate(childNode.date);
+        childNode.price = +childNode.price;
       });
     });
+    console.log(this.mockData[0].values);
     this.xScale = d3.scaleTime()
-      //.domain(d3.extent(this.data[0].values, x => x.date))
+      //.domain(d3.extent(this.mockData[0].values, x => d3.timeParse(x)))
       .range([0, this.width - this.margin]);
 
     this.yScale = d3.scaleLinear()
-      //.domain([0, d3.max(this.data[0].values, x => x.price)])
+      //.domain([0, d3.max(this.mockData[0].values, x => x.price)])
       .range([this.height - this.margin, 0]);
 
     this.color = d3.scaleOrdinal(d3.schemeCategory10);
