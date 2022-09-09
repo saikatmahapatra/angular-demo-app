@@ -7,6 +7,7 @@ import { NewsComponent } from './news/news.component';
 import { DashboardStatComponent } from './dashboard-stat/dashboard-stat.component';
 import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    DashboardRoutingModule    
+    DashboardRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class DashboardModule { }
