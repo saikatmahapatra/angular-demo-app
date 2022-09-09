@@ -8,6 +8,7 @@ import { DashboardStatComponent } from './dashboard-stat/dashboard-stat.componen
 import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModule } from '../@shared/shared.module';
 
 
 
@@ -20,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule,
     DashboardRoutingModule,
     NgxPaginationModule
