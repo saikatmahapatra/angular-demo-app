@@ -6,9 +6,9 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'news-details/:id', component: NewsDetailsComponent }
 ];
-
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes)
+  ],
 })
 export class DashboardRoutingModule { }

@@ -17,6 +17,7 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { UiButtonComponent } from './components/ui-button/ui-button.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -39,7 +40,8 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
     AlertMessageComponent,
     SidebarComponent,
     LoaderComponent,
-    UiButtonComponent
+    UiButtonComponent,
+    SearchInputComponent
   ],
   providers: [],
   exports: [
@@ -57,7 +59,8 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
     AlertMessageComponent,
     SidebarComponent,
     LoaderComponent,
-    UiButtonComponent
+    UiButtonComponent,
+    SearchInputComponent
   ]
 })
 export class SharedModule {

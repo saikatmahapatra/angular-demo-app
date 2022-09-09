@@ -25,7 +25,7 @@ export class NewsDetailsComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
-      this.news = response?.data[0];
+      this.news = response?.data['data_rows'][0];
     });
   }
 

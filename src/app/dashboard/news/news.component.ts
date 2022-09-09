@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
 
   getContents() {
     this.apiSvc.get(AppConfig.apiUrl.getNews).subscribe((response: any) => {
-      this.news = response?.data;
+      this.news = response?.data['data_rows'];
     });
   }
 
