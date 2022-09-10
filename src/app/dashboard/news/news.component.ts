@@ -16,7 +16,7 @@ export class NewsComponent implements OnInit {
   isServerSidePagination = true;
   paginationId: string = 'newsPagination';
   currentPage: number = 1; // min value 1;
-  itemPerPage: number = 5;
+  itemPerPage: number = 10;
   totalRecords!: number;
 
   constructor(private apiSvc: ApiService, private commonSvc: CommonService) { }
@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
 
 
     //pagination calc
-    if(this.isServerSidePagination) {
+    if (this.isServerSidePagination) {
       queryParams = queryParams.append('perPage', this.itemPerPage);
       const startOffSet = (this.currentPage - 1) * this.itemPerPage;
       const end = startOffSet + this.itemPerPage;
@@ -46,7 +46,7 @@ export class NewsComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.news = response?.data['data_rows'];
-      this.searchKeyword = '';
+      //this.searchKeyword = '';
     });
   }
 
@@ -59,4 +59,8 @@ export class NewsComponent implements OnInit {
     this.getContents();
   }
 
+  onPageChange(event: number) {
+    this.currentPage = event;
+    this.getContents();
+  }
 }

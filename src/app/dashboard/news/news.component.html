@@ -7,7 +7,7 @@
         <span class="text-muted small ml-2" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
     <!-- <pagination-controls (pageChange)="getContents($event)" id="server"></pagination-controls> -->
-    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <pagination-controls [id]="paginationId" (pageChange)="onPageChange($event)"></pagination-controls>
 </ng-container>
 <ng-container *ngIf="news.length === 0">
     <p>There are not latest news for you!</p>
