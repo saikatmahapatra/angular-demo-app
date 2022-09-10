@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-news',
@@ -11,7 +12,10 @@ export class NewsComponent implements OnInit {
   news: any = [];
   searchKeyword: string = '';
 
-  constructor(private apiSvc: ApiService) { }
+  //ngx-pagination
+  p: number = 1;
+
+  constructor(private apiSvc: ApiService, private commonSvc: CommonService) { }
 
   ngOnInit(): void {
     this.getContents();
@@ -31,7 +35,7 @@ export class NewsComponent implements OnInit {
   }
 
   getTimeStampInfo(item: any) {
-    return 'Created by ' + item?.user_firstname + ' ' + item?.user_lastname;
+    return 'Created by ' + item?.user_firstname + ' ' + item?.user_lastname + ' on ' + item?.content_created_on;
   }
 
   getSearchKeyword(str: string) {

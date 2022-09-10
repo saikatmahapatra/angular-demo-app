@@ -1,9 +1,12 @@
 <ng-container *ngIf="news.length > 0">
-    <app-search-input (newSearchKeyword)="getSearchKeyword($event)" [searchKeyword]="searchKeyword" ></app-search-input>
-    <div class="my-2" *ngFor="let item of news; let i = index;">
+    <app-search-input (newSearchKeyword)="getSearchKeyword($event)" [searchKeyword]="searchKeyword"></app-search-input>
+    <div class="my-2"
+        *ngFor="let item of news | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
         <a [routerLink]="['news-details', item.id]" [innerHTML]="item?.content_title"></a>
         <span class="text-muted small ml-2" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
+    <!-- <pagination-controls (pageChange)="getContents($event)" id="server"></pagination-controls> -->
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </ng-container>
 <ng-container *ngIf="news.length === 0">
     <p>There are not latest news for you!</p>
