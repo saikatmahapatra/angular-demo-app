@@ -18,6 +18,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { UiButtonComponent } from './components/ui-button/ui-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -41,7 +42,8 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     SidebarComponent,
     LoaderComponent,
     UiButtonComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    PaginationComponent
   ],
   providers: [],
   exports: [
@@ -60,7 +62,8 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     SidebarComponent,
     LoaderComponent,
     UiButtonComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule {
