@@ -9,6 +9,7 @@ import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../@shared/shared.module';
+import { NewsDetailsComponent } from './news-details/news-details.component';
 
 
 
@@ -17,7 +18,8 @@ import { SharedModule } from '../@shared/shared.module';
     DashboardComponent,
     NewsComponent,
     DashboardStatComponent,
-    FullCalendarComponent
+    FullCalendarComponent,
+    NewsDetailsComponent
   ],
   imports: [
     CommonModule,
