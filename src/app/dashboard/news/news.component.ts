@@ -11,13 +11,15 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class NewsComponent implements OnInit {
   news: any = [];
   searchKeyword: string = '';
+  searchInputValue: string = '';
 
-  //ngx-pagination
+  // ngx-pagination
   isServerSidePagination = true;
   paginationId: string = 'newsPagination';
-  currentPage: number = 1; // min value 1;
+  currentPage: number = 1;
   itemPerPage: number = 10;
   totalRecords!: number;
+  // end of ngx-pagination
 
   constructor(private apiSvc: ApiService, private commonSvc: CommonService) { }
 
@@ -34,11 +36,8 @@ export class NewsComponent implements OnInit {
 
     //pagination calc
     if (this.isServerSidePagination) {
+      queryParams = queryParams.append('page', this.currentPage);
       queryParams = queryParams.append('perPage', this.itemPerPage);
-      const startOffSet = (this.currentPage - 1) * this.itemPerPage;
-      const end = startOffSet + this.itemPerPage;
-      queryParams = queryParams.append('paginate', true);
-      queryParams = queryParams.append('offSet', startOffSet);
     }
 
     let options = {};
@@ -46,7 +45,7 @@ export class NewsComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.news = response?.data['data_rows'];
-      //this.searchKeyword = '';
+      this.searchInputValue = '';
     });
   }
 
@@ -56,6 +55,7 @@ export class NewsComponent implements OnInit {
 
   getSearchKeyword(str: string) {
     this.searchKeyword = str;
+    this.currentPage = 1;
     this.getContents();
   }
 
