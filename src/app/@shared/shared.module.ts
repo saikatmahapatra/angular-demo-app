@@ -19,12 +19,14 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { UiButtonComponent } from './components/ui-button/ui-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [
     HighlightDirective,
