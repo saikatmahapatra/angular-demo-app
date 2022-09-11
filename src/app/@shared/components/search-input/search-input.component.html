@@ -1,7 +1,7 @@
 <div class="input-group mb-3">
-    <input [value]="searchKeyword" type="text" class="form-control" placeholder="Search..." #textInput (keyup.enter)="searchInput(textInput.value)">
+    <input [value]="value" type="text" class="form-control" placeholder="Search..." #searchInput (keyup.enter)="getVal(searchInput.value)">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary py-0" type="button" (click)="searchInput(textInput.value)">
+      <button class="btn btn-outline-secondary py-0" type="button" (click)="getVal(searchInput.value)">
         <span _ngcontent-aqh-c67="" class="material-symbols-outlined align-middle">search</span>
       </button>
     </div>

@@ -10,8 +10,8 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class NewsComponent implements OnInit {
   news: any = [];
-  searchKeyword: string = '';
-  searchInputValue: string = '';
+  searchKeyword: string = ''; // from search input
+  resetSearchInput = false;
 
   // ngx-pagination
   isServerSidePagination = true;
@@ -45,7 +45,6 @@ export class NewsComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.news = response?.data['data_rows'];
-      this.searchInputValue = '';
     });
   }
 
@@ -53,8 +52,9 @@ export class NewsComponent implements OnInit {
     return 'Created by ' + item?.user_firstname + ' ' + item?.user_lastname + ' on ' + item?.content_created_on;
   }
 
-  getSearchKeyword(str: string) {
+  getSearchInputVal(str: string) {
     this.searchKeyword = str;
+    this.resetSearchInput = true;
     this.currentPage = 1;
     this.getContents();
   }
