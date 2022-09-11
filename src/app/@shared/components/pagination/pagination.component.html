@@ -2,7 +2,7 @@
     <div>
         <label class="mr-2">Per page</label>
         <select #perPageDropdown (change)="getPerPage($event)">
-            <option *ngFor="let pp of perPageArr;" [value]="pp">{{pp}}</option>
+            <option *ngFor="let pp of perPageArr;" [value]="pp" [selected]="perPage == pp">{{pp}}</option>
         </select>
     </div>
     <pagination-controls [id]="pId" (pageChange)="onPageChange($event)"></pagination-controls>
