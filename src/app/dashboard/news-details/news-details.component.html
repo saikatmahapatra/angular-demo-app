@@ -10,6 +10,6 @@
     </div>
 </div>
 
-<a [routerLink]="['/dashboard']" class="btn btn-link my-4"> <span class="material-symbols-outlined">
+<a [routerLink]="['/dashboard']" [state]="{ newsPageNumber: paginationPageNumber }" class="btn btn-link my-4"> <span class="material-symbols-outlined">
         arrow_back_ios
     </span> Back to Dashboard</a>

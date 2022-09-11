@@ -11,12 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NewsDetailsComponent implements OnInit {
   news: any = [];
   itemId!: string | null;
+  paginationPageNumber!: string | null;
   constructor(private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( param =>{
       this.itemId = param.get('id');
+      this.paginationPageNumber = window.history.state.newsPageNumber;
     });
     let queryParams = new HttpParams();
     if (this.itemId) {

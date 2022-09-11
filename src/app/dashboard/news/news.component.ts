@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, Output, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
@@ -21,10 +22,14 @@ export class NewsComponent implements OnInit {
   totalRecords!: number;
   // end of ngx-pagination
 
-  constructor(private apiSvc: ApiService, private commonSvc: CommonService) { }
+  constructor(private apiSvc: ApiService, private commonSvc: CommonService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getContents();
+    this.activatedRoute.paramMap.subscribe((param) => {
+      this.currentPage = window.history.state?.newsPageNumber || 1;
+      this.getContents();
+    })
+    
   }
 
   getContents() {
