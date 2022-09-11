@@ -7,7 +7,7 @@
     </div>
     <!-- <pagination-controls (pageChange)="getContents($event)" id="server"></pagination-controls> -->
     <!-- <pagination-controls [id]="paginationId" (pageChange)="onPageChange($event)"></pagination-controls> -->
-    <app-pagination [pId]="paginationId" (pageNumber)="onPageChange($event)"></app-pagination>
+    <app-pagination [pId]="paginationId" (pageNumber)="onPageChange($event)" [perPage]="itemPerPage" (perPageItem)="perPageChange($event)"></app-pagination>
 </ng-container>
 <ng-container *ngIf="news.length === 0">
     <p>There are not latest news for you!</p>

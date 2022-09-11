@@ -68,4 +68,8 @@ export class NewsComponent implements OnInit {
     this.currentPage = event;
     this.getContents();
   }
+  perPageChange(event: any) {
+    this.itemPerPage = event;
+    this.getContents();
+  }
 }

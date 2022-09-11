@@ -11,11 +11,14 @@ export class PaginationComponent implements OnInit {
 
   // send to parent component
   @Output() pageNumber = new EventEmitter<number>();
+  @Output() perPageItem = new EventEmitter<number>();
+  @Output() data = new EventEmitter<Object>();
 
   // receive from parent component
   @Input() pId: string = 'mandatory';
   @Input() total!: number;
   @Input() perPage!: number;
+  perPageArr: Array<number> = [10, 15, 20, 25, 30, 50, 100];
   currentPage = 1;
 
   constructor() { }
@@ -31,6 +34,10 @@ export class PaginationComponent implements OnInit {
   onPageBoundsCorrection(number: any) {
     this.currentPage = number;
     this.pageNumber.emit(this.currentPage);
+  }
+
+  getPerPage(e: any) {
+    this.perPageItem.emit(e.currentTarget.value);
   }
 
 }
