@@ -7,6 +7,9 @@
         <h4 [innerHTML]="news?.content_title"></h4>
         <div class="text-muted small my-2" [innerHTML]="getTimeStampInfo(news)"></div>
         <div [innerHTML]="news?.content_text"></div>
-        <a [routerLink]="['/dashboard']" class="my-4">Go back to dashboard</a>
     </div>
 </div>
+
+<a [routerLink]="['/dashboard']" class="btn btn-link my-4"> <span class="material-symbols-outlined">
+        arrow_back_ios
+    </span> Back to Dashboard</a>
