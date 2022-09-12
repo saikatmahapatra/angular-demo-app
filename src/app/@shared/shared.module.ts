@@ -20,6 +20,7 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -45,7 +46,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoaderComponent,
     UiButtonComponent,
     SearchInputComponent,
-    PaginationComponent
+    PaginationComponent,
+    FileUploadComponent
   ],
   providers: [],
   exports: [
@@ -65,7 +67,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoaderComponent,
     UiButtonComponent,
     SearchInputComponent,
-    PaginationComponent
+    PaginationComponent,
+    FileUploadComponent
   ]
 })
 export class SharedModule {
