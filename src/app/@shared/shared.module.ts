@@ -17,12 +17,16 @@ import { AlertMessageComponent } from './components/alert-message/alert-message.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { UiButtonComponent } from './components/ui-button/ui-button.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [
     HighlightDirective,
@@ -39,7 +43,9 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
     AlertMessageComponent,
     SidebarComponent,
     LoaderComponent,
-    UiButtonComponent
+    UiButtonComponent,
+    SearchInputComponent,
+    PaginationComponent
   ],
   providers: [],
   exports: [
@@ -57,7 +63,9 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
     AlertMessageComponent,
     SidebarComponent,
     LoaderComponent,
-    UiButtonComponent
+    UiButtonComponent,
+    SearchInputComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule {
