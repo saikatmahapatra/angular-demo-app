@@ -11,6 +11,7 @@ export class NgExampleComponent implements OnInit {
 
   menuLinks = [
     { link: '/', text: 'App Home' },
+    { link: '/example/test', text: 'Test' },
     { link: '/example/template-basic', text: 'Template Basic' },
     { link: '/example/types-of-angular-directive', text: 'Directive' },
     { link: '/example/pipes', text: 'Pipes' },

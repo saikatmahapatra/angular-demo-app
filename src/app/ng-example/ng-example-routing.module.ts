@@ -25,6 +25,7 @@ const routes: Routes = [{
   component: NgExampleComponent,
   children: [
     { path: '', component: TemplateDataBindingComponent },
+    { path: 'test', component: TestComponent },
     { path: 'template-basic', component: TemplateDataBindingComponent },
     { path: 'types-of-angular-directive', component: AngularDirectiveComponent },
     { path: 'pipes', component: PipesComponent },
