@@ -1,12 +1,10 @@
-<div class="d-flex flex-column">
-    <div class="media mb-2" *ngFor="let stat of stats; let i = index;">
-        <div class="media-body">
-            <div class="col-md-6">
-                <span class="material-symbols-outlined align-middle mr-1"
-                    [attr.style]="stat?.iconCss">{{stat?.icon}}</span>
-                <span class="mr-1">{{stat?.count}}</span>
-                <span class="mr-1">{{stat?.heading}}</span>
-            </div>
+<div class="row">
+    <ng-container *ngFor="let stat of stats; let index=index">
+        <div class="col-md-6">
+            <span class="material-symbols-outlined align-middle mr-1" [attr.style]="stat?.iconCss">{{stat?.icon}}</span>
+            <span class="mr-1">{{stat?.count}}</span>
+            <span class="mr-1">{{stat?.heading}}</span>
         </div>
-    </div>
+        <div class="w-100" *ngIf="(index+1) % 2 === 0"></div>
+    </ng-container>
 </div>
