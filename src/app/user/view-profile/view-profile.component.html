@@ -164,7 +164,7 @@
                 <div>{{contact?.contact_person_address}}</div>
                 <div>Phone: {{contact?.contact_person_phone1}}</div>
                 <div *ngIf="selfAccount" class="mt-1">
-                        <a [routerLink]="['/user/edit-payroll-info/', contact.id]"
+                        <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
                                 class="btn btn-light btn-sm mt-0 mr-2"><span
                                         class="material-symbols-outlined md-16">edit</span> Edit</a>
                         <a (click)="deleteContact(contact.id)" class="btn btn-light btn-sm mt-0"><span

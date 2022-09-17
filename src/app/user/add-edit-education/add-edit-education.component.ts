@@ -12,7 +12,6 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./add-edit-education.component.scss']
 })
 export class AddEditEducationComponent implements OnInit {
-  [x: string]: any;
   submitted = false;
   loading = false;
   id: any = '';

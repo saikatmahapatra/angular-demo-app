@@ -36,9 +36,10 @@ export const AppConfig = {
         addPayroll: 'user/addPayroll',
         updatePayroll: 'user/updatePayroll',
         deletePayroll: 'user/deletePayroll',
-        getEmergencyContact: 'user/getEmergencyContact',
-        addEmergencyContact: 'user/addEmergencyContact',
-        updateEmergencyContact: 'user/updateEmergencyContact',
-        deleteEmergencyContact: 'user/deleteEmergencyContact',
+        emergencyContactFormData: 'contact/formData',
+        getEmergencyContact: 'contact',
+        addEmergencyContact: 'contact',
+        updateEmergencyContact: 'contact',
+        deleteEmergencyContact: 'contact',
     }
 };

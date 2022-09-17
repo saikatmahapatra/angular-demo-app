@@ -1,4 +1,4 @@
-<h1>Emergency Contact</h1>
+<h1><span>{{title}}</span> Emergency Contact</h1>
 <div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -19,10 +19,9 @@
 
             <div class="form-group">
                 <label class="required" for="relationWithContact">Relation</label>
-                <!-- <input type="text" class="form-control" id="relationWithContact" formControlName="relationWithContact" maxlength="50"> -->
                 <select class="form-control" id="relationWithContact" formControlName="relationWithContact">
                     <option value="">Select</option>
-                    <option value="1">Test</option>
+                    <option *ngFor="let data of relationDataList" [value]="data.id" [innerHTML]="data.name"></option>
                 </select>
                 <app-validation-error [control]="myForm.controls['relationWithContact']"></app-validation-error>
             </div>
