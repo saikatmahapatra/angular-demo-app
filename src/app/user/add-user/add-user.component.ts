@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { min } from 'lodash';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -10,7 +11,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  
+
   submitted = false;
   loading = false;
 
@@ -22,6 +23,11 @@ export class AddUserComponent implements OnInit {
   employmentTypeList: any;
   designationList: any;
 
+  minDateDob = (new Date().getFullYear() - 80) + '-01-01';
+  maxDateDob = (new Date().getFullYear() - 18) + '-12-31';
+  minDateDoj = new Date('2005-01-01').toISOString().split('T')[0];
+  maxDateDoj = new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0];
+
   myForm = this.fb.group({
     id: [null],
     action: ['createUser'],
@@ -29,7 +35,7 @@ export class AddUserComponent implements OnInit {
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
     workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
     workPhone: ['', [this.validator.phoneNumber]],
-    dateOfBirth: ['', Validators.required],
+    dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],
     personalEmail: ['', [this.validator.validEmail]],
     personalPhone: ['', [Validators.required, this.validator.phoneNumber]],

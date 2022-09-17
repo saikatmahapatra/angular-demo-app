@@ -34,7 +34,7 @@
             <div class="form-row mb-2">
                 <div class="col-md-6">
                     <label class="required" for="dateOfBirth">Date of Birth</label>
-                    <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" maxlength="10">
+                    <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" maxlength="10" [min]="minDateDob" [max]="maxDateDob">
                     <app-validation-error [control]="myForm.controls['dateOfBirth']"></app-validation-error>
                 </div>
                 <div class="col-md-6">
@@ -88,7 +88,7 @@
             <div class="form-row mb-2">
                 <div class="col-md-6">
                     <label class="required" for="dateOfJoining">Date of Joining</label>
-                    <input type="date" class="form-control" id="dateOfJoining" formControlName="dateOfJoining" maxlength="10">
+                    <input type="date" class="form-control" id="dateOfJoining" formControlName="dateOfJoining" maxlength="10" [min]="minDateDoj" [max]="maxDateDoj">
                     <app-validation-error [control]="myForm.controls['dateOfJoining']"></app-validation-error>
                 </div>
 
