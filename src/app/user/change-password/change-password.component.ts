@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -10,14 +10,9 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
+  myForm!: FormGroup;
   submitted = false;
   loading = false;
-  myForm = this.fb.group({
-    action: ['changePassword'],
-    currentPassword: [null, [Validators.required]],
-    password: [null, [Validators.required, this.validator.strongPassword, this.validator.matchValidator('confirmPassword', true)]],
-    confirmPassword: ['', [Validators.required, this.validator.matchValidator('password')]]
-  });
 
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
@@ -25,6 +20,16 @@ export class ChangePasswordComponent implements OnInit {
     private alertSvc: AlertService) { }
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm() {
+    this.myForm = this.fb.group({
+      action: ['changePassword'],
+      currentPassword: [null, [Validators.required]],
+      password: [null, [Validators.required, this.validator.strongPassword, this.validator.matchValidator('confirmPassword', true)]],
+      confirmPassword: ['', [Validators.required, this.validator.matchValidator('password')]]
+    });
   }
 
   onSubmit() {
