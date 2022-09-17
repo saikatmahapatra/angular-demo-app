@@ -74,7 +74,7 @@ export class AddEditAddressComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid && this.myForm.get('action')?.value === 'add' && this.myForm.get('id')?.value === null) {
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
@@ -87,7 +87,7 @@ export class AddEditAddressComponent implements OnInit {
         complete: () => { this.loading = false; }
       });
     }
-    else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value !== null) {
+    else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {

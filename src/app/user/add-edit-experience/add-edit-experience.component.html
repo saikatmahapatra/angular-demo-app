@@ -45,8 +45,7 @@
                 <input type="date" class="form-control" id="toDate" formControlName="toDate" maxlength="10" [attr.min]="minDate" [attr.max]="maxDate">
                 <app-validation-error [control]="myForm.controls['toDate']"></app-validation-error>
             </div>
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
             <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
         </form>
         <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>

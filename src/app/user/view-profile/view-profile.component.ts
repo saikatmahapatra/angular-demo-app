@@ -75,10 +75,8 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteAddress, options).subscribe((response: any) => {
-      if (response.status == 'success') {
-        this.alertSvc.success(response.message);
-        this.getProfileData();
-      }
+      this.alertSvc.success(response.message);
+      this.getProfileData();
     });
   }
 
@@ -90,15 +88,22 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteEducation, options).subscribe((response: any) => {
-      if (response.status == 'success') {
-        this.alertSvc.success(response.message);
-        this.getProfileData();
-      }
+      this.alertSvc.success(response.message);
+      this.getProfileData();
     });
   }
 
   deleteWorkExp(id: any) {
-
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(AppConfig.apiUrl.deleteExperience, options).subscribe((response: any) => {
+      this.alertSvc.success(response.message);
+      this.getProfileData();
+    });
   }
 
   deletePayrollInfo(id: any) {

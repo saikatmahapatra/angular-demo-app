@@ -66,7 +66,7 @@ export class AddEditEducationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid && this.myForm.get('action')?.value === 'add' && this.myForm.get('id')?.value == null) {
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addEducation, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {

@@ -21,6 +21,18 @@ export class AddEditExperienceComponent implements OnInit {
   itemId!: any;
   isAdd = true;
   title = 'Add';
+
+  myForm = this.fb.group({
+    id: [null],
+    action: ['add'],
+    employer: ['', [Validators.required]],
+    newEmployer: [null],
+    designation: ['', [Validators.required]],
+    newDesignation: [null],
+    fromDate: ['', Validators.required],
+    toDate: ['', Validators.required]
+  });
+
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
@@ -35,46 +47,39 @@ export class AddEditExperienceComponent implements OnInit {
     this.activatedRouters.paramMap.subscribe((param) => {
       this.itemId = param.get('id');
     });
-    if (this.itemId) {
+    if (this.router.url.indexOf('edit-work-experience') != -1) {
       this.isAdd = false;
       this.title = 'Edit';
+      this.myForm.controls['action'].setValue('edit');
+    }
+    if (this.itemId) {
       this.getWorkExperience();
     }
   }
 
-  myForm = this.fb.group({
-    id: [null],
-    action: ['add'],
-    employer: ['', [Validators.required]],
-    newEmployer: [null],
-    designation: ['', [Validators.required]],
-    newDesignation: [null],
-    fromDate: ['', Validators.required],
-    toDate: ['', Validators.required]
-  });
-
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid) {
-      if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(AppConfig.apiUrl.updateExperience, this.myForm.value).subscribe((response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
-          }
-        });
-      } else {
-        this.apiSvc.post(AppConfig.apiUrl.addExperience, this.myForm.value).subscribe((response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
-          }
-        });
-      }
-
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
+      this.apiSvc.post(AppConfig.apiUrl.addExperience, this.myForm.value).subscribe({
+        next: (response: any) => {
+          this.alertSvc.success(response.message, true);
+          this.myForm.reset();
+          this.router.navigate(['user/profile']);
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    } else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
+      this.apiSvc.put(AppConfig.apiUrl.updateExperience, this.myForm.value).subscribe({
+        next: (response: any) => {
+          this.alertSvc.success(response.message, true);
+          this.myForm.reset();
+          this.router.navigate(['user/profile']);
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
@@ -134,12 +139,12 @@ export class AddEditExperienceComponent implements OnInit {
     this.myForm.patchValue({
       id: data?.id,
       action: 'edit',
-      employer: data?.id,
+      employer: data?.company_id,
       newEmployer: null,
-      designation: data?.id,
+      designation: data?.designation_id,
       newDesignation: null,
-      fromDate: data?.id,
-      toDate: data?.id
+      fromDate: data?.from_date,
+      toDate: data?.to_date
     });
   }
 
