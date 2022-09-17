@@ -76,29 +76,29 @@ export class AddEditAddressComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid) {
-      if(this.formAction === 'add' && this.myForm.get('id')?.value === null) {
-        this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
-          }
-        });
-      }
-      if (this.formAction === 'edit' && this.myForm.get('id')?.value !== null) {
-        this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
-          }
-        });
-      }
-    } else {
+    if (this.myForm.valid && this.formAction === 'add' && this.myForm.get('id')?.value === null) {
+      this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.alertSvc.success(response.message, true);
+          this.myForm.reset();
+          this.router.navigate(['user/profile']);
+        }
+      });
+    }
+    else if (this.myForm.valid && this.formAction === 'edit' && this.myForm.get('id')?.value !== null) {
+      this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
+        if (response.status == 'success') {
+          this.alertSvc.success(response.message, true);
+          this.myForm.reset();
+          this.router.navigate(['user/profile']);
+        }
+      });
+    }
+    else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
+
   }
 
   getAddress() {
