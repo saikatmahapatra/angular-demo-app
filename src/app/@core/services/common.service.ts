@@ -89,16 +89,16 @@ export class CommonService {
     document.cookie = key + '=' + value;
   }
 
-  timeDifference(phpTimeStamp: string) {
-    let current = new Date().getTime();
-    let previous = new Date(Date.parse(phpTimeStamp)).getTime();
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
+  getTimeAgo(phpTimeStamp: string) {
+    const current = new Date().getTime();
+    const previous = new Date(Date.parse(phpTimeStamp)).getTime();
+    const msPerMinute = 60 * 1000;
+    const msPerHour = msPerMinute * 60;
+    const msPerDay = msPerHour * 24;
+    const msPerMonth = msPerDay * 30;
+    const msPerYear = msPerDay * 365;
 
-    var elapsed = current - previous;
+    const elapsed = current - previous;
 
     if (elapsed < msPerMinute) {
       return Math.round(elapsed / 1000) + ' seconds ago';
@@ -113,15 +113,15 @@ export class CommonService {
     }
 
     else if (elapsed < msPerMonth) {
-      return 'approximately ' + Math.round(elapsed / msPerDay) + ' days ago';
+      return Math.round(elapsed / msPerDay) + ' days ago';
     }
 
     else if (elapsed < msPerYear) {
-      return 'approximately ' + Math.round(elapsed / msPerMonth) + ' months ago';
+      return Math.round(elapsed / msPerMonth) + ' months ago';
     }
 
     else {
-      return 'approximately ' + Math.round(elapsed / msPerYear) + ' years ago';
+      return Math.round(elapsed / msPerYear) + ' years ago';
     }
   }
 }

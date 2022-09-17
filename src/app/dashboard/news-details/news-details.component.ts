@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from 'src/app/@core/services/common.service';
 @Component({
   selector: 'app-news-details',
   templateUrl: './news-details.component.html',
@@ -13,10 +14,11 @@ export class NewsDetailsComponent implements OnInit {
   itemId!: string | null;
   paginationPageNumber!: string | null;
   constructor(private apiSvc: ApiService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private commonSvc: CommonService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe( param =>{
+    this.activatedRoute.paramMap.subscribe(param => {
       this.itemId = param.get('id');
       this.paginationPageNumber = window.history.state.newsPageNumber;
     });
@@ -32,7 +34,7 @@ export class NewsDetailsComponent implements OnInit {
   }
 
   getTimeStampInfo(item: any) {
-    return 'Created on ' + item?.content_created_on + ' by ' + item?.user_firstname + ' ' + item?.user_lastname;
+    return 'Published approximately ' + this.commonSvc.getTimeAgo(item?.content_created_on) + ' by ' + item?.user_firstname + ' ' + item?.user_lastname;
   }
 
 }

@@ -54,7 +54,7 @@ export class NewsComponent implements OnInit {
   }
 
   getTimeStampInfo(item: any) {
-    return 'Created by ' + item?.user_firstname + ' ' + item?.user_lastname + ' on ' + item?.content_created_on;
+    return this.commonSvc.getTimeAgo(item?.content_created_on);
   }
 
   getSearchInputVal(str: string) {
