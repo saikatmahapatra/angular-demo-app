@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -14,6 +14,7 @@ import { State } from 'src/app/@utils/models/IState';
   styleUrls: ['./add-edit-address.component.scss']
 })
 export class AddEditAddressComponent implements OnInit {
+  myForm!: FormGroup;
   submitted = false;
   loading = false;
   stateList: State[] = [];
@@ -21,6 +22,7 @@ export class AddEditAddressComponent implements OnInit {
   isAdd = true;
   title = 'Add';
   data: any = '';
+  formAction = 'add';
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
@@ -36,28 +38,34 @@ export class AddEditAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormData();
+    if (this.router.url.indexOf('edit-address') != -1) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.formAction = 'edit'
+    }
+    this.createForm();
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
     if (this.id) {
-      this.isAdd = false;
-      this.title = 'Edit';
       this.getAddress();
     }
   }
 
-  myForm = this.fb.group({
-    id: [null],
-    action: ['add'],
-    addressType: ['', [Validators.required]],
-    addressLine1: ['', [Validators.required]],
-    addressLine2: [''],
-    city: ['', Validators.required],
-    state: ['', Validators.required],
-    zip: ['', Validators.required],
-    landmark: [''],
-    phone: ['', this.validator.phoneNumber]
-  });
+  createForm() {
+    this.myForm = this.fb.group({
+      id: [null],
+      action: [this.formAction],
+      addressType: ['', [Validators.required]],
+      addressLine1: ['', [Validators.required]],
+      addressLine2: [''],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required],
+      landmark: [''],
+      phone: ['', this.validator.phoneNumber]
+    });
+  }
 
   getFormData() {
     this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
@@ -69,15 +77,7 @@ export class AddEditAddressComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['user/profile']);
-          }
-        });
-      } else {
+      if(this.formAction === 'add' && this.myForm.get('id')?.value === null) {
         this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
@@ -86,7 +86,15 @@ export class AddEditAddressComponent implements OnInit {
           }
         });
       }
-
+      if (this.formAction === 'edit' && this.myForm.get('id')?.value !== null) {
+        this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+        });
+      }
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
@@ -105,7 +113,7 @@ export class AddEditAddressComponent implements OnInit {
   patchFormValue(data: any) {
     this.myForm.patchValue({
       id: data?.id,
-      action: 'edit',
+      action: this.formAction,
       addressType: data?.address_type,
       addressLine1: data?.address,
       addressLine2: data?.locality,
