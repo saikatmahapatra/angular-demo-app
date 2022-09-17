@@ -14,7 +14,7 @@ import { State } from 'src/app/@utils/models/IState';
   styleUrls: ['./add-edit-address.component.scss']
 })
 export class AddEditAddressComponent implements OnInit {
-  
+
   submitted = false;
   loading = false;
   stateList: State[] = [];
@@ -56,7 +56,7 @@ export class AddEditAddressComponent implements OnInit {
       this.title = 'Edit';
       this.myForm.controls['action'].setValue('edit');
     }
-    
+
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
@@ -75,21 +75,29 @@ export class AddEditAddressComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add' && this.myForm.get('id')?.value === null) {
-      this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
-        if (response.status == 'success') {
-          this.alertSvc.success(response.message, true);
-          this.myForm.reset();
-          this.router.navigate(['user/profile']);
-        }
+      this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value !== null) {
-      this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
-        if (response.status == 'success') {
-          this.alertSvc.success(response.message, true);
-          this.myForm.reset();
-          this.router.navigate(['user/profile']);
-        }
+      this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['user/profile']);
+          }
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
       });
     }
     else {

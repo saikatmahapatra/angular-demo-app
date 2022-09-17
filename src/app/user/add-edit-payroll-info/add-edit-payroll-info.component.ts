@@ -8,26 +8,23 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
   styleUrls: ['./add-edit-payroll-info.component.scss']
 })
 export class AddEditPayrollInfoComponent implements OnInit {
-  myForm!: FormGroup;
+  
   submitted = false;
   loading = false;
+  
+  myForm = this.fb.group({
+    id: [null],
+    action: ['edit'],
+    panNo: [null, [Validators.required, this.validator.validPAN]],
+    uanNo: [null, [Validators.required]],
+    bank: [null, Validators.required],
+    ifscCode: [null, Validators.required],
+    accountNo: [null, [Validators.required, this.validator.matchValidator('confirmAccountNo', true)]],
+    confirmAccountNo: [null, [Validators.required, this.validator.matchValidator('accountNo')]]
+  });
   constructor(private fb: FormBuilder, private validator: FormValidationService, private apiSvc: ApiService) { }
 
   ngOnInit(): void {
-  }
-
-
-  createForm() {
-    this.myForm = this.fb.group({
-      id: [null],
-      action: ['edit'],
-      panNo: [null, [Validators.required, this.validator.validPAN]],
-      uanNo: [null, [Validators.required]],
-      bank: [null, Validators.required],
-      ifscCode: [null, Validators.required],
-      accountNo: [null, [Validators.required, this.validator.matchValidator('confirmAccountNo', true)]],
-      confirmAccountNo: [null, [Validators.required, this.validator.matchValidator('accountNo')]]
-    });
   }
 
   onSubmit() {

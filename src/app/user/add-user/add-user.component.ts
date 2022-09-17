@@ -10,7 +10,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  myForm!: FormGroup;
+  
   submitted = false;
   loading = false;
 
@@ -22,6 +22,23 @@ export class AddUserComponent implements OnInit {
   employmentTypeList: any;
   designationList: any;
 
+  myForm = this.fb.group({
+    id: [null],
+    action: ['createUser'],
+    firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
+    lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+    workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
+    workPhone: ['', [this.validator.phoneNumber]],
+    dateOfBirth: ['', Validators.required],
+    gender: ['', [Validators.required]],
+    personalEmail: ['', [this.validator.validEmail]],
+    personalPhone: ['', [Validators.required, this.validator.phoneNumber]],
+    designation: ['', Validators.required],
+    department: ['', Validators.required],
+    dateOfJoining: ['', Validators.required],
+    employmentType: ['', Validators.required]
+  });
+
   constructor(private fb: FormBuilder, private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService) {
@@ -29,26 +46,6 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm();
-  }
-
-  createForm() {
-    this.myForm = this.fb.group({
-      id: [null],
-      action: ['createUser'],
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
-      lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
-      workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
-      workPhone: ['', [this.validator.phoneNumber]],
-      dateOfBirth: ['', Validators.required],
-      gender: ['', [Validators.required]],
-      personalEmail: ['', [this.validator.validEmail]],
-      personalPhone: ['', [Validators.required, this.validator.phoneNumber]],
-      designation: ['', Validators.required],
-      department: ['', Validators.required],
-      dateOfJoining: ['', Validators.required],
-      employmentType: ['', Validators.required]
-    });
   }
 
   onSubmit() {
