@@ -14,7 +14,7 @@ import { State } from 'src/app/@utils/models/IState';
   styleUrls: ['./add-edit-address.component.scss']
 })
 export class AddEditAddressComponent implements OnInit {
-  myForm!: FormGroup;
+  
   submitted = false;
   loading = false;
   stateList: State[] = [];
@@ -22,7 +22,20 @@ export class AddEditAddressComponent implements OnInit {
   isAdd = true;
   title = 'Add';
   data: any = '';
-  formAction = 'add';
+
+  myForm = this.fb.group({
+    id: [null],
+    action: ['add'],
+    addressType: ['', [Validators.required]],
+    addressLine1: ['', [Validators.required]],
+    addressLine2: [''],
+    city: ['', Validators.required],
+    state: ['', Validators.required],
+    zip: ['', Validators.required],
+    landmark: [''],
+    phone: ['', this.validator.phoneNumber]
+  });
+
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
@@ -41,30 +54,15 @@ export class AddEditAddressComponent implements OnInit {
     if (this.router.url.indexOf('edit-address') != -1) {
       this.isAdd = false;
       this.title = 'Edit';
-      this.formAction = 'edit'
+      this.myForm.controls['action'].setValue('edit');
     }
-    this.createForm();
+    
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
     if (this.id) {
       this.getAddress();
     }
-  }
-
-  createForm() {
-    this.myForm = this.fb.group({
-      id: [null],
-      action: [this.formAction],
-      addressType: ['', [Validators.required]],
-      addressLine1: ['', [Validators.required]],
-      addressLine2: [''],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', Validators.required],
-      landmark: [''],
-      phone: ['', this.validator.phoneNumber]
-    });
   }
 
   getFormData() {
@@ -76,7 +74,7 @@ export class AddEditAddressComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid && this.formAction === 'add' && this.myForm.get('id')?.value === null) {
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add' && this.myForm.get('id')?.value === null) {
       this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe((response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message, true);
@@ -85,7 +83,7 @@ export class AddEditAddressComponent implements OnInit {
         }
       });
     }
-    else if (this.myForm.valid && this.formAction === 'edit' && this.myForm.get('id')?.value !== null) {
+    else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value !== null) {
       this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe((response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message, true);
@@ -113,7 +111,7 @@ export class AddEditAddressComponent implements OnInit {
   patchFormValue(data: any) {
     this.myForm.patchValue({
       id: data?.id,
-      action: this.formAction,
+      action: 'edit',
       addressType: data?.address_type,
       addressLine1: data?.address,
       addressLine2: data?.locality,
