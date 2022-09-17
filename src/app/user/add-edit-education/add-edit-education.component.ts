@@ -22,6 +22,8 @@ export class AddEditEducationComponent implements OnInit {
   degreeList!: Array<any>;
   institutionList!: Array<any>;
   specializationList!: Array<any>;
+  minYear = new Date().getFullYear() - 100;
+  maxYear = new Date().getFullYear() + 2;
 
   constructor(private fb: FormBuilder,
     private validator: FormValidationService,
@@ -58,8 +60,8 @@ export class AddEditEducationComponent implements OnInit {
     newSpecialization: [null],
     institute: ['', Validators.required],
     newInstitute: [null],
-    fromYear: ['', Validators.required],
-    toYear: ['', Validators.required],
+    //fromYear: [new Date().getFullYear(), [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
+    toYear: [new Date().getFullYear(), [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
     marks: ['', Validators.required]
   });
 
@@ -175,7 +177,7 @@ export class AddEditEducationComponent implements OnInit {
       newSpecialization: null,
       institute: data?.academic_institute,
       newInstitute: null,
-      fromYear: data?.academic_from_year,
+      //fromYear: data?.academic_from_year,
       toYear: data?.academic_to_year,
       marks: data?.academic_marks_percentage
     });

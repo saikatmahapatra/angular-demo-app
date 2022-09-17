@@ -62,15 +62,15 @@
                 <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="required" for="fromYear">From (Year)</label>
-                <input type="text" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
+                <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
                 <app-validation-error [control]="myForm.controls['fromYear']"></app-validation-error>
-            </div>
+            </div> -->
 
             <div class="form-group">
-                <label class="required" for="toYear">To (Year)</label>
-                <input type="text" class="form-control" id="toYear" formControlName="toYear" maxlength="4">
+                <label class="required" for="toYear">Year of Passout</label>
+                <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="toYear" formControlName="toYear" maxlength="4">
                 <app-validation-error [control]="myForm.controls['toYear']"></app-validation-error>
             </div>
 

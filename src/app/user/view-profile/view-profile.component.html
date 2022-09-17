@@ -69,8 +69,7 @@
         <h3 class="my-2">Education</h3>
 
         <div class="my-3" *ngFor="let education of educationInfo">
-                <h6>{{education?.qualification_name}} - {{education?.degree_name}} ({{education?.academic_from_year}} -
-                        {{education?.academic_to_year}})</h6>
+                <h6>{{education?.qualification_name}} - {{education?.degree_name}}; {{education?.academic_to_year}}</h6>
                 <div [innerHTML]="education.specialization_name"></div>
                 <div [innerHTML]="education.institute_name"></div>
                 <div>{{education.academic_marks_percentage}}%</div>
