@@ -38,9 +38,12 @@ export class AddEditEducationComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-    if (this.id) {
+    if (this.router.url.indexOf('edit-education') != -1) {
       this.isAdd = false;
       this.title = 'Edit';
+      this.myForm.controls['action'].setValue('edit');
+    }
+    if (this.id) {
       this.getEducation();
     }
   }
@@ -63,26 +66,33 @@ export class AddEditEducationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid) {
-      if (this.myForm.get('id')?.value) {
-        this.apiSvc.put(AppConfig.apiUrl.updateEducation, this.myForm.value).subscribe((response: any) => {
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add' && this.myForm.get('id')?.value == null) {
+      this.apiSvc.post(AppConfig.apiUrl.addEducation, this.myForm.value).subscribe({
+        next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
             this.router.navigate(['user/profile']);
           }
-        });
-      } else {
-        this.apiSvc.post(AppConfig.apiUrl.addEducation, this.myForm.value).subscribe((response: any) => {
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    }
+    else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
+      this.apiSvc.put(AppConfig.apiUrl.updateEducation, this.myForm.value).subscribe({
+        next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
             this.router.navigate(['user/profile']);
           }
-        });
-      }
-
-    } else {
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    }
+    else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
@@ -144,7 +154,7 @@ export class AddEditEducationComponent implements OnInit {
 
   getEducation() {
     let queryParams = new HttpParams();
-    if(this.id) {
+    if (this.id) {
       queryParams = queryParams.append('id', this.id);
     }
     let options = {};
