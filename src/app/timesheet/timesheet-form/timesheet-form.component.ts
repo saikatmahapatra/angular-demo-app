@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TimesheetFormComponent implements OnInit {
   submitted = false;
   loading = false;
+  selected!: Date | null;
 
   myForm = this.fb.group({
     id: [null],
