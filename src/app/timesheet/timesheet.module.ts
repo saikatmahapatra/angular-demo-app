@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimesheetRoutingModule } from './timesheet-routing.module';
 import { TimesheetLayoutComponent } from './timesheet-layout.component';
 import { TimesheetFormComponent } from './timesheet-form/timesheet-form.component';
@@ -19,7 +19,9 @@ import { SharedModule } from '../@shared/shared.module';
   imports: [
     CommonModule,
     TimesheetRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TimesheetModule { }
