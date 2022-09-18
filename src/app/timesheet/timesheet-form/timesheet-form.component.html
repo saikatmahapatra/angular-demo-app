@@ -5,11 +5,13 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
             <div class="form-group">
-                <label class="required" for="cal">Select Date</label>
+                <label class="required mb-0" for="cal">Select Date</label>
+                <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
                 <mat-card class="demo-inline-calendar-card">
-                    <mat-calendar [(selected)]="selected"></mat-calendar>
+                    <mat-calendar #calendar (selectedChange)="select($event,calendar)" [dateClass]="dateClass">
+                    </mat-calendar>
                 </mat-card>
-                <p>Selected date: {{selected}}</p>
+                {{daysSelected|json}}
             </div>
             <div class="form-group">
                 <label class="required" for="project">Project</label>

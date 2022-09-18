@@ -1,3 +1,13 @@
 .demo-inline-calendar-card {
     width: 300px;
 }
+.mat-calendar-body-cell.selected
+{
+  background-color: lighten(#0c63b9, 40%) !important;
+  border-radius: 50%
+}
+
+.mat-calendar-body-cell.yellow {
+    background: orange;
+    border-radius: 100%;
+  }
