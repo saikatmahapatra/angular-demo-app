@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 @Component({
   selector: 'app-timesheet-form',
   templateUrl: './timesheet-form.component.html',
@@ -13,26 +13,22 @@ export class TimesheetFormComponent implements OnInit {
   selected!: Date | null;
   daysSelected: any[] = [];
   event: any;
-  isSelected = (event: any) => {
-    const date =
-      event.getFullYear() +
-      "-" +
-      ("00" + (event.getMonth() + 1)).slice(-2) +
-      "-" +
-      ("00" + event.getDate()).slice(-2);
-    return this.daysSelected.find(x => x == date) ? "selected" : '';
-  };
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    let cellClass = '';
+    const dateCell = cellDate.getFullYear() + "-" + ("00" + (cellDate.getMonth() + 1)).slice(-2) + "-" + ("00" + cellDate.getDate()).slice(-2);
+    const isSelected = this.daysSelected.find(x => x == dateCell) ? true : false;
+    //console.log('selected=>', this.daysSelected);
     // Only highligh dates inside the month view.
-    if (view === 'month') {
-      const date = cellDate.getDate();
-
-      // Highlight the 1st and 20th day of each month.
-      return date === 1 || date === 20 ? 'yellow' : '';
+    const date = cellDate.getDate();
+    if (view === 'month' && (date === 1 || date === 20)) {
+      cellClass += ' yellow ';
     }
-
-    return '';
+    // highligh on select.
+    if (isSelected) {
+      cellClass += ' selected ';
+    }
+    return cellClass;
   };
 
   myForm = this.fb.group({
