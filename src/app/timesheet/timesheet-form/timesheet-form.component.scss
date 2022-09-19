@@ -2,7 +2,7 @@
   width: 300px;
 }
 .mat-calendar-body-cell.selected {
-  background: lighten(#0c63b9, 40%);
+  background: lighten(#0c63b9, 40%) !important;
   border-radius: 100%;
 }
 

@@ -13,6 +13,10 @@ export class TimesheetFormComponent implements OnInit {
   selected!: Date | null;
   daysSelected: any[] = [];
   event: any;
+  minDate!: Date;
+  maxDate!: Date;
+  minCalDate = new Date('2022-09-17');
+  
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     let cellClass = '';
@@ -44,7 +48,11 @@ export class TimesheetFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder
-  ) { }
+  ) { 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
 
   ngOnInit(): void {
   }
