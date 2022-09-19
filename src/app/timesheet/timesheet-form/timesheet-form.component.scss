@@ -1,12 +1,31 @@
 .demo-inline-calendar-card {
   width: 300px;
 }
+
 .mat-calendar-body-cell.selected {
-  background: lighten(#0c63b9, 40%) !important;
+  background: lighten(#6cabe9, 40%) !important;
   border-radius: 100%;
 }
 
 .mat-calendar-body-cell.yellow {
   background: orange;
   border-radius: 100%;
+  .mat-calendar-body-cell-content {
+    border-color: orange;
+  }
+}
+
+.mat-calendar-body-cell.time-filled {
+  background: rgb(174, 240, 185);
+  border-radius: 100%;
+
+  .mat-calendar-body-cell-content {
+    border-color: rgb(63, 168, 80);
+  }
+}
+
+.mat-calendar-body-cell.holiday {
+  .mat-calendar-body-cell-content {
+    border-color: red;
+  }
 }

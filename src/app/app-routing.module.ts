@@ -9,34 +9,67 @@ import { AuthenticatedLayoutComponent } from './@shared/components/layouts/authe
 
 // Routing with lazy loading
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
   {
     path: '',
     component: UnauthenticatedLayoutComponent,
     children: [
-      { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      }
     ]
   },
   {
     path: '',
     component: DefaultLayoutComponent,
     children: [
-      { path: 'example', loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule) },
+      {
+        path: 'example',
+        loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule)
+      },
     ]
   },
   {
     path: '',
     component: AuthenticatedLayoutComponent,
     children: [
-      { path: 'dashboard', canActivate: [AuthGuard], loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-      { path: 'pages', canActivate: [AuthGuard], loadChildren: () => import('./page/page.module').then(m => m.PageModule) },
-      { path: 'user', canActivate: [AuthGuard], loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
-      { path: 'cms', canActivate: [AuthGuard], loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule) },
-      { path: 'timesheet', canActivate: [AuthGuard], loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule) }
+      {
+        path: 'dashboard',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'pages',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./page/page.module').then(m => m.PageModule)
+      },
+      {
+        path: 'user',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'cms',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
+      },
+      {
+        path: 'timesheet',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)
+      }
 
     ]
   },
-  { path: '**', component: PageNotFoundComponent } // wildcard will be at always last
+  {
+    path: '**', // wildcard will be at always last
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
