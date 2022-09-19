@@ -14,6 +14,7 @@ export class TimesheetFormComponent implements OnInit {
   daysSelected: any[] = [];
   timesheetFilledDays: any[] = [];
   holidays: any[] = [];
+  optionalHolidays: any[] = [];
   event: any;
   minDate!: Date;
   maxDate!: Date;
@@ -26,13 +27,14 @@ export class TimesheetFormComponent implements OnInit {
     const isSelected = this.daysSelected.find(x => x == dateCell) ? true : false;
     const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
     const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
+    const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
     //console.log('selected=>', this.daysSelected);
     // Only highligh dates inside the month view.
     const date = cellDate.getDate();
-    if (view === 'month' && (date === 1 || date === 20)) {
-      cellClass += ' yellow ';
-    }
-    // highligh on select.
+    // if (view === 'month' && (date === 1 || date === 20)) {
+    //   cellClass += ' yellow ';
+    // }
+
     if (isSelected) {
       cellClass += ' selected ';
     }
@@ -41,6 +43,9 @@ export class TimesheetFormComponent implements OnInit {
     }
     if (isHoliday) {
       cellClass += ' holiday ';
+    }
+    if (isOptionalHoliday) {
+      cellClass += ' optional-holiday ';
     }
     return cellClass;
   };
@@ -64,6 +69,7 @@ export class TimesheetFormComponent implements OnInit {
     this.maxDate = new Date(currentYear + 1, 11, 31);
     this.timesheetFilledDays = ["2022-09-07", "2022-09-08"];
     this.holidays = ["2022-09-17"];
+    this.optionalHolidays = ["2022-09-13"];
   }
 
   ngOnInit(): void {

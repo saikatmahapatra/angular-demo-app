@@ -1,65 +1,93 @@
 <h1>Material Design</h1>
-{{myForm.value | json}}
-<div class="row">
-    <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
-            <div class="form-group">
-                <label class="required mb-0" for="cal">Select Date</label>
-                <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
-                <mat-card class="demo-inline-calendar-card">
-                    <mat-calendar [startAt]="minCalDate" #calendar (selectedChange)="select($event, calendar)" [dateClass]="dateClass">
-                    </mat-calendar>
-                </mat-card>
-                {{daysSelected|json}}
+<div class="small text-muted bg-light p-4 mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting
+  industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+  galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+  leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+  Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+  PageMaker including versions of Lorem Ipsum.
 
-
-
-
-
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-
-            </div>
-            <div class="form-group">
-                <label class="required" for="project">Project</label>
-                <select class="form-control" id="project" formControlName="project">
-                    <option value="">Select</option>
-                    <!-- <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option> -->
-                </select>
-                <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
-            </div>
-
-            <div class="form-group">
-                <label class="required" for="task">Task</label>
-                <select class="form-control" id="task" formControlName="task">
-                    <option value="">Select</option>
-                    <!-- <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option> -->
-                </select>
-                <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
-            </div>
-
-            <div class="form-group">
-                <label class="required" for="hours">Hours</label>
-                <input type="number" min="0.5" max="9" step="0.5" class="form-control" id="hours"
-                    formControlName="hours">
-                <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
-            </div>
-
-            <div class="form-group">
-                <label class="required" for="description">Task Description</label>
-                <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
-                <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
-        </form>
+  <div class="row mt-4">
+    <div class="col-md-1">
+      <div class="mat-calendar-body-cell selected" style="width: 32px; height: 32px">
+        <div class="mat-calendar-body-cell-content mat-focus-indicator"> 27 </div>
+      </div>
+      <div class="">Selected</div>
     </div>
+
+    <div class="col-md-1">
+      <div class="mat-calendar-body-cell time-filled" style="width: 32px; height: 32px">
+        <div class="mat-calendar-body-cell-content mat-focus-indicator"> 27 </div>
+      </div>
+      <div class="">Filled</div>
+    </div>
+
+    <div class="col-md-1">
+      <div class="mat-calendar-body-cell optional-holiday" style="width: 32px; height: 32px">
+        <div class="mat-calendar-body-cell-content mat-focus-indicator"> 27 </div>
+      </div>
+      <div class="">Opt. Holiday</div>
+    </div>
+
+    <div class="col-md-1">
+      <div class="mat-calendar-body-cell holiday" style="width: 32px; height: 32px">
+        <div class="mat-calendar-body-cell-content mat-focus-indicator"> 27 </div>
+      </div>
+      <div class="">Holiday</div>
+    </div>
+  </div>
+</div>
+{{myForm.value | json}}
+
+
+
+<div class="row">
+  <div class="col-md-6 col-lg-5 col-xl-4">
+    <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="id">
+      <input type="hidden" formControlName="action">
+      <div class="form-group">
+        <label class="required mb-0" for="cal">Select Date</label>
+        <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [startAt]="minCalDate" #calendar (selectedChange)="select($event, calendar)"
+            [dateClass]="dateClass">
+          </mat-calendar>
+        </mat-card>
+        {{daysSelected|json}}
+
+      </div>
+      <div class="form-group">
+        <label class="required" for="project">Project</label>
+        <select class="form-control" id="project" formControlName="project">
+          <option value="">Select</option>
+          <!-- <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option> -->
+        </select>
+        <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
+      </div>
+
+      <div class="form-group">
+        <label class="required" for="task">Task</label>
+        <select class="form-control" id="task" formControlName="task">
+          <option value="">Select</option>
+          <!-- <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option> -->
+        </select>
+        <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
+      </div>
+
+      <div class="form-group">
+        <label class="required" for="hours">Hours</label>
+        <input type="number" min="0.5" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
+        <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
+      </div>
+
+      <div class="form-group">
+        <label class="required" for="description">Task Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
+        <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
+      <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
+    </form>
+  </div>
 </div>

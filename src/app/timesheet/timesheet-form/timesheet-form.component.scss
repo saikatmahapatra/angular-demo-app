@@ -3,24 +3,34 @@
 }
 
 .mat-calendar-body-cell.selected {
-  background: lighten(#6cabe9, 40%) !important;
+  background: #3f51b5 !important;
   border-radius: 100%;
+  .mat-calendar-body-cell-content {
+    color: #fff;
+  }
 }
 
 .mat-calendar-body-cell.yellow {
-  background: orange;
+  background: lighten(#ffa500, 20%);
   border-radius: 100%;
+
   .mat-calendar-body-cell-content {
-    border-color: orange;
+    border-color: #ffa500;
   }
 }
 
 .mat-calendar-body-cell.time-filled {
-  background: rgb(174, 240, 185);
+  background: #aef0b9;
   border-radius: 100%;
 
   .mat-calendar-body-cell-content {
-    border-color: rgb(63, 168, 80);
+    border-color: darken(#aef0b9, 30%);
+  }
+}
+
+.mat-calendar-body-cell.optional-holiday {
+  .mat-calendar-body-cell-content {
+    border-color: #ffa500;
   }
 }
 
@@ -29,3 +39,4 @@
     border-color: red;
   }
 }
+
