@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
   selector: 'app-timesheet-form',
   templateUrl: './timesheet-form.component.html',
@@ -53,16 +54,16 @@ export class TimesheetFormComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    dates: [''],
+    timeSheetDates: this.fb.array([], this.validator.minLengthArray),
     project: ['', Validators.required],
     task: ['', Validators.required],
-    hours: [9, Validators.required],
+    hours: ['', Validators.required],
     description: ['', Validators.required]
   });
 
-
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private validator: FormValidationService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -72,19 +73,51 @@ export class TimesheetFormComponent implements OnInit {
     this.optionalHolidays = ["2022-09-13"];
   }
 
+  get timeSheetDates() {
+    return this.myForm.controls["timeSheetDates"] as FormArray;
+  }
+
   ngOnInit(): void {
   }
 
   onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    console.log('Submitted', this.myForm);
+
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
+      console.log('VALIDATED');
+    }
+    else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.myForm);
+    }
 
   }
 
   select(event: any, calendar: any) {
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
-    if (index < 0) this.daysSelected.push(date);
-    else this.daysSelected.splice(index, 1);
+    if (index < 0){
+      this.daysSelected.push(date);
+      this.addTimeSheetDate(date);
+    }
+    else {
+      this.daysSelected.splice(index, 1);
+      this.deleteTimeSheetDate(index);
+    }
     calendar.updateTodaysDate();
+  }
+
+  addTimeSheetDate(date: string) {
+    const form = this.fb.group({
+      date: [date, Validators.required]
+    });
+    this.timeSheetDates.push(form);
+  }
+
+  deleteTimeSheetDate(index: number) {
+    this.timeSheetDates.removeAt(index);
   }
 
 }

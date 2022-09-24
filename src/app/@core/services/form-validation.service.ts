@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup,FormControl, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { FormGroup,FormControl, AbstractControl, ValidatorFn, ValidationErrors, FormArray } from '@angular/forms';
 import { regEx } from '../../@utils/const/regEx';
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,8 @@ export class FormValidationService {
       passwordNotMatching: 'Confirm Password should match with Password',
       accountNoNotMatching: 'Confirm account no should match with Account no',
       userNameExists: 'This username is already registered',
-      invalidPAN: 'Please enter a valid PAN number'
+      invalidPAN: 'Please enter a valid PAN number',
+      minLengthArray: 'Please select at least one date from the calendar.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -110,6 +111,10 @@ export class FormValidationService {
   validPAN(control: AbstractControl) {
     const valid = control?.value ? control?.value?.match(regEx.pan_number) : true;
     return valid ? null : { 'invalidPAN': true };
+  }
+
+  minLengthArray(control: AbstractControl) {
+   return control.value?.length > 0 ? null : { 'minLengthArray': true };
   }
 
 }
