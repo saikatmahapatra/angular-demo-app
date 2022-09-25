@@ -46,7 +46,7 @@
         <label class="required mb-0" for="cal">Select Date</label>
         <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
         <mat-card class="demo-inline-calendar-card">
-          <mat-calendar [startAt]="minCalDate" #calendar (selectedChange)="select($event, calendar)"
+          <mat-calendar *ngIf="entryFound" [startAt]="minCalDate" #calendar (selectedChange)="select($event, calendar)"
             [dateClass]="dateClass">
           </mat-calendar>
         </mat-card>

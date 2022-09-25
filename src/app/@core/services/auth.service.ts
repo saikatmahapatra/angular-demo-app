@@ -60,4 +60,15 @@ export class AuthService {
   validateToken() {
     return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateToken);
   }
+
+  getUserId() {
+    const data = sessionStorage.getItem('loginData') || null;
+    if(data != null) {
+      const dataObj = JSON.parse(data);
+      return dataObj?.id;
+    } else {
+      return null;
+    }
+    
+  }
 }

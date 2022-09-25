@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
+import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { AuthService } from 'src/app/@core/services/auth.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -10,7 +13,8 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./timesheet-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TimesheetFormComponent implements OnInit {
+export class TimesheetFormComponent implements OnInit, OnChanges {
+  userId!: null;
   submitted = false;
   loading = false;
   selected!: Date | null;
@@ -22,7 +26,8 @@ export class TimesheetFormComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   minCalDate = new Date('2022-09-17');
-
+  holidaysFound = false;
+  entryFound = false;
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     let cellClass = '';
@@ -68,14 +73,22 @@ export class TimesheetFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private validator: FormValidationService,
-    private apiSvc: ApiService
+    private apiSvc: ApiService,
+    private authSvc: AuthService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
     this.maxDate = new Date(currentYear + 1, 11, 31);
-    this.timesheetFilledDays = ["2022-09-07", "2022-09-08"];
-    this.holidays = ["2022-09-17"];
-    this.optionalHolidays = ["2022-09-13"];
+
+    //this.getFormData();
+
+    //this.timesheetFilledDays = ["2022-09-07", "2022-09-08"];
+    //this.holidays = ["2022-09-25", "2022-09-22"];
+    //this.optionalHolidays = [];
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('on changes', calendar);
   }
 
   get timeSheetDates() {
@@ -84,12 +97,41 @@ export class TimesheetFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormData();
+    this.getTimesheetData();
   }
 
   getFormData() {
     this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((val: any) => {
+      this.holidaysFound = true;
       this.projectList = val?.data?.projects;
-      this.taskList = val?.data?.tasks
+      this.taskList = val?.data?.tasks;
+      const holidays = val?.data?.holidays;
+      const optionalHolidays = val?.data?.optionalHolidays;
+      if(holidays.length > 0) {
+        holidays.forEach((element: any) => {
+          this.holidays.push(element.holiday_date);
+        });
+      }
+      if(optionalHolidays.length > 0) {
+        optionalHolidays.forEach((element: any) => {
+          this.optionalHolidays.push(element.holiday_date);
+        });
+      }
+    });
+  }
+
+  getTimesheetData() {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('userId', this.authSvc.getUserId());
+    let options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
+      this.entryFound = true;
+      const timesheetFilledData = response?.data?.data_rows;
+      if(timesheetFilledData.length > 0) {
+        timesheetFilledData.forEach((element: any) => {
+          this.timesheetFilledDays.push(element.timesheet_date);
+        });
+      }
     });
   }
 
@@ -111,6 +153,7 @@ export class TimesheetFormComponent implements OnInit {
   select(event: any, calendar: any) {
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
+    console.log(date);
     if (index < 0){
       this.daysSelected.push(date);
       this.addTimeSheetDate(date);
@@ -134,3 +177,7 @@ export class TimesheetFormComponent implements OnInit {
   }
 
 }
+function calendar(arg0: string, calendar: any) {
+  throw new Error('Function not implemented.');
+}
+
