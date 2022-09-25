@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-timesheet-form',
   templateUrl: './timesheet-form.component.html',
@@ -60,10 +62,13 @@ export class TimesheetFormComponent implements OnInit {
     hours: ['', Validators.required],
     description: ['', Validators.required]
   });
+  projectList: any;
+  taskList: any;
 
   constructor(
     private fb: FormBuilder,
-    private validator: FormValidationService
+    private validator: FormValidationService,
+    private apiSvc: ApiService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -78,6 +83,14 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getFormData();
+  }
+
+  getFormData() {
+    this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((val: any) => {
+      this.projectList = val?.data?.projects;
+      this.taskList = val?.data?.tasks
+    });
   }
 
   onSubmit() {

@@ -42,5 +42,10 @@ export const AppConfig = {
         addEmergencyContact: 'contact',
         updateEmergencyContact: 'contact',
         deleteEmergencyContact: 'contact',
+        timesheetFormData: 'timesheet/formData',
+        getTimesheet: 'timesheet',
+        addTimesheet: 'timesheet',
+        updateTimesheet: 'timesheet',
+        deleteTimesheet: 'timesheet',
     }
 };
