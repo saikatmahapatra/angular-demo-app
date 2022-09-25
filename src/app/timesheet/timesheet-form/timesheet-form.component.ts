@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
@@ -13,7 +13,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./timesheet-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TimesheetFormComponent implements OnInit, OnChanges {
+export class TimesheetFormComponent implements OnInit {
   userId!: null;
   submitted = false;
   loading = false;
@@ -28,6 +28,8 @@ export class TimesheetFormComponent implements OnInit, OnChanges {
   minCalDate = new Date('2022-09-17');
   holidaysFound = false;
   entryFound = false;
+  @ViewChild("calendar", { static: false }) matCal: MatDatepicker<any> | undefined;
+  //https://stackblitz.com/edit/angular-8-material-starter-template-nv9r4w?file=src%2Fapp%2Fapp.component.ts
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     let cellClass = '';
@@ -36,7 +38,7 @@ export class TimesheetFormComponent implements OnInit, OnChanges {
     const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
     const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
     const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
-    //console.log('selected=>', this.daysSelected);
+    console.log('selected=>', dateCell[0]);
     // Only highligh dates inside the month view.
     const date = cellDate.getDate();
     // if (view === 'month' && (date === 1 || date === 20)) {
@@ -86,11 +88,7 @@ export class TimesheetFormComponent implements OnInit, OnChanges {
     //this.holidays = ["2022-09-25", "2022-09-22"];
     //this.optionalHolidays = [];
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('on changes', calendar);
-  }
-
+  
   get timeSheetDates() {
     return this.myForm.controls["timeSheetDates"] as FormArray;
   }
@@ -177,7 +175,5 @@ export class TimesheetFormComponent implements OnInit, OnChanges {
   }
 
 }
-function calendar(arg0: string, calendar: any) {
-  throw new Error('Function not implemented.');
-}
+
 
