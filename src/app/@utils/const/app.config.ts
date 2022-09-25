@@ -6,6 +6,7 @@ export const AppConfig = {
     useMockServer: false,
     apiUrl: {
         authenticate: 'user/authenticate',
+        validateToken: 'user/validateToken',
         checkEmail: 'user/checkEmail',
         getUsers: 'user/users',
         dashboardStat: 'dashboardStat',

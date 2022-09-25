@@ -3,6 +3,7 @@ import { Router, ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,13 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let routeMessage: string = '';
     const isTokenExpired = this.authService.isTokenExpired();
+
+    this.authService.validateToken().subscribe({
+      error: (error: HttpErrorResponse) => {
+        this.authService.logout();
+      }
+    });
+
     if (!isTokenExpired) {
       const isLoggedIn = this.authService.isLoggedIn();
 

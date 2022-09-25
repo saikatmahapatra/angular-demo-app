@@ -56,4 +56,8 @@ export class AuthService {
     this.alertSvc.info('You have been logged out!', true);
     this.router.navigate(['auth/login']);
   }
+
+  validateToken() {
+    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateToken);
+  }
 }
