@@ -3,10 +3,12 @@ import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChi
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
 import { Subscription } from 'rxjs';
+import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
+import { ApiResponse } from 'src/app/@utils/models/apiResponse';
 @Component({
   selector: 'app-timesheet-form',
   templateUrl: './timesheet-form.component.html',
@@ -25,7 +27,7 @@ export class TimesheetFormComponent implements OnInit {
   event: any;
   minDate!: Date;
   maxDate!: Date;
-  minCalDate = new Date('2022-09-17');
+  minCalDate = new Date();
   holidaysFound = false;
   entryFound = false;
   @ViewChild("calendar", { static: false }) matCal: MatDatepicker<any> | undefined;
@@ -76,7 +78,8 @@ export class TimesheetFormComponent implements OnInit {
     private fb: FormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private alertSvc: AlertService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -88,7 +91,7 @@ export class TimesheetFormComponent implements OnInit {
     //this.holidays = ["2022-09-25", "2022-09-22"];
     //this.optionalHolidays = [];
   }
-  
+
   get timeSheetDates() {
     return this.myForm.controls["timeSheetDates"] as FormArray;
   }
@@ -105,12 +108,12 @@ export class TimesheetFormComponent implements OnInit {
       this.taskList = val?.data?.tasks;
       const holidays = val?.data?.holidays;
       const optionalHolidays = val?.data?.optionalHolidays;
-      if(holidays.length > 0) {
+      if (holidays.length > 0) {
         holidays.forEach((element: any) => {
           this.holidays.push(element.holiday_date);
         });
       }
-      if(optionalHolidays.length > 0) {
+      if (optionalHolidays.length > 0) {
         optionalHolidays.forEach((element: any) => {
           this.optionalHolidays.push(element.holiday_date);
         });
@@ -125,7 +128,7 @@ export class TimesheetFormComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
       this.entryFound = true;
       const timesheetFilledData = response?.data?.data_rows;
-      if(timesheetFilledData.length > 0) {
+      if (timesheetFilledData.length > 0) {
         timesheetFilledData.forEach((element: any) => {
           this.timesheetFilledDays.push(element.timesheet_date);
         });
@@ -136,10 +139,21 @@ export class TimesheetFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    console.log('Submitted', this.myForm);
-
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      console.log('VALIDATED');
+      this.apiSvc.post(AppConfig.apiUrl.addTimesheet, this.myForm.value).subscribe({
+        next: (response: any) => { 
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+          }
+        },
+        error: () => { 
+          this.loading = false;
+        },
+        complete: () => {
+          this.loading = false;
+        }
+      })
     }
     else {
       this.loading = false;
@@ -152,7 +166,7 @@ export class TimesheetFormComponent implements OnInit {
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
     console.log(date);
-    if (index < 0){
+    if (index < 0) {
       this.daysSelected.push(date);
       this.addTimeSheetDate(date);
     }
