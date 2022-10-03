@@ -8,7 +8,6 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
-import { ApiResponse } from 'src/app/@utils/models/apiResponse';
 @Component({
   selector: 'app-timesheet-form',
   templateUrl: './timesheet-form.component.html',
@@ -73,6 +72,7 @@ export class TimesheetFormComponent implements OnInit {
   });
   projectList: any;
   taskList: any;
+  timesheetData: any = [];
 
   constructor(
     private fb: FormBuilder,
@@ -102,12 +102,12 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((val: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
       this.holidaysFound = true;
-      this.projectList = val?.data?.projects;
-      this.taskList = val?.data?.tasks;
-      const holidays = val?.data?.holidays;
-      const optionalHolidays = val?.data?.optionalHolidays;
+      this.projectList = response?.data?.projects;
+      this.taskList = response?.data?.tasks;
+      const holidays = response?.data?.holidays;
+      const optionalHolidays = response?.data?.optionalHolidays;
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
           this.holidays.push(element.holiday_date);
@@ -127,9 +127,9 @@ export class TimesheetFormComponent implements OnInit {
     let options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
       this.entryFound = true;
-      const timesheetFilledData = response?.data?.data_rows;
-      if (timesheetFilledData.length > 0) {
-        timesheetFilledData.forEach((element: any) => {
+      this.timesheetData = response?.data?.data_rows;
+      if (this.timesheetData.length > 0) {
+        this.timesheetData.forEach((element: any) => {
           this.timesheetFilledDays.push(element.timesheet_date);
         });
       }
@@ -145,6 +145,7 @@ export class TimesheetFormComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
+            window.location.reload();
           }
         },
         error: () => { 

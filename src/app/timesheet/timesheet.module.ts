@@ -8,12 +8,14 @@ import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.co
 import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import { SharedModule } from '../@shared/shared.module';
 import { MaterialModule } from '../material.module';
+import { ViewTimesheetGridComponent } from './view-timesheet-grid/view-timesheet-grid.component';
 @NgModule({
   declarations: [
     TimesheetLayoutComponent,
     TimesheetFormComponent,
     ManageTimesheetComponent,
-    ViewTimesheetComponent
+    ViewTimesheetComponent,
+    ViewTimesheetGridComponent
   ],
   imports: [
     CommonModule,
