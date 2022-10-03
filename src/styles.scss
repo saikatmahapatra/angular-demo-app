@@ -170,3 +170,11 @@ label.optional {
     bottom: -2px;
     left: 0;
 }
+
+.ag-theme-alpine {
+    /* disable all borders */
+    --ag-borders: none;
+    /* then add back a border between rows */
+    --ag-borders-row: solid 1px;
+    --ag-row-border-color: #dee2e6;
+  }

@@ -14,11 +14,12 @@ import { Observable } from 'rxjs';
 export class ViewTimesheetComponent implements OnInit {
   timesheetData: any = [];
   columnDefs: ColDef[] = [
-    { headerName: 'Date', field: 'timesheet_date', resizable: true },
-    { headerName: 'Project Name', field: 'project_name', resizable: true },
-    { headerName: 'Task Name', field: 'task_name', resizable: true },
-    { headerName: 'Hours', field: 'task_name', resizable: true },
-    { headerName: 'Descr.', field: 'task_name', resizable: true }
+    { headerName: 'Date', field: 'timesheet_date', resizable: false },
+    { headerName: 'Project Name', field: 'project_name', resizable: false },
+    { headerName: 'Task Name', field: 'task_name', resizable: false },
+    { headerName: 'Hours', field: 'timesheet_hours', resizable: false },
+    { headerName: 'Descr.', field: 'timesheet_description', resizable: false },
+    { headerName: ' ', field: ' ', resizable: false }
   ];
   defaultColDef: ColDef = {
     sortable: true,
@@ -33,7 +34,7 @@ export class ViewTimesheetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.timesheetData();
+    this.getTimesheetData();
   }
 
   @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
@@ -51,7 +52,7 @@ export class ViewTimesheetComponent implements OnInit {
     queryParams = queryParams.append('userId', this.authSvc.getUserId());
     let options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
-      this.timesheetData = response;
+      this.timesheetData = response?.data?.data_rows;
     });
   }
 }
