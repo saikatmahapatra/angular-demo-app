@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view-timesheet-grid',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-timesheet-grid.component.scss']
 })
 export class ViewTimesheetGridComponent implements OnInit {
+
+  @Input() dataRow!: any;
 
   constructor() { }
 
