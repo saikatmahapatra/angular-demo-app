@@ -1,22 +1,4 @@
 <h1>Material Design</h1>
-
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log Tasks</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">View Time</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">1</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <app-view-timesheet-grid [dataRow]="timesheetData"></app-view-timesheet-grid>
-  </div>
-</div>
-
-
 <div class="small text-muted bg-light p-4 mb-3">
   <div class="font-weight-bold">Indicators:</div>
   <div class="d-flex justify-content-between">
@@ -48,6 +30,7 @@
       <div class="">Holiday</div>
     </div>
   </div>
+  <a [routerLink]="['view']" class="btn btn-secondary">View Timesheet</a>
 </div>
 <div class="row">
   <div class="col-md-10">
@@ -68,6 +51,7 @@
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
               Please select at least one date from the calendar.</div>
           </div>
+          
         </div>
         <div class="col-md-6">
           <div class="form-group">

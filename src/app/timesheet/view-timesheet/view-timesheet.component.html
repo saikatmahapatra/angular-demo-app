@@ -1,2 +1,9 @@
-<p>view-timesheet works!</p>
-{{timesheetData |json}}
+<ag-grid-angular
+   style="width: 100%; height: 100vh"
+   class="ag-theme-alpine"
+   [columnDefs]="columnDefs"
+   [defaultColDef]="defaultColDef"
+   [rowData]="timesheetData"
+   [rowSelection]="'multiple'"
+   [animateRows]="true"
+ ></ag-grid-angular>
