@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -79,7 +80,8 @@ export class TimesheetFormComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private authSvc: AuthService,
-    private alertSvc: AlertService
+    private alertSvc: AlertService,
+    private router: Router
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -189,6 +191,14 @@ export class TimesheetFormComponent implements OnInit {
     this.timeSheetDates.removeAt(index);
   }
 
+  clearDateSelection() {
+    this.daysSelected = [];
+    this.myForm.controls["timeSheetDates"].setValue([]);
+  }
+
+  viewTimesheetLog() {
+    this.router.navigate(['timesheet/view']);
+  }
 }
 
 
