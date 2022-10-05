@@ -62,6 +62,11 @@ const routes: Routes = [
         path: 'timesheet',
         canActivate: [AuthGuard],
         loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)
+      },
+      {
+        path: 'project',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
       }
 
     ]
