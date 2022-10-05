@@ -1,1 +1,39 @@
-<p>add-edit-project works!</p>
+<h1><span>{{title}}</span> Project</h1>
+<div class="row">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="action">
+            <div class="form-group">
+                <label class="required" for="projectNumber">Project Number/ID</label>
+                <input type="text" class="form-control" id="projectNumber" maxlength="10" formControlName="projectNumber">
+                <app-validation-error [control]="myForm.controls['projectNumber']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="required" for="projectName">Project Name</label>
+                <input type="text" class="form-control" id="projectName" formControlName="projectName" >
+                <app-validation-error [control]="myForm.controls['projectName']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="required" for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate" formControlName="startDate" maxlength="10">
+                    <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="required" for="endDate">End Date</label>
+                <input type="date" class="form-control" id="endDate" formControlName="endDate" maxlength="10">
+                    <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
+            </div>
+            <div class="form-group">
+                <label class="optional" for="description">Description</label>
+                <textarea class="form-control" id="description" formControlName="description"
+                    maxlength="180"></textarea>
+                <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a [routerLink]="['/user/profile']" class="btn btn-light mr-auto">Cancel</a>
+        </form>
+        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p>
+    </div>
+</div>
