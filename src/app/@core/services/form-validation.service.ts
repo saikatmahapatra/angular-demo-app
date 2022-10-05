@@ -38,7 +38,8 @@ export class FormValidationService {
       accountNoNotMatching: 'Confirm account no should match with Account no',
       userNameExists: 'This username is already registered',
       invalidPAN: 'Please enter a valid PAN number',
-      minLengthArray: 'Please select at least one date from the calendar.'
+      minLengthArray: 'Please select at least one date from the calendar.',
+      invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -115,6 +116,12 @@ export class FormValidationService {
 
   minLengthArray(control: AbstractControl) {
    return control.value?.length > 0 ? null : { 'minLengthArray': true };
+  }
+
+  alphaNumericWithSpace(control: AbstractControl) {
+    const regex = new RegExp(regEx.alphanumericWithSpaceAllowedChars);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidAlphaNumericWithSpace': true };
   }
 
 }

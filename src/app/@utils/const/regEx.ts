@@ -45,5 +45,6 @@ export const regEx = {
     dispute_charge_text: /^[^<>\"%]*$/,
     message_subject: /^[^=\"'<>]*$/,
     message_body: /^[^=\"'<>]*$/,
-    pan_number: /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/
+    pan_number: /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/,
+    alphanumericWithSpaceAllowedChars: /^[A-Za-z0-9\.\-\'\s,&()]*$/
 };
