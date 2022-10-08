@@ -11,6 +11,7 @@ export const AppConfig = {
         getUsers: 'user/users',
         dashboardStat: 'dashboardStat',
         getNews: 'news',
+        getContents: 'cms',
         userFormData: 'user/userFormData',
         addUser: 'user/users',
         editUser: 'user/users',
