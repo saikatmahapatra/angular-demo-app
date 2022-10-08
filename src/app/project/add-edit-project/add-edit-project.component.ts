@@ -17,6 +17,11 @@ export class AddEditProjectComponent implements OnInit {
   isAdd = true;
   title = 'Add';
 
+  DataStatus: Array<any> = [
+    { id: 'Y', name: 'Active' },
+    { id: 'N', name: 'Inactive' }
+  ];
+
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
@@ -24,7 +29,8 @@ export class AddEditProjectComponent implements OnInit {
     projectName: ['', [Validators.required, this.validator.alphaNumericWithSpace]],
     startDate: ['', [Validators.required]],
     endDate: ['', [Validators.required]],
-    description: ['']
+    description: [''],
+    status: ['Y', [Validators.required]]
   });
 
   constructor(
