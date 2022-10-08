@@ -21,6 +21,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { AgGridCellRendererActionButtonsComponent } from './components/ag-grid-cell-renderer-action-buttons/ag-grid-cell-renderer-action-buttons.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -47,7 +48,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     UiButtonComponent,
     SearchInputComponent,
     PaginationComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    AgGridCellRendererActionButtonsComponent
   ],
   providers: [],
   exports: [
@@ -68,7 +70,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     UiButtonComponent,
     SearchInputComponent,
     PaginationComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    AgGridCellRendererActionButtonsComponent
   ]
 })
 export class SharedModule {
