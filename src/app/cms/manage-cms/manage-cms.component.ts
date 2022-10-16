@@ -55,7 +55,7 @@ export class ManageCmsComponent implements OnInit {
   `
 })
 
-export class cellRendererActionButtons extends ManageCmsComponent implements ICellRendererAngularComp {
+export class cellRendererActionButtons implements ICellRendererAngularComp {
   private params!: ICellRendererParams;
 
   // gets called once before the renderer is used
