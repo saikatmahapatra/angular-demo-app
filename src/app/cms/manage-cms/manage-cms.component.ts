@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AgGridAngular, ICellRendererAngularComp } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridOptions, GridReadyEvent, ICellRendererParams } from 'ag-grid-community';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -18,7 +18,7 @@ export class ManageCmsComponent implements OnInit {
     //{ headerName: 'Updated On', field: 'content_updated_on', resizable: true },
     { headerName: 'Created By', field: 'content_created_by', resizable: true, cellRenderer: this.cellRendererCreatedBy },
     { headerName: 'Status', field: 'content_status', resizable: true },
-    { headerName: 'Action', field: '', resizable: false, cellRenderer: this.cellRendererActionButton }
+    { headerName: 'Action', field: '', resizable: false, cellRenderer: cellRendererActionButtons }
   ];
   defaultColDef: ColDef = {
     sortable: true,
@@ -27,8 +27,7 @@ export class ManageCmsComponent implements OnInit {
   totalRecords: any;
 
   constructor(
-    public apiSvc: ApiService,
-    private renderer: Renderer2
+    public apiSvc: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -46,15 +45,35 @@ export class ManageCmsComponent implements OnInit {
     return params.data?.user_firstname + ' ' + params.data?.user_lastname;
   }
 
-  cellRendererActionButton(params: ICellRendererParams) {
-    let btn = document.createElement('button');
-    btn.type = 'button';
-    btn.setAttribute('class', 'btn btn-sm btn-light');
-    btn.innerHTML = 'Edit';
-    btn.addEventListener('click', function(){ 
-      console.log(params.data);
-    })
-    return btn;
+}
+
+@Component({
+  selector: 'app-cell-renderer-action-buttons',
+  template: `
+    <button class="btn btn-light" (click)="editRowData()">Edit</button>
+    <button class="btn btn-light" (click)="deleteRowData()">Delete</button>
+  `
+})
+
+export class cellRendererActionButtons extends ManageCmsComponent implements ICellRendererAngularComp {
+  private params!: ICellRendererParams;
+
+  // gets called once before the renderer is used
+  agInit(params: ICellRendererParams): void {
+    this.params = params;
   }
 
+  // gets called whenever the cell refreshes
+  refresh(params: ICellRendererParams): boolean {
+    // set value into cell again
+    return true;
+  }
+
+  editRowData() {
+    console.log(this.params);
+  }
+
+  deleteRowData() {
+    console.log(this.params);
+  }
 }
