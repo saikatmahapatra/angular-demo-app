@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
@@ -46,7 +47,63 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
+      this.apiSvc.post(AppConfig.apiUrl.addProject, this.myForm.value).subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['project/manage']);
+          }
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    }
+    else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
+      this.apiSvc.put(AppConfig.apiUrl.updateProject, this.myForm.value).subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['project/manage']);
+          }
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    }
+    else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.myForm);
+    }
 
+  }
+
+  getAddress() {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('id', this.id);
+    const options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getAddress, options).subscribe((val: any) => {
+      this.patchFormValue(val?.data?.address[0]);
+    });
+  }
+
+  patchFormValue(data: any) {
+    this.myForm.patchValue({
+      id: data?.id,
+      action: 'edit',
+      addressType: data?.address_type,
+      addressLine1: data?.address,
+      addressLine2: data?.locality,
+      city: data?.city,
+      state: data?.state,
+      zip: data?.zip,
+      landmark: data?.landmark,
+      phone: data?.phone1
+    });
   }
 
 }

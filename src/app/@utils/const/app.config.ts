@@ -48,5 +48,13 @@ export const AppConfig = {
         addTimesheet: 'timesheet',
         updateTimesheet: 'timesheet',
         deleteTimesheet: 'timesheet',
+        getProject: 'project',
+        addProject: 'project',
+        updateProject: 'project',
+        deleteProject: 'project',
+        getTask: 'task',
+        addTask: 'task',
+        updateTask: 'task',
+        deleteTask: 'task'
     }
 };
