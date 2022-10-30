@@ -7,7 +7,6 @@ import { TimesheetFormComponent } from './timesheet-form/timesheet-form.componen
 import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.component';
 import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import { SharedModule } from '../@shared/shared.module';
-import { AgGridModule } from 'ag-grid-angular';
 import { MaterialModule } from '../material.module';
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { MaterialModule } from '../material.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
-    AgGridModule
+    MaterialModule
   ]
 })
 export class TimesheetModule { }

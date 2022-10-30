@@ -1,11 +1,28 @@
-<h1>AG Grid</h1>
-<button class="btn btn-light my-4" (click)="clearSelection()">Clear Selection</button>
-<ag-grid-angular
-   style="width: 100%; height: 100vh"
-   class="ag-theme-alpine"
-   [columnDefs]="columnDefs"
-   [defaultColDef]="defaultColDef"
-   [rowData]="timesheetData"
-   [rowSelection]="'multiple'"
-   [animateRows]="true"
- ></ag-grid-angular>
+<h1>Timesheet Data</h1>
+<div class="table-responsive">
+  <table class="table table-sm">
+      <thead>
+          <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Project</th>
+              <th scope="col">Task</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Descr.</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let data of timesheetData; let i = index">
+              <td>{{data?.timesheet_date}}</td>
+              <td>{{data?.project_name}}</td>
+              <td>{{data?.task_name}}</td>
+              <td>{{data?.timesheet_hours}}</td>
+              <td>{{data?.timesheet_description}}</td>
+              <td>
+                  <button class="btn btn-outline-secondary btn-sm">Edit</button>
+                  <button class="btn btn-outline-danger btn-sm mx-1">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

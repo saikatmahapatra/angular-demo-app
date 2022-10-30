@@ -7,7 +7,6 @@ import { CmsRoutingModule } from './cms-routing.module';
 import { CmsLayoutComponent } from './cms-layout.component';
 import { ManageCmsComponent } from './manage-cms/manage-cms.component';
 import { AddContentComponent } from './add-content/add-content.component';
-import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   imports: [
@@ -16,8 +15,7 @@ import { AgGridModule } from 'ag-grid-angular';
     SharedModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    AgGridModule
+    ReactiveFormsModule
   ],
   declarations: [
     CmsLayoutComponent,

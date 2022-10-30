@@ -1,10 +1,28 @@
 <h1>Manage Contents</h1>
-<ag-grid-angular
-   style="width: 100%; height: 100vh"
-   class="ag-theme-alpine"
-   [columnDefs]="columnDefs"
-   [defaultColDef]="defaultColDef"
-   [rowData]="dataRow"
-   [rowSelection]="'multiple'"
-   [animateRows]="true"
- ></ag-grid-angular>
+ <div class="table-responsive">
+  <table class="table table-sm">
+      <thead>
+          <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Type</th>
+              <th scope="col">Created On</th>
+              <th scope="col">Created By</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let data of dataRow; let i = index">
+              <td>{{data?.content_title}}</td>
+              <td>{{data?.content_type}}</td>
+              <td>{{data?.content_created_on}}</td>
+              <td>{{data?.content_created_by}}</td>
+              <td>{{data?.content_status}}</td>
+              <td>
+                <button class="btn btn-outline-secondary btn-sm">Edit</button>
+                <button class="btn btn-outline-danger btn-sm mx-1">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
