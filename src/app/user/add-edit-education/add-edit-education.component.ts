@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -24,7 +24,7 @@ export class AddEditEducationComponent implements OnInit {
   minYear = new Date().getFullYear() - 100;
   maxYear = new Date().getFullYear() + 2;
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router,

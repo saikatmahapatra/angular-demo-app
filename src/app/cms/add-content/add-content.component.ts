@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
   selector: 'app-add-content',
@@ -24,7 +24,7 @@ export class AddContentComponent implements OnInit {
   })
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private validationSvc: FormValidationService
   ) { }
 

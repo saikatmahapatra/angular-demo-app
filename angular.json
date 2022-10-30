@@ -115,6 +115,5 @@
         }
       }
     }
-  },
-  "defaultProject": "my-angular-app"
+  }
 }

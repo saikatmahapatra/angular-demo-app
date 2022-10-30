@@ -2,7 +2,7 @@
 import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
 import { KoreAiService } from './kore-ai.service';
-import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, UntypedFormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-kore-ai',
   templateUrl: './kore-ai.component.html',
@@ -11,7 +11,7 @@ import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@ang
 })
 export class KoreAiComponent implements OnInit {
   public hookResponse: any = [];
-  chatForm!: FormGroup; // Declare formGroup
+  chatForm!: UntypedFormGroup; // Declare formGroup
   conversation: string = '';
   isSubmitted = false;
   displayChatWindow = true;
@@ -50,7 +50,7 @@ export class KoreAiComponent implements OnInit {
     'siteId': 'ANGULAR'
   };
 
-  constructor(private _koreAiService: KoreAiService, private _formBuilder: FormBuilder) { }
+  constructor(private _koreAiService: KoreAiService, private _formBuilder: UntypedFormBuilder) { }
 
   ngOnInit() {
     //this.getWebHook();

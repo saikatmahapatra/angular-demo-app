@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormArray, FormGroup } from '@angular/forms';
 import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -76,7 +76,7 @@ export class TimesheetFormComponent implements OnInit {
   timesheetData: any = [];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private authSvc: AuthService,
@@ -95,7 +95,7 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   get timeSheetDates() {
-    return this.myForm.controls["timeSheetDates"] as FormArray;
+    return this.myForm.controls["timeSheetDates"] as UntypedFormArray;
   }
 
   ngOnInit(): void {

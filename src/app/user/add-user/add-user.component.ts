@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { min } from 'lodash';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
     employmentType: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private validator: FormValidationService,
+  constructor(private fb: UntypedFormBuilder, private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService) {
     this.getFormData();

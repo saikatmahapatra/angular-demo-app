@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators, FormArray, NgForm } from '@angular/forms';
+import { FormControl, UntypedFormBuilder, FormGroup, Validators, FormArray, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   loading = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private authSvc: AuthService,
     private alertSvc: AlertService,
     private route: ActivatedRoute,

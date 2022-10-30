@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../@core/services/common.service';
 import { ApiService } from '../../@core/services/api.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
@@ -14,14 +14,14 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class ManageUsersComponent implements OnInit {
 
-  public saveUserForm!: FormGroup;
+  public saveUserForm!: UntypedFormGroup;
   public submitted!: boolean;
   public events: any[] = [];
   public userList: any;
   public postData = {};
   subscription !: Subscription;
 
-  constructor(private apiSvc: ApiService, public formBuilder: FormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
+  constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
 
   }
 

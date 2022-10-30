@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { UntypedFormControl, UntypedFormBuilder, FormGroup, Validators, UntypedFormArray } from '@angular/forms';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 @Component({
   selector: 'app-reactive-form',
@@ -46,7 +46,7 @@ export class ReactiveFormComponent implements OnInit {
     note: ['']
   });
 
-  constructor(private fb: FormBuilder, private validator: FormValidationService) {
+  constructor(private fb: UntypedFormBuilder, private validator: FormValidationService) {
     this.conditionalValidation();
   }
 
@@ -58,9 +58,9 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   onCheckboxChange(e: any) {
-    const checkArray: FormArray = this.myForm.get('checkArraySkill') as FormArray;
+    const checkArray: UntypedFormArray = this.myForm.get('checkArraySkill') as UntypedFormArray;
     if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
+      checkArray.push(new UntypedFormControl(e.target.value));
     } else {
       let i: number = 0;
       checkArray.controls.forEach((item: any) => {
