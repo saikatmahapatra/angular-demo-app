@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddEditProjectComponent } from './add-edit-project/add-edit-project.component';
 import { AddEditTaskComponent } from './add-edit-task/add-edit-task.component';
+import { ManageProjectComponent } from './manage-project/manage-project.component';
 import { ProjectLayoutComponent } from './project-layout.component';
 
 const routes: Routes = [
   {
     path: '', component: ProjectLayoutComponent, children: [
-      { path: '', component: ProjectLayoutComponent },
+      { path: '', component: ManageProjectComponent },
       { path: 'add-project', component: AddEditProjectComponent },
       { path: 'add-task', component: AddEditTaskComponent }
     ]
