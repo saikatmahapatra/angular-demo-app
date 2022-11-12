@@ -68,7 +68,7 @@ export class AddEditProjectComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            this.router.navigate(['project/manage']);
+            this.router.navigate(['project']);
           }
         },
         error: () => { this.loading = false; },
