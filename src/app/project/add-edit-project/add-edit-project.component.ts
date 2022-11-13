@@ -116,4 +116,8 @@ export class AddEditProjectComponent implements OnInit {
     });
   }
 
+  redirect() {
+    this.router.navigate(['/project']);
+  }
+
 }

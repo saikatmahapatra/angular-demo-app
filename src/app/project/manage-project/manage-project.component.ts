@@ -1,4 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -11,7 +14,7 @@ export class ManageProjectComponent implements OnInit {
   dataRow: any;
   totalRecords: any;
 
-  constructor(public apiSvc: ApiService) { }
+  constructor(public apiSvc: ApiService, private alertSvc: AlertService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -24,8 +27,17 @@ export class ManageProjectComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
-    console.log(id);
+  delete(id: any) {
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(AppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
+      this.alertSvc.success(response.message);
+      this.getProjects();
+    });
   }
 
 }
