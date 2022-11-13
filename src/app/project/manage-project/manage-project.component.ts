@@ -24,4 +24,8 @@ export class ManageProjectComponent implements OnInit {
     });
   }
 
+  delete(id: number) {
+    console.log(id);
+  }
+
 }

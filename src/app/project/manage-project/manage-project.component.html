@@ -19,8 +19,8 @@
               <td>{{data?.project_desc}}</td>
               <td><span stausIndicator name="status" value="{{data?.project_status}}" [theme]="'none'"></span></td>
               <td>
-                <button class="btn btn-outline-secondary btn-sm">Edit</button>
-                <button class="btn btn-outline-danger btn-sm ml-1">Delete</button>
+                <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/project/edit-project/', data.id]">Edit</a>
+                <button class="btn btn-outline-danger btn-sm ml-1" (click)="delete(data.id)">Delete</button>
               </td>
           </tr>
       </tbody>

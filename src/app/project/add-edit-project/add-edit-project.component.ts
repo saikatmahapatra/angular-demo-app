@@ -44,6 +44,18 @@ export class AddEditProjectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.router.url.indexOf('edit-project') != -1) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.myForm.controls['action'].setValue('edit');
+    }
+
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
+    if (this.id) {
+      this.getProject();
+    }
   }
 
   onSubmit() {
@@ -82,12 +94,12 @@ export class AddEditProjectComponent implements OnInit {
 
   }
 
-  getAddress() {
+  getProject() {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.id);
     const options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getAddress, options).subscribe((val: any) => {
-      this.patchFormValue(val?.data?.address[0]);
+    this.apiSvc.get(AppConfig.apiUrl.getProject, options).subscribe((response: any) => {
+      this.patchFormValue(response.data.data_rows[0]);
     });
   }
 
@@ -95,14 +107,12 @@ export class AddEditProjectComponent implements OnInit {
     this.myForm.patchValue({
       id: data?.id,
       action: 'edit',
-      addressType: data?.address_type,
-      addressLine1: data?.address,
-      addressLine2: data?.locality,
-      city: data?.city,
-      state: data?.state,
-      zip: data?.zip,
-      landmark: data?.landmark,
-      phone: data?.phone1
+      projectNumber: data?.project_number,
+      projectName: data?.project_name,
+      startDate: data?.project_start_date,
+      endDate: data?.project_end_date,
+      description: data?.project_desc,
+      status: data?.project_status
     });
   }
 

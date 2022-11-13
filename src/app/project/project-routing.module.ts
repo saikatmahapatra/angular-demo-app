@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '', component: ProjectLayoutComponent, children: [
       { path: '', component: ManageProjectComponent },
       { path: 'add-project', component: AddEditProjectComponent },
+      { path: 'edit-project/:id', component: AddEditProjectComponent },
       { path: 'add-task', component: AddEditTaskComponent }
     ]
   },
