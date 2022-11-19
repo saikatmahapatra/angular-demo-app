@@ -8,6 +8,7 @@ import { AddEditTaskComponent } from './add-edit-task/add-edit-task.component';
 import { ProjectLayoutComponent } from './project-layout.component';
 import { SharedModule } from '../@shared/shared.module';
 import { ManageProjectComponent } from './manage-project/manage-project.component';
+import { ManageTaskComponent } from './manage-task/manage-task.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ManageProjectComponent } from './manage-project/manage-project.componen
     AddEditProjectComponent,
     AddEditTaskComponent,
     ProjectLayoutComponent,
-    ManageProjectComponent
+    ManageProjectComponent,
+    ManageTaskComponent
   ],
   imports: [
     CommonModule,

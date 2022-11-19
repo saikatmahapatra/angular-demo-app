@@ -1,1 +1,40 @@
-<p>add-edit-task works!</p>
+<h1><span>{{title}}</span> Task</h1>
+<div class="row">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="action">
+            <div class="form-group">
+                <label class="required" for="taskName">Task Name</label>
+                <input type="text" class="form-control" id="taskName" formControlName="taskName">
+                <app-validation-error [control]="myForm.controls['taskName']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="optional" for="parentTaskId">Parent Task</label>
+                <select class="form-control" id="parentTaskId" formControlName="parentTaskId">
+                    <option value="">-</option>
+                    <option *ngFor="let data of taskDropdown" [value]="data.id" [innerHTML]="data.name"></option>
+                </select>
+                <app-validation-error [control]="myForm.controls['parentTaskId']"></app-validation-error>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="status">Status</label>
+                <div>
+                    <div class="form-check form-check-inline" *ngFor="let data of DataStatus; let i=index">
+                        <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.id}}"
+                            formControlName="status">
+                        <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                    </div>
+                </div>
+                <app-validation-error [control]="myForm.controls['status']"></app-validation-error>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-light" (click)="redirect()">Cancel</button>
+        </form>
+        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p>
+    </div>
+</div>

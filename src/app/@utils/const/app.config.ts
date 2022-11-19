@@ -52,6 +52,7 @@ export const AppConfig = {
         addProject: 'project',
         updateProject: 'project',
         deleteProject: 'project',
+        taskFormData: 'task/formData',
         getTask: 'task',
         addTask: 'task',
         updateTask: 'task',
