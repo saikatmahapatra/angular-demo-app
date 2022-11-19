@@ -15,8 +15,8 @@ export class AddEditPayrollInfoComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['edit'],
-    panNo: [null, [Validators.required, this.validator.validPAN]],
-    uanNo: [null, [Validators.required]],
+    panNo: [null, [this.validator.validPAN]],
+    uanNo: [null, []],
     bank: [null, Validators.required],
     ifscCode: [null, Validators.required],
     accountNo: [null, [Validators.required, this.validator.matchValidator('confirmAccountNo', true)]],

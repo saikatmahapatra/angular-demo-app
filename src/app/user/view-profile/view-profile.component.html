@@ -148,8 +148,8 @@
                                 <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
                                         class="btn btn-light btn-sm mt-0 mr-2"><span
                                                 class="material-symbols-outlined md-16">edit</span> Edit</a>
-                                <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><span
-                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                                <!-- <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><span
+                                                class="material-symbols-outlined md-16">delete</span> Delete</a> -->
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
