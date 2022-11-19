@@ -1,197 +1,205 @@
 <h1>Profile</h1>
 <ng-container>
-<img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
-<h2 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
-<div>{{userInfo?.designation_name}}</div>
-<div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-<div>{{userInfo?.user_phone1}}</div>
+        <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP">
+        <h2 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
+        <div>{{userInfo?.designation_name}}</div>
+        <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+        <div>{{userInfo?.user_phone1}}</div>
 
-<section class="my-4">
-        <h3 class="my-2">Basic Info</h3>
-        <dl class="row">
-                <dt class="col-md-4 col-lg-3">Employee ID</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
-                <dt class="col-md-4 col-lg-3">Designation</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
-                <dt class="col-md-4 col-lg-3">Employment Type</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
-                <dt class="col-md-4 col-lg-3">Department</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.department_name}}</dd>
-                <dt class="col-md-4 col-lg-3">Date of Joining</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
-                <dt class="col-md-4 col-lg-3">Personal Email</dt>
-                <dd class="col-md-8 col-lg-9"><a
-                                href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
-                </dd>
-                <dt class="col-md-4 col-lg-3">Personal Phone</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
-                <dt class="col-md-4 col-lg-3">Date of Birth</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
-                <dt class="col-md-4 col-lg-3">Gender</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
-                <dt class="col-md-4 col-lg-3">Blood Group</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
-        </dl>
-        <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
-                        class="material-symbols-outlined md-16">edit</span> Edit Basic Information</a>
-
-
-</section>
-
-<section class="my-4">
-        <h3 class="my-2">Address</h3>
-        <div class="my-3" *ngFor="let addr of addressInfo">
-                <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
-                <address>
-                        {{addr?.address}}, {{addr?.locality}}, {{addr?.city}}, {{addr?.state_name}}, {{addr?.zip}} <br>
-                        Phone: {{addr?.phone1}} <br>
-                        Landmark: {{addr?.landmark}}
-                </address>
-                <div class="mt-1">
-                        <a *ngIf="selfAccount" [routerLink]="['/user/edit-address/', addr.id]" class="btn btn-light btn-sm mt-0 mr-2"><span
-                                        class="material-symbols-outlined md-16">edit</span> Edit</a>
-
-                        <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)" class="btn btn-light btn-sm mt-0"><span
-                                        class="material-symbols-outlined md-16">delete</span> Delete</a>
-                </div>
-        </div>
-        <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
-                <div class="text-muted">
-                        <span
-                        class="material-symbols-outlined">info</span> You have not added any of your communication address. You can add it by clicking below "Add" button.
-                </div>
-        </div>
-        <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add </a>
-</section>
-
-<section class="my-4">
-        <h3 class="my-2">Education</h3>
-
-        <div class="my-3" *ngFor="let education of educationInfo">
-                <h6>{{education?.qualification_name}} - {{education?.degree_name}}; {{education?.academic_to_year}}</h6>
-                <div [innerHTML]="education.specialization_name"></div>
-                <div [innerHTML]="education.institute_name"></div>
-                <div>{{education.academic_marks_percentage}}%</div>
-                <div class="mt-1" *ngIf="selfAccount">
-                        <a [routerLink]="['/user/edit-education/', education.id]"
-                                class="btn btn-light btn-sm mt-0 mr-2"><span
-                                        class="material-symbols-outlined md-16">edit</span> Edit</a>
-                        <a (click)="deleteEducation(education.id)" class="btn btn-light btn-sm mt-0"><span
-                                        class="material-symbols-outlined md-16">delete</span> Delete</a>
-                </div>
-        </div>
-        <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
-                <div class="text-muted">
-                        <span
-                        class="material-symbols-outlined">info</span> You have not added any of your education details. You can add it by clicking below "Add" button.
-                </div>
-        </div>
-        <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add </a>
-</section>
-
-<section class="my-4">
-        <h3 class="my-2">Experience</h3>
-        <div class="my-3">
-                <h6>{{userInfo?.designation_name}}</h6>
-                <div [innerHTML]="orgName"></div>
-                <div class="text-muted">{{userInfo?.user_doj | date:'d-MMM-y'}} - {{userInfo?.user_dor ?
-                        userInfo.user_dor : 'Present'}}</div>
-        </div>
-
-        <div class="my-3" *ngFor="let exp of workExp">
-                <h6>{{exp?.designation_name}}</h6>
-                <div [innerHTML]="exp.company_name"></div>
-                <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date: 'd-MMM-y'}}</div>
-                <div *ngIf="selfAccount" class="mt-1">
-                        <a [routerLink]="['/user/edit-work-experience/', exp.id]"
-                                class="btn btn-light btn-sm mt-0 mr-2"><span
-                                        class="material-symbols-outlined md-16">edit</span> Edit</a>
-                        <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm mt-0"><span
-                                        class="material-symbols-outlined md-16">delete</span> Delete</a>
-                </div>
-        </div>
-
-        <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
-                <div class="text-muted">
-                        <span
-                        class="material-symbols-outlined">info</span> You have not added any prior work experience details. If you have any prior experience you can add it by clicking below "Add" button.
-                </div>
-        </div>
-
-        <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add </a>
-</section>
-
-<section class="my-4">
-        <h3 class="my-2">Payroll Info</h3>
-        <div class="my-3">
+        <section class="my-4">
+                <h3 class="my-2">Basic Info</h3>
                 <dl class="row">
-                        <dt class="col-md-4 col-lg-3">PAN No</dt>
-                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_pan_no}}</dd>
-                        <dt class="col-md-4 col-lg-3">UAN No</dt>
-                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_uan_no}}</dd>
+                        <dt class="col-md-4 col-lg-3">Employee ID</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
+                        <dt class="col-md-4 col-lg-3">Designation</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
+                        <dt class="col-md-4 col-lg-3">Employment Type</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
+                        <dt class="col-md-4 col-lg-3">Department</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.department_name}}</dd>
+                        <dt class="col-md-4 col-lg-3">Date of Joining</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
+                        <dt class="col-md-4 col-lg-3">Personal Email</dt>
+                        <dd class="col-md-8 col-lg-9"><a
+                                        href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
+                        </dd>
+                        <dt class="col-md-4 col-lg-3">Personal Phone</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
+                        <dt class="col-md-4 col-lg-3">Date of Birth</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
+                        <dt class="col-md-4 col-lg-3">Gender</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
+                        <dt class="col-md-4 col-lg-3">Blood Group</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
                 </dl>
-        </div>
-        <div class="my-3" *ngFor="let payroll of payrollInfo">
-                <h6>{{payroll?.bank_name}}</h6>
-                <div [innerHTML]="payroll.bank_account_no"></div>
-                <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
-                <div *ngIf="selfAccount" class="mt-1">
-                        <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
-                                class="btn btn-light btn-sm mt-0 mr-2"><span
-                                        class="material-symbols-outlined md-16">edit</span> Edit</a>
-                        <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><span
-                                        class="material-symbols-outlined md-16">delete</span> Delete</a>
-                </div>
-        </div>
-        <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
-                <div class="text-muted">
-                        <span
-                        class="material-symbols-outlined">info</span> You have not added any Payroll information. You can add it by clicking below "Add" button.
-                </div>
-        </div>
-        <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add </a>
-</section>
+                <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
+                                class="material-symbols-outlined md-16">edit</span> Edit Basic Information</a>
 
-<section class="my-4">
-        <h3 class="my-2">Emergency Contacts</h3>
-        <div class="my-3" *ngFor="let contact of emergencyContact">
-                <h6>{{contact?.contact_person_name}}</h6>
-                <div class="text-muted" [innerHTML]="contact.relationship"></div>
-                <div>{{contact?.contact_person_address}}</div>
-                <div>Phone: {{contact?.contact_person_phone1}}</div>
-                <div *ngIf="selfAccount" class="mt-1">
-                        <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
-                                class="btn btn-light btn-sm mt-0 mr-2"><span
-                                        class="material-symbols-outlined md-16">edit</span> Edit</a>
-                        <a (click)="deleteContact(contact.id)" class="btn btn-light btn-sm mt-0"><span
-                                        class="material-symbols-outlined md-16">delete</span> Delete</a>
-                </div>
-        </div>
-        <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
-                <div class="text-muted">
-                        <span
-                        class="material-symbols-outlined">info</span> You have not added any of your emergency contact information. You can add it by clicking below "Add" button.
-                </div>
-        </div>
-        <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']" class="btn btn-success btn-sm"><span
-                        class="material-symbols-outlined md-16">add</span> Add </a>
-</section>
 
-<section class="my-4">
-        <h3 class="my-2">Other</h3>
-        <dl class="row">
-                <dt class="col-md-4 col-lg-3">Account Status</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_status}}</dd>
-                <dt class="col-md-4 col-lg-3">Role/Access</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
-                <dt class="col-md-4 col-lg-3">User Since</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'full'}}</dd>
-                <dt class="col-md-4 col-lg-3">Last Login</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'full'}}</dd>
-        </dl>
-</section>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Address</h3>
+                <div class="my-3" *ngFor="let addr of addressInfo">
+                        <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
+                        <address>
+                                {{addr?.address}}, {{addr?.locality}}, {{addr?.city}}, {{addr?.state_name}},
+                                {{addr?.zip}} <br>
+                                Phone: {{addr?.phone1}} <br>
+                                Landmark: {{addr?.landmark}}
+                        </address>
+                        <div class="mt-1">
+                                <a *ngIf="selfAccount" [routerLink]="['/user/edit-address/', addr.id]"
+                                        class="btn btn-light btn-sm mt-0 mr-2"><span
+                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+
+                                <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)"
+                                        class="btn btn-light btn-sm mt-0"><span
+                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                        </div>
+                </div>
+                <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
+                        <div class="text-muted">
+                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                communication address. You can add it by clicking below "Add" button.
+                        </div>
+                </div>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
+                                class="material-symbols-outlined md-16">add</span> Add </a>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Education</h3>
+
+                <div class="my-3" *ngFor="let education of educationInfo">
+                        <h6>{{education?.qualification_name}} - {{education?.degree_name}};
+                                {{education?.academic_to_year}}</h6>
+                        <div [innerHTML]="education.specialization_name"></div>
+                        <div [innerHTML]="education.institute_name"></div>
+                        <div>{{education.academic_marks_percentage}}%</div>
+                        <div class="mt-1" *ngIf="selfAccount">
+                                <a [routerLink]="['/user/edit-education/', education.id]"
+                                        class="btn btn-light btn-sm mt-0 mr-2"><span
+                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                                <a (click)="deleteEducation(education.id)" class="btn btn-light btn-sm mt-0"><span
+                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                        </div>
+                </div>
+                <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
+                        <div class="text-muted">
+                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                education details. You can add it by clicking below "Add" button.
+                        </div>
+                </div>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
+                                class="material-symbols-outlined md-16">add</span> Add </a>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Experience</h3>
+                <div class="my-3">
+                        <h6>{{userInfo?.designation_name}}</h6>
+                        <div [innerHTML]="orgName"></div>
+                        <div class="text-muted">{{userInfo?.user_doj | date:'d-MMM-y'}} - {{userInfo?.user_dor ?
+                                userInfo.user_dor : 'Present'}}</div>
+                </div>
+
+                <div class="my-3" *ngFor="let exp of workExp">
+                        <h6>{{exp?.designation_name}}</h6>
+                        <div [innerHTML]="exp.company_name"></div>
+                        <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date:
+                                'd-MMM-y'}}</div>
+                        <div *ngIf="selfAccount" class="mt-1">
+                                <a [routerLink]="['/user/edit-work-experience/', exp.id]"
+                                        class="btn btn-light btn-sm mt-0 mr-2"><span
+                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                                <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm mt-0"><span
+                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                        </div>
+                </div>
+
+                <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
+                        <div class="text-muted">
+                                <span class="material-symbols-outlined">info</span> You have not added any prior work
+                                experience details. If you have any prior experience you can add it by clicking below
+                                "Add" button.
+                        </div>
+                </div>
+
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
+                                class="material-symbols-outlined md-16">add</span> Add </a>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Payroll Info</h3>
+                <div class="my-3">
+                        <dl class="row">
+                                <dt class="col-md-4 col-lg-3">PAN No</dt>
+                                <dd class="col-md-8 col-lg-9">{{userInfo?.user_pan_no}}</dd>
+                                <dt class="col-md-4 col-lg-3">UAN No</dt>
+                                <dd class="col-md-8 col-lg-9">{{userInfo?.user_uan_no}}</dd>
+                        </dl>
+                </div>
+                <div class="my-3" *ngFor="let payroll of payrollInfo">
+                        <h6>{{payroll?.bank_name}}</h6>
+                        <div [innerHTML]="payroll.bank_account_no"></div>
+                        <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
+                        <div *ngIf="selfAccount" class="mt-1">
+                                <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
+                                        class="btn btn-light btn-sm mt-0 mr-2"><span
+                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                                <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><span
+                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                        </div>
+                </div>
+                <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
+                        <div class="text-muted">
+                                <span class="material-symbols-outlined">info</span> You have not added any Payroll
+                                information. You can add it by clicking below "Add" button.
+                        </div>
+                </div>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
+                                class="material-symbols-outlined md-16">add</span> Add </a>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Emergency Contacts</h3>
+                <div class="my-3" *ngFor="let contact of emergencyContact">
+                        <h6>{{contact?.contact_person_name}}</h6>
+                        <div class="text-muted" [innerHTML]="contact.relationship"></div>
+                        <div>{{contact?.contact_person_address}}</div>
+                        <div>Phone: {{contact?.contact_person_phone1}}</div>
+                        <div *ngIf="selfAccount" class="mt-1">
+                                <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
+                                        class="btn btn-light btn-sm mt-0 mr-2"><span
+                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                        </div>
+                </div>
+                <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
+                        <div class="text-muted">
+                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                emergency contact information. You can add it by clicking below "Add" button.
+                        </div>
+                </div>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']"
+                        class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add </a>
+        </section>
+
+        <section class="my-4">
+                <h3 class="my-2">Account Information</h3>
+                <dl class="row">
+                        <dt class="col-md-4 col-lg-3">Account Status</dt>
+                        <dd class="col-md-8 col-lg-9">
+                                <span *ngIf="userInfo?.user_status === 'Y' " class="text-success"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">check</span> Active</span>
+                                <span *ngIf="userInfo?.user_status === 'N' " class="text-danger"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">lock</span> Inactive</span>
+                                <span *ngIf="userInfo?.user_status === 'A' " class="text-danger"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">close</span> Archived</span>
+                        </dd>
+                        <dt class="col-md-4 col-lg-3">Role/Access</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+                        <dt class="col-md-4 col-lg-3">User Since</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'full'}}</dd>
+                        <dt class="col-md-4 col-lg-3">Last Login</dt>
+                        <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'full'}}</dd>
+                </dl>
+        </section>
 </ng-container>
