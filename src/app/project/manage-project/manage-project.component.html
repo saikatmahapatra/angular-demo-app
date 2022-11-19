@@ -23,7 +23,7 @@
               <td>{{data?.project_start_date}}</td>
               <td>{{data?.project_end_date}}</td>
               <td>{{data?.project_desc}}</td>
-              <td><span stausIndicator name="status" value="{{data?.project_status}}" [theme]="'none'"></span></td>
+              <td [innerHTML]="data?.project_status === 'Y' ? 'Active': 'Inactive'"></td>
               <td>
                 <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/project/edit-project/', data.id]">Edit</a>
                 <button class="btn btn-outline-danger btn-sm ml-1" (click)="delete(data.id)">Delete</button>
