@@ -61,7 +61,7 @@
                 <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
                         <div class="text-muted">
                                 <span class="material-symbols-outlined">info</span> You have not added any of your
-                                communication address. You can add it by clicking below "Add" button.
+                                communication address.
                         </div>
                 </div>
                 <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
@@ -88,7 +88,7 @@
                 <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
                         <div class="text-muted">
                                 <span class="material-symbols-outlined">info</span> You have not added any of your
-                                education details. You can add it by clicking below "Add" button.
+                                education details.
                         </div>
                 </div>
                 <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
@@ -121,8 +121,7 @@
                 <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
                         <div class="text-muted">
                                 <span class="material-symbols-outlined">info</span> You have not added any prior work
-                                experience details. If you have any prior experience you can add it by clicking below
-                                "Add" button.
+                                experience details.
                         </div>
                 </div>
 
@@ -155,7 +154,7 @@
                 <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
                         <div class="text-muted">
                                 <span class="material-symbols-outlined">info</span> You have not added any Payroll
-                                information. You can add it by clicking below "Add" button.
+                                information.
                         </div>
                 </div>
                 <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
@@ -178,7 +177,7 @@
                 <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
                         <div class="text-muted">
                                 <span class="material-symbols-outlined">info</span> You have not added any of your
-                                emergency contact information. You can add it by clicking below "Add" button.
+                                emergency contact information.
                         </div>
                 </div>
                 <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']"
@@ -190,9 +189,10 @@
                 <dl class="row">
                         <dt class="col-md-4 col-lg-3">Account Status</dt>
                         <dd class="col-md-8 col-lg-9">
-                                <span *ngIf="userInfo?.user_status === 'Y' " class="text-success"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">check</span> Active</span>
-                                <span *ngIf="userInfo?.user_status === 'N' " class="text-danger"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">lock</span> Inactive</span>
-                                <span *ngIf="userInfo?.user_status === 'A' " class="text-danger"><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16">close</span> Archived</span>
+                                <span *ngIf="userInfo?.user_status === 'Y' " class="">
+                                        <span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-success">check</span> Active</span> 
+                                <span *ngIf="userInfo?.user_status === 'N' " class=""><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-danger">lock</span> Inactive</span>
+                                <span *ngIf="userInfo?.user_status === 'A' " class=""><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-danger">close</span> Archived</span>
                         </dd>
                         <dt class="col-md-4 col-lg-3">Role/Access</dt>
                         <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
