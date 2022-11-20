@@ -40,23 +40,22 @@ export class TimesheetFormComponent implements OnInit {
     const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
     const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
     const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
-    console.log('selected=>', dateCell[0]);
     // Only highligh dates inside the month view.
     const date = cellDate.getDate();
     // if (view === 'month' && (date === 1 || date === 20)) {
     //   cellClass += ' yellow ';
     // }
 
-    if (isSelected) {
+    if (view === 'month' && isSelected) {
       cellClass += ' selected ';
     }
-    if (isFilled) {
+    if (view === 'month' && isFilled) {
       cellClass += ' time-filled ';
     }
-    if (isHoliday) {
+    if (view === 'month' && isHoliday) {
       cellClass += ' holiday ';
     }
-    if (isOptionalHoliday) {
+    if (view === 'month' && isOptionalHoliday) {
       cellClass += ' optional-holiday ';
     }
     return cellClass;
