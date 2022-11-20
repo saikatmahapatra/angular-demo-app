@@ -7,7 +7,7 @@
     </h6>
     <div id="c1" class="show" aria-labelledby="h1" data-parent="#accordionSidebar">
       <ul class="nav flex-column mb-2">
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/']">
             <span class="material-symbols-outlined align-middle">
               dashboard
@@ -15,7 +15,7 @@
             Dashboard
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/pages/about-us']">
             <span class="material-symbols-outlined align-middle">
               info
@@ -23,7 +23,7 @@
             About Us
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/pages/our-services']">
             <span class="material-symbols-outlined align-middle">
               task
@@ -31,7 +31,7 @@
             Our Services
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/cms']">
             <span class="material-symbols-outlined align-middle">
               pages
@@ -39,7 +39,7 @@
             CMS
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/timesheet']">
             <span class="material-symbols-outlined align-middle">
               task
@@ -47,7 +47,7 @@
             Timesheet
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/project']">
             <span class="material-symbols-outlined align-middle">
               task
@@ -55,7 +55,7 @@
             Project
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/project/manage-tasks']">
             <span class="material-symbols-outlined align-middle">
               task
@@ -75,7 +75,7 @@
     </h6>
     <div id="c3" class="collapse" aria-labelledby="h3" data-parent="#accordionSidebar">
       <ul class="nav flex-column mb-2">
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/user/add']">
             <span class="material-symbols-outlined align-middle">
               person_add
@@ -83,7 +83,7 @@
             Add Customer
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/user/manage']">
             <span class="material-symbols-outlined align-middle">
               group
@@ -103,7 +103,7 @@
     </h6>
     <div id="c10" class="collapse" aria-labelledby="h10" data-parent="#accordionSidebar">
       <ul class="nav flex-column mb-2">
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/user/profile']">
             <span class="material-symbols-outlined align-middle">
               manage_accounts
@@ -111,7 +111,7 @@
             My Profile
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/user/change-password']">
             <span class="material-symbols-outlined align-middle">
               key
@@ -119,7 +119,7 @@
             Change Password
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="closeSideBar()">
           <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}">
             <span class="material-symbols-outlined align-middle">
               logout
