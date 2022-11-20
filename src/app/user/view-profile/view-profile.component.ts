@@ -107,7 +107,16 @@ export class ViewProfileComponent implements OnInit {
   }
 
   deletePayrollInfo(id: any) {
-
+    let queryParams = new HttpParams();
+    if (id) {
+      queryParams = queryParams.append('id', id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(AppConfig.apiUrl.deletePayroll, options).subscribe((response: any) => {
+      this.alertSvc.success(response.message);
+      this.getProfileData();
+    });
   }
 
   deleteContact(id: any) {
