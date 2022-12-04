@@ -167,7 +167,6 @@ export class TimesheetFormComponent implements OnInit {
   select(event: any, calendar: any) {
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
-    console.log(date);
     if (index < 0) {
       this.daysSelected.push(date);
       this.addTimeSheetDate(date);
