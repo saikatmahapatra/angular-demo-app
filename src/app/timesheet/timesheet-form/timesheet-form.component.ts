@@ -178,6 +178,19 @@ export class TimesheetFormComponent implements OnInit {
     calendar.updateTodaysDate();
   }
 
+  monthChange(event: any, calendar: any) {
+    const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
+    console.log('Month Change ', date)
+  }
+
+  nextClicked(calendar: any, $event: any, obj: any) {
+    console.log("nextClicked");
+  }
+
+  previousClicked(calendar: any, $event: any, obj: any) {
+    console.log("previousClicked");
+  }
+
   addTimeSheetDate(date: string) {
     const form = this.fb.group({
       date: [date, Validators.required]

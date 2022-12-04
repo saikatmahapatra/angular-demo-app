@@ -43,7 +43,8 @@
             <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
             <mat-card class="demo-inline-calendar-card">
               <mat-calendar *ngIf="entryFound" [startAt]="minCalDate" #calendar
-                (selectedChange)="select($event, calendar)" [dateClass]="dateClass">
+                (selectedChange)="select($event, calendar)" [dateClass]="dateClass" (monthSelected)="monthChange($event, calendar)" (nextClicked)="nextClicked(calendar, $event, this)" 
+                (previousClicked)="previousClicked(calendar, $event, this)">
               </mat-calendar>
             </mat-card>
             <div class="invalid-feedback d-block"
