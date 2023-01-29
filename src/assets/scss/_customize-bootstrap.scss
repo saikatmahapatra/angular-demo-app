@@ -1,13 +1,9 @@
-//-------------------------------------------------------------------------------
 // Override Bootstrap framework's variables here (before importing Bootstrap's _variables.scss)
-//-------------------------------------------------------------------------------
-// @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-// @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
-// Bootstrap defined color variables
+
+
 //$primary: #0c63b9;
 // Customize typographic styles
- $font-size-base: 0.9375rem;
+$font-size-base: 0.9375rem;
 //$small-font-size: 0.875rem;
 // $font-family-sans-serif: 'Roboto',
 // -apple-system,
@@ -23,3 +19,4 @@
 //form-control, button padding like lg
 //$input-btn-padding-y: .5rem !default;
 //$input-btn-padding-x: 1rem !default;
+$link-decoration: none;

@@ -39,9 +39,11 @@
 
       <div class="collapse" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
-          <li><a [routerLink]="['/user/add']" class="d-inline-flex align-items-center rounded">Add New Customer</a>
+          <li><a [routerLink]="['/user/add']" class="d-inline-flex align-items-center rounded"><span
+            class="material-symbols-outlined md-20 align-middle me-1">person_add</span> Add New Customer</a>
           </li>
-          <li><a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center rounded">Customer
+          <li><a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center rounded"><span
+            class="material-symbols-outlined md-20 align-middle me-1">group</span> Customer
               Management</a></li>
         </ul>
       </div>
@@ -60,6 +62,7 @@
           <li><a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center rounded me-1">
               <span class="material-symbols-outlined md-20 align-middle">key</span> Change Password</a>
           </li>
+          <li><a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center rounded">Change Supervisor</a></li>
           <li><a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
               class="d-inline-flex align-items-center rounded me-1">
               <span class="material-symbols-outlined md-20 align-middle">logout</span> Logout</a>

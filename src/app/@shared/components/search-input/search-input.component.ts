@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-search-input',
@@ -6,12 +7,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent implements OnInit {
-
   @Output() inputValue = new EventEmitter<string>();
   @Input() resetInput!: boolean;
+  @Input() placeHolderText = '';
   value = '';
-  constructor() { 
-    if(this.resetInput) {
+  constructor() {
+    if (this.resetInput) {
       this.resetInputValue();
     }
   }
@@ -19,12 +20,16 @@ export class SearchInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getVal(value: string){
+  getVal(value: string) {
     this.inputValue.emit(value);
   }
 
   resetInputValue() {
     this.value = '';
+  }
+
+  onSubmit(f: NgForm) {
+    console.log('Form', f);
   }
 
 }

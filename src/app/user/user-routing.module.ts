@@ -14,6 +14,7 @@ import { UploadDocComponent } from './upload-doc/upload-doc.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-payroll-info.component';
+import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: 'upload-profile-photo', component: UploadPhotoComponent },
       { path: 'upload-documents', component: UploadDocComponent },
       { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'change-approvers', component: EditApproversComponent },
     ]
   },
 

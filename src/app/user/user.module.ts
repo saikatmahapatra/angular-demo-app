@@ -18,6 +18,7 @@ import { AddEditExperienceComponent } from './add-edit-experience/add-edit-exper
 import { AddEditEmergencyContactComponent } from './add-edit-emergency-contact/add-edit-emergency-contact.component';
 import { AddEditBasicInfoComponent } from './add-edit-basic-info/add-edit-basic-info.component';
 import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-payroll-info.component';
+import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-pa
     AddEditExperienceComponent,
     AddEditEmergencyContactComponent,
     AddEditBasicInfoComponent,
-    AddEditPayrollInfoComponent
+    AddEditPayrollInfoComponent,
+    EditApproversComponent
   ]
 })
 export class UserModule { }

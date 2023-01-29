@@ -57,6 +57,8 @@ export const AppConfig = {
         getTask: 'task',
         addTask: 'task',
         updateTask: 'task',
-        deleteTask: 'task'
+        deleteTask: 'task',
+        searchUser: 'user/search',
+        approvers: 'user/approvers'
     }
 };
