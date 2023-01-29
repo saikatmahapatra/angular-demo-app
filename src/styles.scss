@@ -1,33 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'assets/scss/customize-bootstrap';
-@import "assets/scss/vars";
-@import '../node_modules/bootstrap/scss/bootstrap';
+// Custom.scss
+// Option A: Include all of Bootstrap
 
+// Include any default variable overrides here (though functions won't be available)
+@import "assets/scss/customize-bootstrap";
+@import "assets/scss/vars";
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
 @import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 @import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    // font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
 }
+
 .material-symbols-outlined {
     vertical-align: middle;
-    &.md-16 { font-size: 16px; }
-    &.md-18 { font-size: 18px; }
-    &.md-24 { font-size: 24px; }
-    &.md-36 { font-size: 36px; }
-    &.md-48 { font-size: 48px; }
-    &.md-dark { color: rgba(0, 0, 0, 0.54); }
-    &.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-    &.md-light { color: rgba(255, 255, 255, 1); }
-    &.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+    &.md-16 {
+        font-size: 16px;
+    }
+
+    &.md-18 {
+        font-size: 18px;
+    }
+
+    &.md-24 {
+        font-size: 24px;
+    }
+
+    &.md-36 {
+        font-size: 36px;
+    }
+
+    &.md-48 {
+        font-size: 48px;
+    }
+
+    &.md-dark {
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    &.md-dark.md-inactive {
+        color: rgba(0, 0, 0, 0.26);
+    }
+
+    &.md-light {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    &.md-light.md-inactive {
+        color: rgba(255, 255, 255, 0.3);
+    }
 }
+
 .navbar-dark {
     background-color: #000 !important;
 }
@@ -99,6 +140,7 @@ label.optional {
                     }
                 }
             }
+
             &[aria-expanded="true"] {
                 .col-exp-icon {
                     &::after {
@@ -147,6 +189,7 @@ label.optional {
 .card-top-border {
     border-top: 4px solid $primary;
 }
+
 .card-header {
     font-weight: bold;
 }
@@ -160,6 +203,7 @@ label.optional {
     background: linear-gradient(to bottom, $from 0%, $to 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to})
 }
+
 .colorgraph-navbar::after {
     content: "";
     height: 5px;
@@ -177,4 +221,4 @@ label.optional {
     /* then add back a border between rows */
     --ag-borders-row: solid 1px;
     --ag-row-border-color: #dee2e6;
-  }
+}
