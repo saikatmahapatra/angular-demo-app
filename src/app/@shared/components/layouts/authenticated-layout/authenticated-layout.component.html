@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <app-navbar></app-navbar>
   <div class="row">
-    <nav id="sidebar-wrapper" class="col bg-light"  [ngClass]="{ 'toggled': !(showSideNav | async) }">
+    <nav id="sidebar-wrapper" class="bg-light" data-bs-theme="light"  [ngClass]="{ 'toggled': !(showSideNav | async) }">
       <div class="sidebar-sticky">
         <app-sidebar></app-sidebar>
       </div>

@@ -1,133 +1,71 @@
-<div class="accordion" id="accordionSidebar">
-  <div class="sidebar-nav-section">
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center" id="h1" data-bs-toggle="collapse"
-      data-bs-target="#c1" aria-expanded="true" aria-controls="c1">
-      <span>Overview</span>
-      <span class="d-flex align-items-center col-exp-icon"></span>
-    </h6>
-    <div id="c1" class="show" aria-labelledby="h1" data-parent="#accordionSidebar">
-      <ul class="nav flex-column mb-2">
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/']">
-            <span class="material-symbols-outlined align-middle">
-              dashboard
-            </span>
-            Dashboard
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/pages/about-us']">
-            <span class="material-symbols-outlined align-middle">
-              info
-            </span>
-            About Us
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/pages/our-services']">
-            <span class="material-symbols-outlined align-middle">
-              task
-            </span>
-            Our Services
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/cms']">
-            <span class="material-symbols-outlined align-middle">
-              pages
-            </span>
-            CMS
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/timesheet']">
-            <span class="material-symbols-outlined align-middle">
-              task
-            </span>
-            Timesheet
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/project']">
-            <span class="material-symbols-outlined align-middle">
-              task
-            </span>
-            Project
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/project/manage-tasks']">
-            <span class="material-symbols-outlined align-middle">
-              task
-            </span>
-            Project Tasks
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="sidebar-nav-section">
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center" id="h3" data-bs-toggle="collapse"
-      data-bs-target="#c3" aria-expanded="false" aria-controls="c3">
-      <span>Customers</span>
-      <span class="d-flex align-items-center col-exp-icon"></span>
-    </h6>
-    <div id="c3" class="collapse" aria-labelledby="h3" data-parent="#accordionSidebar">
-      <ul class="nav flex-column mb-2">
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/user/add']">
-            <span class="material-symbols-outlined align-middle">
-              person_add
-            </span>
-            Add Customer
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/user/manage']">
-            <span class="material-symbols-outlined align-middle">
-              group
-            </span>
-            Manage Customers
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<div class="sbar-links ms-2 my-3">
+  <ul class="list-unstyled mb-0 py-3 pt-md-1">
+    <li class="mb-1">
+      <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse"
+        data-bs-target="#getting-started-collapse" aria-expanded="true">
+        Getting started
+      </button>
 
-  <div class="sidebar-nav-section">
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center" id="h10" data-bs-toggle="collapse"
-      data-bs-target="#c10" aria-expanded="false" aria-controls="c10">
-      <span>My Account</span>
-      <span class="d-flex align-items-center col-exp-icon"></span>
-    </h6>
-    <div id="c10" class="collapse" aria-labelledby="h10" data-parent="#accordionSidebar">
-      <ul class="nav flex-column mb-2">
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/user/profile']">
-            <span class="material-symbols-outlined align-middle">
-              manage_accounts
-            </span>
-            My Profile
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/user/change-password']">
-            <span class="material-symbols-outlined align-middle">
-              key
-            </span>
-            Change Password
-          </a>
-        </li>
-        <li class="nav-item" (click)="closeSideBar()">
-          <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}">
-            <span class="material-symbols-outlined align-middle">
-              logout
-            </span>
-            Logout
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+      <div class="collapse show" id="getting-started-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li (click)="closeSideBar()"><a [routerLink]="['/']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">dashboard</span> Dashboard</a></li>
+          <li><a [routerLink]="['/pages/about-us']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">info</span> About
+              Us</a>
+          </li>
+          <li><a [routerLink]="['/pages/our-services']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">task</span> Our
+              Services</a>
+          </li>
+          <li><a [routerLink]="['/cms']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">pages</span> CMS</a></li>
+          <li><a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">calendar_month</span> Timesheet</a></li>
+          <li><a [routerLink]="['/project']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">task_alt</span> Project</a>
+          </li>
+          <li><a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center rounded"><span
+                class="material-symbols-outlined md-20 align-middle me-1">task</span> Task</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+        data-bs-target="#customize-collapse" aria-expanded="false">
+        Customers
+      </button>
+
+      <div class="collapse" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li><a [routerLink]="['/user/add']" class="d-inline-flex align-items-center rounded">Add New Customer</a>
+          </li>
+          <li><a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center rounded">Customer
+              Management</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse"
+        data-bs-target="#layout-collapse" aria-expanded="false">
+        My Account
+      </button>
+
+      <div class="collapse" id="layout-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li><a [routerLink]="['/user/profile']" class="d-inline-flex align-items-center rounded">
+              <span class="material-symbols-outlined md-20 align-middle me-1">manage_accounts</span> Profile</a>
+          </li>
+          <li><a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center rounded me-1">
+              <span class="material-symbols-outlined md-20 align-middle">key</span> Change Password</a>
+          </li>
+          <li><a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
+              class="d-inline-flex align-items-center rounded me-1">
+              <span class="material-symbols-outlined md-20 align-middle">logout</span> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>
