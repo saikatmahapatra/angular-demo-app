@@ -1,9 +1,9 @@
 <div class="row">
     <ng-container *ngFor="let stat of stats; let index=index">
         <div class="col-md-6 my-1">
-            <span class="material-symbols-outlined align-middle mr-1" [attr.style]="stat?.iconCss">{{stat?.icon}}</span>
-            <span class="mr-1">{{stat?.count}}</span>
-            <span class="mr-1">{{stat?.heading}}</span>
+            <span class="material-symbols-outlined align-middle me-1" [attr.style]="stat?.iconCss">{{stat?.icon}}</span>
+            <span class="me-1">{{stat?.count}}</span>
+            <span class="me-1">{{stat?.heading}}</span>
         </div>
         <div class="w-100" *ngIf="(index+1) % 2 === 0"></div>
     </ng-container>

@@ -25,7 +25,7 @@
                 <textarea class="form-control" id="contentDescription" formControlName="contentDescription"></textarea>
                 <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
             <button type="button" class="btn btn-secondary">Cancel</button>
         </form>
         <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>

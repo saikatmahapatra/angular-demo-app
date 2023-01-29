@@ -1,7 +1,7 @@
 <h1>Manage Projects</h1>
 
 <div class="my-4">
-    <a [routerLink]="['add-project']" class="btn btn-sm btn-success mr-auto">Add Projects</a>
+    <a [routerLink]="['add-project']" class="btn btn-sm btn-success me-auto">Add Projects</a>
     <!-- <a [routerLink]="['../task/add-task']" class="btn btn-sm btn-success">Add Task</a> -->
 </div>
 
@@ -26,7 +26,7 @@
               <td [innerHTML]="data?.project_status === 'Y' ? 'Active': 'Inactive'"></td>
               <td>
                 <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/project/edit-project/', data.id]">Edit</a>
-                <button class="btn btn-outline-danger btn-sm ml-1" (click)="delete(data.id)">Delete</button>
+                <button class="btn btn-outline-danger btn-sm ms-1" (click)="delete(data.id)">Delete</button>
               </td>
           </tr>
       </tbody>

@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark fixed-top colorgraph-navbar">
+<nav class="navbar navbar-expand fixed-top bg-body-secondary" data-bs-theme="dark">
     <div>
-        <button class="btn mr-2 text-white" (click)="toggleSideNav()" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" aria-expanded="false">
+        <button class="btn me-2 text-white" (click)="toggleSideNav()" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" aria-expanded="false">
             <span class="material-symbols-outlined align-middle">menu</span>
         </button>
         <a class="navbar-brand" [routerLink]="['/']">{{brandName}}</a>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/']">
                     <span class="material-symbols-outlined">settings</span>
