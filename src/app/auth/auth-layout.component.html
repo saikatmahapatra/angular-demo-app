@@ -1,10 +1,16 @@
-<div class="row justify-content-center align-items-center">
-  <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <div class="text-center mb-4">
-      <img style="width: 80px;" src="assets/img/angular.png" alt="logo" />
-      <h4>Project name</h4>
-    </div>
-    <app-alert-message></app-alert-message>
-    <router-outlet></router-outlet>
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="col-md-6">
+    <img src="assets/img/undraw_remotely_2j6y.svg" class="img-fluid" alt="img">
   </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-9">
+        <img class="my-4" style="width: 64px;" src="assets/img/angular.png" alt="logo" />
+        <app-alert-message></app-alert-message>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+  </div>
+  <app-footer></app-footer>
 </div>

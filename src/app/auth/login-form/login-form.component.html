@@ -1,28 +1,26 @@
-<div class="card card-top-border">
-    <div class="card-body">
-        <h5 class="card-title text-center">Sign in to your account</h5>
-        <form [formGroup]="loginForm" class="app-form" (ngSubmit)="onSubmit()">
-            <div class="form-row mb-2">
-                <div class="col">
-                    <label for="userName">Username</label>
-                    <input type="text" class="form-control" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
-                    <app-validation-error [control]="f['userName']"></app-validation-error>
-                </div>
-            </div>
-        
-            <div class="form-row mb-2">
-                <div class="col">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                    <app-validation-error [control]="f['password']"></app-validation-error>
-                </div>
-            </div>
-        
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Sign In
-            </button>
-            <div class="mt-3"><a routerLink="../forgot-password" class="my-3">Forgot Password?</a></div>
-        </form>
+<h1>Sign in to continue</h1>
+<form [formGroup]="loginForm" class="app-form" (ngSubmit)="onSubmit()">
+    <div class="form-row mb-2">
+        <div class="col">
+            <label for="userName">Username</label>
+            <input type="text" class="form-control" formControlName="userName"
+                [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+            <app-validation-error [control]="f['userName']"></app-validation-error>
+        </div>
     </div>
-</div>
+
+    <div class="form-row mb-2">
+        <div class="col">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            <app-validation-error [control]="f['password']"></app-validation-error>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Sign In
+    </button>
+    <div class="mt-3"><a routerLink="../forgot-password" class="my-3">Forgot Password?</a></div>
+</form>
