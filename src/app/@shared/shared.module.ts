@@ -22,6 +22,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
+import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -49,7 +50,8 @@ import { StatusIndicatorDirective } from './directives/status-indicator.directiv
     SearchInputComponent,
     PaginationComponent,
     FileUploadComponent,
-    StatusIndicatorDirective
+    StatusIndicatorDirective,
+    ThemeSwitchComponent
   ],
   providers: [],
   exports: [
@@ -71,7 +73,8 @@ import { StatusIndicatorDirective } from './directives/status-indicator.directiv
     SearchInputComponent,
     PaginationComponent,
     FileUploadComponent,
-    StatusIndicatorDirective
+    StatusIndicatorDirective,
+    ThemeSwitchComponent
   ]
 })
 export class SharedModule {

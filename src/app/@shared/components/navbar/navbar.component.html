@@ -1,27 +1,31 @@
 <nav class="navbar navbar-expand fixed-top bg-body-secondary" data-bs-theme="dark">
-    <div>
-        <button class="btn me-2 text-white" (click)="toggleSideNav()" type="button" data-bs-toggle="collapse" aria-label="Toggle navigation" aria-expanded="false">
-            <span class="material-symbols-outlined align-middle">menu</span>
-        </button>
-        <a class="navbar-brand" [routerLink]="['/']">{{brandName}}</a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">
-                    <span class="material-symbols-outlined">settings</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">
-                    <span class="material-symbols-outlined">help</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/user/profile']">
-                    <span class="material-symbols-outlined">account_circle</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <button class="btn me-2 text-white" (click)="toggleSideNav()" type="button" data-bs-toggle="collapse"
+      aria-label="Toggle navigation" aria-expanded="false">
+      <span class="material-symbols-outlined align-middle">menu</span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/']">{{brandName}}</a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">
+          <span class="material-symbols-outlined">settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">
+          <span class="material-symbols-outlined">help</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user/profile']">
+          <span class="material-symbols-outlined">account_circle</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <app-theme-switch></app-theme-switch>
+      </li>
+    </ul>
+  </div>
 </nav>
