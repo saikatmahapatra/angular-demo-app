@@ -1,7 +1,7 @@
-<div *ngIf="message" class="d-flex align-items-center" [ngClass]="message.cssClass" >
-    <ng-container *ngIf="message.icon == 'success' "><span class="material-symbols-outlined">done</span></ng-container>
-    <ng-container *ngIf="message.icon == 'error' "><span class="material-symbols-outlined">error</span></ng-container>
-    <ng-container *ngIf="message.icon == 'info' "><span class="material-symbols-outlined">info</span></ng-container>
-    <ng-container *ngIf="message.icon == 'warning' "><span class="material-symbols-outlined">warning</span></ng-container>
-    <span class="ms-2" [innerHTML]="message.text"></span>
+<div *ngIf="message" class="d-flex align-items-center" [ngClass]="message.cssClass">
+  <app-icon *ngIf="message.icon == 'success' " [name]="'check-circle'"></app-icon>
+  <app-icon *ngIf="message.icon == 'error' " [name]="'exclamation-circle'"></app-icon>
+  <app-icon *ngIf="message.icon == 'info' " [name]="'info-circle'"></app-icon>
+  <app-icon *ngIf="message.icon == 'warning' " [name]="'exclamation-triangle'"></app-icon>
+  <span class="ms-2" [innerHTML]="message.text"></span>
 </div>

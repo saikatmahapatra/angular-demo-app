@@ -1,5 +1,3 @@
 <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
 <button class="btn btn-success" (click)="fileUpload.click()">
-  <span class="material-symbols-outlined">
-    file_upload
-  </span> Upload File</button>
+  <app-icon class="me-2" [name]="'upload'"></app-icon> Upload File</button>

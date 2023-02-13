@@ -2,7 +2,7 @@
     <input [value]="value" type="text" class="form-control" [placeholder]="placeHolderText" #searchInput (keyup.enter)="getVal(searchInput.value)">
     <div class="input-group-append">
       <button class="btn btn-secondary" type="button" (click)="getVal(searchInput.value)">
-        <span _ngcontent-aqh-c67="" class="material-symbols-outlined align-middle">search</span>
+        <app-icon [name]="'search'"></app-icon>
       </button>
     </div>
   </div>
