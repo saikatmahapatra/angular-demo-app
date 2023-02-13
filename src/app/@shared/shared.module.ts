@@ -7,7 +7,7 @@ import { CheckCapsLockDirective } from './directives/check-caps-lock.directive';
 import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
 import { MaskPipe } from './pipes/mask.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DefaultLayoutComponent } from './components/layouts/default-layout/default-layout.component';
 import { UnauthenticatedLayoutComponent } from './components/layouts/unauthenticated-layout/unauthenticated-layout.component';
@@ -37,7 +37,7 @@ import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.comp
     MaskPipe,
     OrderByPipe,
     CheckCapsLockDirective,
-    NavbarComponent,
+    HeaderComponent,
     FooterComponent,
     ValidationErrorComponent,
     DefaultLayoutComponent,
@@ -60,7 +60,7 @@ import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.comp
     MaskPipe,
     OrderByPipe,
     CheckCapsLockDirective,
-    NavbarComponent,
+    HeaderComponent,
     FooterComponent,
     ValidationErrorComponent,
     DefaultLayoutComponent,
