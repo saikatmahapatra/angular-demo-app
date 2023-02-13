@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
 import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
+import { IconComponent } from './components/icon/icon.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -51,7 +52,8 @@ import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.comp
     PaginationComponent,
     FileUploadComponent,
     StatusIndicatorDirective,
-    ThemeSwitchComponent
+    ThemeSwitchComponent,
+    IconComponent
   ],
   providers: [],
   exports: [
@@ -74,8 +76,10 @@ import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.comp
     PaginationComponent,
     FileUploadComponent,
     StatusIndicatorDirective,
-    ThemeSwitchComponent
-  ]
+    ThemeSwitchComponent,
+    IconComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {
 }
