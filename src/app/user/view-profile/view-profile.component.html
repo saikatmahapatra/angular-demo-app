@@ -32,8 +32,7 @@
                         <dt class="col-md-4 col-lg-3">Blood Group</dt>
                         <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
                 </dl>
-                <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><span
-                                class="material-symbols-outlined md-16">edit</span> Edit Basic Information</a>
+                <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light btn-sm"><app-icon [name]="'pencil-square'"></app-icon> Edit Basic Information</a>
 
 
         </section>
@@ -50,22 +49,19 @@
                         </address>
                         <div class="mt-1">
                                 <a *ngIf="selfAccount" [routerLink]="['/user/edit-address/', addr.id]"
-                                        class="btn btn-light btn-sm mt-0 me-2"><span
-                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                                        class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
 
                                 <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)"
-                                        class="btn btn-light btn-sm mt-0"><span
-                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                                        class="btn btn-light btn-sm mt-0"> Delete</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
                         <div class="text-muted">
-                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                <app-icon [name]="'info-circle'"></app-icon> You have not added any of your
                                 communication address.
                         </div>
                 </div>
-                <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><span
-                                class="material-symbols-outlined md-16">add</span> Add </a>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-address']" class="btn btn-success btn-sm"><app-icon [name]="'plus'"></app-icon> Add </a>
         </section>
 
         <section class="my-4">
@@ -79,20 +75,17 @@
                         <div>{{education.academic_marks_percentage}}%</div>
                         <div class="mt-1" *ngIf="selfAccount">
                                 <a [routerLink]="['/user/edit-education/', education.id]"
-                                        class="btn btn-light btn-sm mt-0 me-2"><span
-                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
-                                <a (click)="deleteEducation(education.id)" class="btn btn-light btn-sm mt-0"><span
-                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                                        class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                <a (click)="deleteEducation(education.id)" class="btn btn-light btn-sm mt-0"><app-icon [name]="'trash3'"></app-icon> Delete</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
                         <div class="text-muted">
-                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                <app-icon [name]="'info-circle'"></app-icon> You have not added any of your
                                 education details.
                         </div>
                 </div>
-                <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><span
-                                class="material-symbols-outlined md-16">add</span> Add </a>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-education']" class="btn btn-success btn-sm"><app-icon [name]="'plus'"></app-icon> Add </a>
         </section>
 
         <section class="my-4">
@@ -111,22 +104,19 @@
                                 'd-MMM-y'}}</div>
                         <div *ngIf="selfAccount" class="mt-1">
                                 <a [routerLink]="['/user/edit-work-experience/', exp.id]"
-                                        class="btn btn-light btn-sm mt-0 me-2"><span
-                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
-                                <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm mt-0"><span
-                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                                        class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm mt-0"><app-icon [name]="'trash3'"></app-icon> Delete</a>
                         </div>
                 </div>
 
                 <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
                         <div class="text-muted">
-                                <span class="material-symbols-outlined">info</span> You have not added any prior work
+                                <app-icon [name]="'info-circle'"></app-icon> You have not added any prior work
                                 experience details.
                         </div>
                 </div>
 
-                <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><span
-                                class="material-symbols-outlined md-16">add</span> Add </a>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-work-experience']" class="btn btn-success btn-sm"><app-icon [name]="'plus'"></app-icon> Add </a>
         </section>
 
         <section class="my-4">
@@ -145,20 +135,17 @@
                         <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
                         <div *ngIf="selfAccount" class="mt-1">
                                 <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
-                                        class="btn btn-light btn-sm mt-0 me-2"><span
-                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
-                                <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><span
-                                                class="material-symbols-outlined md-16">delete</span> Delete</a>
+                                        class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm mt-0"><app-icon [name]="'trash3'"></app-icon> Delete</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
                         <div class="text-muted">
-                                <span class="material-symbols-outlined">info</span> You have not added any Payroll
+                                <app-icon [name]="'info-circle'"></app-icon> You have not added any Payroll
                                 information.
                         </div>
                 </div>
-                <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><span
-                                class="material-symbols-outlined md-16">add</span> Add </a>
+                <a *ngIf="selfAccount" [routerLink]="['/user/add-payroll-info']" class="btn btn-success btn-sm"><app-icon [name]="'plus'"></app-icon> Add </a>
         </section>
 
         <section class="my-4">
@@ -170,18 +157,17 @@
                         <div>Phone: {{contact?.contact_person_phone1}}</div>
                         <div *ngIf="selfAccount" class="mt-1">
                                 <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
-                                        class="btn btn-light btn-sm mt-0 me-2"><span
-                                                class="material-symbols-outlined md-16">edit</span> Edit</a>
+                                        class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
                         <div class="text-muted">
-                                <span class="material-symbols-outlined">info</span> You have not added any of your
+                                <app-icon [name]="'info-circle'"></app-icon> You have not added any of your
                                 emergency contact information.
                         </div>
                 </div>
                 <a *ngIf="selfAccount" [routerLink]="['/user/add-emergency-contact']"
-                        class="btn btn-success btn-sm"><span class="material-symbols-outlined md-16">add</span> Add </a>
+                        class="btn btn-success btn-sm"><app-icon [name]="'plus'"></app-icon> Add </a>
         </section>
 
         <section class="my-4">
@@ -190,9 +176,9 @@
                         <dt class="col-md-4 col-lg-3">Account Status</dt>
                         <dd class="col-md-8 col-lg-9">
                                 <span *ngIf="userInfo?.user_status === 'Y' " class="">
-                                        <span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-success">check</span> Active</span> 
-                                <span *ngIf="userInfo?.user_status === 'N' " class=""><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-danger">lock</span> Inactive</span>
-                                <span *ngIf="userInfo?.user_status === 'A' " class=""><span _ngcontent-bgm-c80="" class="material-symbols-outlined md-16 text-danger">close</span> Archived</span>
+                                        <app-icon class="text-success" [name]="'check-circle-fill'"></app-icon> Active</span> 
+                                <span *ngIf="userInfo?.user_status === 'N' " class=""><app-icon class="text-danger" [name]="'lock-fill'"></app-icon> Inactive</span>
+                                <span *ngIf="userInfo?.user_status === 'A' " class=""><app-icon class="text-danger" [name]="'person-x-fill'"></app-icon> Archived</span>
                         </dd>
                         <dt class="col-md-4 col-lg-3">Role/Access</dt>
                         <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
