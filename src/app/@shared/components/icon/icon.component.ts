@@ -6,12 +6,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
+  @Input() lib: string | undefined;
   @Input() name: string | undefined;
   @Input() width: number | undefined;
   @Input() height: number | undefined;
   @Input() fill: string | undefined;
 
   constructor() {
+    this.lib = this.lib ? this.lib : 'bootstrap-icon';
     this.name = this.name ? this.name : 'info';
     this.width = this.width ? this.width : 18;
     this.height = this.height ? this.height : 18;
