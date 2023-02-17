@@ -1,9 +1,0 @@
-// Import Bootstrap variables for use within theme
-@import "../../../node_modules/bootstrap/scss/functions.scss";
-@import "../../../node_modules/bootstrap/scss/variables.scss";
-//-----------------------------------------------------------------------------------
-// Custom user defined variables- You can use Bootstrap defined functions, variables
-//-----------------------------------------------------------------------------------
-$light_blue: lighten($blue, 30%);
-$from_color: #7fcc03;
-$to_color: #cf1180;
