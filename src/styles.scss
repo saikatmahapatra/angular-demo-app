@@ -99,6 +99,8 @@ label.optional {
     }
 }
 
+
+// Sidebar & Main Content wrapper
 #sidebar-wrapper {
     position: fixed;
     top: 0;
@@ -122,37 +124,6 @@ label.optional {
         padding-top: 0.5rem;
         overflow-x: hidden;
         overflow-y: auto;
-
-        .sidebar-nav-section {
-            margin: 10px 0px;
-        }
-
-        .sidebar-heading {
-            font-weight: 400;
-            padding: 0.5rem 0.75rem;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-bottom: 0px;
-
-            &[aria-expanded="false"] {
-                .col-exp-icon {
-                    &::after {
-                        //content: '+';
-                        content: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.95 6 3.665 1.548a.418.418 0 0 1 0-.587.408.408 0 0 1 .581 0l4.698 4.745a.418.418 0 0 1 0 .587l-4.698 4.745a.408.408 0 0 1-.581 0 .418.418 0 0 1 0-.587L7.95 6z'/%3E%3C/svg%3E");
-                        width: 16px;
-                        height: 16px;
-                    }
-                }
-            }
-
-            &[aria-expanded="true"] {
-                .col-exp-icon {
-                    &::after {
-                        content: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.451 3.665c.163-.161.425-.161.587 0s.163.421 0 .581L6.293 8.944a.418.418 0 0 1-.587 0L.961 4.246a.408.408 0 0 1 0-.581.418.418 0 0 1 .587 0L6 7.95l4.451-4.285z'/%3E%3C/svg%3E");
-                    }
-                }
-            }
-        }
     }
 
     &.toggled {
@@ -186,6 +157,17 @@ label.optional {
     }
 }
 
+@include color-mode(light) {
+  #sidebar-wrapper {
+    background-color: darken($white, 2%);
+  }
+}
+@include color-mode(dark) {
+  #sidebar-wrapper {
+    background-color: darken(#212529, 2%);
+  }
+}
+// End of Sidebar & Main Content wrapper
 
 .card-top-border {
     border-top: 4px solid $primary;
@@ -222,54 +204,4 @@ label.optional {
     /* then add back a border between rows */
     --ag-borders-row: solid 1px;
     --ag-row-border-color: #dee2e6;
-}
-
-.sbar-links {
-    .btn {
-        padding: 0.25rem 0.5rem;
-        font-weight: 600;
-        //color: rgba(0, 0, 0, 0.65);
-        //background-color: transparent;
-        border: 0;
-
-        &:hover {
-            //color: rgba(0, 0, 0, 0.85);
-            //background-color: rgba(121, 82, 179, 0.1);
-        }
-
-        &:focus {
-            //color: rgba(0, 0, 0, 0.85);
-            //background-color: rgba(121, 82, 179, 0.1);
-            //box-shadow: 0 0 0 1px rgb(121 82 179 / 70%);
-        }
-
-        &:focus:not(:focus-visible) {
-            outline: 0;
-        }
-
-        // &::before {
-        //     width: 1.25em;
-        //     line-height: 0;
-        //     content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-        //     transition: transform 0.35s ease;
-        //     transform-origin: 0.5em 50%;
-        // }
-
-        // &[aria-expanded="true"]::before {
-        //     transform: rotate(90deg);
-        // }
-    }
-
-    a {
-        padding: 0.1875rem 0.5rem;
-        margin-top: 0.125rem;
-        margin-left: 1.25rem;
-        color: inherit;
-        text-decoration: none;
-
-        &:hover {
-            //color: rgba(0, 0, 0, 0.85);
-            background-color: rgba(121, 82, 179, 0.1);
-        }
-    }
 }
