@@ -1,42 +1,12 @@
-.demo-inline-calendar-card {
-  max-width: 300px;
+// @import 'src/assets/scss/_customized-bootstrap-vars';
+
+// .p-datepicker table td.p-datepicker-today {
+//   span {
+//     color: $white !important;
+//     background: lighten($primary, 20%) !important;
+//   }
+// }
+.date-filled {
+  color: green;
+  font-weight: bold;
 }
-
-.mat-calendar-body-cell.selected {
-  background: #3f51b5 !important;
-  border-radius: 100%;
-  .mat-calendar-body-cell-content {
-    color: #fff;
-  }
-}
-
-.mat-calendar-body-cell.yellow {
-  background: lighten(#ffa500, 20%);
-  border-radius: 100%;
-
-  .mat-calendar-body-cell-content {
-    border-color: #ffa500;
-  }
-}
-
-.mat-calendar-body-cell.time-filled {
-  background: #aef0b9;
-  border-radius: 100%;
-
-  .mat-calendar-body-cell-content {
-    border-color: darken(#aef0b9, 30%);
-  }
-}
-
-.mat-calendar-body-cell.optional-holiday {
-  .mat-calendar-body-cell-content {
-    border-color: #ffa500;
-  }
-}
-
-.mat-calendar-body-cell.holiday {
-  .mat-calendar-body-cell-content {
-    border-color: red;
-  }
-}
-

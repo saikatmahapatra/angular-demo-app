@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormArray, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -16,12 +16,14 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class TimesheetFormComponent implements OnInit {
   date1!: Date;
+  dates: Date[] | undefined;
+  maxDateCount = 3;
   userId!: null;
   submitted = false;
   loading = false;
   selected!: Date | null;
   daysSelected: any[] = [];
-  timesheetFilledDays: any[] = [];
+  timesheetFilledDays: number[] = [];
   holidays: any[] = [];
   optionalHolidays: any[] = [];
   event: any;
@@ -30,36 +32,8 @@ export class TimesheetFormComponent implements OnInit {
   minCalDate = new Date();
   holidaysFound = false;
   entryFound = false;
-  //@ViewChild("calendar", { static: false }) matCal: MatDatepicker<any> | undefined;
-  //https://stackblitz.com/edit/angular-8-material-starter-template-nv9r4w?file=src%2Fapp%2Fapp.component.ts
-
-  // dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-  //   let cellClass = '';
-  //   const dateCell = cellDate.getFullYear() + "-" + ("00" + (cellDate.getMonth() + 1)).slice(-2) + "-" + ("00" + cellDate.getDate()).slice(-2);
-  //   const isSelected = this.daysSelected.find(x => x == dateCell) ? true : false;
-  //   const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
-  //   const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
-  //   const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
-  //   // Only highligh dates inside the month view.
-  //   const date = cellDate.getDate();
-  //   // if (view === 'month' && (date === 1 || date === 20)) {
-  //   //   cellClass += ' yellow ';
-  //   // }
-
-  //   if (view === 'month' && isSelected) {
-  //     cellClass += ' selected ';
-  //   }
-  //   if (view === 'month' && isFilled) {
-  //     cellClass += ' time-filled ';
-  //   }
-  //   if (view === 'month' && isHoliday) {
-  //     cellClass += ' holiday ';
-  //   }
-  //   if (view === 'month' && isOptionalHoliday) {
-  //     cellClass += ' optional-holiday ';
-  //   }
-  //   return cellClass;
-  // };
+  month: number = 0;
+  year: number = 0;
 
   myForm = this.fb.group({
     id: [null],
@@ -80,17 +54,24 @@ export class TimesheetFormComponent implements OnInit {
     private apiSvc: ApiService,
     private authSvc: AuthService,
     private alertSvc: AlertService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) {
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 20, 0, 1);
-    this.maxDate = new Date(currentYear + 1, 11, 31);
-
-    //this.getFormData();
-
-    //this.timesheetFilledDays = ["2022-09-07", "2022-09-08"];
-    //this.holidays = ["2022-09-25", "2022-09-22"];
-    //this.optionalHolidays = [];
+    let today = new Date();
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    let prevMonth = (month === 0) ? 11 : month - 1;
+    let prevYear = (prevMonth === 11) ? year - 1 : year;
+    let nextMonth = (month === 11) ? 0 : month + 1;
+    let nextYear = (nextMonth === 0) ? year + 1 : year;
+    this.minDate = new Date();
+    this.minDate.setMonth(prevMonth);
+    this.minDate.setFullYear(prevYear);
+    this.maxDate = new Date();
+    this.maxDate.setMonth(nextMonth);
+    this.maxDate.setFullYear(nextYear);
+    this.month = month + 1;
+    this.year = year;
   }
 
   get timeSheetDates() {
@@ -103,6 +84,8 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   getFormData() {
+    this.holidays = [];
+    this.optionalHolidays = [];
     this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
       this.holidaysFound = true;
       this.projectList = response?.data?.projects;
@@ -111,7 +94,7 @@ export class TimesheetFormComponent implements OnInit {
       const optionalHolidays = response?.data?.optionalHolidays;
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
-          this.holidays.push(element.holiday_date);
+          this.holidays.push(Number(element.holiday_date));
         });
       }
       if (optionalHolidays.length > 0) {
@@ -123,15 +106,19 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   getTimesheetData() {
+    this.timesheetFilledDays = [];
     let queryParams = new HttpParams();
     queryParams = queryParams.append('userId', this.authSvc.getUserId());
+    queryParams = queryParams.append('month', this.month);
+    queryParams = queryParams.append('year', this.year);
     let options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
       this.entryFound = true;
       this.timesheetData = response?.data?.data_rows;
       if (this.timesheetData.length > 0) {
         this.timesheetData.forEach((element: any) => {
-          this.timesheetFilledDays.push(element.timesheet_date);
+          let dayDate = element.timesheet_date.split('-'); // YYYY-MM-DD
+          this.timesheetFilledDays.push(Number(dayDate[2]));
         });
       }
     });
@@ -142,14 +129,14 @@ export class TimesheetFormComponent implements OnInit {
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addTimesheet, this.myForm.value).subscribe({
-        next: (response: any) => { 
+        next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
             window.location.reload();
           }
         },
-        error: () => { 
+        error: () => {
           this.loading = false;
         },
         complete: () => {
@@ -164,7 +151,12 @@ export class TimesheetFormComponent implements OnInit {
 
   }
 
-  select(event: any, calendar: any) {
+  viewTimesheetLog() {
+    this.router.navigate(['timesheet/view']);
+  }
+
+  dateSelected(event: any) {
+    console.log("dateSelected", event);
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
     if (index < 0) {
@@ -175,20 +167,6 @@ export class TimesheetFormComponent implements OnInit {
       this.daysSelected.splice(index, 1);
       this.deleteTimeSheetDate(index);
     }
-    calendar.updateTodaysDate();
-  }
-
-  monthChange(event: any, calendar: any) {
-    const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
-    console.log('Month Change ', date)
-  }
-
-  nextClicked(calendar: any, $event: any, obj: any) {
-    console.log("nextClicked");
-  }
-
-  previousClicked(calendar: any, $event: any, obj: any) {
-    console.log("previousClicked");
   }
 
   addTimeSheetDate(date: string) {
@@ -202,13 +180,10 @@ export class TimesheetFormComponent implements OnInit {
     this.timeSheetDates.removeAt(index);
   }
 
-  clearDateSelection() {
-    this.daysSelected = [];
-    this.myForm.controls["timeSheetDates"].setValue([]);
-  }
-
-  viewTimesheetLog() {
-    this.router.navigate(['timesheet/view']);
+  monthYearChange(event: any) {
+    this.month = event.month;
+    this.year = event.year;
+    this.getTimesheetData();
   }
 }
 

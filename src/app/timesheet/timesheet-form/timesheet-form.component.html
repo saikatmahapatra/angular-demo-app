@@ -41,15 +41,33 @@
           <div class="mb-3">
             <label class="required mb-0" for="cal">Select Date</label>
             <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
-            <p-calendar inputId="basic" [(ngModel)]="date1"></p-calendar>
-            <div class="invalid-feedback d-block"
+            {{dates|json}}
+
+            <p-calendar *ngIf="entryFound" [inline]="true" selectionMode="multiple" [showWeek]="true"
+              [minDate]="minDate" [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
+              (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
+             
+
+                <ng-template pTemplate="date" let-date>
+                  <span
+                    [ngClass]="(year == date.year && month == (date.month+1) && timesheetFilledDays.indexOf(date.day) > -1) ? 'date-filled' : ' '">{{date.day}}</span>
+                </ng-template>
+              
+
+            </p-calendar>
+
+            <div class="my-1 py-2 alert alert-danger"
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
-              Please select at least one date from the calendar.</div>
+              <app-icon class="me-2" [name]="'exclamation-circle'" [width]="16" [height]="16"></app-icon>
+              <span>Please select at least one date from the calendar.</span>
+            </div>
+
           </div>
 
           <!-- <button type="button" class="btn btn-sm btn-outline-secondary d-block my-2" (click)="clearDateSelection()">Clear Selected Date</button> -->
-          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="viewTimesheetLog()">View Timesheet Log</button>
-          
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="viewTimesheetLog()">View Timesheet
+            Log</button>
+
         </div>
         <div class="col-md-6">
           <div class="mb-3">
