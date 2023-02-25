@@ -1,7 +1,7 @@
 <h1>Template Driven Form</h1>
 <h5>Please sign in to continue</h5>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="form-row mb-2">
+    <div class="row mb-3 mb-2">
         <div class="col">
             <label for="userName">Username</label>
             <input type="text" class="form-control" name="userName" ngModel required minlength="4" maxlength="255">
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="form-row mb-2">
+    <div class="row mb-3 mb-2">
         <div class="col">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" ngModel required minlength="4" maxlength="20">

@@ -15,6 +15,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   encapsulation: ViewEncapsulation.None
 })
 export class TimesheetFormComponent implements OnInit {
+  date1!: Date;
   userId!: null;
   submitted = false;
   loading = false;

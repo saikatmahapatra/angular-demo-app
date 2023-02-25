@@ -5,27 +5,27 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
             
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="personalEmail">Personal Email</label>
                 <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
                 <app-validation-error [control]="myForm.controls['personalEmail']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="personalPhone">Personal Phone</label>
                 <input type="text" class="form-control" id="personalPhone" formControlName="personalPhone"
                     maxlength="10">
                 <app-validation-error [control]="myForm.controls['personalPhone']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="optional" for="workPhone">Work Phone</label>
                 <input type="text" class="form-control" id="workPhone" formControlName="workPhone"
                     maxlength="10">
                 <app-validation-error [control]="myForm.controls['workPhone']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="optional" for="bloodGroup">Blood Group</label>
                 <select class="form-control" id="bloodGroup" formControlName="bloodGroup">
                     <option value="{{data.id}}" *ngFor="let data of bloodGroupList; let i=index">{{data.name}}
@@ -34,7 +34,7 @@
                 <app-validation-error [control]="myForm.controls['bloodGroup']"></app-validation-error>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light me-auto">Cancel</a>
+            <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
         </form>
         <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
         <p class="debug">{{myForm.value|json}}</p> -->

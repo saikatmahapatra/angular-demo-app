@@ -5,19 +5,19 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="contactPersonName">Name</label>
                 <input type="text" class="form-control" id="contactPersonName" formControlName="contactPersonName" maxlength="30">
                 <app-validation-error [control]="myForm.controls['contactPersonName']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="phoneNo">Phone</label>
                 <input type="text" class="form-control" id="phoneNo" formControlName="phoneNo" maxlength="10">
                 <app-validation-error [control]="myForm.controls['phoneNo']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="relationWithContact">Relation</label>
                 <select class="form-control" id="relationWithContact" formControlName="relationWithContact">
                     <option value="">Select</option>
@@ -26,14 +26,14 @@
                 <app-validation-error [control]="myForm.controls['relationWithContact']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="optional" for="communicationAddress">Address</label>
                 <textarea class="form-control" id="communicationAddress" formControlName="communicationAddress" maxlength="180"></textarea>
                 <app-validation-error [control]="myForm.controls['communicationAddress']"></app-validation-error>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light me-auto">Cancel</a>
+            <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
         </form>
         <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
         <p class="debug">{{myForm.value|json}}</p>

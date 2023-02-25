@@ -4,34 +4,34 @@
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="projectNumber">Project Number/ID</label>
                 <input type="text" class="form-control" id="projectNumber" maxlength="10" formControlName="projectNumber">
                 <app-validation-error [control]="myForm.controls['projectNumber']"></app-validation-error>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="projectName">Project Name</label>
                 <input type="text" class="form-control" id="projectName" formControlName="projectName" >
                 <app-validation-error [control]="myForm.controls['projectName']"></app-validation-error>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="startDate">Start Date</label>
                 <input type="date" class="form-control" id="startDate" formControlName="startDate" maxlength="10">
                     <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="endDate">End Date</label>
                 <input type="date" class="form-control" id="endDate" formControlName="endDate" maxlength="10">
                     <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="optional" for="description">Description</label>
                 <textarea class="form-control" id="description" formControlName="description"
                     maxlength="150"></textarea>
                 <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="status">Status</label>
                 <div>
                     <div class="form-check form-check-inline" *ngFor="let data of DataStatus; let i=index">

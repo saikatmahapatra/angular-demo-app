@@ -5,7 +5,7 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="contentCategory">Address Type</label>
                 <select class="form-control" id="contentCategory" formControlName="contentCategory">
                     <option value="">Select</option>
@@ -14,13 +14,13 @@
                 <app-validation-error [control]="myForm.controls['contentCategory']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="contentHeadline">Head Line</label>
                 <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline" maxlength="180">
                 <app-validation-error [control]="myForm.controls['contentHeadline']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="contentDescription">Content</label>
                 <textarea class="form-control" id="contentDescription" formControlName="contentDescription"></textarea>
                 <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>

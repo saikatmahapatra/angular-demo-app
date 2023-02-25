@@ -36,17 +36,12 @@
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="action">
-      <div class="form-row">
+      <div class="row mb-3">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label class="required mb-0" for="cal">Select Date</label>
             <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
-            <!-- <mat-card class="demo-inline-calendar-card">
-              <mat-calendar *ngIf="entryFound" [startAt]="minCalDate" #calendar
-                (selectedChange)="select($event, calendar)" [dateClass]="dateClass" (monthSelected)="monthChange($event, calendar)" (nextClicked)="nextClicked(calendar, $event, this)" 
-                (previousClicked)="previousClicked(calendar, $event, this)">
-              </mat-calendar>
-            </mat-card> -->
+            <p-calendar inputId="basic" [(ngModel)]="date1"></p-calendar>
             <div class="invalid-feedback d-block"
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
               Please select at least one date from the calendar.</div>
@@ -57,7 +52,7 @@
           
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label class="required" for="project">Project</label>
             <select class="form-control" id="project" formControlName="project">
               <option value="">Select</option>
@@ -66,7 +61,7 @@
             <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="required" for="task">Task</label>
             <select class="form-control" id="task" formControlName="task">
               <option value="">Select</option>
@@ -75,20 +70,20 @@
             <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="required" for="hours">Hours</label>
             <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
             <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="required" for="description">Task Description</label>
             <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
             <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
               class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-          <a [routerLink]="['/user/profile']" class="btn btn-light me-auto">Cancel</a>
+          <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
         </div>
       </div>
     </form>

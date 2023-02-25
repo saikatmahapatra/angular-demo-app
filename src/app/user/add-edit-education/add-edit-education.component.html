@@ -5,7 +5,7 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="qualification">Qualification</label>
                 <select class="form-control" id="qualification" formControlName="qualification">
                     <option value="">Select</option>
@@ -14,7 +14,7 @@
                 <app-validation-error [control]="myForm.controls['qualification']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="degree">Degree</label>
                 <select class="form-control" id="degree" formControlName="degree">
                     <option value="">Select</option>
@@ -24,13 +24,13 @@
                 <app-validation-error [control]="myForm.controls['degree']"></app-validation-error>
             </div>
 
-            <div class="form-group" *ngIf="myForm.value['degree'] === '-1'">
+            <div class="mb-3" *ngIf="myForm.value['degree'] === '-1'">
                 <!-- <label class="required" for="newDegree">Other Degree</label> -->
                 <input type="text" class="form-control" id="newDegree" formControlName="newDegree" maxlength="30" placeholder="Other Degree">
                 <app-validation-error [control]="myForm.controls['newDegree']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="specialization">Specialization</label>
                 <select class="form-control" id="specialization" formControlName="specialization">
                     <option value="">Select</option>
@@ -40,13 +40,13 @@
                 <app-validation-error [control]="myForm.controls['specialization']"></app-validation-error>
             </div>
 
-            <div class="form-group" *ngIf="myForm.value['specialization'] === '-1'">
+            <div class="mb-3" *ngIf="myForm.value['specialization'] === '-1'">
                 <!-- <label class="required" for="newSpecialization">Other Specialization</label> -->
                 <input type="text" class="form-control" id="newSpecialization" formControlName="newSpecialization" maxlength="30" placeholder="Other Specialization">
                 <app-validation-error [control]="myForm.controls['newSpecialization']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="institute">Institute/University/Board/Council</label>
                 <select class="form-control" id="institute" formControlName="institute">
                     <option value="">Select</option>
@@ -56,25 +56,25 @@
                 <app-validation-error [control]="myForm.controls['institute']"></app-validation-error>
             </div>
 
-            <div class="form-group" *ngIf="myForm.value['institute'] === '-1'">
+            <div class="mb-3" *ngIf="myForm.value['institute'] === '-1'">
                 <!-- <label class="required" for="newInstitute">Other Institute/University/Board/Council</label> -->
                 <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute" maxlength="30" placeholder="Other Institute">
                 <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
             </div>
 
-            <!-- <div class="form-group">
+            <!-- <div class="mb-3">
                 <label class="required" for="fromYear">From (Year)</label>
                 <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
                 <app-validation-error [control]="myForm.controls['fromYear']"></app-validation-error>
             </div> -->
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="toYear">Year of Passout</label>
                 <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="toYear" formControlName="toYear" maxlength="4">
                 <app-validation-error [control]="myForm.controls['toYear']"></app-validation-error>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label class="required" for="marks">Marks</label>
                 <input type="text" class="form-control" id="marks" formControlName="marks" maxlength="5">
                 <app-validation-error [control]="myForm.controls['marks']"></app-validation-error>
@@ -82,7 +82,7 @@
 
             
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light me-auto">Cancel</a>
+            <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
             
             <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
             <p class="debug">{{myForm.value|json}}</p> -->

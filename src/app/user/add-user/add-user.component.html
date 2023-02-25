@@ -4,7 +4,7 @@
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" formControlName="firstName">
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="workEmail">Work Email</label>
                     <input type="text" class="form-control" id="workEmail" formControlName="workEmail">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="dateOfBirth">Date of Birth</label>
                     <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" maxlength="10" [min]="minDateDob" [max]="maxDateDob">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label for="personalEmail">Personal Email</label>
                     <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="designation">Designation</label>
                     <select class="form-control" id="designation" formControlName="designation">
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="form-row mb-2">
+            <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="dateOfJoining">Date of Joining</label>
                     <input type="date" class="form-control" id="dateOfJoining" formControlName="dateOfJoining" maxlength="10" [min]="minDateDoj" [max]="maxDateDoj">
