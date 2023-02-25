@@ -49,8 +49,7 @@
              
 
                 <ng-template pTemplate="date" let-date>
-                  <span
-                    [ngClass]="(year == date.year && month == (date.month+1) && timesheetFilledDays.indexOf(date.day) > -1) ? 'date-filled' : ' '">{{date.day}}</span>
+                  <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
                 </ng-template>
               
 

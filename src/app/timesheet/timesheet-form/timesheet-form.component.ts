@@ -94,12 +94,14 @@ export class TimesheetFormComponent implements OnInit {
       const optionalHolidays = response?.data?.optionalHolidays;
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
-          this.holidays.push(Number(element.holiday_date));
+          let dayDate = element.holiday_date.split('-'); // YYYY-MM-DD
+          this.holidays.push(Number(dayDate[2]));
         });
       }
       if (optionalHolidays.length > 0) {
         optionalHolidays.forEach((element: any) => {
-          this.optionalHolidays.push(element.holiday_date);
+          let dayDate = element.holiday_date.split('-'); // YYYY-MM-DD
+          this.optionalHolidays.push(Number(dayDate[2]));
         });
       }
     });
@@ -184,6 +186,20 @@ export class TimesheetFormComponent implements OnInit {
     this.month = event.month;
     this.year = event.year;
     this.getTimesheetData();
+  }
+
+  getCSSClass(date: any) {
+    let cssClass = '';
+    if(this.year == date.year && this.month == (date.month+1) && this.timesheetFilledDays.indexOf(date.day) > -1) {
+      cssClass = 'date-filled';
+    }
+    // if(this.year == date.year && this.month == (date.month+1) && this.holidays.indexOf(date.day) > -1) {
+    //   cssClass = 'date-holiday';
+    // }
+    // if(this.year == date.year && this.month == (date.month+1) && this.optionalHolidays.indexOf(date.day) > -1) {
+    //   cssClass = 'date-holiday-opt';
+    // }
+    return cssClass;
   }
 }
 

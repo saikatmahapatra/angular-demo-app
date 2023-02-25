@@ -1,4 +1,4 @@
-// @import 'src/assets/scss/_customized-bootstrap-vars';
+//@import 'src/assets/scss/_customized-bootstrap-vars';
 
 // .p-datepicker table td.p-datepicker-today {
 //   span {
@@ -7,6 +7,16 @@
 //   }
 // }
 .date-filled {
-  color: green;
+  color: lighten(#198754, 10%);
+  font-weight: bold;
+}
+
+.date-holiday-opt {
+  color: rgb(255, 183, 0);
+  font-weight: bold;
+}
+
+.date-holiday {
+  color: rgb(194, 50, 40);
   font-weight: bold;
 }
