@@ -1,7 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormArray, FormGroup } from '@angular/forms';
-import { MatCalendarCellClassFunction, MatDatepicker } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
@@ -30,36 +29,36 @@ export class TimesheetFormComponent implements OnInit {
   minCalDate = new Date();
   holidaysFound = false;
   entryFound = false;
-  @ViewChild("calendar", { static: false }) matCal: MatDatepicker<any> | undefined;
+  //@ViewChild("calendar", { static: false }) matCal: MatDatepicker<any> | undefined;
   //https://stackblitz.com/edit/angular-8-material-starter-template-nv9r4w?file=src%2Fapp%2Fapp.component.ts
 
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    let cellClass = '';
-    const dateCell = cellDate.getFullYear() + "-" + ("00" + (cellDate.getMonth() + 1)).slice(-2) + "-" + ("00" + cellDate.getDate()).slice(-2);
-    const isSelected = this.daysSelected.find(x => x == dateCell) ? true : false;
-    const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
-    const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
-    const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
-    // Only highligh dates inside the month view.
-    const date = cellDate.getDate();
-    // if (view === 'month' && (date === 1 || date === 20)) {
-    //   cellClass += ' yellow ';
-    // }
+  // dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+  //   let cellClass = '';
+  //   const dateCell = cellDate.getFullYear() + "-" + ("00" + (cellDate.getMonth() + 1)).slice(-2) + "-" + ("00" + cellDate.getDate()).slice(-2);
+  //   const isSelected = this.daysSelected.find(x => x == dateCell) ? true : false;
+  //   const isFilled = this.timesheetFilledDays.find(x => x == dateCell) ? true : false;
+  //   const isHoliday = this.holidays.find(x => x == dateCell) ? true : false;
+  //   const isOptionalHoliday = this.optionalHolidays.find(x => x == dateCell) ? true : false;
+  //   // Only highligh dates inside the month view.
+  //   const date = cellDate.getDate();
+  //   // if (view === 'month' && (date === 1 || date === 20)) {
+  //   //   cellClass += ' yellow ';
+  //   // }
 
-    if (view === 'month' && isSelected) {
-      cellClass += ' selected ';
-    }
-    if (view === 'month' && isFilled) {
-      cellClass += ' time-filled ';
-    }
-    if (view === 'month' && isHoliday) {
-      cellClass += ' holiday ';
-    }
-    if (view === 'month' && isOptionalHoliday) {
-      cellClass += ' optional-holiday ';
-    }
-    return cellClass;
-  };
+  //   if (view === 'month' && isSelected) {
+  //     cellClass += ' selected ';
+  //   }
+  //   if (view === 'month' && isFilled) {
+  //     cellClass += ' time-filled ';
+  //   }
+  //   if (view === 'month' && isHoliday) {
+  //     cellClass += ' holiday ';
+  //   }
+  //   if (view === 'month' && isOptionalHoliday) {
+  //     cellClass += ' optional-holiday ';
+  //   }
+  //   return cellClass;
+  // };
 
   myForm = this.fb.group({
     id: [null],
