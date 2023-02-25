@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-view-timesheet',
   templateUrl: './view-timesheet.component.html',
@@ -15,20 +16,33 @@ export class ViewTimesheetComponent implements OnInit {
 
   constructor(
     private apiSvc: ApiService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private activatedRoute: ActivatedRoute
 
   ) { }
 
   ngOnInit(): void {
     this.getTimesheetData();
+
   }
 
   getTimesheetData() {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append('userId', this.authSvc.getUserId());
-    let options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
-      this.timesheetData = response?.data?.data_rows;
+    this.activatedRoute.queryParams.subscribe(params => {
+      const month = params['month'];
+      const year = params['year'];
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append('userId', this.authSvc.getUserId());
+      if (month && year) {
+        queryParams = queryParams.append('month', month);
+        queryParams = queryParams.append('year', year);
+      }
+
+      let options = { params: queryParams };
+      this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
+        this.timesheetData = response?.data?.data_rows;
+      });
     });
+
+
   }
 }

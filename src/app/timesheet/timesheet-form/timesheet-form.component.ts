@@ -152,7 +152,7 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   viewTimesheetLog() {
-    this.router.navigate(['timesheet/view']);
+    this.router.navigate(['timesheet/view'], { queryParams: { month: this.month, year: this.year } });
   }
 
   dateSelected(event: any) {
