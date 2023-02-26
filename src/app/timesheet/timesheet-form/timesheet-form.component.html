@@ -27,12 +27,12 @@
 </div>
 
 <div class="row mb-4">
-  <div class="col-md-12">
+  <div class="col-md-10">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="action">
       <div class="row mb-3">
-        <div class="col-md-5">
+        <div class="col-md-7">
           <div class="mb-3">
             <label class="required" for="cal">Select Dates</label>
             <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</div>
@@ -58,47 +58,45 @@
           </div>
 
         </div>
-        <div class="col-md-7">
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label class="required" for="project">Project</label>
-              <select class="form-control" id="project" formControlName="project">
-                <option value="">Select</option>
-                <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
-              </select>
-              <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
-            </div>
-  
-            <div class="col-md-6">
-              <label class="required" for="task">Task</label>
-              <select class="form-control" id="task" formControlName="task">
-                <option value="">Select</option>
-                <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
-              </select>
-              <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
-            </div>
+        <div class="col-md-5 mt-4">
+          <div class="mb-3">
+            <label class="required" for="project">Project</label>
+            <select class="form-control" id="project" formControlName="project">
+              <option value="">Select</option>
+              <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
+            </select>
+            <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label class="required" for="hours">Hours</label>
-              <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
-              <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
-            </div>
+          <div class="mb-3">
+            <label class="required" for="task">Task</label>
+            <select class="form-control" id="task" formControlName="task">
+              <option value="">Select</option>
+              <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
+            </select>
+            <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-md-12">
-              <label class="required" for="description">Task Description</label>
-              <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
-              <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
-            </div>
+          <div class="mb-3">
+            <label class="required" for="hours">Hours</label>
+            <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
+            <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
           </div>
+          <div class="mb-3">
+            <label class="required" for="description">Task Description</label>
+            <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
+            <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+          </div>
+
 
           <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
               class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </div>
+
+
+
       </div>
+
     </form>
   </div>
 </div>

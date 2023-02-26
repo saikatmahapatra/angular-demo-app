@@ -9,28 +9,22 @@
 .date-filled,
 .indicator.date-filled {
   color: lighten(#198754, 10%);
-  width: 2.5rem;
-  height: 2.5rem;
   font-weight: bold;
 }
 
 .date-holiday-opt,
 .indicator.date-holiday-opt {
   color: rgb(255, 183, 0);
-  width: 2.5rem;
-  height: 2.5rem;
   font-weight: bold;
 }
 
 .date-holiday,
 .indicator.date-holiday {
   color: rgb(194, 50, 40);
-  width: 2.5rem;
-  height: 2.5rem;
   font-weight: bold;
 }
 
-.date-selected {
+.indicator .date-selected {
   color: #1D4ED8;
   background: #EFF6FF;
   width: 2.5rem;
@@ -45,4 +39,9 @@
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+}
+
+.indicator .date-filled, .indicator .date-holiday, .indicator .date-holiday-opt, .indicator .date-selected {
+  width: 2.5rem;
+  height: 2.5rem;
 }
