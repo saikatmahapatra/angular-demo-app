@@ -1,57 +1,52 @@
 <h1>Log Timesheet</h1>
-<div class="small text-muted bg-light p-4 mb-3">
+<h5>{{monthName}}, {{year}}</h5>
+
+<div class="row my-4 bg-light p-2 text-muted indicator">
   <div class="fw-bold">Indicators:</div>
   <div class="d-flex justify-content-between">
     <div class="">
-      <div class="mat-calendar-body-cell selected" style="width: 32px; height: 32px">
-        <div class="mat-calendar-body-cell-content mat-focus-indicator"> xx </div>
-      </div>
+      <div class="date-selected">23</div>
       <div class="">Selected</div>
     </div>
 
     <div class="">
-      <div class="mat-calendar-body-cell time-filled" style="width: 32px; height: 32px">
-        <div class="mat-calendar-body-cell-content mat-focus-indicator"> xx </div>
-      </div>
+      <div class="date-filled">24</div>
       <div class="">Filled</div>
     </div>
 
     <div class="">
-      <div class="mat-calendar-body-cell optional-holiday" style="width: 32px; height: 32px">
-        <div class="mat-calendar-body-cell-content mat-focus-indicator"> xx </div>
-      </div>
+      <div class="date-holiday-opt">25</div>
       <div class="">Opt. Holiday</div>
     </div>
 
     <div class="">
-      <div class="mat-calendar-body-cell holiday" style="width: 32px; height: 32px">
-        <div class="mat-calendar-body-cell-content mat-focus-indicator"> xx </div>
-      </div>
+      <div class="date-holiday">26</div>
       <div class="">Holiday</div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-10">
+
+<div class="row mb-4">
+  <div class="col-md-12">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="action">
       <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div class="mb-3">
-            <label class="required mb-0" for="cal">Select Date</label>
-            <small id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</small>
+            <label class="required" for="cal">Select Dates</label>
+            <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</div>
             {{dates|json}}
 
             <p-calendar *ngIf="entryFound" [inline]="true" selectionMode="multiple" [showWeek]="true"
               [minDate]="minDate" [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
               (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
-             
 
-                <ng-template pTemplate="date" let-date>
-                  <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
-                </ng-template>
-              
+
+              <ng-template pTemplate="date" let-date>
+                <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
+              </ng-template>
+
 
             </p-calendar>
 
@@ -60,49 +55,55 @@
               <app-icon class="me-2" [name]="'exclamation-circle'" [width]="16" [height]="16"></app-icon>
               <span>Please select at least one date from the calendar.</span>
             </div>
-
           </div>
-
-          <!-- <button type="button" class="btn btn-sm btn-outline-secondary d-block my-2" (click)="clearDateSelection()">Clear Selected Date</button> -->
-          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="viewTimesheetLog()">View Timesheet
-            Log</button>
 
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label class="required" for="project">Project</label>
-            <select class="form-control" id="project" formControlName="project">
-              <option value="">Select</option>
-              <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
-            </select>
-            <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
+        <div class="col-md-7">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="required" for="project">Project</label>
+              <select class="form-control" id="project" formControlName="project">
+                <option value="">Select</option>
+                <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
+              </select>
+              <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
+            </div>
+  
+            <div class="col-md-6">
+              <label class="required" for="task">Task</label>
+              <select class="form-control" id="task" formControlName="task">
+                <option value="">Select</option>
+                <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
+              </select>
+              <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="required" for="task">Task</label>
-            <select class="form-control" id="task" formControlName="task">
-              <option value="">Select</option>
-              <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
-            </select>
-            <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="required" for="hours">Hours</label>
+              <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
+              <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="required" for="hours">Hours</label>
-            <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
-            <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label class="required" for="description">Task Description</label>
+              <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
+              <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="required" for="description">Task Description</label>
-            <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
-            <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
-          </div>
           <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
               class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-          <a [routerLink]="['/timesheet/view']" class="btn btn-light ms-4">Cancel</a>
         </div>
       </div>
     </form>
   </div>
+</div>
+
+<div class="row mb-4">
+  <h4>Your Timesheet of {{monthName}}, {{year}}</h4>
+  <app-view-timesheet [timeSheetLogData]="timesheetData"></app-view-timesheet>
 </div>

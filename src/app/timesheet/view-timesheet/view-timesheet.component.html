@@ -1,6 +1,5 @@
-<h1>Timesheet Log</h1>
-<div class="table-responsive">
-  <table class="table table-sm">
+<div class="table-responsive mt-3">
+  <table class="table table-sm" *ngIf="timeSheetLogData.length > 0">
       <thead>
           <tr>
               <th scope="col">Date</th>
@@ -12,7 +11,7 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let data of timesheetData; let i = index">
+          <tr *ngFor="let data of timeSheetLogData; let i = index">
               <td>{{data?.timesheet_date}}</td>
               <td>{{data?.project_name}}</td>
               <td>{{data?.task_name}}</td>
@@ -25,4 +24,7 @@
           </tr>
       </tbody>
   </table>
+  <div class="" *ngIf="!timeSheetLogData || timeSheetLogData.length <= 0">
+    No records found
+  </div>
 </div>

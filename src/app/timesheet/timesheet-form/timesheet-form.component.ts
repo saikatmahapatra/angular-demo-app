@@ -34,6 +34,10 @@ export class TimesheetFormComponent implements OnInit {
   entryFound = false;
   month: number = 0;
   year: number = 0;
+  monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  monthName: string = '';
 
   myForm = this.fb.group({
     id: [null],
@@ -72,6 +76,7 @@ export class TimesheetFormComponent implements OnInit {
     this.maxDate.setFullYear(nextYear);
     this.month = month + 1;
     this.year = year;
+    this.monthName = this.monthNames[month];
   }
 
   get timeSheetDates() {
@@ -153,9 +158,9 @@ export class TimesheetFormComponent implements OnInit {
 
   }
 
-  viewTimesheetLog() {
-    this.router.navigate(['timesheet/view'], { queryParams: { month: this.month, year: this.year } });
-  }
+  // viewTimesheetLog() {
+  //   this.router.navigate(['timesheet/view'], { queryParams: { month: this.month, year: this.year } });
+  // }
 
   dateSelected(event: any) {
     console.log("dateSelected", event);
@@ -185,12 +190,13 @@ export class TimesheetFormComponent implements OnInit {
   monthYearChange(event: any) {
     this.month = event.month;
     this.year = event.year;
+    this.monthName = this.monthNames[event.month-1];
     this.getTimesheetData();
   }
 
   getCSSClass(date: any) {
     let cssClass = '';
-    if(this.year == date.year && this.month == (date.month+1) && this.timesheetFilledDays.indexOf(date.day) > -1) {
+    if (this.year == date.year && this.month == (date.month + 1) && this.timesheetFilledDays.indexOf(date.day) > -1) {
       cssClass = 'date-filled';
     }
     // if(this.year == date.year && this.month == (date.month+1) && this.holidays.indexOf(date.day) > -1) {

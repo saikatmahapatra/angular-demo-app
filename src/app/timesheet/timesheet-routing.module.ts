@@ -8,7 +8,6 @@ const routes: Routes = [
   {
     path: '', component: TimesheetLayoutComponent, children: [
       { path: '', component: TimesheetFormComponent },
-      { path: 'view', component: ViewTimesheetComponent },
       { path: 'manage', component: ManageTimesheetComponent }
     ]
   },
