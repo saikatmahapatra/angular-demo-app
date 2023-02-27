@@ -24,6 +24,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
 import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
 import { IconComponent } from './components/icon/icon.component';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -53,7 +54,8 @@ import { IconComponent } from './components/icon/icon.component';
     FileUploadComponent,
     StatusIndicatorDirective,
     ThemeSwitchComponent,
-    IconComponent
+    IconComponent,
+    CookieConsentComponent
   ],
   providers: [],
   exports: [
@@ -77,7 +79,8 @@ import { IconComponent } from './components/icon/icon.component';
     FileUploadComponent,
     StatusIndicatorDirective,
     ThemeSwitchComponent,
-    IconComponent
+    IconComponent,
+    CookieConsentComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
