@@ -1,7 +1,8 @@
-<div *ngIf="message" class="d-flex align-items-center" [ngClass]="message.cssClass">
-  <app-icon *ngIf="message.icon == 'success' " [name]="'check-circle'"></app-icon>
-  <app-icon *ngIf="message.icon == 'error' " [name]="'exclamation-circle'"></app-icon>
-  <app-icon *ngIf="message.icon == 'info' " [name]="'info-circle'"></app-icon>
-  <app-icon *ngIf="message.icon == 'warning' " [name]="'exclamation-triangle'"></app-icon>
+<div *ngIf="message" class="alert d-flex align-items-center alert-dismissible fade show" [ngClass]="message.cssClass">
+  <app-icon *ngIf="message.icon == 'success' " [name]="'check-circle-fill'" [width]="24" [height]="24"></app-icon>
+  <app-icon *ngIf="message.icon == 'error' " [name]="'exclamation-circle-fill'" [width]="24" [height]="24"></app-icon>
+  <app-icon *ngIf="message.icon == 'info' " [name]="'info-circle-fill'" [width]="24" [height]="24"></app-icon>
+  <app-icon *ngIf="message.icon == 'warning' " [name]="'exclamation-triangle-fill'" [width]="24" [height]="24"></app-icon>
   <span class="ms-2" [innerHTML]="message.text"></span>
+  <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
 </div>
