@@ -1,15 +1,25 @@
 <div class="row min-vh-100 justify-content-center align-items-center">
-  <div class="col-md-8 col-lg-6 signin-container">
-    <app-alert-message></app-alert-message>
-    <div class="row align-items-center">
+  <div class="col-md-8 signin-wrapper">
+    <div class="row">
+      <div class="col">
+        <app-alert-message></app-alert-message>
+      </div>
+    </div>
+
+    <div class="row align-items-center signin-container">
       <div class="col-md-6 signin-form-container">
         <img class="mb-4" style="width: 48px;" src="assets/img/logo.svg" alt="logo" />
         <router-outlet></router-outlet>
       </div>
       <div class="slider-container col-md-6">
-        <img src="assets/img/3.jpg" class="img-fluid" alt="img">
+        <img src="assets/img/7.svg" class="img-fluid" alt="img">
       </div>
     </div>
-    <app-footer></app-footer>
+
+    <div class="row">
+      <div class="col">
+        <app-footer></app-footer>
+      </div>
+    </div>
   </div>
 </div>
