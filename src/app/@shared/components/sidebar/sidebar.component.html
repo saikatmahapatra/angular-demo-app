@@ -1,7 +1,7 @@
 <div class="sbar-links ms-2 my-3">
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
     <li class="mb-3">
-      <!-- <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse"
+      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
         data-bs-target="#getting-started-collapse" aria-expanded="true">
         Getting started
       </button> -->
@@ -10,39 +10,39 @@
 
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
-          <li (click)="closeSideBar()">
-            <a [routerLink]="['/']" class="d-inline-flex align-items-center rounded"><app-icon class="me-2"
+          <li>
+            <a [routerLink]="['/']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'speedometer'"></app-icon> Dashboard</a>
           </li>
           <li>
-            <a [routerLink]="['/pages/about-us']" class="d-inline-flex align-items-center rounded"><app-icon
+            <a [routerLink]="['/pages/about-us']" class="d-inline-flex align-items-center"><app-icon
                 class="me-2" [name]="'info-circle'"></app-icon> About Us</a>
           </li>
           <li>
-            <a [routerLink]="['/pages/our-services']" class="d-inline-flex align-items-center rounded">
+            <a [routerLink]="['/pages/our-services']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'easel'"></app-icon> Our Services</a>
           </li>
           <li>
-            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center rounded">
+            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'database-check'"></app-icon> CMS</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center rounded">
+            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'clock-history'"></app-icon> Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/project']" class="d-inline-flex align-items-center rounded"><app-icon class="me-2"
+            <a [routerLink]="['/project']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'kanban'"></app-icon> Project</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center rounded"><app-icon
+            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center"><app-icon
                 class="me-2" [name]="'list-task'"></app-icon> Task</a>
           </li>
         </ul>
       </div>
     </li>
     <li class="my-3">
-      <!-- <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse"
+      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
         data-bs-target="#customize-collapse" aria-expanded="true">
         Customers
       </button> -->
@@ -51,18 +51,18 @@
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center rounded"><app-icon class="me-2"
+            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'person-add'"></app-icon> Add New Customer</a>
           </li>
           <li>
-            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center rounded"><app-icon class="me-2"
+            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'people'"></app-icon> Customer Management</a>
           </li>
         </ul>
       </div>
     </li>
     <li class="my-3">
-      <!-- <button class="btn d-inline-flex align-items-center rounded" data-bs-toggle="collapse"
+      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
         data-bs-target="#layout-collapse" aria-expanded="true">
         My Account
       </button> -->
@@ -71,21 +71,21 @@
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/profile']" class="d-inline-flex align-items-center rounded">
+            <a [routerLink]="['/user/profile']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'person-circle'"></app-icon> Profile</a>
           </li>
           <li>
-            <a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center rounded me-1">
+            <a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center me-1">
               <app-icon class="me-2" [name]="'key'"></app-icon> Change Password</a>
           </li>
           <li>
-            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center rounded"><app-icon
+            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center"><app-icon
                 class="me-2" [name]="'person-video3'"></app-icon> Change
               Supervisor</a>
           </li>
           <li>
             <a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
-              class="d-inline-flex align-items-center rounded me-1">
+              class="d-inline-flex align-items-center me-1">
               <app-icon class="me-2" [name]="'box-arrow-right'"></app-icon> Logout</a>
           </li>
         </ul>
