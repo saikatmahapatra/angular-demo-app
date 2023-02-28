@@ -64,7 +64,7 @@ export class CommonService {
   }
   getScreenView(): string {
     const width: number = window.screen.width;
-    let screenView = 'min ';
+    let screenView = 'min';
     if (width >= 576 && width < 769) {
       screenView = 'small';
     } else if (width >= 769 && width < 1012) {
