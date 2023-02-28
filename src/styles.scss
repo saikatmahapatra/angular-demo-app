@@ -10,90 +10,36 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    //font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48
-}
-
-.material-symbols-outlined {
-    vertical-align: middle;
-
-    &.md-16 {
-        font-size: 16px;
-    }
-
-    &.md-18 {
-        font-size: 18px;
-    }
-
-    &.md-20 {
-        font-size: 20px;
-    }
-
-    &.md-24 {
-        font-size: 24px;
-    }
-
-    &.md-36 {
-        font-size: 36px;
-    }
-
-    &.md-48 {
-        font-size: 48px;
-    }
-
-    &.md-dark {
-        color: rgba(0, 0, 0, 0.54);
-    }
-
-    &.md-dark.md-inactive {
-        color: rgba(0, 0, 0, 0.26);
-    }
-
-    &.md-light {
-        color: rgba(255, 255, 255, 1);
-    }
-
-    &.md-light.md-inactive {
-        color: rgba(255, 255, 255, 0.3);
-    }
-}
-
-.navbar-dark {
-    background-color: #000 !important;
+  margin: 0;
+  //font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .invalid-feedback,
 .validation-error-message {
-    font-size: 90%;
-    color: $red;
+  font-size: 90%;
+  color: $red;
 }
 
-label.required {
+label {
+  &.required {
     &::after {
-        content: '*';
-        margin-left: 5px;
-        color: $red;
+      content: '*';
+      margin-left: 5px;
+      color: rgb(255, 0, 0);
     }
-}
+  }
 
-label.optional {
+  &.optional {
     &::after {
-        content: 'optional';
-        margin-left: 5px;
-        color: $gray-500;
+      content: 'optional';
+      margin-left: 5px;
+      color: $gray-500;
     }
+  }
 }
 
 // login form width
@@ -104,59 +50,59 @@ label.optional {
 
 // Sidebar & Main Content wrapper
 #sidebar-wrapper {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 0;
-    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
-    width: 260px;
-    margin-left: -260px;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0;
+  box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+  width: 260px;
+  margin-left: -260px;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
 
-    .sidebar-sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 48px;
-        height: calc(100vh - 48px);
-        padding-top: 0.5rem;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-    &.toggled {
-        margin-left: 0px;
-    }
+  &.toggled {
+    margin-left: 0px;
+  }
 }
 
 #main-content-wrapper {
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-    padding-top: 65px;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  padding-top: 65px;
 }
 
 @media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0px;
+  #sidebar-wrapper {
+    margin-left: 0px;
 
-        &.toggled {
-            margin-left: -260px;
-        }
+    &.toggled {
+      margin-left: -260px;
     }
+  }
 
-    #main-content-wrapper {
-        margin-left: 260px;
+  #main-content-wrapper {
+    margin-left: 260px;
 
-        &.toggled {
-            margin-left: 0px;
-        }
+    &.toggled {
+      margin-left: 0px;
     }
+  }
 }
 
 @include color-mode(light) {
@@ -164,48 +110,50 @@ label.optional {
     background-color: darken($white, 2%);
   }
 }
+
 @include color-mode(dark) {
   #sidebar-wrapper {
     background-color: darken(#212529, 2%);
   }
 }
+
 // End of Sidebar & Main Content wrapper
 
 .card-top-border {
-    border-top: 4px solid $primary;
+  border-top: 4px solid $primary;
 }
 
 .card-header {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 @mixin linear-gradient($from, $to) {
-    background: $to;
-    background: -moz-linear-gradient(top, $from 0%, $to 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
-    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
-    background: -o-linear-gradient(top, $from 0%, $to 100%);
-    background: linear-gradient(to bottom, $from 0%, $to 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to})
+  background: $to;
+  background: -moz-linear-gradient(top, $from 0%, $to 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop(100%, $to));
+  background: -webkit-linear-gradient(top, $from 0%, $to 100%);
+  background: -o-linear-gradient(top, $from 0%, $to 100%);
+  background: linear-gradient(to bottom, $from 0%, $to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$from}, endColorstr=#{$to})
 }
 
 .colorgraph-navbar::after {
-    content: "";
-    height: 5px;
-    background: -webkit-gradient(linear, left top, right top, from ($from_color), to ($to_color));
-    background: linear-gradient(to right, $from_color, $to_color);
-    width: 100%;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+  content: "";
+  height: 5px;
+  background: -webkit-gradient(linear, left top, right top, from ($from_color), to ($to_color));
+  background: linear-gradient(to right, $from_color, $to_color);
+  width: 100%;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
 }
 
 .ag-theme-alpine {
-    /* disable all borders */
-    --ag-borders: none;
-    /* then add back a border between rows */
-    --ag-borders-row: solid 1px;
-    --ag-row-border-color: #dee2e6;
+  /* disable all borders */
+  --ag-borders: none;
+  /* then add back a border between rows */
+  --ag-borders-row: solid 1px;
+  --ag-row-border-color: #dee2e6;
 }
 
 
