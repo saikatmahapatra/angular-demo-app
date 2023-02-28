@@ -38,7 +38,7 @@
             <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</div>
             {{dates|json}}
 
-            <p-calendar *ngIf="entryFound" [inline]="true" selectionMode="multiple" [showWeek]="true"
+            <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="true"
               [minDate]="minDate" [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
               (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
 
