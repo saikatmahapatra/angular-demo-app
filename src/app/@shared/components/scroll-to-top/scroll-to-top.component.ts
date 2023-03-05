@@ -6,13 +6,19 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./scroll-to-top.component.scss']
 })
 export class ScrollToTopComponent implements OnInit {
+  show = false;
 
-  @HostListener('scroll') scrolling(){
-    console.log('scrolling');
-  }
-
-  @HostListener('click') clicking(){
-    console.log('clicking...');
+  @HostListener('window:scroll', ['$event']) onScroll($event: Event): void {
+    if ($event) {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    }
   }
 
   constructor() { }
@@ -20,4 +26,8 @@ export class ScrollToTopComponent implements OnInit {
   ngOnInit() {
   }
 
+  scrollToTo() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 }

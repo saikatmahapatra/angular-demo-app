@@ -1,3 +1,3 @@
-<button type="button" class="btn btn-primary scroll-to-top" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Scroll to top">
+<button (click)="scrollToTo()" type="button" [ngClass]="show ? 'd-block' : 'd-none' " class="btn btn-primary scroll-to-top" data-bs-toggle="tooltip" data-bs-placement="left" title="Scroll to top">
   <app-icon class="" [name]="'arrow-up'"></app-icon>
 </button>
