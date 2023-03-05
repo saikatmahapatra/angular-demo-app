@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scroll-to-top.component.scss']
 })
 export class ScrollToTopComponent implements OnInit {
+
+  @HostListener('scroll') scrolling(){
+    console.log('scrolling');
+  }
+
+  @HostListener('click') clicking(){
+    console.log('clicking...');
+  }
 
   constructor() { }
 

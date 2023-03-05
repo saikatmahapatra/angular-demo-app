@@ -25,6 +25,7 @@ import { StatusIndicatorDirective } from './directives/status-indicator.directiv
 import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
 import { IconComponent } from './components/icon/icon.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 @NgModule({
   imports: [
     RouterModule,
@@ -55,7 +56,8 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
     StatusIndicatorDirective,
     ThemeSwitchComponent,
     IconComponent,
-    CookieConsentComponent
+    CookieConsentComponent,
+    ScrollToTopComponent
   ],
   providers: [],
   exports: [
@@ -80,7 +82,8 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
     StatusIndicatorDirective,
     ThemeSwitchComponent,
     IconComponent,
-    CookieConsentComponent
+    CookieConsentComponent,
+    ScrollToTopComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
