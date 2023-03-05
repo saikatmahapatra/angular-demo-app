@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
       if (!(event instanceof NavigationEnd)) {
         return;
       }
-      window.scrollTo(0, 0);
       switch (true) {
         case event instanceof NavigationStart: {
           this.loader.show();
