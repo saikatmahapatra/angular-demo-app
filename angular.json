@@ -42,7 +42,6 @@
               "src/styles.scss",
               "./node_modules/bootstrap-icons/font/bootstrap-icons.scss",
               "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
@@ -55,7 +54,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "1000kb",
                   "maximumError": "10mb"
                 },
                 {
