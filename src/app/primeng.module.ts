@@ -2,14 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 
+const data = [
+  CalendarModule
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ...data
   ],
   exports: [
-    CalendarModule
+    ...data
   ]
 })
 export class PrimengModule { }
