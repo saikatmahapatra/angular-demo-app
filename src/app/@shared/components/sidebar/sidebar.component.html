@@ -1,71 +1,113 @@
 <div class="sbar-links ms-2 my-3">
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
     <li class="mb-3">
-      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
-        data-bs-target="#getting-started-collapse" aria-expanded="true">
-        Getting started
-      </button> -->
-
       <h6 class="px-3">Getting Started</h6>
-
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
             <a [routerLink]="['/']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'speedometer'"></app-icon> Dashboard</a>
           </li>
+        </ul>
+      </div>
+
+      <h6 class="px-3">Admin</h6>
+      <div class="collapse show" id="getting-started-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/pages/about-us']" class="d-inline-flex align-items-center"><app-icon
-                class="me-2" [name]="'info-circle'"></app-icon> About Us</a>
+            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center"><app-icon class="me-2"
+                [name]="'people'"></app-icon> Employee Management</a>
           </li>
           <li>
-            <a [routerLink]="['/pages/our-services']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'easel'"></app-icon> Our Services</a>
+            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center"><app-icon class="me-2"
+                [name]="'person-add'"></app-icon> Add New Employee</a>
           </li>
           <li>
             <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'database-check'"></app-icon> CMS</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'clock-history'"></app-icon> Timesheet</a>
+            <a [routerLink]="['/holidays/manage']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'database-check'"></app-icon> Holiday Management</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/balance']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'database-check'"></app-icon> Leave Balance</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'database-check'"></app-icon> Leave Management</a>
+          </li>
+          <li>
+            <a [routerLink]="['/timesheet/report']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'clock-history'"></app-icon> Timesheet Report</a>
           </li>
           <li>
             <a [routerLink]="['/project']" class="d-inline-flex align-items-center"><app-icon class="me-2"
                 [name]="'kanban'"></app-icon> Project</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center"><app-icon
-                class="me-2" [name]="'list-task'"></app-icon> Task</a>
+            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center"><app-icon class="me-2"
+                [name]="'list-task'"></app-icon> Task</a>
           </li>
         </ul>
       </div>
     </li>
-    <li class="my-3">
-      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
-        data-bs-target="#customize-collapse" aria-expanded="true">
-        Customers
-      </button> -->
-      <h6 class="px-3">Customers</h6>
 
+    <li class="my-3">
+      <h6 class="px-3">Self Services</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'person-add'"></app-icon> Add New Customer</a>
+            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'clock-history'"></app-icon> Log Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'people'"></app-icon> Customer Management</a>
+            <a [routerLink]="['/leave/apply']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'airplane'"></app-icon> Apply Leave</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'window-stack'"></app-icon> Manage Leave Request</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/history']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'list-stars'"></app-icon> Track My Leave</a>
           </li>
         </ul>
       </div>
     </li>
+
     <li class="my-3">
-      <!-- <button class="btn d-inline-flex align-items-center" data-bs-toggle="collapse"
-        data-bs-target="#layout-collapse" aria-expanded="true">
-        My Account
-      </button> -->
+      <h6 class="px-3">My Organization</h6>
+      <div class="collapse show" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'people'"></app-icon> Employees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'person-check'"></app-icon> My Reportees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center"><app-icon class="me-2"
+                [name]="'emoji-smile'"></app-icon> Change
+              Supervisor</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'file-earmark-text'"></app-icon> HR Policies</a>
+          </li>
+          <li>
+            <a [routerLink]="['/holidays/view']" class="d-inline-flex align-items-center">
+              <app-icon class="me-2" [name]="'calendar3'"></app-icon> Holidays</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
       <h6 class="px-3">Account</h6>
 
       <div class="collapse show" id="layout-collapse">
@@ -78,11 +120,7 @@
             <a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center me-1">
               <app-icon class="me-2" [name]="'key'"></app-icon> Change Password</a>
           </li>
-          <li>
-            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center"><app-icon
-                class="me-2" [name]="'person-video3'"></app-icon> Change
-              Supervisor</a>
-          </li>
+          
           <li>
             <a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
               class="d-inline-flex align-items-center me-1">
