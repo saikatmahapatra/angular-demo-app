@@ -13,6 +13,7 @@ export class PrimeNgUiKitComponent implements OnInit {
   selectedRadio: string = 'R';
   selectedRadio2: string = '2';
   value17 = 10;
+  expanded = true;
   optionCategoriesInline: any[] = [{ name: 'Option 1', key: 'A' }, { name: 'Option 2', key: 'M' }, { name: 'Option 3 (disabled)', key: 'R' }];
   optionCategoriesBlock: any[] = [{ name: 'Option 1', key: '1' }, { name: 'Option 2', key: '2' }, { name: 'Option 3 (disabled)', key: '3' }];
   selectedCheckboxCategories1: any[] = [{ name: 'Option 3 (disabled)', key: 'op3' }];

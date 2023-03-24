@@ -28,6 +28,7 @@ import { D3DataDrivenDocumentComponent } from './d3-data-driven-document/d3-data
 import { BarChartComponent } from './d3-data-driven-document/bar-chart/bar-chart.component';
 import { MultiLineChartComponent } from './d3-data-driven-document/multi-line-chart/multi-line-chart.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
+import { PrimeNgModule } from '../prime-ng.module';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.compone
     SharedModule,
     NgExampleRoutingModule,
     AgGridModule,
-    TranslateModule
+    TranslateModule,
+    PrimeNgModule
   ],
   declarations: [
     NgExampleComponent,
