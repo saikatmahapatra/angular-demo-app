@@ -1,7 +1,7 @@
 <h1>Manage Task</h1>
 
 <div class="my-4">
-    <a [routerLink]="['../add-task']" class="btn btn-sm btn-success">Add Task</a>
+    <a [routerLink]="['../add-task']" class="btn  btn-success">Add Task</a>
 </div>
 
  <div class="table-responsive">
@@ -23,8 +23,8 @@
               </td>
               <td [innerHTML]="data?.task_status === 'Y' ? 'Active': 'Inactive'"></td>
               <td>
-                <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/project/edit-task/', data.id]">Edit</a>
-                <!-- <button class="btn btn-outline-danger btn-sm ms-1" (click)="delete(data.id)">Delete</button> -->
+                <a class="btn btn-outline-secondary " [routerLink]="['/project/edit-task/', data.id]">Edit</a>
+                <!-- <button class="btn btn-outline-danger  ms-1" (click)="delete(data.id)">Delete</button> -->
               </td>
           </tr>
       </tbody>
