@@ -45,13 +45,20 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true;
     if (this.loginForm.valid) {
       const postData = this.loginForm.value;
-      this.authSvc.authenticate(postData).subscribe((response) => {
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigate([returnUrl]);
+      this.authSvc.authenticate(postData).subscribe({
+        next: (response: any) => {
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+          this.router.navigate([returnUrl]);
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
       });
+
     } else {
+      this.loading = false;
       this.formValidationSvc.validateAllFormFields(this.loginForm);
     }
 
