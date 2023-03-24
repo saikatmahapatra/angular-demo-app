@@ -8,17 +8,17 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'gear'"></app-icon></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'question-circle'"></app-icon></a>
-        </li>
+        </li> -->        
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/user/profile']"><app-icon [name]="'person-circle'"></app-icon></a>
         </li>
         <li class="nav-item">
           <app-theme-switch></app-theme-switch>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}"><app-icon [name]="'box-arrow-right'"></app-icon></a>
         </li>
       </ul>
     </div>
