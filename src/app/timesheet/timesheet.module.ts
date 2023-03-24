@@ -7,7 +7,7 @@ import { TimesheetFormComponent } from './timesheet-form/timesheet-form.componen
 import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.component';
 import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import { SharedModule } from '../@shared/shared.module';
-import { PrimengModule } from '../primeng.module';
+import { PrimeNgModule } from '../prime-ng.module';
 @NgModule({
   declarations: [
     TimesheetLayoutComponent,
@@ -21,7 +21,7 @@ import { PrimengModule } from '../primeng.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    PrimengModule
+    PrimeNgModule
   ]
 })
 export class TimesheetModule { }

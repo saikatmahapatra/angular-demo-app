@@ -1,1 +1,234 @@
-<p>prime-ng-ui-kit works!</p>
+<div class="row mb-4">
+    <div class="col-12">
+        <h5 class="font-weight-bold mb-2">Regular buttons</h5>
+        <button pButton pRipple type="button" label="Primary" class="btn-brand p-button-rounded mr-2"></button>
+        <button pButton pRipple type="button" label="Secondary"
+            class="btn-brand p-button-rounded p-button-secondary mr-2"></button>
+        <button pButton pRipple type="button" label="Stock Details"
+            class="btn-brand btn-link p-button-text mr-2"></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Small buttons</h5>
+        <button pButton pRipple type="button" label="Small Primary"
+            class="btn-brand p-button-rounded p-button-sm mr-2"></button>
+        <button pButton pRipple type="button" label="Small Secondary"
+            class="btn-brand p-button-rounded p-button-secondary p-button-sm mr-2"></button>
+        <button pButton pRipple type="button" label="Stock Details"
+            class="btn-brand btn-link p-button-text p-button-sm mr-2"></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Buttons with text & icons</h5>
+        <button pButton pRipple type="button"
+            class="btn-brand text-primary p-button-rounded p-button-secondary p-button-sm mr-2"><i
+                class="pi pi-download mr-2"></i>
+            Download List</button>
+
+        <button pButton pRipple type="button" class="btn-brand p-button-rounded p-button-sm mr-2" (click)="viewMore()"
+            [label]="expanded ? 'Collapse All Details' : 'Expand All Details'"
+            [icon]="expanded ? 'pi pi-caret-up' : 'pi pi-caret-down'" iconPos="right"></button>
+
+        <button pButton pRipple type="button" class="btn-brand p-button-rounded p-button-secondary p-button-sm mr-2"
+            (click)="viewMore()" [label]="expanded ? 'Collapse All Details' : 'Expand All Details'"
+            [icon]="expanded ? 'pi pi-caret-up' : 'pi pi-caret-down'" iconPos="left"></button>
+
+        <button pButton pRipple type="button" class="btn-brand p-button-rounded p-button-secondary mr-2"><i
+                class="pi pi-caret-down mr-2"></i> Large custom</button>
+
+        <button pButton pRipple type="button" class="btn-brand btn-link-icon p-button-text p-button-sm"
+            (click)="viewMore()" [label]="expanded ? 'View Less' : 'View More'"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" iconPos="right"></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Buttons with only icons</h5>
+        <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary mr-2"><i
+                class="pi pi-download" aria-hidden="true"></i></button>
+        <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary mr-2"><i
+                class="pi pi-trash" aria-hidden="true"></i></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Disabled buttons</h5>
+        <button pButton pRipple type="button" label="Primary" class="btn-brand p-button-rounded mr-2" disabled></button>
+        <button pButton pRipple type="button" label="Small Secondary"
+            class="btn-brand p-button-rounded p-button-secondary p-button-sm mr-2" disabled></button>
+        <button pButton pRipple type="button"
+            class="btn-brand text-primary p-button-rounded p-button-secondary p-button-sm mr-2" disabled><i
+                class="pi pi-download mr-2"></i>
+            Download List</button>
+        <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary mr-2" disabled><i
+                class="pi pi-download" aria-hidden="true"></i></button>
+        <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary mr-2" disabled><i
+                class="pi pi-trash" aria-hidden="true"></i></button>
+
+        <button pButton pRipple type="button" label="Stock Details"
+            class="btn-brand btn-link p-button-text p-button-sm mr-2" disabled></button>
+
+        <button disabled pButton pRipple type="button" icon="pi pi-chevron-right"
+            class="p-button-rounded mr-2"></button>
+        <button disabled pButton pRipple type="button" icon="pi pi-chevron-right"
+            class="p-button-rounded p-button-secondary mr-2"></button>
+        <button disabled pButton pRipple type="button" icon="pi pi-chevron-right"
+            class="p-button-rounded p-button-outlined mr-2"></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Rounded Icon Buttons</h5>
+        <button pButton pRipple type="button" icon="pi pi-chevron-right" class="p-button-rounded mr-2"></button>
+        <button pButton pRipple type="button" icon="pi pi-chevron-right"
+            class="p-button-rounded p-button-secondary mr-2"></button>
+        <button pButton pRipple type="button" icon="pi pi-chevron-right"
+            class="p-button-rounded p-button-outlined mr-2"></button>
+
+        <h5 class="font-weight-bold mb-2 mt-4">Tab Buttons</h5>
+        <button pButton pRipple type="button"
+            class="btn-brand p-button-sm p-button-rounded p-button-outlined mr-2">Active
+            tab</button>
+        <button pButton pRipple type="button"
+            class="btn-brand p-button-sm p-button-rounded p-button-secondary mr-2">Closed
+            tab</button>
+    </div>
+</div>
+
+
+<div class="row mb-4">
+    <!--Form Controls Example-->
+    <div class="col-md-6">
+        <h5 class="font-weight-bold mb-2">Form Controls Example (No Business Logic)</h5>
+        <h5 class="font-weight-bold my-2">InputText</h5>
+        <span class="mr-2">
+            <input type="text" class="mb-2" placeholder="Default" pInputText />
+        </span>
+        <span class="mr-2">
+            <input type="text" class="mb-2" placeholder="Disabled" disabled pInputText />
+        </span>
+
+        <h5 class="font-weight-bold mt-2 mb-4">Float Label</h5>
+        <span class="p-float-label">
+            <input id="float-input" class="my-2" type="text" pInputText>
+            <label for="float-input">Username</label>
+        </span>
+
+        <h5 class="font-weight-bold my-2">Icons</h5>
+        <span class="p-input-icon-left mr-2">
+            <i class="pi pi-search"></i>
+            <input type="text" class="mb-2" pInputText placeholder="Search">
+        </span>
+
+        <span class="p-input-icon-right">
+            <i class="pi pi-spin pi-spinner"></i>
+            <input type="text" pInputText>
+        </span>
+
+        <h5 class="font-weight-bold my-2">InputNumber</h5>
+        <label class="d-block" for="stacked">Stacked</label>
+        <p-inputNumber [(ngModel)]="value17" [showButtons]="true" inputId="stacked" mode="currency" currency="USD"
+            styleClass="w-100">
+        </p-inputNumber>
+
+        <h5 class="font-weight-bold my-2">Sizes</h5>
+        <div class="my-2"><input type="text" pInputText class="p-inputtext-sm" placeholder="Small"></div>
+        <div class="my-2"><input type="text" pInputText placeholder="Normal"></div>
+        <div class="my-2"><input type="text" pInputText class="p-inputtext-lg" placeholder="Large"></div>
+
+        <h5 class="font-weight-bold my-2">Textarea</h5>
+        <textarea class="mb-2" pInputTextarea></textarea>
+
+        <h5 class="font-weight-bold my-2">Slider</h5>
+        <input class="mb-2" type="text" pInputText [(ngModel)]="sliderVal" readonly />
+        <p-slider [(ngModel)]="sliderVal" [min]="0" [max]="100"></p-slider>
+        <!--
+      <h5 class="font-weight-bold my-2">Rating</h5>
+      <p-rating [(ngModel)]="ratingVal"></p-rating> -->
+
+        <h5 class="font-weight-bold my-2">Input Switch</h5>
+        <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+
+        <h5 class="font-weight-bold my-2">Calendar</h5>
+        <label class="d-block" for="icon">Icon</label>
+        <p-calendar class="mb-2 w-100" [showIcon]="true" inputId="icon"></p-calendar>
+
+        <!-- <label class="d-block">Inline</label>
+      <p-calendar class="mb-2" [inline]="true" [showWeek]="true"></p-calendar> -->
+    </div>
+    <div class="col-md-6">
+        <h5 class="font-weight-bold mb-3">RadioButton (Inline)</h5>
+        <span *ngFor="let radio of optionCategoriesInline" class="mr-4">
+            <p-radioButton [inputId]="radio.key" name="radioInline" [value]="radio.key" [(ngModel)]="selectedRadio"
+                [disabled]="radio.key === 'R'"></p-radioButton>
+            <label class="mb-0 ml-2" [ngClass]="radio.key === 'R' ? 'text-muted': '' "
+                [for]="radio.key">{{radio.name}}</label>
+        </span>
+
+        <h5 class="font-weight-bold my-3">RadioButton (Block)</h5>
+        <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
+            <p-radioButton [inputId]="radio.key" name="radioBlock" [value]="radio.key" [(ngModel)]="selectedRadio2"
+                [disabled]="radio.key === '3'"></p-radioButton>
+            <label class="mb-0 ml-2" [ngClass]="radio.key === '3' ? 'text-muted': '' "
+                [for]="radio.key">{{radio.name}}</label>
+        </div>
+
+        <h5 class="font-weight-bold my-3">Checkbox (Inline)</h5>
+        <span *ngFor="let category of checkboxCategoriesInline" class="mr-4">
+            <p-checkbox [inputId]="category.key" name="groupnameInline" [value]="category"
+                [(ngModel)]="selectedCheckboxCategories1" [disabled]="category.key === 'op3'"></p-checkbox>
+            <label class="mb-0 ml-2" [ngClass]="category.key === 'op3' ? 'text-muted': '' "
+                [for]="category.key">{{category.name}}</label>
+        </span>
+
+        <h5 class="font-weight-bold my-3">Checkbox (Block)</h5>
+        <div *ngFor="let category of checkboxCategoriesBlock" class="mb-2">
+            <p-checkbox [inputId]="category.key" name="groupnameBlock" [value]="category"
+                [(ngModel)]="selectedCheckboxCategories2" [disabled]="category.key === 'o3'"></p-checkbox>
+            <label class="mb-0 ml-2" [ngClass]="category.key === 'o3' ? 'text-muted': '' "
+                [for]="category.key">{{category.name}}</label>
+        </div>
+
+        <h5 class="font-weight-bold my-3">Listbox</h5>
+        <p-listbox [options]="listboxOptions" [(ngModel)]="selectedListboxOptions" [metaKeySelection]="false"
+            [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'250px'}">
+            <ng-template let-option pTemplate="item">
+                <div class="option-item">
+                    <div>{{option.name}}</div>
+                </div>
+            </ng-template>
+        </p-listbox>
+
+        <h5 class="font-weight-bold my-3">Dropdown</h5>
+        <p-dropdown styleClass="w-100" [options]="cities" [(ngModel)]="selectedCity1" placeholder="Select a City"
+            optionLabel="name" [showClear]="true"></p-dropdown>
+
+        <h5 class="font-weight-bold my-3">MultiSelect - Chips</h5>
+        <p-multiSelect styleClass="w-100" [options]="cities" [(ngModel)]="selectedCities2" defaultLabel="Select a City"
+            optionLabel="name" display="chip"></p-multiSelect>
+
+        <h5 class="font-weight-bold my-3">Tooltips</h5>
+        <div class="my-2">
+            default <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary"
+                icon="pi pi-info-circle" pTooltip="Default tooltip text" tooltipPosition="top"></button>
+        </div>
+        <div class="my-2">
+            html content based tooltip <button type="button" pButton
+                class="btn-brand p-button-sm btn-icon-only text-primary" icon="pi pi-info-circle"
+                pTooltip="<strong>Tooltip:</strong> <br> <strong>Lorem Ipsum</strong> is simply <u>dummy text</u> of the <span class='text-success'>printing</span> and <span class='text-danger'>typesettings</span> industry."
+                tooltipPosition="top" [escape]="false"></button>
+        </div>
+
+        <div class="my-2">
+            custom background, using css class <code>.p-tooltip-primary</code>
+            <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary"
+                icon="pi pi-info-circle"
+                pTooltip="<strong>Tooltip:</strong> <br> <strong>Lorem Ipsum</strong> is simply <u>dummy text</u> of the printing and typesettings industry."
+                tooltipPosition="top" tooltipStyleClass="p-tooltip-primary" [escape]="false"></button>
+        </div>
+
+        <div class="my-2">
+            custom background, using css class <code>.p-tooltip-light</code>
+            <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary"
+                icon="pi pi-info-circle"
+                pTooltip="<strong>Tooltip:</strong> <br> <strong>Lorem Ipsum</strong> is simply <u>dummy text</u> of the printing and typesettings industry."
+                tooltipPosition="top" tooltipStyleClass="p-tooltip-light" [escape]="false"></button>
+        </div>
+
+        <div class="my-2">
+            custom background, using css class <code>.p-tooltip-white</code>
+            <button type="button" pButton class="btn-brand p-button-sm btn-icon-only text-primary"
+                icon="pi pi-info-circle"
+                pTooltip="<strong>Tooltip:</strong> <br> <strong>Lorem Ipsum</strong> is simply <u>dummy text</u> of the printing and typesettings industry."
+                tooltipPosition="top" tooltipStyleClass="p-tooltip-white" [escape]="false"></button>
+        </div>
+    </div>
+    <!--End of Form Controls Example-->
+</div>
