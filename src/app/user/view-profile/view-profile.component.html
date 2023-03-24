@@ -52,7 +52,7 @@
                                         class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
 
                                 <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)"
-                                        class="btn btn-light btn-sm mt-0"> Delete</a>
+                                        class="btn btn-light btn-sm mt-0"><app-icon [name]="'trash3'"></app-icon> Delete</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
@@ -158,6 +158,7 @@
                         <div *ngIf="selfAccount" class="mt-1">
                                 <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
                                         class="btn btn-light btn-sm mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                <a (click)="deleteContact(contact.id)" class="btn btn-light btn-sm mt-0"><app-icon [name]="'trash3'"></app-icon> Delete</a>
                         </div>
                 </div>
                 <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
