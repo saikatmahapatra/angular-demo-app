@@ -18,72 +18,52 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { UiButtonComponent } from './components/ui-button/ui-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
 import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
 import { IconComponent } from './components/icon/icon.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
+
+
+const data = [
+  HighlightDirective,
+  ExponentialStrengthPipe,
+  MaskPipe,
+  OrderByPipe,
+  CheckCapsLockDirective,
+  HeaderComponent,
+  FooterComponent,
+  ValidationErrorComponent,
+  DefaultLayoutComponent,
+  UnauthenticatedLayoutComponent,
+  AuthenticatedLayoutComponent,
+  AlertMessageComponent,
+  SidebarComponent,
+  LoaderComponent,
+  UiButtonComponent,
+  SearchInputComponent,
+  FileUploadComponent,
+  StatusIndicatorDirective,
+  ThemeSwitchComponent,
+  IconComponent,
+  CookieConsentComponent,
+  ScrollToTopComponent
+];
+
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
+    ReactiveFormsModule
   ],
   declarations: [
-    HighlightDirective,
-    ExponentialStrengthPipe,
-    MaskPipe,
-    OrderByPipe,
-    CheckCapsLockDirective,
-    HeaderComponent,
-    FooterComponent,
-    ValidationErrorComponent,
-    DefaultLayoutComponent,
-    UnauthenticatedLayoutComponent,
-    AuthenticatedLayoutComponent,
-    AlertMessageComponent,
-    SidebarComponent,
-    LoaderComponent,
-    UiButtonComponent,
-    SearchInputComponent,
-    PaginationComponent,
-    FileUploadComponent,
-    StatusIndicatorDirective,
-    ThemeSwitchComponent,
-    IconComponent,
-    CookieConsentComponent,
-    ScrollToTopComponent
+    ...data
   ],
   providers: [],
   exports: [
-    HighlightDirective,
-    ExponentialStrengthPipe,
-    MaskPipe,
-    OrderByPipe,
-    CheckCapsLockDirective,
-    HeaderComponent,
-    FooterComponent,
-    ValidationErrorComponent,
-    DefaultLayoutComponent,
-    UnauthenticatedLayoutComponent,
-    AuthenticatedLayoutComponent,
-    AlertMessageComponent,
-    SidebarComponent,
-    LoaderComponent,
-    UiButtonComponent,
-    SearchInputComponent,
-    PaginationComponent,
-    FileUploadComponent,
-    StatusIndicatorDirective,
-    ThemeSwitchComponent,
-    IconComponent,
-    CookieConsentComponent,
-    ScrollToTopComponent
+    ...data
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
