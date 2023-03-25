@@ -7,7 +7,7 @@
 
             <div class="mb-3">
                 <label class="required" for="contentCategory">Address Type</label>
-                <select class="form-control" id="contentCategory" formControlName="contentCategory">
+                <select class="form-select" id="contentCategory" formControlName="contentCategory">
                     <option value="">Select</option>
                     <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
                 </select>

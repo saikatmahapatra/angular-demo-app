@@ -27,7 +27,7 @@
 
             <div class="mb-3">
                 <label class="optional" for="bloodGroup">Blood Group</label>
-                <select class="form-control" id="bloodGroup" formControlName="bloodGroup">
+                <select class="form-select" id="bloodGroup" formControlName="bloodGroup">
                     <option value="{{data.id}}" *ngFor="let data of bloodGroupList; let i=index">{{data.name}}
                     </option>
                 </select>

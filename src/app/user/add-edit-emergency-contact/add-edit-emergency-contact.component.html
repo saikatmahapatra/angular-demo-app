@@ -19,7 +19,7 @@
 
             <div class="mb-3">
                 <label class="required" for="relationWithContact">Relation</label>
-                <select class="form-control" id="relationWithContact" formControlName="relationWithContact">
+                <select class="form-select" id="relationWithContact" formControlName="relationWithContact">
                     <option value="">Select</option>
                     <option *ngFor="let data of relationDataList" [value]="data.id" [innerHTML]="data.name"></option>
                 </select>

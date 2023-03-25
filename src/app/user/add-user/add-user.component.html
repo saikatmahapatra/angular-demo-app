@@ -66,7 +66,7 @@
             <div class="row mb-3 mb-2">
                 <div class="col-md-6">
                     <label class="required" for="designation">Designation</label>
-                    <select class="form-control" id="designation" formControlName="designation">
+                    <select class="form-select" id="designation" formControlName="designation">
                         <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of designationList; let i=index">{{data.name}}
                         </option>
@@ -76,7 +76,7 @@
 
                 <div class="col-md-6">
                     <label class="required" for="department">Department</label>
-                    <select class="form-control" id="department" formControlName="department">
+                    <select class="form-select" id="department" formControlName="department">
                         <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of departmentList; let i=index">{{data.name}}
                         </option>
@@ -94,7 +94,7 @@
 
                 <div class="col-md-6">
                     <label class="required" for="employmentType">Employment Type</label>
-                    <select class="form-control" id="employmentType" formControlName="employmentType">
+                    <select class="form-select" id="employmentType" formControlName="employmentType">
                         <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of employmentTypeList; let i=index">{{data.name}}
                         </option>

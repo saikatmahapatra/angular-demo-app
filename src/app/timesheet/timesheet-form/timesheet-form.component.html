@@ -61,7 +61,7 @@
         <div class="col-md-5 mt-4">
           <div class="mb-3">
             <label class="required" for="project">Project</label>
-            <select class="form-control" id="project" formControlName="project">
+            <select class="form-select" id="project" formControlName="project">
               <option value="">Select</option>
               <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
             </select>
@@ -70,7 +70,7 @@
 
           <div class="mb-3">
             <label class="required" for="task">Task</label>
-            <select class="form-control" id="task" formControlName="task">
+            <select class="form-select" id="task" formControlName="task">
               <option value="">Select</option>
               <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
             </select>

@@ -12,7 +12,7 @@
 
             <div class="mb-3">
                 <label class="optional" for="parentTaskId">Parent Task</label>
-                <select class="form-control" id="parentTaskId" formControlName="parentTaskId">
+                <select class="form-select" id="parentTaskId" formControlName="parentTaskId">
                     <option value="">-</option>
                     <option *ngFor="let data of taskDropdown" [value]="data.id" [innerHTML]="data.name"></option>
                 </select>

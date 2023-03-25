@@ -7,7 +7,7 @@
 
             <div class="mb-3">
                 <label class="required" for="employer">Employer Name</label>
-                <select class="form-control" id="employer" formControlName="employer">
+                <select class="form-select" id="employer" formControlName="employer">
                     <option value="">Select</option>
                     <option *ngFor="let data of employers" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>
@@ -21,7 +21,7 @@
 
             <div class="mb-3">
                 <label class="required" for="designation">Role/Designation</label>
-                <select class="form-control" id="designation" formControlName="designation">
+                <select class="form-select" id="designation" formControlName="designation">
                     <option value="">Select</option>
                     <option *ngFor="let data of designations" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>

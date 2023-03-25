@@ -7,7 +7,7 @@
 
             <div class="mb-3">
                 <label class="required" for="addressType">Address Type</label>
-                <select class="form-control" id="addressType" formControlName="addressType">
+                <select class="form-select" id="addressType" formControlName="addressType">
                     <option value="">Select</option>
                     <option value="{{data.id}}" *ngFor="let data of addressType; let i=index">{{data.name}}</option>
                 </select>
@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
                 <label class="required" for="state">State</label>
-                <select class="form-control" id="state" formControlName="state">
+                <select class="form-select" id="state" formControlName="state">
                     <option value="">Select</option>
                     <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option>
                 </select>

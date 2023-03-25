@@ -7,7 +7,7 @@
 
             <div class="mb-3">
                 <label class="required" for="qualification">Qualification</label>
-                <select class="form-control" id="qualification" formControlName="qualification">
+                <select class="form-select" id="qualification" formControlName="qualification">
                     <option value="">Select</option>
                     <option *ngFor="let data of qualificationList" [value]="data.id" [innerHTML]="data.name"></option>
                 </select>
@@ -16,7 +16,7 @@
 
             <div class="mb-3">
                 <label class="required" for="degree">Degree</label>
-                <select class="form-control" id="degree" formControlName="degree">
+                <select class="form-select" id="degree" formControlName="degree">
                     <option value="">Select</option>
                     <option *ngFor="let data of degreeList" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>
@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label class="required" for="specialization">Specialization</label>
-                <select class="form-control" id="specialization" formControlName="specialization">
+                <select class="form-select" id="specialization" formControlName="specialization">
                     <option value="">Select</option>
                     <option *ngFor="let data of specializationList" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>
@@ -48,7 +48,7 @@
 
             <div class="mb-3">
                 <label class="required" for="institute">Institute/University/Board/Council</label>
-                <select class="form-control" id="institute" formControlName="institute">
+                <select class="form-select" id="institute" formControlName="institute">
                     <option value="">Select</option>
                     <option *ngFor="let data of institutionList" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>

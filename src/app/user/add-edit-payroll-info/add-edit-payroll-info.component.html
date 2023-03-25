@@ -33,7 +33,7 @@
 
             <div class="mb-3">
                 <label class="required" for="bank">Select Bank</label>
-                <select class="form-control" id="bank" formControlName="bank">
+                <select class="form-select" id="bank" formControlName="bank">
                     <option value="">-</option>
                     <option [value]="data.id" *ngFor="let data of bankList; let i=index" [innerHTML]="data.name"></option>
                 </select>

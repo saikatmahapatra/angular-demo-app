@@ -45,7 +45,7 @@
             <div class="row mb-3 mb-2">
                 <div class="col">
                     <label for="city">City</label>
-                    <select class="form-control" id="city" formControlName="city">
+                    <select class="form-select" id="city" formControlName="city">
                         <option value="{{data.value}}" *ngFor="let data of DataCity; let i=index">{{data.name}}</option>
                     </select>
                     <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
