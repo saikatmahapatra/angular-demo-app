@@ -106,7 +106,7 @@
           </div>
           <div class="mb-3">
             <label class="required" for="description">Task Description</label>
-            <input type="text" class="form-control" id="description" formControlName="description" maxlength="50">
+            <textarea class="form-control" id="description" formControlName="description" maxlength="200" placeholder="briefly describe in 200 characters"></textarea>
             <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
           </div>
 
