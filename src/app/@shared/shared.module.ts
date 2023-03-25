@@ -24,6 +24,7 @@ import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.comp
 import { IconComponent } from './components/icon/icon.component';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
+import { PrimeNgModule } from '../prime-ng.module';
 
 
 const data = [
@@ -56,7 +57,8 @@ const data = [
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    PrimeNgModule
   ],
   declarations: [
     ...data
