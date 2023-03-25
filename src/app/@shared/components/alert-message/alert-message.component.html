@@ -1,8 +1,8 @@
 <div *ngIf="message" class="server-alert alert d-flex align-items-center alert-dismissible fade show" [ngClass]="message.cssClass">
-  <app-icon *ngIf="message.icon == 'success' " [name]="'check-circle-fill'" [width]="24" [height]="24"></app-icon>
-  <app-icon *ngIf="message.icon == 'error' " [name]="'exclamation-circle-fill'" [width]="24" [height]="24"></app-icon>
-  <app-icon *ngIf="message.icon == 'info' " [name]="'info-circle-fill'" [width]="24" [height]="24"></app-icon>
-  <app-icon *ngIf="message.icon == 'warning' " [name]="'exclamation-triangle-fill'" [width]="24" [height]="24"></app-icon>
+  <app-icon *ngIf="message.icon == 'success' " [name]="'check-circle-fill'"></app-icon>
+  <app-icon *ngIf="message.icon == 'error' " [name]="'exclamation-circle-fill'"></app-icon>
+  <app-icon *ngIf="message.icon == 'info' " [name]="'info-circle-fill'"></app-icon>
+  <app-icon *ngIf="message.icon == 'warning' " [name]="'exclamation-triangle-fill'"></app-icon>
   <span class="ms-2" [innerHTML]="message.text"></span>
   <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
 </div>
