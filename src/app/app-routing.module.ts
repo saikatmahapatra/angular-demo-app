@@ -67,6 +67,11 @@ const routes: Routes = [
         path: 'project',
         canActivate: [AuthGuard],
         loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
+      },
+      {
+        path: 'leave',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./leave/leave.module').then(m => m.LeaveModule)
       }
 
     ]

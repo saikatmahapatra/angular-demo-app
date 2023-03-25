@@ -70,11 +70,11 @@
           </li>
           <li>
             <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'window-stack'"></app-icon> Manage Leave Request</a>
+              <app-icon class="me-2" [name]="'window-stack'"></app-icon> Incoming Leave Request</a>
           </li>
           <li>
             <a [routerLink]="['/leave/history']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'list-stars'"></app-icon> Track My Leave</a>
+              <app-icon class="me-2" [name]="'list-stars'"></app-icon> My Leave History</a>
           </li>
         </ul>
       </div>
@@ -85,11 +85,11 @@
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
+            <a [routerLink]="['/user/view-employees']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'people'"></app-icon> Employees</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
+            <a [routerLink]="['/user/view-reportees']" class="d-inline-flex align-items-center">
               <app-icon class="me-2" [name]="'person-check'"></app-icon> My Reportees</a>
           </li>
           <li>
