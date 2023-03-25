@@ -12,10 +12,12 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   brandName = AppConfig.brandName;
+  user: any;
   constructor(private authSvc: AuthService, private navService: NavigationService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authSvc.isLoggedIn();
+    this.user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
   }
 
   toggleSideNav() {

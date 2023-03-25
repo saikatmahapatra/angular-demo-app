@@ -12,7 +12,7 @@
           <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'gear'"></app-icon></a>
         </li> -->        
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user/profile']"><app-icon [name]="'person-circle'"></app-icon></a>
+          <a class="nav-link" [routerLink]="['/user/profile']"><app-icon [name]="'person-circle'"></app-icon> Hi, {{user.user_firstname}}</a>
         </li>
         <li class="nav-item">
           <app-theme-switch></app-theme-switch>
