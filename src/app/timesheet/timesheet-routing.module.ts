@@ -4,11 +4,13 @@ import { TimesheetFormComponent } from './timesheet-form/timesheet-form.componen
 import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.component';
 import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import { TimesheetLayoutComponent } from './timesheet-layout.component';
+import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
 const routes: Routes = [
   {
     path: '', component: TimesheetLayoutComponent, children: [
       { path: '', component: TimesheetFormComponent },
-      { path: 'manage', component: ManageTimesheetComponent }
+      { path: 'manage', component: ManageTimesheetComponent },
+      { path: 'edit-timesheet/:id', component: EditTimesheetComponent },
     ]
   },
 ];

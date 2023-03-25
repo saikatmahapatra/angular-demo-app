@@ -16,6 +16,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-payroll-info.component';
 import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
+import { ViewEmployeesComponent } from './view-employees/view-employees.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
       { path: 'upload-documents', component: UploadDocComponent },
       { path: 'change-password', component: ChangePasswordComponent },
       { path: 'change-approvers', component: EditApproversComponent },
-      { path: 'view-employees', component: ViewProfileComponent },
+      { path: 'view-employees', component: ViewEmployeesComponent },
       { path: 'view-reportees', component: PeopleILeadComponent },
     ]
   },
