@@ -58,7 +58,7 @@
               
                   <div class="">
                     <div class="date-filled">DD</div>
-                    <div class="">Filled</div>
+                    <div class="">Task Logged</div>
                   </div>
               
                   <div class="">
@@ -121,5 +121,5 @@
 
 <div class="row mb-4">
   <h4>Your Timesheet of {{monthName}}, {{year}}</h4>
-  <app-view-timesheet [timeSheetLogData]="timesheetData"></app-view-timesheet>
+  <app-view-timesheet [timeSheetLogData]="timesheetData" (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
 </div>

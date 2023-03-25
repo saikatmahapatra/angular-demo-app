@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormArray, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -113,14 +113,16 @@ export class TimesheetFormComponent implements OnInit {
     queryParams = queryParams.append('month', this.month);
     queryParams = queryParams.append('year', this.year);
     let options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe((response: any) => {
-      this.entryFound = true;
-      this.timesheetData = response?.data?.data_rows;
-      if (this.timesheetData.length > 0) {
-        this.timesheetData.forEach((element: any) => {
-          let dayDate = element.timesheet_date.split('-'); // YYYY-MM-DD
-          this.timesheetFilledDays.push(Number(dayDate[2]));
-        });
+    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe({
+      next: (response: any) => {
+        this.entryFound = true;
+        this.timesheetData = response?.data?.data_rows;
+        if (this.timesheetData.length > 0) {
+          this.timesheetData.forEach((element: any) => {
+            let dayDate = element.timesheet_date.split('-'); // YYYY-MM-DD
+            this.timesheetFilledDays.push(Number(dayDate[2]));
+          });
+        }
       }
     });
   }
@@ -134,7 +136,7 @@ export class TimesheetFormComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            window.location.reload();
+            this.getTimesheetData();
           }
         },
         error: () => {
@@ -200,6 +202,12 @@ export class TimesheetFormComponent implements OnInit {
     // }
     return cssClass;
   }
+
+  isDeleteComplete(event: boolean) {
+    if(event) {
+      this.getTimesheetData();
+    }
+  } 
 }
 
 
