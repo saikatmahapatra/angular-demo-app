@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { NavigationService } from 'src/app/@core/services/navigation.service';
 import { SideNavDirection } from 'src/app/@utils/enums/side-nav-direction';
@@ -14,10 +15,11 @@ export class SidebarComponent implements OnInit {
   // @Input() duration: number = 0.25;
   // @Input() navWidth: number = window.innerWidth;
   // @Input() direction: SideNavDirection = SideNavDirection.Left;
-  constructor(private navService: NavigationService, private commonSvc: CommonService) { }
+  userRole = '';
+  constructor(private navService: NavigationService, private commonSvc: CommonService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
-    //this.showSideNav = this.navService.getShowNav();
+    this.userRole = this.authSvc.getRoleId();
   }
 
   // onSidebarClose() {
