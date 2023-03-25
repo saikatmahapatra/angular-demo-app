@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authSvc.isLoggedIn();
-    this.user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    this.user = this.authSvc.getUser();
   }
 
   toggleSideNav() {

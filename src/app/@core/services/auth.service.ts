@@ -45,13 +45,13 @@ export class AuthService {
     return sessionStorage.getItem('access_token');
   }
 
-  getLogedInUserDetails() {
-    return this.loggedInUserSubject;
+  getUser() {
+    return JSON.parse(sessionStorage.getItem('loginData') || '') || {};
   }
 
   logout() {
-    sessionStorage.removeItem('loginData');
-    sessionStorage.removeItem('access_token');
+    sessionStorage.clear();
+    localStorage.clear();
     this.loggedInUserSubject.next(null);
     this.alertSvc.info('You have been logged out!', true);
     this.router.navigate(['auth/login']);
@@ -62,13 +62,12 @@ export class AuthService {
   }
 
   getUserId() {
-    const data = sessionStorage.getItem('loginData') || null;
-    if(data != null) {
-      const dataObj = JSON.parse(data);
-      return dataObj?.id;
-    } else {
-      return null;
-    }
-    
+    const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    return user.id;
+  }
+
+  getRoleId() {
+    const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    return user.user_role;
   }
 }
