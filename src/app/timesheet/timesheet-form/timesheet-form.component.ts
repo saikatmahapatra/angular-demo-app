@@ -17,7 +17,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class TimesheetFormComponent implements OnInit {
   date1!: Date;
   dates: Date[] | undefined;
-  maxDateCount = 3;
+  maxDateCount = 4;
   userId!: null;
   submitted = false;
   loading = false;
@@ -29,7 +29,6 @@ export class TimesheetFormComponent implements OnInit {
   event: any;
   minDate!: Date;
   maxDate!: Date;
-  minCalDate = new Date();
   holidaysFound = false;
   entryFound = false;
   month: number = 0;
@@ -62,21 +61,16 @@ export class TimesheetFormComponent implements OnInit {
     private cdRef: ChangeDetectorRef
   ) {
     let today = new Date();
-    let month = today.getMonth();
-    let year = today.getFullYear();
-    let prevMonth = (month === 0) ? 11 : month - 1;
-    let prevYear = (prevMonth === 11) ? year - 1 : year;
-    let nextMonth = (month === 11) ? 0 : month + 1;
-    let nextYear = (nextMonth === 0) ? year + 1 : year;
+
+    this.month = today.getMonth() + 1;
+    this.year = today.getFullYear();
+
     this.minDate = new Date();
-    this.minDate.setMonth(prevMonth);
-    this.minDate.setFullYear(prevYear);
+    this.minDate.setDate(today.getDate() -3);
+
     this.maxDate = new Date();
-    this.maxDate.setMonth(nextMonth);
-    this.maxDate.setFullYear(nextYear);
-    this.month = month + 1;
-    this.year = year;
-    this.monthName = this.monthNames[month];
+    this.maxDate = today;
+    this.monthName = this.monthNames[this.month -1];
   }
 
   get timeSheetDates() {
@@ -163,7 +157,6 @@ export class TimesheetFormComponent implements OnInit {
   // }
 
   dateSelected(event: any) {
-    console.log("dateSelected", event);
     const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
     const index = this.daysSelected.findIndex(x => x == date);
     if (index < 0) {

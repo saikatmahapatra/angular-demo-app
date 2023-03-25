@@ -1,45 +1,42 @@
 <h1>Log Timesheet</h1>
-<h5>{{monthName}}, {{year}}</h5>
+<h5 class="mt-2">{{monthName}}, {{year}}</h5>
 
-<div class="row my-4 bg-light p-2 text-muted indicator">
+<!-- <div class="row my-4 bg-light p-2 text-muted indicator">
   <div class="fw-bold">Indicators:</div>
   <div class="d-flex justify-content-between">
     <div class="">
-      <div class="date-selected">23</div>
+      <div class="date-selected">DD</div>
       <div class="">Selected</div>
     </div>
 
     <div class="">
-      <div class="date-filled">24</div>
+      <div class="date-filled">DD</div>
       <div class="">Filled</div>
     </div>
 
     <div class="">
-      <div class="date-holiday-opt">25</div>
+      <div class="date-holiday-opt">DD</div>
       <div class="">Opt. Holiday</div>
     </div>
 
     <div class="">
-      <div class="date-holiday">26</div>
+      <div class="date-holiday">DD</div>
       <div class="">Holiday</div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="row mb-4">
-  <div class="col-md-10">
+<div class="row my-4">
+  <div class="col-md-9">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="action">
-      <div class="row mb-3">
-        <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-6">
           <div class="mb-3">
-            <label class="required" for="cal">Select Dates</label>
-            <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum 3 days.</div>
-            {{dates|json}}
-
-            <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="true"
-              [minDate]="minDate" [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
+            <label class="required d-block" for="cal">Select Dates</label>
+            <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="false" [minDate]="minDate"
+              [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
               (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
 
 
@@ -49,6 +46,32 @@
 
 
             </p-calendar>
+            <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum {{maxDateCount}}
+              days.</div>
+            
+              <div class="indicator mt-4 form-text text-muted">
+                <div class="d-flex justify-content-between">
+                  <div class="">
+                    <div class="date-selected">DD</div>
+                    <div class="">Selected</div>
+                  </div>
+              
+                  <div class="">
+                    <div class="date-filled">DD</div>
+                    <div class="">Filled</div>
+                  </div>
+              
+                  <div class="">
+                    <div class="date-holiday-opt">DD</div>
+                    <div class="">Opt. Holiday</div>
+                  </div>
+              
+                  <div class="">
+                    <div class="date-holiday">DD</div>
+                    <div class="">Holiday</div>
+                  </div>
+                </div>
+              </div>
 
             <div class="my-1 py-2 alert alert-danger"
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
@@ -56,9 +79,8 @@
               <span>Please select at least one date from the calendar.</span>
             </div>
           </div>
-
         </div>
-        <div class="col-md-5 mt-4">
+        <div class="col-md-6">
           <div class="mb-3">
             <label class="required" for="project">Project</label>
             <select class="form-select" id="project" formControlName="project">
@@ -92,11 +114,7 @@
           <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
               class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </div>
-
-
-
       </div>
-
     </form>
   </div>
 </div>

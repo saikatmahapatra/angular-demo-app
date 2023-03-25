@@ -28,6 +28,7 @@ body {
 }
 
 label {
+  margin-bottom: .5rem;
   &.required {
     &::after {
       content: '*';
