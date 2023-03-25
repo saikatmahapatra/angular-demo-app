@@ -20,6 +20,7 @@ import { AddEditBasicInfoComponent } from './add-edit-basic-info/add-edit-basic-
 import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-payroll-info.component';
 import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
+import { ViewEmployeesComponent } from './view-employees/view-employees.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
     AddEditBasicInfoComponent,
     AddEditPayrollInfoComponent,
     EditApproversComponent,
-    PeopleILeadComponent
+    PeopleILeadComponent,
+    ViewEmployeesComponent
   ]
 })
 export class UserModule { }
