@@ -19,19 +19,19 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
         window.scrollTo(0, 0);
         switch (message && message.type) {
           case 'success':
-            message.cssClass = 'bg-success text-white';
+            message.cssClass = 'alert-success';
             message.icon = 'success';
             break;
           case 'error':
-            message.cssClass = 'bg-danger text-white';
+            message.cssClass = 'alert-danger';
             message.icon = 'error';
             break;
           case 'info':
-            message.cssClass = 'bg-info text-white';
+            message.cssClass = 'alert-info';
             message.icon = 'info';
             break;
           case 'warning':
-            message.cssClass = 'bg-warning text-white';
+            message.cssClass = 'alert-warning';
             message.icon = 'warning';
             break;
         }
