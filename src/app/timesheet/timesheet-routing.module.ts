@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TimesheetFormComponent } from './timesheet-form/timesheet-form.component';
 import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.component';
-import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import { TimesheetLayoutComponent } from './timesheet-layout.component';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
 const routes: Routes = [
