@@ -37,7 +37,7 @@
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
         </dl>
         <a *ngIf="selfAccount" [routerLink]="['/user/edit-basic-info']" class="btn btn-light "><app-icon
-                        [name]="'pencil-square'"></app-icon> Edit Basic Information</a>
+                        [name]="'pencil'"></app-icon> Edit Basic Information</a>
 
 
 </section>
@@ -54,7 +54,7 @@
                 </address>
                 <div class="mt-1">
                         <a *ngIf="selfAccount" [routerLink]="['/user/edit-address/', addr.id]"
-                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil'"></app-icon> Edit</a>
 
                         <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)" class="btn btn-light  mt-0"><app-icon
                                         [name]="'trash3'"></app-icon> Delete</a>
@@ -81,7 +81,7 @@
                 <div>{{education.academic_marks_percentage}}%</div>
                 <div class="mt-1" *ngIf="selfAccount">
                         <a [routerLink]="['/user/edit-education/', education.id]"
-                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil'"></app-icon> Edit</a>
                         <a (click)="deleteEducation(education.id)" class="btn btn-light  mt-0"><app-icon
                                         [name]="'trash3'"></app-icon> Delete</a>
                 </div>
@@ -112,7 +112,7 @@
                         'd-MMM-y'}}</div>
                 <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-work-experience/', exp.id]"
-                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil'"></app-icon> Edit</a>
                         <a (click)="deleteWorkExp(exp.id)" class="btn btn-light  mt-0"><app-icon
                                         [name]="'trash3'"></app-icon> Delete</a>
                 </div>
@@ -145,7 +145,7 @@
                 <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
                 <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-payroll-info/', payroll.id]"
-                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil'"></app-icon> Edit</a>
                         <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light  mt-0"><app-icon
                                         [name]="'trash3'"></app-icon> Delete</a>
                 </div>
@@ -169,7 +169,7 @@
                 <div>Phone: {{contact?.contact_person_phone1}}</div>
                 <div *ngIf="selfAccount" class="mt-1">
                         <a [routerLink]="['/user/edit-emergency-contact/', contact.id]"
-                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil-square'"></app-icon> Edit</a>
+                                class="btn btn-light  mt-0 me-2"><app-icon [name]="'pencil'"></app-icon> Edit</a>
                         <a (click)="deleteContact(contact.id)" class="btn btn-light  mt-0"><app-icon
                                         [name]="'trash3'"></app-icon> Delete</a>
                 </div>
