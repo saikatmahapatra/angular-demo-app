@@ -1,3 +1,4 @@
+@import "../../../variables";
 $colors: (
     "blue": #2196F3,
     "green": #4caf50,
@@ -27,7 +28,7 @@ $shade900:#212529 !default;    //unused
 
 //global
 $fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$fontSize:1rem !default;
+$fontSize:$pFontSize !default;
 $fontWeight:normal !default;
 $textColor:$shade700 !default;
 $textSecondaryColor:$shade600 !default;
@@ -36,7 +37,7 @@ $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
 $listItemTransition:box-shadow $transitionDuration !default;
-$primeIconFontSize:1rem !default;
+$primeIconFontSize:$pFontSize !default;
 $divider:1px solid $shade300 !default;
 $inlineSpacing:.5rem !default;
 $disabledOpacity:.6 !default;
@@ -67,7 +68,7 @@ $actionIconBorderRadius:50% !default;
 
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding:.5rem .5rem !default;
-$inputTextFontSize:1rem !default;
+$inputTextFontSize:$pFontSize !default;
 
 $inputBg:$shade000 !default;
 $inputTextColor:$shade700 !default;
@@ -556,14 +557,14 @@ $messageMargin:1rem 0 !default;
 $messagePadding:1rem 1.5rem !default;
 $messageBorderWidth:0 0 0 6px !default;
 $messageIconFontSize:1.5rem !default;
-$messageTextFontSize:1rem !default;
+$messageTextFontSize:$pFontSize !default;
 $messageTextFontWeight:500 !default;
 
 //inline message
 $inlineMessagePadding:$inputPadding !default;
 $inlineMessageMargin:0 !default;
-$inlineMessageIconFontSize:1rem !default;
-$inlineMessageTextFontSize:1rem !default;
+$inlineMessageIconFontSize:$pFontSize !default;
+$inlineMessageTextFontSize:$pFontSize !default;
 $inlineMessageBorderWidth:0px !default;
 
 //toast
