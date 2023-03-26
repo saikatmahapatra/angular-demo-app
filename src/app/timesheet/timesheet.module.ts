@@ -9,13 +9,15 @@ import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.componen
 import { SharedModule } from '../@shared/shared.module';
 import { PrimeNgModule } from '../prime-ng.module';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
+import { TimesheetReportComponent } from './timesheet-report/timesheet-report.component';
 @NgModule({
   declarations: [
     TimesheetLayoutComponent,
     TimesheetFormComponent,
     ManageTimesheetComponent,
     ViewTimesheetComponent,
-    EditTimesheetComponent
+    EditTimesheetComponent,
+    TimesheetReportComponent
   ],
   imports: [
     CommonModule,
