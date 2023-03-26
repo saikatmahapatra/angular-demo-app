@@ -14,6 +14,7 @@ export const AppConfig = {
         getNews: 'news',
         getContents: 'cms',
         userFormData: 'user/userFormData',
+        markAsRead: 'cms/markAsRead',
         addUser: 'user/users',
         editUser: 'user/users',
         deleteUser: 'user/users',
