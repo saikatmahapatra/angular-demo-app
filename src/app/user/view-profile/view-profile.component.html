@@ -190,11 +190,11 @@
                 <dt class="col-md-4 col-lg-3">Account Status</dt>
                 <dd class="col-md-8 col-lg-9">
                         <span *ngIf="userInfo?.user_status === 'Y' " class="">
-                                <app-icon class="text-success" [name]="'check-circle-fill'"></app-icon> Active</span>
+                                <app-icon class="text-success" [name]="'circle-fill'"></app-icon> Active</span>
                         <span *ngIf="userInfo?.user_status === 'N' " class=""><app-icon class="text-danger"
-                                        [name]="'lock-fill'"></app-icon> Inactive</span>
+                                        [name]="'circle-fill'"></app-icon> Inactive</span>
                         <span *ngIf="userInfo?.user_status === 'A' " class=""><app-icon class="text-danger"
-                                        [name]="'person-x-fill'"></app-icon> Archived</span>
+                                        [name]="'circle-fill'"></app-icon> Archived</span>
                 </dd>
                 <dt class="col-md-4 col-lg-3">Role/Access</dt>
                 <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>

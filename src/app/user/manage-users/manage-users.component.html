@@ -38,7 +38,7 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width: 3rem"></th>
-                    <th pSortableColumn="user_firstname">
+                    <th style="width: 30rem" pSortableColumn="user_firstname">
                         <div class="flex justify-content-between align-items-center">
                             Name
                             <p-sortIcon field="user_firstname"></p-sortIcon>
@@ -46,13 +46,13 @@
                                 class="ms-auto"></p-columnFilter>
                         </div>
                     </th>
-                    <th pSortableColumn="user_emp_id">
+                    <!-- <th style="width: 15rem" pSortableColumn="user_emp_id">
                         <div class="flex justify-content-between align-items-center">
-                            Emp ID
+                            EmpID
                             <p-sortIcon field="user_emp_id"></p-sortIcon>
                         </div>
-                    </th>
-                    <th pSortableColumn="user_email">
+                    </th> -->
+                    <th style="width: 15rem" pSortableColumn="user_email">
                         <div class="flex justify-content-between align-items-center">
                             Email
                             <p-sortIcon field="user_email"></p-sortIcon>
@@ -60,13 +60,13 @@
                                 class="ms-auto"></p-columnFilter>
                         </div>
                     </th>
-                    <th pSortableColumn="user_phone1">
+                    <th style="width: 10rem" pSortableColumn="user_phone1">
                         <div class="flex justify-content-between align-items-center">
                             Phone
                             <p-sortIcon field="user_phone1"></p-sortIcon>
                         </div>
                     </th>
-                    <th pSortableColumn="designation_name">
+                    <th style="width: 20rem" pSortableColumn="designation_name">
                         <div class="flex justify-content-between align-items-center">
                             Designation
                             <p-sortIcon field="designation_name"></p-sortIcon>
@@ -94,11 +94,12 @@
                     <td>
                         <span class="p-column-title">Name</span>
                         {{user.user_firstname}} {{user.user_lastname}}
+                        ({{user.user_emp_id}})
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="p-column-title">ID</span>
                         {{user.user_emp_id}}
-                    </td>
+                    </td> -->
                     <td>
                         <span class="p-column-title">Email</span>
                         {{user.user_email}}
@@ -116,11 +117,11 @@
                         <!-- {{user.user_status}} -->
 
                         <span *ngIf="user?.user_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success" [name]="'check-circle-fill'"></app-icon></span>
-                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon class="text-warning"
-                                [name]="'check-circle-fill'"></app-icon></span>
+                            <app-icon class="text-success" [name]="'circle-fill'"></app-icon></span>
+                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon
+                                class="text-warning" [name]="'circle-fill'"></app-icon></span>
                         <span *ngIf="user?.user_status === 'A' " class="" title="Closed"><app-icon class="text-danger"
-                                [name]="'archive'"></app-icon></span>
+                                [name]="'circle-fill'"></app-icon></span>
 
                     </td>
 
@@ -137,6 +138,12 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
+                                    <td class="fw-bold">Employee ID</td>
+                                    <td [innerHTML]="user.user_emp_id || '-'"></td>
+                                    <td class="fw-bold">Designation</td>
+                                    <td [innerHTML]="user.designation_name || '-'"></td>
+                                </tr>
+                                <tr>
                                     <td class="fw-bold">Personal Email</td>
                                     <td [innerHTML]="user.user_email_secondary || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
@@ -150,7 +157,7 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Role Group</td>
-                                    <td [innerHTML]="user.user_role || '-'"></td>
+                                    <td [innerHTML]="user.user_role+'-'+user?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
                                     <td [innerHTML]="user.user_type || '-'"></td>
                                 </tr>
