@@ -1,6 +1,10 @@
 <h1>News</h1>
-<a [routerLink]="['/dashboard']" [state]="{ newsPageNumber: paginationPageNumber }"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Dashboard</a>
-<div class="card mt-4">
+<div class="back-to-page my-4">
+    <a [routerLink]="['/dashboard']" [state]="{ newsPageNumber: paginationPageNumber }">
+        <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Dashboard
+    </a>
+</div>
+<div class="card">
     <div class="card-header text-bold">
         <app-icon class="me-2" [name]="'app-indicator'"></app-icon>
         Organizational News

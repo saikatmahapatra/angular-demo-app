@@ -1,4 +1,7 @@
 <h1><span>{{title}}</span> Emergency Contact</h1>
+<div class="back-to-page my-4">
+    <a [routerLink]="['/user/profile']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to profile</a>
+</div>
 <div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -33,7 +36,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
         </form>
         <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
         <p class="debug">{{myForm.value|json}}</p>

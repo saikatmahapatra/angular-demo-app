@@ -115,9 +115,4 @@ export class AddEditProjectComponent implements OnInit {
       status: data?.project_status
     });
   }
-
-  redirect() {
-    this.router.navigate(['/project']);
-  }
-
 }

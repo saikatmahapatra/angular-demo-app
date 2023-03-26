@@ -14,18 +14,15 @@ export class NewsComponent implements OnInit {
   searchKeyword: string = ''; // from search input
   resetSearchInput = false;
 
-  // ngx-pagination
-  isServerSidePagination = true;
-  currentPage: number = 1;
+  currentPage: number = 0;
   itemPerPage: number = 10;
-  totalRecords!: number;
-  // end of ngx-pagination
+  totalRecords: number = 0;
 
   constructor(private apiSvc: ApiService, private commonSvc: CommonService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((param) => {
-      this.currentPage = window.history.state?.newsPageNumber || 1;
+      this.currentPage = window.history.state?.newsPageNumber || 0;
       this.getContents();
     })
 
@@ -37,10 +34,8 @@ export class NewsComponent implements OnInit {
       queryParams = queryParams.append('searchBy', this.searchKeyword);
     }
     //pagination calc
-    if (this.isServerSidePagination) {
-      queryParams = queryParams.append('page', this.currentPage);
-      queryParams = queryParams.append('perPage', this.itemPerPage);
-    }
+    queryParams = queryParams.append('page', this.currentPage + 1);
+    queryParams = queryParams.append('perPage', this.itemPerPage);
     let options = {};
     options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
@@ -62,7 +57,7 @@ export class NewsComponent implements OnInit {
 
   onPageChange(event: any) {
     console.log(event);
-    this.currentPage = event.page + 1;
+    this.currentPage = event.page;
     this.itemPerPage = event.rows;
     this.getContents();
   }

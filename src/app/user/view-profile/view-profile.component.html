@@ -1,5 +1,9 @@
 <h1>Profile</h1>
-
+<div class="back-to-page my-4">
+        <a [routerLink]="['/user/manage']">
+            <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Manage Employees
+        </a>
+    </div>
 <!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
 <h2 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h2>
 <div>{{userInfo?.designation_name}}</div>

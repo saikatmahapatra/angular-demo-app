@@ -1,4 +1,7 @@
 <h1> <span>{{title}}</span> Communication Address</h1>
+<div class="back-to-page my-4">
+    <a [routerLink]="['/user/profile']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to profile </a>
+</div>
 <div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -55,7 +58,6 @@
                 <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-            <a [routerLink]="['/user/profile']" class="btn btn-light ms-4">Cancel</a>
         </form>
     </div>
 </div>
