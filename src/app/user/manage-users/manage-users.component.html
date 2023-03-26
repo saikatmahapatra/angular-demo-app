@@ -137,34 +137,40 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
+                                    <td class="fw-bold">Personal Email</td>
+                                    <td [innerHTML]="user.user_email_secondary || '-'"></td>
+                                    <td class="fw-bold">Work Phone</td>
+                                    <td [innerHTML]="user.user_phone2 || '-'"></td>
+                                </tr>
+                                <tr>
                                     <td class="fw-bold">Employment Type</td>
-                                    <td>{{user.employment_type_name}}</td>
+                                    <td [innerHTML]="user.employment_type_name || '-'"></td>
                                     <td class="fw-bold">Department</td>
                                     <td [innerHTML]="user.department_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Role Group</td>
-                                    <td>{{user.user_role}}</td>
+                                    <td [innerHTML]="user.user_role || '-'"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td>{{user.user_type}}</td>
+                                    <td [innerHTML]="user.user_type || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
-                                    <td>{{user.user_doj}}</td>
+                                    <td [innerHTML]="user.user_doj || '-'"></td>
                                     <td class="fw-bold">Created On</td>
-                                    <td>{{user.user_registration_date}}</td>
+                                    <td [innerHTML]="user.user_registration_date || ''"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
-                                    <td [innerHTML]="user.user_dor || 'N/A'"></td>
+                                    <td [innerHTML]="user.user_dor || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
-                                    <td>{{user.user_login_date_time}}</td>
+                                    <td [innerHTML]="user.user_login_date_time || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
-                                    <td [innerHTML]="user.account_closed_datetime || 'N/A'"></td>
+                                    <td [innerHTML]="user.account_closed_datetime || 'NA'"></td>
                                     <td class="fw-bold">Comments</td>
-                                    <td [innerHTML]="user.account_close_comments || 'N/A'"></td>
+                                    <td [innerHTML]="user.account_close_comments || 'NA'"></td>
                                 </tr>
                             </tbody>
                         </table>
