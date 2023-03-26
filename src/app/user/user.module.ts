@@ -21,7 +21,7 @@ import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-pa
 import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
 import { ViewEmployeesComponent } from './view-employees/view-employees.component';
-
+import { PrimeNgModule } from '../prime-ng.module';
 
 @NgModule({
   imports: [
@@ -30,7 +30,8 @@ import { ViewEmployeesComponent } from './view-employees/view-employees.componen
     RouterModule,
     ReactiveFormsModule,
     SharedModule,
-    UserRoutingModule
+    UserRoutingModule,
+    PrimeNgModule
   ],
   declarations: [
     ManageUsersComponent,

@@ -130,8 +130,8 @@
 <div class="row mb-4">
     <!--Form Controls Example-->
     <div class="col-md-6">
-        <h5 class="font-weight-bold mb-2">Form Controls Example (No Business Logic)</h5>
-        <h5 class="font-weight-bold my-2">InputText</h5>
+        <h5 class="fw-bold mb-2">Form Controls Example (No Business Logic)</h5>
+        <h5 class="fw-bold my-2">InputText</h5>
         <span class="me-2">
             <input type="text" class="mb-2" placeholder="Default" pInputText />
         </span>
@@ -139,13 +139,13 @@
             <input type="text" class="mb-2" placeholder="Disabled" disabled pInputText />
         </span>
 
-        <h5 class="font-weight-bold mt-2 mb-4">Float Label</h5>
+        <h5 class="fw-bold mt-2 mb-4">Float Label</h5>
         <span class="p-float-label">
             <input id="float-input" class="my-2" type="text" pInputText>
             <label for="float-input">Username</label>
         </span>
 
-        <h5 class="font-weight-bold my-2">Icons</h5>
+        <h5 class="fw-bold my-2">Icons</h5>
         <span class="p-input-icon-left me-2">
             <i class="pi pi-search"></i>
             <input type="text" class="mb-2" pInputText placeholder="Search">
@@ -156,31 +156,31 @@
             <input type="text" pInputText>
         </span>
 
-        <h5 class="font-weight-bold my-2">InputNumber</h5>
+        <h5 class="fw-bold my-2">InputNumber</h5>
         <label class="d-block" for="stacked">Stacked</label>
         <p-inputNumber [(ngModel)]="value17" [showButtons]="true" inputId="stacked" mode="currency" currency="USD"
             styleClass="w-100">
         </p-inputNumber>
 
-        <h5 class="font-weight-bold my-2">Sizes</h5>
+        <h5 class="fw-bold my-2">Sizes</h5>
         <div class="my-2"><input type="text" pInputText class="p-inputtext-sm" placeholder="Small"></div>
         <div class="my-2"><input type="text" pInputText placeholder="Normal"></div>
         <div class="my-2"><input type="text" pInputText class="p-inputtext-lg" placeholder="Large"></div>
 
-        <h5 class="font-weight-bold my-2">Textarea</h5>
+        <h5 class="fw-bold my-2">Textarea</h5>
         <textarea class="mb-2" pInputTextarea></textarea>
 
-        <h5 class="font-weight-bold my-2">Slider</h5>
+        <h5 class="fw-bold my-2">Slider</h5>
         <input class="mb-2" type="text" pInputText [(ngModel)]="sliderVal" readonly />
         <p-slider [(ngModel)]="sliderVal" [min]="0" [max]="100"></p-slider>
         <!--
-      <h5 class="font-weight-bold my-2">Rating</h5>
+      <h5 class="fw-bold my-2">Rating</h5>
       <p-rating [(ngModel)]="ratingVal"></p-rating> -->
 
-        <h5 class="font-weight-bold my-2">Input Switch</h5>
+        <h5 class="fw-bold my-2">Input Switch</h5>
         <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
 
-        <h5 class="font-weight-bold my-2">Calendar</h5>
+        <h5 class="fw-bold my-2">Calendar</h5>
         <label class="d-block" for="icon">Icon</label>
         <p-calendar class="mb-2 w-100" [showIcon]="true" inputId="icon"></p-calendar>
 
@@ -188,7 +188,7 @@
       <p-calendar class="mb-2" [inline]="true" [showWeek]="true"></p-calendar> -->
     </div>
     <div class="col-md-6">
-        <h5 class="font-weight-bold mb-3">RadioButton (Inline)</h5>
+        <h5 class="fw-bold mb-3">RadioButton (Inline)</h5>
         <span *ngFor="let radio of optionCategoriesInline" class="mr-4">
             <p-radioButton [inputId]="radio.key" name="radioInline" [value]="radio.key" [(ngModel)]="selectedRadio"
                 [disabled]="radio.key === 'R'"></p-radioButton>
@@ -196,7 +196,7 @@
                 [for]="radio.key">{{radio.name}}</label>
         </span>
 
-        <h5 class="font-weight-bold my-3">RadioButton (Block)</h5>
+        <h5 class="fw-bold my-3">RadioButton (Block)</h5>
         <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
             <p-radioButton [inputId]="radio.key" name="radioBlock" [value]="radio.key" [(ngModel)]="selectedRadio2"
                 [disabled]="radio.key === '3'"></p-radioButton>
@@ -204,7 +204,7 @@
                 [for]="radio.key">{{radio.name}}</label>
         </div>
 
-        <h5 class="font-weight-bold my-3">Checkbox (Inline)</h5>
+        <h5 class="fw-bold my-3">Checkbox (Inline)</h5>
         <span *ngFor="let category of checkboxCategoriesInline" class="mr-4">
             <p-checkbox [inputId]="category.key" name="groupnameInline" [value]="category"
                 [(ngModel)]="selectedCheckboxCategories1" [disabled]="category.key === 'op3'"></p-checkbox>
@@ -212,7 +212,7 @@
                 [for]="category.key">{{category.name}}</label>
         </span>
 
-        <h5 class="font-weight-bold my-3">Checkbox (Block)</h5>
+        <h5 class="fw-bold my-3">Checkbox (Block)</h5>
         <div *ngFor="let category of checkboxCategoriesBlock" class="mb-2">
             <p-checkbox [inputId]="category.key" name="groupnameBlock" [value]="category"
                 [(ngModel)]="selectedCheckboxCategories2" [disabled]="category.key === 'o3'"></p-checkbox>
@@ -220,7 +220,7 @@
                 [for]="category.key">{{category.name}}</label>
         </div>
 
-        <h5 class="font-weight-bold my-3">Listbox</h5>
+        <h5 class="fw-bold my-3">Listbox</h5>
         <p-listbox [options]="listboxOptions" [(ngModel)]="selectedListboxOptions" [metaKeySelection]="false"
             [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'250px'}">
             <ng-template let-option pTemplate="item">
@@ -230,11 +230,11 @@
             </ng-template>
         </p-listbox>
 
-        <h5 class="font-weight-bold my-3">Dropdown</h5>
+        <h5 class="fw-bold my-3">Dropdown</h5>
         <p-dropdown styleClass="w-100" [options]="cities" [(ngModel)]="selectedCity1" placeholder="Select a City"
             optionLabel="name" [showClear]="true"></p-dropdown>
 
-        <h5 class="font-weight-bold my-3">MultiSelect - Chips</h5>
+        <h5 class="fw-bold my-3">MultiSelect - Chips</h5>
         <p-multiSelect styleClass="w-100" [options]="cities" [(ngModel)]="selectedCities2" defaultLabel="Select a City"
             optionLabel="name" display="chip"></p-multiSelect>
     </div>

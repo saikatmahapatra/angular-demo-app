@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-12">
         <h1>Manage User</h1>
-        <div class="table-responsive">
-            <table class="table table-sm">
+        <!-- <div class="table-responsive"> -->
+        <!-- <table class="table table-sm">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -19,6 +19,164 @@
                         <td><a [routerLink]="['../../user/profile', user.id]" class="btn btn-outline-secondary ">Details</a></td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
+            </table> -->
+        <!-- </div> -->
+        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [rows]="30" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-table-sm">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Employees
+                    <!-- <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target?.value, 'contains')"
+                                placeholder="Global Search" />
+                    </span> -->
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th pSortableColumn="user_firstname">
+                        <div class="flex justify-content-between align-items-center">
+                            Name
+                            <p-sortIcon field="user_firstname"></p-sortIcon>
+                            <p-columnFilter type="text" field="user_firstname" display="menu"
+                                class="ms-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="user_emp_id">
+                        <div class="flex justify-content-between align-items-center">
+                            Emp ID
+                            <p-sortIcon field="user_emp_id"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pSortableColumn="user_email">
+                        <div class="flex justify-content-between align-items-center">
+                            Email
+                            <p-sortIcon field="user_email"></p-sortIcon>
+                            <p-columnFilter type="text" field="user_email" display="menu"
+                                class="ms-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="user_phone1">
+                        <div class="flex justify-content-between align-items-center">
+                            Phone
+                            <p-sortIcon field="user_phone1"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pSortableColumn="designation_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Designation
+                            <p-sortIcon field="designation_name"></p-sortIcon>
+                            <p-columnFilter type="text" field="designation_name" display="menu"
+                                class="ms-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="user_status">
+                        <div class="flex justify-content-between align-items-center">
+                            Status
+                            <p-sortIcon field="user_status"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 5rem"></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-user let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="user"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Name</span>
+                        {{user.user_firstname}} {{user.user_lastname}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">ID</span>
+                        {{user.user_emp_id}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Email</span>
+                        {{user.user_email}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Phone</span>
+                        {{user.user_phone1}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Designation</span>
+                        {{user.designation_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        <!-- {{user.user_status}} -->
+
+                        <span *ngIf="user?.user_status === 'Y' " class="" title="Active">
+                            <app-icon class="text-success" [name]="'check-circle-fill'"></app-icon></span>
+                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon class="text-warning"
+                                [name]="'check-circle-fill'"></app-icon></span>
+                        <span *ngIf="user?.user_status === 'A' " class="" title="Closed"><app-icon class="text-danger"
+                                [name]="'archive'"></app-icon></span>
+
+                    </td>
+
+                    <td style="text-align: center">
+                        <a [routerLink]="['../../user/profile', user.id]" class="btn btn-sm btn-secondary ">
+                            <app-icon [name]="'info-circle'"></app-icon>
+                        </a>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-user>
+                <tr>
+                    <td colspan="8">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">Employment Type</td>
+                                    <td>{{user.employment_type_name}}</td>
+                                    <td class="fw-bold">Department</td>
+                                    <td [innerHTML]="user.department_name || '-'"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Role Group</td>
+                                    <td>{{user.user_role}}</td>
+                                    <td class="fw-bold">User Type</td>
+                                    <td>{{user.user_type}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Date of Joining</td>
+                                    <td>{{user.user_doj}}</td>
+                                    <td class="fw-bold">Created On</td>
+                                    <td>{{user.user_registration_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Date of Release</td>
+                                    <td [innerHTML]="user.user_dor || 'N/A'"></td>
+                                    <td class="fw-bold">Last Login</td>
+                                    <td>{{user.user_login_date_time}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Closed On</td>
+                                    <td [innerHTML]="user.account_closed_datetime || 'N/A'"></td>
+                                    <td class="fw-bold">Comments</td>
+                                    <td [innerHTML]="user.account_close_comments || 'N/A'"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No employees found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
     </div>
