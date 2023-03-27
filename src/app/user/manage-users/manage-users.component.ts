@@ -20,6 +20,7 @@ export class ManageUsersComponent implements OnInit {
   public userList: any;
   public postData = {};
   subscription !: Subscription;
+  loading: boolean = true;
 
   constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
 
@@ -56,8 +57,11 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.apiSvc.get(AppConfig.apiUrl.getUsers).subscribe((val: any) => {
-      this.userList = val?.data;
+    this.apiSvc.get(AppConfig.apiUrl.getUsers).subscribe({
+      next: (val: any) => {
+        this.userList = val?.data;
+        this.loading = false;
+      }
     });
   }
 

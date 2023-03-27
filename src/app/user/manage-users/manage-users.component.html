@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h1>Manage User</h1>
+        <h1>Manage Employees</h1>
         <!-- <div class="table-responsive"> -->
         <!-- <table class="table table-sm">
                 <thead>
@@ -22,12 +22,19 @@
             </table> -->
         <!-- </div> -->
         <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [rows]="30" [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+            [rowsPerPageOptions]="[10,25,50]" [paginator]="true" [loading]="loading"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-table-sm">
+            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-table-sm mt-4">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Employees
+
+                    <div class="mt-2">
+                        <a [routerLink]="['/user/add']" class="btn btn-success">
+                            <app-icon class="" [name]="'person-add'"></app-icon>
+                            Add Employee
+                        </a>
+                    </div>
                     <!-- <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
                         <input pInputText type="text" (input)="dt.filterGlobal($event.target?.value, 'contains')"
@@ -120,14 +127,14 @@
                             <app-icon class="text-success" [name]="'circle-fill'"></app-icon></span>
                         <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon
                                 class="text-warning" [name]="'circle-fill'"></app-icon></span>
-                        <span *ngIf="user?.user_status === 'A' " class="" title="Closed"><app-icon class="text-danger"
+                        <span *ngIf="user?.user_status === 'A' " class="" title="Archived"><app-icon class="text-danger"
                                 [name]="'circle-fill'"></app-icon></span>
 
                     </td>
 
                     <td style="text-align: center">
-                        <a [routerLink]="['../../user/profile', user.id]" class="btn btn-sm btn-secondary ">
-                            <app-icon [name]="'info-circle'"></app-icon>
+                        <a [routerLink]="['../../user/profile', user.id]" class="btn btn-sm btn-outline-secondary ">
+                            <app-icon [name]="'person-fill'"></app-icon>
                         </a>
                     </td>
                 </tr>
@@ -172,6 +179,21 @@
                                     <td [innerHTML]="user.user_dor || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
                                     <td [innerHTML]="user.user_login_date_time || '-'"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Account Status</td>
+                                    <td>
+                                        <span *ngIf="user?.user_status === 'Y' " class="" title="Active">
+                                            <app-icon class="text-success me-2" [name]="'circle-fill'"></app-icon>Active</span>
+                                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon
+                                                class="text-warning me-2" [name]="'circle-fill'"></app-icon>Inactive</span>
+                                        <span *ngIf="user?.user_status === 'A' " class="" title="Closed"><app-icon class="text-danger me-2"
+                                                [name]="'circle-fill'"></app-icon>Archived</span>
+                                    </td>
+                                    <td class="fw-bold">Profile Link</td>
+                                    <td>
+                                        <a [routerLink]="['../../user/profile', user.id]">Click here</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
