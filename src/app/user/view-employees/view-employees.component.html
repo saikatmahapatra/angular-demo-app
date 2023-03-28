@@ -19,6 +19,12 @@
                             <p-sortIcon field="user_firstname"></p-sortIcon>
                         </div>
                     </th>
+                    <th style="width: 12rem" pSortableColumn="user_firstname">
+                        <div class="flex justify-content-between align-items-center">
+                            EmpID
+                            <p-sortIcon field="user_emp_id"></p-sortIcon>
+                        </div>
+                    </th>
                     <th style="width: 20rem" pSortableColumn="designation_name">
                         <div class="flex justify-content-between align-items-center">
                             Designation
@@ -56,6 +62,10 @@
                     <td>
                         <span class="p-column-title">Name</span>
                         {{rowData.user_firstname}} {{rowData.user_lastname}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Emp ID</span>
+                        {{rowData.user_emp_id}}
                     </td>
                     <td>
                         <span class="p-column-title">Designation</span>
