@@ -11,7 +11,7 @@
 <div>{{userInfo?.user_phone1}}</div>
 
 <section class="my-4">
-        <h3 class="my-2">Basic Info</h3>
+        <h4 class="my-2"><app-icon [name]="'person'" [height]="27" [width]="27"></app-icon> Basic Info</h4>
         <dl class="row">
                 <dt class="col-md-4 col-lg-3">Employee ID</dt>
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
@@ -43,7 +43,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Address</h3>
+        <h4 class="my-2"><app-icon [name]="'geo-alt'" [height]="27" [width]="27"></app-icon> Address</h4>
         <div class="my-3" *ngFor="let addr of addressInfo">
                 <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
                 <address>
@@ -71,7 +71,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Education</h3>
+        <h4 class="my-2"><app-icon [name]="'mortarboard'" [height]="27" [width]="27"></app-icon> Education</h4>
 
         <div class="my-3" *ngFor="let education of educationInfo">
                 <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -97,7 +97,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Experience</h3>
+        <h4 class="my-2"><app-icon [name]="'briefcase'" [height]="27" [width]="27"></app-icon> Work Experience</h4>
         <div class="my-3">
                 <h6>{{userInfo?.designation_name}}</h6>
                 <div [innerHTML]="orgName"></div>
@@ -130,7 +130,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Payroll Info</h3>
+        <h4 class="my-2"><app-icon [name]="'coin'" [height]="27" [width]="27"></app-icon> Payroll Info</h4>
         <div class="my-3">
                 <dl class="row">
                         <dt class="col-md-4 col-lg-3">PAN No</dt>
@@ -161,7 +161,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Emergency Contacts</h3>
+        <h4 class="my-2"><app-icon [name]="'capsule-pill'" [height]="27" [width]="27"></app-icon> Emergency Contacts</h4>
         <div class="my-3" *ngFor="let contact of emergencyContact">
                 <h6>{{contact?.contact_person_name}}</h6>
                 <div class="text-muted" [innerHTML]="contact.relationship"></div>
@@ -185,7 +185,7 @@
 </section>
 
 <section class="my-4">
-        <h3 class="my-2">Account Information</h3>
+        <h4 class="my-2"><app-icon [name]="'cpu'" [height]="27" [width]="27"></app-icon> Account Information</h4>
         <dl class="row">
                 <dt class="col-md-4 col-lg-3">Account Status</dt>
                 <dd class="col-md-8 col-lg-9">

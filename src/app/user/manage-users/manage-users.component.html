@@ -1,26 +1,6 @@
+<h1>Manage Employees</h1>
 <div class="row">
     <div class="col-md-12">
-        <h1>Manage Employees</h1>
-        <!-- <div class="table-responsive"> -->
-        <!-- <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of userList; let i = index">
-                        <td>{{user?.id}}</td>
-                        <td>{{user?.user_firstname}} {{user?.user_lastname}}</td>
-                        <td>{{user?.user_email}}</td>
-                        <td><a [routerLink]="['../../user/profile', user.id]" class="btn btn-outline-secondary ">Details</a></td>
-                    </tr>
-                </tbody>
-            </table> -->
-        <!-- </div> -->
         <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [rows]="30" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10,25,50]" [paginator]="true" [loading]="loading"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
@@ -91,115 +71,118 @@
                 </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-user let-expanded="expanded">
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
                 <tr class="p-selectable-row">
                     <td>
-                        <button type="button" pButton pRipple [pRowToggler]="user"
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
                             class="p-button-text p-button-rounded p-button-plain"
                             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                     </td>
                     <td>
                         <span class="p-column-title">Name</span>
-                        {{user.user_firstname}} {{user.user_lastname}}
-                        ({{user.user_emp_id}})
+                        {{rowData.user_firstname}} {{rowData.user_lastname}}
+                        <!-- ({{rowData.user_emp_id}}) -->
                     </td>
                     <!-- <td>
                         <span class="p-column-title">ID</span>
-                        {{user.user_emp_id}}
+                        {{rowData.user_emp_id}}
                     </td> -->
                     <td>
                         <span class="p-column-title">Email</span>
-                        {{user.user_email}}
+                        {{rowData.user_email}}
                     </td>
                     <td>
                         <span class="p-column-title">Phone</span>
-                        {{user.user_phone1}}
+                        {{rowData.user_phone1}}
                     </td>
                     <td>
                         <span class="p-column-title">Designation</span>
-                        {{user.designation_name}}
+                        {{rowData.designation_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Status</span>
-                        <!-- {{user.user_status}} -->
+                        <!-- {{rowData.user_status}} -->
 
-                        <span *ngIf="user?.user_status === 'Y' " class="" title="Active">
+                        <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
                             <app-icon class="text-success" [name]="'circle-fill'"></app-icon></span>
-                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon
+                        <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
                                 class="text-warning" [name]="'circle-fill'"></app-icon></span>
-                        <span *ngIf="user?.user_status === 'A' " class="" title="Archived"><app-icon class="text-danger"
+                        <span *ngIf="rowData?.user_status === 'A' " class="" title="Archived"><app-icon class="text-danger"
                                 [name]="'circle-fill'"></app-icon></span>
 
                     </td>
 
                     <td style="text-align: center">
-                        <a [routerLink]="['../../user/profile', user.id]" class="btn btn-sm btn-outline-secondary ">
+                        <a [routerLink]="['../../user/profile', rowData.id]" class="btn btn-sm btn-outline-secondary ">
                             <app-icon [name]="'person-fill'"></app-icon>
                         </a>
                     </td>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="rowexpansion" let-user>
+            <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
                     <td colspan="8">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Employee ID</td>
-                                    <td [innerHTML]="user.user_emp_id || '-'"></td>
+                                    <td [innerHTML]="rowData.user_emp_id || '-'"></td>
                                     <td class="fw-bold">Designation</td>
-                                    <td [innerHTML]="user.designation_name || '-'"></td>
+                                    <td [innerHTML]="rowData.designation_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Personal Email</td>
-                                    <td [innerHTML]="user.user_email_secondary || '-'"></td>
+                                    <td [innerHTML]="rowData.user_email_secondary || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
-                                    <td [innerHTML]="user.user_phone2 || '-'"></td>
+                                    <td [innerHTML]="rowData.user_phone2 || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Employment Type</td>
-                                    <td [innerHTML]="user.employment_type_name || '-'"></td>
+                                    <td [innerHTML]="rowData.employment_type_name || '-'"></td>
                                     <td class="fw-bold">Department</td>
-                                    <td [innerHTML]="user.department_name || '-'"></td>
+                                    <td [innerHTML]="rowData.department_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Role Group</td>
-                                    <td [innerHTML]="user.user_role+'-'+user?.role_name"></td>
+                                    <td [innerHTML]="rowData.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td [innerHTML]="user.user_type || '-'"></td>
+                                    <td [innerHTML]="rowData.user_type || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
-                                    <td [innerHTML]="user.user_doj || '-'"></td>
+                                    <td [innerHTML]="rowData.user_doj || '-'"></td>
                                     <td class="fw-bold">Created On</td>
-                                    <td [innerHTML]="user.user_registration_date || ''"></td>
+                                    <td [innerHTML]="rowData.user_registration_date || ''"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
-                                    <td [innerHTML]="user.user_dor || 'NA'"></td>
+                                    <td [innerHTML]="rowData.user_dor || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
-                                    <td [innerHTML]="user.user_login_date_time || '-'"></td>
+                                    <td [innerHTML]="rowData.user_login_date_time || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Account Status</td>
                                     <td>
-                                        <span *ngIf="user?.user_status === 'Y' " class="" title="Active">
-                                            <app-icon class="text-success me-2" [name]="'circle-fill'"></app-icon>Active</span>
-                                        <span *ngIf="user?.user_status === 'N' " class="" title="Inactive"><app-icon
-                                                class="text-warning me-2" [name]="'circle-fill'"></app-icon>Inactive</span>
-                                        <span *ngIf="user?.user_status === 'A' " class="" title="Closed"><app-icon class="text-danger me-2"
+                                        <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
+                                            <app-icon class="text-success me-2"
+                                                [name]="'circle-fill'"></app-icon>Active</span>
+                                        <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
+                                                class="text-warning me-2"
+                                                [name]="'circle-fill'"></app-icon>Inactive</span>
+                                        <span *ngIf="rowData?.user_status === 'A' " class="" title="Closed"><app-icon
+                                                class="text-danger me-2"
                                                 [name]="'circle-fill'"></app-icon>Archived</span>
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
-                                        <a [routerLink]="['../../user/profile', user.id]">Click here</a>
+                                        <a [routerLink]="['../../user/profile', rowData.id]">Click here</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
-                                    <td [innerHTML]="user.account_closed_datetime || 'NA'"></td>
+                                    <td [innerHTML]="rowData.account_closed_datetime || 'NA'"></td>
                                     <td class="fw-bold">Comments</td>
-                                    <td [innerHTML]="user.account_close_comments || 'NA'"></td>
+                                    <td [innerHTML]="rowData.account_close_comments || 'NA'"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -208,7 +191,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="8">No employees found.</td>
+                    <td colspan="8">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>
