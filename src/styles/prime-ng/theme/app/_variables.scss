@@ -292,17 +292,17 @@ $sliderRangeBg:$primaryColor !default;
 //calendar
 $calendarTableMargin:.5rem 0 !default;
 $calendarPadding:.5rem !default;
-$calendarBg:$shade000 !default;
+$calendarBg:var(--bs-body-bg) !default;
 $calendarInlineBg:$calendarBg !default;
-$calendarTextColor:$shade900 !default;
+$calendarTextColor:var(--bs-body-color) !default;
 $calendarBorder:$inputListBorder !default;
 $calendarOverlayBorder:$inputOverlayBorder !default;
 
 $calendarHeaderPadding:.5rem !default;
-$calendarHeaderBg:$shade000 !default;
+$calendarHeaderBg:var(--bs-body-bg) !default;
 $calendarInlineHeaderBg:$calendarBg !default;
 $calendarHeaderBorder:1px solid $shade300 !default;
-$calendarHeaderTextColor:$shade900 !default;
+$calendarHeaderTextColor:var(--bs-body-color) !default;
 $calendarHeaderFontWeight:600 !default;
 $calendarHeaderCellPadding:.5rem !default;
 $calendarMonthYearHeaderHoverTextColor: $primaryColor !default;
@@ -315,7 +315,7 @@ $calendarCellDateBorder:1px solid transparent !default;
 $calendarCellDateHoverBg:$shade200 !default;
 $calendarCellDateTodayBg:$shade400 !default;
 $calendarCellDateTodayBorderColor:transparent !default;
-$calendarCellDateTodayTextColor:$shade900 !default;
+$calendarCellDateTodayTextColor:var(--bs-body-color) !default;
 
 $calendarButtonBarPadding:1rem 0 !default;
 $calendarTimePickerPadding:.5rem !default;
@@ -447,7 +447,7 @@ $editorContentBorder:$panelContentBorder !default;
 $editorContentBg:$panelContentBg !default;
 
 //paginator
-$paginatorBg:$shade000 !default;
+$paginatorBg:var(--bs-body-bg) !default;
 $paginatorTextColor:$shade600 !default;
 $paginatorBorder:solid $shade200 !default;
 $paginatorBorderWidth:0 !default;
