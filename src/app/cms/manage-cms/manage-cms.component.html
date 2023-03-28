@@ -1,28 +1,120 @@
-<h1>Manage Contents</h1>
- <div class="table-responsive">
-  <table class="table table-sm">
-      <thead>
-          <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Type</th>
-              <th scope="col">Created On</th>
-              <th scope="col">Created By</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let data of dataRow; let i = index">
-              <td>{{data?.content_title}}</td>
-              <td>{{data?.content_type}}</td>
-              <td>{{data?.content_created_on}}</td>
-              <td>{{data?.user_firstname}} {{data?.user_lastname}}</td>
-              <td>{{data?.content_status}}</td>
-              <td>
-                <button class="btn btn-outline-secondary ">Edit</button>
-                <button class="btn btn-outline-danger  ms-1">Delete</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Manage Contents</h1>
+        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" [rows]="30" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50, 100, 200]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['content_title','content_type','content_created_on','content_title']" styleClass="p-table-sm">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Contents
+                    <div class="mt-2">
+                        <a [routerLink]="['/cms/add']" class="btn btn-success">
+                            <app-icon class="" [name]="'plus-circle'"></app-icon>
+                            Add New
+                        </a>
+                    </div>
+                    <!-- <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target?.value, 'contains')"
+                                placeholder="Global Search" />
+                    </span> -->
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th style="width: 30rem" pSortableColumn="content_title">
+                        <div class="flex justify-content-between align-items-center">
+                            Title
+                            <p-sortIcon field="content_title"></p-sortIcon>
+                            <p-columnFilter type="text" field="content_title" display="menu"
+                                class="ms-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th style="width: 10rem" pSortableColumn="content_type">
+                        <div class="flex justify-content-between align-items-center">
+                            Type
+                            <p-sortIcon field="content_type"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 18rem" pSortableColumn="content_created_on">
+                        <div class="flex justify-content-between align-items-center">
+                            Created On
+                            <p-sortIcon field="content_created_on"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 15rem" pSortableColumn="content_created_by">
+                        <div class="flex justify-content-between align-items-center">
+                            Created By
+                            <p-sortIcon field="content_created_by"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th pSortableColumn="content_status">
+                        <div class="flex justify-content-between align-items-center">
+                            Status
+                            <p-sortIcon field="content_status"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 5rem"></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Title</span>
+                        {{rowData.content_title}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Type</span>
+                        {{rowData.content_type}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Created On</span>
+                        {{rowData.content_created_on}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Created By</span>
+                        {{rowData.content_created_by}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        <span *ngIf="rowData?.content_status === 'Y' " class="" title="Active">
+                            <app-icon class="text-success" [name]="'circle-fill'"></app-icon></span>
+                        <span *ngIf="rowData?.content_status === 'N' " class="" title="Inactive"><app-icon
+                                class="text-warning" [name]="'circle-fill'"></app-icon></span>
+                        <span *ngIf="rowData?.content_status === 'A' " class="" title="Closed"><app-icon class="text-danger"
+                                [name]="'circle-fill'"></app-icon></span>
+
+                    </td>
+
+                    <td style="text-align: center" style="width: 20rem">
+                        <button class="btn btn-outline-secondary me-2">Edit</button>
+                        <button class="btn btn-outline-danger">Delete</button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData>
+                <tr>
+                    <td colspan="7">
+                        <div [innerHTML]="rowData?.content_text">
+                            
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+    </div>

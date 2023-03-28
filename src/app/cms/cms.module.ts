@@ -11,6 +11,7 @@ import { AddEditHolidaysComponent } from './add-edit-holidays/add-edit-holidays.
 import { ViewHolidaysComponent } from './view-holidays/view-holidays.component';
 import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.component';
 import { ViewHrPoliciesComponent } from './view-hr-policies/view-hr-policies.component';
+import { PrimeNgModule } from '../prime-ng.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ViewHrPoliciesComponent } from './view-hr-policies/view-hr-policies.com
     SharedModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PrimeNgModule
   ],
   declarations: [
     CmsLayoutComponent,
