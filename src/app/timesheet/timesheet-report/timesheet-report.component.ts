@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 
@@ -21,11 +23,20 @@ export class TimesheetReportComponent implements OnInit {
   selectedProjects = [];
   loading = false;
 
+  myForm = this.fb.group({
+    action: ['timesheetReport'],
+    dateRange: [null, [Validators.required]],
+    employee: [null],
+    projects: [null]
+  });
+
   constructor(
     private apiSvc: ApiService,
     private authSvc: AuthService,
     private alertSvc: AlertService,
     private router: Router,
+    private fb: UntypedFormBuilder,
+    private validator: FormValidationService
   ) {
     let today = new Date();
     this.maxDate = today;
@@ -50,5 +61,25 @@ export class TimesheetReportComponent implements OnInit {
         this.projectList = response?.data;
       }
     });
+  }
+
+  onSubmit() {
+    if (this.myForm.valid && this.myForm.get('action')?.value === 'timesheetReport') {
+      this.apiSvc.post(AppConfig.apiUrl.addProject, this.myForm.value).subscribe({
+        next: (response: any) => {
+          if (response.status == 'success') {
+            this.alertSvc.success(response.message, true);
+            this.myForm.reset();
+            this.router.navigate(['project']);
+          }
+        },
+        error: () => { this.loading = false; },
+        complete: () => { this.loading = false; }
+      });
+    }
+    else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.myForm);
+    }
   }
 }
