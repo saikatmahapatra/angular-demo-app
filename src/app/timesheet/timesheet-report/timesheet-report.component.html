@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-3">
             <label for="range">Date Range</label>
-            <p-calendar formControlName="dateRange" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="true"></p-calendar>
+            <p-calendar formControlName="dateRange" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="true" [showIcon]="true"></p-calendar>
             <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error>
         </div>
         <div class="col-md-3">

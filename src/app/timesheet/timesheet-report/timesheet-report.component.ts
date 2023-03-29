@@ -65,13 +65,9 @@ export class TimesheetReportComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid && this.myForm.get('action')?.value === 'timesheetReport') {
-      this.apiSvc.post(AppConfig.apiUrl.addProject, this.myForm.value).subscribe({
+      this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value).subscribe({
         next: (response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
-            this.myForm.reset();
-            this.router.navigate(['project']);
-          }
+          console.log(response);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }

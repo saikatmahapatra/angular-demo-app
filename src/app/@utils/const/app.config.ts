@@ -64,6 +64,7 @@ export const AppConfig = {
         deleteTask: 'task',
         searchUser: 'user/search',
         approvers: 'user/approvers',
-        getEmployees: 'user/getEmp'
+        getEmployees: 'user/getEmp',
+        timesheetReport: 'timesheet/report',
     }
 };
