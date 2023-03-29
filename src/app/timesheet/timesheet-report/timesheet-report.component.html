@@ -4,3 +4,48 @@
         <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Timesheet
     </a>
 </div>
+
+<form class="form app-form">
+    <!-- <div class="row">
+        <div class="col-md-3">
+            <label for="range">Date Range</label>
+            <p-calendar name="dateRange" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate"></p-calendar>
+        </div>
+        <div class="col-md-3">
+            <label>Employee</label>
+            <p-multiSelect name="employee" styleClass="w-100" [options]="userList" [(ngModel)]="selectedEmployees" defaultLabel="Select a Employees"
+            optionLabel="name" optionValue="id" display="chip"></p-multiSelect>
+        </div>
+        <div class="col-md-3">
+            <label>Projects</label>
+            <p-multiSelect name="projects" styleClass="w-100" [options]="projectList" [(ngModel)]="selectedProjects" defaultLabel="Select a Project"
+            optionLabel="name" optionValue="id" display="chip"></p-multiSelect>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="loading"><span *ngIf="loading"
+                class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+        </div>
+    </div> -->
+
+    <div class="row g-3 align-items-center">
+        <div class="col-md-3">
+            <label for="range">Date Range</label>
+            <p-calendar name="dateRange" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate"></p-calendar>
+        </div>
+        <div class="col-md-3">
+            <label>Employee</label>
+            <p-multiSelect name="employee" styleClass="w-100" [options]="userList" [(ngModel)]="selectedEmployees" defaultLabel="Select a Employees"
+            optionLabel="name" optionValue="id" display="chip"></p-multiSelect>
+        </div>
+        <div class="col-md-3">
+            <label>Projects</label>
+            <p-multiSelect name="projects" styleClass="w-100" [options]="projectList" [(ngModel)]="selectedProjects" defaultLabel="Select a Project"
+            optionLabel="name" optionValue="id" display="chip"></p-multiSelect>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="loading"><span *ngIf="loading"
+                class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+        </div>
+      </div>
+</form>
+

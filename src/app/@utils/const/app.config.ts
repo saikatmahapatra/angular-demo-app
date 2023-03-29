@@ -51,6 +51,8 @@ export const AppConfig = {
         addTimesheet: 'timesheet',
         updateTimesheet: 'timesheet',
         deleteTimesheet: 'timesheet',
+        userDropdown: 'user/userDropdown',
+        projectDropdown: 'project/projectDropdown',
         getProject: 'project',
         addProject: 'project',
         updateProject: 'project',
