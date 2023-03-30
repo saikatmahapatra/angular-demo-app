@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AppConfig } from 'src/app/@utils/const/app.config';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-manage-users',
@@ -21,6 +22,18 @@ export class ManageUsersComponent implements OnInit {
   public postData = {};
   subscription !: Subscription;
   loading: boolean = true;
+
+    // Pagination Config
+    currentPageIndex: number = 0;
+    totalRecords: number = 0;
+    itemPerPage: number = 30;
+    itemPerPageDropdown = [10, 20, 30, 50];
+    paginate(event: any) {
+      this.itemPerPage = event.rows;
+      this.currentPageIndex = event.page;
+      this.getUsersList();
+    }
+    // Pagination Config
 
   constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
 
@@ -57,9 +70,13 @@ export class ManageUsersComponent implements OnInit {
   }
 
   getUsersList() {
-    this.apiSvc.get(AppConfig.apiUrl.getUsers).subscribe({
+    let headers = new HttpHeaders();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    this.apiSvc.get(AppConfig.apiUrl.getUsers, { headers: headers }).subscribe({
       next: (val: any) => {
-        this.userList = val?.data;
+        this.totalRecords = val?.data?.num_rows;
+        this.userList = val?.data?.data_rows;
         this.loading = false;
       }
     });
@@ -108,7 +125,7 @@ export class ManageUsersComponent implements OnInit {
     this.subscription = timer(0, 10000).pipe(
       switchMap(() => this.apiSvc.get(AppConfig.apiUrl.getUsers))
     ).subscribe((val: any) => {
-      this.userList = val?.data;
+      this.userList = val?.data?.data_rows;
     });
   }
 
