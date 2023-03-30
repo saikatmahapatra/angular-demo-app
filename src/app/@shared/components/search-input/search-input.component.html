@@ -1,8 +1,17 @@
-<div class="input-group mb-3 search-input-box">
-    <input [value]="value" type="text" class="form-control" [placeholder]="placeHolderText" #searchInput (keyup.enter)="getVal(searchInput.value)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="input-group mb-3 search-input-box">
+    <input name="searchText" ngModel required [value]="value" type="text" class="form-control"
+      [placeholder]="placeHolderText" #searchInput>
     <div class="input-group-append">
-      <button class="btn btn-secondary" type="button" (click)="getVal(searchInput.value)">
+      <button class="btn btn-secondary" type="submit">
         <app-icon [name]="'search'"></app-icon>
       </button>
     </div>
   </div>
+  <div *ngIf="f.submitted || f.touched && f.dirty">
+    <div class="my-1 py-2 alert alert-danger" *ngIf="f.controls['searchText'].hasError('required')">
+      <app-icon class="me-2" [name]="'exclamation-circle'" [width]="16" [height]="16"></app-icon>
+      <span [innerHTML]="'This field is required'"></span>
+    </div>    
+  </div>
+</form>

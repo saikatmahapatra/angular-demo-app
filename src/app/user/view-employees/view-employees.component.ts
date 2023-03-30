@@ -30,13 +30,14 @@ export class ViewEmployeesComponent implements OnInit {
     if(str) {
       queryParams = queryParams.append('keywords', str);
       options = { params: queryParams };
+      this.apiSvc.get(AppConfig.apiUrl.getEmployees, options).subscribe({
+        next: (val: any) => {
+          this.empList = val?.data;
+          this.loading = false;
+        }
+      });
     }        
-    this.apiSvc.get(AppConfig.apiUrl.getEmployees, options).subscribe({
-      next: (val: any) => {
-        this.empList = val?.data;
-        this.loading = false;
-      }
-    });
+
   }
 
 }

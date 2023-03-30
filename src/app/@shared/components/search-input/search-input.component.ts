@@ -11,6 +11,7 @@ export class SearchInputComponent implements OnInit {
   @Input() resetInput!: boolean;
   @Input() placeHolderText = '';
   value = '';
+  submitted= false;
   constructor() {
     if (this.resetInput) {
       this.resetInputValue();
@@ -20,16 +21,13 @@ export class SearchInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getVal(value: string) {
-    this.inputValue.emit(value);
-  }
-
   resetInputValue() {
     this.value = '';
   }
 
   onSubmit(f: NgForm) {
-    console.log('Form', f);
+    this.submitted = true;
+    this.inputValue.emit(f.value.searchText);
   }
 
 }
