@@ -22,6 +22,7 @@ export class TimesheetReportComponent implements OnInit {
   selectedEmployees = [];
   selectedProjects = [];
   loading = false;
+  timesheetData = [];
 
   myForm = this.fb.group({
     action: ['timesheetReport'],
@@ -64,10 +65,11 @@ export class TimesheetReportComponent implements OnInit {
   }
 
   onSubmit() {
+    this.timesheetData = [];
     if (this.myForm.valid && this.myForm.get('action')?.value === 'timesheetReport') {
       this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value).subscribe({
         next: (response: any) => {
-          console.log(response);
+          this.timesheetData = response?.data?.data_rows;
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }

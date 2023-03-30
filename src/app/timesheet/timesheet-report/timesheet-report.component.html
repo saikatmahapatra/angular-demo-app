@@ -32,3 +32,115 @@
       </div>
 </form>
 
+
+<div class="row">
+    <div class="col-md-12">
+        <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [rows]="100" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50, 100, 200, 300, 500, 1000]" [paginator]="true" [loading]="loading"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-table-sm mt-4">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Timesheet Entry
+                    <div class="mt-2">
+                        <button class="btn btn-success">Download</button>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th style="width: 10rem" pSortableColumn="timesheet_date">
+                        <div class="flex justify-content-between align-items-center">
+                            Date
+                            <p-sortIcon field="timesheet_date"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 30rem" pSortableColumn="user_firstname">
+                        <div class="flex justify-content-between align-items-center">
+                            Emp
+                            <p-sortIcon field="user_firstname"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 50rem" pSortableColumn="project_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Project
+                            <p-sortIcon field="project_name"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 30rem" pSortableColumn="task_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Task
+                            <p-sortIcon field="task_name"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 10rem" pSortableColumn="timesheet_hours">
+                        <div class="flex justify-content-between align-items-center">
+                            Hours
+                            <p-sortIcon field="timesheet_hours"></p-sortIcon>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Date</span>
+                        {{rowData.timesheet_date}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Emp</span>
+                        {{rowData.user_firstname}} {{rowData.user_lastname}}
+                    </td>
+                    
+                    <td>
+                        <span class="p-column-title">Project</span>
+                        {{rowData.project_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Task</span>
+                        {{rowData.task_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Hours</span>
+                        {{rowData.timesheet_hours}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData>
+                <tr>
+                    <td colspan="8">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">Task Description</td>
+                                    <td [innerHTML]="rowData.timesheet_description || '-'"></td>
+                                    <td class="fw-bold">Created on</td>
+                                    <td [innerHTML]="rowData.timesheet_created_on || '-'"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Status</td>
+                                    <td [innerHTML]="rowData.timesheet_review_status || '-'"></td>
+                                    <td class="fw-bold">-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
