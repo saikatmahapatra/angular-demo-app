@@ -20,7 +20,7 @@
                 <dt class="col-md-4 col-lg-3">Employment Type</dt>
                 <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
                 <dt class="col-md-4 col-lg-3">Department</dt>
-                <dd class="col-md-8 col-lg-9">{{userInfo?.department_name}}</dd>
+                <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
                 <dt class="col-md-4 col-lg-3">Date of Joining</dt>
                 <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
                 <dt class="col-md-4 col-lg-3">Personal Email</dt>
