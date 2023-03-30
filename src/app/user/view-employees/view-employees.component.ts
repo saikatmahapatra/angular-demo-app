@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -20,11 +21,15 @@ export class ViewEmployeesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getEmpList();
+    //this.getEmpList();
   }
 
-  getEmpList() {
-    this.apiSvc.get(AppConfig.apiUrl.getEmployees).subscribe({
+  getEmpList(str: string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('keywords', str);
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getEmployees, options).subscribe({
       next: (val: any) => {
         this.empList = val?.data;
         this.loading = false;
