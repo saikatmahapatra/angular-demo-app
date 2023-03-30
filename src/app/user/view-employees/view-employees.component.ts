@@ -25,9 +25,10 @@ export class ViewEmployeesComponent implements OnInit {
   }
 
   getEmpList(str?: string) {
+    this.empList = [];
     let options = {};
     let queryParams = new HttpParams();
-    if(str) {
+    if(str?.trim()) {
       queryParams = queryParams.append('keywords', str);
       options = { params: queryParams };
       this.apiSvc.get(AppConfig.apiUrl.getEmployees, options).subscribe({
