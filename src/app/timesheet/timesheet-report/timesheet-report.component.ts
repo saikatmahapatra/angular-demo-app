@@ -31,11 +31,11 @@ export class TimesheetReportComponent implements OnInit {
     employee: [null],
     projects: [null]
   });
-  
+
   // Pagination Config
   currentPageIndex: number = 0;
   totalRecords: number = 0;
-  itemPerPage: number = 10;
+  itemPerPage: number = 30;
   itemPerPageDropdown = [10, 20, 30, 50, 100];
   paginate(event: any) {
     this.itemPerPage = event.rows;
