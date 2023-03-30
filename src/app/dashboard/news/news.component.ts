@@ -17,8 +17,8 @@ export class NewsComponent implements OnInit {
   // Pagination Config
   currentPageIndex: number = 0;
   totalRecords: number = 0;
-  itemPerPage: number = 10;
-  itemPerPageDropdown = [10, 20, 30, 50, 100];
+  itemPerPage: number = 30;
+  itemPerPageDropdown = [10, 20, 30, 50];
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -44,7 +44,7 @@ export class NewsComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    
+
     this.apiSvc.get(AppConfig.apiUrl.getNews,{ headers: headers, params: queryParams }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.news = response?.data['data_rows'];

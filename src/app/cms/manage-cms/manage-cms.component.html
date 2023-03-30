@@ -1,10 +1,7 @@
 <h1>Manage Contents</h1>
 <div class="row">
     <div class="col-md-12">        
-        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" [rows]="30" [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[10,25,50, 100, 200]" [paginator]="true"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-            [globalFilterFields]="['content_title','content_type','content_created_on','content_title']" styleClass="p-table-sm">
+        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-table-sm">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Contents
@@ -115,4 +112,6 @@
                 </tr>
             </ng-template>
         </p-table>
+        <p-paginator styleClass="my-4" *ngIf="totalRecords > itemPerPage" [rows]="itemPerPage" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="itemPerPageDropdown" (onPageChange)="paginate($event)"></p-paginator>
     </div>
