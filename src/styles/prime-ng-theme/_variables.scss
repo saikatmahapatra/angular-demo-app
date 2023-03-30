@@ -45,7 +45,7 @@ $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
 $listItemTransition:box-shadow $transitionDuration !default;
-$primeIconFontSize:$pFontSize !default;
+$primeIconFontSize:$fontSize !default;
 $divider:1px solid $shade300 !default;
 $inlineSpacing:.5rem !default;
 $disabledOpacity:.6 !default;
@@ -76,7 +76,7 @@ $actionIconBorderRadius:50% !default;
 
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding:.5rem .5rem !default;
-$inputTextFontSize:$pFontSize !default;
+$inputTextFontSize:$fontSize !default;
 
 $inputBg:$shade000 !default;
 $inputTextColor:$shade900 !default;
@@ -565,14 +565,14 @@ $messageMargin:1rem 0 !default;
 $messagePadding:1rem 1.5rem !default;
 $messageBorderWidth:0 0 0 6px !default;
 $messageIconFontSize:1.5rem !default;
-$messageTextFontSize:$pFontSize !default;
+$messageTextFontSize:$fontSize !default;
 $messageTextFontWeight:500 !default;
 
 //inline message
 $inlineMessagePadding:$inputPadding !default;
 $inlineMessageMargin:0 !default;
-$inlineMessageIconFontSize:$pFontSize !default;
-$inlineMessageTextFontSize:$pFontSize !default;
+$inlineMessageIconFontSize:$fontSize !default;
+$inlineMessageTextFontSize:$fontSize !default;
 $inlineMessageBorderWidth:0px !default;
 
 //toast
