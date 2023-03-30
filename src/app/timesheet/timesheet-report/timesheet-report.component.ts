@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,6 +31,18 @@ export class TimesheetReportComponent implements OnInit {
     employee: [null],
     projects: [null]
   });
+  
+  // Pagination Config
+  currentPageIndex: number = 0;
+  totalRecords: number = 0;
+  itemPerPage: number = 10;
+  itemPerPageDropdown = [10, 20, 30, 50, 100];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getTimesheetData();
+  }
+  // Pagination Config
 
   constructor(
     private apiSvc: ApiService,
@@ -67,17 +80,27 @@ export class TimesheetReportComponent implements OnInit {
   onSubmit() {
     this.timesheetData = [];
     if (this.myForm.valid && this.myForm.get('action')?.value === 'timesheetReport') {
-      this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value).subscribe({
-        next: (response: any) => {
-          this.timesheetData = response?.data?.data_rows;
-        },
-        error: () => { this.loading = false; },
-        complete: () => { this.loading = false; }
-      });
+      this.getTimesheetData();
     }
     else {
       this.loading = false;
       this.validator.validateAllFormFields(this.myForm);
     }
   }
+
+  getTimesheetData() {
+    let headers = new HttpHeaders();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value, { headers: headers }).subscribe({
+      next: (response: any) => {
+        this.timesheetData = response?.data?.data_rows;
+        this.totalRecords = response?.data?.num_rows;
+      },
+      error: () => { this.loading = false; },
+      complete: () => { this.loading = false; }
+    });
+  }
 }
+
+

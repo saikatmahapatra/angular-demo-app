@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -14,15 +14,23 @@ export class NewsComponent implements OnInit {
   searchKeyword: string = ''; // from search input
   resetSearchInput = false;
 
-  currentPage: number = 0;
-  itemPerPage: number = 10;
+  // Pagination Config
+  currentPageIndex: number = 0;
   totalRecords: number = 0;
+  itemPerPage: number = 10;
+  itemPerPageDropdown = [10, 20, 30, 50, 100];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getContents();
+  }
+  // Pagination Config
 
   constructor(private apiSvc: ApiService, private commonSvc: CommonService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((param) => {
-      this.currentPage = window.history.state?.newsPageNumber || 0;
+      this.currentPageIndex = window.history.state?.newsPageNumber || 0;
       this.getContents();
     })
 
@@ -33,12 +41,11 @@ export class NewsComponent implements OnInit {
     if (this.searchKeyword) {
       queryParams = queryParams.append('searchBy', this.searchKeyword);
     }
-    //pagination calc
-    queryParams = queryParams.append('page', this.currentPage + 1);
-    queryParams = queryParams.append('perPage', this.itemPerPage);
-    let options = {};
-    options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe((response: any) => {
+    let headers = new HttpHeaders();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    
+    this.apiSvc.get(AppConfig.apiUrl.getNews,{ headers: headers, params: queryParams }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.news = response?.data['data_rows'];
     });
@@ -51,14 +58,6 @@ export class NewsComponent implements OnInit {
   getSearchInputVal(str: string) {
     this.searchKeyword = str;
     this.resetSearchInput = true;
-    this.currentPage = 1;
-    this.getContents();
-  }
-
-  onPageChange(event: any) {
-    console.log(event);
-    this.currentPage = event.page;
-    this.itemPerPage = event.rows;
     this.getContents();
   }
 }

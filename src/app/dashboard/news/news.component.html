@@ -2,12 +2,12 @@
     <app-search-input (inputValue)="getSearchInputVal($event)" [resetInput]="resetSearchInput"
         [placeHolderText]="'Search...'"></app-search-input>
     <div class="mb-3" *ngFor="let item of news; let i = index;">
-        <a class="news-item" [routerLink]="['news-details', item.id]" [state]="{ newsPageNumber: currentPage }"
+        <a class="news-item" [routerLink]="['news-details', item.id]" [state]="{ newsPageNumber: currentPageIndex }"
             [innerHTML]="item?.content_title"></a>
         <span class="text-muted small ms-2" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
-    <p-paginator (onPageChange)="onPageChange($event)" [rows]="itemPerPage" [totalRecords]="totalRecords"
-        [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    <p-paginator styleClass="my-4" *ngIf="totalRecords > itemPerPage" [rows]="itemPerPage" [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="itemPerPageDropdown" (onPageChange)="paginate($event)"></p-paginator>
 
 </ng-container>
 <ng-container *ngIf="news.length === 0">

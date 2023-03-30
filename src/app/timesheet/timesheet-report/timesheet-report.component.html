@@ -1,11 +1,5 @@
 <h1>Timesheet Report</h1>
-<div class="back-to-page mt-1 mb-4">
-    <a [routerLink]="['/timesheet']">
-        <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Timesheet
-    </a>
-</div>
-
-<form class="form app-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form class="form app-form my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="action">
     <div class="row">
         <div class="col-md-3">
@@ -16,13 +10,13 @@
         <div class="col-md-3">
             <label>Employee</label>
             <p-multiSelect formControlName="employee" styleClass="w-100" [options]="userList" [(ngModel)]="selectedEmployees" defaultLabel="Select a Employees"
-            optionLabel="name" optionValue="id" display="chip" [maxSelectedLabels]="5"></p-multiSelect>
+            optionLabel="name" optionValue="id" display="chip" [selectionLimit]="5"></p-multiSelect>
             <app-validation-error [control]="myForm.controls['employee']"></app-validation-error>
         </div>
         <div class="col-md-3">
             <label>Projects</label>
             <p-multiSelect formControlName="projects" styleClass="w-100" [options]="projectList" [(ngModel)]="selectedProjects" defaultLabel="Select a Project"
-            optionLabel="name" optionValue="id" display="chip" [maxSelectedLabels]="5"></p-multiSelect>
+            optionLabel="name" optionValue="id" display="chip" [selectionLimit]="5"></p-multiSelect>
             <app-validation-error [control]="myForm.controls['projects']"></app-validation-error>
         </div>
         <div class="col-md-2">
@@ -35,16 +29,14 @@
 
 <div class="row">
     <div class="col-md-12">
-        <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [rows]="100" [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[10,25,50, 100, 200, 300, 500, 1000]" [paginator]="true" [loading]="loading"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-table-sm mt-4">
+        <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [loading]="loading"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-table-sm mt-4">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Timesheet Entry
-                    <div class="mt-2">
+                    <!-- <div class="mt-2">
                         <button class="btn btn-success">Download</button>
-                    </div>
+                    </div> -->
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -141,6 +133,8 @@
                 </tr>
             </ng-template>
         </p-table>
+
+        <p-paginator styleClass="my-4" *ngIf="totalRecords > itemPerPage" [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown" (onPageChange)="paginate($event)"></p-paginator>
     </div>
 </div>
 
