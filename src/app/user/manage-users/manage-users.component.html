@@ -101,11 +101,11 @@
                         <!-- {{rowData.user_status}} -->
 
                         <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success" [name]="'circle-fill'"></app-icon></span>
+                            <app-icon class="text-success" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
                         <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
-                                class="text-warning" [name]="'circle-fill'"></app-icon></span>
+                                class="text-warning" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
                         <span *ngIf="rowData?.user_status === 'A' " class="" title="Archived"><app-icon
-                                class="text-danger" [name]="'circle-fill'"></app-icon></span>
+                                class="text-danger" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
 
                     </td>
 
@@ -162,13 +162,13 @@
                                     <td>
                                         <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
                                             <app-icon class="text-success me-2"
-                                                [name]="'circle-fill'"></app-icon>Active</span>
+                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Active</span>
                                         <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
                                                 class="text-warning me-2"
-                                                [name]="'circle-fill'"></app-icon>Inactive</span>
+                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Inactive</span>
                                         <span *ngIf="rowData?.user_status === 'A' " class="" title="Closed"><app-icon
                                                 class="text-danger me-2"
-                                                [name]="'circle-fill'"></app-icon>Archived</span>
+                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Archived</span>
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
