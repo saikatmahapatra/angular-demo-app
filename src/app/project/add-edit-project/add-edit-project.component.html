@@ -19,13 +19,13 @@
             </div>
             <div class="mb-3">
                 <label class="required" for="startDate">Start Date</label>
-                <input type="date" class="form-control" id="startDate" formControlName="startDate" maxlength="10">
-                    <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
+                <p-calendar formControlName="startDate" [readonlyInput]="true" inputId="startDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true"></p-calendar>
+                <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
             </div>
             <div class="mb-3">
                 <label class="required" for="endDate">End Date</label>
-                <input type="date" class="form-control" id="endDate" formControlName="endDate" maxlength="10">
-                    <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
+                <p-calendar formControlName="endDate" [readonlyInput]="true" inputId="endDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true"></p-calendar>
+                <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
             </div>
             <div class="mb-3">
                 <label class="optional" for="description">Description</label>

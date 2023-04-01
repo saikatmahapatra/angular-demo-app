@@ -23,10 +23,10 @@ export class AddUserComponent implements OnInit {
   employmentTypeList: any;
   designationList: any;
 
-  minDateDob = (new Date().getFullYear() - 80) + '-01-01';
-  maxDateDob = (new Date().getFullYear() - 18) + '-12-31';
-  minDateDoj = new Date('2005-01-01').toISOString().split('T')[0];
-  maxDateDoj = new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0];
+  minDateDob: Date = new Date();
+  maxDateDob: Date = new Date();;
+  minDateDoj: Date = new Date();;
+  maxDateDoj: Date = new Date();;
 
   myForm = this.fb.group({
     id: [null],
@@ -49,6 +49,14 @@ export class AddUserComponent implements OnInit {
     private apiSvc: ApiService,
     private alertSvc: AlertService) {
     this.getFormData();
+
+    let today = new Date();
+    this.minDateDob.setFullYear(today.getFullYear() - 100);
+    this.maxDateDob.setFullYear(today.getFullYear() - 18);
+
+    //this.minDateDoj.setFullYear(today.getFullYear() - 100);
+    this.maxDateDoj.setDate(today.getDate());
+
   }
 
   ngOnInit(): void {

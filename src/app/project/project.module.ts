@@ -9,6 +9,7 @@ import { ProjectLayoutComponent } from './project-layout.component';
 import { SharedModule } from '../@shared/shared.module';
 import { ManageProjectComponent } from './manage-project/manage-project.component';
 import { ManageTaskComponent } from './manage-task/manage-task.component';
+import { PrimeNgModule } from '../prime-ng.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ManageTaskComponent } from './manage-task/manage-task.component';
     ProjectRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    PrimeNgModule
   ]
 })
 export class ProjectModule { }
