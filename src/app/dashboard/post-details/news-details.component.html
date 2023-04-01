@@ -1,4 +1,4 @@
-<h1>News</h1>
+<h1>Read More Details</h1>
 <div class="back-to-page mt-1 mb-4">
     <a [routerLink]="['/dashboard']" [state]="{ newsPageNumber: paginationPageNumber }">
         <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Dashboard
@@ -7,11 +7,11 @@
 <div class="card">
     <div class="card-header text-bold">
         <app-icon class="me-2" [name]="'app-indicator'"></app-icon>
-        Organizational News
+        Organizational Updates
     </div>
     <div class="card-body">
-        <h4 [innerHTML]="news?.content_title"></h4>
-        <div class="text-muted small my-2" [innerHTML]="getTimeStampInfo(news)"></div>
-        <div [innerHTML]="news?.content_text"></div>
+        <h4 [innerHTML]="post?.content_title"></h4>
+        <div class="text-muted small my-2" [innerHTML]="getTimeStampInfo(post)"></div>
+        <div [innerHTML]="post?.content_text"></div>
     </div>
 </div>

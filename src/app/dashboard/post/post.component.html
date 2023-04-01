@@ -1,8 +1,9 @@
-<ng-container *ngIf="news.length > 0">
+<ng-container *ngIf="post.length > 0">
     <app-search-input (inputValue)="getSearchInputVal($event)" [resetInput]="resetSearchInput"
         [placeHolderText]="'Search...'"></app-search-input>
-    <div class="mb-3" *ngFor="let item of news; let i = index;">
-        <a class="news-item" [routerLink]="['news-details', item.id]" [state]="{ newsPageNumber: currentPageIndex }"
+    <div class="mb-3" *ngFor="let item of post; let i = index;">
+        <span class="badge rounded-pill bg-light text-dark" style="width: 60px;">{{item?.content_type}}</span>
+        <a class="post-item" [routerLink]="['post-details', item.id]" [state]="{ newsPageNumber: currentPageIndex }"
             [innerHTML]="item?.content_title"></a>
         <span class="text-muted small ms-2" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
@@ -11,6 +12,6 @@
         styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
 
 </ng-container>
-<ng-container *ngIf="news.length === 0">
-    <p>There are not latest news for you!</p>
+<ng-container *ngIf="post.length === 0">
+    <p>There are not latest post for you!</p>
 </ng-container>

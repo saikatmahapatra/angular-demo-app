@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/@core/services/auth.service';
   styleUrls: ['./news-details.component.scss']
 })
 export class NewsDetailsComponent implements OnInit {
-  news: any = [];
+  post: any = [];
   itemId!: string | null;
   paginationPageNumber!: string | null;
   constructor(private apiSvc: ApiService,
@@ -33,13 +33,13 @@ export class NewsDetailsComponent implements OnInit {
     options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe({
       next: (response: any) => {
-        this.news = response?.data['data_rows'][0];
+        this.post = response?.data['data_rows'][0];
       },
       error: () => {
 
       },
       complete: () => {
-        this.markAsRead();
+        //this.markAsRead();
       }
     });
   }

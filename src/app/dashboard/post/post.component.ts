@@ -5,12 +5,12 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.scss']
 })
-export class NewsComponent implements OnInit {
-  news: any = [];
+export class PostComponent implements OnInit {
+  post: any = [];
   searchKeyword: string = ''; // from search input
   resetSearchInput = false;
 
@@ -47,7 +47,7 @@ export class NewsComponent implements OnInit {
 
     this.apiSvc.get(AppConfig.apiUrl.getNews, { headers: headers, params: queryParams }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
-      this.news = response?.data['data_rows'];
+      this.post = response?.data['data_rows'];
     });
   }
 
