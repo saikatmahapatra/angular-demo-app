@@ -16,8 +16,8 @@ export class AddEditExperienceComponent implements OnInit {
   loading = false;
   designations: any;
   employers: any;
-  minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 100)).toLocaleDateString();// 100 yrs ago from today
-  maxDate = new Date().toLocaleDateString(); //today
+  minDate: Date = new Date();
+  maxDate: Date = new Date();
   itemId!: any;
   isAdd = true;
   title = 'Add';
@@ -143,8 +143,8 @@ export class AddEditExperienceComponent implements OnInit {
       newEmployer: null,
       designation: data?.designation_id,
       newDesignation: null,
-      fromDate: data?.from_date,
-      toDate: data?.to_date
+      fromDate: new Date(data?.from_date),
+      toDate: new Date(data?.to_date)
     });
   }
 
