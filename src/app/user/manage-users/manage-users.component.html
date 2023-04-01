@@ -110,9 +110,7 @@
                     </td>
 
                     <td style="text-align: center">
-                        <a [routerLink]="['../../user/profile', rowData.id]" class="btn btn-sm btn-outline-secondary ">
-                            <app-icon [name]="'person-fill'"></app-icon>
-                        </a>
+                        <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-text p-button-secondary" (click)="redirectToProfile(rowData.id)"></button>
                     </td>
                 </tr>
             </ng-template>

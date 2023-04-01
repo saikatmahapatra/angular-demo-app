@@ -41,19 +41,19 @@
                             <p-sortIcon field="content_created_on"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 15rem" pSortableColumn="content_created_by">
+                    <!-- <th style="width: 15rem" pSortableColumn="content_created_by">
                         <div class="flex justify-content-between align-items-center">
                             Created By
                             <p-sortIcon field="content_created_by"></p-sortIcon>
                         </div>
-                    </th>
+                    </th> -->
                     <th pSortableColumn="content_status">
                         <div class="flex justify-content-between align-items-center">
                             Status
                             <p-sortIcon field="content_status"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 5rem"></th>
+                    <th style="width: 20rem"></th>
                 </tr>
             </ng-template>
 
@@ -76,10 +76,10 @@
                         <span class="p-column-title">Created On</span>
                         {{rowData.content_created_on}}
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="p-column-title">Created By</span>
-                        {{rowData.user_email}}
-                    </td>
+                        {{rowData.user_firstname}}
+                    </td> -->
                     <td>
                         <span class="p-column-title">Status</span>
                         <span *ngIf="rowData?.content_status === 'Y' " class="" title="Active">
@@ -91,24 +91,31 @@
 
                     </td>
 
-                    <td style="text-align: center" style="width: 20rem">
-                        <button class="btn btn-outline-secondary me-2">Edit</button>
-                        <button class="btn btn-outline-danger">Delete</button>
+                    <td>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
-                    <td colspan="7">
-                        <div [innerHTML]="rowData?.content_text">
-                            
+                    <td colspan="6">
+                        <div class="row">
+                            <div class="col-12" [innerHTML]="rowData?.content_text"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-2">Created By</div>
+                            <div class="col-md-4">{{rowData?.user_firstname}} {{rowData?.user_lastname}}</div>
+                            <div class="col-md-2">Updated On</div>
+                            <div class="col-md-4">{{rowData?.content_updated_on || '-'}}</div>
                         </div>
                     </td>
                 </tr>
+
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="7">No records found.</td>
+                    <td colspan="6">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>

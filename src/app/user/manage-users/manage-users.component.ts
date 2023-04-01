@@ -7,6 +7,7 @@ import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-users',
@@ -35,7 +36,8 @@ export class ManageUsersComponent implements OnInit {
     }
     // Pagination Config
 
-  constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService) {
+  constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService,
+    private router: Router) {
 
   }
 
@@ -127,6 +129,10 @@ export class ManageUsersComponent implements OnInit {
     ).subscribe((val: any) => {
       this.userList = val?.data?.data_rows;
     });
+  }
+
+  redirectToProfile(id: number) {
+    this.router.navigate(['/user/profile', id]);
   }
 
 }
