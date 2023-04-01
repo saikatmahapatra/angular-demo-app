@@ -23,12 +23,18 @@ export class AddContentComponent implements OnInit {
     {id: 'policy', name: 'HR Policy'}
   ];
 
+  dataStatus: Array<any> = [
+    { name: 'Yes', id: 'Y' },
+    { name: 'No', id: 'N' }
+  ];
+
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
     contentCategory: ['', [Validators.required]],
     contentHeadline: ['', [Validators.required]],
-    contentDescription: ['', [Validators.required]]
+    contentDescription: ['', [Validators.required]],
+    contentStatus: ['Y']
   })
 
   constructor(
@@ -54,8 +60,10 @@ export class AddContentComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addContent, this.myForm.value).subscribe({
+      this.apiSvc.post(AppConfig.apiUrl.addPost, this.myForm.value).subscribe({
         next: (response: any) => {
+          this.router.navigate(['cms']);
+          this.alertSvc.success(response.message, true);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }
@@ -64,7 +72,8 @@ export class AddContentComponent implements OnInit {
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe({
         next: (response: any) => {
-          
+          this.router.navigate(['cms']);
+          this.alertSvc.success(response.message, true);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }

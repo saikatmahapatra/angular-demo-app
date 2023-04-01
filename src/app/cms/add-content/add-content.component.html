@@ -31,10 +31,22 @@
                     <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
                 </div>
             </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label class="required me-4" for="contentStatus">Visibility Status</label>
+                    <div class="form-check form-check-inline" *ngFor="let data of dataStatus; let i=index">
+                        <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.id}}"
+                            formControlName="contentStatus">
+                        <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                    </div>
+                    <app-validation-error [control]="myForm.controls['contentStatus']"></app-validation-error>
+                </div>
+            </div>
             
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
-        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p class="debug">{{myForm.value|json}}</p>
+        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p> -->
     </div>
 </div>

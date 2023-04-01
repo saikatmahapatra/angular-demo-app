@@ -35,7 +35,7 @@ export class ManageCmsComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    this.apiSvc.get(AppConfig.apiUrl.getContents, { headers: headers }).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.getPosts, { headers: headers }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
     });

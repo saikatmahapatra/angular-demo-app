@@ -31,7 +31,7 @@ export class PostDetailsComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getNews, options).subscribe({
+    this.apiSvc.get(AppConfig.apiUrl.post, options).subscribe({
       next: (response: any) => {
         this.post = response?.data['data_rows'][0];
       },
@@ -45,7 +45,7 @@ export class PostDetailsComponent implements OnInit {
   }
 
   getTimeStampInfo(item: any) {
-    return 'Published approximately ' + this.commonSvc.getTimeAgo(item?.content_created_on) + ' by ' + item?.user_firstname + ' ' + item?.user_lastname;
+    return this.commonSvc.getTimeAgo(item?.content_created_on) + ' by ' + item?.user_firstname + ' ' + item?.user_lastname;
   }
 
   markAsRead() {

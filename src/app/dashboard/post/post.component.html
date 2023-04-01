@@ -2,10 +2,10 @@
     <app-search-input (inputValue)="getSearchInputVal($event)" [resetInput]="resetSearchInput"
         [placeHolderText]="'Search...'"></app-search-input>
     <div class="mb-3" *ngFor="let item of post; let i = index;">
-        <span class="badge rounded-pill bg-light text-dark" style="width: 60px;">{{item?.content_type}}</span>
         <a class="post-item" [routerLink]="['post-details', item.id]" [state]="{ newsPageNumber: currentPageIndex }"
             [innerHTML]="item?.content_title"></a>
-        <span class="text-muted small ms-2" [innerHTML]="getTimeStampInfo(item)"></span>
+        <span class="badge rounded-pill bg-light text-dark mx-2">{{item?.content_type}}</span>
+        <span class="text-muted small" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
     <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
         [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"

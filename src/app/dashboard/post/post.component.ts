@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   currentPageIndex: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 10;
-  itemPerPageDropdown = [10, 20, 30, 50];
+  itemPerPageDropdown = [10, 20, 30, 50, 100];
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -45,7 +45,7 @@ export class PostComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
 
-    this.apiSvc.get(AppConfig.apiUrl.getNews, { headers: headers, params: queryParams }).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.post, { headers: headers, params: queryParams }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.post = response?.data['data_rows'];
     });
@@ -56,10 +56,8 @@ export class PostComponent implements OnInit {
   }
 
   getSearchInputVal(str: string) {
-    if (str.trim()) {
-      this.searchKeyword = str;
-      this.resetSearchInput = true;
-      this.getContents();
-    }
+    this.searchKeyword = str;
+    this.resetSearchInput = true;
+    this.getContents();
   }
 }
