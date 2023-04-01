@@ -3,31 +3,35 @@
     <a [routerLink]="['/user/profile']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Manage Content </a>
 </div>
 <div class="row">
-    <div class="col-md-6 col-lg-5 col-xl-4">
+    <div class="col-12">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
 
-            <div class="mb-3">
-                <label class="required" for="contentCategory">Address Type</label>
-                <select class="form-select" id="contentCategory" formControlName="contentCategory">
-                    <option value="">Select</option>
-                    <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['contentCategory']"></app-validation-error>
+            <div class="row mb-3">
+                <div class="col-md-4 mb-3">
+                    <label class="required" for="contentCategory">Post Type</label>
+                    <select class="form-select" id="contentCategory" formControlName="contentCategory">
+                        <option value="">Select</option>
+                        <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
+                    </select>
+                    <app-validation-error [control]="myForm.controls['contentCategory']"></app-validation-error>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label class="required" for="contentHeadline">Title</label>
+                    <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline" maxlength="180">
+                    <app-validation-error [control]="myForm.controls['contentHeadline']"></app-validation-error>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label class="required" for="contentHeadline">Head Line</label>
-                <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline" maxlength="180">
-                <app-validation-error [control]="myForm.controls['contentHeadline']"></app-validation-error>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="required" for="contentDescription">Description</label>
+                    <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor>
+                    <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label class="required" for="contentDescription">Content</label>
-                <textarea class="form-control" id="contentDescription" formControlName="contentDescription"></textarea>
-                <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
-            </div>
+            
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
         <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>

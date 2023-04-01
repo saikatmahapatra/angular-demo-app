@@ -10,9 +10,9 @@ export class AddContentComponent implements OnInit {
   title = 'Add';
   loading = false;
   contentCategoryList = [
-    {id: 'news', name: 'News'},
+    {id: 'news', name: 'News Updates'},
     {id: 'notice', name: 'Notice'},
-    {id: 'policy', name: 'Policy'}
+    {id: 'policy', name: 'HR Policy'}
   ];
 
   myForm = this.fb.group({

@@ -29,6 +29,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TooltipModule } from 'primeng/tooltip';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
+import { EditorModule } from 'primeng/editor';
 
 const data = [
   ButtonModule,
@@ -59,7 +60,8 @@ const data = [
   MultiSelectModule,
   TooltipModule,
   FileUploadModule,
-  DialogModule
+  DialogModule,
+  EditorModule
 ];
 
 
