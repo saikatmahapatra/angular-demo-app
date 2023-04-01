@@ -11,7 +11,7 @@
             <div class="row mb-3">
                 <div class="col-md-4 mb-3">
                     <label class="required" for="contentCategory">Post Type</label>
-                    <select class="form-select" id="contentCategory" formControlName="contentCategory">
+                    <select class="form-select" id="contentCategory" formControlName="contentCategory" (change)="postTypeChange()">
                         <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
                     </select>
@@ -24,10 +24,19 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="showEditor">
                 <div class="col-md-12 mb-3">
                     <label class="required" for="contentDescription">Description</label>
+                    <div class="small mb-3">Note: Advanced features such as image upload, stylish fonts are turned off for web security purpose.</div>
                     <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor>
+                    <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="!showEditor">
+                <div class="col-md-12 mb-3">
+                    <label class="required d-block" for="contentDescription">Holiday Date</label>
+                    <p-calendar formControlName="contentDescription" [readonlyInput]="true" inputId="contentDescription" [showButtonBar]="true" [showIcon]="true"></p-calendar>
                     <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,16 +12,20 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./add-content.component.scss']
 })
 export class AddContentComponent implements OnInit {
+  post = [];
   title = 'Add New';
   loading = false;
   id: any = '';
   isAdd = true;
   submitted = false;
+  showEditor = true;
 
   contentCategoryList = [
     {id: 'news', name: 'News Updates'},
     {id: 'notice', name: 'Notice'},
-    {id: 'policy', name: 'HR Policy'}
+    {id: 'policy', name: 'HR Policy'},
+    {id: 'mandatory_holiday', name: 'Mandatory Holiday'},
+    {id: 'optional_holiday', name: 'Optional Holiday'},
   ];
 
   dataStatus: Array<any> = [
@@ -48,12 +53,28 @@ export class AddContentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.router.url.indexOf('edit') != -1) {
+      this.isAdd = false;
+      this.title = 'Edit';
+      this.myForm.controls['action'].setValue('edit');
+    }
+
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
     if (this.id) {
       this.getContent();
     }
+  }
+
+  postTypeChange() {
+    this.myForm.controls['contentDescription'].setValue('');
+    if(this.myForm.get('contentCategory')?.value === 'mandatory_holiday' || this.myForm.get('contentCategory')?.value === 'optional_holiday') {
+      this.showEditor = false;
+    } else {
+      this.showEditor = true;
+    }
+    
   }
 
   onSubmit() {
@@ -70,7 +91,7 @@ export class AddContentComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe({
+      this.apiSvc.put(AppConfig.apiUrl.updatePost, this.myForm.value).subscribe({
         next: (response: any) => {
           this.router.navigate(['cms']);
           this.alertSvc.success(response.message, true);
@@ -87,7 +108,41 @@ export class AddContentComponent implements OnInit {
   }
 
   getContent() {
+    let queryParams = new HttpParams();
+    if (this.id) {
+      queryParams = queryParams.append('id', this.id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe({
+      next: (response: any) => {
+        this.patchFormValue(response?.data['data_rows'][0]);
+      },
+      error: () => {
 
+      },
+      complete: () => {
+        //this.markAsRead();
+      }
+    });
+  }
+
+  patchFormValue(data: any) {
+    let text = data?.content_text;
+    if(data.content_type === 'mandatory_holiday' || data.content_type === 'optional_holiday') {
+      this.showEditor = false;
+      text = new Date(text);
+    } else {
+      this.showEditor = true;
+    }
+    this.myForm.patchValue({
+      id: data?.id,
+      action: 'edit',
+      contentCategory: data?.content_type,
+      contentHeadline: data?.content_title,
+      contentDescription: text,
+      contentStatus: data?.content_status
+    });
   }
 
 }

@@ -7,7 +7,8 @@ import { AddContentComponent } from './add-content/add-content.component';
 const routes: Routes = [
   {path: '', component: CmsLayoutComponent, children: [
     {path: '', component: ManageCmsComponent},
-    {path: 'add', component: AddContentComponent}
+    {path: 'add', component: AddContentComponent},
+    {path: 'edit/:id', component: AddContentComponent}
   ]}
 ];
 

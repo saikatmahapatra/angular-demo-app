@@ -14,7 +14,7 @@ export const AppConfig = {
         post: 'post',
         getPosts: 'post/getPosts',
         addPost: 'post',
-        editPost: 'post',
+        updatePost: 'post',
         deletePost: 'post',
         getContentCalendar: 'post/getCalendar',
         addContentCalendar: 'post/addCalendar',

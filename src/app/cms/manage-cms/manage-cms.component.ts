@@ -1,5 +1,7 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -24,7 +26,9 @@ export class ManageCmsComponent implements OnInit {
   // Pagination Config
 
   constructor(
-    public apiSvc: ApiService
+    public apiSvc: ApiService,
+    private router: Router,
+    private alertSvc: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +42,23 @@ export class ManageCmsComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getPosts, { headers: headers }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
+    });
+  }
+
+  editPost(data: any) {
+    this.router.navigate(['/cms/edit', data.id]);
+  }
+
+  deletePost(data: any) {
+    let queryParams = new HttpParams();
+    if (data.id) {
+      queryParams = queryParams.append('id', data.id);
+    }
+    let options = {};
+    options = { params: queryParams };
+    this.apiSvc.delete(AppConfig.apiUrl.deletePost, options).subscribe((response: any) => {
+      this.alertSvc.success(response.message);
+      this.getContents();
     });
   }
 
