@@ -109,8 +109,8 @@ export class AddEditProjectComponent implements OnInit {
       action: 'edit',
       projectNumber: data?.project_number,
       projectName: data?.project_name,
-      startDate: data?.project_start_date,
-      endDate: data?.project_end_date,
+      startDate: new Date(data?.project_start_date),
+      endDate: new Date(data?.project_end_date),
       description: data?.project_desc,
       status: data?.project_status
     });
