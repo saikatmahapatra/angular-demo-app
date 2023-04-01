@@ -7,7 +7,7 @@ import { DashboardStatComponent } from './dashboard-stat/dashboard-stat.componen
 import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../@shared/shared.module';
-import { NewsDetailsComponent } from './post-details/news-details.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 import { PrimeNgModule } from '../prime-ng.module';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { PrimeNgModule } from '../prime-ng.module';
     PostComponent,
     DashboardStatComponent,
     FullCalendarComponent,
-    NewsDetailsComponent
+    PostDetailsComponent
   ],
   imports: [
     CommonModule,

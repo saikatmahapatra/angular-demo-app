@@ -6,11 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 @Component({
-  selector: 'app-news-details',
-  templateUrl: './news-details.component.html',
-  styleUrls: ['./news-details.component.scss']
+  selector: 'app-post-details',
+  templateUrl: './post-details.component.html',
+  styleUrls: ['./post-details.component.scss']
 })
-export class NewsDetailsComponent implements OnInit {
+export class PostDetailsComponent implements OnInit {
   post: any = [];
   itemId!: string | null;
   paginationPageNumber!: string | null;
