@@ -21,8 +21,8 @@ export class AddContentComponent implements OnInit {
   showEditor = true;
 
   contentCategoryList = [
-    {id: 'news', name: 'News Updates'},
     {id: 'notice', name: 'Notice'},
+    {id: 'news', name: 'News'},
     {id: 'policy', name: 'HR Policy'},
     {id: 'mandatory_holiday', name: 'Mandatory Holiday'},
     {id: 'optional_holiday', name: 'Optional Holiday'},

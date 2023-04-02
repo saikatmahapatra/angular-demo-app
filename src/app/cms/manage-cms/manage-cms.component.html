@@ -1,6 +1,6 @@
 <h1>Manage Contents</h1>
 <div class="row">
-    <div class="col-md-12">        
+    <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-table-sm">
             <ng-template pTemplate="caption">
                 <div class="table-header">
@@ -11,11 +11,10 @@
                             Add New
                         </a>
                     </div>
-                    <!-- <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target?.value, 'contains')"
-                                placeholder="Global Search" />
-                    </span> -->
+
+                    <p-dropdown styleClass="mt-3" [options]="contentCategoryList" [(ngModel)]="postType" placeholder="Filter by a Type"
+                        optionLabel="name" optionValue="id" [showClear]="true" (onChange)="postTypeChange()"></p-dropdown>
+
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -83,17 +82,21 @@
                     <td>
                         <span class="p-column-title">Status</span>
                         <span *ngIf="rowData?.content_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
+                            <app-icon class="text-success" [name]="'circle-fill'" [height]="12"
+                                [width]="12"></app-icon></span>
                         <span *ngIf="rowData?.content_status === 'N' " class="" title="Inactive"><app-icon
-                                class="text-warning" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
-                        <span *ngIf="rowData?.content_status === 'A' " class="" title="Closed"><app-icon class="text-danger"
-                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
+                                class="text-warning" [name]="'circle-fill'" [height]="12"
+                                [width]="12"></app-icon></span>
+                        <span *ngIf="rowData?.content_status === 'A' " class="" title="Closed"><app-icon
+                                class="text-danger" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
 
                     </td>
 
                     <td>
-                        <button (click)="editPost(rowData)" pButton pRipple type="button" icon="pi pi-pencil" class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
-                        <button (click)="deletePost(rowData)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger"></button>
+                        <button (click)="editPost(rowData)" pButton pRipple type="button" icon="pi pi-pencil"
+                            class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
+                        <button (click)="deletePost(rowData)" pButton pRipple type="button" icon="pi pi-trash"
+                            class="p-button-rounded p-button-text p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -120,7 +123,7 @@
             </ng-template>
         </p-table>
         <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-        [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+            (onPageChange)="paginate($event)"></p-paginator>
     </div>
-    

@@ -21,9 +21,18 @@ export class ManageCmsComponent implements OnInit {
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
-    this.getContents();
+    this.getContents(this.postType);
   }
   // Pagination Config
+
+  postType: any = '';
+  contentCategoryList = [
+    {id: 'notice', name: 'Notice'},
+    {id: 'news', name: 'News'},
+    {id: 'policy', name: 'HR Policy'},
+    {id: 'mandatory_holiday', name: 'Mandatory Holiday'},
+    {id: 'optional_holiday', name: 'Optional Holiday'},
+  ];
 
   constructor(
     public apiSvc: ApiService,
@@ -32,14 +41,18 @@ export class ManageCmsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getContents();
+    this.getContents(this.postType);
   }
 
-  getContents() {
+  getContents(type?: string) {
     let headers = new HttpHeaders();
+    let params = new HttpParams();
+    if(type) {
+      params = params.append('type', type)
+    }
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    this.apiSvc.get(AppConfig.apiUrl.getPosts, { headers: headers }).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.getPosts, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
     });
@@ -58,8 +71,13 @@ export class ManageCmsComponent implements OnInit {
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deletePost, options).subscribe((response: any) => {
       this.alertSvc.success(response.message);
-      this.getContents();
+      this.getContents(this.postType);
     });
+  }
+
+  postTypeChange() {
+    this.currentPageIndex = 0;
+    this.getContents(this.postType);
   }
 
 }

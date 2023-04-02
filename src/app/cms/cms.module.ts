@@ -7,9 +7,7 @@ import { CmsRoutingModule } from './cms-routing.module';
 import { CmsLayoutComponent } from './cms-layout.component';
 import { ManageCmsComponent } from './manage-cms/manage-cms.component';
 import { AddContentComponent } from './add-content/add-content.component';
-import { AddEditHolidaysComponent } from './add-edit-holidays/add-edit-holidays.component';
 import { ViewHolidaysComponent } from './view-holidays/view-holidays.component';
-import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.component';
 import { ViewHrPoliciesComponent } from './view-hr-policies/view-hr-policies.component';
 import { PrimeNgModule } from '../prime-ng.module';
 
@@ -27,9 +25,7 @@ import { PrimeNgModule } from '../prime-ng.module';
     CmsLayoutComponent,
     ManageCmsComponent,
     AddContentComponent,
-    AddEditHolidaysComponent,
     ViewHolidaysComponent,
-    ManageHolidaysComponent,
     ViewHrPoliciesComponent
   ]
 })
