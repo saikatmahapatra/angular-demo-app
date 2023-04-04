@@ -6,33 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-holidays.component.scss']
 })
 export class ViewHolidaysComponent implements OnInit {
-  month: number = new Date().getMonth();
-  year: number = new Date().getFullYear();
-  monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  monthName: string = this.monthNames[this.month];;
+  startYear: number = 2015;
+  currentYear: number = new Date().getFullYear();
+  dataRow: any;
+  selectedYear: number = this.currentYear;
+  yearList = [];
+  // Pagination Config
+  currentPageIndex: number = 0;
+  totalRecords: number = 0;
+  itemPerPage: number = 30;
+  itemPerPageDropdown = [10, 20, 30, 50];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getHolidays();
+  }
+  // Pagination Config
   constructor() { }
 
   ngOnInit(): void {
+    this.getHolidays();
   }
 
-  getCSSClass(date: any) {
-    let cssClass = '';
-    // if(this.year == date.year && this.month == (date.month+1) && this.holidays.indexOf(date.day) > -1) {
-    //   cssClass = 'date-holiday';
-    // }
-    // if(this.year == date.year && this.month == (date.month+1) && this.optionalHolidays.indexOf(date.day) > -1) {
-    //   cssClass = 'date-holiday-opt';
-    // }
-    return cssClass;
+  getHolidays() {
+    console.log(this.selectedYear);
   }
 
-  monthYearChange(event: any) {
-    this.month = event.month;
-    this.year = event.year;
-    this.monthName = this.monthNames[event.month - 1];
-    //this.getTimesheetData();
-  }
+  yearChange() {
 
+  }
 }

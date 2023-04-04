@@ -13,6 +13,7 @@ export const AppConfig = {
         dashboardStat: 'dashboardStat',
         post: 'post',
         getPosts: 'post/getPosts',
+        getHolidays: 'post/getHolidays',
         addPost: 'post',
         updatePost: 'post',
         deletePost: 'post',

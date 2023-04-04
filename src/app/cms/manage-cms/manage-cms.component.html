@@ -12,8 +12,9 @@
                         </a>
                     </div>
 
-                    <p-dropdown styleClass="mt-3" [options]="contentCategoryList" [(ngModel)]="postType" placeholder="Filter by a Type"
-                        optionLabel="name" optionValue="id" [showClear]="true" (onChange)="postTypeChange()"></p-dropdown>
+                    <p-dropdown styleClass="mt-3" [options]="contentCategoryList" [(ngModel)]="postType"
+                        placeholder="Filter by a Type" optionLabel="name" optionValue="id" [showClear]="true"
+                        (onChange)="postTypeChange()"></p-dropdown>
 
                 </div>
             </ng-template>
@@ -127,3 +128,4 @@
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
             (onPageChange)="paginate($event)"></p-paginator>
     </div>
+</div>
