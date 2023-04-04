@@ -1,1 +1,15 @@
-<p>view-holidays works!</p>
+<h1>Holidays</h1>
+<h5 class="mt-1 mb-4">{{monthName}}, {{year}}</h5>
+<div class="row mt-4">
+    <div class="col-md-3">
+        <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="false"
+            (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
+            <ng-template pTemplate="date" let-date>
+                <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
+            </ng-template>
+        </p-calendar>
+    </div>
+    <div class="col-md-9">
+        table
+    </div>
+</div>

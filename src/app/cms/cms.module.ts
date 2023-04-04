@@ -10,7 +10,6 @@ import { AddContentComponent } from './add-content/add-content.component';
 import { ViewHolidaysComponent } from './view-holidays/view-holidays.component';
 import { ViewHrPoliciesComponent } from './view-hr-policies/view-hr-policies.component';
 import { PrimeNgModule } from '../prime-ng.module';
-import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.component';
 
 @NgModule({
   imports: [
@@ -27,8 +26,7 @@ import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.compo
     ManageCmsComponent,
     AddContentComponent,
     ViewHolidaysComponent,
-    ViewHrPoliciesComponent,
-    ManageHolidaysComponent
+    ViewHrPoliciesComponent
   ]
 })
 export class CmsModule { }
