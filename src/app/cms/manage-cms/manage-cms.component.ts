@@ -30,8 +30,8 @@ export class ManageCmsComponent implements OnInit {
     {id: 'notice', name: 'Notice'},
     {id: 'news', name: 'News'},
     {id: 'policy', name: 'HR Policy'},
-    {id: 'mandatory_holiday', name: 'Mandatory Holiday'},
-    {id: 'optional_holiday', name: 'Optional Holiday'},
+    //{id: 'mandatory_holiday', name: 'Mandatory Holiday'},
+    //{id: 'optional_holiday', name: 'Optional Holiday'},
   ];
 
   constructor(
