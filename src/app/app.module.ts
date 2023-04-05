@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS,HttpClient } from '@angular/common/http';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './@core/core.module';
@@ -16,6 +15,9 @@ import { ConfigService } from './@core/services/config.service';
 import { AppConfig } from './@utils/const/app.config';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
+import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthorized.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
@@ -40,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    ErrorPageNotFoundComponent,
+    ErrorUnauthorizedComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     // Routing modules must be at the last and AppRouting Module must be the last one.
     AppRoutingModule
   ],
-  exports: [BrowserAnimationsModule, PageNotFoundComponent],
+  exports: [BrowserAnimationsModule, ErrorPageComponent, ErrorPageNotFoundComponent, ErrorUnauthorizedComponent],
   providers: [
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [ConfigService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

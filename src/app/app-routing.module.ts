@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './@core/guards/auth.guard';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DefaultLayoutComponent } from './@shared/components/layouts/default-layout/default-layout.component';
 import { UnauthenticatedLayoutComponent } from './@shared/components/layouts/unauthenticated-layout/unauthenticated-layout.component';
 import { AuthenticatedLayoutComponent } from './@shared/components/layouts/authenticated-layout/authenticated-layout.component';
+import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
+import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthorized.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 // Routing with lazy loading
 const routes: Routes = [
@@ -77,8 +79,16 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'error',
+    component: ErrorPageComponent
+  },
+  {
+    path: 'unauthorized',
+    component: ErrorUnauthorizedComponent
+  },
+  {
     path: '**', // wildcard will be at always last
-    component: PageNotFoundComponent
+    component: ErrorPageNotFoundComponent
   }
 ];
 
