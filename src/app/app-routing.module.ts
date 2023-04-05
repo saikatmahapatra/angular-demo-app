@@ -42,37 +42,37 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'pages',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./page/page.module').then(m => m.PageModule)
       },
       {
         path: 'user',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
       {
         path: 'cms',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
       },
       {
         path: 'timesheet',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)
       },
       {
         path: 'project',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
       },
       {
         path: 'leave',
-        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
         loadChildren: () => import('./leave/leave.module').then(m => m.LeaveModule)
       }
 
