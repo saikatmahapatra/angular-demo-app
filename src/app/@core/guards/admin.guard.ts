@@ -19,6 +19,10 @@ export class AdminGuard implements CanActivate {
     });
     if (userRole === '1') {
       return true;
-    } else { return false; }
+    } else { 
+      this.authService.logout();
+      this.router.navigate(['unauthorized']);
+      return false; 
+    }
   }
 }
