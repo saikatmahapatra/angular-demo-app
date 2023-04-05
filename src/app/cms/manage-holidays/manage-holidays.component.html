@@ -1,10 +1,48 @@
 <h1>Manage Holidays {{selectedYear}}</h1>
+
+<form [formGroup]="myForm" class="form app-form my-4" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="action">
+    <div class="row">
+        <h5 class="my-3">
+            <app-icon class="" [name]="'plus-circle'" *ngIf="mode == 'add'"></app-icon>
+            <app-icon class="" [name]="'pencil'" *ngIf="mode == 'update'"></app-icon>
+             {{formTitle}}
+            </h5>
+        <div class="col-md-3 mb-3">
+            <!-- <label class="required d-block" for="date">Holiday</label> -->
+            <p-calendar styleClass="w-100" formControlName="date" [readonlyInput]="true" inputId="date"
+                [showButtonBar]="false" [showIcon]="true" placeholder="Holiday Date"></p-calendar>
+            <app-validation-error [control]="myForm.controls['date']"></app-validation-error>
+        </div>
+        <div class="col-md-6 mb-3">
+            <!-- <label class="required d-block" for="occasion">Occasion</label> -->
+            <input type="text" id="occasion" class="form-control" formControlName="occasion" placeholder="Occasion(s)">
+            <app-validation-error [control]="myForm.controls['occasion']"></app-validation-error>
+        </div>
+        <div class="col-md-3 mb-3">
+            <!-- <label class="required d-block" for="type">Holiday</label> -->
+            <select class="form-select" id="type" formControlName="type">
+                <option value="">Type</option>
+                <option value="C">Mandatory</option>
+                <option value="O">Optional</option>
+            </select>
+            <app-validation-error [control]="myForm.controls['type']"></app-validation-error>
+        </div>
+        <div class="col-auto align-center">
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> {{buttonText}}</button>
+        </div>
+        
+    </div>
+</form>
+
 <div class="row mt-4">
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm p-datatable-striped ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Holidays
+                    <button *ngIf="mode === 'update'" type="button" class="btn btn-success mx-4" (click)="setAddMode();"><app-icon class="" [name]="'plus-circle'"></app-icon> Add New</button>
 
                     <p-dropdown styleClass="ms-5" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
                         [showClear]="false" (onChange)="yearChange()"></p-dropdown>
@@ -19,7 +57,7 @@
                             <p-sortIcon field="holiday_date"></p-sortIcon>
                         </div>
                     </th>
-                    <th pSortableColumn="holiday_date">
+                    <th>
                         <div class="flex justify-content-between align-items-center">
                             Day
                         </div>
@@ -27,15 +65,20 @@
                     <th pSortableColumn="holiday_description">
                         <div class="flex justify-content-between align-items-center">
                             Occasion
-                            <!-- <p-sortIcon field="holiday_description"></p-sortIcon> -->
+                            <p-sortIcon field="holiday_description"></p-sortIcon>
                         </div>
                     </th>
-                    <!-- <th pSortableColumn="holiday_type">
+                    <th pSortableColumn="holiday_type">
                         <div class="flex justify-content-between align-items-center">
                             Type
                             <p-sortIcon field="holiday_type"></p-sortIcon>
                         </div>
-                    </th> -->
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Actions
+                        </div>
+                    </th>
                 </tr>
             </ng-template>
 
@@ -52,12 +95,17 @@
                     <td>
                         <span class="p-column-title">Occasion</span>
                         {{rowData.holiday_description}}
-                        <span class="ms-1 small text-muted" [innerHTML]="rowData.holiday_type === 'C' ? '' : '(optional holiday)' "></span>
                     </td>
-                    <!-- <td>
+                    <td>
                         <span class="p-column-title">Type</span>
                         <span [innerHTML]="rowData.holiday_type === 'C' ? 'mandatory' : 'optional' "></span>
-                    </td> -->
+                    </td>
+                    <td>
+                        <button (click)="editItem(rowData)" pButton pRipple type="button" icon="pi pi-pencil"
+                            class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
+                        <button (click)="deleteItem(rowData)" pButton pRipple type="button" icon="pi pi-trash"
+                            class="p-button-rounded p-button-text p-button-danger"></button>
+                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
