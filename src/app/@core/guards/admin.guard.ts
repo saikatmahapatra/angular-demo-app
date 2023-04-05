@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
         userRole = response?.data?.roleId;
       }
     });
-    if (userRole === '3') {
+    if (userRole === '1') {
       return true;
     } else { return false; }
   }
