@@ -11,13 +11,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AdminGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService, private alertService: AlertService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const userRole = this.authService.getRoleId();
-    if (userRole == 1) {
+    let userRole = null;
+    this.authService.validateRolePermissions().subscribe({
+      next: (response: any) => {
+        userRole = response?.data?.roleId;
+      }
+    });
+    if (userRole === '3') {
       return true;
-    } else {
-      this.authService.logout();
-      this.router.navigate(['unauthorized']);
-      return false;
-    }
+    } else { return false; }
   }
 }

@@ -7,6 +7,7 @@ export const AppConfig = {
     apiUrl: {
         authenticate: 'auth/authenticate',
         validateToken: 'auth/validateToken',
+        validateRolePermissions: 'auth/validateRolePermissions',
         checkEmail: 'auth/checkEmail',
         resetPassword: 'auth/resetPassword',
         getUsers: 'user/users',

@@ -61,6 +61,10 @@ export class AuthService {
     return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateToken);
   }
 
+  validateRolePermissions() {
+    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateRolePermissions);
+  }
+
   getUserId() {
     const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
     return user.id;
@@ -69,5 +73,9 @@ export class AuthService {
   getRoleId() {
     const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
     return user.user_role;
+  }
+
+  checkUSerRole() {
+
   }
 }

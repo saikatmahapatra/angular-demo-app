@@ -17,6 +17,7 @@ import { AddEditPayrollInfoComponent } from './add-edit-payroll-info/add-edit-pa
 import { EditApproversComponent } from './edit-approvers/edit-approvers.component';
 import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
 import { ViewEmployeesComponent } from './view-employees/view-employees.component';
+import { AdminGuard } from '../@core/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -25,9 +26,9 @@ const routes: Routes = [
       { path: '', component: ViewProfileComponent },
       { path: 'profile', component: ViewProfileComponent },
       { path: 'profile/:id', component: ViewProfileComponent },
-      { path: 'add', component: AddUserComponent },
-      { path: 'manage', component: ManageUsersComponent },
-      { path: 'edit/:id', component: ManageUsersComponent },
+      { path: 'add', canActivate: [AdminGuard], component: AddUserComponent },
+      { path: 'manage', canActivate: [AdminGuard], component: ManageUsersComponent },
+      { path: 'edit/:id', canActivate: [AdminGuard], component: ManageUsersComponent },
       { path: 'edit-basic-info', component: AddEditBasicInfoComponent },
       { path: 'add-address', component: AddEditAddressComponent },
       { path: 'edit-address/:id', component: AddEditAddressComponent },

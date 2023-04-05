@@ -5,13 +5,14 @@ import { ManageTimesheetComponent } from './manage-timesheet/manage-timesheet.co
 import { TimesheetLayoutComponent } from './timesheet-layout.component';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
 import { TimesheetReportComponent } from './timesheet-report/timesheet-report.component';
+import { AdminGuard } from '../@core/guards/admin.guard';
 const routes: Routes = [
   {
     path: '', component: TimesheetLayoutComponent, children: [
       { path: '', component: TimesheetFormComponent },
-      { path: 'manage', component: ManageTimesheetComponent },
+      { path: 'manage', canActivate: [AdminGuard], component: ManageTimesheetComponent },
       { path: 'edit-timesheet/:id', component: EditTimesheetComponent },
-      { path: 'report', component: TimesheetReportComponent },
+      { path: 'report', canActivate: [AdminGuard], component: TimesheetReportComponent },
     ]
   },
 ];

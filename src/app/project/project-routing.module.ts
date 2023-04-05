@@ -6,10 +6,11 @@ import { AddEditTaskComponent } from './add-edit-task/add-edit-task.component';
 import { ManageProjectComponent } from './manage-project/manage-project.component';
 import { ManageTaskComponent } from './manage-task/manage-task.component';
 import { ProjectLayoutComponent } from './project-layout.component';
+import { AdminGuard } from '../@core/guards/admin.guard';
 
 const routes: Routes = [
   {
-    path: '', component: ProjectLayoutComponent, children: [
+    path: '', canActivate: [AdminGuard], component: ProjectLayoutComponent, children: [
       { path: '', component: ManageProjectComponent },
       { path: 'add-project', component: AddEditProjectComponent },
       { path: 'edit-project/:id', component: AddEditProjectComponent },
