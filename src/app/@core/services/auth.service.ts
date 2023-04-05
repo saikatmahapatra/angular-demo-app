@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   validateRolePermissions() {
-    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateRolePermissions);
+    return this.http.get<any>(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateRolePermissions);
   }
 
   getUserId() {
