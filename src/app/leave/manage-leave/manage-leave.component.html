@@ -16,7 +16,7 @@
                             <div class="col-md-2 me-2">
                                 <p-calendar formControlName="toDate" [readonlyInput]="true" placeholder="To Date"
                                     inputId="toDate" styleClass="w-100" [showButtonBar]="true"
-                                    [showIcon]="true" appendTo="calHolder"></p-calendar>
+                                    [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['toDate']"></app-validation-error>
                             </div>
                             <div class="col-md-2 me-2">

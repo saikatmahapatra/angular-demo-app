@@ -24,8 +24,8 @@ export class ManageLeaveComponent implements OnInit {
   // Pagination Config
 
   searchForm = this.fb.group({
-    fromDate: ['', Validators.required],
-    toDate: ['', Validators.required],
+    fromDate: [new Date(), Validators.required],
+    toDate: [new Date(), Validators.required],
     leaveStatus: ['', Validators.required]
   });
 
