@@ -4,7 +4,34 @@
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
-                    List of Leave Requests
+                    Search Leave Requests
+                    <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-2 me-2">
+                                <p-calendar formControlName="fromDate" [readonlyInput]="true" placeholder="From Date"
+                                    inputId="fromDate" styleClass="w-100" [showButtonBar]="true"
+                                    [showIcon]="true"></p-calendar>
+                                <app-validation-error [control]="searchForm.controls['fromDate']"></app-validation-error>
+                            </div>
+                            <div class="col-md-2 me-2">
+                                <p-calendar formControlName="toDate" [readonlyInput]="true" placeholder="To Date"
+                                    inputId="toDate" styleClass="w-100" [showButtonBar]="true"
+                                    [showIcon]="true"></p-calendar>
+                                <app-validation-error [control]="searchForm.controls['toDate']"></app-validation-error>
+                            </div>
+                            <div class="col-md-2 me-2">
+                                <select class="form-select" formControlName="leaveStatus">
+                                    <option value="">Status</option>
+                                    <option *ngFor="let s of leaveStatus" [value]="s.value" [innerHTML]="s.text"></option>
+                                </select>
+                                <app-validation-error [control]="searchForm.controls['leaveStatus']"></app-validation-error>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                                        class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -52,7 +79,7 @@
                             <p-sortIcon field="leave_status"></p-sortIcon>
                         </div>
                     </th>
-                    
+
                 </tr>
             </ng-template>
 

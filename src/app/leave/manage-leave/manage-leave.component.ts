@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/@core/services/alert.service';
 
 @Component({
   selector: 'app-manage-leave',
@@ -7,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageLeaveComponent implements OnInit {
   dataRow = [];
+  loading = false;
+  submitted = false;
   // Pagination Config
   currentPageIndex: number = 0;
   totalRecords: number = 0;
@@ -17,9 +22,29 @@ export class ManageLeaveComponent implements OnInit {
     this.currentPageIndex = event.page;
   }
   // Pagination Config
-  constructor() { }
+
+  searchForm = this.fb.group({
+    fromDate: ['', Validators.required],
+    toDate: ['', Validators.required],
+    leaveStatus: ['', Validators.required]
+  });
+
+  leaveStatus: any[]= [
+    {value: 'A', text: 'Applied'},
+    {value: 'B', text: 'Pending'}
+  ]
+
+  constructor(
+    private fb: FormBuilder,
+    private alertSvc: AlertService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    
   }
 
 }
