@@ -23,3 +23,12 @@
         }
     }
 }
+
+
+
+// Dark Theme fix
+[data-bs-theme="dark"] {
+    :root {
+        --surface-c : #000;
+    }
+}
