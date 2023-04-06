@@ -32,7 +32,7 @@ $shade500:#adb5bd !default;    //input icon
 $shade600:#6c757d !default;    //text secondary color
 $shade700:#495057 !default;    //text color
 $shade800:#343a40 !default;    //unused
-$shade900: var(--bs-body-color) !default;    //unused
+$shade900: #212529 !default;    //unused
 
 //global
 $fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
@@ -302,7 +302,7 @@ $calendarTableMargin:.5rem 0 !default;
 $calendarPadding:.5rem !default;
 $calendarBg:var(--bs-body-bg) !default;
 $calendarInlineBg:$calendarBg !default;
-$calendarTextColor:var(--bs-body-color) !default;
+$calendarTextColor:$shade900 !default;
 $calendarBorder:$inputListBorder !default;
 $calendarOverlayBorder:$inputOverlayBorder !default;
 
@@ -310,7 +310,7 @@ $calendarHeaderPadding:.5rem !default;
 $calendarHeaderBg:var(--bs-body-bg) !default;
 $calendarInlineHeaderBg:$calendarBg !default;
 $calendarHeaderBorder:1px solid $shade300 !default;
-$calendarHeaderTextColor:var(--bs-body-color) !default;
+$calendarHeaderTextColor:$shade900 !default;
 $calendarHeaderFontWeight:600 !default;
 $calendarHeaderCellPadding:.5rem !default;
 $calendarMonthYearHeaderHoverTextColor: $primaryColor !default;
@@ -323,7 +323,7 @@ $calendarCellDateBorder:1px solid transparent !default;
 $calendarCellDateHoverBg:$shade200 !default;
 $calendarCellDateTodayBg:$shade400 !default;
 $calendarCellDateTodayBorderColor:transparent !default;
-$calendarCellDateTodayTextColor:var(--bs-body-color) !default;
+$calendarCellDateTodayTextColor:$shade900 !default;
 
 $calendarButtonBarPadding:1rem 0 !default;
 $calendarTimePickerPadding:.5rem !default;
