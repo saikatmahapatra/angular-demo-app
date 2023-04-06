@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
@@ -13,25 +13,43 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class ManageTaskComponent implements OnInit {
 
   dataRow: any;
-  totalRecords: any;
+  // Pagination Config
+  currentPageIndex: number = 0;
+  totalRecords: number = 0;
+  itemPerPage: number = 30;
+  itemPerPageDropdown = [10, 20, 30, 50];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getTasks();
+  }
+  // Pagination Config
 
   constructor(public apiSvc: ApiService, private alertSvc: AlertService, private router: Router) { }
 
   ngOnInit(): void {
     this.getTasks();
   }
-  
+
   getTasks() {
-    this.apiSvc.get(AppConfig.apiUrl.getTask).subscribe((response: any) => {
+    let headers = new HttpHeaders();
+    let params = new HttpParams();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    this.apiSvc.get(AppConfig.apiUrl.getTask, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
     });
   }
 
-  // delete(id: any) {
+  editItem(data: any) {
+    this.router.navigate(['/project/edit-task', data.id]);
+  }
+
+  // deleteItem(data: any) {
   //   let queryParams = new HttpParams();
-  //   if (id) {
-  //     queryParams = queryParams.append('id', id);
+  //   if (data.id) {
+  //     queryParams = queryParams.append('id', data.id);
   //   }
   //   let options = {};
   //   options = { params: queryParams };

@@ -1,6 +1,6 @@
 <h1><span>{{title}}</span> Task</h1>
 <div class="back-to-page mt-1 mb-4">
-    <a [routerLink]="['/project/manage-task']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Manage Task</a>
+    <a [routerLink]="['/project/manage-tasks']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Manage Task</a>
 </div>
 <div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
@@ -36,7 +36,7 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p class="debug">{{myForm.value|json}}</p>
+        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p class="debug">{{myForm.value|json}}</p> -->
     </div>
 </div>
