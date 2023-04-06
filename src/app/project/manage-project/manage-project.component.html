@@ -1,34 +1,101 @@
 <h1>Manage Projects</h1>
 
 <div class="my-4">
-    <a [routerLink]="['add-project']" class="btn  btn-success ms-4">Add Projects</a>
-    <!-- <a [routerLink]="['../task/add-task']" class="btn  btn-success">Add Task</a> -->
-</div>
+    <div class="col-md-12">
+        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm p-datatable-striped">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    List of Projects
+                    <div class="mt-2">
+                        <a [routerLink]="['add-project']" class="btn btn-success">
+                            <app-icon class="" [name]="'plus-circle'"></app-icon>
+                            Add New
+                        </a>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 20rem;" pSortableColumn="project_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Name
+                            <p-sortIcon field="project_name"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 8rem" pSortableColumn="project_start_date">
+                        <div class="flex justify-content-between align-items-center">
+                            Start
+                            <p-sortIcon field="project_start_date"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 8rem" pSortableColumn="project_end_date">
+                        <div class="flex justify-content-between align-items-center">
+                            End
+                            <p-sortIcon field="project_end_date"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 30rem" pSortableColumn="project_desc">
+                        <div class="flex justify-content-between align-items-center">
+                            Description
+                            <p-sortIcon field="project_desc"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 8rem" pSortableColumn="project_status">
+                        <div class="flex justify-content-between align-items-center">
+                            Status
+                            <p-sortIcon field="project_status"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 20rem">Actions</th>
+                </tr>
+            </ng-template>
 
- <div class="table-responsive">
-  <table class="table table-sm">
-      <thead>
-          <tr>
-              <th scope="col" style="width: 25%;">Name</th>
-              <th scope="col" style="width: 10%;">Start Date</th>
-              <th scope="col" style="width: 10%;">End Date</th>
-              <th scope="col" style="width: 30%;">Descr</th>
-              <th scope="col" style="width: 10%;">Status</th>
-              <th scope="col" style="width: 15%;">Action</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let data of dataRow; let i = index">
-              <td>{{data?.project_name}} ({{data?.project_number}})</td>
-              <td>{{data?.project_start_date}}</td>
-              <td>{{data?.project_end_date}}</td>
-              <td>{{data?.project_desc}}</td>
-              <td [innerHTML]="data?.project_status === 'Y' ? 'Active': 'Inactive'"></td>
-              <td>
-                <a class="btn btn-outline-secondary " [routerLink]="['/project/edit-project/', data.id]">Edit</a>
-                <button class="btn btn-outline-danger  ms-1" (click)="delete(data.id)">Delete</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">Name</span>
+                        {{rowData.project_name}} ({{rowData.project_number}})
+                    </td>
+                    <td>
+                        <span class="p-column-title">Start</span>
+                        {{rowData.project_start_date}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">End</span>
+                        {{rowData.project_end_date}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Description</span>
+                        {{rowData.project_desc}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        <span *ngIf="rowData?.project_status === 'Y' " class="" title="Active">
+                            <app-icon class="text-success" [name]="'circle-fill'" [height]="12"
+                                [width]="12"></app-icon></span>
+                        <span *ngIf="rowData?.project_status === 'N' " class="" title="Inactive"><app-icon
+                                class="text-warning" [name]="'circle-fill'" [height]="12"
+                                [width]="12"></app-icon></span>
+                    </td>
+
+                    <td>
+                        <button (click)="editItem(rowData)" pButton pRipple type="button" icon="pi pi-pencil"
+                            class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
+                        <button (click)="deleteItem(rowData)" pButton pRipple type="button" icon="pi pi-trash"
+                            class="p-button-rounded p-button-text p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+            (onPageChange)="paginate($event)"></p-paginator>
+    </div>
 </div>
