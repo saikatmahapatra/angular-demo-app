@@ -7,8 +7,8 @@
         <h5 class="my-3">
             <app-icon class="" [name]="'plus-circle'" *ngIf="mode == 'add'"></app-icon>
             <app-icon class="" [name]="'pencil'" *ngIf="mode == 'update'"></app-icon>
-             {{formTitle}}
-            </h5>
+            {{formTitle}}
+        </h5>
         <div class="col-md-3 mb-3">
             <!-- <label class="required d-block" for="date">Holiday</label> -->
             <p-calendar styleClass="w-100" formControlName="date" [readonlyInput]="true" inputId="date"
@@ -30,9 +30,10 @@
             <app-validation-error [control]="myForm.controls['type']"></app-validation-error>
         </div>
         <div class="col-auto align-center">
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> {{buttonText}}</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                    class="spinner-border spinner-border-sm me-1"></span> {{buttonText}}</button>
         </div>
-        
+
     </div>
 </form>
 
@@ -42,10 +43,14 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Holidays
-                    <button *ngIf="mode === 'update'" type="button" class="btn btn-success mx-4" (click)="setAddMode();"><app-icon class="" [name]="'plus-circle'"></app-icon> Add New</button>
+                    <div class="d-flex mt-2">
+                        <button *ngIf="mode === 'update'" type="button" class="btn btn-success me-4"
+                            (click)="setAddMode();"><app-icon class="" [name]="'plus-circle'"></app-icon> Add
+                            New</button>
 
-                    <p-dropdown styleClass="ms-5" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
-                        [showClear]="false" (onChange)="yearChange()"></p-dropdown>
+                        <p-dropdown styleClass="" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
+                            [showClear]="false" (onChange)="yearChange()"></p-dropdown>
+                    </div>
 
                 </div>
             </ng-template>
