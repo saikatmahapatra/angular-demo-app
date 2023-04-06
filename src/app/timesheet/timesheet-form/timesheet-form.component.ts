@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, OnChanges, SimpleChanges, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormBuilder, Validators, UntypedFormArray, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -51,6 +51,18 @@ export class TimesheetFormComponent implements OnInit {
   taskList: any;
   timesheetData: any = [];
 
+  // Pagination Config
+  currentPageIndex: number = 0;
+  totalRecords: number = 0;
+  itemPerPage: number = 30;
+  itemPerPageDropdown = [10, 20, 30, 50];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getTimesheetData();
+  }
+  // Pagination Config
+
   constructor(
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
@@ -66,11 +78,11 @@ export class TimesheetFormComponent implements OnInit {
     this.year = today.getFullYear();
 
     this.minDate = new Date();
-    this.minDate.setDate(today.getDate() -3);
+    this.minDate.setDate(today.getDate() - 3);
 
     this.maxDate = new Date();
     this.maxDate = today;
-    this.monthName = this.monthNames[this.month -1];
+    this.monthName = this.monthNames[this.month - 1];
   }
 
   get timeSheetDates() {
@@ -112,11 +124,15 @@ export class TimesheetFormComponent implements OnInit {
     queryParams = queryParams.append('userId', this.authSvc.getUserId());
     queryParams = queryParams.append('month', this.month);
     queryParams = queryParams.append('year', this.year);
-    let options = { params: queryParams };
+    let headers = new HttpHeaders();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    let options = { headers: headers, params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe({
       next: (response: any) => {
         this.entryFound = true;
         this.timesheetData = response?.data?.data_rows;
+        this.totalRecords = response?.data['num_rows'];
         if (this.timesheetData.length > 0) {
           this.timesheetData.forEach((element: any) => {
             let dayDate = element.timesheet_date.split('-'); // YYYY-MM-DD
@@ -183,9 +199,11 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   monthYearChange(event: any) {
+    //this.currentPageIndex = 0;
+    //this.totalRecords = 0;
     this.month = event.month;
     this.year = event.year;
-    this.monthName = this.monthNames[event.month-1];
+    this.monthName = this.monthNames[event.month - 1];
     this.getTimesheetData();
   }
 
@@ -204,10 +222,10 @@ export class TimesheetFormComponent implements OnInit {
   }
 
   isDeleteComplete(event: boolean) {
-    if(event) {
+    if (event) {
       this.getTimesheetData();
     }
-  } 
+  }
 }
 
 

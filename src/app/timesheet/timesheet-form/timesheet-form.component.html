@@ -22,30 +22,30 @@
             </p-calendar>
             <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum {{maxDateCount}}
               days.</div>
-            
-              <div class="indicator mt-4 form-text text-muted">
-                <div class="d-flex justify-content-between">
-                  <div class="">
-                    <div class="date-selected">DD</div>
-                    <div class="">Selected</div>
-                  </div>
-              
-                  <div class="">
-                    <div class="date-filled">DD</div>
-                    <div class="">Task Logged</div>
-                  </div>
-              
-                  <div class="">
-                    <div class="date-holiday-opt">DD</div>
-                    <div class="">Opt. Holiday</div>
-                  </div>
-              
-                  <div class="">
-                    <div class="date-holiday">DD</div>
-                    <div class="">Holiday</div>
-                  </div>
+
+            <div class="indicator mt-4 form-text text-muted">
+              <div class="d-flex justify-content-between">
+                <div class="">
+                  <div class="date-selected">DD</div>
+                  <div class="">Selected</div>
+                </div>
+
+                <div class="">
+                  <div class="date-filled">DD</div>
+                  <div class="">Task Logged</div>
+                </div>
+
+                <div class="">
+                  <div class="date-holiday-opt">DD</div>
+                  <div class="">Opt. Holiday</div>
+                </div>
+
+                <div class="">
+                  <div class="date-holiday">DD</div>
+                  <div class="">Holiday</div>
                 </div>
               </div>
+            </div>
 
             <div class="my-1 py-2 alert alert-danger"
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
@@ -80,7 +80,8 @@
           </div>
           <div class="mb-3">
             <label class="required" for="description">Task Description</label>
-            <textarea class="form-control" id="description" formControlName="description" maxlength="200" placeholder="briefly describe in 200 characters"></textarea>
+            <textarea class="form-control" id="description" formControlName="description" maxlength="200"
+              placeholder="briefly describe in 200 characters"></textarea>
             <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
           </div>
 
@@ -95,5 +96,10 @@
 
 <div class="row mb-4">
   <h4>Your Timesheet of {{monthName}}, {{year}}</h4>
-  <app-view-timesheet [timeSheetLogData]="timesheetData" (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
+  <app-view-timesheet [timeSheetLogData]="timesheetData"
+    (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
 </div>
+
+<!-- <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+  [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator> -->
