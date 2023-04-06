@@ -23,7 +23,8 @@ $colors: (
 ) !default;
 
 //reused color variables
-$shade000:#ffffff !default;    //surface
+$shade0000: #ffffff !default; // to be fixed later to support dark theme
+$shade000: var(--bs-body-bg) !default;    //surface
 $shade100:#f8f9fa !default;    //header background
 $shade200:#e9ecef !default;    //hover background
 $shade300:#dee2e6 !default;    //border, divider
@@ -363,7 +364,7 @@ $panelHeaderTextHoverColor:$shade900 !default;
 
 $panelContentBorderColor: $shade300 !default;
 $panelContentBorder:1px solid $shade300 !default;
-$panelContentBg:$shade000 !default;
+$panelContentBg:$shade0000 !default;
 $panelContentEvenRowBg: $shade200 !default;
 $panelContentTextColor:$shade900 !default;
 $panelContentPadding:1rem !default;
@@ -496,7 +497,7 @@ $tableHeaderCellHighlightHoverBg:$shade200 !default;
 $tableHeaderCellHighlightTextHoverColor:$primaryColor !default;
 $tableSortableColumnBadgeSize:1.143rem !default;
 
-$tableBodyRowBg:$shade000 !default;
+$tableBodyRowBg:$shade0000 !default;
 $tableBodyRowTextColor:$shade900 !default;
 $tableBodyRowEvenBg:scale-color($tableBodyRowBg, $lightness: -1%) !default;
 $tableBodyRowHoverBg:$shade200 !default;
