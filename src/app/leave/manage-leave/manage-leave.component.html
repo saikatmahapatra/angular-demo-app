@@ -1,5 +1,5 @@
 <h1>Manage Leave Requests</h1>
-<div class="row my-4">
+<div class="row my-4" #calHolder>
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm ">
             <ng-template pTemplate="caption">
@@ -10,13 +10,13 @@
                             <div class="col-md-2 me-2">
                                 <p-calendar formControlName="fromDate" [readonlyInput]="true" placeholder="From Date"
                                     inputId="fromDate" styleClass="w-100" [showButtonBar]="true"
-                                    [showIcon]="true"></p-calendar>
+                                    [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['fromDate']"></app-validation-error>
                             </div>
                             <div class="col-md-2 me-2">
                                 <p-calendar formControlName="toDate" [readonlyInput]="true" placeholder="To Date"
                                     inputId="toDate" styleClass="w-100" [showButtonBar]="true"
-                                    [showIcon]="true"></p-calendar>
+                                    [showIcon]="true" appendTo="calHolder"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['toDate']"></app-validation-error>
                             </div>
                             <div class="col-md-2 me-2">
