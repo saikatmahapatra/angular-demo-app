@@ -1,47 +1,59 @@
-<h1>Change Tagged User</h1>
-
+<h1>Change Approvers</h1>
+<div *ngIf="!currentApprovers?.id" class="alert alert-info my-4">
+    {{message}}
+</div>
 <div class="table-responsive my-4">
-    
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Current Approvers</th>
-                <th scope="col">Info</th>
-            </tr>
-        </thead>
+
+    <table class="table table-sm table-bordered">
         <tbody>
-            <tr>
-                <th scope="row">
-                    Manager (L2)
-                </th>
-                <td>
-                    <div>{{currentApprovers?.director_firstname}} {{currentApprovers?.director_lastname}}</div>
-                    <div class="small text-muted">{{currentApprovers?.director_email}}</div>
-                    <div class="small text-muted">Emp ID {{currentApprovers?.director_emp_id}}</div>
-                </td>
-            </tr>
             <tr>
                 <th scope="row">
                     Supervisor (L1)
                 </th>
                 <td>
-                    <div>{{currentApprovers?.supervisor_firstname}} {{currentApprovers?.supervisor_lastname}}</div>
-                    <div class="small text-muted">{{currentApprovers?.supervisor_email}}</div>
-                    <div class="small text-muted">Emp ID {{currentApprovers?.supervisor_emp_id}}</div>
+                    <div *ngIf="currentApprovers?.id">
+                        {{currentApprovers?.supervisor_firstname}} {{currentApprovers?.supervisor_lastname}}
+                        {{currentApprovers?.supervisor_emp_id}}
+                        {{currentApprovers?.supervisor_email}}
+                    </div>
                 </td>
             </tr>
-            <!-- <tr>
+            <tr>
                 <th scope="row">
-                    Finance
+                    Manager (L2)
                 </th>
-                <td>Mark</td>
+                <td>
+                    <div *ngIf="currentApprovers?.id">
+                        {{currentApprovers?.director_firstname}} {{currentApprovers?.director_lastname}}
+                        {{currentApprovers?.director_emp_id}}
+                        {{currentApprovers?.director_email}}
+                    </div>
+                </td>
             </tr>
             <tr>
                 <th scope="row">
                     HR
                 </th>
-                <td>Mark</td>
-            </tr> -->
+                <td>
+                    <div *ngIf="currentApprovers?.id">
+                        {{currentApprovers?.hr_firstname}} {{currentApprovers?.hr_lastname}}
+                        {{currentApprovers?.hr_emp_id}}
+                        {{currentApprovers?.hr_email}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    Finance
+                </th>
+                <td>
+                    <div *ngIf="currentApprovers?.id">
+                        {{currentApprovers?.finance_firstname}} {{currentApprovers?.finance_lastname}}
+                        {{currentApprovers?.finance_emp_id}}
+                        {{currentApprovers?.finance_email}}
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -51,20 +63,32 @@
 <app-search-input (inputValue)="getSearchInputVal($event)"
     [placeHolderText]="'Search by employee name/id...'"></app-search-input>
 
-<div class="table-responsive my-2">
+<div class="my-4" *ngIf="totalRecords>0">
+    <strong>Note:</strong> To set proper employee as your approvers you are advised to contact local HR/Admin.
+</div>
+<div class="table-responsive my-4" *ngIf="totalRecords>0">
     <table class="table">
         <tbody>
             <tr *ngFor="let user of data">
                 <td>
                     <div class="">{{user?.user_firstname}} {{user?.user_lastname}}</div>
                     <div class="text-muted small">{{user?.designation_name}} | Emp ID {{user?.user_emp_id}}</div>
-
                 </td>
                 <td>
-                    <button class="btn  btn-outline-secondary me-2">Set L1 Approver</button>
-                    <button class="btn  btn-outline-secondary">Set L2 Approver</button>
+                    <select class="form-select" (change)="setApprover($event, user)" style="width: 150px;">
+                        <option value="">Set as</option>
+                        <option value="L1">Supervisor</option>
+                        <option value="L2">Manager</option>
+                        <option value="HR">HR</option>
+                        <option value="FIN">Finance</option>
+                    </select>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <p-paginator *ngIf="totalRecords>0" [rows]="itemPerPage" [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+        (onPageChange)="paginate($event)"></p-paginator>
 </div>

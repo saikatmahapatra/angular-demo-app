@@ -76,6 +76,7 @@ export const AppConfig = {
         deleteTask: 'task',
         searchUser: 'user/search',
         approvers: 'user/approvers',
+        changeApprovers: 'user/changeApprovers',
         getEmployees: 'user/getEmp',
         timesheetReport: 'timesheet/report',
     }
