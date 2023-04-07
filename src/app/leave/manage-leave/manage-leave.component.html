@@ -1,4 +1,4 @@
-<h1>Manage Leave Requests</h1>
+<h1>App Demo</h1>
 <div class="row my-4" #calHolder>
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm ">
@@ -6,27 +6,28 @@
                 <div class="table-header">
                     Search Leave Requests
                     <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()">
+                        <input type="hidden" value="search" formControlName="action">
                         <div class="row">
-                            <div class="col-md-2 me-2">
+                            <div class="col-md-3">
                                 <p-calendar formControlName="fromDate" [readonlyInput]="true" placeholder="From Date"
                                     inputId="fromDate" styleClass="w-100" [showButtonBar]="true"
                                     [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['fromDate']"></app-validation-error>
                             </div>
-                            <div class="col-md-2 me-2">
+                            <div class="col-md-3">
                                 <p-calendar formControlName="toDate" [readonlyInput]="true" placeholder="To Date"
                                     inputId="toDate" styleClass="w-100" [showButtonBar]="true"
                                     [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['toDate']"></app-validation-error>
                             </div>
-                            <div class="col-md-2 me-2">
+                            <div class="col-md-3">
                                 <select class="form-select" formControlName="leaveStatus">
-                                    <option value="">Status</option>
+                                    <option value="">Select Status</option>
                                     <option *ngFor="let s of leaveStatus" [value]="s.value" [innerHTML]="s.text"></option>
                                 </select>
                                 <app-validation-error [control]="searchForm.controls['leaveStatus']"></app-validation-error>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
                                         class="spinner-border spinner-border-sm me-1"></span> Submit</button>
                             </div>
@@ -39,19 +40,19 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width: 3rem"></th>
-                    <th style="width: 30rem" pSortableColumn="leave_req_id">
+                    <th style="width: 10rem" pSortableColumn="leave_req_id">
                         <div class="flex justify-content-between align-items-center">
                             Application #
                             <p-sortIcon field="leave_req_id"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 10rem" pSortableColumn="user_id">
+                    <th style="width: 15rem" pSortableColumn="user_id">
                         <div class="flex justify-content-between align-items-center">
                             Applicant
                             <p-sortIcon field="user_id"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 18rem" pSortableColumn="leave_from_date">
+                    <th style="width: 25rem" pSortableColumn="leave_from_date">
                         <div class="flex justify-content-between align-items-center">
                             Leave Period
                             <p-sortIcon field="leave_from_date"></p-sortIcon>
@@ -63,13 +64,13 @@
                             <p-sortIcon field="leave_type"></p-sortIcon>
                         </div>
                     </th>
-                    <th pSortableColumn="supervisor_approver_id">
+                    <th style="width: 15rem" pSortableColumn="supervisor_approver_id">
                         <div class="flex justify-content-between align-items-center">
                             L1 Approver
                             <p-sortIcon field="supervisor_approver_id"></p-sortIcon>
                         </div>
                     </th>
-                    <th pSortableColumn="director_approver_id">
+                    <th style="width: 15rem" pSortableColumn="director_approver_id">
                         <div class="flex justify-content-between align-items-center">
                             L2 Approver
                             <p-sortIcon field="director_approver_id"></p-sortIcon>
@@ -80,6 +81,8 @@
                             Final Status
                             <p-sortIcon field="leave_status"></p-sortIcon>
                         </div>
+                    </th>
+                    <th style="width: 3rem">
                     </th>
 
                 </tr>
@@ -93,32 +96,33 @@
                             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                     </td>
                     <td>
-                        <span class="p-column-title">Title</span>
-                        {{rowData.leave_req_id}}
+                        <span class="p-column-title">Applicatio No</span>
+                        {{rowData?.leave_req_id}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicant</span>
+                        {{rowData?.user_firstname}} {{rowData?.user_lastname}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Leave Period</span>
+                        {{rowData?.leave_from_date}} - {{rowData?.leave_to_date}}
                     </td>
                     <td>
                         <span class="p-column-title">Type</span>
-                        {{rowData.content_type}}
+                        {{rowData?.leave_type}}
                     </td>
                     <td>
-                        <span class="p-column-title">Created On</span>
-                        {{rowData.content_created_on}}
+                        <span class="p-column-title">L1 Approver</span>
+                        {{rowData?.supervisor_approver_firstname}} {{rowData?.supervisor_approver_lastname}}
                     </td>
-                    <!-- <td>
-                        <span class="p-column-title">Created By</span>
-                        {{rowData.user_firstname}}
-                    </td> -->
+                    <td>
+                        <span class="p-column-title">L2 Approver</span>
+                        {{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
+                    </td>
+                    
                     <td>
                         <span class="p-column-title">Status</span>
-                        <span *ngIf="rowData?.content_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success" [name]="'circle-fill'" [height]="12"
-                                [width]="12"></app-icon></span>
-                        <span *ngIf="rowData?.content_status === 'N' " class="" title="Inactive"><app-icon
-                                class="text-warning" [name]="'circle-fill'" [height]="12"
-                                [width]="12"></app-icon></span>
-                        <span *ngIf="rowData?.content_status === 'A' " class="" title="Closed"><app-icon
-                                class="text-danger" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
-
+                        {{rowData?.leave_status}}
                     </td>
 
                     <td>
@@ -129,23 +133,15 @@
             </ng-template>
             <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
-                    <td colspan="6">
-                        <div class="row">
-                            <div class="col-12" [innerHTML]="rowData?.content_text"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-2">Created By</div>
-                            <div class="col-md-4">{{rowData?.user_firstname}} {{rowData?.user_lastname}}</div>
-                            <div class="col-md-2">Updated On</div>
-                            <div class="col-md-4">{{rowData?.content_updated_on || '-'}}</div>
-                        </div>
+                    <td colspan="9">
+                        row data
                     </td>
                 </tr>
 
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="6">No records found.</td>
+                    <td colspan="9">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>
