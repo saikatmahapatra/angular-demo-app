@@ -9,6 +9,7 @@ import { ViewLeaveHistoryComponent } from './view-leave-history/view-leave-histo
 import { PrimeNgModule } from '../prime-ng.module';
 import { SharedModule } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LeaveDetailsActionsComponent } from './leave-details-actions/leave-details-actions.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LeaveLayoutComponent,
     ApplyLeaveComponent,
     ManageLeaveComponent,
-    ViewLeaveHistoryComponent    
+    ViewLeaveHistoryComponent,
+    LeaveDetailsActionsComponent    
   ],
   imports: [
     CommonModule,

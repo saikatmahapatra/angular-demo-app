@@ -27,23 +27,24 @@ export class ManageLeaveComponent implements OnInit {
     this.getLeaveData();
   }
   // Pagination Config
-
+  fromDate = new Date();
+  toDate = new Date()
   searchForm = this.fb.group({
-    fromDate: ['', Validators.required],
-    toDate: ['', Validators.required],
-    leaveStatus: ['', Validators.required],
+    fromDate: [new Date(), Validators.required],
+    toDate: [new Date(), Validators.required],
+    leaveStatus: [''],
     action: ['search']
   });
 
   leaveStatus: any[] = [
-    { value: 'B', text: 'Applied' },
-    { value: 'O', text: 'Processing' },
-    { value: 'A', text: 'Approved' },
-    { value: 'R', text: 'Rejected' },
-    { value: 'P', text: 'Pending' },
-    { value: 'C', text: 'Cancelled' },
-    { value: 'X', text: 'Cancel Requested' }
-  ]
+    { value: 'B', text: 'Applied', cssClass: 'bg-primary', textClass: 'text-primary' },
+    { value: 'O', text: 'Processing', cssClass: 'bg-info', textClass: 'text-info' },
+    { value: 'A', text: 'Approved', cssClass: 'bg-success', textClass: 'text-success' },
+    { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
+    { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
+    { value: 'C', text: 'Cancelled', cssClass: 'bg-warning', textClass: 'text-warning' },
+    { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' }
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -51,9 +52,15 @@ export class ManageLeaveComponent implements OnInit {
     private router: Router,
     private validator: FormValidationService,
     private apiSvc: ApiService
-  ) { }
+  ) {
+    this.fromDate.setMonth(new Date().getMonth() - 1);
+    this.toDate.setMonth(new Date().getMonth() + 1);
+    this.searchForm.controls['fromDate'].setValue(this.fromDate);
+    this.searchForm.controls['toDate'].setValue(this.toDate);
+  }
 
   ngOnInit(): void {
+    this.getLeaveData();
   }
 
   onSubmit() {
@@ -84,6 +91,15 @@ export class ManageLeaveComponent implements OnInit {
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
     })
+  }
+
+  getStatusText(statusChar: string) {
+    let obj = this.leaveStatus.find(o => o.value === statusChar);
+    return obj;
+  }
+
+  viewDetails(leave: any) {
+    this.router.navigate(['/leave/details', leave.id]);
   }
 
 }

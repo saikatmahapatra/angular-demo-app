@@ -1,0 +1,51 @@
+<h1>Leave Details</h1>
+<div class="back-to-page mt-1 mb-4">
+    <a [routerLink]="['/leave/manage']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Leave
+        Management </a>
+</div>
+
+<div class="row my-4">
+    <div class="col-md-8">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="fw-sbold">Leave Application No</td>
+                    <td>{{rowData?.leave_req_id}}</td>
+                    <td class="fw-sbold">Applied On Date</td>
+                    <td>{{rowData?.leave_created_on}}</td>
+                </tr>
+                <tr>
+                    <td class="fw-sbold">Applicant/Emp Name</td>
+                    <td>{{rowData?.user_firstname}} {{rowData?.user_lastname}}</td>
+                    <td class="fw-sbold">Applicant/Emp ID</td>
+                    <td>{{rowData?.user_emp_id}}</td>
+
+                </tr>
+                <tr>
+                    <td class="fw-sbold">Applicant/Emp Email</td>
+                    <td>{{rowData?.user_email}}</td>
+                    <td class="fw-sbold">Applicant/Emp Phone</td>
+                    <td>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</td>
+                </tr>
+                <tr>
+                    <td class="fw-sbold">From - To Date</td>
+                    <td>{{rowData?.leave_from_date}} {{rowData?.leave_to_date}}</td>
+                    <td class="fw-sbold">Day Count</td>
+                    <td>{{rowData?.applied_for_days_count}}</td>
+                </tr>
+                <tr>
+                    <td class="fw-sbold">Leave Type</td>
+                    <td>{{rowData?.leave_type}}</td>
+                    <td class="fw-sbold">Leave Term</td>
+                    <td>{{rowData?.leave_term}}</td>
+                </tr>
+
+                <tr>
+                    <td class="fw-sbold">Reason</td>
+                    <td colspan="5">{{rowData?.leave_reason}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
