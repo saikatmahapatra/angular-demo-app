@@ -1,7 +1,7 @@
 <h1>Leave Details</h1>
 <div class="back-to-page mt-1 mb-4">
-    <a [routerLink]="['/leave/manage']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Leave
-        Management </a>
+    <a [routerLink]="['/leave/manage']">
+        <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Leave Management </a>
 </div>
 
 <div class="row my-4">
@@ -11,7 +11,7 @@
                 <tr>
                     <td class="fw-sbold">Leave Application No</td>
                     <td>{{rowData?.leave_req_id}}</td>
-                    <td class="fw-sbold">Applied On Date</td>
+                    <td class="fw-sbold">Date</td>
                     <td>{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</td>
                 </tr>
                 <tr>
