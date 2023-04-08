@@ -142,20 +142,20 @@
                     <td>
                         <span class="p-column-title">Workflow Status</span>
                         <span class="mx-2">
-                            <i class="pi pi-question-circle text-secondary" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
+                            <i class="pi pi-question-circle text-secondary" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'P'"></i>
+                            <i class="pi pi-check-circle text-success" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
                         </span>
                         <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.supervisor_approver_lastname}}</span>
 
                         <span class="mx-2"><i class="pi pi-arrow-right"></i></span>
 
                         <span class="mx-2">
-                            <i class="pi pi-question-circle text-secondary" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'C'"></i>
+                            <i class="pi pi-question-circle text-secondary" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'P'"></i>
+                            <i class="pi pi-check-circle text-success" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 13px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'C'"></i>
 
                         </span>
                         <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.director_approver_lastname}}</span>
