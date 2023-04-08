@@ -5,48 +5,157 @@
 </div>
 
 <div class="row my-4">
-    <div class="col-md-12">
+    <div class="col-md-12 table-responsive">
+
+        <!-- <div class="row my-1">
+            <div class="col-md-3 fw-bold text-right">Leave Application No</div>
+            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
+        </div>
+        <div class="row my-1">
+            <div class="col-md-3 fw-bold text-right">Date</div>
+            <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
+        </div>
+        <div class="row my-1">
+            <div class="col-md-3 fw-bold">Leave Application No</div>
+            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
+        </div>
+        <div class="row my-1">
+            <div class="col-md-3 fw-bold">Leave Application No</div>
+            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
+        </div> -->
+
+        <!-- <tr>
+            <td class="fw-bold">Workflow Approver 1</td>
+            <td>
+                <div>
+                    <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span [innerHTML]="rowData?.supervisor_approver_lastname"></span>
+                </div>
+            </td>
+            <td class="fw-bold">Workflow Approval Action</td>
+            <td>
+                <button class="btn btn-success me-2" type="button">
+                    Approve
+                </button>
+                <button class="btn btn-danger" type="button">Reject</button>
+            </td>
+        </tr> -->
+
+
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <td class="fw-sbold">Leave Application No</td>
+                    <td class="fw-bold">Leave Application No</td>
                     <td>{{rowData?.leave_req_id}}</td>
-                    <td class="fw-sbold">Date</td>
+                    <td class="fw-bold">Date</td>
                     <td>{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</td>
                 </tr>
                 <tr>
-                    <td class="fw-sbold">Applicant/Emp Name</td>
+                    <td class="fw-bold">Applicant/Emp Name</td>
                     <td>{{rowData?.user_firstname}} {{rowData?.user_lastname}}</td>
-                    <td class="fw-sbold">Applicant/Emp ID</td>
+                    <td class="fw-bold">Applicant/Emp ID</td>
                     <td>{{rowData?.user_emp_id}}</td>
 
                 </tr>
                 <tr>
-                    <td class="fw-sbold">Applicant/Emp Email</td>
+                    <td class="fw-bold">Applicant/Emp Email</td>
                     <td>{{rowData?.user_email}}</td>
-                    <td class="fw-sbold">Applicant/Emp Phone</td>
+                    <td class="fw-bold">Applicant/Emp Phone</td>
                     <td>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</td>
                 </tr>
                 <tr>
-                    <td class="fw-sbold">From</td>
+                    <td class="fw-bold">From</td>
                     <td>{{rowData?.leave_from_date| date: 'dd-MM-YYYY'}}</td>
-                    <td class="fw-sbold">To</td>
+                    <td class="fw-bold">To</td>
                     <td>{{rowData?.leave_to_date | date: 'dd-MM-YYYY'}}</td>
                 </tr>
                 <tr>
-                    <td class="fw-sbold">Leave Type</td>
+                    <td class="fw-bold">Leave Type</td>
                     <td>{{rowData?.leave_type}} ({{rowData?.applied_for_days_count}} <span
                             [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>)</td>
-                    <td class="fw-sbold">Leave Term</td>
+                    <td class="fw-bold">Leave Term</td>
                     <td>{{rowData?.leave_term}}</td>
                 </tr>
 
                 <tr>
-                    <td class="fw-sbold">Reason</td>
+                    <td class="fw-bold">Reason</td>
                     <td colspan="5">{{rowData?.leave_reason}}</td>
                 </tr>
 
+                <tr>
+                    <td class="fw-bold">Leave Balance</td>
+                    <td>
+                        <span [innerHTML]="rowData?.on_apply_cl_bal ? 'CL: ' + rowData?.on_apply_cl_bal : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.on_apply_pl_bal ? 'PL: ' + rowData?.on_apply_pl_bal : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.on_apply_sl_bal ? 'SL: ' + rowData?.on_apply_sl_bal : '-'"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold">Leave Balance Debited</td>
+                    <td>
+                        <span [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.debited_sl ? 'PL: ' + rowData?.debited_sl : '-'"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold">Leave Balance Adjusted</td>
+                    <td>
+                        <span [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : '-'"></span>
+                    </td>
+                    <td>
+                        <span [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : '-'"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="fw-bold">Workflow Approver 1</td>
+                    <td>
+                        <div>
+                            <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span
+                                [innerHTML]="rowData?.supervisor_approver_lastname"></span>
+                        </div>
+                    </td>
+                    <td class="fw-bold">Workflow Approval Action</td>
+                    <td>
+                        <button class="btn btn-success me-2" type="button">
+                            Approve
+                        </button>
+                        <button class="btn btn-danger" type="button">Reject</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="fw-bold">Workflow Approver 2</td>
+                    <td>
+                        <div>
+                            <span class="me-1" [innerHTML]="rowData?.director_approver_firstname"></span><span
+                                [innerHTML]="rowData?.director_approver_lastname"></span>
+                        </div>
+                    </td>
+                    <td class="fw-bold">Workflow Approval Action</td>
+                    <td>
+                        <button class="btn btn-success me-2" type="button">
+                            Approve
+                        </button>
+                        <button class="btn btn-danger" type="button">Reject</button>
+                    </td>
+                </tr>
+
+
             </tbody>
         </table>
+
+        
     </div>
 </div>
