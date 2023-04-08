@@ -6,8 +6,14 @@
 
 <div class="row my-4">
     <div class="col-md-12 table-responsive">
-
-        <!-- <div class="row my-1">
+        <div class="row my-1">
+            <div class="col-md-3 fw-bold text-right">Leave Status</div>
+            <div class="col-md-9">
+                <span style="font-size: 14px;" [innerHTML]="getStatusText(rowData?.leave_status)?.text"
+                    class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
+            </div>
+        </div>
+        <div class="row my-1">
             <div class="col-md-3 fw-bold text-right">Leave Application No</div>
             <div class="col-md-9">{{rowData?.leave_req_id}}</div>
         </div>
@@ -16,29 +22,24 @@
             <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
         </div>
         <div class="row my-1">
-            <div class="col-md-3 fw-bold">Leave Application No</div>
-            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
+            <div class="col-md-3 fw-bold">Applicant/Emp Details</div>
+            <div class="col-md-9">
+                <span class="me-2">{{rowData?.user_firstname}} {{rowData?.user_lastname}}</span>
+                <span class="me-2">{{rowData?.user_email}}</span>
+                <span>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</span>
+            </div>
         </div>
         <div class="row my-1">
-            <div class="col-md-3 fw-bold">Leave Application No</div>
-            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
-        </div> -->
-
-        <!-- <tr>
-            <td class="fw-bold">Workflow Approver 1</td>
-            <td>
-                <div>
-                    <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span [innerHTML]="rowData?.supervisor_approver_lastname"></span>
-                </div>
-            </td>
-            <td class="fw-bold">Workflow Approval Action</td>
-            <td>
-                <button class="btn btn-success me-2" type="button">
-                    Approve
-                </button>
-                <button class="btn btn-danger" type="button">Reject</button>
-            </td>
-        </tr> -->
+            <div class="col-md-3 fw-bold">Leave Duration</div>
+            <div class="col-md-9">
+                <span>{{rowData?.leave_from_date| date: 'dd/MM/YYYY'}} - {{rowData?.leave_to_date | date:
+                    'dd/MM/YYYY'}}</span>
+                <span>
+                    {{rowData?.applied_for_days_count}} <span
+                        [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>
+                </span>
+            </div>
+        </div>
 
 
         <table class="table table-bordered">
@@ -119,19 +120,40 @@
                 </tr>
 
                 <tr>
-                    <td class="fw-bold">Workflow Approver 1</td>
-                    <td>
-                        <div>
-                            <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span
-                                [innerHTML]="rowData?.supervisor_approver_lastname"></span>
+                    <td class="fw-bold">Workflow 1 Status</td>
+                    <td colspan="3">
+                        <div class="row my-3">
+                            <div class="col-md-3 fw-bold">Approver Name: </div>
+                            <div class="col-md-9">
+                                <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span
+                                    [innerHTML]="rowData?.supervisor_approver_lastname"></span>
+                            </div>
                         </div>
-                    </td>
-                    <td class="fw-bold">Workflow Approval Action</td>
-                    <td>
-                        <button class="btn btn-success me-2" type="button">
-                            Approve
-                        </button>
-                        <button class="btn btn-danger" type="button">Reject</button>
+                        <div class="row my-3">
+                            <div class="col-md-3 fw-bold">Approval Status: </div>
+                            <div class="col-md-9">
+                                <span class="me-1" [innerHTML]="rowData?.supervisor_approver_status"></span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-md-3 fw-bold">Date Time: </div>
+                            <div class="col-md-9">
+                                <span class="me-1" [innerHTML]="rowData?.supervisor_approver_firstname"></span><span
+                                    [innerHTML]="rowData?.supervisor_approver_lastname"></span>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="col-md-3 fw-bold">Actions: </div>
+                            <div class="col-md-9">
+                                <button class="btn btn-success me-2" type="button">
+                                    Approve
+                                </button>
+                                <button class="btn btn-danger" type="button">Reject</button>
+                            </div>
+                        </div>
+
                     </td>
                 </tr>
 
@@ -156,6 +178,6 @@
             </tbody>
         </table>
 
-        
+
     </div>
 </div>
