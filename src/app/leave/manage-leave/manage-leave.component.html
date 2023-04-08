@@ -37,8 +37,8 @@
                             </div>
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span *ngIf="loading"
-                                        class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-                                <button type="button" (click)="clearForm()" class="btn btn-secondary">Clear</button>
+                                        class="spinner-border spinner-border-sm me-1"></span> Search</button>
+                                <button type="button" (click)="clearForm()" class="btn btn-secondary">Clear Form</button>
                             </div>
                         </div>
                     </form>
@@ -49,16 +49,16 @@
             <ng-template pTemplate="header">
                 <tr>
                     <!-- <th style="width: 3rem"></th> -->
+                    <th style="width: 12rem" pSortableColumn="leave_created_on">
+                        <div class="flex justify-content-between align-items-center">
+                            Date
+                            <p-sortIcon field="leave_created_on"></p-sortIcon>
+                        </div>
+                    </th>
                     <th style="width: 10rem" pSortableColumn="leave_req_id">
                         <div class="flex justify-content-between align-items-center">
                             Appl. No
                             <p-sortIcon field="leave_req_id"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 12rem" pSortableColumn="leave_created_on">
-                        <div class="flex justify-content-between align-items-center">
-                            Applied
-                            <p-sortIcon field="leave_created_on"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 15rem" pSortableColumn="user_id">
@@ -116,12 +116,12 @@
                             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                     </td> -->
                     <td>
-                        <span class="p-column-title">Applicatio No</span>
-                        {{rowData?.leave_req_id}}
-                    </td>
-                    <td>
                         <span class="p-column-title">Date</span>
                         {{rowData?.leave_created_on | date: 'dd-MM-YYYY'}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicatio No</span>
+                        {{rowData?.leave_req_id}}
                     </td>
                     <td>
                         <span class="p-column-title">Applicant</span>
@@ -141,14 +141,24 @@
                     </td>
                     <td>
                         <span class="p-column-title">Workflow Status</span>
-                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 8px;"></i></span>
-                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}
-                            {{rowData?.supervisor_approver_lastname}}</span>
+                        <span class="mx-2">
+                            <i class="pi pi-question-circle text-secondary" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'P'"></i>
+                            <i class="pi pi-check-circle text-success" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
+                        </span>
+                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.supervisor_approver_lastname}}</span>
 
                         <span class="mx-2"><i class="pi pi-arrow-right"></i></span>
 
-                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 8px;"></i></span>
-                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}} {{rowData?.director_approver_lastname}}</span>
+                        <span class="mx-2">
+                            <i class="pi pi-question-circle text-secondary" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'P'"></i>
+                            <i class="pi pi-check-circle text-success" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning" style="font-size: 12px; font-weight: bold;" *ngIf="rowData?.director_approver_status === 'C'"></i>
+
+                        </span>
+                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.director_approver_lastname}}</span>
 
                     </td>
 
@@ -160,7 +170,8 @@
 
                     <td>
                         <button (click)="viewDetails(rowData)" pButton pRipple type="button" icon="pi pi-info-circle"
-                            class="me-2 p-button-rounded p-button-text p-button-info"></button>
+                            class="me-2 p-button-rounded p-button-text"></button>
+                        <!-- <button type="button" (click)="viewDetails(rowData)" class="btn btn-secondary btn-sm">Details</button> -->
                     </td>
                 </tr>
             </ng-template>
