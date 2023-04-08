@@ -84,24 +84,24 @@
                     </td>
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData.timesheet_date  | date: 'dd-MM-YYYY'}}
+                        {{rowData?.timesheet_date  | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
                         <span class="p-column-title">Emp</span>
-                        {{rowData.user_firstname}} {{rowData.user_lastname}}
+                        {{rowData?.user_firstname}} {{rowData?.user_lastname}}
                     </td>
                     
                     <td>
                         <span class="p-column-title">Project</span>
-                        {{rowData.project_name}}
+                        {{rowData?.project_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Task</span>
-                        {{rowData.task_name}}
+                        {{rowData?.task_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Hours</span>
-                        {{rowData.timesheet_hours}}
+                        {{rowData?.timesheet_hours}}
                     </td>
                 </tr>
             </ng-template>
@@ -112,13 +112,13 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Task Description</td>
-                                    <td [innerHTML]="rowData.timesheet_description || '-'"></td>
+                                    <td [innerHTML]="rowData?.timesheet_description || '-'"></td>
                                     <td class="fw-bold">Created on</td>
-                                    <td [innerHTML]="rowData.timesheet_created_on | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
+                                    <td [innerHTML]="rowData?.timesheet_created_on | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Status</td>
-                                    <td [innerHTML]="rowData.timesheet_review_status || '-'"></td>
+                                    <td [innerHTML]="rowData?.timesheet_review_status || '-'"></td>
                                     <td class="fw-bold">-</td>
                                     <td>-</td>
                                 </tr>

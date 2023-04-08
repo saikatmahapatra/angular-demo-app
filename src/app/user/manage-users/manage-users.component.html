@@ -77,28 +77,28 @@
                     </td>
                     <td>
                         <span class="p-column-title">Name</span>
-                        {{rowData.user_firstname}} {{rowData.user_lastname}}
-                        <!-- ({{rowData.user_emp_id}}) -->
+                        {{rowData?.user_firstname}} {{rowData?.user_lastname}}
+                        <!-- ({{rowData?.user_emp_id}}) -->
                     </td>
                     <!-- <td>
                         <span class="p-column-title">ID</span>
-                        {{rowData.user_emp_id}}
+                        {{rowData?.user_emp_id}}
                     </td> -->
                     <td>
                         <span class="p-column-title">Email</span>
-                        {{rowData.user_email}}
+                        {{rowData?.user_email}}
                     </td>
                     <td>
                         <span class="p-column-title">Phone</span>
-                        {{rowData.user_phone1}}
+                        {{rowData?.user_phone1}}
                     </td>
                     <td>
                         <span class="p-column-title">Designation</span>
-                        {{rowData.designation_name}}
+                        {{rowData?.designation_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Status</span>
-                        <!-- {{rowData.user_status}} -->
+                        <!-- {{rowData?.user_status}} -->
 
                         <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
                             <app-icon class="text-success" [name]="'circle-fill'" [height]="12" [width]="12"></app-icon></span>
@@ -110,7 +110,7 @@
                     </td>
 
                     <td style="text-align: center">
-                        <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-text p-button-secondary" (click)="redirectToProfile(rowData.id)"></button>
+                        <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-text p-button-secondary" (click)="redirectToProfile(rowData?.id)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -121,39 +121,39 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Employee ID</td>
-                                    <td [innerHTML]="rowData.user_emp_id || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_emp_id || '-'"></td>
                                     <td class="fw-bold">Designation</td>
-                                    <td [innerHTML]="rowData.designation_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.designation_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Personal Email</td>
-                                    <td [innerHTML]="rowData.user_email_secondary || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_email_secondary || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
-                                    <td [innerHTML]="rowData.user_phone2 || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_phone2 || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Employment Type</td>
-                                    <td [innerHTML]="rowData.employment_type_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.employment_type_name || '-'"></td>
                                     <td class="fw-bold">Department</td>
-                                    <td [innerHTML]="rowData.department_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.department_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Role Group</td>
-                                    <td [innerHTML]="rowData.user_role+'-'+rowData?.role_name"></td>
+                                    <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td [innerHTML]="rowData.user_type || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_type || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
-                                    <td [innerHTML]="rowData.user_doj | date: 'dd-MM-YYYY' || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_doj | date: 'dd-MM-YYYY' || '-'"></td>
                                     <td class="fw-bold">Created On</td>
-                                    <td [innerHTML]="rowData.user_registration_date | date: 'dd-MM-YYYY h:mm:ss a' || ''"></td>
+                                    <td [innerHTML]="rowData?.user_registration_date | date: 'dd-MM-YYYY h:mm:ss a' || ''"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
-                                    <td [innerHTML]="rowData.user_dor | date: 'dd-MM-YYYY' || 'NA'"></td>
+                                    <td [innerHTML]="rowData?.user_dor | date: 'dd-MM-YYYY' || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
-                                    <td [innerHTML]="rowData.user_login_date_time | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_login_date_time | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Account Status</td>
@@ -170,14 +170,14 @@
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
-                                        <a [routerLink]="['../../user/profile', rowData.id]">Click here</a>
+                                        <a [routerLink]="['../../user/profile', rowData?.id]">Click here</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
-                                    <td [innerHTML]="rowData.account_closed_datetime  | date: 'dd-MM-YYYY h:mm:ss a' || 'NA'"></td>
+                                    <td [innerHTML]="rowData?.account_closed_datetime  | date: 'dd-MM-YYYY h:mm:ss a' || 'NA'"></td>
                                     <td class="fw-bold">Comments</td>
-                                    <td [innerHTML]="rowData.account_close_comments || 'NA'"></td>
+                                    <td [innerHTML]="rowData?.account_close_comments || 'NA'"></td>
                                 </tr>
                             </tbody>
                         </table>

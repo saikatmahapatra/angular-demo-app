@@ -91,19 +91,19 @@
                 <tr class="p-selectable-row">
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData.holiday_date | date: 'MMM d, y'}}
+                        {{rowData?.holiday_date | date: 'MMM d, y'}}
                     </td>
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData.holiday_date | date: 'EEEE'}}
+                        {{rowData?.holiday_date | date: 'EEEE'}}
                     </td>
                     <td>
                         <span class="p-column-title">Occasion</span>
-                        {{rowData.holiday_description}}
+                        {{rowData?.holiday_description}}
                     </td>
                     <td>
                         <span class="p-column-title">Type</span>
-                        <span [innerHTML]="rowData.holiday_type === 'C' ? 'mandatory' : 'optional' "></span>
+                        <span [innerHTML]="rowData?.holiday_type === 'C' ? 'mandatory' : 'optional' "></span>
                     </td>
                     <td>
                         <button (click)="editItem(rowData)" pButton pRipple type="button" icon="pi pi-pencil"

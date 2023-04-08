@@ -62,27 +62,27 @@
                     </td> -->
                     <td>
                         <span class="p-column-title">Name</span>
-                        {{rowData.user_firstname}} {{rowData.user_lastname}}
+                        {{rowData?.user_firstname}} {{rowData?.user_lastname}}
                     </td>
                     <td>
                         <span class="p-column-title">Emp ID</span>
-                        {{rowData.user_emp_id}}
+                        {{rowData?.user_emp_id}}
                     </td>
                     <td>
                         <span class="p-column-title">Designation</span>
-                        {{rowData.designation_name}}
+                        {{rowData?.designation_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Department</span>
-                        {{rowData.department_name}}
+                        {{rowData?.department_name}}
                     </td>
                     <td>
                         <span class="p-column-title">Email</span>
-                        {{rowData.user_email}}
+                        {{rowData?.user_email}}
                     </td>
                     <td>
                         <span class="p-column-title">Phone</span>
-                        {{rowData.user_phone1}}
+                        {{rowData?.user_phone1}}
                     </td>
 
                 </tr>
@@ -94,21 +94,21 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Employee ID</td>
-                                    <td [innerHTML]="rowData.user_emp_id || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_emp_id || '-'"></td>
                                     <td class="fw-bold">Designation</td>
-                                    <td [innerHTML]="rowData.designation_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.designation_name || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Personal Email</td>
-                                    <td [innerHTML]="rowData.user_email_secondary || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_email_secondary || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
-                                    <td [innerHTML]="rowData.user_phone2 || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_phone2 || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Employment Type</td>
-                                    <td [innerHTML]="rowData.employment_type_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.employment_type_name || '-'"></td>
                                     <td class="fw-bold">Department</td>
-                                    <td [innerHTML]="rowData.department_name || '-'"></td>
+                                    <td [innerHTML]="rowData?.department_name || '-'"></td>
                                 </tr>
                             </tbody>
                         </table>
