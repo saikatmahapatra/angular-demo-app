@@ -5,7 +5,7 @@
             [placeHolderText]="'Search by employee name/email/department'"></app-search-input>
 
         <p-table *ngIf="empList.length>0" #dt [value]="empList" dataKey="id" [rowHover]="true" [rows]="30" [filterDelay]="0"
-            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-datatable-sm ">
+            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     Employees
