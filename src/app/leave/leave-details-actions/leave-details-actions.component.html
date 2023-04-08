@@ -5,14 +5,14 @@
 </div>
 
 <div class="row my-4">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <table class="table table-bordered">
             <tbody>
                 <tr>
                     <td class="fw-sbold">Leave Application No</td>
                     <td>{{rowData?.leave_req_id}}</td>
                     <td class="fw-sbold">Applied On Date</td>
-                    <td>{{rowData?.leave_created_on}}</td>
+                    <td>{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</td>
                 </tr>
                 <tr>
                     <td class="fw-sbold">Applicant/Emp Name</td>
@@ -28,14 +28,15 @@
                     <td>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</td>
                 </tr>
                 <tr>
-                    <td class="fw-sbold">From - To Date</td>
-                    <td>{{rowData?.leave_from_date}} {{rowData?.leave_to_date}}</td>
-                    <td class="fw-sbold">Day Count</td>
-                    <td>{{rowData?.applied_for_days_count}}</td>
+                    <td class="fw-sbold">From</td>
+                    <td>{{rowData?.leave_from_date| date: 'dd-MM-YYYY'}}</td>
+                    <td class="fw-sbold">To</td>
+                    <td>{{rowData?.leave_to_date | date: 'dd-MM-YYYY'}}</td>
                 </tr>
                 <tr>
                     <td class="fw-sbold">Leave Type</td>
-                    <td>{{rowData?.leave_type}}</td>
+                    <td>{{rowData?.leave_type}} ({{rowData?.applied_for_days_count}} <span
+                            [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>)</td>
                     <td class="fw-sbold">Leave Term</td>
                     <td>{{rowData?.leave_term}}</td>
                 </tr>
@@ -44,7 +45,7 @@
                     <td class="fw-sbold">Reason</td>
                     <td colspan="5">{{rowData?.leave_reason}}</td>
                 </tr>
-                
+
             </tbody>
         </table>
     </div>

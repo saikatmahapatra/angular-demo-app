@@ -30,8 +30,9 @@ export class ManageLeaveComponent implements OnInit {
   fromDate = new Date();
   toDate = new Date()
   searchForm = this.fb.group({
-    fromDate: [new Date(), Validators.required],
-    toDate: [new Date(), Validators.required],
+    empInfo: [''],
+    //fromDate: [new Date(), Validators.required],
+    //toDate: [new Date(), Validators.required],
     leaveStatus: [''],
     action: ['search']
   });
@@ -53,10 +54,10 @@ export class ManageLeaveComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService
   ) {
-    this.fromDate.setMonth(new Date().getMonth() - 1);
-    this.toDate.setMonth(new Date().getMonth() + 1);
-    this.searchForm.controls['fromDate'].setValue(this.fromDate);
-    this.searchForm.controls['toDate'].setValue(this.toDate);
+    //this.fromDate.setMonth(new Date().getMonth() - 1);
+    //this.toDate.setMonth(new Date().getMonth() + 1);
+    //this.searchForm.controls['fromDate'].setValue(this.fromDate);
+    //this.searchForm.controls['toDate'].setValue(this.toDate);
   }
 
   ngOnInit(): void {
@@ -100,6 +101,11 @@ export class ManageLeaveComponent implements OnInit {
 
   viewDetails(leave: any) {
     this.router.navigate(['/leave/details', leave.id]);
+  }
+
+  clearForm() {
+    this.searchForm.controls['empInfo'].setValue('');
+    this.searchForm.controls['leaveStatus'].setValue('');
   }
 
 }

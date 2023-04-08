@@ -145,15 +145,15 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
-                                    <td [innerHTML]="rowData.user_doj || '-'"></td>
+                                    <td [innerHTML]="rowData.user_doj | date: 'dd-MM-YYYY' || '-'"></td>
                                     <td class="fw-bold">Created On</td>
-                                    <td [innerHTML]="rowData.user_registration_date || ''"></td>
+                                    <td [innerHTML]="rowData.user_registration_date | date: 'dd-MM-YYYY h:mm:ss a' || ''"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
-                                    <td [innerHTML]="rowData.user_dor || 'NA'"></td>
+                                    <td [innerHTML]="rowData.user_dor | date: 'dd-MM-YYYY' || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
-                                    <td [innerHTML]="rowData.user_login_date_time || '-'"></td>
+                                    <td [innerHTML]="rowData.user_login_date_time | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Account Status</td>
@@ -175,7 +175,7 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
-                                    <td [innerHTML]="rowData.account_closed_datetime || 'NA'"></td>
+                                    <td [innerHTML]="rowData.account_closed_datetime  | date: 'dd-MM-YYYY h:mm:ss a' || 'NA'"></td>
                                     <td class="fw-bold">Comments</td>
                                     <td [innerHTML]="rowData.account_close_comments || 'NA'"></td>
                                 </tr>

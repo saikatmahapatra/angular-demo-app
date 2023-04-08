@@ -30,7 +30,7 @@
 <div class="row">
     <div class="col-md-12">
         <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [loading]="loading"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-table-sm mt-4">
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-datatable-sm mt-4">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Timesheet Entry
@@ -42,31 +42,31 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width: 3rem"></th>
-                    <th style="width: 10rem" pSortableColumn="timesheet_date">
+                    <th style="width: 15rem" pSortableColumn="timesheet_date">
                         <div class="flex justify-content-between align-items-center">
                             Date
                             <p-sortIcon field="timesheet_date"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 30rem" pSortableColumn="user_firstname">
+                    <th style="width: 25rem" pSortableColumn="user_firstname">
                         <div class="flex justify-content-between align-items-center">
                             Emp
                             <p-sortIcon field="user_firstname"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 50rem" pSortableColumn="project_name">
+                    <th style="width: 40rem" pSortableColumn="project_name">
                         <div class="flex justify-content-between align-items-center">
                             Project
                             <p-sortIcon field="project_name"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 30rem" pSortableColumn="task_name">
+                    <th style="width: 20rem" pSortableColumn="task_name">
                         <div class="flex justify-content-between align-items-center">
                             Task
                             <p-sortIcon field="task_name"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 10rem" pSortableColumn="timesheet_hours">
+                    <th style="width: 8rem" pSortableColumn="timesheet_hours">
                         <div class="flex justify-content-between align-items-center">
                             Hours
                             <p-sortIcon field="timesheet_hours"></p-sortIcon>
@@ -84,7 +84,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData.timesheet_date}}
+                        {{rowData.timesheet_date  | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
                         <span class="p-column-title">Emp</span>
@@ -114,7 +114,7 @@
                                     <td class="fw-bold">Task Description</td>
                                     <td [innerHTML]="rowData.timesheet_description || '-'"></td>
                                     <td class="fw-bold">Created on</td>
-                                    <td [innerHTML]="rowData.timesheet_created_on || '-'"></td>
+                                    <td [innerHTML]="rowData.timesheet_created_on | date: 'dd-MM-YYYY h:mm:ss a' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Status</td>

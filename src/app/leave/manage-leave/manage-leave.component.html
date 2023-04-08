@@ -8,18 +8,23 @@
                     <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()">
                         <input type="hidden" value="search" formControlName="action">
                         <div class="row">
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <p-calendar formControlName="fromDate" [readonlyInput]="true" placeholder="From Date"
                                     inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true"
                                     appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error
                                     [control]="searchForm.controls['fromDate']"></app-validation-error>
-                            </div>
-                            <div class="col-md-3">
+                            </div> -->
+                            <!-- <div class="col-md-3">
                                 <p-calendar formControlName="toDate" [readonlyInput]="true" placeholder="To Date"
                                     inputId="toDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true"
                                     appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="searchForm.controls['toDate']"></app-validation-error>
+                            </div> -->
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" formControlName="empInfo"
+                                    placeholder="Applicant Name or Emp ID">
+                                <app-validation-error [control]="searchForm.controls['empInfo']"></app-validation-error>
                             </div>
                             <div class="col-md-3">
                                 <select class="form-select" formControlName="leaveStatus">
@@ -31,8 +36,9 @@
                                     [control]="searchForm.controls['leaveStatus']"></app-validation-error>
                             </div>
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                                <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span *ngIf="loading"
                                         class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+                                <button type="button" (click)="clearForm()" class="btn btn-secondary">Clear</button>
                             </div>
                         </div>
                     </form>
@@ -42,11 +48,17 @@
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 3rem"></th>
+                    <!-- <th style="width: 3rem"></th> -->
                     <th style="width: 10rem" pSortableColumn="leave_req_id">
                         <div class="flex justify-content-between align-items-center">
                             Appl. No
                             <p-sortIcon field="leave_req_id"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 12rem" pSortableColumn="leave_created_on">
+                        <div class="flex justify-content-between align-items-center">
+                            Applied
+                            <p-sortIcon field="leave_created_on"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 15rem" pSortableColumn="user_id">
@@ -55,19 +67,25 @@
                             <p-sortIcon field="user_id"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 18rem" pSortableColumn="leave_from_date">
+                    <th style="width: 12rem" pSortableColumn="leave_from_date">
                         <div class="flex justify-content-between align-items-center">
-                            From - To
+                            From
                             <p-sortIcon field="leave_from_date"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 8rem" pSortableColumn="applied_for_days_count">
+                    <th style="width: 12rem" pSortableColumn="leave_to_date">
+                        <div class="flex justify-content-between align-items-center">
+                            To
+                            <p-sortIcon field="leave_to_date"></p-sortIcon>
+                        </div>
+                    </th>
+                    <!-- <th style="width: 8rem" pSortableColumn="applied_for_days_count">
                         <div class="flex justify-content-between align-items-center">
                             Day Count
                             <p-sortIcon field="applied_for_days_count"></p-sortIcon>
                         </div>
-                    </th>
-                    <th style="width: 8rem">
+                    </th> -->
+                    <th style="width: 7rem">
                         <div class="flex justify-content-between align-items-center">
                             Type
                         </div>
@@ -92,26 +110,30 @@
 
             <ng-template pTemplate="body" let-rowData let-expanded="expanded">
                 <tr class="p-selectable-row">
-                    <td>
+                    <!-- <td>
                         <button type="button" pButton pRipple [pRowToggler]="rowData"
                             class="p-button-text p-button-rounded p-button-plain"
                             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-                    </td>
+                    </td> -->
                     <td>
                         <span class="p-column-title">Applicatio No</span>
                         {{rowData?.leave_req_id}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Date</span>
+                        {{rowData?.leave_created_on | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
                         <span class="p-column-title">Applicant</span>
                         {{rowData?.user_firstname}} {{rowData?.user_lastname}}
                     </td>
                     <td>
-                        <span class="p-column-title">Leave Period</span>
-                        {{rowData?.leave_from_date}} - {{rowData?.leave_to_date}}
+                        <span class="p-column-title">From</span>
+                        {{rowData?.leave_from_date | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
-                        <span class="p-column-title">Day Count</span>
-                        {{rowData?.applied_for_days_count}}
+                        <span class="p-column-title">To</span>
+                        {{rowData?.leave_to_date | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
                         <span class="p-column-title">Type</span>
@@ -119,14 +141,14 @@
                     </td>
                     <td>
                         <span class="p-column-title">Workflow Status</span>
-                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 12px;"></i></span>
-                        <span>{{rowData?.supervisor_approver_firstname}}
+                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 8px;"></i></span>
+                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}
                             {{rowData?.supervisor_approver_lastname}}</span>
 
                         <span class="mx-2"><i class="pi pi-arrow-right"></i></span>
 
-                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 12px;"></i></span>
-                        <span>{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}</span>
+                        <span class="mx-2"><i class="pi pi-circle-fill" style="font-size: 8px;"></i></span>
+                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}} {{rowData?.director_approver_lastname}}</span>
 
                     </td>
 
@@ -142,7 +164,7 @@
                     </td>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="rowexpansion" let-rowData>
+            <!-- <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
                     <td colspan="9">
                         <table class="table table-sm table-bordered my-4">
@@ -172,7 +194,7 @@
                     </td>
                 </tr>
 
-            </ng-template>
+            </ng-template> -->
             <ng-template pTemplate="emptymessage">
                 <tr>
                     <td colspan="9">No records found.</td>
