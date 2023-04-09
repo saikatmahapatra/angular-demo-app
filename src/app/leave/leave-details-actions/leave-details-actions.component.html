@@ -139,7 +139,7 @@
         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
 
         <div class="my-4"
-            *ngIf="rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id)">
+            *ngIf="rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id) && (rowData?.supervisor_approver_id!==rowData?.director_approver_id)">
             <button (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id)"
                 type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Approve</button>
