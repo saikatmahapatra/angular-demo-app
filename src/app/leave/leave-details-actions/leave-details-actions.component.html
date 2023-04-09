@@ -74,18 +74,24 @@
         <div class="row my-2" *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl">
             <div class="col-md-3 fw-bold text-right">Leave Balance Debit</div>
             <div class="col-md-9 text-danger">
-                <span *ngIf="rowData?.debited_cl" class="me-4" [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
-                <span *ngIf="rowData?.debited_pl" class="me-4" [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
-                <span *ngIf="rowData?.debited_sl" class="me-4" [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
+                <span *ngIf="rowData?.debited_cl" class="me-4"
+                    [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
+                <span *ngIf="rowData?.debited_pl" class="me-4"
+                    [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
+                <span *ngIf="rowData?.debited_sl" class="me-4"
+                    [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
             </div>
         </div>
 
         <div class="row my-2" *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl">
             <div class="col-md-3 fw-bold text-right">Leave Balance Credit/Adjusted</div>
             <div class="col-md-9 text-danger">
-                <span *ngIf="rowData?.credited_cl" class="me-4" [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
-                <span *ngIf="rowData?.credited_pl" class="me-4" [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
-                <span *ngIf="rowData?.credited_sl" class="me-4" [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
+                <span *ngIf="rowData?.credited_cl" class="me-4"
+                    [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
+                <span *ngIf="rowData?.credited_pl" class="me-4"
+                    [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
+                <span *ngIf="rowData?.credited_sl" class="me-4"
+                    [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
             </div>
         </div>
 
@@ -131,11 +137,14 @@
             ({{rowData?.supervisor_approver_emp_id}})
         </div>
         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
-        
-        <div class="my-4" *ngIf="rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id)">
-            <button (click)="approveRejectRequest(rowData?.id, 'supervisor', 'A')" type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
+
+        <div class="my-4"
+            *ngIf="rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id)">
+            <button (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id)"
+                type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Approve</button>
-            <button (click)="approveRejectRequest(rowData?.id, 'supervisor', 'R')" type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
+            <button (click)="approveRejectRequest(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id)"
+                type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Reject</button>
         </div>
 
@@ -156,11 +165,13 @@
         <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
             ({{rowData?.director_approver_emp_id}})</div>
         <div class="small">{{rowData?.director_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
-        
+
         <div class="my-4" *ngIf="rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
-            <button (click)="approveRejectRequest(rowData?.id, 'director', 'A')" type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
+            <button (click)="approveRejectRequest(rowData?.id, 'L2', 'A', rowData?.director_approver_id)" type="submit"
+                class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Approve</button>
-            <button (click)="approveRejectRequest(rowData?.id, 'director', 'R')" type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
+            <button (click)="approveRejectRequest(rowData.id, 'L2', 'R', rowData?.director_approver_id)" type="submit"
+                class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Reject</button>
         </div>
 

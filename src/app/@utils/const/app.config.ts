@@ -79,6 +79,7 @@ export const AppConfig = {
         changeApprovers: 'user/changeApprovers',
         getEmployees: 'user/getEmp',
         timesheetReport: 'timesheet/report',
-        getLeaves: 'leave'
+        getLeaves: 'leave',
+        updateLeave: 'leave/updateLeaveData'
     }
 };
