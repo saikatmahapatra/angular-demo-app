@@ -1,3 +1,5 @@
 <svg *ngIf="lib === 'bootstrap-icon'" class="bi" [attr.width]="width" [attr.height]="height" [attr.fill]="fill">
   <use attr.xlink:href="bootstrap-icons/bootstrap-icons.svg#{{name}}" />
 </svg>
+
+<i *ngIf="lib === 'pi'" class="pi" [ngClass]="name" [attr.width]="width" [attr.height]="height" aria-hidden="true"></i>
