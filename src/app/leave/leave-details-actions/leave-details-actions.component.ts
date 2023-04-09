@@ -10,7 +10,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./leave-details-actions.component.scss']
 })
 export class LeaveDetailsActionsComponent implements OnInit {
-  rowData: any= [];
+  rowData: any = [];
   loading = false;
   submitted = false;
   leaveId !: number | string | null;
@@ -23,6 +23,9 @@ export class LeaveDetailsActionsComponent implements OnInit {
     { value: 'C', text: 'Cancelled', cssClass: 'bg-warning', textClass: 'text-warning' },
     { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' }
   ];
+  progressBarClass = 'bg-primary';
+  progressText = 'Process 1/3 completed';
+  progressValue = 33;
   constructor(
     private alertSvc: AlertService,
     private apiSvc: ApiService,
@@ -54,11 +57,35 @@ export class LeaveDetailsActionsComponent implements OnInit {
       next: (response: any) => {
         //console.log(response);
         this.loading = false;
-        this.rowData = response?.data?.data_rows ?  response?.data?.data_rows[0] : [];
+        this.rowData = response?.data?.data_rows ? response?.data?.data_rows[0] : [];
+        if (this.rowData.supervisor_approver_status === 'A' && this.rowData.director_approver_status === 'P') {
+          this.progressValue = 67;
+          this.progressBarClass = 'bg-success';
+          this.progressText = 'Process 2/3 completed';
+        }
+        if (this.rowData.supervisor_approver_status === 'A' && this.rowData.director_approver_status === 'A') {
+          this.progressValue = 100;
+          this.progressBarClass = 'bg-success';
+          this.progressText = 'Process 3/3 completed';
+        }
+
+        if (this.rowData.supervisor_approver_status === 'R' || this.rowData.director_approver_status === 'R') {
+          this.progressValue = 100;
+          this.progressBarClass = 'bg-danger';
+          this.progressText = 'Process 3/3 completed';
+        }
       },
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
     })
+  }
+
+  approveRequest(leaveData: any, workFlow?: string) {
+
+  }
+
+  rejectRequest(leaveData: any, workFlow?: string) {
+
   }
 
 }
