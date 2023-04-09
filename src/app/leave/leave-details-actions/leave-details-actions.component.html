@@ -131,12 +131,14 @@
             ({{rowData?.supervisor_approver_emp_id}})
         </div>
         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
-        <div class="my-4" *ngIf="rowData?.supervisor_approver_status==='P'">
-            <button type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
+        
+        <div class="my-4" *ngIf="rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id)">
+            <button (click)="approveRejectRequest(rowData?.id, 'supervisor', 'A')" type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Approve</button>
-            <button type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
+            <button (click)="approveRejectRequest(rowData?.id, 'supervisor', 'R')" type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Reject</button>
         </div>
+
     </div>
     <div class="small col-md-4 mb-4">
         <h6>
@@ -154,11 +156,13 @@
         <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
             ({{rowData?.director_approver_emp_id}})</div>
         <div class="small">{{rowData?.director_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
-        <div class="my-4" *ngIf="rowData?.director_approver_status==='P'">
-            <button type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
+        
+        <div class="my-4" *ngIf="rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
+            <button (click)="approveRejectRequest(rowData?.id, 'director', 'A')" type="submit" class="btn btn-sm btn-success me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Approve</button>
-            <button type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
+            <button (click)="approveRejectRequest(rowData?.id, 'director', 'R')" type="submit" class="btn btn-sm btn-danger" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Reject</button>
         </div>
+
     </div>
 </div>

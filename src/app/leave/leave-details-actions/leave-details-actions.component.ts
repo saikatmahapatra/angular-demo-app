@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { AuthService } from 'src/app/@core/services/auth.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-leave-details-actions',
@@ -26,13 +27,16 @@ export class LeaveDetailsActionsComponent implements OnInit {
   progressBarClass = 'bg-primary';
   progressText = 'Process 1/3 completed';
   progressValue = 33;
+  userId!: string;
   constructor(
     private alertSvc: AlertService,
     private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute,
+    private authSvc: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.userId = this.authSvc.getUserId();
     this.activatedRoute.paramMap.subscribe(params => {
       this.leaveId = params.get('id');
     });
@@ -80,12 +84,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
     })
   }
 
-  approveRequest(leaveData: any, workFlow?: string) {
-
-  }
-
-  rejectRequest(leaveData: any, workFlow?: string) {
-
+  approveRejectRequest(leaveData: any, workFlow: string, status: string) {
+    console.log(leaveData, workFlow, status);
   }
 
 }
