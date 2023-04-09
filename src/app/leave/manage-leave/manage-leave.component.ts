@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -13,6 +13,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./manage-leave.component.scss']
 })
 export class ManageLeaveComponent implements OnInit {
+  title = 'Manage Leave Requests';
+  isManagePage = true;
+  isHistoryPage = false;
+  isLeaveToApprovePage = false;
   dataRow = [];
   loading = false;
   submitted = false;
@@ -58,54 +62,63 @@ export class ManageLeaveComponent implements OnInit {
     //this.toDate.setMonth(new Date().getMonth() + 1);
     //this.searchForm.controls['fromDate'].setValue(this.fromDate);
     //this.searchForm.controls['toDate'].setValue(this.toDate);
-  }
-
-  ngOnInit(): void {
-    this.getLeaveData();
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    this.loading = true;
-    if (this.searchForm.valid) {
-      this.currentPageIndex = 0;
-      this.totalRecords = 0;
-      this.getLeaveData();
-    } else {
-      this.loading = false;
-      this.validator.validateAllFormFields(this.searchForm);
+    console.log(this.router.url)
+    if(this.router.url == '/leave/history') {
+      this.title = 'Leave History';
+      this.isManagePage = false;
+      this.isHistoryPage = true;
+      this.isLeaveToApprovePage = false;
     }
-  }
 
-  getLeaveData() {
-    let headers = new HttpHeaders();
-    let params = new HttpParams();
-    headers = headers.set('perPage', String(this.itemPerPage));
-    headers = headers.set('page', String(this.currentPageIndex));
-    this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
-      next: (response: any) => {
-        //console.log(response);
-        this.loading = false;
-        this.dataRow = response?.data?.data_rows || [];
-        this.totalRecords = response?.data?.num_rows || 0;
-      },
-      error: () => { this.loading = false; },
-      complete: () => { this.loading = false; }
-    })
-  }
+ 
+}
 
-  getStatusText(statusChar: string) {
-    let obj = this.leaveStatus.find(o => o.value === statusChar);
-    return obj;
-  }
+ngOnInit(): void {
+  this.getLeaveData();
+}
 
-  viewDetails(leave: any) {
-    this.router.navigate(['/leave/details', leave.id]);
+onSubmit() {
+  this.submitted = true;
+  this.loading = true;
+  if (this.searchForm.valid) {
+    this.currentPageIndex = 0;
+    this.totalRecords = 0;
+    this.getLeaveData();
+  } else {
+    this.loading = false;
+    this.validator.validateAllFormFields(this.searchForm);
   }
+}
 
-  clearForm() {
-    this.searchForm.controls['empInfo'].setValue('');
-    this.searchForm.controls['leaveStatus'].setValue('');
-  }
+getLeaveData() {
+  let headers = new HttpHeaders();
+  let params = new HttpParams();
+  headers = headers.set('perPage', String(this.itemPerPage));
+  headers = headers.set('page', String(this.currentPageIndex));
+  this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
+    next: (response: any) => {
+      //console.log(response);
+      this.loading = false;
+      this.dataRow = response?.data?.data_rows || [];
+      this.totalRecords = response?.data?.num_rows || 0;
+    },
+    error: () => { this.loading = false; },
+    complete: () => { this.loading = false; }
+  })
+}
+
+getStatusText(statusChar: string) {
+  let obj = this.leaveStatus.find(o => o.value === statusChar);
+  return obj;
+}
+
+viewDetails(leave: any) {
+  this.router.navigate(['/leave/details', leave.id]);
+}
+
+clearForm() {
+  this.searchForm.controls['empInfo'].setValue('');
+  this.searchForm.controls['leaveStatus'].setValue('');
+}
 
 }
