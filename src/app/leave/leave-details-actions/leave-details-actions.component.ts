@@ -62,21 +62,20 @@ export class LeaveDetailsActionsComponent implements OnInit {
         //console.log(response);
         this.loading = false;
         this.rowData = response?.data?.data_rows ? response?.data?.data_rows[0] : [];
-        if (this.rowData.supervisor_approver_status === 'A' && this.rowData.director_approver_status === 'P') {
+        if (this.rowData.leave_status === 'O') {
           this.progressValue = 67;
           this.progressBarClass = 'bg-success';
-          this.progressText = 'Process 2/3 completed';
+          this.progressText = 'Workflow 2/3 completed';
         }
-        if (this.rowData.supervisor_approver_status === 'A' && this.rowData.director_approver_status === 'A') {
+        if (this.rowData.leave_status === 'A') {
           this.progressValue = 100;
           this.progressBarClass = 'bg-success';
-          this.progressText = 'Process 3/3 completed';
+          this.progressText = 'Workflow 3/3 completed';
         }
-
-        if (this.rowData.supervisor_approver_status === 'R' || this.rowData.director_approver_status === 'R') {
+        if (this.rowData.leave_status === 'R') {
           this.progressValue = 100;
           this.progressBarClass = 'bg-danger';
-          this.progressText = 'Process 3/3 completed';
+          this.progressText = 'Workflow 3/3 completed';
         }
       },
       error: () => { this.loading = false; },

@@ -116,7 +116,7 @@
     <div class="small col-md-4  mb-4">
         <h6><app-icon class="me-2" [name]="'send-check'"></app-icon> Application Sent</h6>
 
-        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} ({{rowData?.user_emp_id}})</div>
+        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_emp_id}}</div>
         <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
     </div>
     <div class="small col-md-4  mb-4">
@@ -129,12 +129,12 @@
                 *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
             <app-icon class="me-2 text-warning" [name]="'exclamation-circle'"
                 *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
-            L1 Workflow - {{getStatusText(rowData?.supervisor_approver_status)?.text}}
+            L1 Workflow {{getStatusText(rowData?.supervisor_approver_status)?.text}}
         </h6>
 
         <div class="">
             {{rowData?.supervisor_approver_firstname}} {{rowData?.supervisor_approver_lastname}}
-            ({{rowData?.supervisor_approver_emp_id}})
+            {{rowData?.supervisor_approver_emp_id}}
         </div>
         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
 
@@ -159,11 +159,11 @@
                 *ngIf="rowData?.director_approver_status==='R'"></app-icon>
             <app-icon class="me-2 text-warning" [name]="'exclamation-circle'"
                 *ngIf="rowData?.director_approver_status==='C'"></app-icon>
-            L2 Workflow - {{getStatusText(rowData?.director_approver_status)?.text}}
+            L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
         </h6>
 
         <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
-            ({{rowData?.director_approver_emp_id}})</div>
+            {{rowData?.director_approver_emp_id}}</div>
         <div class="small">{{rowData?.director_approver_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
 
         <div class="my-4" *ngIf="rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
