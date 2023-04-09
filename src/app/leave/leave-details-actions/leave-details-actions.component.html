@@ -59,7 +59,7 @@
         </div>
 
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Balance</div>
+            <div class="col-md-3 fw-bold text-right">Leave Balance when applied</div>
             <div class="col-md-9">
                 <span class="me-4"
                     [innerHTML]="rowData?.on_apply_cl_bal ? 'CL: ' + rowData?.on_apply_cl_bal : ''"></span>
@@ -74,18 +74,18 @@
         <div class="row my-2" *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl">
             <div class="col-md-3 fw-bold text-right">Leave Balance Debit</div>
             <div class="col-md-9 text-danger">
-                <span class="me-4" [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
-                <span class="me-4" [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
-                <span class="me-4" [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
+                <span *ngIf="rowData?.debited_cl" class="me-4" [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
+                <span *ngIf="rowData?.debited_pl" class="me-4" [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
+                <span *ngIf="rowData?.debited_sl" class="me-4" [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
             </div>
         </div>
 
         <div class="row my-2" *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl">
             <div class="col-md-3 fw-bold text-right">Leave Balance Credit/Adjusted</div>
             <div class="col-md-9 text-danger">
-                <span class="me-4" [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
-                <span class="me-4" [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
-                <span class="me-4" [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
+                <span *ngIf="rowData?.credited_cl" class="me-4" [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
+                <span *ngIf="rowData?.credited_pl" class="me-4" [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
+                <span *ngIf="rowData?.credited_sl" class="me-4" [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
             </div>
         </div>
 
