@@ -28,6 +28,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
   progressText = 'Process 1/3 completed';
   progressValue = 33;
   userId!: string;
+  backToPageUrl = '';
   constructor(
     private alertSvc: AlertService,
     private apiSvc: ApiService,
@@ -43,6 +44,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
     if (this.leaveId) {
       this.getLeaveData();
     }
+
+    this.backToPageUrl = history.state['fromPage'];
   }
 
   getStatusText(statusChar: string) {

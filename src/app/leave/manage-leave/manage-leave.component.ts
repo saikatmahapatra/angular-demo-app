@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -13,7 +13,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./manage-leave.component.scss']
 })
 export class ManageLeaveComponent implements OnInit {
-  title = 'Manage Leave Requests';
+  title = 'Manage All Leave Requests';
   isManagePage = true;
   isHistoryPage = false;
   isLeaveToApprovePage = false;
@@ -35,10 +35,9 @@ export class ManageLeaveComponent implements OnInit {
   toDate = new Date()
   searchForm = this.fb.group({
     empInfo: [''],
-    //fromDate: [new Date(), Validators.required],
-    //toDate: [new Date(), Validators.required],
     leaveStatus: [''],
-    action: ['search']
+    action: ['search'],
+    pageName: ['manage']
   });
 
   leaveStatus: any[] = [
@@ -58,16 +57,20 @@ export class ManageLeaveComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService
   ) {
-    //this.fromDate.setMonth(new Date().getMonth() - 1);
-    //this.toDate.setMonth(new Date().getMonth() + 1);
-    //this.searchForm.controls['fromDate'].setValue(this.fromDate);
-    //this.searchForm.controls['toDate'].setValue(this.toDate);
-    console.log(this.router.url)
+    
     if(this.router.url == '/leave/history') {
-      this.title = 'Leave History';
+      this.title = 'My Leave History';
       this.isManagePage = false;
       this.isHistoryPage = true;
       this.isLeaveToApprovePage = false;
+      this.searchForm.controls['pageName'].setValue('viewHistory');
+    }
+    if(this.router.url == '/leave/requests-to-approve') {
+      this.title = 'Leave Requests to Approve';
+      this.isManagePage = false;
+      this.isHistoryPage = false;
+      this.isLeaveToApprovePage = true;
+      this.searchForm.controls['pageName'].setValue('leaveRequestsToApprove');
     }
 
  
@@ -113,7 +116,10 @@ getStatusText(statusChar: string) {
 }
 
 viewDetails(leave: any) {
-  this.router.navigate(['/leave/details', leave.id]);
+  const navigationExtras: NavigationExtras = {
+    state: { fromPage: this.router.url},
+  };
+  this.router.navigate(['/leave/details', leave.id], navigationExtras);
 }
 
 clearForm() {
