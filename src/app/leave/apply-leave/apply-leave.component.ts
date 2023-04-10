@@ -17,6 +17,9 @@ export class ApplyLeaveComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   leaveFormData = [];
+  approvers: any = [];
+  leaveBalance: any = [];
+
   leaveType = [
     { text: 'CL-Casual Leave', val: 'CL' },
     { text: 'PL-Privileged Leave', val: 'PL' },
@@ -52,8 +55,8 @@ export class ApplyLeaveComponent implements OnInit {
   getLeaveFormData() {
     this.apiSvc.get(AppConfig.apiUrl.getLeaveData).subscribe({
       next: (response: any) => {
-        this.alertSvc.success(response.message, true);
-        this.resetFormValue();
+        this.approvers = response?.data?.approvers;
+        this.leaveBalance = response?.data?.leave_balance;
       },
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
@@ -63,7 +66,7 @@ export class ApplyLeaveComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid && this.myForm.get('action')?.value === 'applyLeave') {
+    if (this.approvers.length > 0 && this.myForm.valid && this.myForm.get('action')?.value === 'applyLeave') {
       this.apiSvc.post(AppConfig.apiUrl.applyLeave, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
