@@ -39,13 +39,13 @@
 
             <div class="mb-3">
                 <label class="required" for="fromDate">From</label>
-                <p-calendar formControlName="fromDate" [readonlyInput]="true" inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                <p-calendar formControlName="fromDate" [readonlyInput]="true" inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
                 <app-validation-error [control]="myForm.controls['fromDate']"></app-validation-error>
             </div>
 
             <div class="mb-3">
                 <label class="required" for="toDate">To</label>
-                <p-calendar formControlName="toDate" [readonlyInput]="true" inputId="toDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="calHolder" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                <p-calendar formControlName="toDate" [readonlyInput]="true" inputId="toDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
                 <app-validation-error [control]="myForm.controls['toDate']"></app-validation-error>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
