@@ -80,6 +80,8 @@ export const AppConfig = {
         getEmployees: 'user/getEmp',
         timesheetReport: 'timesheet/report',
         getLeaves: 'leave',
-        updateLeave: 'leave/updateLeaveData'
+        updateLeave: 'leave/updateLeaveData',
+        applyLeave: 'leave/apply',
+        getLeaveData: 'leave/getLeaveData'
     }
 };

@@ -1,1 +1,39 @@
-<p>apply-leave works!</p>
+<h1>Apply Leave</h1>
+<div class="row my-4">
+    <div class="col-md-4">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <input type="hidden" value="applyLeave" formControlName="action">
+
+            <div class="mb-3">
+                <label class="required" for="fromToDate">Select Date or Range</label>
+                <p-calendar formControlName="fromToDate" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                <div class="small">Note: You can select date range from the date picker</div>
+                <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
+                
+            </div>
+            <div class="mb-3">
+                <label class="required" for="leaveType">Leave Type</label>
+                <select class="form-select" id="leaveType" formControlName="leaveType">
+                    <option value="">Select</option>
+                    <option [value]="data?.val" *ngFor="let data of leaveType" [innerHTML]="data.text"></option>
+                </select>
+                <app-validation-error [control]="myForm.controls['leaveType']"></app-validation-error>
+            </div>
+            <div class="mb-3">
+                <label class="required" for="leaveSlot">Leave Slot</label>
+                <select class="form-select" id="leaveSlot" formControlName="leaveSlot">
+                    <option value="">Select</option>
+                    <option [value]="data?.val" *ngFor="let data of leaveSlot" [innerHTML]="data.text"></option>
+                </select>
+                <app-validation-error [control]="myForm.controls['leaveSlot']"></app-validation-error>
+            </div>
+            <div class="mb-3">
+                <label class="required" for="leaveReason">Purpose</label>
+                <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
+                <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+        </form>
+    </div>
+</div>
+{{myForm.value | json}}
