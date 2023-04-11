@@ -24,7 +24,7 @@ export class ApplyLeaveComponent implements OnInit {
     { text: 'CL-Casual Leave', val: 'CL' },
     { text: 'PL-Privileged Leave', val: 'PL' },
     { text: 'SL-Sick Leave', val: 'SL' },
-    { text: 'CO-Compensatory Off', val: 'CO' }
+    //{ text: 'CO-Compensatory Off', val: 'CO' }
   ];
 
   leaveSlot = [
@@ -37,7 +37,7 @@ export class ApplyLeaveComponent implements OnInit {
     action: ['applyLeave'],
     fromToDate: ['', [Validators.required]],
     leaveType: ['', Validators.required],
-    leaveSlot: ['', Validators.required],
+    leaveSlot: ['FD', Validators.required],
     leaveReason: ['', [Validators.required, Validators.maxLength(100)]]
   });
 

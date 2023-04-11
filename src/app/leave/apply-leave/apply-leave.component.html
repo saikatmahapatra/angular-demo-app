@@ -1,15 +1,15 @@
 <h1>Apply Leave</h1>
 <div class="row my-4">
     <div class="mb-4">
-        <div class="alert alert-danger" *ngIf="approvers.length <= 0">
+        <div class="alert alert-danger" *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
             <strong>Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/user/change-approvers']">select your workflow approvers</a>. 
         </div>
-        <div class="alert alert-info" *ngIf="approvers.length > 0">
+        <div class="alert alert-info" *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
             <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
-                <strong>Info: </strong> Your leave application workflow will verified by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span>
+                <strong>Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span>
             </div>
             <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
-                <strong>Info: </strong> Your leave application workflow will verified by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span> <span> and </span> <span class="fw-bold">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} {{approvers[0]?.director_emp_id}}</span>
+                <strong>Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span> <span> and/or </span> <span class="fw-bold">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} {{approvers[0]?.director_emp_id}}</span>
             </div>
         </div>
         <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
