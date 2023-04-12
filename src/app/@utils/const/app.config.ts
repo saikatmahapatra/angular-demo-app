@@ -82,6 +82,7 @@ export const AppConfig = {
         getLeaves: 'leave',
         updateLeave: 'leave/updateLeaveData',
         applyLeave: 'leave/apply',
-        getLeaveData: 'leave/getLeaveData'
+        getLeaveData: 'leave/getLeaveData',
+        getReportees: 'user/getReportees'
     }
 };
