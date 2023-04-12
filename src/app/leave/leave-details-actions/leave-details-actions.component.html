@@ -4,7 +4,7 @@
         <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
 </div>
 
-<div class="row my-4">
+<div *ngIf="rowData?.id" class="row my-4">
     <div class="col-md-12 table-responsive">
         <div class="row my-2">
             <div class="col-md-3 fw-bold text-right">Leave Status</div>
@@ -99,7 +99,7 @@
 
 
 
-<div class="row">
+<div *ngIf="rowData?.id" class="row">
     <h5>Leave Workflow Approval Status</h5>
     <div class="col-12">
         <div class="progress mt-2 mb-4">
@@ -171,4 +171,8 @@
         </div>
 
     </div>
+</div>
+
+<div *ngIf="!rowData?.id">
+No records found.
 </div>

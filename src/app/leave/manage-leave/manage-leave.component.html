@@ -85,7 +85,7 @@
                             Status
                         </div>
                     </th>
-                    <th *ngIf="!isHistoryPage">
+                    <th>
                         <div class="flex justify-content-between align-items-center">
                             Actions
                         </div>
@@ -156,8 +156,8 @@
                             class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
                     </td>
 
-                    <td *ngIf="!isHistoryPage">
-                        <button *ngIf="!isHistoryPage" (click)="viewDetails(rowData)" pButton pRipple type="button"
+                    <td>
+                        <button (click)="viewDetails(rowData)" pButton pRipple type="button"
                             icon="pi pi-info-circle" class="me-2 p-button-rounded p-button-text"></button>
                         <!-- <button type="button" (click)="viewDetails(rowData)" class="btn btn-secondary btn-sm">Details</button> -->
                     </td>
@@ -165,7 +165,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td [attr.colspan]="isHistoryPage? '8' : '9'">No records found.</td>
+                    <td [attr.colspan]="'9'">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>

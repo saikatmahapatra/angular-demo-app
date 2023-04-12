@@ -13,7 +13,8 @@ const routes: Routes = [
     {path: 'manage', canActivate: [AdminGuard], component: ManageLeaveComponent},
     {path: 'history', component: ManageLeaveComponent},
     {path: 'requests-to-approve', component: ManageLeaveComponent},
-    {path: 'details/:id', component: LeaveDetailsActionsComponent}
+    {path: 'details/:id', component: LeaveDetailsActionsComponent},
+    {path: 'history-details/:id', component: LeaveDetailsActionsComponent}
   ]}
 ];
 

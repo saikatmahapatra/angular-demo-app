@@ -119,7 +119,13 @@ viewDetails(leave: any) {
   const navigationExtras: NavigationExtras = {
     state: { fromPage: this.router.url},
   };
-  this.router.navigate(['/leave/details', leave.id], navigationExtras);
+  if(this.isManagePage || this.isLeaveToApprovePage) {
+    this.router.navigate(['/leave/details', leave.id], navigationExtras);
+  }
+  if(this.isHistoryPage) {
+    this.router.navigate(['/leave/history-details', leave.id], navigationExtras);
+  }  
+  
 }
 
 clearForm() {

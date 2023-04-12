@@ -33,7 +33,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
     private alertSvc: AlertService,
     private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
     if (this.leaveId) {
       this.getLeaveData();
     }
-
+    console.log("URL=",this.router.url);
     this.backToPageUrl = history.state['fromPage'];
   }
 
@@ -58,6 +59,14 @@ export class LeaveDetailsActionsComponent implements OnInit {
     if (this.leaveId) {
       queryParams = queryParams.append('leaveId', this.leaveId);
     }
+    if(this.router.url.search('/leave/details/') == 0) {
+      queryParams = queryParams.append('pageName', 'leaveDetails');
+    }
+
+    if(this.router.url.search('/leave/history-details/') == 0) {
+      queryParams = queryParams.append('pageName', 'leaveHistoryDetails');
+    }
+
     let options = {};
     options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getLeaves, options).subscribe({
