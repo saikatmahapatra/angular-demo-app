@@ -5,7 +5,6 @@ import { LeaveRoutingModule } from './leave-routing.module';
 import { LeaveLayoutComponent } from './leave-layout.component';
 import { ApplyLeaveComponent } from './apply-leave/apply-leave.component';
 import { ManageLeaveComponent } from './manage-leave/manage-leave.component';
-import { ViewLeaveHistoryComponent } from './view-leave-history/view-leave-history.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeaveDetailsActionsComponent } from './leave-details-actions/leave-details-actions.component';
@@ -17,7 +16,6 @@ import { SharedModule } from '../@shared/shared.module';
     LeaveLayoutComponent,
     ApplyLeaveComponent,
     ManageLeaveComponent,
-    ViewLeaveHistoryComponent,
     LeaveDetailsActionsComponent    
   ],
   imports: [

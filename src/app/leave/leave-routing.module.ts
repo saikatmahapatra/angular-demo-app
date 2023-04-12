@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApplyLeaveComponent } from './apply-leave/apply-leave.component';
 import { LeaveLayoutComponent } from './leave-layout.component';
 import { ManageLeaveComponent } from './manage-leave/manage-leave.component';
-import { ViewLeaveHistoryComponent } from './view-leave-history/view-leave-history.component';
 import { AdminGuard } from '../@core/guards/admin.guard';
 import { LeaveDetailsActionsComponent } from './leave-details-actions/leave-details-actions.component';
 
