@@ -5,6 +5,7 @@ import { LeaveLayoutComponent } from './leave-layout.component';
 import { ManageLeaveComponent } from './manage-leave/manage-leave.component';
 import { AdminGuard } from '../@core/guards/admin.guard';
 import { LeaveDetailsActionsComponent } from './leave-details-actions/leave-details-actions.component';
+import { LeaveBalanceCalculationComponent } from './leave-balance-calculation/leave-balance-calculation.component';
 
 const routes: Routes = [
   {path: '', component: LeaveLayoutComponent, children: [
@@ -14,7 +15,8 @@ const routes: Routes = [
     {path: 'history', component: ManageLeaveComponent},
     {path: 'requests-to-approve', component: ManageLeaveComponent},
     {path: 'details/:id', component: LeaveDetailsActionsComponent},
-    {path: 'history-details/:id', component: LeaveDetailsActionsComponent}
+    {path: 'history-details/:id', component: LeaveDetailsActionsComponent},
+    {path: 'balance', component: LeaveBalanceCalculationComponent}
   ]}
 ];
 

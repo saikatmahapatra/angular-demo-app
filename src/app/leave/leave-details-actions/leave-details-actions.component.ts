@@ -21,7 +21,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
     { value: 'A', text: 'Approved', cssClass: 'bg-success', textClass: 'text-success' },
     { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
     { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
-    { value: 'C', text: 'Cancelled', cssClass: 'bg-warning', textClass: 'text-warning' },
+    { value: 'C', text: 'Cancelled', cssClass: 'bg-warning text-dark', textClass: 'text-warning' },
     { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' }
   ];
   progressBarClass = 'bg-primary';
@@ -91,7 +91,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
         }
         if (this.rowData.leave_status === 'C') {
           this.progressValue = 33;
-          this.progressBarClass = 'bg-warning';
+          this.progressBarClass = 'bg-warning text-dark';
           this.progressText = 'Workflow cancelled';
         }
       },

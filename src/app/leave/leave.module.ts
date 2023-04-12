@@ -9,6 +9,7 @@ import { PrimeNgModule } from '../prime-ng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeaveDetailsActionsComponent } from './leave-details-actions/leave-details-actions.component';
 import { SharedModule } from '../@shared/shared.module';
+import { LeaveBalanceCalculationComponent } from './leave-balance-calculation/leave-balance-calculation.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SharedModule } from '../@shared/shared.module';
     LeaveLayoutComponent,
     ApplyLeaveComponent,
     ManageLeaveComponent,
-    LeaveDetailsActionsComponent    
+    LeaveDetailsActionsComponent,
+    LeaveBalanceCalculationComponent    
   ],
   imports: [
     CommonModule,
