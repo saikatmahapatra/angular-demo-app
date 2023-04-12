@@ -19,6 +19,12 @@ export class AddUserComponent implements OnInit {
     { name: 'Male', id: 'M' },
     { name: 'Female', id: 'F' }
   ];
+
+  userRole: Array<any> = [
+    { name: 'User', id: '3' },
+    { name: 'Administrator', id: '1' }
+  ];
+
   departmentList: any;
   employmentTypeList: any;
   designationList: any;
@@ -42,7 +48,8 @@ export class AddUserComponent implements OnInit {
     designation: ['', Validators.required],
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
-    employmentType: ['', Validators.required]
+    employmentType: ['', Validators.required],
+    role: ['3', Validators.required]
   });
 
   constructor(private fb: UntypedFormBuilder, private validator: FormValidationService,

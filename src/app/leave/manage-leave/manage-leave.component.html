@@ -1,13 +1,16 @@
 <h1>{{title}}</h1>
 <div class="row my-4" #calHolder>
     <div class="col-md-12">
-        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm p-datatable-sm table-font-sm">
+        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true"
+            styleClass="p-datatable-sm table-font-sm p-datatable-sm table-font-sm">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     <span *ngIf="!isHistoryPage">Search Leave Requests</span>
                     <span *ngIf="isHistoryPage">Showing your Leave History</span>
-                    <a [routerLink]="['/leave/apply']" class="btn btn-success ms-4" *ngIf="isHistoryPage"><app-icon class="me-2" [name]="'send-check'"></app-icon> Apply Leave</a>
-                    <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()" *ngIf="!isHistoryPage">
+                    <a [routerLink]="['/leave/apply']" class="btn btn-success ms-4" *ngIf="isHistoryPage"><app-icon
+                            class="me-2" [name]="'send-check'"></app-icon> Apply Leave</a>
+                    <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()"
+                        *ngIf="!isHistoryPage">
                         <input type="hidden" value="search" formControlName="action">
                         <input type="hidden" value="manage" formControlName="pageName">
                         <div class="row">
@@ -26,8 +29,9 @@
                                     [control]="searchForm.controls['leaveStatus']"></app-validation-error>
                             </div>
                             <div class="col-md-3">
-                                <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span *ngIf="loading"
-                                        class="spinner-border spinner-border-sm me-1"></span> Search</button>
+                                <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span
+                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                    Search</button>
                                 <button type="button" (click)="clearForm()" class="btn btn-light">Clear Form</button>
                             </div>
                         </div>
@@ -38,7 +42,7 @@
                 <tr>
                     <th style="width: 12rem" pSortableColumn="leave_created_on">
                         <div class="flex justify-content-between align-items-center">
-                            Date
+                            Apply Date
                             <p-sortIcon field="leave_created_on"></p-sortIcon>
                         </div>
                     </th>
@@ -81,7 +85,7 @@
                             Status
                         </div>
                     </th>
-                    <th>
+                    <th *ngIf="!isHistoryPage">
                         <div class="flex justify-content-between align-items-center">
                             Actions
                         </div>
@@ -92,7 +96,7 @@
             <ng-template pTemplate="body" let-rowData let-expanded="expanded">
                 <tr class="p-selectable-row">
                     <td>
-                        <span class="p-column-title">Date</span>
+                        <span class="p-column-title">Apply Date</span>
                         {{rowData?.leave_created_on | date: 'dd-MM-YYYY'}}
                     </td>
                     <td>
@@ -119,22 +123,30 @@
                         <span class="p-column-title">Workflow Status</span>
                         <span class="mx-2">
                             <i class="pi pi-question-circle" *ngIf="rowData?.supervisor_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success" *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger" *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning" *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
+                            <i class="pi pi-check-circle text-success"
+                                *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger"
+                                *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning"
+                                *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
                         </span>
-                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.supervisor_approver_lastname}}</span>
+                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.
+                            {{rowData?.supervisor_approver_lastname}}</span>
 
                         <span class="mx-2"><i class="pi pi-arrow-right"></i></span>
 
                         <span class="mx-2">
                             <i class="pi pi-question-circle" *ngIf="rowData?.director_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success" *ngIf="rowData?.director_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger" *ngIf="rowData?.director_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning" *ngIf="rowData?.director_approver_status === 'C'"></i>
+                            <i class="pi pi-check-circle text-success"
+                                *ngIf="rowData?.director_approver_status === 'A'"></i>
+                            <i class="pi pi-times-circle text-danger"
+                                *ngIf="rowData?.director_approver_status === 'R'"></i>
+                            <i class="pi pi-exclamation-circle text-warning"
+                                *ngIf="rowData?.director_approver_status === 'C'"></i>
 
                         </span>
-                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.{{rowData?.director_approver_lastname}}</span>
+                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.
+                            {{rowData?.director_approver_lastname}}</span>
 
                     </td>
 
@@ -144,16 +156,16 @@
                             class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
                     </td>
 
-                    <td>
-                        <button *ngIf="!isHistoryPage" (click)="viewDetails(rowData)" pButton pRipple type="button" icon="pi pi-info-circle"
-                            class="me-2 p-button-rounded p-button-text"></button>
+                    <td *ngIf="!isHistoryPage">
+                        <button *ngIf="!isHistoryPage" (click)="viewDetails(rowData)" pButton pRipple type="button"
+                            icon="pi pi-info-circle" class="me-2 p-button-rounded p-button-text"></button>
                         <!-- <button type="button" (click)="viewDetails(rowData)" class="btn btn-secondary btn-sm">Details</button> -->
                     </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="9">No records found.</td>
+                    <td [attr.colspan]="isHistoryPage? '8' : '9'">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>
