@@ -89,6 +89,11 @@ export class LeaveDetailsActionsComponent implements OnInit {
           this.progressBarClass = 'bg-danger';
           this.progressText = 'Workflow 3/3 completed';
         }
+        if (this.rowData.leave_status === 'C') {
+          this.progressValue = 33;
+          this.progressBarClass = 'bg-warning';
+          this.progressText = 'Workflow cancelled';
+        }
       },
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
