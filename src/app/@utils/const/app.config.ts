@@ -1,10 +1,12 @@
+import { environment } from "@env/environment";
+
 export const AppConfig = {
-    title: '',
-    productName: '',
-    copyrightInfo: '',
-    apiBaseUrl: '',
-    useMockServer: false,
-    version: '',
+    title: environment.title,
+    productName: environment.productName,
+    copyrightInfo: environment.copyrightInfo,
+    apiBaseUrl: environment.apiBaseUrl,
+    useMockServer: environment.useMockServer,
+    version: environment.version,
     apiUrl: {
         authenticate: 'auth/authenticate',
         validateToken: 'auth/validateToken',

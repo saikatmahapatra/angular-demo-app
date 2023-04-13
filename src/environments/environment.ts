@@ -4,7 +4,14 @@
 
 export const environment = {
   name: 'dev',
-  production: false
+  production: false,
+  title: "Angular Dev",
+  productName: "Project name",
+  apiBaseUrl: "http://localhost:8888/ci-emp-portal-api/",
+  mockAPIUrl: "http://localhost:7878/",
+  useMockServer: false,
+  copyrightInfo: "Developed by - <a href=\"https://www.linkedin.com/in/saikatmahapatra\" target=\"_blank\">Saikat Mahapatra</a>; See <a href=\"example\">angular concept example</a>.",
+  version: "v1.0"
 };
 
 /*
