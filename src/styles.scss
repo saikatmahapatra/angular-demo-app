@@ -202,3 +202,16 @@ label {
 .table-font-sm {
   font-size: 14px;
 }
+
+
+.box-shadow {
+  box-shadow: 0px 2px 20px rgb(126 126 126 / 25%);
+  border-radius: 8px;
+}
+
+.card {
+  border: 0;
+  .card-header {
+    border: 0;
+  }
+}

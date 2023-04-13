@@ -114,8 +114,8 @@
         </h6>
 
         <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_emp_id}}</div>
-        <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
-        <div *ngIf="rowData?.cancellation_datetime" class="small">Withdrawn on {{rowData?.cancellation_datetime | date: 'dd-MM-YYYY h:mm:ss a'}}</div>
+        <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-YYYY h:mm:ss a'}} applied</div>
+        <div *ngIf="rowData?.cancellation_datetime" class="small">{{rowData?.cancellation_datetime | date: 'dd-MM-YYYY h:mm:ss a'}} withdrawn </div>
         
         
 

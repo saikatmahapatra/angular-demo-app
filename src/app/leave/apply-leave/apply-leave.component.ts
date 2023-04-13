@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -46,6 +47,7 @@ export class ApplyLeaveComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class ApplyLeaveComponent implements OnInit {
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           this.resetFormValue();
+          this.router.navigate(['/leave/history']);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }
