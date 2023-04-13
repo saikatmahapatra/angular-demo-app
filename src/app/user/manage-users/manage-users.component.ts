@@ -24,17 +24,17 @@ export class ManageUsersComponent implements OnInit {
   subscription !: Subscription;
   loading: boolean = true;
 
-    // Pagination Config
-    currentPageIndex: number = 0;
-    totalRecords: number = 0;
-    itemPerPage: number = 10;
-    itemPerPageDropdown = [10, 20, 30, 50];
-    paginate(event: any) {
-      this.itemPerPage = event.rows;
-      this.currentPageIndex = event.page;
-      this.getUsersList();
-    }
-    // Pagination Config
+  // Pagination Config
+  currentPageIndex: number = 0;
+  totalRecords: number = 0;
+  itemPerPage: number = 10;
+  itemPerPageDropdown = [10, 20, 30, 50];
+  paginate(event: any) {
+    this.itemPerPage = event.rows;
+    this.currentPageIndex = event.page;
+    this.getUsersList();
+  }
+  // Pagination Config
 
   constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService,
     private router: Router) {

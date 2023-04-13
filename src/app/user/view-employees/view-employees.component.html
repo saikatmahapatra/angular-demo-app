@@ -1,14 +1,16 @@
-<h1>Find Employees</h1>
+<h1>Employees</h1>
 <div class="row my-4">
     <div class="col-md-12">
-        <app-search-input (inputValue)="getEmpList($event)"
-            [placeHolderText]="'Search by employee name/email/department'"></app-search-input>
-
-        <p-table *ngIf="empList.length>0" #dt [value]="empList" dataKey="id" [rowHover]="true" [rows]="30" [filterDelay]="0"
-            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']" styleClass="p-datatable-sm table-font-sm ">
+        <p-table #dt [value]="empList" dataKey="id" [rowHover]="true" [filterDelay]="0"
+            [globalFilterFields]="['id','user_firstname','user_email','user_lastname']"
+            styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     Employees
+                    <div class="d-flex mt-2">
+                        <app-search-input (inputValue)="getSearchKeyword($event)"
+                            [placeHolderText]="'Search by emp name/dept.'"></app-search-input>
+                    </div>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -122,5 +124,9 @@
             </ng-template>
         </p-table>
 
+        <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+            (onPageChange)="paginate($event)"></p-paginator>
 
     </div>
