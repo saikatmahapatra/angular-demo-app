@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     private loader: LoaderService,
     private titleService: Title
   ) {
-    this.titleService.setTitle(AppConfig?.appTitle || 'App');
+    this.titleService.setTitle(AppConfig?.title || 'App');
     this.router.events.subscribe((event: Event) => {
       if (!(event instanceof NavigationEnd)) {
         return;

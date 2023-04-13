@@ -1,9 +1,10 @@
 export const AppConfig = {
-    appTitle: '',
-    brandName: '',
-    copyRight: '',
+    title: '',
+    productName: '',
+    copyrightInfo: '',
     apiBaseUrl: '',
     useMockServer: false,
+    version: '',
     apiUrl: {
         authenticate: 'auth/authenticate',
         validateToken: 'auth/validateToken',

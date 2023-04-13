@@ -11,7 +11,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
-  brandName = AppConfig.brandName;
+  productName = AppConfig.productName;
   user: any;
   constructor(private authSvc: AuthService, private navService: NavigationService) { }
 
