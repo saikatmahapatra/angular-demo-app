@@ -42,7 +42,7 @@ export class ViewEmployeesComponent implements OnInit {
   }
 
   getEmpList() {
-    this.empList = [];
+    //this.empList = [];
     let options = {};
     let queryParams = new HttpParams();
     let headers = new HttpHeaders();
