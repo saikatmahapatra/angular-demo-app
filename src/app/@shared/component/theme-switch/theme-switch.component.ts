@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-theme-switch',
@@ -8,18 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class ThemeSwitchComponent implements OnInit {
 
   theme = 'auto';
+  @Output() themeName = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
     this.theme = this.getPreferredTheme();
     this.setTheme(this.theme);
+    this.themeName.emit(this.theme);
   }
 
   changeTheme(theme: string) {
     this.theme = theme;
     localStorage.setItem('theme', theme);
     this.setTheme(theme);
+    this.themeName.emit(this.theme);
   }
 
   getPreferredTheme() {

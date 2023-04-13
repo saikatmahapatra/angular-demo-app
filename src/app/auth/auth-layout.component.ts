@@ -16,4 +16,12 @@ export class AuthLayoutComponent implements OnInit {
     }
   }
 
+  getThemeName(themeName: string) {
+    if(themeName === 'dark') {
+      this.imgPath = 'assets/img/7-dark.svg';
+    } else {
+      this.imgPath = 'assets/img/7.svg';
+    }
+  }
+
 }

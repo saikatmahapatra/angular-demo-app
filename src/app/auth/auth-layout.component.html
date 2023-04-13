@@ -1,3 +1,14 @@
+<header>
+  <nav class="navbar navbar-expand fixed-top">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 <div class="row min-vh-100 justify-content-center align-items-center">
   <div class="col-md-8 signin-wrapper">
     <div class="row">
