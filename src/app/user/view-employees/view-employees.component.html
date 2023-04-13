@@ -1,4 +1,4 @@
-<h1>Employees</h1>
+<h1>View Employees</h1>
 <div class="row my-4">
     <div class="col-md-12">
         <p-table #dt [value]="empList" dataKey="id" [rowHover]="true" [filterDelay]="0"
@@ -6,7 +6,7 @@
             styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
-                    Employees
+                    Search Employees
                     <div class="d-flex mt-2">
                         <app-search-input (inputValue)="getSearchKeyword($event)"
                             [placeHolderText]="'Search by emp name/dept.'"></app-search-input>
@@ -24,7 +24,7 @@
                     </th>
                     <th style="width: 12rem" pSortableColumn="user_firstname">
                         <div class="flex justify-content-between align-items-center">
-                            EmpID
+                            Emp ID
                             <p-sortIcon field="user_emp_id"></p-sortIcon>
                         </div>
                     </th>
