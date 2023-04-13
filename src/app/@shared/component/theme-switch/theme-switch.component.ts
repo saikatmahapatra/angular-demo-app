@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ThemeSwitchComponent implements OnInit {
 
-  theme = 'auto';
+  theme = 'light';
   @Output() themeName = new EventEmitter<string>();
 
   constructor() { }
@@ -22,6 +22,13 @@ export class ThemeSwitchComponent implements OnInit {
     this.theme = theme;
     localStorage.setItem('theme', theme);
     this.setTheme(theme);
+    this.themeName.emit(this.theme);
+  }
+
+  toggleTheme() {
+    this.theme = this.getPreferredTheme() === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', this.theme);
+    this.setTheme(this.theme);
     this.themeName.emit(this.theme);
   }
 

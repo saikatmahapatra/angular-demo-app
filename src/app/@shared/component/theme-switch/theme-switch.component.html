@@ -1,10 +1,12 @@
-<button class="btn btn-link nav-link mt-auto  px-2 dropdown-toggle d-flex align-items-center" id="app-theme" type="button"
+<!-- <button class="btn btn-link nav-link mt-auto  px-2 dropdown-toggle d-flex align-items-center" id="app-theme" type="button"
   aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
   <app-icon *ngIf="theme === 'light' " [name]="'brightness-high-fill'" [width]="16" [height]="16"
     class="me-2"></app-icon>
   <app-icon *ngIf="theme === 'dark' " [name]="'moon-stars-fill'" [width]="16" [height]="16" class="me-2"></app-icon>
   <app-icon *ngIf="theme === 'auto' " [name]="'circle-half'" [width]="16" [height]="16" class="me-2"></app-icon>
 </button>
+
+
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="app-theme" style="--bs-dropdown-min-width: 8rem;">
   <li (click)="changeTheme('light')">
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
@@ -21,4 +23,10 @@
       [ngClass]="theme==='auto' ? 'active': ''"><app-icon [name]="'circle-half'" [width]="16" [height]="16"
         class="me-2"></app-icon> Auto</button>
   </li>
-</ul>
+</ul> -->
+
+
+<button (click)="toggleTheme()" class="btn btn-link nav-link mt-auto px-3 d-flex align-items-center" id="app-theme" type="button" [title]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode' ">
+  <app-icon *ngIf="theme === 'dark' " [name]="'brightness-high-fill'" [width]="16" [height]="16"></app-icon>
+  <app-icon *ngIf="theme === 'light' " [name]="'moon-stars-fill'" [width]="16" [height]="16"></app-icon>
+</button>

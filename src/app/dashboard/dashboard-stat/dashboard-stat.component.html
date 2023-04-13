@@ -1,7 +1,7 @@
 <div class="row">
   <ng-container *ngFor="let stat of stats; let index=index">
     <div class="col-md-6 my-1">
-      <app-icon class="me-2" [name]="stat?.icon" [width]="32" [height]="32" [fill]="stat?.iconCss"></app-icon>
+      <app-icon class="me-2 text-primary" [name]="stat?.icon" [width]="32" [height]="32"></app-icon>
       <span class="me-1">{{stat?.count}}</span>
       <span class="me-1">{{stat?.heading}}</span>
     </div>
