@@ -1,132 +1,109 @@
 <div class="sbar-links ms-2 my-3">
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
     <li class="my-3">
-      <h6 class="px-3">Getting Started</h6>
+      <h6 class="px-3"><app-icon class="me-2" [name]="'speedometer'" [width]="20" [height]="20"></app-icon> Getting Started</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'speedometer'"></app-icon> Dashboard</a>
+            <a [routerLink]="['/']" class="d-inline-flex align-items-center">Dashboard</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3" *ngIf="userRole === '1' ">
-      <h6 class="px-3">Admin</h6>
+      <h6 class="px-3"><app-icon class="me-2" [name]="'person-badge-fill'" [width]="20" [height]="20"></app-icon> Admin Menu</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'people'"></app-icon> Employee Management</a>
+            <a [routerLink]="['/user/manage']" class="d-inline-flex align-items-center">Employee Management</a>
           </li>
           <li>
-            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'person-add'"></app-icon> Add New Employee</a>
+            <a [routerLink]="['/user/add']" class="d-inline-flex align-items-center">Add New Employee</a>
           </li>
           <li>
-            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'database-check'"></app-icon> CMS</a>
+            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">Manage Contents</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-management']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'calendar4-event'"></app-icon> Holiday Management</a>
+            <a [routerLink]="['/cms/holiday-management']" class="d-inline-flex align-items-center">Holiday
+              Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'calendar2-range'"></app-icon> Leave Management</a>
+            <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">Leave Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/balance']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'coin'"></app-icon> Leave Balance</a>
+            <a [routerLink]="['/leave/balance']" class="d-inline-flex align-items-center">Leave Balance</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet/report']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'clock-history'"></app-icon> Timesheet Report</a>
+            <a [routerLink]="['/timesheet/report']" class="d-inline-flex align-items-center">Timesheet Report</a>
           </li>
           <li>
-            <a [routerLink]="['/project']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'kanban'"></app-icon> Project</a>
+            <a [routerLink]="['/project']" class="d-inline-flex align-items-center">Manage Projects</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'list-task'"></app-icon> Task</a>
+            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center">Manage Tasks</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3">
-      <h6 class="px-3">Self Services</h6>
+      <h6 class="px-3"><app-icon class="me-2" [name]="'fingerprint'" [width]="20" [height]="20"></app-icon> Employee Self Services</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'clock-history'"></app-icon> Log Timesheet</a>
+            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">Log Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/apply']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'airplane'"></app-icon> Apply Leave</a>
+            <a [routerLink]="['/leave/requests-to-approve']" class="d-inline-flex align-items-center">Leave Workflow Approval</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/requests-to-approve']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'calendar2-range'"></app-icon> Manage Leave Workflow</a>
+            <a [routerLink]="['/leave/apply']" class="d-inline-flex align-items-center">Apply Leave</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/history']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'list-stars'"></app-icon> Leave History</a>
+            <a [routerLink]="['/leave/history']" class="d-inline-flex align-items-center">My Leave History</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3">
-      <h6 class="px-3">My Organization</h6>
+      <h6 class="px-3"><app-icon class="me-2" [name]="'globe'" [width]="20" [height]="20"></app-icon> My Organization</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/view-employees']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'people'"></app-icon> Employees</a>
+            <a [routerLink]="['/user/view-employees']" class="d-inline-flex align-items-center">Know Employees</a>
           </li>
           <li>
-            <a [routerLink]="['/user/view-reportees']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'person-check'"></app-icon> My Reportees</a>
+            <a [routerLink]="['/user/view-reportees']" class="d-inline-flex align-items-center">My Reportees</a>
           </li>
           <li>
-            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center"><app-icon class="me-2"
-                [name]="'emoji-smile'"></app-icon> Change
-              Supervisor</a>
+            <a [routerLink]="['/user/change-approvers']" class="d-inline-flex align-items-center">Change Workflow
+              Approvers</a>
           </li>
           <li>
-            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'file-earmark-text'"></app-icon> HR Policies</a>
-          </li>
-          <li>
-            <a [routerLink]="['/cms/holiday-calendar']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'calendar3'"></app-icon> Holidays</a>
+            <a [routerLink]="['/cms/holiday-calendar']" class="d-inline-flex align-items-center">Holidays</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3">
-      <h6 class="px-3">Account</h6>
+      <h6 class="px-3"><app-icon class="me-2" [name]="'person-fill'" [width]="20" [height]="20"></app-icon> My Account</h6>
 
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/user/profile']" class="d-inline-flex align-items-center">
-              <app-icon class="me-2" [name]="'person-fill'"></app-icon> Profile</a>
+            <a [routerLink]="['/user/profile']" class="d-inline-flex align-items-center">My Profile</a>
           </li>
           <li>
-            <a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center me-1">
-              <app-icon class="me-2" [name]="'key'"></app-icon> Change Password</a>
+            <a [routerLink]="['/user/change-password']" class="d-inline-flex align-items-center me-1">Change
+              Password</a>
           </li>
-          
+
           <li>
             <a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
-              class="d-inline-flex align-items-center me-1">
-              <app-icon class="me-2" [name]="'power'"></app-icon> Logout</a>
+              class="d-inline-flex align-items-center me-1">Logout</a>
           </li>
         </ul>
       </div>

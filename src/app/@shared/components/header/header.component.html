@@ -12,13 +12,13 @@
           <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'gear'"></app-icon></a>
         </li> -->        
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user/profile']"><app-icon [name]="'person-fill'"></app-icon></a>
+          <a class="nav-link" [routerLink]="['/user/profile']"><app-icon [name]="'person-fill'" [width]="20" [height]="20"></app-icon></a>
         </li>
         <li class="nav-item">
           <app-theme-switch></app-theme-switch>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}"><app-icon [name]="'box-arrow-right'"></app-icon></a>
+          <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}"><app-icon [name]="'box-arrow-right'" [width]="20" [height]="20"></app-icon></a>
         </li>
       </ul>
     </div>
