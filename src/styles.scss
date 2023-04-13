@@ -56,21 +56,42 @@ label {
 //   max-width: 330px;
 // }
 
-.bg-login {
-  background: url(../src/assets/img/subtle-prism.svg) transparent;
-  background-size: 100%;
+[data-bs-theme="light"], [data-bs-theme="auto"] {
+  .bg-login {
+    background: url(../src/assets/img/subtle-prism.svg) transparent;
+    background-size: 100%;
+  }
+  
+  .signin-wrapper {
+    max-width: 890px;
+    .signin-container {
+      background: $white;
+    }
+    .signin-form-container {
+      padding: 50px 30px;
+      border-right: 2px solid #f1f1f1;
+    }
+  }
 }
 
-.signin-wrapper {
-  max-width: 890px;
-  .signin-container {
-    background: $white;
+[data-bs-theme="dark"] {
+  .bg-login {
+    background: url(../src/assets/img/subtle-prism-dark.svg) transparent;
+    background-size: 100%;
   }
-  .signin-form-container {
-    padding: 50px 30px;
-    border-right: 2px solid #f1f1f1;
+  
+  .signin-wrapper {
+    max-width: 890px;
+    .signin-container {
+      background: $gray-900;
+    }
+    .signin-form-container {
+      padding: 50px 30px;
+      border-right: 2px solid $gray-900;
+    }
   }
 }
+
 
 // Sidebar & Main Content wrapper
 #sidebar-wrapper {

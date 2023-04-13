@@ -51,7 +51,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.clear();
-    localStorage.clear();
+    //localStorage.clear();
     this.loggedInUserSubject.next(null);
     this.alertSvc.info('You have been logged out!', true);
     this.router.navigate(['auth/login']);
