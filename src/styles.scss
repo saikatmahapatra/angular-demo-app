@@ -236,3 +236,17 @@ label {
     border: 0;
   }
 }
+
+.navbar {
+  .navbar-nav {
+    .nav-item {
+      margin-right: .5rem;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.85);
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}

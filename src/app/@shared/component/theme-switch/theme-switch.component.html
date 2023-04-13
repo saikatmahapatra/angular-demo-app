@@ -26,7 +26,7 @@
 </ul> -->
 
 
-<button (click)="toggleTheme()" class="btn btn-link nav-link mt-auto px-3 d-flex align-items-center" id="app-theme" type="button" [title]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode' ">
+<button (click)="toggleTheme()" class="btn btn-link nav-link mt-auto d-flex align-items-center" id="app-theme" type="button" [title]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode' ">
   <app-icon *ngIf="theme === 'dark' " [name]="'brightness-high-fill'" [width]="16" [height]="16"></app-icon>
   <app-icon *ngIf="theme === 'light' " [name]="'moon-stars-fill'" [width]="16" [height]="16"></app-icon>
 </button>
