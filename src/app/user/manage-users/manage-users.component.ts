@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AppConfig } from 'src/app/@utils/const/app.config';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,6 +29,7 @@ export class ManageUsersComponent implements OnInit {
   totalRecords: number = 0;
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];
+  searchKeyword: any = '';
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -43,39 +44,16 @@ export class ManageUsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsersList();
-
-    /*To add a validator, we must first convert the string value into an array.
-    The first item in the array is the default value if any,
-    then the next item in the array is the validator.
-    Here we are adding a required validator meaning that the
-    name attribute must have a value in it.*/
-    this.saveUserForm = this.formBuilder.group({
-      name: [
-        '',
-        Validators.compose([
-          <any>Validators.required,
-          <any>Validators.minLength(5),
-          <any>Validators.maxLength(10)
-        ])
-      ],
-      email: [
-        '',
-        Validators.compose([
-          <any>Validators.required,
-          <any>this.isInvalidEmail
-        ])
-      ]
-    });
-
-    // subscribe to form changes
-    this.subcribeToFormChanges();
   }
 
   getUsersList() {
     let headers = new HttpHeaders();
+    let queryParams = new HttpParams();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    this.apiSvc.get(AppConfig.apiUrl.getUsers, { headers: headers }).subscribe({
+    queryParams = queryParams.append('keywords', this.searchKeyword.trim());
+    let options = { headers: headers, queryParams: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getUsers, options).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
         this.userList = val?.data?.data_rows;
@@ -83,45 +61,6 @@ export class ManageUsersComponent implements OnInit {
       }
     });
   }
-
-  showDetails(e: { preventDefault: () => void; }) {
-    e.preventDefault();
-    alert('details');
-  }
-
-  subcribeToFormChanges() {
-    const myFormStatusChanges$ = this.saveUserForm.statusChanges;
-    const myFormValueChanges$ = this.saveUserForm.valueChanges;
-
-    myFormStatusChanges$.subscribe(x => this.events.push({ event: 'STATUS_CHANGED', object: x }));
-    myFormValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
-  }
-  saveUserData(model: any, isValid: boolean) {
-    this.submitted = true;
-    console.log(model);
-    console.log("Form Valid =" + isValid);
-    console.log("Name Error=" + this.saveUserForm.controls['name'].errors);
-    console.log("Email Error=" + this.saveUserForm.controls['email'].errors);
-    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('required'));
-    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('minLength'));
-    //console.log(this.submitted, this.saveUserForm.controls['name'].pristine, this.saveUserForm.controls['name'].hasError('maxLength'));
-    //this.postData = this.saveUserForm.value;
-    //console.log(this.postData);
-  }
-
-  isInvalidEmail(control: any) {
-    //console.log("Control=", control.value);
-    // if(control.value.lenght>0){
-    //return {isInvalidEmail:true};
-    // }
-
-    var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-    if (control.value != "" && (control.value.length <= 5 || !EMAIL_REGEXP.test(control.value))) {
-      return { isInvalidEmail: true };
-    }
-    return null;
-  }
-
 
   getUserInterval() {
     this.subscription = timer(0, 10000).pipe(
@@ -133,6 +72,11 @@ export class ManageUsersComponent implements OnInit {
 
   redirectToProfile(id: number) {
     this.router.navigate(['/emp/view-emp-profile', id]);
+  }
+
+  getSearchKeyword(str: string) {
+    this.searchKeyword = str;
+    this.getUsersList();
   }
 
 }

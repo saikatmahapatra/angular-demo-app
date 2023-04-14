@@ -6,11 +6,14 @@
                 <div class="table-header">
                     List of Employees
 
-                    <div class="mt-2">
-                        <a [routerLink]="['/emp/add']" class="btn btn-success">
+                    <div class="d-flex mt-2">
+                        <div class="me-4"><app-search-input (inputValue)="getSearchKeyword($event)"
+                            [placeHolderText]="'Search by emp name/dept.'"></app-search-input></div>
+
+                        <div><a [routerLink]="['/emp/add']" class="btn btn-success">
                             <app-icon class="" [name]="'person-add'"></app-icon>
                             Add Employee
-                        </a>
+                        </a></div>
                     </div>
                     <!-- <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
