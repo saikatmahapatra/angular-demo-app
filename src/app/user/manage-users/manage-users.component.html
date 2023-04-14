@@ -132,6 +132,12 @@
                                 <tr>
                                     <td class="fw-bold">Personal Email</td>
                                     <td [innerHTML]="rowData?.user_email_secondary || '-'"></td>
+                                    <td class="fw-bold">Personal Phone</td>
+                                    <td [innerHTML]="rowData?.user_phone1 || '-'"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">Work Email</td>
+                                    <td [innerHTML]="rowData?.user_email || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
                                     <td [innerHTML]="rowData?.user_phone2 || '-'"></td>
                                 </tr>

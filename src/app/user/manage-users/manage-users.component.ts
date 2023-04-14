@@ -77,7 +77,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   editUserProfile(id: number) {
-    this.router.navigate(['/emp/edit-emp', id]);
+    this.router.navigate(['/emp/edit', id]);
   }
 
   getSearchKeyword(str: string) {

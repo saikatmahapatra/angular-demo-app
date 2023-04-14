@@ -51,12 +51,9 @@ export class EditUserComponent {
     action: ['editUser'],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
-    workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
     workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],
-    personalEmail: ['', [this.validator.validEmail]],
-    personalPhone: ['', [Validators.required, this.validator.phoneNumber]],
     designation: ['', Validators.required],
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
@@ -72,7 +69,12 @@ export class EditUserComponent {
     private fb: UntypedFormBuilder,
     private validator: FormValidationService
   ) {
+    let today = new Date();
+    this.minDateDob.setFullYear(today.getFullYear() - 100);
+    this.maxDateDob.setFullYear(today.getFullYear() - 18);
 
+    //this.minDateDoj.setFullYear(today.getFullYear() - 100);
+    this.maxDateDoj.setDate(today.getDate());
   }
 
   ngOnInit(): void {
@@ -120,15 +122,13 @@ export class EditUserComponent {
       firstName: this.userInfo?.user_firstname,
       lastName: this.userInfo?.user_lastname,
       workPhone: this.userInfo?.user_phone2,
-      dateOfBirth: this.userInfo?.user_dob,
-      // gender: ,
-      // personalEmail: ,
-      // personalPhone: ,
-      // designation: ,
-      // department: ,
-      // dateOfJoining: ,
-      // employmentType: ,
-      // role: 
+      dateOfBirth: new Date(this.userInfo?.user_dob),
+      gender: this.userInfo?.user_gender,
+      designation: this.userInfo?.user_designation,
+      department: this.userInfo?.user_department,
+      dateOfJoining: new Date(this.userInfo?.user_doj),
+      employmentType: this.userInfo?.user_employment_type,
+      role: this.userInfo?.user_role
     });
   }
 
@@ -136,13 +136,11 @@ export class EditUserComponent {
     this.submitted = true;
     this.loading = true;
     if (this.userBasicForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.addUser, this.userBasicForm.value).subscribe({
+      this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
-          if (response.status == 'success') {
-            this.alertSvc.success(response.message);
-            this.userBasicForm.reset();
-            this.loading = false;
-          }
+          this.alertSvc.success(response.message);
+          this.userBasicForm.reset();
+          this.loading = false;
         },
         error: () => {
           this.loading = false;

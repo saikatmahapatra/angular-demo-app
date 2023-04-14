@@ -3,8 +3,16 @@
     <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
 </div>
 
+<ng-container *ngIf="userInfo.id">
+    <h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
+    <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
+    <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+    <div>{{userInfo?.user_phone1}}; {{userInfo?.user_phone2}}</div>
+    <div>{{userInfo?.employment_type_name}}</div>
+</ng-container>
 
-<div class="row" #calHolder>
+
+<div class="row mt-4">
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
@@ -19,20 +27,6 @@
                     <label class="required" for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" formControlName="lastName">
                     <app-validation-error [control]="userBasicForm.controls['lastName']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3 mb-2">
-                <div class="col-md-6">
-                    <label class="required" for="workEmail">Work Email</label>
-                    <input type="text" class="form-control" id="workEmail" formControlName="workEmail">
-                    <app-validation-error [control]="userBasicForm.controls['workEmail']"></app-validation-error>
-                </div>
-                <div class="col-md-6">
-                    <label class="required" for="personalPhone">Personal Phone</label>
-                    <input type="text" class="form-control" id="personalPhone" formControlName="personalPhone"
-                        maxlength="10">
-                    <app-validation-error [control]="userBasicForm.controls['personalPhone']"></app-validation-error>
                 </div>
             </div>
 
@@ -58,11 +52,6 @@
             </div>
 
             <div class="row mb-3 mb-2">
-                <div class="col-md-6">
-                    <label for="personalEmail">Personal Email</label>
-                    <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
-                    <app-validation-error [control]="userBasicForm.controls['personalEmail']"></app-validation-error>
-                </div>
                 <div class="col-md-6">
                     <label for="workPhone">Work Phone</label>
                     <input type="text" class="form-control" id="workPhone" formControlName="workPhone" maxlength="10">
@@ -135,7 +124,7 @@
                 Submit
             </button>
         </form>
-        <!-- <p>Form Status: <span class="text-bold">{{ userBasicForm.status }}</span></p>
-        <p>{{userBasicForm.value|json}}</p> -->
+        <p>Form Status: <span class="text-bold">{{ userBasicForm.status }}</span></p>
+        <p>{{userBasicForm.value|json}}</p>
     </div>
 </div>
