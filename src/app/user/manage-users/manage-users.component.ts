@@ -64,16 +64,20 @@ export class ManageUsersComponent implements OnInit {
     });
   }
 
-  getUserInterval() {
-    this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.apiSvc.get(AppConfig.apiUrl.getUsers))
-    ).subscribe((val: any) => {
-      this.userList = val?.data?.data_rows;
-    });
-  }
+  // getUserInterval() {
+  //   this.subscription = timer(0, 10000).pipe(
+  //     switchMap(() => this.apiSvc.get(AppConfig.apiUrl.getUsers))
+  //   ).subscribe((val: any) => {
+  //     this.userList = val?.data?.data_rows;
+  //   });
+  // }
 
   redirectToProfile(id: number) {
     this.router.navigate(['/emp/view-emp-profile', id]);
+  }
+
+  editUserProfile(id: number) {
+    this.router.navigate(['/emp/edit-emp', id]);
   }
 
   getSearchKeyword(str: string) {

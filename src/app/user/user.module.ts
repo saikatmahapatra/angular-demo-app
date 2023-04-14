@@ -23,6 +23,7 @@ import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
 import { ViewEmployeesComponent } from './view-employees/view-employees.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { ViewMyProfileComponent } from './view-my-profile/view-my-profile.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { ViewMyProfileComponent } from './view-my-profile/view-my-profile.compon
     AddEditPayrollInfoComponent,
     EditApproversComponent,
     PeopleILeadComponent,
-    ViewEmployeesComponent
+    ViewEmployeesComponent,
+    EditUserComponent
   ]
 })
 export class UserModule { }
