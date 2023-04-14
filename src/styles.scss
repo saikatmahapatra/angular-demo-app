@@ -38,13 +38,12 @@ label {
     }
   }
 
-  &.optional {
-    &::after {
-      content: 'optional';
-      margin-left: 5px;
-      color: $gray-500;
-    }
-  }
+  // &.optional {
+  //   &::after {
+  //     margin-left: 5px;
+  //     color: $gray-500;
+  //   }
+  // }
 }
 
 .server-alert {

@@ -136,6 +136,12 @@
                                     <td [innerHTML]="rowData?.user_phone1 || '-'"></td>
                                 </tr>
                                 <tr>
+                                    <td class="fw-bold">Date of Birth</td>
+                                    <td [innerHTML]="rowData?.user_dob | date: 'dd-MM-YYYY' || 'NA'"></td>
+                                    <td class="fw-bold">Gender</td>
+                                    <td [innerHTML]="rowData?.user_gender === 'M' ? 'Male' : 'Female'"></td>
+                                </tr>
+                                <tr>
                                     <td class="fw-bold">Work Email</td>
                                     <td [innerHTML]="rowData?.user_email || '-'"></td>
                                     <td class="fw-bold">Work Phone</td>
@@ -151,7 +157,7 @@
                                     <td class="fw-bold">Role Group</td>
                                     <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td [innerHTML]="rowData?.user_type || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_type === 'U' ? 'Emp User' : 'Pre Defined' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>

@@ -37,6 +37,18 @@ export class EditUserComponent {
     { name: 'Administrator', id: '1' }
   ];
 
+  accountStatus: Array<any> = [
+    { name: 'Active', id: 'Y' },
+    { name: 'Deactivate', id: 'N' },
+    { name: 'Close/Archive Account', id: 'A' },
+  ];
+
+  accountStatusReason: Array<any> = [
+    { name: 'First-time User/New User', id: 'N' },
+    { name: 'Revoke Access - Temporary', id: 'B' },
+    { name: 'Revoke Access Permanently - No Longer Employed', id: 'D' },
+  ];
+
   departmentList: any;
   employmentTypeList: any;
   designationList: any;
@@ -51,6 +63,7 @@ export class EditUserComponent {
     action: ['editUser'],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+    workEmail: [''],
     workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],
@@ -58,7 +71,11 @@ export class EditUserComponent {
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
-    role: ['3', Validators.required]
+    role: ['3', Validators.required],
+    accountStatus: ['', Validators.required],
+    statusChangeReason: ['', Validators.required],
+    dateOfRelease: [''],
+    accountCloseComments: ['']
   });
 
   constructor(
@@ -121,6 +138,7 @@ export class EditUserComponent {
       id: this.userInfo?.id,
       firstName: this.userInfo?.user_firstname,
       lastName: this.userInfo?.user_lastname,
+      workEmail: this.userInfo?.user_email,
       workPhone: this.userInfo?.user_phone2,
       dateOfBirth: new Date(this.userInfo?.user_dob),
       gender: this.userInfo?.user_gender,
@@ -128,7 +146,8 @@ export class EditUserComponent {
       department: this.userInfo?.user_department,
       dateOfJoining: new Date(this.userInfo?.user_doj),
       employmentType: this.userInfo?.user_employment_type,
-      role: this.userInfo?.user_role
+      role: this.userInfo?.user_role,
+      accountStatus: this.userInfo?.user_status,
     });
   }
 
@@ -138,8 +157,8 @@ export class EditUserComponent {
     if (this.userBasicForm.valid) {
       this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message);
-          this.userBasicForm.reset();
+          this.alertSvc.success(response.message, true);
+          this.router.navigate(['/emp/manage'])
           this.loading = false;
         },
         error: () => {
