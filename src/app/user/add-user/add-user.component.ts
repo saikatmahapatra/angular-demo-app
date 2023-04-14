@@ -30,9 +30,9 @@ export class AddUserComponent implements OnInit {
   designationList: any;
 
   minDateDob: Date = new Date();
-  maxDateDob: Date = new Date();;
-  minDateDoj: Date = new Date();;
-  maxDateDoj: Date = new Date();;
+  maxDateDob: Date = new Date();
+  minDateDoj: Date = new Date();
+  maxDateDoj: Date = new Date();
 
   myForm = this.fb.group({
     id: [null],
