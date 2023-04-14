@@ -29,6 +29,7 @@ body {
 
 label {
   margin-bottom: .5rem;
+
   &.required {
     &::after {
       content: '*';
@@ -50,48 +51,6 @@ label {
   top: 4rem;
   position: sticky;
 }
-
-// login form width
-// .unauth-form-max-w {
-//   max-width: 330px;
-// }
-
-[data-bs-theme="light"], [data-bs-theme="auto"] {
-  .bg-login {
-    background: url(../src/assets/img/subtle-prism.svg) transparent;
-    background-size: 100%;
-  }
-  
-  .signin-wrapper {
-    max-width: 890px;
-    .signin-container {
-      background: $white;
-    }
-    .signin-form-container {
-      padding: 50px 30px;
-      border-right: 2px solid #f1f1f1;
-    }
-  }
-}
-
-[data-bs-theme="dark"] {
-  .bg-login {
-    background: url(../src/assets/img/subtle-prism-dark.svg) transparent;
-    background-size: 100%;
-  }
-  
-  .signin-wrapper {
-    max-width: 890px;
-    .signin-container {
-      background: $gray-900;
-    }
-    .signin-form-container {
-      padding: 50px 30px;
-      border-right: 2px solid $gray-900;
-    }
-  }
-}
-
 
 // Sidebar & Main Content wrapper
 #sidebar-wrapper {
@@ -212,7 +171,8 @@ label {
   font-weight: 500 !important;
 }
 
-.p-datepicker table td > span.p-highlight, .p-datepicker table td.p-datepicker-today > span.p-highlight {
+.p-datepicker table td>span.p-highlight,
+.p-datepicker table td.p-datepicker-today>span.p-highlight {
   color: $primaryColor;
 }
 
@@ -232,6 +192,7 @@ label {
 
 .card {
   border: 0;
+
   .card-header {
     border: 0;
   }
@@ -242,7 +203,9 @@ label {
     .nav-item {
       margin-right: .5rem;
     }
+
     .nav-link {
+
       //color: rgba(255,255,255,0.85);
       &:hover {
         //color: $white;
@@ -251,15 +214,73 @@ label {
   }
 }
 
-[data-bs-theme="dark"] {
+// ############################################
+// Light Mode UI fix
+// ############################################
+[data-bs-theme="light"] {
+  .bg-login {
+    background: url(../src/assets/img/subtle-prism.svg) transparent;
+    background-size: 100%;
+  }
+
+  .signin-wrapper {
+    max-width: 890px;
+
+    .signin-container {
+      background: $white;
+    }
+
+    .signin-form-container {
+      padding: 50px 30px;
+      border-right: 2px solid #f1f1f1;
+    }
+  }
+
   .badge-cms-type {
-      color: $gray-200;
-      background-color: $gray-800;
+    color: $gray-800;
+    background-color: $gray-100;
   }
 }
-[data-bs-theme="light"] {
-  .badge-cms-type {
-      color: $gray-800;
-      background-color: $gray-100;
+
+
+// ############################################
+// Dark Mode UI fix
+// ############################################
+[data-bs-theme="dark"] {
+
+  .bg-login {
+    background: url(../src/assets/img/subtle-prism-dark.svg) transparent;
+    background-size: 100%;
+  }
+
+  .signin-wrapper {
+    max-width: 890px;
+
+    .signin-container {
+      background: $gray-900;
+    }
+
+    .signin-form-container {
+      padding: 50px 30px;
+      border-right: 2px solid $gray-900;
+    }
+  }
+
+  .p-datatable .p-datatable-thead>tr>th,
+  .p-datatable .p-datatable-header,
+  .p-datatable .p-datatable-tbody>tr>td {
+    border-color: var(--bs-light-border-subtle);
+  }
+
+  .p-datatable .p-sortable-column:not(.p-highlight):hover,
+  .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody>tr:not(.p-highlight):hover {
+    background: var(--bs-light-bg-subtle);
+  }
+
+  .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
+  .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    background: $gray-800;
+    border-color: $gray-800;
+    color: $gray-200;
   }
 }

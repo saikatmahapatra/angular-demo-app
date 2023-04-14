@@ -23,24 +23,3 @@
         }
     }
 }
-
-
-
-// Dark Theme fix
-[data-bs-theme="dark"] {
-    .p-datatable .p-datatable-thead > tr > th,
-    .p-datatable .p-datatable-header,
-    .p-datatable .p-datatable-tbody > tr > td {
-        border-color: var(--bs-light-border-subtle);
-    }
-    .p-datatable .p-sortable-column:not(.p-highlight):hover,
-    .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
-        background: var(--bs-light-bg-subtle);
-    }
-    .p-paginator .p-paginator-pages .p-paginator-page.p-highlight, 
-    .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
-        background: $gray-800;
-        border-color: $gray-800;
-        color: $gray-200;
-    }
-}
