@@ -12,13 +12,13 @@ import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 })
 export class ViewProfileComponent implements OnInit {
   userInfo: any;
-  addressInfo: any;
-  workExp: any;
-  payrollInfo: any;
-  educationInfo: any;
-  emergencyContact: any;
-  approvers: any;
-  userGovtIds: any;
+  addressInfo: any = [];
+  workExp: any = [];
+  payrollInfo: any = [];
+  educationInfo: any = [];
+  emergencyContact: any = [];
+  approvers: any = [];
+  userGovtIds: any ;
   userPhoto: any;
   orgName = 'UEIPL';
   selfAccount = false;

@@ -73,7 +73,7 @@ export class AddEditEducationComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            this.router.navigate(['emp/profile']);
+            this.router.navigate(['emp/my-profile']);
           }
         },
         error: () => { this.loading = false; },
@@ -86,7 +86,7 @@ export class AddEditEducationComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            this.router.navigate(['emp/profile']);
+            this.router.navigate(['emp/my-profile']);
           }
         },
         error: () => { this.loading = false; },

@@ -26,7 +26,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ViewMyProfileComponent },
       { path: 'my-profile', component: ViewMyProfileComponent },
-      { path: 'emp-profile/:id', component: ViewProfileComponent, canActivate: [AdminGuard] },
+      { path: 'view-emp-profile/:id', component: ViewProfileComponent, canActivate: [AdminGuard] },
       { path: 'add', canActivate: [AdminGuard], component: AddUserComponent },
       { path: 'manage', canActivate: [AdminGuard], component: ManageUsersComponent },
       { path: 'edit/:id', canActivate: [AdminGuard], component: ManageUsersComponent },

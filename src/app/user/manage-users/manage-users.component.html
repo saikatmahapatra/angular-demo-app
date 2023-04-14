@@ -26,8 +26,8 @@
                         <div class="flex justify-content-between align-items-center">
                             Name
                             <p-sortIcon field="user_firstname"></p-sortIcon>
-                            <p-columnFilter type="text" field="user_firstname" display="menu"
-                                class="ms-auto"></p-columnFilter>
+                            <!-- <p-columnFilter type="text" field="user_firstname" display="menu"
+                                class="ms-auto"></p-columnFilter> -->
                         </div>
                     </th>
                     <!-- <th style="width: 15rem" pSortableColumn="user_emp_id">
@@ -40,8 +40,8 @@
                         <div class="flex justify-content-between align-items-center">
                             Email
                             <p-sortIcon field="user_email"></p-sortIcon>
-                            <p-columnFilter type="text" field="user_email" display="menu"
-                                class="ms-auto"></p-columnFilter>
+                            <!-- <p-columnFilter type="text" field="user_email" display="menu"
+                                class="ms-auto"></p-columnFilter> -->
                         </div>
                     </th>
                     <th style="width: 10rem" pSortableColumn="user_phone1">
@@ -54,8 +54,8 @@
                         <div class="flex justify-content-between align-items-center">
                             Designation
                             <p-sortIcon field="designation_name"></p-sortIcon>
-                            <p-columnFilter type="text" field="designation_name" display="menu"
-                                class="ms-auto"></p-columnFilter>
+                            <!-- <p-columnFilter type="text" field="designation_name" display="menu"
+                                class="ms-auto"></p-columnFilter> -->
                         </div>
                     </th>
                     <th pSortableColumn="user_status">
@@ -170,7 +170,7 @@
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
-                                        <a [routerLink]="['../../emp/profile', rowData?.id]">Click here</a>
+                                        <a [routerLink]="['/emp/view-emp-profile/', rowData?.id]">Click here</a>
                                     </td>
                                 </tr>
                                 <tr>
