@@ -2,7 +2,7 @@
 <div class="row my-4">
     <div class="mb-4">
         <div class="alert alert-danger" *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
-            <strong>Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/user/change-approvers']">select your workflow approvers</a>. 
+            <strong>Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/emp/change-approvers']">select your workflow approvers</a>. 
         </div>
         <div class="alert alert-info" *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
             <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">

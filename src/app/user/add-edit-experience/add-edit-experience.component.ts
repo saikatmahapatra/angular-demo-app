@@ -65,7 +65,7 @@ export class AddEditExperienceComponent implements OnInit {
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           this.myForm.reset();
-          this.router.navigate(['user/profile']);
+          this.router.navigate(['emp/profile']);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }
@@ -75,7 +75,7 @@ export class AddEditExperienceComponent implements OnInit {
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           this.myForm.reset();
-          this.router.navigate(['user/profile']);
+          this.router.navigate(['emp/profile']);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }

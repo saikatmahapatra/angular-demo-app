@@ -132,7 +132,7 @@ export class ManageUsersComponent implements OnInit {
   }
 
   redirectToProfile(id: number) {
-    this.router.navigate(['/user/profile', id]);
+    this.router.navigate(['/emp/profile', id]);
   }
 
 }

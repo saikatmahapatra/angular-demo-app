@@ -69,7 +69,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            this.router.navigate(['user/profile']);
+            this.router.navigate(['emp/profile']);
           }
         },
         error: () => { this.loading = false; },
@@ -82,7 +82,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
             this.myForm.reset();
-            this.router.navigate(['user/profile']);
+            this.router.navigate(['emp/profile']);
           }
         },
         error: () => { this.loading = false; },

@@ -7,7 +7,7 @@
                     List of Employees
 
                     <div class="mt-2">
-                        <a [routerLink]="['/user/add']" class="btn btn-success">
+                        <a [routerLink]="['/emp/add']" class="btn btn-success">
                             <app-icon class="" [name]="'person-add'"></app-icon>
                             Add Employee
                         </a>
@@ -170,7 +170,7 @@
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
-                                        <a [routerLink]="['../../user/profile', rowData?.id]">Click here</a>
+                                        <a [routerLink]="['../../emp/profile', rowData?.id]">Click here</a>
                                     </td>
                                 </tr>
                                 <tr>
