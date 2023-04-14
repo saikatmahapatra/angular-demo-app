@@ -17,6 +17,10 @@
     However, it seems JavaScript is either disabled or not supported by your browser.
     To use standard view, enable JavaScript by changing your browser options, then try again.
   </noscript>
+  <script>
+    let theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-bs-theme', theme);
+  </script>
 </head>
 
 <body>
