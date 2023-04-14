@@ -18,14 +18,15 @@ import { EditApproversComponent } from './edit-approvers/edit-approvers.componen
 import { PeopleILeadComponent } from './people-i-lead/people-i-lead.component';
 import { ViewEmployeesComponent } from './view-employees/view-employees.component';
 import { AdminGuard } from '../@core/guards/admin.guard';
+import { ViewMyProfileComponent } from './view-my-profile/view-my-profile.component';
 
 const routes: Routes = [
   {
     path: '', component: UserComponent,
     children: [
-      { path: '', component: ViewProfileComponent },
-      { path: 'profile', component: ViewProfileComponent },
-      { path: 'profile/:id', component: ViewProfileComponent },
+      { path: '', component: ViewMyProfileComponent },
+      { path: 'my-profile', component: ViewMyProfileComponent },
+      { path: 'emp-profile/:id', component: ViewProfileComponent, canActivate: [AdminGuard] },
       { path: 'add', canActivate: [AdminGuard], component: AddUserComponent },
       { path: 'manage', canActivate: [AdminGuard], component: ManageUsersComponent },
       { path: 'edit/:id', canActivate: [AdminGuard], component: ManageUsersComponent },

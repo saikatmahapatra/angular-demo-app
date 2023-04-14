@@ -1,0 +1,236 @@
+<h1>My Profile</h1>
+<!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
+<h3 class="mt-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
+<div>{{userInfo?.designation_name}}</div>
+<div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+<div>{{userInfo?.user_phone1}}</div>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'person'" [height]="27" [width]="27"></app-icon> Basic Info</h4>
+   <dl class="row">
+      <dt class="col-md-4 col-lg-3">Employee ID</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
+      <dt class="col-md-4 col-lg-3">Designation</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
+      <dt class="col-md-4 col-lg-3">Employment Type</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
+      <dt class="col-md-4 col-lg-3">Department</dt>
+      <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
+      <dt class="col-md-4 col-lg-3">Date of Joining</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
+      <dt class="col-md-4 col-lg-3">Personal Email</dt>
+      <dd class="col-md-8 col-lg-9"><a
+         href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
+      </dd>
+      <dt class="col-md-4 col-lg-3">Work Phone</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
+      <dt class="col-md-4 col-lg-3">Date of Birth</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
+      <dt class="col-md-4 col-lg-3">Gender</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
+      <dt class="col-md-4 col-lg-3">Blood Group</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
+   </dl>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/edit-basic-info']" class="btn btn-light btn-sm btn-sm">
+   <app-icon
+      [name]="'pencil'"></app-icon>
+   Edit Basic Information</a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'geo-alt'" [height]="27" [width]="27"></app-icon> Address</h4>
+   <div class="my-3" *ngFor="let addr of addressInfo">
+      <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
+      <address>
+         {{addr?.address}}, {{addr?.locality}}, {{addr?.city}}, {{addr?.state_name}},
+         {{addr?.zip}} <br>
+         Phone: {{addr?.phone1}} <br>
+         Landmark: {{addr?.landmark}}
+      </address>
+      <div class="mt-1">
+         <a *ngIf="selfAccount" [routerLink]="['/emp/edit-address/', addr.id]"
+         class="btn btn-light btn-sm  mt-0 me-2">
+         <app-icon [name]="'pencil'"></app-icon>
+         Edit</a>
+         <a *ngIf="selfAccount" (click)="deleteAddress(addr.id)" class="btn btn-light btn-sm  mt-0">
+         <app-icon
+            [name]="'trash3'"></app-icon>
+         Delete</a>
+      </div>
+   </div>
+   <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
+      <div class="text-muted">
+         <app-icon [name]="'info-circle'"></app-icon>
+         You have not added any of your communication address.
+      </div>
+   </div>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-success btn-sm ">
+   <app-icon
+      [name]="'plus-circle'"></app-icon>
+   Add </a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'mortarboard'" [height]="27" [width]="27"></app-icon> Education</h4>
+   <div class="my-3" *ngFor="let education of educationInfo">
+      <h6>{{education?.qualification_name}} - {{education?.degree_name}};
+         {{education?.academic_to_year}}
+      </h6>
+      <div [innerHTML]="education.specialization_name"></div>
+      <div [innerHTML]="education.institute_name"></div>
+      <div>{{education.academic_marks_percentage}}%</div>
+      <div class="mt-1" *ngIf="selfAccount">
+         <a [routerLink]="['/emp/edit-education/', education.id]"
+            class="btn btn-light btn-sm  mt-0 me-2">
+            <app-icon [name]="'pencil'"></app-icon>
+            Edit
+         </a>
+         <a (click)="deleteEducation(education.id)" class="btn btn-light btn-sm mt-0">
+            <app-icon
+               [name]="'trash3'"></app-icon>
+            Delete
+         </a>
+      </div>
+   </div>
+   <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
+      <div class="text-muted">
+         <app-icon [name]="'info-circle'"></app-icon>
+         You have not added any of your
+         education details.
+      </div>
+   </div>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-success btn-sm ">
+   <app-icon
+      [name]="'plus-circle'"></app-icon>
+   Add </a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'briefcase'" [height]="27" [width]="27"></app-icon> Work Experience</h4>
+   <div class="my-3">
+      <h6>{{userInfo?.designation_name}}</h6>
+      <div [innerHTML]="orgName"></div>
+      <div class="text-muted">{{userInfo?.user_doj | date:'d-MMM-y'}} - {{userInfo?.user_dor ?
+         userInfo.user_dor : 'Present'}}
+      </div>
+   </div>
+   <div class="my-3" *ngFor="let exp of workExp">
+      <h6>{{exp?.designation_name}}</h6>
+      <div [innerHTML]="exp.company_name"></div>
+      <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date:
+         'd-MMM-y'}}
+      </div>
+      <div *ngIf="selfAccount" class="mt-1">
+         <a [routerLink]="['/emp/edit-work-experience/', exp.id]"
+            class="btn btn-light btn-sm  mt-0 me-2">
+            <app-icon [name]="'pencil'"></app-icon>
+            Edit
+         </a>
+         <a (click)="deleteWorkExp(exp.id)" class="btn btn-light btn-sm  mt-0">
+            <app-icon
+               [name]="'trash3'"></app-icon>
+            Delete
+         </a>
+      </div>
+   </div>
+   <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
+      <div class="text-muted">
+         <app-icon [name]="'info-circle'"></app-icon>
+         You have not added any prior work
+         experience details.
+      </div>
+   </div>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-success btn-sm ">
+   <app-icon
+      [name]="'plus-circle'"></app-icon>
+   Add </a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'coin'" [height]="27" [width]="27"></app-icon> Payroll Info</h4>
+   <div class="my-3">
+      <dl class="row">
+         <dt class="col-md-4 col-lg-3">PAN No</dt>
+         <dd class="col-md-8 col-lg-9">{{userInfo?.user_pan_no}}</dd>
+         <dt class="col-md-4 col-lg-3">UAN No</dt>
+         <dd class="col-md-8 col-lg-9">{{userInfo?.user_uan_no}}</dd>
+      </dl>
+   </div>
+   <div class="my-3" *ngFor="let payroll of payrollInfo">
+      <h6>{{payroll?.bank_name}}</h6>
+      <div [innerHTML]="payroll.bank_account_no"></div>
+      <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
+      <div *ngIf="selfAccount" class="mt-1">
+         <a [routerLink]="['/emp/edit-payroll-info/', payroll.id]"
+            class="btn btn-light btn-sm  mt-0 me-2">
+            <app-icon [name]="'pencil'"></app-icon>
+            Edit
+         </a>
+         <a (click)="deletePayrollInfo(payroll.id)" class="btn btn-light btn-sm  mt-0">
+            <app-icon
+               [name]="'trash3'"></app-icon>
+            Delete
+         </a>
+      </div>
+   </div>
+   <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
+      <div class="text-muted">
+         <app-icon [name]="'info-circle'"></app-icon>
+         You have not added any Payroll
+         information.
+      </div>
+   </div>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-success btn-sm ">
+   <app-icon
+      [name]="'plus-circle'"></app-icon>
+   Add </a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'capsule-pill'" [height]="27" [width]="27"></app-icon> Emergency Contacts
+   </h4>
+   <div class="my-3" *ngFor="let contact of emergencyContact">
+      <h6>{{contact?.contact_person_name}}</h6>
+      <div class="text-muted" [innerHTML]="contact.relationship"></div>
+      <div>{{contact?.contact_person_address}}</div>
+      <div>Phone: {{contact?.contact_person_phone1}}</div>
+      <div *ngIf="selfAccount" class="mt-1">
+         <a [routerLink]="['/emp/edit-emergency-contact/', contact.id]"
+            class="btn btn-light btn-sm  mt-0 me-2">
+            <app-icon [name]="'pencil'"></app-icon>
+            Edit
+         </a>
+         <a (click)="deleteContact(contact.id)" class="btn btn-light btn-sm  mt-0">
+            <app-icon
+               [name]="'trash3'"></app-icon>
+            Delete
+         </a>
+      </div>
+   </div>
+   <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
+      <div class="text-muted">
+         <app-icon [name]="'info-circle'"></app-icon>
+         You have not added any of your
+         emergency contact information.
+      </div>
+   </div>
+   <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-success btn-sm ">
+   <app-icon
+      [name]="'plus-circle'"></app-icon>
+   Add </a>
+</section>
+<section class="my-4">
+   <h4 class="my-2"><app-icon [name]="'cpu'" [height]="27" [width]="27"></app-icon> Account Information</h4>
+   <dl class="row">
+      <dt class="col-md-4 col-lg-3">Account Status</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span *ngIf="userInfo?.user_status === 'Y' " class="">
+         <app-icon class="text-success" [name]="'circle-fill'" [height]="12"
+         [width]="12"></app-icon> Active</span>
+         <span *ngIf="userInfo?.user_status === 'N' " class=""><app-icon class="text-danger"
+         [name]="'circle-fill'" [height]="12" [width]="12"></app-icon> Inactive</span>
+         <span *ngIf="userInfo?.user_status === 'A' " class=""><app-icon class="text-danger"
+         [name]="'circle-fill'" [height]="12" [width]="12"></app-icon> Archived</span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">Role/Access</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+      <dt class="col-md-4 col-lg-3">User Since</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'full'}}</dd>
+      <dt class="col-md-4 col-lg-3">Last Login</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'full'}}</dd>
+   </dl>
+</section>
