@@ -11,7 +11,7 @@
             <div class="row mb-3">
                 <div class="col-md-4 mb-3">
                     <label class="required" for="contentCategory">Post Type</label>
-                    <select class="form-select" id="contentCategory" formControlName="contentCategory" (change)="postTypeChange()">
+                    <select class="form-select" id="contentCategory" formControlName="contentCategory">
                         <option value="">Select</option>
                         <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
                     </select>

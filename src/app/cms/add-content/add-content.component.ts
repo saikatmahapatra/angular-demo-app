@@ -67,16 +67,6 @@ export class AddContentComponent implements OnInit {
     }
   }
 
-  postTypeChange() {
-    this.myForm.controls['contentDescription'].setValue('');
-    if(this.myForm.get('contentCategory')?.value === 'mandatory_holiday' || this.myForm.get('contentCategory')?.value === 'optional_holiday') {
-      this.showEditor = false;
-    } else {
-      this.showEditor = true;
-    }
-    
-  }
-
   onSubmit() {
     this.submitted = true;
     this.loading = true;
@@ -128,19 +118,12 @@ export class AddContentComponent implements OnInit {
   }
 
   patchFormValue(data: any) {
-    let text = data?.content_text;
-    if(data.content_type === 'mandatory_holiday' || data.content_type === 'optional_holiday') {
-      this.showEditor = false;
-      text = new Date(text);
-    } else {
-      this.showEditor = true;
-    }
     this.myForm.patchValue({
       id: data?.id,
       action: 'edit',
       contentCategory: data?.content_type,
       contentHeadline: data?.content_title,
-      contentDescription: text,
+      contentDescription: data?.content_text,
       contentStatus: data?.content_status
     });
   }
