@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppConfig } from '../@utils/const/app.config';
 
 @Component({
   selector: 'app-auth-layout',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthLayoutComponent implements OnInit {
   imgPath = 'assets/img/7.svg';
+  isProd = AppConfig.production;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
     if(localStorage.getItem('theme') === 'dark') {
