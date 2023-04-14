@@ -1,7 +1,5 @@
-import { Component, VERSION, OnInit, ChangeDetectorRef, AfterViewInit, Input, Output } from '@angular/core';
-import { CommonService } from './@core/services/common.service';
+import { Component, VERSION, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
-import { delay } from 'rxjs/operators';
 import { LoaderService } from './@core/services/loader.service';
 import { Meta, Title } from "@angular/platform-browser";
 import { AppConfig } from './@utils/const/app.config';
@@ -22,12 +20,6 @@ export class AppComponent implements OnInit {
     private meta: Meta
   ) {
     this.titleService.setTitle(AppConfig?.title || 'App');
-    
-    if(AppConfig.production) {
-      this.meta.addTags([
-        { name: 'description', content: 'Employee Portal of United Exploration India Private Limited. United Exploration India Private Limited delivers GIS, Remote Sensing and Minining Services across India and overseas.' }
-      ]); 
-    }
 
     this.router.events.subscribe((event: Event) => {
       if (!(event instanceof NavigationEnd)) {
@@ -52,5 +44,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (AppConfig.production) {
+      this.meta.addTags([
+        { name: 'description', content: 'Employee Portal of United Exploration India Private Limited. United Exploration India Private Limited delivers GIS, Remote Sensing and Minining Services across India and overseas.' }
+      ]);
+    }
   }
 }
