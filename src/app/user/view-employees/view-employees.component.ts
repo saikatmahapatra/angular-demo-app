@@ -48,7 +48,9 @@ export class ViewEmployeesComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    queryParams = queryParams.append('keywords', this.searchKeyword.trim());
+    if(this.searchKeyword.trim()) {
+      queryParams = queryParams.append('keywords', this.searchKeyword.trim());
+    }
     options = { params: queryParams, headers: headers };
     this.apiSvc.get(AppConfig.apiUrl.getEmployees, options).subscribe({
       next: (val: any) => {

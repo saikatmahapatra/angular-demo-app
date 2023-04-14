@@ -44,8 +44,8 @@ export class PostComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-
-    this.apiSvc.get(AppConfig.apiUrl.post, { headers: headers, params: queryParams }).subscribe((response: any) => {
+    let options = { headers: headers, params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.post, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.post = response?.data['data_rows'];
     });
