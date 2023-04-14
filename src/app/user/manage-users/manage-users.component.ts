@@ -51,8 +51,10 @@ export class ManageUsersComponent implements OnInit {
     let queryParams = new HttpParams();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    queryParams = queryParams.append('keywords', this.searchKeyword.trim());
-    let options = { headers: headers, queryParams: queryParams };
+    if(this.searchKeyword.trim()) {
+      queryParams = queryParams.append('keywords', this.searchKeyword.trim());
+    }
+    let options = { headers: headers, params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getUsers, options).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
