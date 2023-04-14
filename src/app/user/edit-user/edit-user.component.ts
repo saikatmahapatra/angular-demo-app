@@ -1,7 +1,8 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -45,9 +46,9 @@ export class EditUserComponent {
   minDateDoj: Date = new Date();
   maxDateDoj: Date = new Date();
 
-  myForm = this.fb.group({
+  userBasicForm = this.fb.group({
     id: [null],
-    action: ['createUser'],
+    action: ['editUser'],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
     lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
     workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
@@ -71,62 +72,75 @@ export class EditUserComponent {
     private fb: UntypedFormBuilder,
     private validator: FormValidationService
   ) {
-    this.getProfileData();
+
   }
 
   ngOnInit(): void {
-
+    this.getUserData();
   }
 
-  getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
-      this.designationList = val?.data.designations;
-      this.departmentList = val?.data?.departments,
-        this.employmentTypeList = val?.data?.employmentTypes
+  getUserData() {
+    this.activatedRoute.paramMap.subscribe(params => {
+      let userId = params.get('id') || '';
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append('id', userId);
+      queryParams = queryParams.append('pageName', 'viewEmpProfile');
+      let options = {};
+      options = { params: queryParams };
+
+      let formDataAPI = this.apiSvc.get(AppConfig.apiUrl.userFormData);
+      let userDataAPI = this.apiSvc.get(AppConfig.apiUrl.userDetails, options);
+
+      forkJoin([formDataAPI, userDataAPI]).subscribe({
+        next: (response: any) => {
+          // To fill data in form
+          this.designationList = response[0]?.data.designations;
+          this.departmentList = response[0]?.data?.departments;
+          this.employmentTypeList = response[0]?.data?.employmentTypes;
+          // User Data
+          this.userInfo = response[1]?.data?.user[0];
+          this.addressInfo = response[1]?.data?.address;
+          this.workExp = response[1]?.data?.workExp;
+          this.payrollInfo = response[1]?.data?.payrollInfo;
+          this.educationInfo = response[1]?.data?.education;
+          this.emergencyContact = response[1]?.data?.econtact;
+          this.userGovtIds = response[1]?.data?.userGovtIds;
+          this.userPhoto = response[1]?.data?.profilePic;
+          this.patchUserBasicDefailsForm();
+        },
+        error: (response: HttpErrorResponse) => {
+        }
+      });
     });
   }
 
-  getProfileData() {
-    let userId = null;
-    this.activatedRoute.paramMap.subscribe(params => {
-      //console.log('params =', params);
-      userId = params.get('id');
-      this.getProfile(userId);
-    })
-  }
-
-  getProfile(id?: any) {
-    let queryParams = new HttpParams();
-    if (id) {
-      queryParams = queryParams.append('id', id);
-    }
-    queryParams = queryParams.append('pageName', 'viewEmpProfile');
-    let options = {};
-    options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.userDetails, options).subscribe((response: any) => {
-      if (response.status == 'success') {
-        //console.log(response?.data);
-        this.userInfo = response?.data?.user[0];
-        this.addressInfo = response?.data?.address;
-        this.workExp = response?.data?.workExp;
-        this.payrollInfo = response?.data?.payrollInfo;
-        this.educationInfo = response?.data?.education;
-        this.emergencyContact = response?.data?.econtact;
-        this.userGovtIds = response?.data?.userGovtIds;
-        this.userPhoto = response?.data?.profilePic;
-      }
+  patchUserBasicDefailsForm() {
+    this.userBasicForm.patchValue({
+      id: this.userInfo?.id,
+      firstName: this.userInfo?.user_firstname,
+      lastName: this.userInfo?.user_lastname,
+      workPhone: this.userInfo?.user_phone2,
+      dateOfBirth: this.userInfo?.user_dob,
+      // gender: ,
+      // personalEmail: ,
+      // personalPhone: ,
+      // designation: ,
+      // department: ,
+      // dateOfJoining: ,
+      // employmentType: ,
+      // role: 
     });
   }
 
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.myForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.addUser, this.myForm.value).subscribe({
+    if (this.userBasicForm.valid) {
+      this.apiSvc.post(AppConfig.apiUrl.addUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message);
-            this.myForm.reset();
+            this.userBasicForm.reset();
             this.loading = false;
           }
         },
@@ -139,7 +153,7 @@ export class EditUserComponent {
       });
     } else {
       this.loading = false;
-      this.validator.validateAllFormFields(this.myForm);
+      this.validator.validateAllFormFields(this.userBasicForm);
     }
   }
 }
