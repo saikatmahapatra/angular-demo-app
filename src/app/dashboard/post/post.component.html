@@ -4,7 +4,7 @@
     <div class="mb-3" *ngFor="let item of post; let i = index;">
         <a class="post-item" [routerLink]="['post-details', item.id]" [state]="{ newsPageNumber: currentPageIndex }"
             [innerHTML]="item?.content_title"></a>
-        <span class="badge rounded-pill bg-light text-dark mx-2">{{item?.content_type}}</span>
+        <span class="badge rounded-pill mx-2 badge-cms-type">{{item?.content_type}}</span>
         <span class="text-muted small" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
     <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
