@@ -60,17 +60,17 @@ export const AppConfig = {
 
         // Academic
         academicFormData: 'academic/formData',
-        getEducation: 'academic/getEducation',
-        addEducation: 'academic/createEducation',
-        updateEducation: 'academic/updateEducation',
-        deleteEducation: 'academic/deleteEducation',
+        getEducation: 'academic/getAcademicRecord',
+        addEducation: 'academic/createAcademicRecord',
+        updateEducation: 'academic/updateAcademicRecord',
+        deleteEducation: 'academic/deleteAcademicRecord',
 
         // Employment
         experienceFormData: 'employment/formData',
-        getExperience: 'employment',
-        addExperience: 'employment',
-        updateExperience: 'employment',
-        deleteExperience: 'employment',
+        getExperience: 'employment/getExperience',
+        addExperience: 'employment/createExperience',
+        updateExperience: 'employment/updateExperience',
+        deleteExperience: 'employment/deleteExperience',
 
         // Payroll
         payrollFormData: 'payroll/formData',
