@@ -26,6 +26,7 @@ export class EditUserComponent {
   userPhoto: any;
   submitted = false;
   loading = false;
+  userStatus = '';
 
   DataGender: Array<any> = [
     { name: 'Male', id: 'M' },
@@ -57,6 +58,7 @@ export class EditUserComponent {
   maxDateDob: Date = new Date();
   minDateDoj: Date = new Date();
   maxDateDoj: Date = new Date();
+  DateOfRel!: Date;
 
   userBasicForm = this.fb.group({
     id: [null],
@@ -71,12 +73,21 @@ export class EditUserComponent {
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
-    role: ['3', Validators.required],
+    role: ['3', Validators.required]
+  });
+
+  userStatusForm = this.fb.group({
+    id: [null],
+    action: ['editUser'],
     accountStatus: ['', Validators.required],
-    statusChangeReason: ['', Validators.required],
-    dateOfRelease: [''],
+    statusChangeReason: [''],
+    dateOfRelease: [null],
     accountCloseComments: ['']
   });
+
+  isRequiredStatusChangeReason = false;
+  isRequiredDateOfRelease = false;
+  isRequiredAccountCloseComments = false;
 
   constructor(
     private apiSvc: ApiService,
@@ -126,6 +137,8 @@ export class EditUserComponent {
           this.userGovtIds = response[1]?.data?.userGovtIds;
           this.userPhoto = response[1]?.data?.profilePic;
           this.patchUserBasicDefailsForm();
+          this.patchUserAccountStatusDefailsForm();
+          this.userStatus = this.userInfo.user_status || '';
         },
         error: (response: HttpErrorResponse) => {
         }
@@ -151,6 +164,13 @@ export class EditUserComponent {
     });
   }
 
+  patchUserAccountStatusDefailsForm() {
+    this.userStatusForm.patchValue({
+      id: this.userInfo?.id,
+      accountStatus: this.userInfo?.user_status,
+    });
+  }
+
   onSubmit() {
     this.submitted = true;
     this.loading = true;
@@ -171,6 +191,29 @@ export class EditUserComponent {
     } else {
       this.loading = false;
       this.validator.validateAllFormFields(this.userBasicForm);
+    }
+  }
+
+  onSubmitUserStatus() {
+    this.submitted = true;
+    this.loading = true;
+    if (this.userStatusForm.valid) {
+      this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userBasicForm.value).subscribe({
+        next: (response: any) => {
+          this.alertSvc.success(response.message, true);
+          this.router.navigate(['/emp/manage']);
+          this.loading = false;
+        },
+        error: () => {
+          this.loading = false;
+        },
+        complete: () => {
+          this.loading = false;
+        }
+      });
+    } else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.userStatusForm);
     }
   }
 }
