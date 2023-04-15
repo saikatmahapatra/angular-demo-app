@@ -180,7 +180,7 @@
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label class="required" for="statusChangeReason">Reason of Status Change</label>
+                    <label [ngClass]="isRequiredStatusChangeReason ? 'required' : '' " for="statusChangeReason">Reason of Status Change</label>
                     <select class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
                         <option value="">Select</option>
                         <option [value]="data.id" *ngFor="let data of accountStatusReason; let i=index"
@@ -190,7 +190,7 @@
                         [control]="userStatusForm.controls['statusChangeReason']"></app-validation-error>
                 </div>
                 <div class="col-md-6">
-                    <label class="required" for="dateOfRelease">Date of Release</label>
+                    <label [ngClass]="isRequiredDateOfRelease ? 'required' : '' " for="dateOfRelease">Date of Release</label>
                     <p-calendar [(ngModel)]="DateOfRel" formControlName="dateOfRelease" [readonlyInput]="true"
                         inputId="dateOfRelease" styleClass="w-100" [showButtonBar]="false" [showIcon]="true"
                         appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
@@ -201,9 +201,9 @@
 
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <label for="accountCloseComments">Account Close Comments</label>
+                    <label for="accountCloseComments" [ngClass]="isRequiredAccountCloseComments ? 'required' : '' ">Comments</label>
                     <input type="text" class="form-control" id="accountCloseComments"
-                        formControlName="accountCloseComments" maxlength="150">
+                        formControlName="accountCloseComments" maxlength="150" placeholder="Write brief comments...">
                     <app-validation-error
                         [control]="userStatusForm.controls['accountCloseComments']"></app-validation-error>
                 </div>
