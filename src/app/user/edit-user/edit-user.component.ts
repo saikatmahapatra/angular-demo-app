@@ -15,7 +15,7 @@ import { addressType, userStatus } from 'src/app/@utils/const/data.array';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent {
-  userInfo: any;
+  userInfo: any =[];
   addressInfo: any = [];
   workExp: any = [];
   payrollInfo: any = [];
@@ -26,7 +26,6 @@ export class EditUserComponent {
   userPhoto: any;
   submitted = false;
   loading = false;
-  userStatus = '';
 
   DataGender: Array<any> = [
     { name: 'Male', id: 'M' },
@@ -78,7 +77,7 @@ export class EditUserComponent {
 
   userStatusForm = this.fb.group({
     id: [null],
-    action: ['editUser'],
+    action: ['editUserStatus'],
     accountStatus: ['', Validators.required],
     statusChangeReason: [''],
     dateOfRelease: [null],
@@ -138,7 +137,6 @@ export class EditUserComponent {
           this.userPhoto = response[1]?.data?.profilePic;
           this.patchUserBasicDefailsForm();
           this.patchUserAccountStatusDefailsForm();
-          this.userStatus = this.userInfo.user_status || '';
         },
         error: (response: HttpErrorResponse) => {
         }
@@ -197,8 +195,9 @@ export class EditUserComponent {
   onSubmitUserStatus() {
     this.submitted = true;
     this.loading = true;
+    console.log(this.userStatusForm.value);
     if (this.userStatusForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userBasicForm.value).subscribe({
+      this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           this.router.navigate(['/emp/manage']);

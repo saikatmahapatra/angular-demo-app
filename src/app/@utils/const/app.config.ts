@@ -10,19 +10,20 @@ export const AppConfig = {
     useMockServer: environment.useMockServer,
     version: environment.version,
     apiUrl: {
+        // Authentication, JWT Validation
         authenticate: 'auth/authenticate',
         validateToken: 'auth/validateToken',
         validateRolePermissions: 'auth/validateRolePermissions',
         checkEmail: 'auth/checkEmail',
         resetPassword: 'auth/resetPassword',
-        getUsers: 'user',
-        dashboardStat: 'dashboardStat',
-        post: 'cms',
+
+        // CMS
+        dashboardStat: 'cms/getDashboardStat',
         getPosts: 'cms/getPosts',
         getHolidays: 'cms/getHolidays',
-        addPost: 'cms',
-        updatePost: 'cms',
-        deletePost: 'cms',
+        addPost: 'cms/createPost',
+        updatePost: 'cms/updatePost',
+        deletePost: 'cms/deletePost',
         getContentCalendar: 'cms/getCalendar',
         addContentCalendar: 'cms/addCalendar',
         editContentCalendar: 'cms/editCalendar',
@@ -30,10 +31,12 @@ export const AppConfig = {
         addHoliday: 'cms/addHoliday',
         updateHoliday: 'cms/updateHoliday',
         deleteHoliday: 'cms/deleteHoliday',
-        userFormData: 'userFormData',
+
+        // User
+        getUsers: 'user/getUser',
+        userFormData: 'user/userFormData',
         markAsRead: 'cms/markAsRead',
-        addUser: 'user',
-        deleteUser: 'user',
+        addUser: 'user/createUser',
         userDetails: 'user/userDetails',
         getMyProfile: 'user/myProfile',
         changePassword: 'user/changePassword',
@@ -41,55 +44,74 @@ export const AppConfig = {
         updateUserData: 'user/updateUserData',
         updateUser: 'user/updateUser',
         updateUserStatus: 'user/updateUserStatus',
-        getAddress: 'address',
-        addAddress: 'address',
-        updateAddress: 'address',
-        deleteAddress: 'address',
+        userDropdown: 'user/userDropdown',
+        searchUser: 'user/search',
+        approvers: 'user/approvers',
+        changeApprovers: 'user/changeApprovers',
+        getEmployees: 'user/getEmp',
+        getReportees: 'user/getReportees',
+
+        // Address
+        getAddress: 'address/getAddress',
+        addAddress: 'address/createAddress',
+        updateAddress: 'address/updateAddress',
+        deleteAddress: 'address/deleteAddress',
+
+
+        // Academic
         academicFormData: 'academic/formData',
-        getEducation: 'academic',
-        addEducation: 'academic',
-        updateEducation: 'academic',
-        deleteEducation: 'academic',
+        getEducation: 'academic/getEducation',
+        addEducation: 'academic/createEducation',
+        updateEducation: 'academic/updateEducation',
+        deleteEducation: 'academic/deleteEducation',
+
+        // Employment
         experienceFormData: 'employment/formData',
         getExperience: 'employment',
         addExperience: 'employment',
         updateExperience: 'employment',
         deleteExperience: 'employment',
+
+        // Payroll
         payrollFormData: 'payroll/formData',
         getPayroll: 'payroll',
         addPayroll: 'payroll',
         updatePayroll: 'payroll',
         deletePayroll: 'payroll',
+
+        // Emergency Contact
         emergencyContactFormData: 'contact/formData',
         getEmergencyContact: 'contact',
         addEmergencyContact: 'contact',
         updateEmergencyContact: 'contact',
         deleteEmergencyContact: 'contact',
+
+        // Timesheet
         timesheetFormData: 'timesheet/formData',
         getTimesheet: 'timesheet',
         addTimesheet: 'timesheet',
         updateTimesheet: 'timesheet',
         deleteTimesheet: 'timesheet',
-        userDropdown: 'user/userDropdown',
+        timesheetReport: 'timesheet/report',
+
+        // Project Timesheet
         projectDropdown: 'project/projectDropdown',
         getProject: 'project',
         addProject: 'project',
         updateProject: 'project',
         deleteProject: 'project',
+
+        // Timesheet Project Tasks
         taskFormData: 'task/formData',
         getTask: 'task',
         addTask: 'task',
         updateTask: 'task',
         deleteTask: 'task',
-        searchUser: 'user/search',
-        approvers: 'user/approvers',
-        changeApprovers: 'user/changeApprovers',
-        getEmployees: 'user/getEmp',
-        timesheetReport: 'timesheet/report',
+
+        // Leave Management
         getLeaves: 'leave',
         updateLeave: 'leave/updateLeaveData',
         applyLeave: 'leave/apply',
-        getLeaveData: 'leave/getLeaveData',
-        getReportees: 'user/getReportees'
+        getLeaveData: 'leave/getLeaveData'
     }
 };

@@ -29,9 +29,10 @@ export class PostDetailsComponent implements OnInit {
     if (this.itemId) {
       queryParams = queryParams.append('id', this.itemId);
     }
+    queryParams = queryParams.append('pageName', 'dashboardPosts');
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.post, options).subscribe({
+    this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe({
       next: (response: any) => {
         this.post = response?.data['data_rows'][0];
       },

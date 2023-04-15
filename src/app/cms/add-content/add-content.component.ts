@@ -103,6 +103,7 @@ export class AddContentComponent implements OnInit {
       queryParams = queryParams.append('id', this.id);
     }
     let options = {};
+    queryParams = queryParams.append('pageName', 'managePosts');
     options = { params: queryParams };
     this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe({
       next: (response: any) => {

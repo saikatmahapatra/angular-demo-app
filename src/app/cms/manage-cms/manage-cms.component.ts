@@ -52,6 +52,7 @@ export class ManageCmsComponent implements OnInit {
     }
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    params = params.append('pageName', 'managePosts');
     this.apiSvc.get(AppConfig.apiUrl.getPosts, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];

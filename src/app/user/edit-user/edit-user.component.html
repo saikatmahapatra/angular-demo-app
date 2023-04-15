@@ -11,12 +11,12 @@
     <div>{{userInfo?.employment_type_name}}</div>
 </ng-container>
 
-<div class="alert alert-danger my-4" *ngIf="userStatus === 'A'">
+<div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
     <strong><app-icon class="me-2" [name]="'info-circle'"></app-icon></strong> This account has already been closed
     permanently. You are not allowed to edit any information post closure of account.
 </div>
 
-<div *ngIf="userStatus !== 'A' " class="row mt-4">
+<div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">
     <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Basic & Core Information</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
@@ -140,13 +140,13 @@
     </div>
 </div>
 
-<div *ngIf="userStatus !== 'A'" class="row my-4">
+<div *ngIf="userInfo?.user_status !== 'A'" class="row my-4">
     <h5 class="text-primary"><app-icon [name]="'flag-fill'"></app-icon> Account Activation & Deactivation Setup</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userStatusForm" class="form app-form" (ngSubmit)="onSubmitUserStatus()">
             <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action" value="editUser">
+            <input type="hidden" formControlName="action" value="editUserStatus">
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label class="required" for="accountStatus">Account Status</label>

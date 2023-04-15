@@ -41,11 +41,12 @@ export class PostComponent implements OnInit {
     if (this.searchKeyword) {
       queryParams = queryParams.append('searchBy', this.searchKeyword);
     }
+    queryParams = queryParams.append('pageName', 'dashboardPosts');
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     let options = { headers: headers, params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.post, options).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.post = response?.data['data_rows'];
     });
