@@ -39,14 +39,14 @@ export class EditUserComponent {
 
   accountStatus: Array<any> = [
     { name: 'Active', id: 'Y' },
-    { name: 'Deactivate', id: 'N' },
-    { name: 'Close/Archive Account', id: 'A' },
+    { name: 'Inactive', id: 'N' },
+    { name: 'Close Account Permanently', id: 'A' },
   ];
 
   accountStatusReason: Array<any> = [
     { name: 'First-time User/New User', id: 'N' },
-    { name: 'Revoke Access - Temporary', id: 'B' },
-    { name: 'Revoke Access Permanently - No Longer Employed', id: 'D' },
+    { name: 'Block Temporary', id: 'B' },
+    { name: 'Resigned/Released/No Longer Employed', id: 'D' },
   ];
 
   departmentList: any;
