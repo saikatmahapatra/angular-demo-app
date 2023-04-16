@@ -9,7 +9,7 @@ import { AdminGuard } from '../@core/guards/admin.guard';
 const routes: Routes = [
   {
     path: '', component: TimesheetLayoutComponent, children: [
-      { path: '', component: TimesheetFormComponent },
+      { path: 'log-work', component: TimesheetFormComponent },
       { path: 'manage', canActivate: [AdminGuard], component: ManageTimesheetComponent },
       { path: 'edit-timesheet/:id', component: EditTimesheetComponent },
       { path: 'report', canActivate: [AdminGuard], component: TimesheetReportComponent },

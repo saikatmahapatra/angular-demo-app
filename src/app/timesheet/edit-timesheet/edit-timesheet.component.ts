@@ -97,7 +97,7 @@ export class EditTimesheetComponent implements OnInit {
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
-            this.router.navigate(['timesheet']);
+            this.router.navigate(['timesheet/log-work']);
           }
         },
         error: () => {

@@ -10,7 +10,7 @@ import { AdminGuard } from '../@core/guards/admin.guard';
 const routes: Routes = [
   {
     path: '', component: CmsLayoutComponent, children: [
-      { path: '', canActivate: [AdminGuard], component: ManageCmsComponent },
+      { path: 'manage-cms', canActivate: [AdminGuard], component: ManageCmsComponent },
       { path: 'add', canActivate: [AdminGuard], component: AddContentComponent },
       { path: 'edit/:id', canActivate: [AdminGuard], component: AddContentComponent },
       { path: 'holiday-calendar', component: ViewHolidaysComponent },

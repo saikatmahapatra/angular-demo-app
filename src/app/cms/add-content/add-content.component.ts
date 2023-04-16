@@ -73,7 +73,7 @@ export class AddContentComponent implements OnInit {
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addPost, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.router.navigate(['cms']);
+          this.router.navigate(['cms/manage-cms']);
           this.alertSvc.success(response.message, true);
         },
         error: () => { this.loading = false; },
@@ -83,7 +83,7 @@ export class AddContentComponent implements OnInit {
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updatePost, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.router.navigate(['cms']);
+          this.router.navigate(['cms/manage-cms']);
           this.alertSvc.success(response.message, true);
         },
         error: () => { this.loading = false; },
