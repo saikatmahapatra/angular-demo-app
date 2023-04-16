@@ -1,109 +1,109 @@
 <div class="sbar-links ms-2 my-3">
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
     <li class="my-3">
-      <h6 class="px-3"><app-icon class="me-2" [name]="'speedometer'" [width]="20" [height]="20"></app-icon> Getting Started</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [name]="'speedometer'" [width]="20" [height]="20"></app-icon> Getting Started</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Dashboard</a>
+            <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="nav-link">Dashboard</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3" *ngIf="userRole === '1' ">
-      <h6 class="px-3"><app-icon class="me-2" [name]="'person-badge-fill'" [width]="20" [height]="20"></app-icon> Admin Menu</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [name]="'person-badge-fill'" [width]="20" [height]="20"></app-icon> Admin Console</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Employee Management</a>
+            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Employee Management</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Add New Employee</a>
+            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="nav-link">Add New Employee</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Contents</a>
+            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Contents</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Holiday
+            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Holiday
               Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Management</a>
+            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Balance</a>
+            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Balance</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Timesheet Report</a>
+            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet Report</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Projects</a>
+            <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Projects</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Tasks</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-
-    <li class="my-3">
-      <h6 class="px-3"><app-icon class="me-2" [name]="'fingerprint'" [width]="20" [height]="20"></app-icon> Employee Self Services</h6>
-      <div class="collapse show" id="customize-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
-          <li>
-            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Log Timesheet</a>
-          </li>
-          <li>
-            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Workflow Approval</a>
-          </li>
-          <li>
-            <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Apply Leave</a>
-          </li>
-          <li>
-            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Leave History</a>
+            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Tasks</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3">
-      <h6 class="px-3"><app-icon class="me-2" [name]="'globe'" [width]="20" [height]="20"></app-icon> My Organization</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [name]="'fingerprint'" [width]="20" [height]="20"></app-icon> Employee Self Services</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Know Employees</a>
+            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Reportees</a>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Workflow Approval</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Change Workflow
+            <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="nav-link">Apply Leave</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Leave History</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="my-3">
+      <h6 class="mx-2"><app-icon class="me-2" [name]="'globe'" [width]="20" [height]="20"></app-icon> My Organization</h6>
+      <div class="collapse show" id="customize-collapse">
+        <ul class="list-unstyled fw-normal pb-1 ">
+          <li>
+            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']" class="nav-link">Know Employees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Reportees</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change Workflow
               Approvers</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-calendar']"  [routerLinkActive]="['active-nav-link']"class="d-inline-flex align-items-center">Holidays</a>
+            <a [routerLink]="['/cms/holiday-calendar']"  [routerLinkActive]="['active-nav-link']" class="nav-link">Holidays</a>
           </li>
         </ul>
       </div>
     </li>
 
     <li class="my-3">
-      <h6 class="px-3"><app-icon class="me-2" [name]="'person-fill'" [width]="20" [height]="20"></app-icon> My Account</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [name]="'person-fill'" [width]="20" [height]="20"></app-icon> My Account</h6>
 
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Profile</a>
+            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Profile</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center me-1">Change
+            <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
               Password</a>
           </li>
 
           <li>
             <a [routerLink]="['/auth/login']" [routerLinkActive]="['active-nav-link']" [queryParams]="{logout: true}"
-              class="d-inline-flex align-items-center me-1">Logout</a>
+              class="nav-link">Logout</a>
           </li>
         </ul>
       </div>
