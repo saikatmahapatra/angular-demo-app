@@ -74,10 +74,10 @@ export const AppConfig = {
 
         // Payroll
         payrollFormData: 'payroll/formData',
-        getPayroll: 'payroll',
-        addPayroll: 'payroll',
-        updatePayroll: 'payroll',
-        deletePayroll: 'payroll',
+        getPayroll: 'payroll/getPayroll',
+        addPayroll: 'payroll/createPayroll',
+        updatePayroll: 'payroll/updatePayroll',
+        deletePayroll: 'payroll/deletePayroll',
 
         // Emergency Contact
         emergencyContactFormData: 'contact/formData',
@@ -88,30 +88,30 @@ export const AppConfig = {
 
         // Timesheet
         timesheetFormData: 'timesheet/formData',
-        getTimesheet: 'timesheet',
-        addTimesheet: 'timesheet',
-        updateTimesheet: 'timesheet',
-        deleteTimesheet: 'timesheet',
-        timesheetReport: 'timesheet/report',
+        getTimesheet: 'timesheet/getTimesheet',
+        addTimesheet: 'timesheet/createTimesheet',
+        updateTimesheet: 'timesheet/updateTimesheet',
+        deleteTimesheet: 'timesheet/deleteTimesheet',
+        timesheetReport: 'timesheet/getReport',
 
         // Project Timesheet
         projectDropdown: 'project/projectDropdown',
-        getProject: 'project',
-        addProject: 'project',
-        updateProject: 'project',
-        deleteProject: 'project',
+        getProject: 'project/getProject',
+        addProject: 'project/createProject',
+        updateProject: 'project/updateProject',
+        deleteProject: 'project/deleteProject',
 
         // Timesheet Project Tasks
         taskFormData: 'task/formData',
-        getTask: 'task',
-        addTask: 'task',
-        updateTask: 'task',
-        deleteTask: 'task',
+        getTask: 'task/getTask',
+        addTask: 'task/createTask',
+        updateTask: 'task/updateTask',
+        deleteTask: 'task/deleteTask',
 
         // Leave Management
-        getLeaves: 'leave',
-        updateLeave: 'leave/updateLeaveData',
-        applyLeave: 'leave/apply',
-        getLeaveData: 'leave/getLeaveData'
+        getLeaves: 'leave/getLeave',
+        applyLeave: 'leave/createLeave',
+        updateLeave: 'leave/updateLeave',
+        getLeaveData: 'leave/getLeaveApproverData'
     }
 };
