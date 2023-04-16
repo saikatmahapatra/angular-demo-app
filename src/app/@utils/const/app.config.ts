@@ -65,12 +65,12 @@ export const AppConfig = {
         updateEducation: 'academic/updateAcademicRecord',
         deleteEducation: 'academic/deleteAcademicRecord',
 
-        // Employment
-        experienceFormData: 'employment/formData',
-        getExperience: 'employment/getExperience',
-        addExperience: 'employment/createExperience',
-        updateExperience: 'employment/updateExperience',
-        deleteExperience: 'employment/deleteExperience',
+        // Work Experience
+        experienceFormData: 'workexperience/formData',
+        getExperience: 'workexperience/getExperience',
+        addExperience: 'workexperience/createExperience',
+        updateExperience: 'workexperience/updateExperience',
+        deleteExperience: 'workexperience/deleteExperience',
 
         // Payroll
         payrollFormData: 'payroll/formData',
@@ -81,10 +81,10 @@ export const AppConfig = {
 
         // Emergency Contact
         emergencyContactFormData: 'contact/formData',
-        getEmergencyContact: 'contact',
-        addEmergencyContact: 'contact',
-        updateEmergencyContact: 'contact',
-        deleteEmergencyContact: 'contact',
+        getEmergencyContact: 'contact/getContact',
+        addEmergencyContact: 'contact/createContact',
+        updateEmergencyContact: 'contact/updateContact',
+        deleteEmergencyContact: 'contact/deleteContact',
 
         // Timesheet
         timesheetFormData: 'timesheet/formData',
