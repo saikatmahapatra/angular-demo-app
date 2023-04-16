@@ -5,7 +5,7 @@
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/']" class="d-inline-flex align-items-center">Dashboard</a>
+            <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Dashboard</a>
           </li>
         </ul>
       </div>
@@ -16,32 +16,32 @@
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/manage']" class="d-inline-flex align-items-center">Employee Management</a>
+            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Employee Management</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/add']" class="d-inline-flex align-items-center">Add New Employee</a>
+            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Add New Employee</a>
           </li>
           <li>
-            <a [routerLink]="['/cms']" class="d-inline-flex align-items-center">Manage Contents</a>
+            <a [routerLink]="['/cms']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Contents</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-management']" class="d-inline-flex align-items-center">Holiday
+            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Holiday
               Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/manage']" class="d-inline-flex align-items-center">Leave Management</a>
+            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/balance']" class="d-inline-flex align-items-center">Leave Balance</a>
+            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Balance</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet/report']" class="d-inline-flex align-items-center">Timesheet Report</a>
+            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Timesheet Report</a>
           </li>
           <li>
-            <a [routerLink]="['/project']" class="d-inline-flex align-items-center">Manage Projects</a>
+            <a [routerLink]="['/project']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Projects</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" class="d-inline-flex align-items-center">Manage Tasks</a>
+            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Manage Tasks</a>
           </li>
         </ul>
       </div>
@@ -52,16 +52,16 @@
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/timesheet']" class="d-inline-flex align-items-center">Log Timesheet</a>
+            <a [routerLink]="['/timesheet']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Log Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/requests-to-approve']" class="d-inline-flex align-items-center">Leave Workflow Approval</a>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Leave Workflow Approval</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/apply']" class="d-inline-flex align-items-center">Apply Leave</a>
+            <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Apply Leave</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/history']" class="d-inline-flex align-items-center">My Leave History</a>
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Leave History</a>
           </li>
         </ul>
       </div>
@@ -72,17 +72,17 @@
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/view-employees']" class="d-inline-flex align-items-center">Know Employees</a>
+            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Know Employees</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/view-reportees']" class="d-inline-flex align-items-center">My Reportees</a>
+            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Reportees</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/change-approvers']" class="d-inline-flex align-items-center">Change Workflow
+            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">Change Workflow
               Approvers</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-calendar']" class="d-inline-flex align-items-center">Holidays</a>
+            <a [routerLink]="['/cms/holiday-calendar']"  [routerLinkActive]="['active-nav-link']"class="d-inline-flex align-items-center">Holidays</a>
           </li>
         </ul>
       </div>
@@ -94,15 +94,15 @@
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/my-profile']" class="d-inline-flex align-items-center">My Profile</a>
+            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center">My Profile</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/change-password']" class="d-inline-flex align-items-center me-1">Change
+            <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="d-inline-flex align-items-center me-1">Change
               Password</a>
           </li>
 
           <li>
-            <a [routerLink]="['/auth/login']" [queryParams]="{logout: true}"
+            <a [routerLink]="['/auth/login']" [routerLinkActive]="['active-nav-link']" [queryParams]="{logout: true}"
               class="d-inline-flex align-items-center me-1">Logout</a>
           </li>
         </ul>
