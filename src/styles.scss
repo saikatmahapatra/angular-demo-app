@@ -165,13 +165,13 @@ label {
 
     &:hover{
       color: $white;
-      background-color: rgba($primary, 0.85);
+      background-color: rgba($primary, 0.3);
       //background-color: rgba(13, 110, 253, 0.1);
     }
   }
   a.active-nav-link {
     color: $white;
-    background-color: rgba($primary, 0.85);
+    background-color: rgba($primary, .85);
   }
 }
 

@@ -11,7 +11,7 @@ import { AdminGuard } from '../@core/guards/admin.guard';
 const routes: Routes = [
   {
     path: '', canActivate: [AdminGuard], component: ProjectLayoutComponent, children: [
-      { path: '', component: ManageProjectComponent },
+      { path: 'manage-project', component: ManageProjectComponent },
       { path: 'add-project', component: AddEditProjectComponent },
       { path: 'edit-project/:id', component: AddEditProjectComponent },
       { path: 'add-task', component: AddEditTaskComponent },
