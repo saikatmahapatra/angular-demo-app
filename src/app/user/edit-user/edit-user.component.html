@@ -1,4 +1,4 @@
-<h1>Edit Employee</h1>
+<h1>Edit Profile & Account Settings</h1>
 <div class="back-to-page mb-4">
     <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
 </div>
@@ -12,12 +12,12 @@
 </ng-container>
 
 <div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
-    <strong><app-icon class="me-2" [name]="'info-circle'"></app-icon></strong> This account has already been closed
+    <app-icon class="me-2" [name]="'info-circle'"></app-icon> This account has already been closed
     permanently. You are not allowed to edit any information post closure of account.
 </div>
 
 <div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">
-    <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Basic & Core Information</h5>
+    <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Edit Core Information</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -118,7 +118,7 @@
                         <label class="form-check-label" for="inlineRadioUserRole_{{i}}">{{data.name}}</label>
                     </div>
                     <div class="small alert alert-info" *ngIf="userBasicForm.controls['role'].value === '1'">
-                        <strong>Note: </strong>Administrator role has more access such as Add/Edit/Delete
+                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Administrator role has more access such as Add/Edit/Delete
                         items. Default employee role should be choosed as "User".
                     </div>
 
@@ -153,17 +153,17 @@
                     </div>
                     <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
-                        <strong>Info: </strong> <strong>Active</strong> employee has permission to login and access the portal.
+                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Active employee has permission to login and access the portal.
                     </div>
                     <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
-                        <strong>Info: </strong> <strong>Inactive</strong> employee will be prevented from login or use the portal. You can
+                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Inactive employee will be prevented from login or use the portal. You can
                         change it to "Active" as required.
                     </div>
 
                     <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                        <strong>Info: </strong> Close Account indicates you are going to delete the employee.
+                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Close Account indicates you are going to delete the employee.
                         Employee will be permanently blocked from login or re-activation. Choose this option when a
                         employee resign.
                     </div>

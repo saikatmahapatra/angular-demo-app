@@ -202,7 +202,8 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          this.router.navigate(['/emp/manage'])
+          //this.router.navigate(['/emp/manage']);
+          window.location.reload();
           this.loading = false;
         },
         error: () => {
@@ -226,7 +227,8 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          this.router.navigate(['/emp/manage']);
+          //this.router.navigate(['/emp/manage']);
+          window.location.reload();
           this.loading = false;
         },
         error: () => {
