@@ -44,9 +44,7 @@ export class EditUserComponent {
   ];
 
   accountStatusReason: Array<any> = [
-    { name: 'First-time User/New User', id: 'N' },
-    { name: 'Block Temporary', id: 'B' },
-    { name: 'Resigned/Released/No Longer Employed', id: 'D' },
+    { name: 'Resignation/Released', id: 'D' },
   ];
 
   departmentList: any;
@@ -114,6 +112,15 @@ export class EditUserComponent {
     // Emit null, to indicate no error occurred.
     return of(null);
   }
+
+
+  leaveBalanceForm = this.fb.group({
+    id: [null],
+    cl: [null, [Validators.required, Validators.max(30)]],
+    sl: [null, [Validators.required, Validators.max(20)]],
+    pl: [null, [Validators.required, Validators.max(100)]],
+    ol: [null, [Validators.required, Validators.max(4)]]
+  });
 
   constructor(
     private apiSvc: ApiService,
@@ -243,4 +250,32 @@ export class EditUserComponent {
       this.validator.validateAllFormFields(this.userStatusForm);
     }
   }
+
+
+  saveLeaveBalance() {
+    this.submitted = true;
+    this.loading = true;
+    console.log(this.userStatusForm.value);
+    if (this.userStatusForm.valid) {
+      this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.userStatusForm.value).subscribe({
+        next: (response: any) => {
+          this.alertSvc.success(response.message, true);
+          //this.router.navigate(['/emp/manage']);
+          window.location.reload();
+          this.loading = false;
+        },
+        error: () => {
+          this.loading = false;
+        },
+        complete: () => {
+          this.loading = false;
+        }
+      });
+    } else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.userStatusForm);
+    }
+  }
+
+
 }

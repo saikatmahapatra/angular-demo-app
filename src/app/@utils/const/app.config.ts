@@ -50,6 +50,7 @@ export const AppConfig = {
         changeApprovers: 'user/changeApprovers',
         getEmployees: 'user/getEmp',
         getReportees: 'user/getReportees',
+        saveLeaveBalance: 'user/saveLeaveBalance',
 
         // Address
         getAddress: 'address/getAddress',
