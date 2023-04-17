@@ -25,6 +25,8 @@ export class FormValidationService {
       required: 'The field is required.',
       minlength: `The field must be at least ${validatorValue?.requiredLength} characters long.`,
       maxlength: `The field cannot be more than ${validatorValue?.requiredLength} characters long.`,
+      min: `Min value must be at least ${validatorValue?.min}.`,
+      max: `Value should not exceed more than ${validatorValue?.max}.`,
       email: 'Please enter a valid email address.',
       validEmail: 'Please enter a valid email address i.e name@example.com.',
       phoneNumber: 'Please enter a 10 digit phone number.',
@@ -39,7 +41,8 @@ export class FormValidationService {
       userNameExists: 'This username is already registered',
       invalidPAN: 'Please enter a valid PAN number',
       minLengthArray: 'Please select at least one date from the calendar.',
-      invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.'
+      invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.',
+      invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -122,6 +125,12 @@ export class FormValidationService {
     const regex = new RegExp(regEx.alphanumericWithSpaceAllowedChars);
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidAlphaNumericWithSpace': true };
+  }
+
+  numericTwoDecimal(control: AbstractControl) {    
+    const regex = new RegExp(regEx.numeric_two_decimal_places);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidNumericTwoDecimal': true };
   }
 
 }
