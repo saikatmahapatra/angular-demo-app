@@ -223,7 +223,7 @@ label {
 
 .p-datepicker table td>span.p-highlight,
 .p-datepicker table td.p-datepicker-today>span.p-highlight {
-  color: $primaryColor;
+  color: $primaryColor !important;
 }
 
 .datetimepicker {
@@ -325,6 +325,10 @@ label {
   .p-datatable .p-sortable-column:not(.p-highlight):hover,
   .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody>tr:not(.p-highlight):hover {
     background: var(--bs-light-bg-subtle);
+  }
+
+  .p-datepicker table td.p-datepicker-today > span {
+    color: $gray-900;
   }
 
   .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,

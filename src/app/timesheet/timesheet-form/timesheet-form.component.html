@@ -1,5 +1,5 @@
-<h1>Timesheet - Log Work</h1>
-<h5 class="mt-1 mb-4">{{monthName}}, {{year}}</h5>
+<h1>Timesheet</h1>
+<h4 class="my-3">{{monthName}}, {{year}}</h4>
 <div class="row">
   <div class="col-md-9">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -95,7 +95,6 @@
 </div>
 
 <div class="row mb-4">
-  <h4>Your Timesheet of {{monthName}}, {{year}}</h4>
   <app-view-timesheet [timeSheetLogData]="timesheetData"
     (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
 </div>

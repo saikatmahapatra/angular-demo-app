@@ -1,36 +1,40 @@
 <div class="table-responsive mt-3">
-    <table class="table table-sm">
-        <thead>
+    <p-table [value]="timeSheetLogData" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                Work Log
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
             <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Project</th>
-                <th scope="col">Task</th>
-                <th scope="col">Hours</th>
-                <th scope="col">Descr.</th>
-                <th scope="col">Action</th>
+                <th pSortableColumn="timesheet_date">Date</th>
+                <th pSortableColumn="project_name">Project</th>
+                <th pSortableColumn="task_name">Task</th>
+                <th pSortableColumn="timesheet_hours">Hours</th>
+                <th pSortableColumn="timesheet_description">Descr.</th>
+                <th>Action</th>
             </tr>
-        </thead>
-        <tbody *ngIf="timeSheetLogData.length > 0">
-            <tr *ngFor="let data of timeSheetLogData; let i = index">
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
                 <td>{{data?.timesheet_date}}</td>
                 <td>{{data?.project_name}}</td>
                 <td>{{data?.task_name}}</td>
                 <td>{{data?.timesheet_hours}}</td>
                 <td>{{data?.timesheet_description}}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-secondary me-1" [disabled]="disableButtons(data?.timesheet_date)" (click)="editItem(data.id)">
-                        <app-icon [name]="'pencil'"></app-icon>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger" [disabled]="disableButtons(data?.timesheet_date)" (click)="deleteItem(data.id, data.timesheet_date)">
-                        <app-icon [name]="'trash3'"></app-icon>
-                    </button>
+                    <button [disabled]="disableButtons(data?.timesheet_date)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-secondary mr-2" (click)="editItem(data.id)"></button>
+                    <button [disabled]="disableButtons(data?.timesheet_date)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" (click)="deleteItem(data.id, data.timesheet_date)"></button>
                 </td>
             </tr>
-        </tbody>
-        <tbody *ngIf="!timeSheetLogData || timeSheetLogData.length <= 0">
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="6" class="text-danger"> <app-icon [name]="'exclamation-circle'"></app-icon> No records found </td>
+                <td colspan="6">No records found.</td>
             </tr>
-        </tbody>
-    </table>
+        </ng-template>
+    </p-table>
 </div>
+
+
+
