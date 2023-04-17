@@ -1,8 +1,8 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, UntypedFormBuilder, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -15,7 +15,7 @@ import { addressType, userStatus } from 'src/app/@utils/const/data.array';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent {
-  userInfo: any =[];
+  userInfo: any = [];
   addressInfo: any = [];
   workExp: any = [];
   payrollInfo: any = [];
@@ -74,18 +74,46 @@ export class EditUserComponent {
     role: ['3', Validators.required]
   });
 
+  isRequiredStatusChangeReason = true;
+  isRequiredDateOfRelease = true;
+  isRequiredAccountCloseComments = true;
+
+  
   userStatusForm = this.fb.group({
     id: [null],
     action: ['editUserStatus'],
-    accountStatus: ['', Validators.required],
+    accountStatus: ['', {
+      validators: [
+        Validators.required
+      ],
+      asyncValidators: [this.conditionalStatus]
+    }],
     statusChangeReason: [''],
     dateOfRelease: [null],
     accountCloseComments: ['']
   });
 
-  isRequiredStatusChangeReason = false;
-  isRequiredDateOfRelease = false;
-  isRequiredAccountCloseComments = false;
+  conditionalStatus(control: AbstractControl): Observable<ValidationErrors | null> {
+    const accountStatus: string = control.value;
+    const statusChangeReason = control.parent?.get('statusChangeReason');
+    const dateOfRelease = control.parent?.get('dateOfRelease');
+    const accountCloseComments = control.parent?.get('accountCloseComments');
+    if (accountStatus === 'A') {
+      // Emit an object with a validation error.
+      statusChangeReason?.setValidators([Validators.required]);
+      dateOfRelease?.setValidators([Validators.required]);
+      accountCloseComments?.setValidators([Validators.required]);
+    } else {
+      statusChangeReason?.clearValidators();
+      dateOfRelease?.clearValidators();
+      accountCloseComments?.clearValidators();
+    }
+    statusChangeReason?.updateValueAndValidity();
+    dateOfRelease?.updateValueAndValidity();
+    accountCloseComments?.updateValueAndValidity();
+    // Emit null, to indicate no error occurred.
+    return of(null);
+  }
 
   constructor(
     private apiSvc: ApiService,

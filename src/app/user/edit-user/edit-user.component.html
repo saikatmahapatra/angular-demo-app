@@ -147,23 +147,23 @@
                     <div>
                         <div class="form-check form-check-inline" *ngFor="let data of accountStatus; let i=index">
                             <input class="form-check-input" type="radio" id="inlineRadioStatus_{{i}}" [value]="data.id"
-                                formControlName="accountStatus">
+                                formControlName="accountStatus" >
                             <label class="form-check-label" for="inlineRadioStatus_{{i}}">{{data.name}}</label>
                         </div>
                     </div>
-                    <div class="small alert alert-success"
+                    <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
-                        <strong>Active:</strong> Employee has permission to login and access the portal.
+                        <strong>Info: </strong> <strong>Active</strong> employee has permission to login and access the portal.
                     </div>
-                    <div class="small alert alert-warning"
+                    <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
-                        <strong>Inactive:</strong> Employee will be prevented from login or use the portal. You can
+                        <strong>Info: </strong> <strong>Inactive</strong> employee will be prevented from login or use the portal. You can
                         change it to "Active" as required.
                     </div>
 
-                    <div class="small alert alert-danger"
+                    <div class="small alert alert-info"
                         *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                        <strong>Close Account:</strong> Close Account indicates you are going to delete the employee.
+                        <strong>Info: </strong> Close Account indicates you are going to delete the employee.
                         Employee will be permanently blocked from login or re-activation. Choose this option when a
                         employee resign.
                     </div>
@@ -172,10 +172,10 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3"  *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
                 <div class="col-md-6">
                     <label [ngClass]="isRequiredStatusChangeReason ? 'required' : '' " for="statusChangeReason">Reason of Status Change</label>
-                    <select class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
+                    <select  class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
                         <option value="">Select</option>
                         <option [value]="data.id" *ngFor="let data of accountStatusReason; let i=index"
                             [innerHTML]="data.name"></option>
@@ -185,7 +185,7 @@
                 </div>
                 <div class="col-md-6">
                     <label [ngClass]="isRequiredDateOfRelease ? 'required' : '' " for="dateOfRelease">Date of Release</label>
-                    <p-calendar [(ngModel)]="DateOfRel" formControlName="dateOfRelease" [readonlyInput]="true"
+                    <p-calendar  [(ngModel)]="DateOfRel" formControlName="dateOfRelease" [readonlyInput]="true"
                         inputId="dateOfRelease" styleClass="w-100" [showButtonBar]="false" [showIcon]="true"
                         appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
                     <app-validation-error [control]="userStatusForm.controls['dateOfRelease']"></app-validation-error>
@@ -193,10 +193,10 @@
 
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-3"  *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
                 <div class="col-md-12">
                     <label for="accountCloseComments" [ngClass]="isRequiredAccountCloseComments ? 'required' : '' ">Comments</label>
-                    <input type="text" class="form-control" id="accountCloseComments"
+                    <input  type="text" class="form-control" id="accountCloseComments"
                         formControlName="accountCloseComments" maxlength="150" placeholder="Write brief comments...">
                     <app-validation-error
                         [control]="userStatusForm.controls['accountCloseComments']"></app-validation-error>
