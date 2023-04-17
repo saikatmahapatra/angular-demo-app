@@ -60,12 +60,6 @@
 
             <div class="row mb-3 mb-2">
                 <div class="col-md-6">
-                    <label class="" for="workEmail">Registered/Work Email (non-editable)</label>
-                    <input type="text" class="form-control" id="workEmail" formControlName="workEmail" readonly
-                        [disabled]="true">
-                    <app-validation-error [control]="userBasicForm.controls['workEmail']"></app-validation-error>
-                </div>
-                <div class="col-md-6">
                     <label for="workPhone">Work Phone</label>
                     <input type="text" class="form-control" id="workPhone" formControlName="workPhone" maxlength="10">
                     <app-validation-error [control]="userBasicForm.controls['workPhone']"></app-validation-error>
