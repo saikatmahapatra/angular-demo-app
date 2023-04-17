@@ -15,9 +15,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   encapsulation: ViewEncapsulation.None
 })
 export class TimesheetFormComponent implements OnInit {
-  date1!: Date;
-  dates: Date[] | undefined;
-  maxDateCount = 4;
+  maxDateCount = 5;
   userId!: null;
   submitted = false;
   loading = false;
@@ -41,7 +39,7 @@ export class TimesheetFormComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    timeSheetDates: this.fb.array([], this.validator.minLengthArray),
+    timeSheetDates: [null, Validators.required],
     project: ['', Validators.required],
     task: ['', Validators.required],
     hours: ['', Validators.required],
@@ -78,16 +76,16 @@ export class TimesheetFormComponent implements OnInit {
     this.year = today.getFullYear();
 
     this.minDate = new Date();
-    this.minDate.setDate(today.getDate() - 3);
+    this.minDate.setDate(today.getDate() - 4);
 
     this.maxDate = new Date();
     this.maxDate = today;
     this.monthName = this.monthNames[this.month - 1];
   }
 
-  get timeSheetDates() {
-    return this.myForm.controls["timeSheetDates"] as UntypedFormArray;
-  }
+  // get timeSheetDates() {
+  //   return this.myForm.controls["timeSheetDates"] as UntypedFormArray;
+  // }
 
   ngOnInit(): void {
     this.getFormData();
@@ -169,35 +167,7 @@ export class TimesheetFormComponent implements OnInit {
     }
 
   }
-
-  // viewTimesheetLog() {
-  //   this.router.navigate(['timesheet/view'], { queryParams: { month: this.month, year: this.year } });
-  // }
-
-  dateSelected(event: any) {
-    const date = event.getFullYear() + "-" + ("00" + (event.getMonth() + 1)).slice(-2) + "-" + ("00" + event.getDate()).slice(-2);
-    const index = this.daysSelected.findIndex(x => x == date);
-    if (index < 0) {
-      this.daysSelected.push(date);
-      this.addTimeSheetDate(date);
-    }
-    else {
-      this.daysSelected.splice(index, 1);
-      this.deleteTimeSheetDate(index);
-    }
-  }
-
-  addTimeSheetDate(date: string) {
-    const form = this.fb.group({
-      date: [date, Validators.required]
-    });
-    this.timeSheetDates.push(form);
-  }
-
-  deleteTimeSheetDate(index: number) {
-    this.timeSheetDates.removeAt(index);
-  }
-
+  
   monthYearChange(event: any) {
     //this.currentPageIndex = 0;
     //this.totalRecords = 0;

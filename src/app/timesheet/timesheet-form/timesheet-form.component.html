@@ -4,21 +4,17 @@
   <div class="col-md-9">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
-      <input type="hidden" formControlName="action">
+      <input type="hidden" formControlName="action" value="add">
       <div class="row">
         <div class="col-md-6">
           <div class="mb-3">
             <label class="required d-block" for="cal">Select Dates</label>
             <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="false" [minDate]="minDate"
-              [maxDate]="maxDate" (onSelect)="dateSelected($event)" [maxDateCount]="maxDateCount"
+              [maxDate]="maxDate" formControlName="timeSheetDates" [maxDateCount]="maxDateCount"
               (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
-
-
               <ng-template pTemplate="date" let-date>
                 <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
               </ng-template>
-
-
             </p-calendar>
             <div id="cal" class="form-text text-muted  mt-0 mb-2">You are allowed to select maximum {{maxDateCount}}
               days.</div>
@@ -93,7 +89,6 @@
     </form>
   </div>
 </div>
-
 <div class="row mb-4">
   <app-view-timesheet [timeSheetLogData]="timesheetData"
     (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
