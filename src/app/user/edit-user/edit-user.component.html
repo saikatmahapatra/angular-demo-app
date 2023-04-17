@@ -143,6 +143,7 @@
 
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="leaveBalanceForm" class="form app-form" (ngSubmit)="saveLeaveBalance()">
+            <input type="hidden" formControlName="userId">
             <input type="hidden" formControlName="id">
             <div class="row mb-3 mb-2">
                 <div class="col-md-6">
@@ -176,11 +177,11 @@
     </div>
     <div class="col-md-3 col-lg-6">
         <div class="small mt-4">
-            <div><strong>Added on</strong></div>
-            <div><strong>Updated on</strong></div>
-            <div><strong>PL auto updated on</strong></div>
-            <div><strong>CL auto updated on</strong></div>
-            <div><strong>OL auto updated on</strong></div>
+            <div><strong>Added on: </strong>{{leaveBalance?.created_on || '-'}}</div>
+            <div><strong>Updated on: </strong>{{leaveBalance?.updated_on || '-'}}</div>
+            <div><strong>PL auto updated on: </strong>{{leaveBalance?.pl_updated_by_cron_on || '-'}}</div>
+            <div><strong>CL auto updated on: </strong>{{leaveBalance?.cl_updated_by_cron_on || '-'}}</div>
+            <div><strong>OL auto updated on: </strong>{{leaveBalance?.ol_updated_by_cron_on || '-'}}</div>
         </div>
     </div>
 </div>

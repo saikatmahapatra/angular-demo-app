@@ -22,6 +22,7 @@ export class EditUserComponent {
   educationInfo: any = [];
   emergencyContact: any = [];
   approvers: any = [];
+  leaveBalance: any = [];
   userGovtIds: any;
   userPhoto: any;
   submitted = false;
@@ -116,6 +117,7 @@ export class EditUserComponent {
 
   leaveBalanceForm = this.fb.group({
     id: [null],
+    userId: [null],
     cl: [null, [Validators.required, Validators.max(30)]],
     sl: [null, [Validators.required, Validators.max(20)]],
     pl: [null, [Validators.required, Validators.max(100)]],
@@ -169,8 +171,10 @@ export class EditUserComponent {
           this.emergencyContact = response[1]?.data?.econtact;
           this.userGovtIds = response[1]?.data?.userGovtIds;
           this.userPhoto = response[1]?.data?.profilePic;
+          this.leaveBalance = response[1]?.data?.leaveBalance[0] || [];
           this.patchUserBasicDefailsForm();
           this.patchUserAccountStatusDefailsForm();
+          this.patchLeaveBalanceForm();
         },
         error: (response: HttpErrorResponse) => {
         }
@@ -202,6 +206,17 @@ export class EditUserComponent {
     });
   }
 
+  patchLeaveBalanceForm() {
+    this.leaveBalanceForm.patchValue({
+      userId: this.userInfo?.id,
+      id: this.leaveBalance?.id,
+      cl: this.leaveBalance?.cl,
+      pl: this.leaveBalance?.pl,
+      sl: this.leaveBalance?.sl,
+      ol: this.leaveBalance?.ol
+    });
+  }
+
   onSubmit() {
     this.submitted = true;
     this.loading = true;
@@ -229,7 +244,6 @@ export class EditUserComponent {
   onSubmitUserStatus() {
     this.submitted = true;
     this.loading = true;
-    console.log(this.userStatusForm.value);
     if (this.userStatusForm.valid) {
       this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
@@ -255,9 +269,8 @@ export class EditUserComponent {
   saveLeaveBalance() {
     this.submitted = true;
     this.loading = true;
-    console.log(this.userStatusForm.value);
-    if (this.userStatusForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.userStatusForm.value).subscribe({
+    if (this.leaveBalanceForm.valid) {
+      this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.leaveBalanceForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           //this.router.navigate(['/emp/manage']);
@@ -273,7 +286,7 @@ export class EditUserComponent {
       });
     } else {
       this.loading = false;
-      this.validator.validateAllFormFields(this.userStatusForm);
+      this.validator.validateAllFormFields(this.leaveBalanceForm);
     }
   }
 
