@@ -55,6 +55,10 @@ export class ViewMyProfileComponent implements OnInit {
     return addressType[aChar];
   }
 
+  navigateTo(routeLink: any) {
+    this.router.navigate(routeLink);
+  }
+
   deleteAddress(id: any) {
     let queryParams = new HttpParams();
     if (id) {
