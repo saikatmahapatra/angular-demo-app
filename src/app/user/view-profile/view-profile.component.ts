@@ -20,6 +20,7 @@ export class ViewProfileComponent implements OnInit {
   approvers: any = [];
   userGovtIds: any ;
   userPhoto: any;
+  leaveBalance: any = [];
   orgName = 'UEIPL';
   selfAccount = false;
 
@@ -60,6 +61,8 @@ export class ViewProfileComponent implements OnInit {
         this.userGovtIds = response?.data?.userGovtIds;
         this.userPhoto = response?.data?.profilePic;
         this.selfAccount = response?.data?.selfAccount;
+        this.approvers = response?.data?.approvers[0] || [];
+        this.leaveBalance = response?.data?.leaveBalance?.data_rows[0] || [];
       }
     });
   }
@@ -131,6 +134,10 @@ export class ViewProfileComponent implements OnInit {
       this.alertSvc.success(response.message);
       this.getProfileData();
     });
+  }
+
+  navigateTo(routeLink: any) {
+    this.router.navigate(routeLink);
   }
 
 }

@@ -8,6 +8,7 @@
 <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
 <div>{{userInfo?.user_phone1}}</div>
 
+<button type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon class="me-1" [name]="'pencil'" [width]="16" [height]="16"></app-icon> Edit Profile</button>
 
 <section class="my-4">
    <h5 class="my-2 text-primary"><app-icon [name]="'person-fill'" [height]="20" [width]="20"></app-icon> Basic Info</h5>
@@ -24,17 +25,15 @@
       <dt class="col-md-4 col-lg-3">Date of Joining</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
       <dt class="col-md-4 col-lg-3">Personal Email</dt>
-      <dd class="col-md-8 col-lg-9"><a
-            href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
-      </dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_email_secondary || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Work Phone</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Date of Birth</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
       <dt class="col-md-4 col-lg-3">Gender</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
 </section>
 
@@ -155,12 +154,74 @@
 <section class="my-4">
    <h5 class="my-2 text-primary"><app-icon [name]="'person-check'" [height]="20" [width]="20"></app-icon> Workflow Approvers</h5>
    <hr>
+   <div class="my-4 text-muted" *ngIf="!approvers?.id">
+      <app-icon [name]="'info-circle'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update approvers.
+   </div>
+   <dl class="row" *ngIf="approvers?.id">
+      <dt class="col-md-4 col-lg-3">Supervisor</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.supervisor_firstname ? approvers?.supervisor_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.supervisor_lastname ? ' '+ approvers?.supervisor_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.supervisor_email ? '('+ approvers?.supervisor_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">Director/Manager</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.director_firstname ? approvers?.director_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.director_lastname ? ' '+ approvers?.director_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.director_email ? '('+ approvers?.director_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">HR</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.hr_firstname ? approvers?.hr_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.hr_lastname ? ' '+ approvers?.hr_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.hr_email ? '('+ approvers?.hr_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">Finance</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.finance_firstname ? approvers?.finance_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.finance_lastname ? ' '+ approvers?.finance_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.finance_email ? '('+ approvers?.finance_email+ ')' : ''"></span>
+      </dd>
+   </dl>
 </section>
 
 
 <section class="my-4">
    <h5 class="my-2 text-primary"><app-icon [name]="'coin'" [height]="20" [width]="20"></app-icon> Leave Balance</h5>
    <hr>
+   <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
+      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Go to "Edit Profile" to add/update leave balance.
+   </div>
+   <dl class="row" *ngIf="leaveBalance?.id">
+      <dt class="col-md-3">Casual Leave (CL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.cl ? leaveBalance?.cl : '-'"></span>
+      </dd>
+      <dt class="col-md-3">Sick Leave (SL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.sl ? leaveBalance?.sl : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Privileged Leave (PL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.pl ? leaveBalance?.pl : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Optional Leave (OL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Leave Balance created on</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.created_on ? leaveBalance?.created_on : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Leave Balance updated on</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.updated_on ? leaveBalance?.updated_on : '-'"></span>
+      </dd>
+   </dl>
 </section>
 
 
