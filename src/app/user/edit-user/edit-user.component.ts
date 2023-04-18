@@ -15,6 +15,7 @@ import { addressType, userStatus } from 'src/app/@utils/const/data.array';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent {
+  userId: string | number | undefined;
   userInfo: any = [];
   addressInfo: any = [];
   workExp: any = [];
@@ -146,9 +147,9 @@ export class EditUserComponent {
 
   getUserData() {
     this.activatedRoute.paramMap.subscribe(params => {
-      let userId = params.get('id') || '';
+      this.userId = params.get('id') || '';
       let queryParams = new HttpParams();
-      queryParams = queryParams.append('id', userId);
+      queryParams = queryParams.append('id', this.userId);
       queryParams = queryParams.append('pageName', 'viewEmpProfile');
       let options = {};
       options = { params: queryParams };
@@ -224,8 +225,8 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          //this.router.navigate(['/emp/manage']);
-          window.location.reload();
+          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
+          //window.location.reload();
           this.loading = false;
         },
         error: () => {
@@ -248,8 +249,7 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          //this.router.navigate(['/emp/manage']);
-          window.location.reload();
+          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
           this.loading = false;
         },
         error: () => {
@@ -273,8 +273,7 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.leaveBalanceForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          //this.router.navigate(['/emp/manage']);
-          window.location.reload();
+          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
           this.loading = false;
         },
         error: () => {

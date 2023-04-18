@@ -9,6 +9,11 @@
     <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
     <div>{{userInfo?.user_phone1}}; {{userInfo?.user_phone2}}</div>
     <div>{{userInfo?.employment_type_name}}</div>
+    <div>
+        <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+        <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
+        <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+     </div>
 </ng-container>
 
 <div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
