@@ -61,7 +61,7 @@
 
 
 <app-search-input (inputValue)="getSearchInputVal($event)"
-    [placeHolderText]="'Search by employee name/id...'"></app-search-input>
+    [placeHolderText]="'Search Name/Email...'"></app-search-input>
 
 <div class="my-4" *ngIf="totalRecords>0">
     <strong>Note:</strong> To set proper employee as your approvers you are advised to contact local HR/Admin.
@@ -72,7 +72,8 @@
             <tr *ngFor="let user of data">
                 <td>
                     <div class="">{{user?.user_firstname}} {{user?.user_lastname}}</div>
-                    <div class="text-muted small">{{user?.designation_name}} | Emp ID {{user?.user_emp_id}}</div>
+                    <div class="text-muted small">{{user?.user_email}}</div>
+                    <div class="text-muted small">{{user?.designation_name}}; Emp ID {{user?.user_emp_id}}</div>
                 </td>
                 <td>
                     <select class="form-select" (change)="setApprover($event, user)" style="width: 150px;">
