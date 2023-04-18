@@ -1,3 +1,101 @@
-<h1>Leave Balance Management</h1>
+<h1>JSON - Excel Download</h1>
+<p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            List of Data
+            <div class="d-flex mt-2">
+                <button class="btn btn-sm btn-success">Download</button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    User
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    CL
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    PL
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    SL
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    OL
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    Created on
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    Updated on
+                </div>
+            </th>
+            <th>
+                <div class="flex justify-content-between align-items-center">
+                    Action
+                </div>
+            </th>
+        </tr>
+    </ng-template>
 
-<div class="alert alert-danger">This service is down due to technical limitations, to add/modify leave balance please go to Employee Management >> Edit Employee and find "Leave Balance Section"</div>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Name</span>
+                {{rowData?.user_id}}---{{rowData?.user_firstname}} {{rowData?.user_lastname}}
+            </td>
+            <td>
+                <span class="p-column-title">CL</span>
+                {{rowData?.cl || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title">PL</span>
+                {{rowData?.pl || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title">SL</span>
+                {{rowData?.sl || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title">OL</span>
+                {{rowData?.ol || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title">Created on</span>
+                {{rowData?.created_on || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title"> Updated on</span>
+                {{rowData?.updated_on || '-'}}
+            </td>
+            <td>
+                <span class="p-column-title"> Action</span>
+                <button pButton pRipple type="button" icon="pi pi-cog" class="p-button-rounded p-button-text p-button-secondary" (click)="editUserProfile(rowData?.user_id)"></button>
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8">No records found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>

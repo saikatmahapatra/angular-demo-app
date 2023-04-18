@@ -113,6 +113,7 @@ export const AppConfig = {
         getLeaves: 'leave/getLeave',
         applyLeave: 'leave/createLeave',
         updateLeave: 'leave/updateLeave',
-        getLeaveData: 'leave/getLeaveApproverData'
+        getLeaveData: 'leave/getLeaveApproverData',
+        getEmpLeaveBalance: 'leave/getEmpLeaveBalance'
     }
 };
