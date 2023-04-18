@@ -171,7 +171,7 @@ export class EditUserComponent {
           this.emergencyContact = response[1]?.data?.econtact;
           this.userGovtIds = response[1]?.data?.userGovtIds;
           this.userPhoto = response[1]?.data?.profilePic;
-          this.leaveBalance = response[1]?.data?.leaveBalance[0] || [];
+          this.leaveBalance = response[1]?.data?.leaveBalance?.data_rows[0] || [];
           this.patchUserBasicDefailsForm();
           this.patchUserAccountStatusDefailsForm();
           this.patchLeaveBalanceForm();

@@ -1,18 +1,18 @@
-<h1>JSON - Excel Download</h1>
+<h1>Leave Balance</h1>
 <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
     <ng-template pTemplate="caption">
         <div class="table-header">
             List of Data
-            <div class="d-flex mt-2">
+            <!-- <div class="d-flex mt-2">
                 <button class="btn btn-sm btn-success">Download</button>
-            </div>
+            </div> -->
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>
                 <div class="flex justify-content-between align-items-center">
-                    User
+                    Emp
                 </div>
             </th>
             <th>
@@ -57,7 +57,7 @@
         <tr class="p-selectable-row">
             <td>
                 <span class="p-column-title">Name</span>
-                {{rowData?.user_id}}---{{rowData?.user_firstname}} {{rowData?.user_lastname}}
+                {{rowData?.user_firstname}} {{rowData?.user_lastname}}
             </td>
             <td>
                 <span class="p-column-title">CL</span>
