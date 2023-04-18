@@ -1,4 +1,4 @@
-<h1>Edit Profile & Account Settings</h1>
+<h1>Edit Profile</h1>
 <div class="back-to-page mb-4">
     <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
 </div>
@@ -22,7 +22,7 @@
 </div>
 
 <div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">
-    <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Edit Core Information</h5>
+    <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Edit Basic Information</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">

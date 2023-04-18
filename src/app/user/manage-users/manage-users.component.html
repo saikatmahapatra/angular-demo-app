@@ -174,15 +174,9 @@
                                 <tr>
                                     <td class="fw-bold">Account Status</td>
                                     <td>
-                                        <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
-                                            <app-icon class="text-success me-2"
-                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Active</span>
-                                        <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
-                                                class="text-warning me-2"
-                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Inactive</span>
-                                        <span *ngIf="rowData?.user_status === 'A' " class="" title="Closed"><app-icon
-                                                class="text-danger me-2"
-                                                [name]="'circle-fill'" [height]="12" [width]="12"></app-icon>Archived</span>
+                                        <span *ngIf="rowData?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+                                        <span *ngIf="rowData?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                                        <span *ngIf="rowData?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>

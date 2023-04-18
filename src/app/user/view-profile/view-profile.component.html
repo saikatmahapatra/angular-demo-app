@@ -12,8 +12,6 @@
    <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
    <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
 </div>
-<button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon
-      class="me-1" [name]="'pencil'" [width]="16" [height]="16"></app-icon> Edit Profile</button>
 
 <section class="my-4">
    <h5 class="my-2 text-primary"><app-icon [name]="'person-fill'" [height]="20" [width]="20"></app-icon> Basic Info</h5>
@@ -40,6 +38,8 @@
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
+   <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon
+      class="me-1" [name]="'pencil'" [width]="16" [height]="16"></app-icon> Edit Profile</button>
 </section>
 
 
