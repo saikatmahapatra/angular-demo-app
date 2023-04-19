@@ -1,4 +1,4 @@
-<h1>Employee Profile</h1>
+<h1>Profile</h1>
 <div class="back-to-page mb-4">
    <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
 </div>
@@ -199,7 +199,7 @@
    <h5 class="my-2 text-primary"><app-icon [name]="'coin'" [height]="20" [width]="20"></app-icon> Leave Balance</h5>
    <hr>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
-      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Go to "Edit Profile" to add/update
+      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Click on "Edit Profile" to add/update
       leave balance.
    </div>
    <dl class="row" *ngIf="leaveBalance?.id">
