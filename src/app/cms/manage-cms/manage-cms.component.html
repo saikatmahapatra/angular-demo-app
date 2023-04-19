@@ -74,7 +74,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Created On</span>
-                        {{rowData?.content_created_on}}
+                        {{rowData?.content_created_on | date: 'dd-MM-yyyy h:mm:ss a'}}
                     </td>
                     <!-- <td>
                         <span class="p-column-title">Created By</span>
