@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
 
   // Pagination Config
   currentPageIndex: number = 0;
+  first: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];
@@ -23,6 +24,7 @@ export class PostComponent implements OnInit {
     //console.log(event);
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
+    this.first = event.first;
     this.getContents();
   }
   // Pagination Config
@@ -68,5 +70,6 @@ export class PostComponent implements OnInit {
     this.currentPageIndex = 0;
     this.totalRecords = 0;
     this.itemPerPage = 10;
+    this.first = 0
   }
 }
