@@ -2,7 +2,7 @@
 <div class="back-to-page mt-1 mb-4">
     <a [routerLink]="['/project/manage-project']"><app-icon class="me-2" [name]="'chevron-left'"></app-icon> Go back to Manage Project</a>
 </div>
-<div class="row" #calHolder>
+<div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">
