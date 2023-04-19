@@ -2,22 +2,31 @@
 <div class="row my-4">
     <div class="mb-4">
         <div class="alert alert-danger" *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
-            <strong>Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/emp/change-approvers']">select your workflow approvers</a>. 
+            <strong><app-icon [name]="'info-circle'"></app-icon> Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/emp/change-approvers']">select your workflow approvers</a>. 
         </div>
         <div class="alert alert-info" *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
             <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
-                <strong>Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span>
+                <strong><app-icon [name]="'info-circle'"></app-icon> Workflow Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span>
             </div>
             <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
-                <strong>Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span> <span> and/or </span> <span class="fw-bold">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} {{approvers[0]?.director_emp_id}}</span>
+                <strong><app-icon [name]="'info-circle'"></app-icon> Workflow Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span> <span> and/or </span> <span class="fw-bold">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} {{approvers[0]?.director_emp_id}}</span>
             </div>
         </div>
         <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
-            <strong>Error: </strong> Your leave balance data does not exists in database, please contact to HR for further process. 
+            <strong><app-icon [name]="'info-circle'"></app-icon> Error: </strong> Your leave balance data does not exists in database. In order to apply leave, leave balance records need to be updated. Please contact to admin/HR for further process. 
+        </div>
+
+        <div class="alert alert-info" *ngIf="leaveBalance[0]?.id">
+            <strong><app-icon [name]="'info-circle'"></app-icon> Leave Balance Info: </strong> Your current leave balance is 
+            <!-- <div> -->
+                <span class="me-2"><strong>CL-Casual Leave: </strong> {{leaveBalance[0]?.cl}}</span>
+                <span class="me-2"><strong>PL-Privileged Leave: </strong>{{leaveBalance[0]?.pl}}</span>
+                <span class="me-2"><strong>SL-Sick Leave: </strong>{{leaveBalance[0]?.sl}}</span>
+            <!-- </div> -->
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" *ngIf="approvers[0]?.id && leaveBalance[0]?.id">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" value="applyLeave" formControlName="action">
 
@@ -49,8 +58,7 @@
                 <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
                 <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading || approvers.length <=0"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
     </div>
 </div>
-{{myForm.value | json}}

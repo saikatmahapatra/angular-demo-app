@@ -42,13 +42,13 @@
                 <tr>
                     <th style="width: 12rem" pSortableColumn="leave_created_on">
                         <div class="flex justify-content-between align-items-center">
-                            Apply Date
+                            App. Date
                             <p-sortIcon field="leave_created_on"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 10rem" pSortableColumn="leave_req_id">
                         <div class="flex justify-content-between align-items-center">
-                            Appl. No
+                            App. #
                             <p-sortIcon field="leave_req_id"></p-sortIcon>
                         </div>
                     </th>
@@ -58,18 +58,18 @@
                             <p-sortIcon field="user_id"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 12rem" pSortableColumn="leave_from_date">
+                    <th style="width: 24rem" pSortableColumn="leave_from_date">
                         <div class="flex justify-content-between align-items-center">
-                            From
+                            Leave Date
                             <p-sortIcon field="leave_from_date"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 12rem" pSortableColumn="leave_to_date">
+                    <!-- <th style="width: 12rem" pSortableColumn="leave_to_date">
                         <div class="flex justify-content-between align-items-center">
                             To
                             <p-sortIcon field="leave_to_date"></p-sortIcon>
                         </div>
-                    </th>
+                    </th> -->
                     <th style="width: 7rem">
                         <div class="flex justify-content-between align-items-center">
                             Type
@@ -100,7 +100,7 @@
                         {{rowData?.leave_created_on | date: 'dd-MM-yyyy'}}
                     </td>
                     <td>
-                        <span class="p-column-title">Applicatio No</span>
+                        <span class="p-column-title">Application No</span>
                         {{rowData?.leave_req_id}}
                     </td>
                     <td>
@@ -109,12 +109,12 @@
                     </td>
                     <td>
                         <span class="p-column-title">From</span>
-                        {{rowData?.leave_from_date | date: 'dd-MM-yyyy'}}
+                        {{rowData?.leave_from_date | date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date: 'dd/MM/yyyy'}}
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="p-column-title">To</span>
                         {{rowData?.leave_to_date | date: 'dd-MM-yyyy'}}
-                    </td>
+                    </td> -->
                     <td>
                         <span class="p-column-title">Type</span>
                         {{rowData?.leave_type}}-{{rowData?.leave_term}}
