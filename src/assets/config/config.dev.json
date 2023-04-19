@@ -1,3 +1,4 @@
 {
-    "apiBaseUrl": "http://localhost/ci-emp-portal-api/"
+    "apiBaseUrl": "http://localhost/ci-emp-portal-api/",
+    "maintenanceMode": false
 }
