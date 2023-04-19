@@ -38,7 +38,14 @@ export class ViewEmployeesComponent implements OnInit {
 
   getSearchKeyword(str: string) {
     this.searchKeyword = str;
+    this.resetPagination();
     this.getEmpList();
+  }
+
+  resetPagination() {
+    this.currentPageIndex = 0;
+    this.totalRecords = 0;
+    this.itemPerPage = 10;
   }
 
   getEmpList() {
