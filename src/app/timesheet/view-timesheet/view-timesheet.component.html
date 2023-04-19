@@ -17,7 +17,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-data>
             <tr>
-                <td>{{data?.timesheet_date}}</td>
+                <td>{{data?.timesheet_date | date: 'dd-MM-yyyy'}}</td>
                 <td>{{data?.project_name}}</td>
                 <td>{{data?.task_name}}</td>
                 <td>{{data?.timesheet_hours}}</td>

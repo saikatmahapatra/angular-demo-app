@@ -23,7 +23,7 @@
       <dt class="col-md-4 col-lg-3">Department</dt>
       <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
       <dt class="col-md-4 col-lg-3">Date of Joining</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'d-MMM-y'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd-MM-yyyy'}}</dd>
       <dt class="col-md-4 col-lg-3">Personal Email</dt>
       <dd class="col-md-8 col-lg-9"><a
             href="mailto:{{userInfo?.user_email_secondary}}">{{userInfo?.user_email_secondary}}</a>
@@ -31,7 +31,7 @@
       <dt class="col-md-4 col-lg-3">Work Phone</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2}}</dd>
       <dt class="col-md-4 col-lg-3">Date of Birth</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'d-MMM-y'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd-MM-yyyy'}}</dd>
       <dt class="col-md-4 col-lg-3">Gender</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
@@ -114,15 +114,15 @@
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
       <div [innerHTML]="orgName"></div>
-      <div class="text-muted">{{userInfo?.user_doj | date:'d-MMM-y'}} - {{userInfo?.user_dor ?
+      <div class="text-muted">{{userInfo?.user_doj | date:'dd-MM-yyyy'}} - {{userInfo?.user_dor ?
          userInfo.user_dor : 'Present'}}
       </div>
    </div>
    <div class="my-3" *ngFor="let exp of workExp">
       <h6>{{exp?.designation_name}}</h6>
       <div [innerHTML]="exp.company_name"></div>
-      <div class="text-muted">{{exp?.from_date | date: 'd-MMM-y'}} - {{exp?.to_date | date:
-         'd-MMM-y'}}
+      <div class="text-muted">{{exp?.from_date | date: 'dd-MM-yyyy'}} - {{exp?.to_date | date:
+         'dd-MM-yyyy'}}
       </div>
 
       <div *ngIf="selfAccount">
@@ -219,8 +219,8 @@
       <dt class="col-md-4 col-lg-3">Role/Access</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
       <dt class="col-md-4 col-lg-3">User Since</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'dd-MM-YYYY h:mm:ss a'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'dd-MM-yyyy h:mm:ss a'}}</dd>
       <dt class="col-md-4 col-lg-3">Last Login</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd-MM-YYYY h:mm:ss a'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd-MM-yyyy h:mm:ss a'}}</dd>
    </dl>
 </section>
