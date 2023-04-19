@@ -11,7 +11,7 @@
             <label class="required d-block" for="cal">Select Dates</label>
             <div id="cal" class="form-text text-muted mb-2">You are allowed to select maximum {{maxDateCount}}
               days.</div>
-            <p-calendar [inline]="true" selectionMode="multiple" [showWeek]="false" [minDate]="minDate"
+            <p-calendar dateFormat="dd/mm/yy" [inline]="true" selectionMode="multiple" [showWeek]="false" [minDate]="minDate"
               [maxDate]="maxDate" formControlName="timeSheetDates" [maxDateCount]="maxDateCount"
               (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
               <ng-template pTemplate="date" let-date>

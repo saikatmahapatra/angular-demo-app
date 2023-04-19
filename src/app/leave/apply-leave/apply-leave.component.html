@@ -23,7 +23,7 @@
 
             <div class="mb-3">
                 <label class="required" for="fromToDate">Select Date or Range</label>
-                <p-calendar formControlName="fromToDate" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
                 <div class="small">Note: You can select date range from the date picker</div>
                 <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
                 
