@@ -20,6 +20,7 @@ export class PostComponent implements OnInit {
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];
   paginate(event: any) {
+    //console.log(event);
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
     this.getContents();
@@ -59,6 +60,13 @@ export class PostComponent implements OnInit {
   getSearchInputVal(str: string) {
     this.searchKeyword = str;
     this.resetSearchInput = true;
+    this.resetPagination();
     this.getContents();
+  }
+
+  resetPagination() {
+    this.currentPageIndex = 0;
+    this.totalRecords = 0;
+    this.itemPerPage = 10;
   }
 }

@@ -32,7 +32,6 @@ export class ManageUsersComponent implements OnInit {
   first: number = 0;
   searchKeyword: any = '';
   paginate(event: any) {
-    console.log(event);
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
     this.getUsersList();
