@@ -70,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [ConfigService], multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    //{ provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
