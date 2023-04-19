@@ -31,6 +31,7 @@ export class ConfigService {
             // AppConfig.productName = config?.productName;
             // AppConfig.copyrightInfo = config?.copyrightInfo;
             // AppConfig.version = config?.version;
+            AppConfig.maintenanceMode = config.maintenanceMode || false;
             return resolve(config);
           },
           err => {

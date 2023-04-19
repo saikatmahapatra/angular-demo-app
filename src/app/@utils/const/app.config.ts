@@ -9,6 +9,7 @@ export const AppConfig = {
     apiBaseUrl: environment.apiBaseUrl,
     useMockServer: environment.useMockServer,
     version: environment.version,
+    maintenanceMode: false,
     apiUrl: {
         // Authentication, JWT Validation
         authenticate: 'auth/authenticate',
