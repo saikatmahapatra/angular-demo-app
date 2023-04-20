@@ -12,15 +12,16 @@ export class IconComponent implements OnInit {
   @Input() height: number | undefined;
   @Input() fill: string | undefined;
   @Input() styleCSS: any | undefined;
-
+  @Input() svg: boolean | undefined;
 
   constructor() {
     this.lib = this.lib ? this.lib : 'bootstrap-icon';
     this.name = this.name ? this.name : 'info';
-    this.width = this.width ? this.width : 18; // for svg
-    this.height = this.height ? this.height : 18; // for svg
+    this.width = this.width ? this.width : 16; // for svg
+    this.height = this.height ? this.height : 16; // for svg
     this.fill = this.fill ? this.fill : 'currentColor'; // for svg
     this.styleCSS = this.styleCSS ? this.styleCSS: '';
+    this.svg = this.svg ? this.svg: false;
   }
 
   ngOnInit(): void {
