@@ -1,5 +1,6 @@
-<svg *ngIf="lib === 'bootstrap-icon'" class="bi" [attr.width]="width" [attr.height]="height" [attr.fill]="fill">
+<!-- <svg *ngIf="lib === 'bootstrap-icon'" class="bi" [attr.width]="width" [attr.height]="height" [attr.fill]="fill">
   <use attr.xlink:href="bootstrap-icons/bootstrap-icons.svg#{{name}}" />
-</svg>
+</svg> -->
 
-<i *ngIf="lib === 'pi'" class="pi" [ngClass]="name" [attr.width]="width" [attr.height]="height" aria-hidden="true"></i>
+<i *ngIf="lib === 'bootstrap-icon'" class="bi " [ngClass]="'bi-'+name" [style]="styleCSS" aria-hidden="true"></i>
+<i *ngIf="lib === 'pi'" class="pi" [ngClass]="name" [style]="styleCSS" aria-hidden="true"></i>

@@ -11,6 +11,8 @@ export class IconComponent implements OnInit {
   @Input() width: number | undefined;
   @Input() height: number | undefined;
   @Input() fill: string | undefined;
+  @Input() styleCSS: any | undefined;
+
 
   constructor() {
     this.lib = this.lib ? this.lib : 'bootstrap-icon';
@@ -18,6 +20,7 @@ export class IconComponent implements OnInit {
     this.width = this.width ? this.width : 18;
     this.height = this.height ? this.height : 18;
     this.fill = this.fill ? this.fill : 'currentColor';
+    this.styleCSS = this.styleCSS ? this.styleCSS: '';
   }
 
   ngOnInit(): void {
