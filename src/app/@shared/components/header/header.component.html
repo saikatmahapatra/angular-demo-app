@@ -2,8 +2,7 @@
   <nav class="navbar navbar-expand fixed-top bg-primary" data-bs-theme="dark">
     <div>
       <button class="btn py-0 me-2" (click)="toggleSideNav()" type="button" data-bs-toggle="collapse"
-        aria-label="Toggle navigation" aria-expanded="false"><app-icon [name]="'list'" [width]="32"
-          [height]="32"></app-icon></button>
+        aria-label="Toggle navigation" aria-expanded="false"><app-icon [name]="'list f-32'"></app-icon></button>
       <a class="navbar-brand" [routerLink]="['/']">
         <img *ngIf="!isProd" style="width: 32px;" src="assets/img/logo.svg" alt="logo" />
         <img *ngIf="isProd" style="width: 64px;" src="assets/img/logo-prod.svg" alt="logo" />
@@ -13,18 +12,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto me-5">
         <!-- <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'gear'"></app-icon></a>
+          <a class="nav-link" [routerLink]="['/']"><app-icon [name]="'gear f-18'"></app-icon></a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/emp/my-profile']"><app-icon [name]="'person-fill'" [width]="20"
-              [height]="20"></app-icon></a>
+          <a class="nav-link" [routerLink]="['/emp/my-profile']"><app-icon [name]="'person-fill f-18'"></app-icon></a>
         </li>
         <li class="nav-item">
           <app-theme-switch></app-theme-switch>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/auth/login']" [queryParams]="{logout: true}"><app-icon
-              [name]="'box-arrow-right'" [width]="20" [height]="20"></app-icon></a>
+              [name]="'box-arrow-right f-18'"></app-icon></a>
         </li>
       </ul>
     </div>
