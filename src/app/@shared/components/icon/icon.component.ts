@@ -17,9 +17,9 @@ export class IconComponent implements OnInit {
   constructor() {
     this.lib = this.lib ? this.lib : 'bootstrap-icon';
     this.name = this.name ? this.name : 'info';
-    this.width = this.width ? this.width : 18;
-    this.height = this.height ? this.height : 18;
-    this.fill = this.fill ? this.fill : 'currentColor';
+    this.width = this.width ? this.width : 18; // for svg
+    this.height = this.height ? this.height : 18; // for svg
+    this.fill = this.fill ? this.fill : 'currentColor'; // for svg
     this.styleCSS = this.styleCSS ? this.styleCSS: '';
   }
 
