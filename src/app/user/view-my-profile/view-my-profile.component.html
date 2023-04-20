@@ -11,7 +11,7 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'person-fill'" [height]="20" [width]="20"></app-icon> Basic Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'person-fill'"></app-icon> Basic Info</h5>
    <hr>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
@@ -38,17 +38,17 @@
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group}}</dd>
    </dl>
       <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon
-         class="me-1" [name]="'pencil'" [width]="16" [height]="16"></app-icon> Edit</button>
+         class="me-1" [name]="'pencil'"></app-icon> Edit</button>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'geo-alt'" [height]="20" [width]="20"></app-icon> Address
+   <h5 class="my-2 text-primary"><app-icon [name]="'geo-alt'"></app-icon> Address
 
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'plus'" [height]="16" [width]="16"></app-icon> Add </a>
+      <app-icon [name]="'plus'"></app-icon> Add </a>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
@@ -67,7 +67,7 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'" [height]="16" [width]="16"></app-icon> No records found.
+         <app-icon [name]="'info-circle'"></app-icon> No records found.
       </div>
    </div>
 
@@ -75,10 +75,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'mortarboard'" [height]="20" [width]="20"></app-icon> Education</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'mortarboard'"></app-icon> Education</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'plus'" [height]="16" [width]="16"></app-icon>
+      <app-icon [name]="'plus'"></app-icon>
       Add</a>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -97,7 +97,7 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'" [height]="16" [width]="16"></app-icon> No records found.
+         <app-icon [name]="'info-circle'"></app-icon> No records found.
       </div>
    </div>
 
@@ -105,11 +105,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'briefcase'" [height]="20" [width]="20"></app-icon> Work Experience
+   <h5 class="my-2 text-primary"><app-icon [name]="'briefcase'"></app-icon> Work Experience
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'plus'" [height]="16" [width]="16"></app-icon>
+      <app-icon [name]="'plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
@@ -136,7 +136,7 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'" [height]="16" [width]="16"></app-icon> No records found.
+         <app-icon [name]="'info-circle'"></app-icon> No records found.
       </div>
    </div>
 
@@ -144,10 +144,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'coin'" [height]="20" [width]="20"></app-icon> Payroll Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'coin'"></app-icon> Payroll Info</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'plus'" [height]="16" [width]="16"></app-icon>
+      <app-icon [name]="'plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <dl class="row">
@@ -171,19 +171,19 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'" [height]="16" [width]="16"></app-icon> No records found.
+         <app-icon [name]="'info-circle'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'capsule-pill'" [height]="20" [width]="20"></app-icon> Emergency
+   <h5 class="my-2 text-primary"><app-icon [name]="'capsule-pill'"></app-icon> Emergency
       Contacts
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'plus'" [height]="16" [width]="16"></app-icon> Add</a>
+      <app-icon [name]="'plus'"></app-icon> Add</a>
    <div class="my-3" *ngFor="let contact of emergencyContact">
       <h6>{{contact?.contact_person_name}}</h6>
       <div class="text-muted" [innerHTML]="contact.relationship"></div>
@@ -199,14 +199,14 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'" [height]="16" [width]="16"></app-icon> No records found.
+         <app-icon [name]="'info-circle'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'cpu'" [height]="20" [width]="20"></app-icon> Account Information
+   <h5 class="my-2 text-primary"><app-icon [name]="'cpu'"></app-icon> Account Information
    </h5>
    <hr>
    <dl class="row">
