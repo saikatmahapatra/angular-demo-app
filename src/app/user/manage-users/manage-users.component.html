@@ -104,11 +104,11 @@
                         <!-- {{rowData?.user_status}} -->
 
                         <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success" [name]="'circle-fill f-12'"></app-icon></span>
+                            <app-icon class="text-success f-12" [name]="'circle-fill'"></app-icon></span>
                         <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive"><app-icon
-                                class="text-warning" [name]="'circle-fill f-12'"></app-icon></span>
+                                class="text-warning f-12" [name]="'circle-fill'"></app-icon></span>
                         <span *ngIf="rowData?.user_status === 'A' " class="" title="Archived"><app-icon
-                                class="text-danger" [name]="'circle-fill f-12'"></app-icon></span>
+                                class="text-danger f-12" [name]="'circle-fill'"></app-icon></span>
 
                     </td>
 
