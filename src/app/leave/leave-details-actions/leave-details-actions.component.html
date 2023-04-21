@@ -128,7 +128,7 @@
                 class="btn btn-sm btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Withdraw Application</button>
         </div>
-        <div class="my-4" *ngIf="(userId ===rowData?.user_id) && rowData?.leave_status === 'A'">
+        <div class="my-4" *ngIf="(userId ===rowData?.user_id) && rowData?.leave_status === 'A' && rowData?.cancel_requested !== 'Y'">
             <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)" type="button"
                 class="btn btn-sm btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Raise Cancel Request</button>
