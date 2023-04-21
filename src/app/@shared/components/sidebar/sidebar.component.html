@@ -48,20 +48,23 @@
     </li>
 
     <li class="my-3">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'fingerprint'"></app-icon> Employee Self Services</h6>
+      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'fingerprint'"></app-icon> Self Services</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
             <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Workflow Approval</a>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave to Approve</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change Approvers</a>
           </li>
           <li>
             <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="nav-link">Apply Leave</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Leave History</a>
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave History</a>
           </li>
         </ul>
       </div>
@@ -76,10 +79,6 @@
           </li>
           <li>
             <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Reportees</a>
-          </li>
-          <li>
-            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change Workflow
-              Approvers</a>
           </li>
           <li>
             <a [routerLink]="['/cms/holiday-calendar']"  [routerLinkActive]="['active-nav-link']" class="nav-link">Holidays</a>
