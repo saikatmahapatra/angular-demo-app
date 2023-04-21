@@ -156,18 +156,22 @@ label {
     // }
   }
 
-  a {
-    padding: 0.25rem 0.5rem;
-    margin: 0.25rem 1.25rem;
-    &:hover{
-      //color: $white;
-      background-color: rgba($primary, 0.3);
-      //background-color: rgba(13, 110, 253, 0.1);
+  li {
+    a {
+      padding: 0.25rem 0.5rem;
+      margin: 0.25rem 1.25rem;
+
+      &:hover {
+        //color: $white;
+        background-color: rgba($primary, 0.1);
+        //background-color: rgba(13, 110, 253, 0.1);
+      }
     }
-  }
-  a.active-nav-link {
-    color: $white;
-    background-color: rgba($primary, .85);
+
+    a.active-nav-link {
+      //color: $white;
+      background-color: rgba($primary, .2);
+    }
   }
 }
 
@@ -265,14 +269,37 @@ label {
 }
 
 // Font Size
-.f-10 { font-size: 10px;}
-.f-12 { font-size: 12px;}
-.f-14 { font-size: 14px;}
-.f-18 { font-size: 18px;}
-.f-20 { font-size: 20px;}
-.f-24 { font-size: 24px;}
-.f-32 { font-size: 32px;}
-.f-48 { font-size: 48px;}
+.f-10 {
+  font-size: 10px;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-18 {
+  font-size: 18px;
+}
+
+.f-20 {
+  font-size: 20px;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.f-32 {
+  font-size: 32px;
+}
+
+.f-48 {
+  font-size: 48px;
+}
 
 // ############################################
 // Light Mode UI fix
@@ -337,7 +364,7 @@ label {
     background: var(--bs-light-bg-subtle);
   }
 
-  .p-datepicker table td.p-datepicker-today > span {
+  .p-datepicker table td.p-datepicker-today>span {
     color: $gray-900;
   }
 
