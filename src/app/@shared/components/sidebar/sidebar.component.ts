@@ -16,10 +16,13 @@ export class SidebarComponent implements OnInit {
   // @Input() navWidth: number = window.innerWidth;
   // @Input() direction: SideNavDirection = SideNavDirection.Left;
   userRole = '';
+  welcomeUserText = '';
   constructor(private navService: NavigationService, private commonSvc: CommonService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
     this.userRole = this.authSvc.getRoleId();
+    const user = this.authSvc.getUser();
+    this.welcomeUserText =  user.user_firstname +' '+ user.user_lastname;
   }
 
   // onSidebarClose() {
@@ -39,5 +42,13 @@ export class SidebarComponent implements OnInit {
       this.navService.toggleNavState();
     }
   }
+
+  transform(value: string, size: number = 10): string {
+    if (!value) {
+        return '';
+    }
+    const limit = size > 0 ? size : 10;
+    return value.length > limit ? value.substring(0, limit) + '...' : value;
+}
 
 }
