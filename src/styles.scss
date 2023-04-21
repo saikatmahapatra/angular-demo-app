@@ -68,10 +68,11 @@ label {
   transition: margin .25s ease-out;
 
   .sidebar-sticky {
-    position: -webkit-sticky;
-    position: fixed;
-    top: 48px;
-    height: calc(100vh - 48px);
+    //position: -webkit-sticky;
+    //position: fixed;
+    //top: 48px;
+    margin-top: 50px;
+    height: calc(100vh - 50px);
     padding-top: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto;
