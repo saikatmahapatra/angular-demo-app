@@ -17,11 +17,12 @@ export class ViewMyProfileComponent implements OnInit {
   payrollInfo: any;
   educationInfo: any;
   emergencyContact: any;
-  approvers: any;
+  approvers: any = [];
   userGovtIds: any;
   userPhoto: any;
   orgName = 'UEIPL';
   selfAccount = false;
+  leaveBalance: any = [];
 
   constructor(private apiSvc: ApiService, private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
@@ -47,6 +48,8 @@ export class ViewMyProfileComponent implements OnInit {
         this.userGovtIds = response?.data?.userGovtIds;
         this.userPhoto = response?.data?.profilePic;
         this.selfAccount = response?.data?.selfAccount;
+        this.approvers = response?.data?.approvers[0] || [];
+        this.leaveBalance = response?.data?.leaveBalance?.data_rows[0] || [];
       }
     });
   }

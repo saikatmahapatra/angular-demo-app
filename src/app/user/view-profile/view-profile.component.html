@@ -167,25 +167,25 @@
       approvers.
    </div>
    <dl class="row" *ngIf="approvers?.id">
-      <dt class="col-md-4 col-lg-3">Supervisor</dt>
+      <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
       <dd class="col-md-8 col-lg-9">
          <span [innerHTML]="approvers?.supervisor_firstname ? approvers?.supervisor_firstname : '-'"></span>
          <span [innerHTML]="approvers?.supervisor_lastname ? ' '+ approvers?.supervisor_lastname+' '  : ''"></span>
          <span [innerHTML]="approvers?.supervisor_email ? '('+ approvers?.supervisor_email+ ')' : ''"></span>
       </dd>
-      <dt class="col-md-4 col-lg-3">Director/Manager</dt>
+      <dt class="col-md-4 col-lg-3">L2 Workflow Approver</dt>
       <dd class="col-md-8 col-lg-9">
          <span [innerHTML]="approvers?.director_firstname ? approvers?.director_firstname : '-'"></span>
          <span [innerHTML]="approvers?.director_lastname ? ' '+ approvers?.director_lastname+' '  : ''"></span>
          <span [innerHTML]="approvers?.director_email ? '('+ approvers?.director_email+ ')' : ''"></span>
       </dd>
-      <dt class="col-md-4 col-lg-3">HR</dt>
+      <dt class="col-md-4 col-lg-3">HR Approver</dt>
       <dd class="col-md-8 col-lg-9">
          <span [innerHTML]="approvers?.hr_firstname ? approvers?.hr_firstname : '-'"></span>
          <span [innerHTML]="approvers?.hr_lastname ? ' '+ approvers?.hr_lastname+' '  : ''"></span>
          <span [innerHTML]="approvers?.hr_email ? '('+ approvers?.hr_email+ ')' : ''"></span>
       </dd>
-      <dt class="col-md-4 col-lg-3">Finance</dt>
+      <dt class="col-md-4 col-lg-3">Finance Approver</dt>
       <dd class="col-md-8 col-lg-9">
          <span [innerHTML]="approvers?.finance_firstname ? approvers?.finance_firstname : '-'"></span>
          <span [innerHTML]="approvers?.finance_lastname ? ' '+ approvers?.finance_lastname+' '  : ''"></span>

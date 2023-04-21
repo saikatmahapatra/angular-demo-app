@@ -206,6 +206,87 @@
 
 
 <section class="my-4">
+   <h5 class="my-2 text-primary"><app-icon [name]="'person-check'"></app-icon> Workflow
+      Approvers</h5>
+   <hr>
+   <div *ngIf="selfAccount">
+      <button pButton pRipple type="button" icon="pi pi-pencil"
+         class="p-button-rounded p-button-text p-button-secondary mr-2"
+         (click)="navigateTo(['/emp/change-approvers/'])"></button>
+   </div>
+   <div class="my-4 text-muted" *ngIf="!approvers?.id">
+      <app-icon [name]="'info-circle'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update
+      approvers.
+   </div>
+   <dl class="row" *ngIf="approvers?.id">
+      <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.supervisor_firstname ? approvers?.supervisor_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.supervisor_lastname ? ' '+ approvers?.supervisor_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.supervisor_email ? '('+ approvers?.supervisor_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">L2 Workflow Approver</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.director_firstname ? approvers?.director_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.director_lastname ? ' '+ approvers?.director_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.director_email ? '('+ approvers?.director_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">HR Approver</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.hr_firstname ? approvers?.hr_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.hr_lastname ? ' '+ approvers?.hr_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.hr_email ? '('+ approvers?.hr_email+ ')' : ''"></span>
+      </dd>
+      <dt class="col-md-4 col-lg-3">Finance Approver</dt>
+      <dd class="col-md-8 col-lg-9">
+         <span [innerHTML]="approvers?.finance_firstname ? approvers?.finance_firstname : '-'"></span>
+         <span [innerHTML]="approvers?.finance_lastname ? ' '+ approvers?.finance_lastname+' '  : ''"></span>
+         <span [innerHTML]="approvers?.finance_email ? '('+ approvers?.finance_email+ ')' : ''"></span>
+      </dd>
+   </dl>
+</section>
+
+
+<section class="my-4">
+   <h5 class="my-2 text-primary"><app-icon [name]="'coin'"></app-icon> Leave Balance</h5>
+   <hr>
+   <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
+      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Click on "Edit Profile" to add/update
+      leave balance.
+   </div>
+   <dl class="row" *ngIf="leaveBalance?.id">
+      <dt class="col-md-3">Casual Leave (CL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.cl ? leaveBalance?.cl : '-'"></span>
+      </dd>
+      <dt class="col-md-3">Sick Leave (SL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.sl ? leaveBalance?.sl : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Privileged Leave (PL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.pl ? leaveBalance?.pl : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Optional Leave (OL)</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Leave Balance created on</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.created_on ? leaveBalance?.created_on : '-'"></span>
+      </dd>
+
+      <dt class="col-md-3">Leave Balance updated on</dt>
+      <dd class="col-md-3">
+         <span [innerHTML]="leaveBalance?.updated_on ? leaveBalance?.updated_on : '-'"></span>
+      </dd>
+   </dl>
+</section>
+
+<section class="my-4">
    <h5 class="my-2 text-primary"><app-icon [name]="'cpu'"></app-icon> Account Information
    </h5>
    <hr>

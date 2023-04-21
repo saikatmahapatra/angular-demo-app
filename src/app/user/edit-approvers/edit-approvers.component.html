@@ -1,4 +1,4 @@
-<h1>Change Approvers</h1>
+<h1>Change Workflow Approvers</h1>
 <div *ngIf="!currentApprovers?.id" class="alert alert-info my-4">
     {{message}}
 </div>
@@ -8,7 +8,7 @@
         <tbody>
             <tr>
                 <th scope="row">
-                    Supervisor (L1)
+                    L1 Workflow Approver
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <th scope="row">
-                    Manager (L2)
+                    L2 Workflow Approver
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <th scope="row">
-                    HR
+                    HR Approver
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <th scope="row">
-                    Finance
+                    Finance Approver
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
@@ -76,12 +76,12 @@
                     <div class="text-muted small">{{user?.designation_name}}; Emp ID {{user?.user_emp_id}}</div>
                 </td>
                 <td>
-                    <select class="form-select" (change)="setApprover($event, user)" style="width: 150px;">
+                    <select class="form-select" (change)="setApprover($event, user)" style="width: 160px;">
                         <option value="">Set as</option>
-                        <option value="L1">Supervisor</option>
-                        <option value="L2">Manager</option>
-                        <option value="HR">HR</option>
-                        <option value="FIN">Finance</option>
+                        <option value="L1">L1 Workflow Approver</option>
+                        <option value="L2">L2 Workflow Approver</option>
+                        <option value="HR">HR Approver</option>
+                        <option value="FIN">Finance Approver</option>
                     </select>
                 </td>
             </tr>
