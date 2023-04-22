@@ -14,12 +14,12 @@
                         <input type="hidden" value="search" formControlName="action">
                         <input type="hidden" value="manage" formControlName="pageName">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4 mb-3">
                                 <input type="text" class="form-control" formControlName="empInfo"
                                     placeholder="Applicant Name or Emp ID">
                                 <app-validation-error [control]="searchForm.controls['empInfo']"></app-validation-error>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4 mb-3">
                                 <select class="form-select" formControlName="leaveStatus">
                                     <option value="">All Status</option>
                                     <option *ngFor="let s of leaveStatus" [value]="s.value" [innerHTML]="s.text">
@@ -28,7 +28,7 @@
                                 <app-validation-error
                                     [control]="searchForm.controls['leaveStatus']"></app-validation-error>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4 mb-3">
                                 <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span
                                         *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                                     Search</button>
