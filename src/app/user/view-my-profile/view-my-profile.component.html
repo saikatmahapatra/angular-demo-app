@@ -46,7 +46,7 @@
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'pi'" class="" [name]="'pi-plus'"></app-icon> Add </a>
+      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon> Add </a>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
@@ -76,7 +76,7 @@
    <h5 class="my-2 text-primary"><app-icon [name]="'mortarboard'"></app-icon> Education</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'pi'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -107,7 +107,7 @@
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'pi'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
@@ -145,7 +145,7 @@
    <h5 class="my-2 text-primary"><app-icon [name]="'coin'"></app-icon> Payroll Info</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'pi'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <dl class="row">
@@ -181,7 +181,7 @@
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'pi'" class="" [name]="'pi-plus'"></app-icon> Add</a>
+      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon> Add</a>
    <div class="my-3" *ngFor="let contact of emergencyContact">
       <h6>{{contact?.contact_person_name}}</h6>
       <div class="text-muted" [innerHTML]="contact.relationship"></div>
