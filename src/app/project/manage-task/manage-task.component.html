@@ -5,11 +5,13 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Tasks
-                    <div class="d-flex mt-2">
-                        <a [routerLink]="['../add-task']" class="btn btn-success me-2">
-                            <app-icon class="" [name]="'plus-circle'"></app-icon>
-                            Add New
-                        </a>
+                    <div class="row my-2">
+                        <div class="col-auto">
+                            <a [routerLink]="['/project/add-task']" class="btn btn-success me-2">
+                                <app-icon class="" [name]="'plus-circle'"></app-icon>
+                                Add New
+                            </a>
+                        </div>
                     </div>
                 </div>
             </ng-template>

@@ -9,8 +9,8 @@
         </h5>
         <div class="col-md-3 mb-3">
             <!-- <label class="required d-block" for="date">Holiday</label> -->
-            <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="date" [readonlyInput]="true" inputId="date"
-                [showButtonBar]="false" [showIcon]="true" placeholder="Holiday Date"></p-calendar>
+            <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="date" [readonlyInput]="true"
+                inputId="date" [showButtonBar]="false" [showIcon]="true" placeholder="Holiday Date"></p-calendar>
             <app-validation-error [control]="myForm.controls['date']"></app-validation-error>
         </div>
         <div class="col-md-6 mb-3">
@@ -41,15 +41,17 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Holidays
-                    <div class="d-flex mt-2">
-                        <button *ngIf="mode === 'update'" type="button" class="btn btn-success me-4"
-                            (click)="setAddMode();"><app-icon class="" [name]="'plus-circle'"></app-icon> Add
-                            New</button>
-
-                        <p-dropdown styleClass="" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
-                            [showClear]="false" (onChange)="yearChange()"></p-dropdown>
+                    <div class="row my-2">
+                        <div class="col-auto">
+                            <p-dropdown styleClass="" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
+                                [showClear]="false" (onChange)="yearChange()"></p-dropdown>
+                        </div>
+                        <div class="col-auto" *ngIf="mode === 'update'">
+                            <button type="button" class="btn btn-success me-4"
+                                (click)="setAddMode();"><app-icon class="" [name]="'plus-circle'"></app-icon> Add
+                                New</button>
+                        </div>
                     </div>
-
                 </div>
             </ng-template>
             <ng-template pTemplate="header">

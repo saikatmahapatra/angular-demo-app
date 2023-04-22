@@ -5,10 +5,12 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Holidays
-
-                    <p-dropdown styleClass="ms-5" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"
-                        [showClear]="false" (onChange)="yearChange()"></p-dropdown>
-
+                    <div class="row my-2">
+                        <div class="col-auto">
+                            <p-dropdown [options]="yearList" [(ngModel)]="selectedYear"
+                                placeholder="Year" [showClear]="false" (onChange)="yearChange()"></p-dropdown>
+                        </div>
+                    </div>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -52,7 +54,8 @@
                     <td>
                         <span class="p-column-title">Occasion</span>
                         {{rowData?.holiday_description}}
-                        <span class="ms-1 small text-muted" [innerHTML]="rowData?.holiday_type === 'C' ? '' : '(optional holiday)' "></span>
+                        <span class="ms-1 small text-muted"
+                            [innerHTML]="rowData?.holiday_type === 'C' ? '' : '(optional holiday)' "></span>
                     </td>
                     <!-- <td>
                         <span class="p-column-title">Type</span>

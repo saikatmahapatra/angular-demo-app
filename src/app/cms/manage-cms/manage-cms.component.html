@@ -5,15 +5,18 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Contents
-                    <div class="d-flex mt-2">
-                        <a [routerLink]="['/cms/add']" class="btn btn-success me-2">
-                            <app-icon class="" [name]="'plus-circle'"></app-icon>
-                            Add New
-                        </a>
-
-                        <p-dropdown styleClass="" [options]="contentCategoryList" [(ngModel)]="postType"
-                            placeholder="Filter by a Type" optionLabel="name" optionValue="id" [showClear]="true"
-                            (onChange)="postTypeChange()"></p-dropdown>
+                    <div class="row my-2">
+                        <div class="col-auto mb-3">
+                            <p-dropdown styleClass="" [options]="contentCategoryList" [(ngModel)]="postType"
+                                placeholder="Filter by a Type" optionLabel="name" optionValue="id" [showClear]="true"
+                                (onChange)="postTypeChange()"></p-dropdown>
+                        </div>
+                        <div class="col-auto">
+                            <a [routerLink]="['/cms/add']" class="btn btn-success me-2">
+                                <app-icon class="" [name]="'plus-circle'"></app-icon>
+                                Add New
+                            </a>
+                        </div>
                     </div>
 
                 </div>

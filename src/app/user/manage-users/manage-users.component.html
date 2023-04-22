@@ -1,25 +1,20 @@
 <h1>Manage Employees</h1>
 <div class="row my-4">
     <div class="col-md-12">
-        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [loading]="loading" styleClass="p-datatable-sm table-font-sm ">
+        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [loading]="loading"
+            styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Employees
 
-                    <div class="d-flex mt-2">
-                        <div class="me-4"><app-search-input (inputValue)="getSearchKeyword($event)"
-                            [placeHolderText]="'Search emp...'"></app-search-input></div>
-
-                        <div><a [routerLink]="['/emp/add']" class="btn btn-success">
-                            <app-icon class="" [name]="'person-add'"></app-icon>
-                            Add Employee
-                        </a></div>
+                    <div class="row mt-2">
+                        <div class="col-auto"><app-search-input (inputValue)="getSearchKeyword($event)"
+                                [placeHolderText]="'Search emp...'"></app-search-input></div>
+                        <div class="col-auto"><a [routerLink]="['/emp/add']" class="btn btn-success">
+                                <app-icon class="" [name]="'person-add'"></app-icon>
+                                Add New
+                            </a></div>
                     </div>
-                    <!-- <span class="p-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <input pInputText type="text" (input)="dt.filterGlobal($event.target?.value, 'contains')"
-                                placeholder="Global Search" />
-                    </span> -->
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -113,8 +108,12 @@
                     </td>
 
                     <td style="text-align: center">
-                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-secondary mr-2" (click)="editUserProfile(rowData?.id)"></button>
-                        <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-text p-button-info" (click)="redirectToProfile(rowData?.id)"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil"
+                            class="p-button-rounded p-button-text p-button-secondary mr-2"
+                            (click)="editUserProfile(rowData?.id)"></button>
+                        <button pButton pRipple type="button" icon="pi pi-user"
+                            class="p-button-rounded p-button-text p-button-info"
+                            (click)="redirectToProfile(rowData?.id)"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -157,26 +156,34 @@
                                     <td class="fw-bold">Role Group</td>
                                     <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td [innerHTML]="rowData?.user_type === 'U' ? 'Emp User' : 'Pre Defined' || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_type === 'U' ? 'Emp User' : 'Pre Defined' || '-'">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
                                     <td [innerHTML]="rowData?.user_doj | date: 'dd-MM-yyyy' || '-'"></td>
                                     <td class="fw-bold">Created On</td>
-                                    <td [innerHTML]="rowData?.user_registration_date | date: 'dd-MM-yyyy h:mm:ss a' || ''"></td>
+                                    <td
+                                        [innerHTML]="rowData?.user_registration_date | date: 'dd-MM-yyyy h:mm:ss a' || ''">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
                                     <td [innerHTML]="rowData?.user_dor | date: 'dd-MM-yyyy' || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
-                                    <td [innerHTML]="rowData?.user_login_date_time | date: 'dd-MM-yyyy h:mm:ss a' || '-'"></td>
+                                    <td
+                                        [innerHTML]="rowData?.user_login_date_time | date: 'dd-MM-yyyy h:mm:ss a' || '-'">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Account Status</td>
                                     <td>
-                                        <span *ngIf="rowData?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-                                        <span *ngIf="rowData?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-                                        <span *ngIf="rowData?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+                                        <span *ngIf="rowData?.user_status === 'Y' "
+                                            class="badge rounded-pill bg-success">Active</span>
+                                        <span *ngIf="rowData?.user_status === 'N' "
+                                            class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                                        <span *ngIf="rowData?.user_status === 'A' "
+                                            class="badge rounded-pill bg-danger">Archived</span>
                                     </td>
                                     <td class="fw-bold">Profile Link</td>
                                     <td>
@@ -185,7 +192,9 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
-                                    <td [innerHTML]="rowData?.account_closed_datetime  | date: 'dd-MM-yyyy h:mm:ss a' || 'NA'"></td>
+                                    <td
+                                        [innerHTML]="rowData?.account_closed_datetime  | date: 'dd-MM-yyyy h:mm:ss a' || 'NA'">
+                                    </td>
                                     <td class="fw-bold">Comments</td>
                                     <td [innerHTML]="rowData?.account_close_comments || 'NA'"></td>
                                 </tr>
@@ -201,8 +210,9 @@
             </ng-template>
         </p-table>
 
-        <p-paginator [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-        [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
+        <p-paginator [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+            (onPageChange)="paginate($event)"></p-paginator>
     </div>
 </div>
