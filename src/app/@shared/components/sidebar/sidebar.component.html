@@ -1,13 +1,13 @@
 <div class="sbar-links ms-2 my-3">
   <div class="mt-4">
     <a class="btn btn-primary d-flex justify-content-center align-items-center mx-3 me-4 fw-normal" [routerLink]="['/emp/my-profile']">
-      <app-icon class="f-18 d-flex me-2" [name]="'person-fill'"></app-icon>
+      <app-icon class="me-2" [lib]="'pi'" [name]="'pi-user f-18'"></app-icon>
       {{transform(welcomeUserText, 18)}}
     </a>
   </div>
   <ul class="list-unstyled mb-0 py-3 pt-md-1">
     <li class="my-3">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'speedometer'"></app-icon> Getting Started</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [lib]="'pi'" [name]="'pi-home f-20'"></app-icon> Getting Started</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
@@ -18,7 +18,7 @@
     </li>
 
     <li class="my-3" *ngIf="userRole === '1' ">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'person-badge-fill'"></app-icon> Admin Console</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [lib]="'pi'" [name]="'pi-lock f-20'"></app-icon> Admin Console</h6>
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
@@ -54,7 +54,7 @@
     </li>
 
     <li class="my-3">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'fingerprint'"></app-icon> Self Services</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [lib]="'pi'" [name]="'pi-folder f-20'"></app-icon> Self Services</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
@@ -77,7 +77,7 @@
     </li>
 
     <li class="my-3">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'globe'"></app-icon> My Organization</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [lib]="'pi'" [name]="'pi-globe f-20'"></app-icon> My Organization</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
@@ -94,7 +94,7 @@
     </li>
 
     <li class="my-3">
-      <h6 class="mx-2"><app-icon class="me-2 f-18" [name]="'person-fill'"></app-icon> My Account</h6>
+      <h6 class="mx-2"><app-icon class="me-2" [lib]="'pi'" [name]="'pi-user f-20'"></app-icon> My Account</h6>
 
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
