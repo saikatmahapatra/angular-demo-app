@@ -119,31 +119,26 @@
                         <span class="p-column-title">Type</span>
                         {{rowData?.leave_type}}-{{rowData?.leave_term}}
                     </td>
-                    <td>
+                    <td class="">
                         <span class="p-column-title">Workflow Status</span>
                         <span class="mx-2">
-                            <i class="pi pi-question-circle" *ngIf="rowData?.supervisor_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success"
-                                *ngIf="rowData?.supervisor_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger"
-                                *ngIf="rowData?.supervisor_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning"
-                                *ngIf="rowData?.supervisor_approver_status === 'C'"></i>
+                            <app-icon [name]="'question'" [styleClass]="''" *ngIf="rowData?.supervisor_approver_status === 'P'"></app-icon>
+                            <app-icon [name]="'check'" [styleClass]="'text-success'" *ngIf="rowData?.supervisor_approver_status === 'A'"></app-icon>
+                            <app-icon [name]="'cross'" [styleClass]="'text-danger'" *ngIf="rowData?.supervisor_approver_status === 'R'"></app-icon>
+                            <app-icon [name]="'error'" [styleClass]="'text-warning'" *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
                         </span>
                         <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.
                             {{rowData?.supervisor_approver_lastname}}</span>
 
-                        <span class="mx-2"><i class="pi pi-arrow-right"></i></span>
+                        <span class="mx-2">
+                            <app-icon [name]="'arrowRight'" [styleClass]="'text-secondary'"></app-icon>
+                        </span>
 
                         <span class="mx-2">
-                            <i class="pi pi-question-circle" *ngIf="rowData?.director_approver_status === 'P'"></i>
-                            <i class="pi pi-check-circle text-success"
-                                *ngIf="rowData?.director_approver_status === 'A'"></i>
-                            <i class="pi pi-times-circle text-danger"
-                                *ngIf="rowData?.director_approver_status === 'R'"></i>
-                            <i class="pi pi-exclamation-circle text-warning"
-                                *ngIf="rowData?.director_approver_status === 'C'"></i>
-
+                                <app-icon [name]="'question'" [styleClass]="''" *ngIf="rowData?.director_approver_status === 'P'"></app-icon>
+                                <app-icon [name]="'check'" [styleClass]="'text-success'" *ngIf="rowData?.director_approver_status === 'A'"></app-icon>
+                                <app-icon [name]="'cross'" [styleClass]="'text-danger'" *ngIf="rowData?.director_approver_status === 'R'"></app-icon>
+                                <app-icon [name]="'error'" [styleClass]="'text-warning'" *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
                         <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.
                             {{rowData?.director_approver_lastname}}</span>

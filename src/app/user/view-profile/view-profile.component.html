@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 <div class="back-to-page mb-4">
-   <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
+   <a [routerLink]="['/emp/manage']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
 </div>
 <!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
 <h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
@@ -14,7 +14,7 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'person-fill'"></app-icon> Basic Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'user'"></app-icon>  Basic Info</h5>
    <hr>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
@@ -39,13 +39,13 @@
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
    <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon
-      class="me-1" [name]="'pencil'"></app-icon> Edit Profile</button>
+      [name]="'edit'"></app-icon> Edit Profile</button>
 </section>
 
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'geo-alt'"></app-icon> Address</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'map'"></app-icon> Address</h5>
    <hr>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
@@ -58,8 +58,7 @@
    </div>
    <div class="my-3" *ngIf="addressInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon>
-         No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
@@ -67,7 +66,7 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'mortarboard'"></app-icon> Education</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'book'"></app-icon> Education</h5>
    <hr>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -79,15 +78,14 @@
    </div>
    <div class="my-3" *ngIf="educationInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon>
-         No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'briefcase'"></app-icon> Work Experience
+   <h5 class="my-2 text-primary"><app-icon [name]="'job'"></app-icon> Work Experience
    </h5>
    <hr>
    <div class="my-3">
@@ -106,8 +104,7 @@
    </div>
    <div class="my-3" *ngIf="payrollInfo.workExp === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon>
-         No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
@@ -115,7 +112,7 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'coin'"></app-icon> Payroll Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'currency'"></app-icon> Payroll Info</h5>
    <hr>
    <div class="my-3">
       <dl class="row">
@@ -132,15 +129,14 @@
    </div>
    <div class="my-3" *ngIf="payrollInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon>
-         No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'capsule-pill'"></app-icon> Emergency
+   <h5 class="my-2 text-primary"><app-icon [name]="'heart'"></app-icon> Emergency
       Contacts
    </h5>
    <hr>
@@ -152,18 +148,17 @@
    </div>
    <div class="my-3" *ngIf="emergencyContact.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon>
-         No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'person-check'"></app-icon> Workflow
+   <h5 class="my-2 text-primary"><app-icon [name]="'users'"></app-icon> Workflow
       Approvers</h5>
    <hr>
    <div class="my-4 text-muted" *ngIf="!approvers?.id">
-      <app-icon [name]="'info-circle'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update
+      <app-icon [name]="'info'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update
       approvers.
    </div>
    <dl class="row" *ngIf="approvers?.id">
@@ -196,10 +191,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'coin'"></app-icon> Leave Balance</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
    <hr>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
-      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Click on "Edit Profile" to add/update
+      <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Click on "Edit Profile" to add/update
       leave balance.
    </div>
    <dl class="row" *ngIf="leaveBalance?.id">
@@ -236,7 +231,7 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'cpu'"></app-icon> Account Information
+   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Account Information
    </h5>
    <hr>
    <dl class="row">

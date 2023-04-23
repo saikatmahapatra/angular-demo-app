@@ -1,4 +1,4 @@
 <div class="my-1 py-2 alert alert-danger" *ngIf="errorMessage !== null">
-  <app-icon class="me-2" [name]="'exclamation-circle'"></app-icon>
+  <app-icon [name]="'error'" [styleClass]="'me-2'"></app-icon>
   <span [innerHTML]="errorMessage"></span>
 </div>

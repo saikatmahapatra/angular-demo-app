@@ -1,7 +1,7 @@
 <h1>Leave Details</h1>
 <div class="back-to-page mt-1 mb-4">
     <a [routerLink]="[backToPageUrl]">
-        <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
+        <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
 </div>
 
 <div *ngIf="rowData?.id" class="row my-4">
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div class="small col-md-4  mb-4">
-        <h6><app-icon class="me-2" [name]="'send-check'"></app-icon> Application
+        <h6><app-icon [name]="'send'" [styleClass]="'me-2 fw-bold'"></app-icon> Application
             <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Sent' : 'Withdrawn'"></span>
         </h6>
 
@@ -136,14 +136,11 @@
     </div>
     <div class="small col-md-4  mb-4">
         <h6>
-            <app-icon class="me-2" [name]="'question-circle'"
+            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
                 *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
-            <app-icon class="me-2 text-success" [name]="'check2-circle'"
-                *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
-            <app-icon class="me-2 text-danger" [name]="'x-circle'"
-                *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
-            <app-icon class="me-2 text-warning" [name]="'exclamation-circle'"
-                *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
+            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'" *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
+            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'" *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
+            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'" *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
             L1 Workflow {{getStatusText(rowData?.supervisor_approver_status)?.text}}
         </h6>
 
@@ -173,14 +170,10 @@
     </div>
     <div class="small col-md-4 mb-4">
         <h6>
-            <app-icon class="me-2" [name]="'question-circle'"
-                *ngIf="rowData?.director_approver_status==='P'"></app-icon>
-            <app-icon class="me-2 text-success" [name]="'check2-circle'"
-                *ngIf="rowData?.director_approver_status==='A'"></app-icon>
-            <app-icon class="me-2 text-danger" [name]="'x-circle'"
-                *ngIf="rowData?.director_approver_status==='R'"></app-icon>
-            <app-icon class="me-2 text-warning" [name]="'exclamation-circle'"
-                *ngIf="rowData?.director_approver_status==='C'"></app-icon>
+            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'" *ngIf="rowData?.director_approver_status==='P'"></app-icon>
+            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'" *ngIf="rowData?.director_approver_status==='A'"></app-icon>
+            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'" *ngIf="rowData?.director_approver_status==='R'"></app-icon>
+            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'" *ngIf="rowData?.director_approver_status==='C'"></app-icon>
             L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
         </h6>
 

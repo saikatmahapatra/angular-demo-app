@@ -1,6 +1,6 @@
 <h1>Edit Profile</h1>
 <div class="back-to-page mb-4">
-    <a [routerLink]="['/emp/manage']"> <app-icon class="me-2" [name]="'chevron-left'"></app-icon> Back </a>
+    <a [routerLink]="['/emp/manage']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
 </div>
 
 <ng-container *ngIf="userInfo.id">
@@ -17,12 +17,12 @@
 </ng-container>
 
 <div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
-    <app-icon class="me-2" [name]="'info-circle'"></app-icon> This account has been closed
+    <app-icon class="me-2" [name]="'info'"></app-icon> This account has been closed
     permanently. You are not allowed to edit any information post closure of account.
 </div>
 
 <div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">
-    <h5 class="text-primary"><app-icon [name]="'person-fill'"></app-icon> Edit Basic Information</h5>
+    <h5 class="text-primary"><app-icon [name]="'user'"></app-icon> Edit Basic Information</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">
@@ -123,7 +123,7 @@
                         <label class="form-check-label" for="inlineRadioUserRole_{{i}}">{{data.name}}</label>
                     </div>
                     <div class="small alert alert-info" *ngIf="userBasicForm.controls['role'].value === '1'">
-                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Administrator role has more access
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Administrator role has more access
                         such as Add/Edit/Delete
                         items. Default employee role should be choosed as "User".
                     </div>
@@ -143,7 +143,7 @@
 
 
 <div *ngIf="userInfo?.user_status !== 'A'" class="row my-4">
-    <h5 class="text-primary"><app-icon [name]="'coin'"></app-icon> Leave Balance</h5>
+    <h5 class="text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
     <hr>
 
     <div class="2-col-form col-md-9 col-lg-6">
@@ -194,7 +194,7 @@
 
 
 <div *ngIf="userInfo?.user_status !== 'A'" class="row my-4">
-    <h5 class="text-primary"><app-icon [name]="'flag-fill'"></app-icon> Account Activation & Deactivation Setup</h5>
+    <h5 class="text-primary"><app-icon [name]="'settings'"></app-icon> Account Activation & Deactivation Setup</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
         <form [formGroup]="userStatusForm" class="form app-form" (ngSubmit)="onSubmitUserStatus()">
@@ -211,17 +211,17 @@
                         </div>
                     </div>
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
-                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Active employee has permission to
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Active employee has permission to
                         login and access the portal.
                     </div>
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
-                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Inactive employee will be prevented
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Inactive employee will be prevented
                         from login or use the portal. You can
                         change it to "Active" as required.
                     </div>
 
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                        <app-icon class="me-2" [name]="'info-circle'"></app-icon> Close Account indicates you are going
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Close Account indicates you are going
                         to delete the employee.
                         Employee will be permanently blocked from login or re-activation. Choose this option when a
                         employee resign.

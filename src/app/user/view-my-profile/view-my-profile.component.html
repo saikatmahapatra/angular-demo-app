@@ -11,7 +11,7 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-user'"></app-icon> Basic Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'user'"></app-icon> Basic Info</h5>
    <hr>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
@@ -35,16 +35,15 @@
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
-      <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon
-         class="me-1" [name]="'pencil'"></app-icon> Edit</button>
+      <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-map-marker'"></app-icon>Address</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'map'"></app-icon> Address</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon> Add </a>
+      <app-icon [name]="'add'"></app-icon> Add </a>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
@@ -63,7 +62,7 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon> No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 
@@ -71,10 +70,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-book'"></app-icon> Education</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'book'"></app-icon> Education</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [name]="'add'"></app-icon>
       Add</a>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -93,7 +92,7 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon> No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 
@@ -101,11 +100,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-briefcase'"></app-icon> Work Experience
+   <h5 class="my-2 text-primary"><app-icon [name]="'job'"></app-icon> Work Experience
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [name]="'add'"></app-icon>
       Add</a>
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
@@ -130,20 +129,15 @@
       </div>
 
    </div>
-   <div class="my-3" *ngIf="selfAccount && payrollInfo.workExp === 0">
-      <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon> No records found.
-      </div>
-   </div>
 
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-dollar'"></app-icon> Payroll Info</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'currency'"></app-icon> Payroll Info</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [name]="'add'"></app-icon>
       Add</a>
    <div class="my-3">
       <dl class="row">
@@ -167,19 +161,19 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon> No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'capsule-pill'"></app-icon> Emergency
+   <h5 class="my-2 text-primary"><app-icon [name]="'heart'"></app-icon> Emergency
       Contacts
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon> Add</a>
+      <app-icon [name]="'add'"></app-icon> Add</a>
    <div class="my-3" *ngFor="let contact of emergencyContact">
       <h6>{{contact?.contact_person_name}}</h6>
       <div class="text-muted" [innerHTML]="contact.relationship"></div>
@@ -195,21 +189,21 @@
    </div>
    <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
       <div class="text-muted">
-         <app-icon [name]="'info-circle'"></app-icon> No records found.
+         <app-icon [name]="'info'"></app-icon> No records found.
       </div>
    </div>
 </section>
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-users'"></app-icon> Workflow
+   <h5 class="my-2 text-primary"><app-icon [name]="'users'"></app-icon> Workflow
       Approvers</h5>
    <hr>
    <div *ngIf="selfAccount">
       <button type="button" class="btn btn-sm btn-outline-success me-2" (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
    </div>
    <div class="my-4 text-muted" *ngIf="!approvers?.id">
-      <app-icon [name]="'info-circle'"></app-icon> No workflow approvers found.
+      <app-icon [name]="'info'"></app-icon> No workflow approvers found.
    </div>
    <dl class="row mt-4" *ngIf="approvers?.id">
       <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
@@ -241,10 +235,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-info-circle'"></app-icon> Leave Balance</h5>
+   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
    <hr>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
-      <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further information.
+      <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further information.
    </div>
    <dl class="row" *ngIf="leaveBalance?.id">
       <dt class="col-md-3">Casual Leave (CL)</dt>
@@ -269,7 +263,7 @@
 </section>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-info-circle'"></app-icon> Account Information
+   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Account Information
    </h5>
    <hr>
    <dl class="row">

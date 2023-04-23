@@ -27,6 +27,6 @@
 
 
 <button (click)="toggleTheme()" class="btn btn-link nav-link mt-auto d-flex align-items-center" id="app-theme" type="button" [title]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode' ">
-  <app-icon *ngIf="theme === 'dark' " [lib]="'primeng'" [name]="'pi-sun f-18'"></app-icon>
-  <app-icon *ngIf="theme === 'light' " [lib]="'primeng'" [name]="'pi-moon f-18'"></app-icon>
+  <app-icon *ngIf="theme === 'dark' " [name]="'sun'" [styleClass]="'f-18'"></app-icon>
+  <app-icon *ngIf="theme === 'light' " [name]="'moon'" [styleClass]="'f-18'"></app-icon>
 </button>

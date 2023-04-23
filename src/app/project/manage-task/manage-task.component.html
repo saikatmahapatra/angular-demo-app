@@ -8,7 +8,7 @@
                     <div class="row my-2">
                         <div class="col-auto">
                             <a [routerLink]="['/project/add-task']" class="btn btn-success me-2">
-                                <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
+                                <app-icon [name]="'add'"></app-icon>
                                 Add New
                             </a>
                         </div>
@@ -55,9 +55,11 @@
                     <td>
                         <span class="p-column-title">Status</span>
                         <span *ngIf="rowData?.task_status === 'Y' " class="" title="Active">
-                            <app-icon class="text-success f-12" [name]="'circle-fill'"></app-icon></span>
-                        <span *ngIf="rowData?.task_status === 'N' " class="" title="Inactive"><app-icon
-                                class="text-warning f-12" [name]="'circle-fill'"></app-icon></span>
+                            <app-icon [name]="'circle'" [styleClass]="'text-success f-10'"></app-icon>
+                        </span>
+                        <span *ngIf="rowData?.task_status === 'N' " class="" title="Inactive">
+                            <app-icon [name]="'circle'" [styleClass]="'text-warning f-10'"></app-icon>
+                        </span>
                     </td>
 
                     <td>
