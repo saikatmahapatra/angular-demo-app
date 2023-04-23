@@ -14,8 +14,11 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'user'"></app-icon>  Basic Info</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic Info</h5>
+      </div>
+   </p-divider>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
@@ -38,15 +41,18 @@
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
-   <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon
-      [name]="'edit'"></app-icon> Edit Profile</button>
+   <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
+      (click)="navigateTo(['/emp/edit/', userInfo?.id])"><app-icon [name]="'edit'"></app-icon> Edit Profile</button>
 </section>
 
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'map'"></app-icon> Address</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Address</h5>
+      </div>
+   </p-divider>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
@@ -66,8 +72,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'book'"></app-icon> Education</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Education</h5>
+      </div>
+   </p-divider>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
          {{education?.academic_to_year}}
@@ -85,9 +94,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'job'"></app-icon> Work Experience
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work Experience
+         </h5>
+      </div>
+   </p-divider>
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
       <div [innerHTML]="orgName"></div>
@@ -112,8 +124,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'currency'"></app-icon> Payroll Info</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+      </div>
+   </p-divider>
    <div class="my-3">
       <dl class="row">
          <dt class="col-md-4 col-lg-3">PAN No</dt>
@@ -136,10 +151,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'heart'"></app-icon> Emergency
-      Contacts
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Emergency Contacts
+         </h5>
+      </div>
+   </p-divider>
    <div class="my-3" *ngFor="let contact of emergencyContact">
       <h6>{{contact?.contact_person_name}}</h6>
       <div class="text-muted" [innerHTML]="contact.relationship"></div>
@@ -154,9 +171,12 @@
 </section>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'users'"></app-icon> Workflow
-      Approvers</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow
+            Approvers</h5>
+      </div>
+   </p-divider>
    <div class="my-4 text-muted" *ngIf="!approvers?.id">
       <app-icon [name]="'info'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update
       approvers.
@@ -191,8 +211,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave Balance</h5>
+      </div>
+   </p-divider>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
       <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Click on "Edit Profile" to add/update
       leave balance.
@@ -231,9 +254,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Account Information
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Account Information
+         </h5>
+      </div>
+   </p-divider>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Account Status</dt>
       <dd class="col-md-8 col-lg-9">
@@ -246,7 +272,8 @@
       <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor | date:'dd-MM-y'}}</dd>
 
       <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closed on</dt>
-      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_closed_datetime  | date: 'dd-MM-yyyy h:mm:ss a'}}</dd>
+      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_closed_datetime | date:
+         'dd-MM-yyyy h:mm:ss a'}}</dd>
 
       <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closure comments</dt>
       <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_close_comments}}</dd>
