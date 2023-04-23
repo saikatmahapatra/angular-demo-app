@@ -11,8 +11,11 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'user'"></app-icon> Basic Info</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic Info</h5>
+      </div>
+   </p-divider>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_emp_id}}</dd>
@@ -40,8 +43,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'map'"></app-icon> Address</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Address</h5>
+      </div>
+   </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
       <app-icon [name]="'add'"></app-icon> Add </a>
    <div class="my-3" *ngFor="let addr of addressInfo">
@@ -70,8 +76,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'book'"></app-icon> Education</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Education</h5>
+      </div>
+   </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
       <app-icon [name]="'add'"></app-icon>
       Add</a>
@@ -100,9 +109,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'job'"></app-icon> Work Experience
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work Experience
+         </h5>
+      </div>
+   </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
       <app-icon [name]="'add'"></app-icon>
       Add</a>
@@ -134,8 +146,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'currency'"></app-icon> Payroll Info</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+      </div>
+   </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
       <app-icon [name]="'add'"></app-icon>
       Add</a>
@@ -168,10 +183,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'heart'"></app-icon> Emergency
-      Contacts
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Emergency Contacts
+         </h5>
+      </div>
+   </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
       <app-icon [name]="'add'"></app-icon> Add</a>
    <div class="my-3" *ngFor="let contact of emergencyContact">
@@ -196,9 +213,12 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'users'"></app-icon> Workflow
-      Approvers</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow
+            Approvers</h5>
+      </div>
+   </p-divider>
    <div *ngIf="selfAccount">
       <button type="button" class="btn btn-sm btn-outline-success me-2" (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
    </div>
@@ -235,8 +255,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave Balance</h5>
+      </div>
+   </p-divider>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
       <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further information.
    </div>
@@ -263,9 +286,12 @@
 </section>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon [name]="'info'"></app-icon> Account Information
-   </h5>
-   <hr>
+   <p-divider align="left">
+      <div class="inline-flex align-items-center">
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Account Information
+         </h5>
+      </div>
+   </p-divider>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Account Status</dt>
       <dd class="col-md-8 col-lg-9">
