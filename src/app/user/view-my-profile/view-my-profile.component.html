@@ -11,7 +11,7 @@
 </div>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-user'"></app-icon> Basic Info</h5>
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-user'"></app-icon> Basic Info</h5>
    <hr>
    <dl class="row">
       <dt class="col-md-4 col-lg-3">Employee ID</dt>
@@ -41,10 +41,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-map-marker'"></app-icon>Address</h5>
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-map-marker'"></app-icon>Address</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon> Add </a>
+      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon> Add </a>
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
@@ -71,10 +71,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-book'"></app-icon> Education</h5>
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-book'"></app-icon> Education</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3" *ngFor="let education of educationInfo">
       <h6>{{education?.qualification_name}} - {{education?.degree_name}};
@@ -101,11 +101,11 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-briefcase'"></app-icon> Work Experience
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-briefcase'"></app-icon> Work Experience
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
@@ -140,10 +140,10 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-dollar'"></app-icon> Payroll Info</h5>
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-dollar'"></app-icon> Payroll Info</h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon>
+      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon>
       Add</a>
    <div class="my-3">
       <dl class="row">
@@ -179,7 +179,7 @@
    </h5>
    <hr>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
-      <app-icon [lib]="'png'" class="" [name]="'pi-plus'"></app-icon> Add</a>
+      <app-icon [lib]="'primeng'" class="" [name]="'pi-plus'"></app-icon> Add</a>
    <div class="my-3" *ngFor="let contact of emergencyContact">
       <h6>{{contact?.contact_person_name}}</h6>
       <div class="text-muted" [innerHTML]="contact.relationship"></div>
@@ -202,7 +202,7 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-users'"></app-icon> Workflow
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-users'"></app-icon> Workflow
       Approvers</h5>
    <hr>
    <div *ngIf="selfAccount">
@@ -241,7 +241,7 @@
 
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-info-circle'"></app-icon> Leave Balance</h5>
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-info-circle'"></app-icon> Leave Balance</h5>
    <hr>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
       <app-icon [name]="'info-circle'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further information.
@@ -269,7 +269,7 @@
 </section>
 
 <section class="my-4">
-   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'png'" [name]="'pi-info-circle'"></app-icon> Account Information
+   <h5 class="my-2 text-primary"><app-icon class="me-2" [lib]="'primeng'" [name]="'pi-info-circle'"></app-icon> Account Information
    </h5>
    <hr>
    <dl class="row">
