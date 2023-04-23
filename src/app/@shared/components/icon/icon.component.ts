@@ -6,22 +6,39 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-  @Input() lib: string = 'png';
+  @Input() lib: string = 'primeng'; // bootstrap | primeng
   @Input() name: string = '';
   @Input() width: number = 16;
   @Input() height: number = 16;
   @Input() fill: string = 'currentColor';
   @Input() styleCSS: any = '';
-  @Input() svg: boolean =  false;
+  @Input() svg: boolean = false;
 
-  //primeng 
-  primeNGIcon: any = {
-    'user' :'pi pi-user'
-  }
-
-  bootstrapIcon: any = {
-    'user' :'bi bi-person-fill'
-  }
+  // Icons
+  icons: any = {
+    'home': { primeng: 'pi pi-home', bootstrap: '' },
+    'user': { primeng: 'pi pi-user', bootstrap: '' },
+    'users': { primeng: 'pi pi-users', bootstrap: '' },
+    'plus': { primeng: 'pi pi-plus', bootstrap: '' },
+    'edit': { primeng: 'pi pi-pencil', bootstrap: '' },
+    'userEdit': { primeng: 'pi pi-user-edit', bootstrap: '' },
+    'delete': { primeng: 'pi pi-trash', bootstrap: '' },
+    'info': { primeng: 'pi pi-info', bootstrap: '' },
+    'infoCircle': { primeng: 'pi pi-info-circle', bootstrap: '' },
+    'admin': { primeng: 'pi pi-lock', bootstrap: '' },
+    'selfService': { primeng: 'pi pi-folder', bootstrap: '' },
+    'angleLeft': { primeng: 'pi pi-angle-left', bootstrap: '' },
+    'currency': { primeng: 'pi pi-dollart', bootstrap: '' },
+    'clock': { primeng: 'pi pi-clock', bootstrap: '' },
+    'globe': { primeng: 'pi pi-globe', bootstrap: '' },
+    'location': { primeng: 'pi pi-map-marker', bootstrap: '' },
+    'phone': { primeng: 'pi pi-phone', bootstrap: '' },
+    'email': { primeng: 'pi pi-envelope', bootstrap: '' },
+    'sun': { primeng: 'pi pi-sun', bootstrap: '' },
+    'moon': { primeng: 'pi pi-moon', bootstrap: '' },
+    'status': { primeng: 'pi pi-circle-fill', bootstrap: '' },
+    
+  };
 
   constructor() {
   }
@@ -30,11 +47,11 @@ export class IconComponent implements OnInit {
   }
 
   getIconClass() {
-    if(this.lib == 'png') {
-      return this.primeNGIcon[this.name] ? this.primeNGIcon[this.name] : 'pi pi-question';
+    if (this.lib == 'primeng') {
+      return this.icons[this.name]?.primeng ? this.icons[this.name]?.primeng : 'pi pi-question';
     }
-    if(this.lib == 'bs5') {
-      return this.bootstrapIcon[this.name] ? this.bootstrapIcon[this.name] : 'bi bi-info-circle';
+    if (this.lib == 'bootstrap') {
+      return this.icons[this.name]?.bootstrap ? this.icons[this.name]?.bootstrap : 'bi bi-info-circle';
     }
   }
 
