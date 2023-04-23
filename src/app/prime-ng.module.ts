@@ -30,6 +30,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
+import { DividerModule } from 'primeng/divider';
 
 const data = [
   ButtonModule,
@@ -61,7 +62,8 @@ const data = [
   TooltipModule,
   FileUploadModule,
   DialogModule,
-  EditorModule
+  EditorModule,
+  DividerModule
 ];
 
 

@@ -13,6 +13,7 @@ export class IconComponent implements OnInit {
   @Input() fill: string = 'currentColor';
   @Input() styleClass: any = '';
   @Input() svg: boolean = false;
+  @Input() styleCSS: any = '';
 
   // Icons
   icons: any = {
