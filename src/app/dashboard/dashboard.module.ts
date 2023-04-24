@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../@shared/shared.module';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PrimeNgModule } from '../prime-ng.module';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PrimeNgModule } from '../prime-ng.module';
     SharedModule,
     RouterModule,
     DashboardRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    FullCalendarModule 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
