@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-  @Input() lib: string = 'bootstrap'; // bootstrap | primeng
+  @Input() lib: string = 'primeng'; // bootstrap | primeng
   @Input() name: string = '';
   @Input() width: number = 16;
   @Input() height: number = 16;
