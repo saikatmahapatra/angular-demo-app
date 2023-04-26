@@ -32,6 +32,7 @@ export const AppConfig = {
         addHoliday: 'cms/addHoliday',
         updateHoliday: 'cms/updateHoliday',
         deleteHoliday: 'cms/deleteHoliday',
+        getEvents: 'cms/getEvents',
 
         // User
         getUsers: 'user/getUser',
