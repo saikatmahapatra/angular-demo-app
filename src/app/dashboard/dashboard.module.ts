@@ -4,7 +4,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { PostComponent } from './post/post.component';
 import { DashboardStatComponent } from './dashboard-stat/dashboard-stat.component';
-import { FullCalendarComponent } from './full-calendar/full-calendar.component';
+import { EventCalendarComponent } from './event-calendar/event-calendar.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../@shared/shared.module';
 import { PostDetailsComponent } from './post-details/post-details.component';
@@ -16,7 +16,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     DashboardComponent,
     PostComponent,
     DashboardStatComponent,
-    FullCalendarComponent,
+    EventCalendarComponent,
     PostDetailsComponent
   ],
   imports: [
