@@ -37,9 +37,9 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
         }
 
         this.message = message;
-        setTimeout(() => {
-          this.dismissAlert()
-        }, 8000)
+        // setTimeout(() => {
+        //   this.dismissAlert()
+        // }, 8000)
       });
   }
 
