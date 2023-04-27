@@ -4,5 +4,5 @@
   <app-icon *ngIf="message.icon == 'info' " [name]="'info'"></app-icon>
   <app-icon *ngIf="message.icon == 'warning' " [name]="'warning'"></app-icon>
   <span class="ms-2" [innerHTML]="message.text"></span>
-  <button type="button" class="btn-close" (click)="dismissAlert(message)" aria-label="Close"></button>
+  <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
 </div>
