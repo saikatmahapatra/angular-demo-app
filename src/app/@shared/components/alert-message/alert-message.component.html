@@ -1,4 +1,4 @@
-<div *ngIf="message && message.text" class="alert d-flex align-items-center alert-dismissible fade show" [ngClass]="message.cssClass">
+<div *ngIf="message && message.text" class="alert d-flex align-items-center alert-dismissible fade show sticky-alert" [ngClass]="message.cssClass">
   <app-icon *ngIf="message.icon == 'success' " [name]="'success'"></app-icon>
   <app-icon *ngIf="message.icon == 'error' " [name]="'error'"></app-icon>
   <app-icon *ngIf="message.icon == 'info' " [name]="'info'"></app-icon>
