@@ -37,6 +37,9 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
         }
 
         this.message = message;
+        setTimeout(() => {
+          this.dismissAlert()
+        }, 8000)
       });
   }
 
@@ -44,7 +47,7 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  dismissAlert(message: any) {
+  dismissAlert() {
     this.message = {};
   }
 }
