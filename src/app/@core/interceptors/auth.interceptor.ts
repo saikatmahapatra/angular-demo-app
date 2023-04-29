@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const authToken = this.authSvc.getToken();
     const isMockServer = AppConfig.useMockServer;
     this.loader.show();
-    this.alertSvc.clear();
+    //this.alertSvc.clear();
     if(authToken && !isMockServer) {
       const clonedReq = request.clone({
         setHeaders: {
