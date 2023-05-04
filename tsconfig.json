@@ -40,6 +40,9 @@
       ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
       ]
     },
     "useDefineForClassFields": false
