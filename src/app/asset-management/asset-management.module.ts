@@ -6,6 +6,9 @@ import { AssetManagementLayoutComponent } from './asset-management-layout.compon
 import { AddEditAssetsComponent } from './add-edit-assets/add-edit-assets.component';
 import { ManageAssetsComponent } from './manage-assets/manage-assets.component';
 import { AssignAssetsComponent } from './assign-assets/assign-assets.component';
+import { PrimeNgModule } from '../prime-ng.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../@shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +20,11 @@ import { AssignAssetsComponent } from './assign-assets/assign-assets.component';
   ],
   imports: [
     CommonModule,
-    AssetManagementRoutingModule
+    AssetManagementRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PrimeNgModule
   ]
 })
 export class AssetManagementModule { }
