@@ -58,7 +58,10 @@ export class IconComponent implements OnInit {
     'projects': { primeng: 'pi pi-th-large', bootstrap: 'bi bi-columns-gap' },
     'search': { primeng: 'pi pi-search', bootstrap: 'bi bi-search' },
     'settings': { primeng: 'pi pi-cog', bootstrap: 'bi bi-gear' },
-    'upload': { primeng: 'pi pi-upload', bootstrap: 'bi bi-upload' }
+    'upload': { primeng: 'pi pi-upload', bootstrap: 'bi bi-upload' },
+    'download': { primeng: 'pi pi-download', bootstrap: 'bi bi-download' },
+    'exportxls': { primeng: 'pi pi-file-excel', bootstrap: 'bi bi-file-earmark-excel' },
+    'exportpdf': { primeng: 'pi pi-file-pdf', bootstrap: 'bi bi-filetype-pdf' }
   };
 
   constructor() {

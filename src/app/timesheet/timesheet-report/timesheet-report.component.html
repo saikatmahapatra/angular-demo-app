@@ -34,7 +34,7 @@
                             </div>
                           </div>
                     </form>
-                    
+                    <button (click)="exportToExcel()" class="btn btn-success" [disabled]="timesheetData.length <= 0"><app-icon [name]="'exportxls'"></app-icon> Export to XLS</button>                    
                 </div>
             </ng-template>
             <ng-template pTemplate="header">

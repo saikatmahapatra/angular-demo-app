@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -23,7 +24,8 @@ export class TimesheetReportComponent implements OnInit {
   selectedEmployees = [];
   selectedProjects = [];
   loading = false;
-  timesheetData = [];
+  timesheetData: any = [];
+  dataForExcel: any = [];
 
   myForm = this.fb.group({
     action: ['timesheetReport'],
@@ -50,7 +52,8 @@ export class TimesheetReportComponent implements OnInit {
     private alertSvc: AlertService,
     private router: Router,
     private fb: UntypedFormBuilder,
-    private validator: FormValidationService
+    private validator: FormValidationService,
+    private exportSvc: ExportExcelService
   ) {
     let today = new Date();
     this.maxDate = today;
@@ -100,6 +103,20 @@ export class TimesheetReportComponent implements OnInit {
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
     });
+  }
+
+  exportToExcel() {
+    this.timesheetData.forEach((row: any) => {
+      this.dataForExcel.push(Object.values(row))
+    })
+
+    let reportData = {
+      title: 'Timesheet Report',
+      data: this.dataForExcel,
+      headers: Object.keys(this.timesheetData[0]),
+      sheetName: 'Data'
+    }
+    this.exportSvc.exportTimesheetExcel(reportData);
   }
 }
 
