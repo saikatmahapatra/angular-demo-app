@@ -38,7 +38,7 @@ export class TimesheetReportComponent implements OnInit {
   currentPageIndex: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 100;
-  itemPerPageDropdown = [10, 20, 30, 50, 100, 200];
+  itemPerPageDropdown = [10, 20, 30, 50, 100, 500];
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -97,6 +97,7 @@ export class TimesheetReportComponent implements OnInit {
     headers = headers.set('page', String(this.currentPageIndex));
     this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value, { headers: headers }).subscribe({
       next: (response: any) => {
+        this.dataForExcel = [];
         this.timesheetData = response?.data?.data_rows;
         this.totalRecords = response?.data?.num_rows;
       },
@@ -107,13 +108,15 @@ export class TimesheetReportComponent implements OnInit {
 
   exportToExcel() {
     this.timesheetData.forEach((row: any) => {
+      let key = Object.keys(row);
       this.dataForExcel.push(Object.values(row))
     })
 
     let reportData = {
       title: 'Timesheet Report',
       data: this.dataForExcel,
-      headers: Object.keys(this.timesheetData[0]),
+      //headers: Object.keys(this.timesheetData[0]),
+      headers: ['ID', 'DATE', 'HOURS', 'DESCR', 'CREATED_ON', 'UPDATED_ON', 'STATUS', 'REVIEWED_BY', 'REVIEWED_ON', 'PROJECT_NO', 'PROJECT_NAME', 'TASK_NAME', 'EMP_FIRSTNAME', 'EMP_LASTNAME', 'REVIEWER_FIRSTNAME', 'REVIEWER_LASTNAME'],
       sheetName: 'Data'
     }
     this.exportSvc.exportTimesheetExcel(reportData);
