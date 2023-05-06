@@ -116,7 +116,7 @@ export class TimesheetReportComponent implements OnInit {
       title: 'Timesheet Report',
       data: this.dataForExcel,
       //headers: Object.keys(this.timesheetData[0]),
-      headers: ['ID', 'DATE', 'HOURS', 'DESCR', 'CREATED_ON', 'UPDATED_ON', 'STATUS', 'REVIEWED_BY', 'REVIEWED_ON', 'PROJECT_NO', 'PROJECT_NAME', 'TASK_NAME', 'EMP_FIRSTNAME', 'EMP_LASTNAME', 'REVIEWER_FIRSTNAME', 'REVIEWER_LASTNAME'],
+      headers: ['ID', 'DATE', 'HOURS', 'DESCRIPTION', 'CREATED_ON', 'UPDATED_ON', 'STATUS', 'REVIEWED_BY', 'REVIEWED_ON', 'PROJECT_NO', 'PROJECT_NAME', 'TASK_NAME', 'EMP_FIRSTNAME', 'EMP_LASTNAME', 'REVIEWER_FIRSTNAME', 'REVIEWER_LASTNAME'],
       sheetName: 'Data'
     }
     this.exportSvc.exportTimesheetExcel(reportData);
