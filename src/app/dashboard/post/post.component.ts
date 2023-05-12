@@ -34,6 +34,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((param) => {
       this.currentPageIndex = window.history.state?.newsPageNumber || 0;
+      this.first = this.currentPageIndex * this.itemPerPage;
       this.getContents();
     })
 

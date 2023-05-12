@@ -7,7 +7,7 @@
         <!-- <span class="badge rounded-pill mx-2 badge-cms-type">{{item?.content_type}}</span> -->
         <span class="text-muted small ms-2" [innerHTML]="getTimeStampInfo(item)"></span>
     </div>
-    <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+    <p-paginator [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
         [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
 
