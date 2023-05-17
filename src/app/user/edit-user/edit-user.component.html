@@ -113,6 +113,28 @@
                 </div>
             </div>
 
+            <div class="row mb-3 mb-2">
+                <div class="col-md-6">
+                    <label class="required" for="workspaceSolution">Workspace Solution</label>
+                    <select class="form-select" id="workspaceSolution" formControlName="workspaceSolution">
+                        <option value="">Select</option>
+                        <option value="{{data.id}}" *ngFor="let data of workspaceSolutionList; let i=index">{{data.name}}
+                        </option>
+                    </select>
+                    <app-validation-error [control]="userBasicForm.controls['workspaceSolution']"></app-validation-error>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="required" for="baseWorkLocation">Base Work Location</label>
+                    <select class="form-select" id="baseWorkLocation" formControlName="baseWorkLocation">
+                        <option value="">Select</option>
+                        <option value="{{data.id}}" *ngFor="let data of baseWorkLocationList; let i=index">{{data.name}}
+                        </option>
+                    </select>
+                    <app-validation-error [control]="userBasicForm.controls['baseWorkLocation']"></app-validation-error>
+                </div>
+            </div>
+
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label class="required me-4" for="role">User Role</label>

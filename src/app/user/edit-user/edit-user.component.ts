@@ -52,6 +52,8 @@ export class EditUserComponent {
   departmentList: any;
   employmentTypeList: any;
   designationList: any;
+  workspaceSolutionList: any;
+  baseWorkLocationList: any;
 
   minDateDob: Date = new Date();
   maxDateDob: Date = new Date();
@@ -71,7 +73,9 @@ export class EditUserComponent {
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
-    role: ['3', Validators.required]
+    role: ['3', Validators.required],
+    workspaceSolution: ['', Validators.required],
+    baseWorkLocation: ['', Validators.required],
   });
 
   isRequiredStatusChangeReason = true;
@@ -163,6 +167,8 @@ export class EditUserComponent {
           this.designationList = response[0]?.data.designations;
           this.departmentList = response[0]?.data?.departments;
           this.employmentTypeList = response[0]?.data?.employmentTypes;
+          this.workspaceSolutionList = response[0]?.data?.workspace_solution;
+          this.baseWorkLocationList = response[0]?.data?.work_location;
           // User Data
           this.userInfo = response[1]?.data?.user[0];
           this.addressInfo = response[1]?.data?.address;
@@ -197,6 +203,8 @@ export class EditUserComponent {
       employmentType: this.userInfo?.user_employment_type,
       role: this.userInfo?.user_role,
       accountStatus: this.userInfo?.user_status,
+      workspaceSolution: this.userInfo?.user_workspace_solution_type,
+      baseWorkLocation: this.userInfo?.user_work_base_location_id,
     });
   }
 

@@ -28,6 +28,9 @@ export class AddUserComponent implements OnInit {
   departmentList: any;
   employmentTypeList: any;
   designationList: any;
+  workspaceSolutionList: any;
+  baseWorkLocationList: any;
+
 
   minDateDob: Date = new Date();
   maxDateDob: Date = new Date();
@@ -49,7 +52,9 @@ export class AddUserComponent implements OnInit {
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
-    role: ['3', Validators.required]
+    role: ['3', Validators.required],
+    workspaceSolution: ['', Validators.required],
+    baseWorkLocation: ['', Validators.required],
   });
 
   constructor(private fb: UntypedFormBuilder, private validator: FormValidationService,
@@ -97,8 +102,10 @@ export class AddUserComponent implements OnInit {
   getFormData() {
     this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
       this.designationList = val?.data.designations;
-      this.departmentList = val?.data?.departments,
-        this.employmentTypeList = val?.data?.employmentTypes
+      this.departmentList = val?.data?.departments;
+      this.employmentTypeList = val?.data?.employmentTypes;
+      this.workspaceSolutionList = val?.data?.workspace_solution;
+      this.baseWorkLocationList = val?.data?.work_location;
     });
   }
 
