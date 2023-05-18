@@ -154,6 +154,12 @@
                                     <td [innerHTML]="rowData?.department_name || '-'"></td>
                                 </tr>
                                 <tr>
+                                    <td class="fw-bold">Base Work Location</td>
+                                    <td [innerHTML]="rowData?.base_work_location_name || '-'"></td>
+                                    <td class="fw-bold">Workspace Type</td>
+                                    <td [innerHTML]="rowData?.workspace_type_name || '-'"></td>
+                                </tr>
+                                <tr>
                                     <td class="fw-bold">Role Group</td>
                                     <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
