@@ -60,7 +60,7 @@
    <div class="my-3" *ngFor="let addr of addressInfo">
       <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
       <address>
-         {{addr?.address}}, {{addr?.locality}}, {{addr?.city}}, {{addr?.state_name}},
+         {{addr?.address}}, {{addr?.locality}}, {{addr?.city_name}}, {{addr?.state_name}},
          {{addr?.zip}} <br>
          Phone: {{addr?.phone1}} <br>
          Landmark: {{addr?.landmark}}

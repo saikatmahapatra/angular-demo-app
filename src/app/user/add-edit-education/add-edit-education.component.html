@@ -30,6 +30,7 @@
             <div class="mb-3" *ngIf="myForm.value['degree'] === '-1'">
                 <!-- <label class="required" for="newDegree">Other Degree</label> -->
                 <input type="text" class="form-control" id="newDegree" formControlName="newDegree" maxlength="30" placeholder="Other Degree">
+                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
                 <app-validation-error [control]="myForm.controls['newDegree']"></app-validation-error>
             </div>
 
@@ -46,6 +47,7 @@
             <div class="mb-3" *ngIf="myForm.value['specialization'] === '-1'">
                 <!-- <label class="required" for="newSpecialization">Other Specialization</label> -->
                 <input type="text" class="form-control" id="newSpecialization" formControlName="newSpecialization" maxlength="30" placeholder="Other Specialization">
+                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
                 <app-validation-error [control]="myForm.controls['newSpecialization']"></app-validation-error>
             </div>
 
@@ -62,6 +64,7 @@
             <div class="mb-3" *ngIf="myForm.value['institute'] === '-1'">
                 <!-- <label class="required" for="newInstitute">Other Institute/University/Board/Council</label> -->
                 <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute" maxlength="30" placeholder="Other Institute">
+                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
                 <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
             </div>
 

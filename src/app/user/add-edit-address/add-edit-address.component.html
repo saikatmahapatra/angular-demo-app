@@ -30,10 +30,22 @@
             </div>
 
             <div class="mb-3">
-                <label class="required" for="city">City/District/Town</label>
-                <input type="text" class="form-control" id="city" formControlName="city" maxlength="10">
+                <label class="required" for="city">City/Town/Dist</label>
+                <!-- <input type="text" class="form-control" id="city" formControlName="city" maxlength="10"> -->
+                <select class="form-select" id="city" formControlName="city">
+                    <option value="">Select</option>
+                    <option *ngFor="let data of cityList" [value]="data.id" [innerHTML]="data.name"></option>
+                    <option value="-1">Others</option>
+                </select>
                 <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
             </div>
+
+            <div class="mb-3" *ngIf="myForm.value['city'] === '-1'">
+                <input type="text" class="form-control" id="newCity" formControlName="newCity" maxlength="30" placeholder="Other city/town name">
+                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
+                <app-validation-error [control]="myForm.controls['newCity']"></app-validation-error>
+            </div>
+
             <div class="mb-3">
                 <label class="required" for="state">State</label>
                 <select class="form-select" id="state" formControlName="state">

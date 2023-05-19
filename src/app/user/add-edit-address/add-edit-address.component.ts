@@ -18,6 +18,7 @@ export class AddEditAddressComponent implements OnInit {
   submitted = false;
   loading = false;
   stateList: State[] = [];
+  cityList: State[] = [];
   id: any = '';
   isAdd = true;
   title = 'Add';
@@ -30,6 +31,7 @@ export class AddEditAddressComponent implements OnInit {
     addressLine1: ['', [Validators.required]],
     addressLine2: [''],
     city: ['', Validators.required],
+    newCity: [null],
     state: ['', Validators.required],
     zip: ['', Validators.required],
     landmark: [''],
@@ -46,10 +48,11 @@ export class AddEditAddressComponent implements OnInit {
   addressType: Array<any> = [
     { id: 'P', name: 'Permanent' },
     { id: 'C', name: 'Present' },
-    { id: 'W', name: 'Work' }
+    //{ id: 'W', name: 'Work' }
   ];
 
   ngOnInit(): void {
+    this.addNewCityValidator();
     this.getFormData();
     if (this.router.url.indexOf('edit-address') != -1) {
       this.isAdd = false;
@@ -68,7 +71,23 @@ export class AddEditAddressComponent implements OnInit {
   getFormData() {
     this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
       this.stateList = val?.data?.states;
+      this.cityList = val?.data?.cities;
     });
+  }
+
+  addNewCityValidator() {
+    const dep = this.myForm.controls['city'];
+    const field = this.myForm.controls['newCity'];
+    dep?.valueChanges.subscribe((val) => {
+      if (val === '-1') {
+        field.setValidators([Validators.required]);
+      } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
+        field.setErrors(null);
+      }
+    });
+    field.updateValueAndValidity();
   }
 
   onSubmit() {
