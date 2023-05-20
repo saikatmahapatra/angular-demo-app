@@ -35,6 +35,7 @@ export class TimesheetFormComponent implements OnInit {
     "July", "August", "September", "October", "November", "December"
   ];
   monthName: string = '';
+  allowedMinDate = 15;
 
   myForm = this.fb.group({
     id: [null],
@@ -76,7 +77,7 @@ export class TimesheetFormComponent implements OnInit {
     this.year = today.getFullYear();
 
     this.minDate = new Date();
-    this.minDate.setDate(today.getDate() - 4);
+    this.minDate.setDate(today.getDate() - this.allowedMinDate);
 
     this.maxDate = new Date();
     this.maxDate = today;
