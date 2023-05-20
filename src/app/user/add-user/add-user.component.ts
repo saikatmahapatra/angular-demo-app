@@ -64,7 +64,7 @@ export class AddUserComponent implements OnInit {
 
     let today = new Date();
     this.minDateDob.setFullYear(today.getFullYear() - 100);
-    this.maxDateDob.setFullYear(today.getFullYear() - 18);
+    this.maxDateDob.setFullYear(today.getFullYear());
 
     //this.minDateDoj.setFullYear(today.getFullYear() - 100);
     this.maxDateDoj.setDate(today.getDate());
