@@ -15,6 +15,7 @@ export class AddEditExperienceComponent implements OnInit {
   submitted = false;
   loading = false;
   designations: any;
+  jobLocationList: any;
   employers: any;
   minDate: Date = new Date();
   maxDate: Date = new Date();
@@ -28,6 +29,7 @@ export class AddEditExperienceComponent implements OnInit {
     employer: ['', [Validators.required]],
     newEmployer: [null],
     designation: ['', [Validators.required]],
+    locationId: [''],
     newDesignation: [null],
     fromDate: ['', Validators.required],
     toDate: ['', Validators.required]
@@ -120,6 +122,7 @@ export class AddEditExperienceComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.experienceFormData).subscribe((val: any) => {
       this.employers = val?.data?.employer;
       this.designations = val?.data?.designation;
+      this.jobLocationList = val?.data?.jobLocation;
     });
   }
 
@@ -142,6 +145,7 @@ export class AddEditExperienceComponent implements OnInit {
       employer: data?.company_id,
       newEmployer: null,
       designation: data?.designation_id,
+      locationId: data?.job_location_id,
       newDesignation: null,
       fromDate: new Date(data?.from_date),
       toDate: new Date(data?.to_date)

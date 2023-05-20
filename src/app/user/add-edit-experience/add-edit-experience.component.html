@@ -40,6 +40,15 @@
             </div>
 
             <div class="mb-3">
+                <label class="optional" for="locationId">Job Location</label>
+                <select class="form-select" id="locationId" formControlName="locationId">
+                    <option value="">Select</option>
+                    <option *ngFor="let data of jobLocationList" [value]="data.id" [innerHTML]="data.name"></option>
+                </select>
+                <app-validation-error [control]="myForm.controls['locationId']"></app-validation-error>
+            </div>
+
+            <div class="mb-3">
                 <label class="required" for="fromDate">From</label>
                 <p-calendar dateFormat="dd/mm/yy" formControlName="fromDate" [readonlyInput]="true" inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
                 <app-validation-error [control]="myForm.controls['fromDate']"></app-validation-error>

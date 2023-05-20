@@ -113,7 +113,11 @@
    </div>
    <div class="my-3" *ngFor="let exp of workExp">
       <h6>{{exp?.designation_name}}</h6>
-      <div [innerHTML]="exp.company_name"></div>
+      <div>
+         <span [innerHTML]="exp.company_name"></span>
+         <span *ngIf="exp.job_location_name">, </span>
+         <span [innerHTML]="exp.job_location_name"></span>
+      </div>
       <div class="text-muted">{{exp?.from_date | date: 'dd-MM-yyyy'}} - {{exp?.to_date | date:
          'dd-MM-yyyy'}}
       </div>
