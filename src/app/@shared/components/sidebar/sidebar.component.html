@@ -1,6 +1,7 @@
 <div class="sbar-links ms-2 my-3">
   <div class="mt-4">
-    <a class="btn btn-primary d-flex justify-content-center align-items-center mx-3 me-4 fw-normal" [routerLink]="['/emp/my-profile']">
+    <a class="btn btn-primary d-flex justify-content-center align-items-center mx-3 me-4 fw-normal"
+      [routerLink]="['/emp/my-profile']">
       <app-icon [name]="'user'" [styleClass]="'me-2'"></app-icon>
       {{transform(welcomeUserText, 18)}}
     </a>
@@ -22,33 +23,41 @@
       <div class="collapse show" id="getting-started-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Employee Management</a>
-          </li>
-          <li>
-            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="nav-link">Add New Employee</a>
-          </li>
-          <!-- <li>
-            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Contents</a>
-          </li>
-          <li>
-            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Holiday
+            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Employee
               Management</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Management</a>
-          </li> -->
+            <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="nav-link">Add New
+              Employee</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
+              Contents</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Holiday
+              Management</a>
+          </li>
+          <li>
+            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave
+              Management</a>
+          </li>
           <!-- <li>
             <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave Balance</a>
           </li> -->
-          <!-- <li>
-            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet Report</a>
+          <li>
+            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet
+              Report</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Projects</a>
+            <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Manage Projects</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Tasks</a>
-          </li> -->
+            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
+              Tasks</a>
+          </li>
           <!-- <li>
             <a [routerLink]="['/asset-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Asset Management</a>
           </li> -->
@@ -61,49 +70,57 @@
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log Timesheet</a>
-          </li>
-          <!-- <li>
-            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave to Approve</a>
+            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log
+              Timesheet</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change Approvers</a>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Leave to Approve</a>
+          </li>
+          <li>
+            <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
+              Approvers</a>
           </li>
           <li>
             <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="nav-link">Apply Leave</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave History</a>
-          </li> -->
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave
+              History</a>
+          </li>
         </ul>
       </div>
     </li>
 
-    <!-- <li class="my-3">
+    <li class="my-3">
       <h6 class="mx-2"><app-icon [name]="'globe'" [styleClass]="'me-2 f-18'"></app-icon> My Organization</h6>
       <div class="collapse show" id="customize-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
           <li>
-            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']" class="nav-link">Employees</a>
+            <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Employees</a>
           </li>
           <li>
-            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Reportees</a>
+            <a [routerLink]="['/emp/view-reportees']" [routerLinkActive]="['active-nav-link']" class="nav-link">My
+              Reportees</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-calendar']"  [routerLinkActive]="['active-nav-link']" class="nav-link">Holidays</a>
+            <a [routerLink]="['/cms/holiday-calendar']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Holidays</a>
           </li>
         </ul>
       </div>
-    </li> -->
+    </li>
 
     <li class="my-3">
       <h6 class="mx-2"><app-icon [name]="'user'" [styleClass]="'me-2 f-18'"></app-icon> My Account</h6>
 
       <div class="collapse show" id="layout-collapse">
         <ul class="list-unstyled fw-normal pb-1 ">
-          <!-- <li>
-            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Profile</a>
-          </li> -->
+          <li>
+            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My
+              Profile</a>
+          </li>
           <li>
             <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
               Password</a>
