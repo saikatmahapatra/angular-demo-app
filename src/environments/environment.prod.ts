@@ -7,5 +7,5 @@ export const environment = {
   mockAPIUrl: "http://localhost:7878/",
   useMockServer: false,
   copyrightInfo: "Copyright &copy; 2023 United Exploration India",
-  version: "v1.0"
+  version: "1.0"
 };
