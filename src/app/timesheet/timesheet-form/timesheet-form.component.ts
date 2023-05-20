@@ -35,7 +35,7 @@ export class TimesheetFormComponent implements OnInit {
     "July", "August", "September", "October", "November", "December"
   ];
   monthName: string = '';
-  allowedMinDate = 15;
+  allowedMinDate = 30;
 
   myForm = this.fb.group({
     id: [null],
