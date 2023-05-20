@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Application No</div>
+            <div class="col-md-3 fw-bold text-right">Application No</div>
             <div class="col-md-9">{{rowData?.leave_req_id}}</div>
         </div>
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Date</div>
+            <div class="col-md-3 fw-bold text-right">Applied On</div>
             <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}}</div>
         </div>
         <div class="row my-2">
@@ -34,8 +34,16 @@
                 <span>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</span>
             </div>
         </div>
+       
+        <div class="row my-2 mt-4">
+            <div class="col-md-3 fw-bold text-right">Leave Type</div>
+            <div class="col-md-9">
+                {{rowData?.leave_type}} - {{rowData?.leave_term}}
+            </div>
+        </div>
+
         <div class="row my-2">
-            <div class="col-md-3 fw-bold">Leave Duration</div>
+            <div class="col-md-3 fw-bold">Leave Date(s)</div>
             <div class="col-md-9">
                 <span>{{rowData?.leave_from_date| date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date:
                     'dd/MM/yyyy'}}</span>
@@ -43,13 +51,6 @@
                     {{rowData?.applied_for_days_count}} <span
                         [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>
                 </span>
-            </div>
-        </div>
-
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Type</div>
-            <div class="col-md-9">
-                {{rowData?.leave_type}} - {{rowData?.leave_term}}
             </div>
         </div>
 
