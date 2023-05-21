@@ -22,6 +22,12 @@
                             <p-sortIcon field="user_firstname"></p-sortIcon>
                         </div>
                     </th>
+                    <th style="width: 15rem" pSortableColumn="user_email">
+                        <div class="flex justify-content-between align-items-center">
+                            Email
+                            <p-sortIcon field="user_email"></p-sortIcon>
+                        </div>
+                    </th>
                     <th style="width: 12rem" pSortableColumn="user_firstname">
                         <div class="flex justify-content-between align-items-center">
                             Emp ID
@@ -46,12 +52,7 @@
                             <p-sortIcon field="base_work_location_name"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 15rem" pSortableColumn="user_email">
-                        <div class="flex justify-content-between align-items-center">
-                            Email
-                            <p-sortIcon field="user_email"></p-sortIcon>
-                        </div>
-                    </th>
+                    
                     <th style="width: 10rem" pSortableColumn="user_phone1">
                         <div class="flex justify-content-between align-items-center">
                             Phone
@@ -73,6 +74,10 @@
                         {{rowData?.user_firstname}} {{rowData?.user_lastname}}
                     </td>
                     <td>
+                        <span class="p-column-title">Email</span>
+                        <span [title]="rowData?.user_email">{{ (rowData?.user_email | slice : 0: 20) + '...' }}</span>
+                    </td>
+                    <td>
                         <span class="p-column-title">Emp ID</span>
                         {{rowData?.user_emp_id}}
                     </td>
@@ -88,10 +93,7 @@
                         <span class="p-column-title">Work Location</span>
                         {{rowData?.base_work_location_name}}
                     </td>
-                    <td>
-                        <span class="p-column-title">Email</span>
-                        {{rowData?.user_email}}
-                    </td>
+                    
                     <td>
                         <span class="p-column-title">Phone</span>
                         {{rowData?.user_phone1}}
