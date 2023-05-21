@@ -24,9 +24,6 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
-import { D3DataDrivenDocumentComponent } from './d3-data-driven-document/d3-data-driven-document.component';
-import { BarChartComponent } from './d3-data-driven-document/bar-chart/bar-chart.component';
-import { MultiLineChartComponent } from './d3-data-driven-document/multi-line-chart/multi-line-chart.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
 import { PrimeNgModule } from '../prime-ng.module';
 
@@ -61,9 +58,6 @@ import { PrimeNgModule } from '../prime-ng.module';
     ContentCardComponent,
     AgGridTableExampleComponent,
     TranslationDemoComponent,
-    D3DataDrivenDocumentComponent,
-    BarChartComponent,
-    MultiLineChartComponent,
     PrimeNgUiKitComponent,
   ],
   exports: [

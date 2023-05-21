@@ -17,8 +17,7 @@
 </ng-container>
 
 <div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
-    <app-icon class="me-2" [name]="'info'"></app-icon> This account has been closed
-    permanently. You are not allowed to edit any information post closure of account.
+    <app-icon class="me-2" [name]="'info'"></app-icon> The account has been permanently closed. After an account has been closed, you are not permitted to alter any information.
 </div>
 
 <div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">

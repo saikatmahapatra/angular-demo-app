@@ -18,7 +18,6 @@ import { TransferFundComponent } from './transfer-fund/transfer-fund.component';
 import { ContentCardComponent } from './content-card/content-card.component';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
-import { D3DataDrivenDocumentComponent } from './d3-data-driven-document/d3-data-driven-document.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
 
 const routes: Routes = [{
@@ -42,7 +41,6 @@ const routes: Routes = [{
     { path: 'content-projection', component: ContentCardComponent },
     { path: 'ag-grid', component: AgGridTableExampleComponent },
     { path: 'translate', component: TranslationDemoComponent},
-    { path: 'd3-in-angular', component: D3DataDrivenDocumentComponent},
     { path: 'prime-ng', component: PrimeNgUiKitComponent}
   ]
 }];
