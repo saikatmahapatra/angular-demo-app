@@ -54,7 +54,7 @@ export class IconComponent implements OnInit {
     'cross': { primeng: 'pi pi-times-circle', bootstrap: 'bi bi-x-circle' },
     'question': { primeng: 'pi pi-question-circle', bootstrap: 'bi bi-question-circle' },
     'send': { primeng: 'pi pi-send', bootstrap: 'bi bi-send-check' },
-    'timesheet': { primeng: 'pi pi-calendar', bootstrap: 'bi bi-calendar-check' },
+    'calendar': { primeng: 'pi pi-calendar', bootstrap: 'bi bi-calendar-check' },
     'projects': { primeng: 'pi pi-th-large', bootstrap: 'bi bi-columns-gap' },
     'search': { primeng: 'pi pi-search', bootstrap: 'bi bi-search' },
     'settings': { primeng: 'pi pi-cog', bootstrap: 'bi bi-gear' },

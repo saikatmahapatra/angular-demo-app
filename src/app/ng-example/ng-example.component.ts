@@ -25,7 +25,6 @@ export class NgExampleComponent implements OnInit {
     { link: '/example/content-projection', text: 'Content Projection' },
     { link: '/example/ag-grid', text: 'AG Grid Demo' },
     { link: '/example/translate', text: 'i18n Translation' },
-    { link: '/example/d3-in-angular', text: 'D3.js Charts in Angular'},
     { link: '/example/prime-ng', text: 'PrimeNG Theme'}
   ];
 
