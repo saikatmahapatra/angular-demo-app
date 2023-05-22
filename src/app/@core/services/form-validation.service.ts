@@ -42,7 +42,8 @@ export class FormValidationService {
       invalidPAN: 'Please enter a valid PAN number',
       minLengthArray: 'Please select at least one date from the calendar.',
       invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.',
-      invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.'
+      invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
+      invalidNumber: 'This field should be only integer number'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -131,6 +132,12 @@ export class FormValidationService {
     const regex = new RegExp(regEx.numeric_two_decimal_places);
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidNumericTwoDecimal': true };
+  }
+
+  numericOnly(control: AbstractControl) {    
+    const regex = new RegExp(regEx.numeric_only);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidNumber': true };
   }
 
 }

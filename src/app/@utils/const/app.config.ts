@@ -116,6 +116,10 @@ export const AppConfig = {
         applyLeave: 'leave/createLeave',
         updateLeave: 'leave/updateLeave',
         getLeaveData: 'leave/getLeaveApproverData',
-        getEmpLeaveBalance: 'leave/getEmpLeaveBalance'
+        getEmpLeaveBalance: 'leave/getEmpLeaveBalance',
+
+        //Settings
+        getSettings: 'settings/getSiteSettings',
+        updateTimesheetSettings: 'settings/updateTimesheetSettings'
     }
 };

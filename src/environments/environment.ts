@@ -11,7 +11,7 @@ export const environment = {
   mockAPIUrl: "http://localhost:7878/",
   useMockServer: false,
   copyrightInfo: "Developed by - <a href=\"https://www.linkedin.com/in/saikatmahapatra\" target=\"_blank\">Saikat Mahapatra</a>; See <a href=\"example\">angular concept example</a>.",
-  version: "v1.0"
+  version: "1.0"
 };
 
 /*

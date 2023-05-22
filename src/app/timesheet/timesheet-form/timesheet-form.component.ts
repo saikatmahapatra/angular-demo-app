@@ -35,7 +35,8 @@ export class TimesheetFormComponent implements OnInit {
     "July", "August", "September", "October", "November", "December"
   ];
   monthName: string = '';
-  allowedMinDate = 15;
+  allowedMinDate = 30;
+  settings: any;
 
   myForm = this.fb.group({
     id: [null],
@@ -71,17 +72,7 @@ export class TimesheetFormComponent implements OnInit {
     private router: Router,
     private cdRef: ChangeDetectorRef
   ) {
-    let today = new Date();
-
-    this.month = today.getMonth() + 1;
-    this.year = today.getFullYear();
-
-    this.minDate = new Date();
-    this.minDate.setDate(today.getDate() - this.allowedMinDate);
-
-    this.maxDate = new Date();
-    this.maxDate = today;
-    this.monthName = this.monthNames[this.month - 1];
+    
   }
 
   // get timeSheetDates() {
@@ -89,11 +80,22 @@ export class TimesheetFormComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    let today = new Date();
+    this.month = today.getMonth() + 1;
+    this.year = today.getFullYear();
+    this.monthName = this.monthNames[this.month - 1];
+
+    this.minDate = new Date();
+    this.minDate.setDate(today.getDate() - this.allowedMinDate);
+    this.maxDate = new Date();
+    this.maxDate = today;
+
     this.getFormData();
     this.getTimesheetData();
   }
 
-  getFormData() {
+  getFormData() {   
+    let today = new Date(); 
     this.holidays = [];
     this.optionalHolidays = [];
     this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
@@ -102,6 +104,16 @@ export class TimesheetFormComponent implements OnInit {
       this.taskList = response?.data?.tasks;
       const holidays = response?.data?.holidays;
       const optionalHolidays = response?.data?.optionalHolidays;
+      const minDays = response?.data?.settings?.timesheetMinDays;
+      this.minDate = new Date();
+      this.minDate.setDate(today.getDate() - Number(minDays));
+
+      const maxDays = response?.data?.settings?.timesheetMaxDays;
+      this.maxDate = new Date();
+      this.maxDate.setDate(today.getDate() + Number(maxDays));
+
+      console.log(this.minDate);
+
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
           let dayDate = element.holiday_date.split('-'); // YYYY-MM-DD
@@ -196,6 +208,10 @@ export class TimesheetFormComponent implements OnInit {
     if (event) {
       this.getTimesheetData();
     }
+  }
+
+  onShow(event: any) {
+    console.log(event);
   }
 }
 

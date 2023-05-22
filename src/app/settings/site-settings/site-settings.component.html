@@ -1,0 +1,35 @@
+<h1>Settings</h1>
+<div class="back-to-page mb-4">
+    <a [routerLink]="['/']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Go back to home page </a>
+</div>
+
+<h5 class="text-primary"><app-icon [name]="'calendar'"></app-icon> Timesheet Settings</h5>
+<hr>
+<div class="2-col-form col-md-9 col-lg-6">
+    <form [formGroup]="timesheetSettingsForm" class="form app-form" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="action" value="updateTimesheetSettings">
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="required" for="timesheetMinDays">Timesheet Enable Previous Days</label>
+                <input type="number" class="form-control" id="timesheetMinDays" formControlName="timesheetMinDays">
+                <div class="small"><strong>Info: </strong>Number of days before today to be enabled. (<strong>Default value: </strong> 5)</div>
+                <app-validation-error [control]="timesheetSettingsForm.controls['timesheetMinDays']"></app-validation-error>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="required" for="timesheetMaxDays">Timesheet Enable Next Days</label>
+                <input type="number" class="form-control" id="timesheetMaxDays" formControlName="timesheetMaxDays">
+                <div class="small"><strong>Info: </strong>Number of days after today to be enabled. (<strong>Default value: </strong> 0)</div>
+                <app-validation-error [control]="timesheetSettingsForm.controls['timesheetMaxDays']"></app-validation-error>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+            Submit
+        </button>
+    </form>
+</div>
