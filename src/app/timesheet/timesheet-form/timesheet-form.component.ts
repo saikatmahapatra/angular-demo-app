@@ -112,8 +112,6 @@ export class TimesheetFormComponent implements OnInit {
       this.maxDate = new Date();
       this.maxDate.setDate(today.getDate() + Number(maxDays));
 
-      console.log(this.minDate);
-
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
           this.holidays.push(new Date(element.holiday_date).getTime());
@@ -207,10 +205,6 @@ export class TimesheetFormComponent implements OnInit {
     if (event) {
       this.getTimesheetData();
     }
-  }
-
-  onShow(event: any) {
-    console.log(event);
   }
 }
 
