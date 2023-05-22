@@ -7,15 +7,14 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  version = VERSION;
+  //version = VERSION;
   copy = '';
   appVersion = '';
   constructor() { }
 
   ngOnInit() {
     this.copy = AppConfig.copyrightInfo;
-    this.appVersion = 'App version '+AppConfig.version +' base v'+this.version.full;
-
+    this.appVersion = 'App version '+AppConfig.version;
   }
 
 }
