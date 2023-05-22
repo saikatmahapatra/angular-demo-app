@@ -306,6 +306,20 @@ label {
   text-decoration: none;
 }
 
+.loader-card {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: 1111;
+  background: transparent;
+  .custom-loader {
+    height: 4rem;
+    width: 4rem;
+    z-index: 1111;
+  }
+}
+
+
 // ############################################
 // Light Mode UI fix
 // ############################################
@@ -395,7 +409,7 @@ label {
 
   .p-divider {
     .p-divider-content {
-        background-color: $gray-900;
+      background-color: $gray-900;
     }
   }
 }

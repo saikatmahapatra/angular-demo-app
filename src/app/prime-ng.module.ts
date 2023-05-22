@@ -31,7 +31,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
 import { DividerModule } from 'primeng/divider';
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 const data = [
   ButtonModule,
   CardModule,
@@ -63,7 +63,8 @@ const data = [
   FileUploadModule,
   DialogModule,
   EditorModule,
-  DividerModule
+  DividerModule,
+  ProgressSpinnerModule
 ];
 
 
