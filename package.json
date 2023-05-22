@@ -1,11 +1,11 @@
 {
   "name": "my-angular-app",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "prebuild": "npm --no-git-tag-version version patch",
-    "build": "ng build",
+    "build": "ng build --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
