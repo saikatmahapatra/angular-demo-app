@@ -7,7 +7,7 @@
 <div *ngIf="rowData?.id" class="row my-4">
     <div class="col-md-12 table-responsive">
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Status</div>
+            <div class="col-md-3 fw-bold text-right">Leave Application Status</div>
             <div class="col-md-9">
                 <span style="font-size: 14px;" [innerHTML]="getStatusText(rowData?.leave_status)?.text"
                     class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
@@ -18,7 +18,7 @@
             <div class="col-md-9">{{rowData?.leave_req_id}}</div>
         </div>
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Applied On</div>
+            <div class="col-md-3 fw-bold text-right">Submitted On</div>
             <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}}</div>
         </div>
         <div class="row my-2">
@@ -111,11 +111,11 @@
     </div>
     <div class="small col-md-4  mb-4">
         <h6><app-icon [name]="'send'" [styleClass]="'me-2 fw-bold'"></app-icon> Application
-            <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Sent' : 'Withdrawn'"></span>
+            <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
         </h6>
 
         <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_emp_id}}</div>
-        <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}} Applied</div>
+        <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}} Submitted</div>
         <div *ngIf="rowData?.cancel_request_datetime" class="small">
             {{rowData?.cancel_request_datetime | date: 'dd-MM-yyyy h:mm:ss a'}} Cancel requested </div>
         <div *ngIf="rowData?.cancellation_datetime" class="small">
