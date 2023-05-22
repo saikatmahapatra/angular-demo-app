@@ -1,7 +1,6 @@
 <h1>Timesheet</h1>
-<h4 class="my-3">{{monthName}}, {{year}}</h4>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-9">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
       <input type="hidden" formControlName="action" value="add">
@@ -9,44 +8,34 @@
         <div class="col-md-6">
           <div class="mb-3">
             <label class="required d-block" for="cal">Select Dates</label>
-            <div id="cal" class="form-text text-muted mb-2">You are allowed to select maximum {{maxDateCount}}
-              days.</div>
-            <p-calendar dateFormat="dd/mm/yy" [inline]="true" selectionMode="multiple" [showWeek]="false" [minDate]="minDate"
-              [maxDate]="maxDate" formControlName="timeSheetDates" [maxDateCount]="maxDateCount"
-              (onMonthChange)="monthYearChange($event)" (onYearChange)="monthYearChange($event)">
+            <p-calendar styleClass='w-100' dateFormat="dd/mm/yy" [inline]="true" selectionMode="multiple"
+              [showWeek]="false" [minDate]="minDate" [maxDate]="maxDate" formControlName="timeSheetDates"
+              [maxDateCount]="maxDateCount" (onMonthChange)="monthYearChange($event)"
+              (onYearChange)="monthYearChange($event)">
               <ng-template pTemplate="date" let-date>
                 <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
               </ng-template>
             </p-calendar>
+            <div id="cal" class="form-text text-muted"><strong>Note: </strong>You are allowed to select maximum
+              {{maxDateCount}}
+              days.</div>
+
+            <div class="indicator mt-2 form-text">
+              <strong>Indicators: </strong>
+              <span class="date-filled">DD</span>
+              <span class="ms-1 me-3">task logged,</span>
+
+              <span class="date-holiday-opt">DD</span>
+              <span class="ms-1 me-3">optional holidays,</span>
+
+              <span class="date-holiday">DD</span>
+              <span class="ms-1 me-3">holidays.</span>
+            </div>
 
             <div class="my-1 py-2 alert alert-danger"
               *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
               <app-icon class="me-2" [name]="'error'"></app-icon>
               <span>Please choose at least one day from the calendar.</span>
-            </div>
-
-            <div class="indicator mt-4 form-text">
-              <div class="d-flex justify-content-between">
-                <div class="">
-                  <div class="date-selected">DD</div>
-                  <div class="">Selected</div>
-                </div>
-
-                <div class="">
-                  <div class="date-filled">DD</div>
-                  <div class="">Task Logged</div>
-                </div>
-
-                <div class="">
-                  <div class="date-holiday-opt">DD</div>
-                  <div class="">Opt. Holiday</div>
-                </div>
-
-                <div class="">
-                  <div class="date-holiday">DD</div>
-                  <div class="">Holiday</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -89,6 +78,9 @@
     </form>
   </div>
 </div>
+
+<h4 class="my-3">Showing timesheet of {{monthName}}, {{year}}</h4>
+
 <div class="row mb-4">
   <app-view-timesheet [timeSheetLogData]="timesheetData"
     (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
