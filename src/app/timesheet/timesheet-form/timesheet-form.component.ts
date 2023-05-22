@@ -72,7 +72,7 @@ export class TimesheetFormComponent implements OnInit {
     private router: Router,
     private cdRef: ChangeDetectorRef
   ) {
-    
+
   }
 
   // get timeSheetDates() {
@@ -94,8 +94,8 @@ export class TimesheetFormComponent implements OnInit {
     this.getTimesheetData();
   }
 
-  getFormData() {   
-    let today = new Date(); 
+  getFormData() {
+    let today = new Date();
     this.holidays = [];
     this.optionalHolidays = [];
     this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
@@ -116,14 +116,12 @@ export class TimesheetFormComponent implements OnInit {
 
       if (holidays.length > 0) {
         holidays.forEach((element: any) => {
-          let dayDate = element.holiday_date.split('-'); // YYYY-MM-DD
-          this.holidays.push(Number(dayDate[2]));
+          this.holidays.push(new Date(element.holiday_date).getTime());
         });
       }
       if (optionalHolidays.length > 0) {
         optionalHolidays.forEach((element: any) => {
-          let dayDate = element.holiday_date.split('-'); // YYYY-MM-DD
-          this.optionalHolidays.push(Number(dayDate[2]));
+          this.optionalHolidays.push(new Date(element.holiday_date).getTime());
         });
       }
     });
@@ -146,8 +144,7 @@ export class TimesheetFormComponent implements OnInit {
         this.totalRecords = response?.data['num_rows'];
         if (this.timesheetData.length > 0) {
           this.timesheetData.forEach((element: any) => {
-            let dayDate = element.timesheet_date.split('-'); // YYYY-MM-DD
-            this.timesheetFilledDays.push(Number(dayDate[2]));
+            this.timesheetFilledDays.push(new Date(element.timesheet_date).getTime());
           });
         }
       }
@@ -180,7 +177,7 @@ export class TimesheetFormComponent implements OnInit {
     }
 
   }
-  
+
   monthYearChange(event: any) {
     //this.currentPageIndex = 0;
     //this.totalRecords = 0;
@@ -190,17 +187,19 @@ export class TimesheetFormComponent implements OnInit {
     this.getTimesheetData();
   }
 
-  getCSSClass(date: any) {
+  getCSSClass(dateObj: any) {
+    const dt = dateObj.year + '-' + ('0' + (dateObj.month + 1)).slice(-2) + '-' + ('0' + dateObj.day).slice(-2);
+    const dateTimeValue = new Date(dt).getTime();
     let cssClass = '';
-    if (this.year == date.year && this.month == (date.month + 1) && this.timesheetFilledDays.indexOf(date.day) > -1) {
+    if (this.timesheetFilledDays.indexOf(dateTimeValue) > -1) {
       cssClass = 'date-filled';
     }
-    // if(this.year == date.year && this.month == (date.month+1) && this.holidays.indexOf(date.day) > -1) {
-    //   cssClass = 'date-holiday';
-    // }
-    // if(this.year == date.year && this.month == (date.month+1) && this.optionalHolidays.indexOf(date.day) > -1) {
-    //   cssClass = 'date-holiday-opt';
-    // }
+    if (this.holidays.indexOf(dateTimeValue) > -1) {
+      cssClass = 'date-holiday';
+    }
+    if(this.optionalHolidays.indexOf(dateTimeValue) > -1) {
+      cssClass = 'date-holiday-opt';
+    }
     return cssClass;
   }
 
