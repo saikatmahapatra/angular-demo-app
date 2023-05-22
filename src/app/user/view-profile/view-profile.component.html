@@ -33,13 +33,13 @@
       <dt class="col-md-4 col-lg-3">Department</dt>
       <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
       <dt class="col-md-4 col-lg-3">Date of Joining</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd-MM-yyyy'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd/MM/yyyy'}}</dd>
       <dt class="col-md-4 col-lg-3">Personal Email</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_email_secondary || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Work Phone</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Date of Birth</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd-MM-yyyy'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd/MM/yyyy'}}</dd>
       <dt class="col-md-4 col-lg-3">Gender</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
@@ -107,7 +107,7 @@
    <div class="my-3">
       <h6>{{userInfo?.designation_name}}</h6>
       <div [innerHTML]="orgName"></div>
-      <div class="text-muted">{{userInfo?.user_doj | date:'dd-MM-yyyy'}} - {{userInfo?.user_dor ?
+      <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
          userInfo.user_dor : 'Present'}}
       </div>
    </div>
@@ -118,8 +118,8 @@
          <span *ngIf="exp.job_location_name">, </span>
          <span [innerHTML]="exp.job_location_name"></span>
       </div>
-      <div class="text-muted">{{exp?.from_date | date: 'dd-MM-yyyy'}} - {{exp?.to_date | date:
-         'dd-MM-yyyy'}}
+      <div class="text-muted">{{exp?.from_date | date: 'dd/MM/yyyy'}} - {{exp?.to_date | date:
+         'dd/MM/yyyy'}}
       </div>
    </div>
    <div class="my-3" *ngIf="payrollInfo.workExp === 0">
@@ -281,7 +281,7 @@
 
       <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closed on</dt>
       <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_closed_datetime | date:
-         'dd-MM-yyyy h:mm:ss a'}}</dd>
+         'dd/MM/yyyy h:mm:ss a'}}</dd>
 
       <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closure comments</dt>
       <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_close_comments}}</dd>
@@ -289,8 +289,8 @@
       <dt class="col-md-4 col-lg-3">Role/Access</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
       <dt class="col-md-4 col-lg-3">User Since</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'dd-MM-yyyy h:mm:ss a'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_registration_date | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
       <dt class="col-md-4 col-lg-3">Last Login</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd-MM-yyyy h:mm:ss a'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
    </dl>
 </section>

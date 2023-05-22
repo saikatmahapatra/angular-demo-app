@@ -168,7 +168,7 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Birth</td>
-                                    <td [innerHTML]="rowData?.user_dob | date: 'dd-MM-yyyy' || 'NA'"></td>
+                                    <td [innerHTML]="rowData?.user_dob | date: 'dd/MM/yyyy' || 'NA'"></td>
                                     <td class="fw-bold">Gender</td>
                                     <td [innerHTML]="rowData?.user_gender === 'M' ? 'Male' : 'Female'"></td>
                                 </tr>
@@ -182,18 +182,18 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Joining</td>
-                                    <td [innerHTML]="rowData?.user_doj | date: 'dd-MM-yyyy' || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_doj | date: 'dd/MM/yyyy' || '-'"></td>
                                     <td class="fw-bold">Created On</td>
                                     <td
-                                        [innerHTML]="rowData?.user_registration_date | date: 'dd-MM-yyyy h:mm:ss a' || ''">
+                                        [innerHTML]="rowData?.user_registration_date | date: 'dd/MM/yyyy h:mm:ss a' || ''">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Date of Release</td>
-                                    <td [innerHTML]="rowData?.user_dor | date: 'dd-MM-yyyy' || 'NA'"></td>
+                                    <td [innerHTML]="rowData?.user_dor | date: 'dd/MM/yyyy' || 'NA'"></td>
                                     <td class="fw-bold">Last Login</td>
                                     <td
-                                        [innerHTML]="rowData?.user_login_date_time | date: 'dd-MM-yyyy h:mm:ss a' || '-'">
+                                        [innerHTML]="rowData?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a' || '-'">
                                     </td>
                                 </tr>
                                 <tr>
@@ -214,7 +214,7 @@
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
                                     <td
-                                        [innerHTML]="rowData?.account_closed_datetime  | date: 'dd-MM-yyyy h:mm:ss a' || 'NA'">
+                                        [innerHTML]="rowData?.account_closed_datetime  | date: 'dd/MM/yyyy h:mm:ss a' || 'NA'">
                                     </td>
                                     <td class="fw-bold">Comments</td>
                                     <td [innerHTML]="rowData?.account_close_comments || 'NA'"></td>

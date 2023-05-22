@@ -88,7 +88,7 @@
                     </td> -->
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData?.timesheet_date  | date: 'dd-MM-yyyy'}}
+                        {{rowData?.timesheet_date  | date: 'dd/MM/yyyy'}}
                     </td>
                     <td>
                         <span class="p-column-title">Emp</span>
@@ -122,7 +122,7 @@
                                     <td class="fw-bold">Task Description</td>
                                     <td [innerHTML]="rowData?.timesheet_description || '-'"></td>
                                     <td class="fw-bold">Created on</td>
-                                    <td [innerHTML]="rowData?.timesheet_created_on | date: 'dd-MM-yyyy h:mm:ss a' || '-'"></td>
+                                    <td [innerHTML]="rowData?.timesheet_created_on | date: 'dd/MM/yyyy h:mm:ss a' || '-'"></td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Status</td>

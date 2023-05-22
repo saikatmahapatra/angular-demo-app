@@ -19,7 +19,7 @@
         </div>
         <div class="row my-2">
             <div class="col-md-3 fw-bold text-right">Submitted On</div>
-            <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}}</div>
+            <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
         </div>
         <div class="row my-2">
             <div class="col-md-3 fw-bold">Applicant Name</div>
@@ -115,11 +115,11 @@
         </h6>
 
         <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_emp_id}}</div>
-        <div class="small">{{rowData?.leave_created_on | date: 'dd-MM-yyyy h:mm:ss a'}} Submitted</div>
+        <div class="small">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}} Submitted</div>
         <div *ngIf="rowData?.cancel_request_datetime" class="small">
-            {{rowData?.cancel_request_datetime | date: 'dd-MM-yyyy h:mm:ss a'}} Cancel requested </div>
+            {{rowData?.cancel_request_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Cancel requested </div>
         <div *ngIf="rowData?.cancellation_datetime" class="small">
-            {{rowData?.cancellation_datetime | date: 'dd-MM-yyyy h:mm:ss a'}} Withdrawn </div>
+            {{rowData?.cancellation_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Withdrawn </div>
 
 
 
@@ -149,7 +149,7 @@
             {{rowData?.supervisor_approver_firstname}} {{rowData?.supervisor_approver_lastname}}
             {{rowData?.supervisor_approver_emp_id}}
         </div>
-        <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd-MM-yyyy h:mm:ss a'}}</div>
+        <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
 
         <div class="my-4"
             *ngIf="(rowData?.leave_status !== 'C') && rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id) && (rowData?.supervisor_approver_id!==rowData?.director_approver_id)">
@@ -180,7 +180,7 @@
 
         <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
             {{rowData?.director_approver_emp_id}}</div>
-        <div class="small">{{rowData?.director_approver_datetime | date: 'dd-MM-yyyy h:mm:ss a'}}</div>
+        <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
 
         <div class="my-4"
             *ngIf="(rowData?.leave_status !== 'C') && rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
