@@ -4,14 +4,14 @@
 
 export const environment = {
   name: 'dev',
+  version: require('../../package.json').version + '-dev',
   production: false,
   title: "MyApp",
   productName: "MyApp",
   apiBaseUrl: "http://localhost/ci-emp-portal-api/",
   mockAPIUrl: "http://localhost:7878/",
   useMockServer: false,
-  copyrightInfo: "Developed by - <a href=\"https://www.linkedin.com/in/saikatmahapatra\" target=\"_blank\">Saikat Mahapatra</a>; See <a href=\"example\">angular concept example</a>.",
-  version: "1.0"
+  copyrightInfo: "Developed by - <a href=\"https://www.linkedin.com/in/saikatmahapatra\" target=\"_blank\">Saikat Mahapatra</a>; See <a href=\"example\">angular concept example</a>."
 };
 
 /*
