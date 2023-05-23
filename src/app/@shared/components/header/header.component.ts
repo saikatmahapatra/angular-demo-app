@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   productName = AppConfig.productName;
   user: any;
   isProd = AppConfig.production;
+  isOpened = false;
   constructor(private authSvc: AuthService, private navService: NavigationService) { }
 
   ngOnInit(): void {
@@ -22,11 +23,10 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleSideNav() {
-    let isOpened = false;
     this.navService.showNav$.subscribe((data)=>{
-      isOpened = data;
+      this.isOpened = data;
     });
-    if(!isOpened) {
+    if(!this.isOpened) {
       this.navService.showNav();
     } else {
       this.navService.hideNav();

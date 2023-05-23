@@ -61,7 +61,7 @@ label {
   padding: 0;
   box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
   width: 300px;
-  margin-left: -300px;
+  margin-left: 0px;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
@@ -78,8 +78,8 @@ label {
     overflow-y: auto;
   }
 
-  &.toggled {
-    margin-left: 0px;
+  &.hidden-nav {
+    margin-left: -300px;
   }
 }
 
@@ -89,23 +89,12 @@ label {
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
   padding-top: 80px;
-}
-
-@media (min-width: 768px) {
-  #sidebar-wrapper {
+  margin-left: 300px;
+  &.hidden-nav {
     margin-left: 0px;
-
-    &.toggled {
-      margin-left: -300px;
-    }
   }
-
-  #main-content-wrapper {
-    margin-left: 300px;
-
-    &.toggled {
-      margin-left: 0px;
-    }
+  @media (max-width: 767px) {
+    margin-left: 0px;
   }
 }
 
@@ -292,6 +281,10 @@ label {
 
 .f-24 {
   font-size: 24px;
+}
+
+.f-28 {
+  font-size: 28px;
 }
 
 .f-32 {
