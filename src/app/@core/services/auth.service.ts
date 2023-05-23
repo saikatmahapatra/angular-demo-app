@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router,
     private alertSvc: AlertService) {
-    const loggedInData: any = sessionStorage.getItem('loginData');
+    const loggedInData: any = localStorage.getItem('loginData');
     this.loggedInUserSubject = new BehaviorSubject<any>(JSON.parse(loggedInData));
     this.loggedInUser = this.loggedInUserSubject.asObservable();
   }
@@ -31,8 +31,8 @@ export class AuthService {
   authenticate(postData: any) {
     return this.http.post<any>(AppConfig.apiBaseUrl + AppConfig.apiUrl.authenticate, postData)
       .pipe(map(response => {
-        sessionStorage.setItem('loginData', JSON.stringify(response.data));
-        sessionStorage.setItem('access_token', response.token);
+        localStorage.setItem('loginData', JSON.stringify(response.data));
+        localStorage.setItem('access_token', response.token);
         this.loggedInUserSubject.next(response.data);
         return response.data;
       }), catchError((err) => {
@@ -42,15 +42,16 @@ export class AuthService {
   }
 
   getToken() {
-    return sessionStorage.getItem('access_token');
+    return localStorage.getItem('access_token');
   }
 
   getUser() {
-    return JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    return JSON.parse(localStorage.getItem('loginData') || '') || {};
   }
 
   logout() {
-    sessionStorage.clear();
+    localStorage.removeItem('loginData');
+    localStorage.removeItem('access_token');
     //localStorage.clear();
     this.loggedInUserSubject.next(null);
     this.alertSvc.info('You have been logged out!', true);
@@ -66,12 +67,12 @@ export class AuthService {
   }
 
   getUserId() {
-    const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    const user = JSON.parse(localStorage.getItem('loginData') || '') || {};
     return user.id;
   }
 
   getRoleId() {
-    const user = JSON.parse(sessionStorage.getItem('loginData') || '') || {};
+    const user = JSON.parse(localStorage.getItem('loginData') || '') || {};
     return user.user_role;
   }
 
