@@ -13,8 +13,12 @@ export class NavigationService {
     return this.showNav$.asObservable();
   }
 
-  setShowNav(showHide: boolean) {
-    this.showNav$.next(showHide);
+  showNav() {
+    this.showNav$.next(true);
+  }
+
+  hideNav() {
+    this.showNav$.next(false);
   }
 
   toggleNavState() {

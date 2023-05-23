@@ -27,9 +27,9 @@ export class HeaderComponent implements OnInit {
       isOpened = data;
     });
     if(!isOpened) {
-      this.navService.setShowNav(true);
+      this.navService.showNav();
     } else {
-      this.navService.setShowNav(false);
+      this.navService.hideNav();
     }
   }
 }
