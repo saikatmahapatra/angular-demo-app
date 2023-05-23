@@ -28,10 +28,16 @@
             </div>
         </div>
         <div class="row my-2">
-            <div class="col-md-3 fw-bold">Applicant Contact</div>
+            <div class="col-md-3 fw-bold">Applicant Email</div>
             <div class="col-md-9">
-                <span class="me-2">{{rowData?.user_email}}</span>
-                <span>{{rowData?.user_phone1}}; {{rowData?.user_phone2}}</span>
+                {{rowData?.user_email}}
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-md-3 fw-bold">Applicant Phone</div>
+            <div class="col-md-9">
+                {{rowData?.user_phone1}}; {{rowData?.user_phone2}}
             </div>
         </div>
        

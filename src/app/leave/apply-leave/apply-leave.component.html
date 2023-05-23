@@ -1,28 +1,41 @@
 <h1>Apply Leave</h1>
 <div class="row my-4">
-    <div class="mb-4">
-        <div class="alert alert-danger" *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
-            <strong><app-icon [name]="'info'"></app-icon> Error: </strong>No workflow approvers found. Before applying leave <a class="reset" [routerLink]="['/emp/change-approvers']">select your workflow approvers</a>. 
-        </div>
-        <div class="alert alert-info" *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
-            <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
-                <strong><app-icon [name]="'info'"></app-icon> Workflow Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span>
-            </div>
-            <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
-                <strong><app-icon [name]="'info'"></app-icon> Workflow Info: </strong> Your leave application workflow will be reviewed and act upon by <span class="fw-bold">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} {{approvers[0]?.supervisor_emp_id}}</span> <span> and/or </span> <span class="fw-bold">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} {{approvers[0]?.director_emp_id}}</span>
-            </div>
-        </div>
-        <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
-            <strong><app-icon [name]="'info'"></app-icon> Error: </strong> Your leave balance data does not exists in database. In order to apply leave, leave balance records need to be updated. Please contact to admin/HR for further process. 
-        </div>
 
-        <div class="alert alert-info" *ngIf="leaveBalance[0]?.id">
-            <strong><app-icon [name]="'info'"></app-icon> Leave Balance Info: </strong> Your current leave balance is 
-            <!-- <div> -->
-                <span class="me-2"><strong>CL-Casual Leave: </strong> {{leaveBalance[0]?.cl}}</span>
-                <span class="me-2"><strong>PL-Privileged Leave: </strong>{{leaveBalance[0]?.pl}}</span>
-                <span class="me-2"><strong>SL-Sick Leave: </strong>{{leaveBalance[0]?.sl}}</span>
-            <!-- </div> -->
+    <div class="card mb-4">
+        <div class="card-header">Information</div>
+        <div class="card-body">
+
+            <div class="alert alert-danger"
+                *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
+                <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow
+                    approvers</a> before applying.
+            </div>
+            <div class="mb-2"
+                *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
+                <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
+                    <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
+                        class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application workflow.
+                </div>
+                <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
+                    <strong><app-icon [name]="'info'"></app-icon> Workflow Approvers: </strong><span
+                        class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> <span> and/or </span> <span
+                        class="">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application workflow.
+                </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
+                <strong><app-icon [name]="'error'"></app-icon> Error: </strong> Your leave balance information is missing from the database. Records of leave balances must be updated in order to apply for leave. For further process, kindly get in touch with admin or HR.
+            </div>
+
+            <div class="" *ngIf="leaveBalance[0]?.id">
+                <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong> Your current leave balance
+                is
+                <!-- <div> -->
+                <span class="me-1">CL-Casual Leave: {{leaveBalance[0]?.cl}}, </span>
+                <span class="me-1">PL-Privileged Leave: {{leaveBalance[0]?.pl}}, </span>
+                <span class="me-1">SL-Sick Leave: {{leaveBalance[0]?.sl}}</span>
+                <!-- </div> -->
+            </div>
+
         </div>
     </div>
 
@@ -32,10 +45,13 @@
 
             <div class="mb-3">
                 <label class="required" for="fromToDate">Select Date or Range</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" [(ngModel)]="rangeDates"
+                    selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate"
+                    [showButtonBar]="false" [showIcon]="true" appendTo="body"
+                    [panelStyleClass]="'datetimepicker'"></p-calendar>
                 <div class="small">Note: You can select date range from the date picker</div>
                 <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
-                
+
             </div>
             <div class="mb-3">
                 <label class="required" for="leaveType">Leave Type</label>
@@ -58,7 +74,8 @@
                 <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
                 <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                    class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
     </div>
 </div>
