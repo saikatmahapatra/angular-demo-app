@@ -13,7 +13,8 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./manage-leave.component.scss']
 })
 export class ManageLeaveComponent implements OnInit {
-  title = 'Manage All Leave Requests';
+  title = 'Manage Leave Applications';
+  helpInfoMessage = '';
   isManagePage = true;
   isHistoryPage = false;
   isLeaveToApprovePage = false;
@@ -62,13 +63,15 @@ export class ManageLeaveComponent implements OnInit {
     
     if(this.router.url == '/leave/history') {
       this.title = 'My Leave History';
+      this.helpInfoMessage = '';
       this.isManagePage = false;
       this.isHistoryPage = true;
       this.isLeaveToApprovePage = false;
       this.searchForm.controls['pageName'].setValue('viewHistory');
     }
     if(this.router.url == '/leave/requests-to-approve') {
-      this.title = 'Leave Requests to Approve';
+      this.title = 'Manage Leave Workflow';
+      this.helpInfoMessage = 'You can view submitted leave applications on the "Leave Workflow" page depending on whether you are an L1 or L2 workflow approver. If your action is still pending, you can search leave applications by selecting a status like "Submitted or Processing or Cancel Requested".';
       this.isManagePage = false;
       this.isHistoryPage = false;
       this.isLeaveToApprovePage = true;
