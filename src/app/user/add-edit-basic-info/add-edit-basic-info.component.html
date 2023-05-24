@@ -1,8 +1,8 @@
 <h1>Edit Basic Information</h1>
-<div class="back-to-page mt-1 mb-4">
-    <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Go back to profile</a>
+<div class="back-to-page">
+    <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row">
+<div class="row my-4">
     <div class="col-md-6 col-lg-5 col-xl-4">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">

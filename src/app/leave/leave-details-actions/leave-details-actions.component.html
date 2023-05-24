@@ -1,7 +1,7 @@
 <h1>Leave Details</h1>
-<div class="back-to-page mt-1 mb-4">
+<div class="back-to-page">
     <a [routerLink]="[backToPageUrl]" [state]="{ leaveManagerPageIndex: routedFromPageIndex }">
-        <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
+        <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
 </div>
 
 <div *ngIf="rowData?.id" class="row my-4">

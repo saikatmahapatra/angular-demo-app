@@ -1,5 +1,5 @@
 <h1>Timesheet</h1>
-<div class="row">
+<div class="row my-4">
   <div class="col-md-9">
     <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
       <input type="hidden" formControlName="id">
@@ -79,13 +79,10 @@
   </div>
 </div>
 
-<h4 class="my-3">Showing timesheet of {{monthName}}, {{year}}</h4>
-
-<div class="row mb-4">
-  <app-view-timesheet [timeSheetLogData]="timesheetData"
-    (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
+<div class="row">
+  <div class="col-md-12">
+    <h4 class="mb-3">Showing timesheet of {{monthName}}, {{year}}</h4>
+    <app-view-timesheet [timeSheetLogData]="timesheetData"
+      (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
+  </div>
 </div>
-
-<!-- <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-  [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator> -->

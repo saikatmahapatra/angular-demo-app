@@ -1,22 +1,25 @@
 <h1>Profile</h1>
-<div class="back-to-page mb-4">
-   <a [routerLink]="['/emp/manage']" [state]="{ manageUserPageIndex: routedFromPageIndex }"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
+<div class="back-to-page">
+   <a [routerLink]="['/emp/manage']" [state]="{ manageUserPageIndex: routedFromPageIndex }"> <app-icon
+         [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
 </div>
-<!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
-<h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
-<div>{{userInfo?.designation_name}}</div>
-<div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-<div>{{userInfo?.user_phone1}}</div>
-<div>
-   <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-   <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-   <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
-</div>
+<section class="my-4">
+   <h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
+   <div>{{userInfo?.designation_name}}</div>
+   <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+   <div>{{userInfo?.user_phone1}}</div>
+   <div>
+      <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+      <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
+      <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+   </div>
+</section>
 
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic Info</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic
+            Info</h5>
       </div>
    </p-divider>
    <dl class="row">
@@ -54,7 +57,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Address</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Address</h5>
       </div>
    </p-divider>
    <div class="my-3" *ngFor="let addr of addressInfo">
@@ -78,7 +82,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Education</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Education</h5>
       </div>
    </p-divider>
    <div class="my-3" *ngFor="let education of educationInfo">
@@ -100,7 +105,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work Experience
+         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work
+            Experience
          </h5>
       </div>
    </p-divider>
@@ -134,7 +140,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Payroll Info</h5>
       </div>
    </p-divider>
    <div class="my-3">
@@ -161,7 +168,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Emergency Contacts
+         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Emergency Contacts
          </h5>
       </div>
    </p-divider>
@@ -181,7 +189,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow
+         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Workflow
             Approvers</h5>
       </div>
    </p-divider>
@@ -221,7 +230,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave Balance</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave
+            Balance</h5>
       </div>
    </p-divider>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
@@ -264,7 +274,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Account Information
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Account Information
          </h5>
       </div>
    </p-divider>

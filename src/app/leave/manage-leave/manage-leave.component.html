@@ -1,23 +1,22 @@
 <h1>{{title}}</h1>
-<div class="row">
-
-    <div class="card mb-3" *ngIf="helpInfoMessage">
-        <div class="card-header">Information</div>
-        <div class="card-body">
-            <div>
-                <app-icon [name]="'info'"></app-icon> {{helpInfoMessage}}
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="card" *ngIf="helpInfoMessage">
+            <div class="card-header">Information</div>
+            <div class="card-body">
+                <div>
+                    <app-icon [name]="'info'"></app-icon> {{helpInfoMessage}}
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true"
             styleClass="p-datatable-sm table-font-sm p-datatable-sm table-font-sm">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     <span *ngIf="!isHistoryPage">Search Leave Requests</span>
-                    <span class="me-4" *ngIf="isHistoryPage">Showing your Leave History</span>
-                    <a [routerLink]="['/leave/apply']" class="btn btn-success" *ngIf="isHistoryPage"><app-icon [name]="'send'" [styleClass]="'me-2'"></app-icon> Apply Leave</a>
+                    <!-- <span class="me-4" *ngIf="isHistoryPage">Showing your Leave History</span> -->
+                    <a [routerLink]="['/leave/apply']" class="btn btn-success" *ngIf="isHistoryPage"><app-icon
+                            [name]="'send'" [styleClass]="'me-2'"></app-icon> Apply Leave</a>
                     <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()"
                         *ngIf="!isHistoryPage">
                         <input type="hidden" value="search" formControlName="action">
@@ -41,7 +40,8 @@
                                 <button type="submit" class="btn btn-primary me-2" [disabled]="loading"><span
                                         *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                                     Search</button>
-                                <button type="button" (click)="clearForm()" class="btn btn-secondary">Clear Form</button>
+                                <button type="button" (click)="clearForm()" class="btn btn-secondary">Clear
+                                    Form</button>
                             </div>
                         </div>
                     </form>
@@ -118,7 +118,8 @@
                     </td>
                     <td>
                         <span class="p-column-title">From</span>
-                        {{rowData?.leave_from_date | date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date: 'dd/MM/yyyy'}}
+                        {{rowData?.leave_from_date | date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date:
+                        'dd/MM/yyyy'}}
                     </td>
                     <!-- <td>
                         <span class="p-column-title">To</span>
@@ -131,10 +132,14 @@
                     <td class="">
                         <span class="p-column-title">Workflow Status</span>
                         <span class="mx-2">
-                            <app-icon [name]="'question'" [styleClass]="''" *ngIf="rowData?.supervisor_approver_status === 'P'"></app-icon>
-                            <app-icon [name]="'check'" [styleClass]="'text-success'" *ngIf="rowData?.supervisor_approver_status === 'A'"></app-icon>
-                            <app-icon [name]="'cross'" [styleClass]="'text-danger'" *ngIf="rowData?.supervisor_approver_status === 'R'"></app-icon>
-                            <app-icon [name]="'error'" [styleClass]="'text-warning'" *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
+                            <app-icon [name]="'question'" [styleClass]="''"
+                                *ngIf="rowData?.supervisor_approver_status === 'P'"></app-icon>
+                            <app-icon [name]="'check'" [styleClass]="'text-success'"
+                                *ngIf="rowData?.supervisor_approver_status === 'A'"></app-icon>
+                            <app-icon [name]="'cross'" [styleClass]="'text-danger'"
+                                *ngIf="rowData?.supervisor_approver_status === 'R'"></app-icon>
+                            <app-icon [name]="'error'" [styleClass]="'text-warning'"
+                                *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
                         </span>
                         <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.
                             {{rowData?.supervisor_approver_lastname}}</span>
@@ -144,10 +149,14 @@
                         </span>
 
                         <span class="mx-2">
-                                <app-icon [name]="'question'" [styleClass]="''" *ngIf="rowData?.director_approver_status === 'P'"></app-icon>
-                                <app-icon [name]="'check'" [styleClass]="'text-success'" *ngIf="rowData?.director_approver_status === 'A'"></app-icon>
-                                <app-icon [name]="'cross'" [styleClass]="'text-danger'" *ngIf="rowData?.director_approver_status === 'R'"></app-icon>
-                                <app-icon [name]="'error'" [styleClass]="'text-warning'" *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
+                            <app-icon [name]="'question'" [styleClass]="''"
+                                *ngIf="rowData?.director_approver_status === 'P'"></app-icon>
+                            <app-icon [name]="'check'" [styleClass]="'text-success'"
+                                *ngIf="rowData?.director_approver_status === 'A'"></app-icon>
+                            <app-icon [name]="'cross'" [styleClass]="'text-danger'"
+                                *ngIf="rowData?.director_approver_status === 'R'"></app-icon>
+                            <app-icon [name]="'error'" [styleClass]="'text-warning'"
+                                *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
                         <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.
                             {{rowData?.director_approver_lastname}}</span>
@@ -161,8 +170,8 @@
                     </td>
 
                     <td>
-                        <button (click)="viewDetails(rowData)" pButton pRipple type="button"
-                            icon="pi pi-info-circle" class="me-2 p-button-rounded p-button-text"></button>
+                        <button (click)="viewDetails(rowData)" pButton pRipple type="button" icon="pi pi-info-circle"
+                            class="me-2 p-button-rounded p-button-text"></button>
                         <!-- <button type="button" (click)="viewDetails(rowData)" class="btn btn-secondary btn-sm">Details</button> -->
                     </td>
                 </tr>
@@ -173,8 +182,8 @@
                 </tr>
             </ng-template>
         </p-table>
-        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-            [showCurrentPageReport]="true"
+        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
             (onPageChange)="paginate($event)"></p-paginator>
     </div>

@@ -1,41 +1,45 @@
 <h1>Manage Holidays {{selectedYear}}</h1>
 
-<form [formGroup]="myForm" class="form app-form my-4" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName="id">
-    <input type="hidden" formControlName="action">
-    <div class="row">
-        <h5 class="my-3">
-            {{formTitle}}
-        </h5>
-        <div class="col-md-3 mb-3">
-            <!-- <label class="required d-block" for="date">Holiday</label> -->
-            <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="date" [readonlyInput]="true"
-                inputId="date" [showButtonBar]="false" [showIcon]="true" placeholder="Holiday Date"></p-calendar>
-            <app-validation-error [control]="myForm.controls['date']"></app-validation-error>
-        </div>
-        <div class="col-md-6 mb-3">
-            <!-- <label class="required d-block" for="occasion">Occasion</label> -->
-            <input type="text" id="occasion" class="form-control" formControlName="occasion" placeholder="Occasion(s)">
-            <app-validation-error [control]="myForm.controls['occasion']"></app-validation-error>
-        </div>
-        <div class="col-md-3 mb-3">
-            <!-- <label class="required d-block" for="type">Holiday</label> -->
-            <select class="form-select" id="type" formControlName="type">
-                <option value="">Type</option>
-                <option value="C">Mandatory</option>
-                <option value="O">Optional</option>
-            </select>
-            <app-validation-error [control]="myForm.controls['type']"></app-validation-error>
-        </div>
-        <div class="col-auto align-center">
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> {{buttonText}}</button>
-        </div>
+<div class="row my-4">
+    <div class="col-md-12">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="action">
+            <div class="row">
+                <h5> {{formTitle}} </h5>
+                <div class="col-md-3 mb-3">
+                    <!-- <label class="required d-block" for="date">Holiday</label> -->
+                    <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="date" [readonlyInput]="true"
+                        inputId="date" [showButtonBar]="false" [showIcon]="true"
+                        placeholder="Holiday Date"></p-calendar>
+                    <app-validation-error [control]="myForm.controls['date']"></app-validation-error>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <!-- <label class="required d-block" for="occasion">Occasion</label> -->
+                    <input type="text" id="occasion" class="form-control" formControlName="occasion"
+                        placeholder="Occasion(s)">
+                    <app-validation-error [control]="myForm.controls['occasion']"></app-validation-error>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <!-- <label class="required d-block" for="type">Holiday</label> -->
+                    <select class="form-select" id="type" formControlName="type">
+                        <option value="">Type</option>
+                        <option value="C">Mandatory</option>
+                        <option value="O">Optional</option>
+                    </select>
+                    <app-validation-error [control]="myForm.controls['type']"></app-validation-error>
+                </div>
+                <div class="col-auto align-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                            class="spinner-border spinner-border-sm me-1"></span> {{buttonText}}</button>
+                </div>
 
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
-<div class="row mt-4">
+<div class="row my-4">
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm  ">
             <ng-template pTemplate="caption">
@@ -47,8 +51,8 @@
                                 [showClear]="false" (onChange)="yearChange()"></p-dropdown>
                         </div>
                         <div class="col-auto" *ngIf="mode === 'update'">
-                            <button type="button" class="btn btn-success me-4"
-                                (click)="setAddMode();"><app-icon [name]="'add'"></app-icon> Add
+                            <button type="button" class="btn btn-success me-4" (click)="setAddMode();"><app-icon
+                                    [name]="'add'"></app-icon> Add
                                 New</button>
                         </div>
                     </div>

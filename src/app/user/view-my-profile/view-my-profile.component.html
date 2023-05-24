@@ -1,19 +1,21 @@
 <h1>My Profile</h1>
-<!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
-<h3 class="mt-4">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
-<div>{{userInfo?.designation_name}}</div>
-<div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-<div>{{userInfo?.user_phone1}}</div>
-<div>
-   <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-   <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-   <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
-</div>
+<section class="my-4">
+   <h3>{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
+   <div>{{userInfo?.designation_name}}</div>
+   <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+   <div>{{userInfo?.user_phone1}}</div>
+   <div>
+      <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+      <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
+      <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+   </div>
+</section>
 
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic Info</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic
+            Info</h5>
       </div>
    </p-divider>
    <dl class="row">
@@ -42,14 +44,15 @@
       <dt class="col-md-4 col-lg-3">Blood Group</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
    </dl>
-      <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2" (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
+   <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
+      (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
 </section>
-
 
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Address</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Address</h5>
       </div>
    </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
@@ -78,11 +81,11 @@
 
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Education</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Education</h5>
       </div>
    </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
@@ -111,11 +114,11 @@
 
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work Experience
+         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work
+            Experience
          </h5>
       </div>
    </p-divider>
@@ -152,11 +155,11 @@
 
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Payroll Info</h5>
       </div>
    </p-divider>
    <a *ngIf="selfAccount" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
@@ -189,11 +192,11 @@
    </div>
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Emergency Contacts
+         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Emergency Contacts
          </h5>
       </div>
    </p-divider>
@@ -219,16 +222,17 @@
    </div>
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow
+         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Workflow
             Approvers</h5>
       </div>
    </p-divider>
    <div *ngIf="selfAccount">
-      <button type="button" class="btn btn-sm btn-outline-success me-2" (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
+      <button type="button" class="btn btn-sm btn-outline-success me-2"
+         (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
    </div>
    <div class="my-4 text-muted" *ngIf="!approvers?.id">
       <app-icon [name]="'info'"></app-icon> No workflow approvers found.
@@ -261,15 +265,16 @@
    </dl>
 </section>
 
-
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave Balance</h5>
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave
+            Balance</h5>
       </div>
    </p-divider>
    <div class="my-4 text-muted" *ngIf="!leaveBalance?.id">
-      <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further information.
+      <app-icon [name]="'info'"></app-icon> Leave balance is not configured. Kindly contact admin/HR for further
+      information.
    </div>
    <dl class="row" *ngIf="leaveBalance?.id">
       <dt class="col-md-3">Casual Leave (CL)</dt>
@@ -296,7 +301,8 @@
 <section class="my-4">
    <p-divider align="left">
       <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Account Information
+         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+            Account Information
          </h5>
       </div>
    </p-divider>
