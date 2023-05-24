@@ -1,40 +1,60 @@
 <h1>Timesheet Report</h1>
 
 <div class="row">
+    <div class="card">
+        <div class="card-header">Information</div>
+        <div class="card-body">
+            <div>
+                <app-icon [name]="'info'"></app-icon> The "Export to XLS" feature lets you download the number of records that are displayed on each page. 500 records can be seen at most per page when using the pagination option. If there are more than 500 records, you must navigate using pagination and download as necessary from each page.
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-12">
         <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [loading]="loading"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-datatable-sm table-font-sm mt-4">
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            styleClass="p-datatable-sm table-font-sm mt-4">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     Search Logs
-                    
+
                     <form class="form app-form mt-2" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                         <input type="hidden" formControlName="action">
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="range">Date Range</label>
-                                <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                                <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" [(ngModel)]="rangeDates"
+                                    selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100"
+                                    [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body"
+                                    [panelStyleClass]="'datetimepicker'"></p-calendar>
                                 <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label>Employee</label>
-                                <p-multiSelect formControlName="employee" styleClass="w-100" [options]="userList" [(ngModel)]="selectedEmployees" defaultLabel="Select a Employees"
-                                optionLabel="name" optionValue="id" display="chip" [selectionLimit]="5" [showClear]="true"></p-multiSelect>
+                                <p-multiSelect formControlName="employee" styleClass="w-100" [options]="userList"
+                                    [(ngModel)]="selectedEmployees" defaultLabel="Select a Employees" optionLabel="name"
+                                    optionValue="id" display="chip" [selectionLimit]="5"
+                                    [showClear]="true"></p-multiSelect>
                                 <app-validation-error [control]="myForm.controls['employee']"></app-validation-error>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label>Projects</label>
-                                <p-multiSelect formControlName="projects" styleClass="w-100" [options]="projectList" [(ngModel)]="selectedProjects" defaultLabel="Select a Project"
-                                optionLabel="name" optionValue="id" display="chip" [selectionLimit]="5" [showClear]="true"></p-multiSelect>
+                                <p-multiSelect formControlName="projects" styleClass="w-100" [options]="projectList"
+                                    [(ngModel)]="selectedProjects" defaultLabel="Select a Project" optionLabel="name"
+                                    optionValue="id" display="chip" [selectionLimit]="5"
+                                    [showClear]="true"></p-multiSelect>
                                 <app-validation-error [control]="myForm.controls['projects']"></app-validation-error>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary mt-4" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
-                                    class="spinner-border spinner-border-sm me-1"></span> Search</button>
+                                <button type="submit" class="btn btn-primary mt-4"
+                                    [disabled]="loading || !myForm.valid"><span *ngIf="loading"
+                                        class="spinner-border spinner-border-sm me-1"></span> Search</button>
                             </div>
-                          </div>
+                        </div>
                     </form>
-                    <button (click)="exportToExcel()" class="btn btn-success mt-2" [disabled]="timesheetData.length <= 0"><app-icon [name]="'exportxls'"></app-icon> Export to XLS</button>                    
+                    <button (click)="exportToExcel()" class="btn btn-success mt-2"
+                        [disabled]="timesheetData.length <= 0"><app-icon [name]="'exportxls'"></app-icon> Export to
+                        XLS</button>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -88,13 +108,13 @@
                     </td> -->
                     <td>
                         <span class="p-column-title">Date</span>
-                        {{rowData?.timesheet_date  | date: 'dd/MM/yyyy'}}
+                        {{rowData?.timesheet_date | date: 'dd/MM/yyyy'}}
                     </td>
                     <td>
                         <span class="p-column-title">Emp</span>
                         {{rowData?.user_firstname}} {{rowData?.user_lastname}}
                     </td>
-                    
+
                     <td>
                         <span class="p-column-title">Project</span>
                         {{rowData?.project_name}}
@@ -143,8 +163,8 @@
         </p-table>
 
         <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-        [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
+            (onPageChange)="paginate($event)"></p-paginator>
     </div>
 </div>
-
