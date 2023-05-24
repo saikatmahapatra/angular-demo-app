@@ -1,19 +1,17 @@
 <div class="row min-vh-100 justify-content-center align-items-center">
-  <div class="d-flex justify-content-end"><app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch></div>
   <div class="col-md-8 col-lg-6 signin-wrapper">
-    
     <div class="alert alert-primary fw-bold" role="alert">
       <app-icon [name]="'error'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> A few functionalities are momentarily
       unavailable due to some technical issues.
     </div>
-    
     <div class="row">
       <div class="col">
         <app-alert-message></app-alert-message>
       </div>
     </div>
-
     <div class="row align-items-center signin-container">
+      <div class="d-flex justify-content-end mt-2"><app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
+      </div>
       <div class="col-md-6 signin-form-container">
         <img *ngIf="!isProd" class="mb-4" style="width: 48px;" src="assets/img/logo.svg" alt="logo" />
         <img *ngIf="isProd" class="mb-2" style="width: 96px;" src="assets/img/logo-prod.svg" alt="United Exploration" />
@@ -23,7 +21,6 @@
         <img [src]="imgPath" class="img-fluid" alt="img">
       </div>
     </div>
-
     <div class="row">
       <div class="col">
         <app-footer></app-footer>
