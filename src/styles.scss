@@ -229,10 +229,18 @@ label {
   font-weight: 500 !important;
 }
 
-.p-datepicker table td>span.p-highlight,
-.p-datepicker table td.p-datepicker-today>span.p-highlight {
-  color: $primaryColor !important;
-}
+// .p-datepicker table td>span.p-highlight,
+// .p-datepicker table td.p-datepicker-today>span.p-highlight {
+//   background: $primaryColor;
+//   color: $white;
+//   &:hover {
+//     background: $primaryColor;
+//   }
+// }
+
+// .p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
+//   background: $primaryColor;
+// }
 
 .datetimepicker {
   z-index: 100;
