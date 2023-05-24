@@ -1,6 +1,6 @@
 <h1>Sign in</h1>
 <form [formGroup]="loginForm" class="app-form unauth-form-max-w" (ngSubmit)="onSubmit()">
-  <div class="row mb-3 mb-2">
+  <div class="row mb-3">
     <div class="col">
       <label for="userName">Username</label>
       <input type="text" class="form-control" formControlName="userName"
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="row mb-3 mb-2">
+  <div class="row mb-3">
     <div class="col">
       <label for="password">Password</label>
       <input type="password" class="form-control" formControlName="password"

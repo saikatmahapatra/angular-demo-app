@@ -28,7 +28,7 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action" value="editUser">
 
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" formControlName="firstName">
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="dateOfBirth">Date of Birth</label>
                     <p-calendar dateFormat="dd/mm/yy" formControlName="dateOfBirth" [readonlyInput]="true" inputId="dateOfBirth"
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="workPhone">Work Phone</label>
                     <input type="text" class="form-control" id="workPhone" formControlName="workPhone" maxlength="10">
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="designation">Designation</label>
                     <select class="form-select" id="designation" formControlName="designation">
@@ -112,7 +112,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="workspaceSolution">Workspace Type</label>
                     <select class="form-select" id="workspaceSolution" formControlName="workspaceSolution">
@@ -171,7 +171,7 @@
         <form [formGroup]="leaveBalanceForm" class="form app-form" (ngSubmit)="saveLeaveBalance()">
             <input type="hidden" formControlName="userId">
             <input type="hidden" formControlName="id">
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="cl">Casual Leave</label>
                     <input type="number" class="form-control" id="cl" formControlName="cl">
@@ -183,7 +183,7 @@
                     <app-validation-error [control]="leaveBalanceForm.controls['sl']"></app-validation-error>
                 </div>
             </div>
-            <div class="row mb-3 mb-2">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="required" for="pl">Priviledge Leave</label>
                     <input type="number" class="form-control" id="pl" formControlName="pl">

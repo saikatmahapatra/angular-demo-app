@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
   // }
 
   closeSideBar() {
-    if (this.commonSvc.getScreenView() === 'small' || this.commonSvc.getScreenView() === 'min') {
+    if (this.commonSvc.getScreenResolutionBreakPoint() === 'small' || this.commonSvc.getScreenResolutionBreakPoint() === 'min') {
       this.navService.toggleNavState();
     }
   }

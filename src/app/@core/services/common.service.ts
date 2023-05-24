@@ -62,7 +62,7 @@ export class CommonService {
       return 'tablet';
     }
   }
-  getScreenView(): string {
+  getScreenResolutionBreakPoint(): string {
     const width: number = window.screen.width;
     let screenView = 'xs';
     if (width >= 576 && width < 769) {

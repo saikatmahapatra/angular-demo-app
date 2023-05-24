@@ -229,18 +229,17 @@ label {
   font-weight: 500 !important;
 }
 
-// .p-datepicker table td>span.p-highlight,
-// .p-datepicker table td.p-datepicker-today>span.p-highlight {
-//   background: $primaryColor;
-//   color: $white;
-//   &:hover {
-//     background: $primaryColor;
-//   }
-// }
+.p-datepicker table td>span.p-highlight,
+.p-datepicker table td.p-datepicker-today>span.p-highlight {
+  background: lighten($primaryColor, 40%);
+  &:hover {
+    background: lighten($primaryColor, 40%);
+  }
+}
 
-// .p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
-//   background: $primaryColor;
-// }
+.p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
+  background: lighten($primaryColor, 40%);
+}
 
 .datetimepicker {
   z-index: 100;
@@ -331,6 +330,12 @@ label {
     height: 4rem;
     width: 4rem;
     z-index: 1111;
+  }
+}
+
+.navbar-toggler {
+  &:hover {
+    color: $white;
   }
 }
 
