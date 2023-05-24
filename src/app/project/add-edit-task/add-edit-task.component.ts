@@ -45,7 +45,7 @@ export class AddEditTaskComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.router.url);
+    //console.log(this.router.url);
     if (this.router.url.indexOf('add-task') != -1 || this.router.url.indexOf('edit-task') != -1) {
       this.getFormData();
     }

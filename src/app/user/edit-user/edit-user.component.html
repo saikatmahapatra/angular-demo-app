@@ -1,6 +1,6 @@
 <h1>Edit Profile</h1>
 <div class="back-to-page mb-4">
-    <a [routerLink]="['/emp/manage']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
+    <a [routerLink]="['/emp/manage']" [state]="{ manageUserPageIndex: routedFromPageIndex }"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
 </div>
 
 <ng-container *ngIf="userInfo.id">

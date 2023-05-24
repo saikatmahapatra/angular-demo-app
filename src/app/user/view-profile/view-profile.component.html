@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 <div class="back-to-page mb-4">
-   <a [routerLink]="['/emp/manage']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
+   <a [routerLink]="['/emp/manage']" [state]="{ manageUserPageIndex: routedFromPageIndex }"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon> Back </a>
 </div>
 <!-- <img width="100px" src="../../../assets/img/angular_solidBlack.png" alt="DP"> -->
 <h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>

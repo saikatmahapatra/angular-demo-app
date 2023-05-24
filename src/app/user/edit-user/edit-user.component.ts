@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, UntypedFormBuilder, ValidationErrors, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable, forkJoin, of } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -28,6 +28,8 @@ export class EditUserComponent {
   userPhoto: any;
   submitted = false;
   loading = false;
+  routedFromPageIndex = 0;
+  navigationExtras: NavigationExtras = {};
 
   DataGender: Array<any> = [
     { name: 'Male', id: 'M' },
@@ -146,6 +148,10 @@ export class EditUserComponent {
   }
 
   ngOnInit(): void {
+    this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
+    this.navigationExtras = {
+      state: {manageUserPageIndex: this.routedFromPageIndex},
+    };
     this.getUserData();
   }
 
@@ -233,7 +239,7 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
+          this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);
           //window.location.reload();
           this.loading = false;
         },
@@ -257,7 +263,7 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
+          this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);
           this.loading = false;
         },
         error: () => {
@@ -281,7 +287,7 @@ export class EditUserComponent {
       this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.leaveBalanceForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
-          this.router.navigate(['/emp/view-emp-profile/', this.userId]);
+          this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);
           this.loading = false;
         },
         error: () => {

@@ -7,7 +7,7 @@ import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-users',
@@ -38,13 +38,24 @@ export class ManageUsersComponent implements OnInit {
   }
   // Pagination Config
 
-  constructor(private apiSvc: ApiService, public formBuilder: UntypedFormBuilder, private commonSvc: CommonService, private alertService: AlertService,
-    private router: Router) {
+  constructor(
+    private apiSvc: ApiService, 
+    public formBuilder: UntypedFormBuilder, 
+    private commonSvc: CommonService, 
+    private alertService: AlertService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ) {
 
   }
 
   ngOnInit() {
-    this.getUsersList();
+    this.activatedRoute.paramMap.subscribe((param) => {
+      this.currentPageIndex = window.history.state?.manageUserPageIndex || 0;
+      this.first = this.currentPageIndex * this.itemPerPage;
+      this.getUsersList();
+    })
+    
   }
 
   getUsersList() {
@@ -74,11 +85,17 @@ export class ManageUsersComponent implements OnInit {
   // }
 
   redirectToProfile(id: number) {
-    this.router.navigate(['/emp/view-emp-profile', id]);
+    const navigationExtras: NavigationExtras = {
+      state: {manageUserPageIndex: this.currentPageIndex},
+    };
+    this.router.navigate(['/emp/view-emp-profile', id], navigationExtras);
   }
 
   editUserProfile(id: number) {
-    this.router.navigate(['/emp/edit', id]);
+    const navigationExtras: NavigationExtras = {
+      state: {manageUserPageIndex: this.currentPageIndex},
+    };
+    this.router.navigate(['/emp/edit', id], navigationExtras);
   }
 
   getSearchKeyword(str: string) {

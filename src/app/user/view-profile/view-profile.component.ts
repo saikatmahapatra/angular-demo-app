@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
@@ -23,12 +23,14 @@ export class ViewProfileComponent implements OnInit {
   leaveBalance: any = [];
   orgName = 'UEIPL';
   selfAccount = false;
+  routedFromPageIndex = 0;
 
   constructor(private apiSvc: ApiService, private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.getProfileData();
   }
 
@@ -137,7 +139,10 @@ export class ViewProfileComponent implements OnInit {
   }
 
   navigateTo(routeLink: any) {
-    this.router.navigate(routeLink);
+    const navigationExtras: NavigationExtras = {
+      state: {manageUserPageIndex: this.routedFromPageIndex},
+    };
+    this.router.navigate(routeLink, navigationExtras);
   }
 
 }
