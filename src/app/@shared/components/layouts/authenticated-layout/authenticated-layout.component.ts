@@ -18,8 +18,8 @@ export class AuthenticatedLayoutComponent implements OnInit {
   }
 
   closeSideBar() {
-    //if (this.commonSvc.getScreenView() === 'small' || this.commonSvc.getScreenView() === 'min') {
+    if (this.commonSvc.getScreenView() === 'xs' || this.commonSvc.getScreenView() === 'sm' || this.commonSvc.getScreenView() === 'md') {
       this.navService.toggleNavState();
-    //}
+    }
   }
 }

@@ -64,15 +64,15 @@ export class CommonService {
   }
   getScreenView(): string {
     const width: number = window.screen.width;
-    let screenView = 'min';
+    let screenView = 'xs';
     if (width >= 576 && width < 769) {
-      screenView = 'small';
-    } else if (width >= 769 && width < 1012) {
-      screenView = 'medium';
-    } else if (width >= 1012 && width < 1200) {
-      screenView = 'large';
+      screenView = 'sm';
+    } else if (width >= 769 && width < 992) {
+      screenView = 'md';
+    } else if (width >= 992 && width < 1200) {
+      screenView = 'lg';
     } else if (width >= 1200) {
-      screenView = 'max';
+      screenView = 'xl';
     }
     return screenView;
   }

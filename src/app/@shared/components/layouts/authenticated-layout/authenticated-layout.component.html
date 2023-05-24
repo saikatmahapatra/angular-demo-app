@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <app-header></app-header>
   <div class="row">
-    <nav id="sidebar-wrapper" [ngClass]="{ 'hidden-nav': !(showSideNav | async) }" (click)="closeSideBar()">
+    <nav id="sidebar-wrapper" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }" (click)="closeSideBar()">
       <div class="sidebar-sticky">
         <app-sidebar></app-sidebar>
       </div>
     </nav>
-    <main id="main-content-wrapper" role="main" class="col px-4" [ngClass]="{ 'hidden-nav': !(showSideNav | async) }">
+    <main id="main-content-wrapper" role="main" class="col px-4" [ngClass]="{ 'toggled-nav': !(showSideNav | async) }">
       <app-alert-message></app-alert-message>
       <router-outlet></router-outlet>
       <app-footer></app-footer>

@@ -78,7 +78,7 @@ label {
     overflow-y: auto;
   }
 
-  &.hidden-nav {
+  &.toggled-nav {
     margin-left: -300px;
   }
 }
@@ -90,11 +90,24 @@ label {
   transition: margin .25s ease-out;
   padding-top: 80px;
   margin-left: 300px;
-  &.hidden-nav {
+  &.toggled-nav {
     margin-left: 0px;
   }
-  @media (max-width: 767px) {
+}
+
+// desktop
+@media (max-width: 991px) {
+  #sidebar-wrapper {
+    margin-left: -300px;
+    &.toggled-nav {
+      margin-left: 0px;
+    }
+  }
+  #main-content-wrapper {
     margin-left: 0px;
+    // &.toggled-nav {
+    //   margin-left: 300px;
+    // }
   }
 }
 
