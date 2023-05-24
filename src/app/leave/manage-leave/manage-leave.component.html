@@ -163,7 +163,7 @@
                 </tr>
             </ng-template>
         </p-table>
-        <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
             [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
             (onPageChange)="paginate($event)"></p-paginator>

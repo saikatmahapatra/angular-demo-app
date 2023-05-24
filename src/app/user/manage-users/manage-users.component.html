@@ -206,10 +206,8 @@
                                         <span *ngIf="rowData?.user_status === 'A' "
                                             class="badge rounded-pill bg-danger">Archived</span>
                                     </td>
-                                    <td class="fw-bold">Profile Link</td>
-                                    <td>
-                                        <a [routerLink]="['/emp/view-emp-profile/', rowData?.id]">Click here</a>
-                                    </td>
+                                    <td class="fw-bold">-</td>
+                                    <td>-</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Closed On</td>
@@ -231,7 +229,7 @@
             </ng-template>
         </p-table>
 
-        <p-paginator [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords"
+        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [first]="first" [totalRecords]="totalRecords"
             [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
             (onPageChange)="paginate($event)"></p-paginator>

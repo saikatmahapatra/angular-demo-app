@@ -15,6 +15,7 @@ export class ManageTaskComponent implements OnInit {
   dataRow: any;
   // Pagination Config
   currentPageIndex: number = 0;
+  first: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];

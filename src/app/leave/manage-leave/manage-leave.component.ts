@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -22,6 +22,7 @@ export class ManageLeaveComponent implements OnInit {
   submitted = false;
   // Pagination Config
   currentPageIndex: number = 0;
+  first: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];
@@ -55,7 +56,8 @@ export class ManageLeaveComponent implements OnInit {
     private alertSvc: AlertService,
     private router: Router,
     private validator: FormValidationService,
-    private apiSvc: ApiService
+    private apiSvc: ApiService,
+    private activatedRoute: ActivatedRoute
   ) {
     
     if(this.router.url == '/leave/history') {
@@ -77,7 +79,12 @@ export class ManageLeaveComponent implements OnInit {
 }
 
 ngOnInit(): void {
-  this.getLeaveData();
+  
+  this.activatedRoute.paramMap.subscribe((param) => {
+    this.currentPageIndex = window.history.state?.leaveManagerPageIndex || 0;
+    this.first = this.currentPageIndex * this.itemPerPage;
+    this.getLeaveData();
+  })
 }
 
 onSubmit() {
@@ -117,7 +124,7 @@ getStatusText(statusChar: string) {
 
 viewDetails(leave: any) {
   const navigationExtras: NavigationExtras = {
-    state: { fromPage: this.router.url},
+    state: { fromPage: this.router.url, lmCurrentPageIndex: this.currentPageIndex},
   };
   if(this.isManagePage || this.isLeaveToApprovePage) {
     this.router.navigate(['/leave/details', leave.id], navigationExtras);

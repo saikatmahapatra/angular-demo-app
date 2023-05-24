@@ -29,6 +29,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
   progressValue = 33;
   userId!: string;
   backToPageUrl = '';
+  routedFromPageIndex = 0;
   constructor(
     private alertSvc: AlertService,
     private apiSvc: ApiService,
@@ -45,8 +46,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
     if (this.leaveId) {
       this.getLeaveData();
     }
-    console.log("URL=",this.router.url);
     this.backToPageUrl = history.state['fromPage'];
+    this.routedFromPageIndex = history.state['lmCurrentPageIndex'];
   }
 
   getStatusText(statusChar: string) {
