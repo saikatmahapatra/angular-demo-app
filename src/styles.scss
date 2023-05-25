@@ -320,19 +320,6 @@ label {
   text-decoration: none;
 }
 
-.loader-card {
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  z-index: 1111;
-  background: transparent;
-  .custom-loader {
-    height: 4rem;
-    width: 4rem;
-    z-index: 1111;
-  }
-}
-
 .navbar-toggler {
   &:hover {
     color: $white;
