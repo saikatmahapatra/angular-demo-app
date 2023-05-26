@@ -149,9 +149,7 @@
                         <label class="form-check-label" for="inlineRadioUserRole_{{i}}">{{data.name}}</label>
                     </div>
                     <div class="small alert alert-info" *ngIf="userBasicForm.controls['role'].value === '1'">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Administrator role has more access
-                        such as Add/Edit/Delete
-                        items. Default employee role should be choosed as "User".
+                        <app-icon class="me-2" [name]="'info'"></app-icon> <strong>Note: </strong>Employees with the "administrator" role have access to "restricted" organizational data or information and may add, alter, or delete it. It is advised to select the role as "user" while registering an employee in the portal.
                     </div>
 
                     <app-validation-error [control]="userBasicForm.controls['role']"></app-validation-error>

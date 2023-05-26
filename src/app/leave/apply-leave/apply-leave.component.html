@@ -14,12 +14,12 @@
                 *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
                 <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
                     <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
-                        class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application workflow.
+                        class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application.
                 </div>
                 <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
                     <strong><app-icon [name]="'info'"></app-icon> Workflow Approvers: </strong><span
                         class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> <span> and/or </span> <span
-                        class="">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application workflow.
+                        class="">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application.
                 </div>
             </div>
             <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
