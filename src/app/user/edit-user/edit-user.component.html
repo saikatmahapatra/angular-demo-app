@@ -235,20 +235,15 @@
                         </div>
                     </div>
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Active employee has permission to
-                        login and access the portal.
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Access to the portal is permitted for active employees only.
                     </div>
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Inactive employee will be prevented
-                        from login or use the portal. You can
-                        change it to "Active" as required.
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Employees who are inactive won't be able to use the portal or log in. If necessary, you can modify it to "Active".
+
                     </div>
 
                     <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Close Account indicates you are going
-                        to delete the employee.
-                        Employee will be permanently blocked from login or re-activation. Choose this option when a
-                        employee resign.
+                        <app-icon class="me-2" [name]="'info'"></app-icon> Close Account signifies that you're soft deleting the employee. Employee's activity and records will be stored in the database for future reference until those are manually deleted. Employee's access to the portal or reactivation will be permanently restricted. It is advised to select this option when employee leave the organization.
                     </div>
 
                     <app-validation-error [control]="userStatusForm.controls['accountStatus']"></app-validation-error>
