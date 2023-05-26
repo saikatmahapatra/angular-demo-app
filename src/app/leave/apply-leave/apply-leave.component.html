@@ -70,10 +70,19 @@
                 <app-validation-error [control]="myForm.controls['leaveSlot']"></app-validation-error>
             </div>
             <div class="mb-3">
-                <label class="required" for="leaveReason">Reason</label>
+                <label class="required" for="leaveReasonId">Select Leave Reason</label>
+                <select class="form-select" id="leaveReasonId" formControlName="leaveReasonId">
+                    <option value="">Select</option>
+                    <option [value]="data?.id" *ngFor="let data of leaveReasonList" [innerHTML]="data.name"></option>
+                    <option value="-1">Others</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['leaveReasonId']"></app-validation-error>
+            </div>
+            <!-- <div class="mb-3">
+                <label class="" for="leaveReason">Brief Description</label>
                 <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
                 <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>

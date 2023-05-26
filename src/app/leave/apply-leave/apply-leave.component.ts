@@ -33,13 +33,15 @@ export class ApplyLeaveComponent implements OnInit {
     { text: 'HD1-Half Day-First Half', val: 'HD1' },
     { text: 'HD2-Half Day-Second Half', val: 'HD2' }
   ];
+  leaveReasonList : any = [];
 
   myForm = this.fb.group({
     action: ['applyLeave'],
     fromToDate: ['', [Validators.required]],
     leaveType: ['', Validators.required],
     leaveSlot: ['FD', Validators.required],
-    leaveReason: ['', [Validators.required, Validators.maxLength(100)]]
+    leaveReasonId: ['', [Validators.required]],
+    leaveReason: ['', [Validators.maxLength(100)]]
   });
 
   constructor(
@@ -55,10 +57,11 @@ export class ApplyLeaveComponent implements OnInit {
   }
 
   getLeaveFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.getLeaveData).subscribe({
+    this.apiSvc.get(AppConfig.apiUrl.getLeaveFormData).subscribe({
       next: (response: any) => {
         this.approvers = response?.data?.approvers;
         this.leaveBalance = response?.data?.leave_balance;
+        this.leaveReasonList = response?.data?.leaveReasonList;
       },
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }

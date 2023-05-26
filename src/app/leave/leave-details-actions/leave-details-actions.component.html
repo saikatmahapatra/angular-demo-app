@@ -61,8 +61,8 @@
         </div>
 
         <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Reason</div>
-            <div class="col-md-9">{{rowData?.leave_reason}}</div>
+            <div class="col-md-3 fw-bold text-right">Selected Reason</div>
+            <div class="col-md-9" [innerHTML]="rowData?.leave_reason_text ? rowData?.leave_reason_text : rowData?.leave_reason"></div>
         </div>
 
         <div class="row my-2">

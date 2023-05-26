@@ -17,7 +17,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
   leaveId !: number | string | null;
   leaveStatus: any[] = [
     { value: 'B', text: 'Submitted', cssClass: 'bg-primary', textClass: 'text-primary' },
-    { value: 'O', text: 'Processing', cssClass: 'bg-info', textClass: 'text-info' },
+    { value: 'O', text: 'In Review', cssClass: 'bg-info', textClass: 'text-info' },
     { value: 'A', text: 'Approved', cssClass: 'bg-success', textClass: 'text-success' },
     { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
     { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },

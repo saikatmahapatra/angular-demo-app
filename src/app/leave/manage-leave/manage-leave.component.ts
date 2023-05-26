@@ -44,7 +44,7 @@ export class ManageLeaveComponent implements OnInit {
 
   leaveStatus: any[] = [
     { value: 'B', text: 'Submitted', cssClass: 'bg-primary', textClass: 'text-primary' },
-    { value: 'O', text: 'Processing', cssClass: 'bg-info', textClass: 'text-info' },
+    { value: 'O', text: 'In Review', cssClass: 'bg-info', textClass: 'text-info' },
     { value: 'A', text: 'Approved', cssClass: 'bg-success', textClass: 'text-success' },
     { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
     { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
@@ -71,7 +71,7 @@ export class ManageLeaveComponent implements OnInit {
     }
     if(this.router.url == '/leave/requests-to-approve') {
       this.title = 'Manage Leave Workflow';
-      this.helpInfoMessage = 'You can view submitted leave applications on the "Leave Workflow" page depending on whether you are an L1 or L2 workflow approver. If your action is still pending, you can search leave applications by selecting a status like "Submitted or Processing or Cancel Requested".';
+      this.helpInfoMessage = 'You can view submitted leave applications on the "Leave Workflow" page depending on whether you are an L1 or L2 workflow approver. If your action is still pending, you can search leave applications by selecting a status like "Submitted or In Review or Cancel Requested".';
       this.isManagePage = false;
       this.isHistoryPage = false;
       this.isLeaveToApprovePage = true;

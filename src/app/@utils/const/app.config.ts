@@ -115,7 +115,7 @@ export const AppConfig = {
         getLeaves: 'leave/getLeave',
         applyLeave: 'leave/createLeave',
         updateLeave: 'leave/updateLeave',
-        getLeaveData: 'leave/getLeaveApproverData',
+        getLeaveFormData: 'leave/getLeaveFormData',
         getEmpLeaveBalance: 'leave/getEmpLeaveBalance',
 
         //Settings
