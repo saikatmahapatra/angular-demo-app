@@ -41,7 +41,7 @@ export class ApplyLeaveComponent implements OnInit {
     leaveType: ['', Validators.required],
     leaveSlot: ['FD', Validators.required],
     leaveReasonId: ['', [Validators.required]],
-    leaveReason: ['', [Validators.maxLength(100)]]
+    //leaveReason: ['', [Validators.maxLength(100)]]
   });
 
   constructor(
