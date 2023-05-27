@@ -74,7 +74,6 @@
                 <select class="form-select" id="leaveReasonId" formControlName="leaveReasonId">
                     <option value="">Select</option>
                     <option [value]="data?.id" *ngFor="let data of leaveReasonList" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
                 </select>
                 <app-validation-error [control]="myForm.controls['leaveReasonId']"></app-validation-error>
             </div>
