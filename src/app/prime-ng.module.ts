@@ -32,6 +32,7 @@ import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
 import { DividerModule } from 'primeng/divider';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ChartModule } from 'primeng/chart';
 const data = [
   ButtonModule,
   CardModule,
@@ -64,7 +65,8 @@ const data = [
   DialogModule,
   EditorModule,
   DividerModule,
-  ProgressSpinnerModule
+  ProgressSpinnerModule, 
+  ChartModule
 ];
 
 
