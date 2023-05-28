@@ -10,11 +10,13 @@ export class FooterComponent implements OnInit {
   //version = VERSION;
   copy = '';
   appVersion = '';
+  buildTimestamp = '';
   constructor() { }
 
   ngOnInit() {
     this.copy = AppConfig.copyrightInfo;
     this.appVersion = 'App version '+AppConfig.version;
+    this.buildTimestamp = AppConfig.timestamp;
   }
 
 }

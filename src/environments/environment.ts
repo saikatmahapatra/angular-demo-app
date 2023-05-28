@@ -5,6 +5,7 @@
 export const environment = {
   name: 'dev',
   version: require('../../package.json').version + '-dev',
+  timestamp: require('../../timestamp.json').buildTime,
   production: false,
   title: "MyApp",
   productName: "MyApp",

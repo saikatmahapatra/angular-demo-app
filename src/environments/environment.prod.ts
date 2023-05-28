@@ -1,6 +1,7 @@
 export const environment = {
   name: 'prod',
   version: require('../../package.json').version + '-prod',
+  timestamp: require('../../timestamp.json').buildTime,
   production: true,
   title: "MyApp - United Exploration India",
   productName: "MyApp",

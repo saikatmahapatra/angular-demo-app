@@ -1,6 +1,9 @@
 <footer class="text-center small my-4">
   <div [innerHTML]="copy"></div>
-  <div [innerHTML]="appVersion"></div>
+  <div>
+    <span [innerHTML]="appVersion"></span>
+    <span class="mx-1">timestamp {{buildTimestamp | date: 'dd-MM-yyyy HH:mm:ss'}}</span>
+  </div>
 </footer>
 
 <app-cookie-consent></app-cookie-consent>
