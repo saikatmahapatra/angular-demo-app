@@ -7,7 +7,7 @@
    <h3 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h3>
    <div>{{userInfo?.designation_name}}</div>
    <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-   <div>{{userInfo?.user_phone1}}</div>
+   <div>{{userInfo?.user_phone}}</div>
    <div>
       <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
       <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
@@ -38,7 +38,7 @@
       <dt class="col-md-4 col-lg-3">Date of Joining</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd/MM/yyyy'}}</dd>
       <dt class="col-md-4 col-lg-3">Personal Email</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_email_secondary || '-'}}</dd>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_email2 || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Work Phone</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
       <dt class="col-md-4 col-lg-3">Date of Birth</dt>

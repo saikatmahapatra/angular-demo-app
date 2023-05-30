@@ -65,9 +65,9 @@ export class AddEditBasicInfoComponent implements OnInit {
     this.myForm.patchValue({
       id: data?.id,
       action: 'update',
-      personalEmail: data?.user_email_secondary,
+      personalEmail: data?.user_email2,
       personalPhone: data?.user_phone2,
-      workPhone: data?.user_phone1,
+      workPhone: data?.user_phone,
       bloodGroup: data?.user_blood_group
     });
   }

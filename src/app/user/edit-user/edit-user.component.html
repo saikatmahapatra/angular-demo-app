@@ -8,7 +8,7 @@
     <h4 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h4>
     <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
     <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-    <div>{{userInfo?.user_phone1}}; {{userInfo?.user_phone2}}</div>
+    <div>{{userInfo?.user_phone}}; {{userInfo?.user_phone2}}</div>
     <div>{{userInfo?.employment_type_name}}</div>
     <div>
         <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
