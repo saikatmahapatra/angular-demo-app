@@ -31,7 +31,7 @@
                     <th style="width: 12rem" pSortableColumn="user_firstname">
                         <div class="flex justify-content-between align-items-center">
                             Emp ID
-                            <p-sortIcon field="user_emp_id"></p-sortIcon>
+                            <p-sortIcon field="user_cust_id"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 20rem" pSortableColumn="designation_name">
@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Emp ID</span>
-                        {{rowData?.user_emp_id}}
+                        {{rowData?.user_cust_id}}
                     </td>
                     <td>
                         <span class="p-column-title">Designation</span>
@@ -108,7 +108,7 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Employee ID</td>
-                                    <td [innerHTML]="rowData?.user_emp_id || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_cust_id || '-'"></td>
                                     <td class="fw-bold">Designation</td>
                                     <td [innerHTML]="rowData?.designation_name || '-'"></td>
                                 </tr>

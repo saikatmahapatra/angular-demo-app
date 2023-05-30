@@ -28,10 +28,10 @@
                                 class="ms-auto"></p-columnFilter> -->
                         </div>
                     </th>
-                    <!-- <th style="width: 15rem" pSortableColumn="user_emp_id">
+                    <!-- <th style="width: 15rem" pSortableColumn="user_cust_id">
                         <div class="flex justify-content-between align-items-center">
                             EmpID
-                            <p-sortIcon field="user_emp_id"></p-sortIcon>
+                            <p-sortIcon field="user_cust_id"></p-sortIcon>
                         </div>
                     </th> -->
                     <th style="width: 15rem" pSortableColumn="user_email">
@@ -84,11 +84,11 @@
                     <td>
                         <span class="p-column-title">Name</span>
                         {{rowData?.user_firstname}} {{rowData?.user_lastname}}
-                        <!-- ({{rowData?.user_emp_id}}) -->
+                        <!-- ({{rowData?.user_cust_id}}) -->
                     </td>
                     <!-- <td>
                         <span class="p-column-title">ID</span>
-                        {{rowData?.user_emp_id}}
+                        {{rowData?.user_cust_id}}
                     </td> -->
                     <td>
                         <span class="p-column-title">Email</span>
@@ -138,7 +138,7 @@
                             <tbody>
                                 <tr>
                                     <td class="fw-bold">Employee ID</td>
-                                    <td [innerHTML]="rowData?.user_emp_id || '-'"></td>
+                                    <td [innerHTML]="rowData?.user_cust_id || '-'"></td>
                                     <td class="fw-bold">Designation</td>
                                     <td [innerHTML]="rowData?.designation_name || '-'"></td>
                                 </tr>
