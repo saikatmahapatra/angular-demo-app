@@ -94,29 +94,29 @@ export class EditUserComponent {
       ],
       asyncValidators: [this.conditionalStatus]
     }],
-    statusChangeReason: [''],
+    //statusChangeReason: [''],
     dateOfRelease: [null],
-    accountCloseComments: ['']
+    //accountCloseComments: ['']
   });
 
   conditionalStatus(control: AbstractControl): Observable<ValidationErrors | null> {
     const accountStatus: string = control.value;
-    const statusChangeReason = control.parent?.get('statusChangeReason');
+    //const statusChangeReason = control.parent?.get('statusChangeReason');
     const dateOfRelease = control.parent?.get('dateOfRelease');
-    const accountCloseComments = control.parent?.get('accountCloseComments');
+    //const accountCloseComments = control.parent?.get('accountCloseComments');
     if (accountStatus === 'A') {
       // Emit an object with a validation error.
-      statusChangeReason?.setValidators([Validators.required]);
+      //statusChangeReason?.setValidators([Validators.required]);
       dateOfRelease?.setValidators([Validators.required]);
-      accountCloseComments?.setValidators([Validators.required]);
+      //accountCloseComments?.setValidators([Validators.required]);
     } else {
-      statusChangeReason?.clearValidators();
+      //statusChangeReason?.clearValidators();
       dateOfRelease?.clearValidators();
-      accountCloseComments?.clearValidators();
+      //accountCloseComments?.clearValidators();
     }
-    statusChangeReason?.updateValueAndValidity();
+    //statusChangeReason?.updateValueAndValidity();
     dateOfRelease?.updateValueAndValidity();
-    accountCloseComments?.updateValueAndValidity();
+    //accountCloseComments?.updateValueAndValidity();
     // Emit null, to indicate no error occurred.
     return of(null);
   }

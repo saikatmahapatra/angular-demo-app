@@ -66,8 +66,8 @@ export class AddEditBasicInfoComponent implements OnInit {
       id: data?.id,
       action: 'update',
       personalEmail: data?.user_email2,
-      personalPhone: data?.user_phone2,
-      workPhone: data?.user_phone,
+      personalPhone: data?.user_phone,
+      workPhone: data?.user_phone2,
       bloodGroup: data?.user_blood_group
     });
   }

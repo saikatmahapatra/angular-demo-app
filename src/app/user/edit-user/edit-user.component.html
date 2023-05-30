@@ -251,7 +251,7 @@
             </div>
 
             <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <label [ngClass]="isRequiredStatusChangeReason ? 'required' : '' " for="statusChangeReason">Reason
                         of Status Change</label>
                     <select class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
@@ -261,7 +261,7 @@
                     </select>
                     <app-validation-error
                         [control]="userStatusForm.controls['statusChangeReason']"></app-validation-error>
-                </div>
+                </div> -->
                 <div class="col-md-6">
                     <label [ngClass]="isRequiredDateOfRelease ? 'required' : '' " for="dateOfRelease">Date of
                         Release</label>
@@ -273,7 +273,7 @@
 
             </div>
 
-            <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
+            <!-- <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
                 <div class="col-md-12">
                     <label for="accountCloseComments"
                         [ngClass]="isRequiredAccountCloseComments ? 'required' : '' ">Comments</label>
@@ -282,7 +282,7 @@
                     <app-validation-error
                         [control]="userStatusForm.controls['accountCloseComments']"></app-validation-error>
                 </div>
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-primary" [disabled]="loading">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
