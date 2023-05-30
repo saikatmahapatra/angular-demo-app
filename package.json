@@ -1,12 +1,12 @@
 {
   "name": "my-angular-app",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "prebuild": "npm --no-git-tag-version version patch",
     "build": "ng build --aot",
-    "postbuild": "node createTimestamp.js",
+    "postbuild": "git add . && git commit -m 'new build' && git push",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
