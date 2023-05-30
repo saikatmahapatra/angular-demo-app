@@ -15,7 +15,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.copy = AppConfig.copyrightInfo;
-    this.appVersion = 'App version '+AppConfig.version;
+    this.appVersion = AppConfig.version;
     this.buildTimestamp = AppConfig.timestamp;
   }
 
