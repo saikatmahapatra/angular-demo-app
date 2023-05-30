@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -7,7 +7,6 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  //version = VERSION;
   copy = '';
   appVersion = '';
   buildTimestamp = '';
