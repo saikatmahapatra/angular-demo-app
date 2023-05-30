@@ -120,7 +120,7 @@
             <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
         </h6>
 
-        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_cust_id}}</div>
+        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_uid}}</div>
         <div class="small">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}} Submitted</div>
         <div *ngIf="rowData?.cancel_request_datetime" class="small">
             {{rowData?.cancel_request_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Cancel requested </div>
