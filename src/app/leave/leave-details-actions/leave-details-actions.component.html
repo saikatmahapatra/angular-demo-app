@@ -217,7 +217,7 @@
         </div>
 
         <div class="my-4"
-            *ngIf="(rowData?.leave_status !== 'C') && rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
+            *ngIf="(rowData?.leave_status === 'B' || rowData?.leave_status === 'O') && rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
 
             <div class="mb-3">
                 <div class="input-group">
