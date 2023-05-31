@@ -248,7 +248,9 @@
 
       <dt class="col-md-3">Leave Balance updated on</dt>
       <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.leave_balance_updated_on ? leaveBalance?.updated_on : '-'"></span>
+         <span *ngIf="leaveBalance?.leave_balance_updated_on">
+            {{leaveBalance?.leave_balance_updated_on | date: 'dd/MM/yyyy h:mm:ss a'}}
+         </span>
       </dd>
    </dl>
 </section>
