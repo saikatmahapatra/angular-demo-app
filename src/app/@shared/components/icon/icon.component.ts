@@ -64,6 +64,8 @@ export class IconComponent implements OnInit {
     'exportxls': { primeng: 'pi pi-file-excel', bootstrap: 'bi bi-file-earmark-excel' },
     'exportpdf': { primeng: 'pi pi-file-pdf', bootstrap: 'bi bi-filetype-pdf' },
     'menu': { primeng: 'pi pi-bars', bootstrap: 'bi bi-bar' },
+    'comment': { primeng: 'pi pi-comment', bootstrap: 'bi bi-comment' },
+    'comments': { primeng: 'pi pi-comments', bootstrap: 'bi bi-comments' }
   };
 
   constructor() {

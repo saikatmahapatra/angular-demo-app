@@ -30,6 +30,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
   userId!: string;
   backToPageUrl = '';
   routedFromPageIndex = 0;
+  L1WorkflowComments = '';
+  L2WorkflowComments = '';
   constructor(
     private alertSvc: AlertService,
     private apiSvc: ApiService,
@@ -60,11 +62,11 @@ export class LeaveDetailsActionsComponent implements OnInit {
     if (this.leaveId) {
       queryParams = queryParams.append('leaveId', this.leaveId);
     }
-    if(this.router.url.search('/leave/details/') == 0) {
+    if (this.router.url.search('/leave/details/') == 0) {
       queryParams = queryParams.append('pageName', 'leaveDetails');
     }
 
-    if(this.router.url.search('/leave/history-details/') == 0) {
+    if (this.router.url.search('/leave/history-details/') == 0) {
       queryParams = queryParams.append('pageName', 'leaveHistoryDetails');
     }
 
@@ -106,10 +108,10 @@ export class LeaveDetailsActionsComponent implements OnInit {
     })
   }
 
-  approveRejectRequest(leaveId: any, workFlow: string, status: string, userId: string) {
+  approveRejectRequest(leaveId: any, workFlow: string, status: string, userId: string, commentsText?: string) {
     //console.log(leaveId, workFlow, status);
     this.loading = true;
-    const postData = {id: leaveId, userId: userId, workflow: workFlow, newStatus: status};
+    const postData = { id: leaveId, userId: userId, workflow: workFlow, newStatus: status, comments:  commentsText};
     this.apiSvc.post(AppConfig.apiUrl.updateLeave, postData).subscribe({
       next: (response: any) => {
         this.alertSvc.success(response.message, true);
@@ -121,6 +123,15 @@ export class LeaveDetailsActionsComponent implements OnInit {
 
     })
 
+  }
+
+  removeComments(commentType: string) {
+    if (commentType === 'L1') {
+      this.L1WorkflowComments = '';
+    }
+    if (commentType === 'L2') {
+      this.L2WorkflowComments = '';
+    }
   }
 
 }
