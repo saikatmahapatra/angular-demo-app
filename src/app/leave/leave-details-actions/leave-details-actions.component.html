@@ -120,7 +120,8 @@
             <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
         </h6>
 
-        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}} {{rowData?.user_uid}}</div>
+        <div class="">{{rowData?.user_firstname}} {{rowData?.user_lastname}}</div>
+        <div class="small">{{rowData?.user_email}}</div>
         <div class="small">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}} Submitted</div>
         <div *ngIf="rowData?.cancel_request_datetime" class="small">
             {{rowData?.cancel_request_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Cancel requested </div>
@@ -153,8 +154,8 @@
 
         <div class="">
             {{rowData?.supervisor_approver_firstname}} {{rowData?.supervisor_approver_lastname}}
-            {{rowData?.supervisor_approver_emp_id}}
         </div>
+        <div class="small">{{rowData?.supervisor_email}}</div>
         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
 
         <div class="my-4"
@@ -184,8 +185,8 @@
             L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
         </h6>
 
-        <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}
-            {{rowData?.director_approver_emp_id}}</div>
+        <div class="">{{rowData?.director_approver_firstname}} {{rowData?.director_approver_lastname}}</div>
+        <div class="small">{{rowData?.director_email}}</div>
         <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
 
         <div class="my-4"
