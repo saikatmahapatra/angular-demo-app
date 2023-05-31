@@ -60,8 +60,8 @@ export class ManageLeaveComponent implements OnInit {
     private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute
   ) {
-    
-    if(this.router.url == '/leave/history') {
+
+    if (this.router.url == '/leave/history') {
       this.title = 'My Leave History';
       this.helpInfoMessage = '';
       this.isManagePage = false;
@@ -69,7 +69,7 @@ export class ManageLeaveComponent implements OnInit {
       this.isLeaveToApprovePage = false;
       this.searchForm.controls['pageName'].setValue('viewHistory');
     }
-    if(this.router.url == '/leave/requests-to-approve') {
+    if (this.router.url == '/leave/requests-to-approve') {
       this.title = 'Manage Leave Workflow';
       this.helpInfoMessage = 'You can view submitted leave applications on the "Leave Workflow" page depending on whether you are an L1 or L2 workflow approver. If your action is still pending, you can search leave applications by selecting a status like "Submitted or In Review or Cancel Requested".';
       this.isManagePage = false;
@@ -78,69 +78,69 @@ export class ManageLeaveComponent implements OnInit {
       this.searchForm.controls['pageName'].setValue('leaveRequestsToApprove');
     }
 
- 
-}
 
-ngOnInit(): void {
-  
-  this.activatedRoute.paramMap.subscribe((param) => {
-    this.currentPageIndex = window.history.state?.leaveManagerPageIndex || 0;
-    this.first = this.currentPageIndex * this.itemPerPage;
-    this.getLeaveData();
-  })
-}
-
-onSubmit() {
-  this.submitted = true;
-  this.loading = true;
-  if (this.searchForm.valid) {
-    this.currentPageIndex = 0;
-    this.totalRecords = 0;
-    this.getLeaveData();
-  } else {
-    this.loading = false;
-    this.validator.validateAllFormFields(this.searchForm);
   }
-}
 
-getLeaveData() {
-  let headers = new HttpHeaders();
-  let params = new HttpParams();
-  headers = headers.set('perPage', String(this.itemPerPage));
-  headers = headers.set('page', String(this.currentPageIndex));
-  this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
-    next: (response: any) => {
-      //console.log(response);
+  ngOnInit(): void {
+
+    this.activatedRoute.paramMap.subscribe((param) => {
+      this.currentPageIndex = window.history.state?.leaveManagerPageIndex || 0;
+      this.first = this.currentPageIndex * this.itemPerPage;
+      this.getLeaveData();
+    })
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    if (this.searchForm.valid) {
+      this.currentPageIndex = 0;
+      this.totalRecords = 0;
+      this.getLeaveData();
+    } else {
       this.loading = false;
-      this.dataRow = response?.data?.data_rows || [];
-      this.totalRecords = response?.data?.num_rows || 0;
-    },
-    error: () => { this.loading = false; },
-    complete: () => { this.loading = false; }
-  })
-}
-
-getStatusText(statusChar: string) {
-  let obj = this.leaveStatus.find(o => o.value === statusChar);
-  return obj;
-}
-
-viewDetails(leave: any) {
-  const navigationExtras: NavigationExtras = {
-    state: { fromPage: this.router.url, lmCurrentPageIndex: this.currentPageIndex},
-  };
-  if(this.isManagePage || this.isLeaveToApprovePage) {
-    this.router.navigate(['/leave/details', leave.id], navigationExtras);
+      this.validator.validateAllFormFields(this.searchForm);
+    }
   }
-  if(this.isHistoryPage) {
-    this.router.navigate(['/leave/history-details', leave.id], navigationExtras);
-  }  
-  
-}
 
-clearForm() {
-  this.searchForm.controls['empInfo'].setValue('');
-  this.searchForm.controls['leaveStatus'].setValue('');
-}
+  getLeaveData() {
+    let headers = new HttpHeaders();
+    let params = new HttpParams();
+    headers = headers.set('perPage', String(this.itemPerPage));
+    headers = headers.set('page', String(this.currentPageIndex));
+    this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
+      next: (response: any) => {
+        //console.log(response);
+        this.loading = false;
+        this.dataRow = response?.data?.data_rows || [];
+        this.totalRecords = response?.data?.num_rows || 0;
+      },
+      error: () => { this.loading = false; },
+      complete: () => { this.loading = false; }
+    })
+  }
+
+  getStatusText(statusChar: string) {
+    let obj = this.leaveStatus.find(o => o.value === statusChar);
+    return obj;
+  }
+
+  viewDetails(leave: any) {
+    const navigationExtras: NavigationExtras = {
+      state: { fromPage: this.router.url, lmCurrentPageIndex: this.currentPageIndex },
+    };
+    if (this.isManagePage || this.isLeaveToApprovePage) {
+      this.router.navigate(['/leave/details', leave.id], navigationExtras);
+    }
+    if (this.isHistoryPage) {
+      this.router.navigate(['/leave/history-details', leave.id], navigationExtras);
+    }
+
+  }
+
+  clearForm() {
+    this.searchForm.controls['empInfo'].setValue('');
+    this.searchForm.controls['leaveStatus'].setValue('');
+  }
 
 }

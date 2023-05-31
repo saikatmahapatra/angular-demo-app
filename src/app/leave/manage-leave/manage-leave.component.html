@@ -141,7 +141,7 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
                         </span>
-                        <span>{{rowData?.supervisor_approver_name}}</span>
+                        <span [title]="rowData?.supervisor_approver_name">{{ (rowData?.supervisor_approver_name | slice : 0: 8) + '...' }}</span>
 
                         <span class="mx-2">
                             <app-icon [name]="'arrowRight'" [styleClass]="'text-secondary'"></app-icon>
@@ -157,7 +157,7 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
-                        <span>{{rowData?.director_approver_name}}.</span>
+                        <span [title]="rowData?.director_approver_name">{{ (rowData?.director_approver_name | slice : 0: 8) + '...' }}</span>
 
                     </td>
 
