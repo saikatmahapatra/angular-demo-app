@@ -81,7 +81,7 @@
                     </td>
                     <!-- <td>
                         <span class="p-column-title">Created By</span>
-                        {{rowData?.user_firstname}}
+                        {{rowData?.user_full_name}}
                     </td> -->
                     <td>
                         <span class="p-column-title">Status</span>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-2">Created By</div>
-                            <div class="col-md-4">{{rowData?.user_firstname}} {{rowData?.user_lastname}}</div>
+                            <div class="col-md-4">{{rowData?.user_full_name}}</div>
                             <div class="col-md-2">Updated On</div>
                             <div class="col-md-4">{{rowData?.content_updated_on || '-'}}</div>
                         </div>

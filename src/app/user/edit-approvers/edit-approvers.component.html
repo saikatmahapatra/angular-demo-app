@@ -12,10 +12,9 @@
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.supervisor_firstname}} {{currentApprovers?.supervisor_lastname}}
-                        {{currentApprovers?.supervisor_emp_id}}
-                        {{currentApprovers?.supervisor_email}}
+                        {{currentApprovers?.supervisor_name}}
                     </div>
+                    <div class="small">{{currentApprovers?.supervisor_email}}</div>
                 </td>
             </tr>
             <tr>
@@ -24,9 +23,8 @@
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.director_firstname}} {{currentApprovers?.director_lastname}}
-                        {{currentApprovers?.director_emp_id}}
-                        {{currentApprovers?.director_email}}
+                        {{currentApprovers?.director_name}}
+                        <div class="small">{{currentApprovers?.director_email}}</div>
                     </div>
                 </td>
             </tr>
@@ -36,9 +34,8 @@
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.hr_firstname}} {{currentApprovers?.hr_lastname}}
-                        {{currentApprovers?.hr_emp_id}}
-                        {{currentApprovers?.hr_email}}
+                        {{currentApprovers?.hr_name}}
+                        <div class="small">{{currentApprovers?.hr_email}}</div>
                     </div>
                 </td>
             </tr>
@@ -48,9 +45,8 @@
                 </th>
                 <td>
                     <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.finance_firstname}} {{currentApprovers?.finance_lastname}}
-                        {{currentApprovers?.finance_emp_id}}
-                        {{currentApprovers?.finance_email}}
+                        {{currentApprovers?.finance_name}}
+                        <div class="small">{{currentApprovers?.finance_email}}</div>
                     </div>
                 </td>
             </tr>
@@ -71,7 +67,7 @@
         <tbody>
             <tr *ngFor="let user of data">
                 <td>
-                    <div class="">{{user?.user_firstname}} {{user?.user_lastname}}</div>
+                    <div class="">{{user?.user_full_name}}</div>
                     <div class="text-muted small">{{user?.user_email}}</div>
                     <div class="text-muted small">{{user?.designation_name}}</div>
                 </td>

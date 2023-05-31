@@ -5,7 +5,7 @@
 </div>
 
 <div class="row my-4" *ngIf="userInfo.id">
-    <h4 class="">{{userInfo?.user_firstname}} {{userInfo?.user_lastname}}</h4>
+    <h4 class="">{{userInfo?.user_full_name}}</h4>
     <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
     <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
     <div>{{userInfo?.user_phone}}; {{userInfo?.user_phone2}}</div>
@@ -32,15 +32,15 @@
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label class="required" for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" formControlName="firstName">
-                    <app-validation-error [control]="userBasicForm.controls['firstName']"></app-validation-error>
+                    <label class="required" for="fullName">Full Name (as per govt id)</label>
+                    <input type="text" minlength="3" maxlength="32" class="form-control" id="fullName" formControlName="fullName">
+                    <app-validation-error [control]="userBasicForm.controls['fullName']"></app-validation-error>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <label class="required" for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" formControlName="lastName">
                     <app-validation-error [control]="userBasicForm.controls['lastName']"></app-validation-error>
-                </div>
+                </div> -->
             </div>
 
             <div class="row mb-3">

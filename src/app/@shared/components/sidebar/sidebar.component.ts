@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.userRole = this.authSvc.getRoleId();
     const user = this.authSvc.getUser();
-    this.welcomeUserText =  user.user_firstname +' '+ user.user_lastname;
+    this.welcomeUserText =  user.user_full_name;
   }
 
   // onSidebarClose() {

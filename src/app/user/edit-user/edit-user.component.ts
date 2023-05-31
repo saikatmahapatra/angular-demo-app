@@ -66,8 +66,7 @@ export class EditUserComponent {
   userBasicForm = this.fb.group({
     id: [null],
     action: ['editUser'],
-    firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
-    lastName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]],
+    fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32), this.validator.validName]],
     workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],
@@ -198,8 +197,7 @@ export class EditUserComponent {
   patchUserBasicDefailsForm() {
     this.userBasicForm.patchValue({
       id: this.userInfo?.id,
-      firstName: this.userInfo?.user_firstname,
-      lastName: this.userInfo?.user_lastname,
+      fullName: this.userInfo?.user_full_name,
       workPhone: this.userInfo?.user_phone2,
       dateOfBirth: new Date(this.userInfo?.user_dob),
       gender: this.userInfo?.user_gender,

@@ -46,7 +46,7 @@ export class PostDetailsComponent implements OnInit {
   }
 
   getTimeStampInfo(item: any) {
-    return this.commonSvc.getTimeAgo(item?.content_created_on) + ' by ' + item?.user_firstname + ' ' + item?.user_lastname;
+    return this.commonSvc.getTimeAgo(item?.content_created_on) + ' by ' + item?.user_full_name;
   }
 
   markAsRead() {

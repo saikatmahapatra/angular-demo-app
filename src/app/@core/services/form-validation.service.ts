@@ -43,7 +43,8 @@ export class FormValidationService {
       minLengthArray: 'Please select at least one date from the calendar.',
       invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.',
       invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
-      invalidNumber: 'This field should be only integer number'
+      invalidNumber: 'This field should be only integer number',
+      invalidName: 'Please enter name using valid characters'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -80,6 +81,13 @@ export class FormValidationService {
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidPassword': true };
   }
+
+  validName(control: AbstractControl) {
+    const regex = new RegExp(regEx.name);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidName': true };
+  }
+  
 
   validEmailDomain(control: AbstractControl) {
     let error = null;

@@ -114,7 +114,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Applicant</span>
-                        {{rowData?.user_firstname}} {{rowData?.user_lastname}}
+                        {{rowData?.user_full_name}}
                     </td>
                     <td>
                         <span class="p-column-title">From</span>
@@ -141,8 +141,7 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
                         </span>
-                        <span>{{rowData?.supervisor_approver_firstname.charAt(0).toUpperCase()}}.
-                            {{rowData?.supervisor_approver_lastname}}</span>
+                        <span>{{rowData?.supervisor_approver_name}}</span>
 
                         <span class="mx-2">
                             <app-icon [name]="'arrowRight'" [styleClass]="'text-secondary'"></app-icon>
@@ -158,8 +157,7 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
-                        <span>{{rowData?.director_approver_firstname.charAt(0).toUpperCase()}}.
-                            {{rowData?.director_approver_lastname}}</span>
+                        <span>{{rowData?.director_approver_name}}.</span>
 
                     </td>
 
