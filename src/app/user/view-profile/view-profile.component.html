@@ -194,30 +194,22 @@
             Approvers</h5>
       </div>
    </p-divider>
-   <div class="my-4 text-muted" *ngIf="!approvers?.id">
-      <app-icon [name]="'info'"></app-icon> No workflow approvers found. Go to "Edit Profile" to add/update
-      approvers.
-   </div>
-   <dl class="row" *ngIf="approvers?.id">
+   <dl class="row mt-4">
       <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
       <dd class="col-md-8 col-lg-9">
-         <span [innerHTML]="approvers?.supervisor_name ? approvers?.supervisor_name : '-'"></span>
-         <span [innerHTML]="approvers?.supervisor_email ? ' ('+ approvers?.supervisor_email+ ')' : ''"></span>
+         <div [innerHTML]="approvers?.user_supervisor_id ? (approvers?.supervisor_name + ' ('+approvers?.supervisor_email+')'):  '-'"></div>
       </dd>
       <dt class="col-md-4 col-lg-3">L2 Workflow Approver</dt>
       <dd class="col-md-8 col-lg-9">
-         <span [innerHTML]="approvers?.director_name ? approvers?.director_name : '-'"></span>
-         <span [innerHTML]="approvers?.director_email ? ' ('+ approvers?.director_email+ ')' : ''"></span>
+         <div [innerHTML]="approvers?.director_name ? (approvers?.director_name + ' ('+approvers?.director_email+')'):  '-'"></div>
       </dd>
       <dt class="col-md-4 col-lg-3">HR Approver</dt>
       <dd class="col-md-8 col-lg-9">
-         <span [innerHTML]="approvers?.hr_name ? approvers?.hr_name : '-'"></span>
-         <span [innerHTML]="approvers?.hr_email ? ' ('+ approvers?.hr_email+ ')' : ''"></span>
+         <div [innerHTML]="approvers?.hr_name ? (approvers?.hr_name + ' ('+approvers?.hr_email+')'):  '-'"></div>
       </dd>
       <dt class="col-md-4 col-lg-3">Finance Approver</dt>
       <dd class="col-md-8 col-lg-9">
-         <span [innerHTML]="approvers?.finance_name ? approvers?.finance_name : '-'"></span>
-         <span [innerHTML]="approvers?.finance_email ? ' ('+ approvers?.finance_email+ ')' : ''"></span>
+         <div [innerHTML]="approvers?.finance_name ? (approvers?.finance_name + ' ('+approvers?.finance_email+')'):  '-'"></div>
       </dd>
    </dl>
 </section>
