@@ -6,12 +6,11 @@
         <div class="card-body">
 
             <div class="alert alert-danger"
-                *ngIf="approvers.length <= 0 || (approvers.length > 0 && (approvers[0]?.user_supervisor_id ===null || approvers[0]?.user_director_approver_id === null))">
+                *ngIf="!hasApprovers()">
                 <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow
                     approvers</a> before applying.
             </div>
-            <div class="mb-2"
-                *ngIf="approvers.length > 0 && approvers[0]?.user_supervisor_id && approvers[0]?.user_director_approver_id">
+            <div class="mb-2" *ngIf="hasApprovers()">
                 <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
                     <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
                         class="">{{approvers[0]?.supervisor_firstname}} {{approvers[0]?.supervisor_lastname}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application.
@@ -22,11 +21,11 @@
                         class="">{{approvers[0]?.director_firstname}} {{approvers[0]?.director_lastname}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application.
                 </div>
             </div>
-            <div class="alert alert-danger" *ngIf="leaveBalance.length <= 0">
+            <div class="alert alert-danger" *ngIf="!hasLeaveBalance()">
                 <strong><app-icon [name]="'error'"></app-icon> Error: </strong> Your leave balance information is missing from the database. Records of leave balances must be updated in order to apply for leave. For further process, kindly get in touch with admin or HR.
             </div>
 
-            <div class="" *ngIf="leaveBalance[0]?.id">
+            <div class="" *ngIf="hasLeaveBalance()">
                 <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong> Your current leave balance
                 is
                 <!-- <div> -->
@@ -39,7 +38,7 @@
         </div>
     </div>
 
-    <div class="col-md-4" *ngIf="approvers[0]?.id && leaveBalance[0]?.id">
+    <div class="col-md-4" *ngIf="hasApprovers() && hasLeaveBalance()">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" value="applyLeave" formControlName="action">
 

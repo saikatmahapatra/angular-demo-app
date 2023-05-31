@@ -313,10 +313,22 @@
          <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
          <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
       </dd>
-      <dt class="col-md-4 col-lg-3">Role/Access</dt>
+      <dt class="col-md-4 col-lg-3">Status Updated On</dt>
+      <dd class="col-md-8 col-lg-9">
+         {{userInfo?.user_status_updated_on | date:
+         'dd/MM/yyyy h:mm:ss a'}}
+         <span *ngIf="userInfo?.user_status_updated_on === null">-</span>
+      </dd>
+
+      <dt class="col-md-4 col-lg-3">Permitted Role/Access</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+
       <dt class="col-md-4 col-lg-3">User Since</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
+
+      <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Date of Release</dt>
+      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor | date:'dd-MM-y'}}</dd>
+
       <dt class="col-md-4 col-lg-3">Last Login</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
    </dl>

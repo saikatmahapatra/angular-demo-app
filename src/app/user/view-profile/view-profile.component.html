@@ -258,14 +258,9 @@
          <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
       </dd>
 
-      <dt class="col-md-3">Leave Balance created on</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.created_on ? leaveBalance?.created_on : '-'"></span>
-      </dd>
-
       <dt class="col-md-3">Leave Balance updated on</dt>
       <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.updated_on ? leaveBalance?.updated_on : '-'"></span>
+         <span [innerHTML]="leaveBalance?.leave_balance_updated_on ? leaveBalance?.updated_on : '-'"></span>
       </dd>
    </dl>
 </section>
@@ -286,21 +281,22 @@
          <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
          <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
       </dd>
+      <dt class="col-md-4 col-lg-3">Status Updated On</dt>
+      <dd class="col-md-8 col-lg-9">
+         {{userInfo?.user_status_updated_on | date:
+         'dd/MM/yyyy h:mm:ss a'}}
+         <span *ngIf="userInfo?.user_status_updated_on === null">-</span>
+      </dd>
+
+      <dt class="col-md-4 col-lg-3">Permitted Role/Access</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+
+      <dt class="col-md-4 col-lg-3">User Since</dt>
+      <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
 
       <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Date of Release</dt>
       <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor | date:'dd-MM-y'}}</dd>
 
-      <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closed on</dt>
-      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_closed_datetime | date:
-         'dd/MM/yyyy h:mm:ss a'}}</dd>
-
-      <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Account closure comments</dt>
-      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.account_close_comments}}</dd>
-
-      <dt class="col-md-4 col-lg-3">Role/Access</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
-      <dt class="col-md-4 col-lg-3">User Since</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
       <dt class="col-md-4 col-lg-3">Last Login</dt>
       <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
    </dl>

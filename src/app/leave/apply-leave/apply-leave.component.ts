@@ -93,4 +93,12 @@ export class ApplyLeaveComponent implements OnInit {
     this.myForm.controls['action'].setValue('applyLeave');
   }
 
+  hasLeaveBalance() {
+    return this.leaveBalance[0]?.cl !== null && this.leaveBalance[0]?.pl !== null && this.leaveBalance[0]?.sl !== null;
+  }
+
+  hasApprovers() {
+    return this.approvers[0]?.user_supervisor_id !==null && this.approvers[0]?.user_director_approver_id !== null;
+  }
+
 }
