@@ -1,9 +1,5 @@
 <h1>Change Workflow Approvers</h1>
-<div *ngIf="!currentApprovers?.id" class="alert alert-info my-4">
-    {{message}}
-</div>
 <div class="table-responsive my-4">
-
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -11,10 +7,9 @@
                     L1 Workflow Approver
                 </th>
                 <td>
-                    <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.supervisor_name}}
+                    <div
+                        [innerHTML]="currentApprovers?.user_supervisor_id ? (currentApprovers?.supervisor_name + ' ('+currentApprovers?.supervisor_email+')'):  '-'">
                     </div>
-                    <div class="small">{{currentApprovers?.supervisor_email}}</div>
                 </td>
             </tr>
             <tr>
@@ -22,9 +17,8 @@
                     L2 Workflow Approver
                 </th>
                 <td>
-                    <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.director_name}}
-                        <div class="small">{{currentApprovers?.director_email}}</div>
+                    <div
+                        [innerHTML]="currentApprovers?.user_director_approver_id ? (currentApprovers?.director_name + ' ('+currentApprovers?.director_email+')'):  '-'">
                     </div>
                 </td>
             </tr>
@@ -33,9 +27,8 @@
                     HR Approver
                 </th>
                 <td>
-                    <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.hr_name}}
-                        <div class="small">{{currentApprovers?.hr_email}}</div>
+                    <div
+                        [innerHTML]="currentApprovers?.user_hr_approver_id ? (currentApprovers?.hr_name + ' ('+currentApprovers?.hr_email+')'):  '-'">
                     </div>
                 </td>
             </tr>
@@ -44,9 +37,8 @@
                     Finance Approver
                 </th>
                 <td>
-                    <div *ngIf="currentApprovers?.id">
-                        {{currentApprovers?.finance_name}}
-                        <div class="small">{{currentApprovers?.finance_email}}</div>
+                    <div
+                        [innerHTML]="currentApprovers?.user_finance_approver_id ? (currentApprovers?.finance_name + ' ('+currentApprovers?.finance_email+')'):  '-'">
                     </div>
                 </td>
             </tr>
@@ -60,7 +52,8 @@
     [placeHolderText]="'Search Name/Email...'"></app-search-input>
 
 <div class="my-4" *ngIf="totalRecords>0">
-    <strong>Note:</strong> You need get in touch with your local HR/Admin to set the appropriate staff as your approvers.
+    <strong>Note:</strong> You need get in touch with your local HR/Admin to set the appropriate staff as your
+    approvers.
 </div>
 <div class="table-responsive my-4" *ngIf="totalRecords>0">
     <table class="table">

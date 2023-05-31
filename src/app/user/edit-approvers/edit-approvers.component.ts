@@ -12,7 +12,6 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class EditApproversComponent implements OnInit {
   data: any;
   currentApprovers: any = {};
-  message = ''
   searchKeywords = '';
   // Pagination Config
   currentPageIndex: number = 0;
@@ -38,7 +37,6 @@ export class EditApproversComponent implements OnInit {
   getApprovers() {
     this.apiSvc.get(AppConfig.apiUrl.approvers).subscribe((response: any) => {
       this.currentApprovers = response?.data ? response?.data[0] : {};
-      this.message = response?.message;
     });
   }
 
