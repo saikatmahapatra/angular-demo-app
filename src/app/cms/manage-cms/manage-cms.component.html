@@ -50,13 +50,13 @@
                             <p-sortIcon field="content_created_by"></p-sortIcon>
                         </div>
                     </th> -->
-                    <th pSortableColumn="content_status">
+                    <th  style="width: 10rem;"pSortableColumn="content_status">
                         <div class="flex justify-content-between align-items-center">
                             Status
                             <p-sortIcon field="content_status"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 20rem"></th>
+                    <th style="width: 20rem">Actions</th>
                 </tr>
             </ng-template>
 
@@ -103,16 +103,21 @@
             </ng-template>
             <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
-                    <td colspan="6">
-                        <div class="row">
-                            <div class="col-12" [innerHTML]="rowData?.content_text"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-2">Created By</div>
-                            <div class="col-md-4">{{rowData?.user_full_name}}</div>
-                            <div class="col-md-2">Updated On</div>
-                            <div class="col-md-4">{{rowData?.content_updated_on || '-'}}</div>
-                        </div>
+                    <td colspan="7">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold w-25">Description</td>
+                                    <td><div class="content-preview" [innerHTML]="rowData?.content_text"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold w-25">Updated On</td>
+                                    <td>
+                                        {{rowData?.content_updated_on ? (rowData?.content_updated_on | date: 'dd/MM/yyyy h:mm:ss a') : '-' }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
 
