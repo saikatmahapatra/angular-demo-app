@@ -1,4 +1,4 @@
-<h1>Manage Holidays {{selectedYear}}</h1>
+<h1>Manage Holidays</h1>
 
 <div class="row my-4">
     <div class="col-md-12">
@@ -44,7 +44,7 @@
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm  ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
-                    List of Holidays
+                    List of Holidays {{selectedYear}}
                     <div class="row my-2">
                         <div class="col-auto">
                             <p-dropdown styleClass="" [options]="yearList" [(ngModel)]="selectedYear" placeholder="Year"

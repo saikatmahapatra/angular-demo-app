@@ -62,7 +62,7 @@ export class ManageLeaveComponent implements OnInit {
   ) {
 
     if (this.router.url == '/leave/history') {
-      this.title = 'My Leave History';
+      this.title = 'Leave History';
       this.helpInfoMessage = '';
       this.isManagePage = false;
       this.isHistoryPage = true;

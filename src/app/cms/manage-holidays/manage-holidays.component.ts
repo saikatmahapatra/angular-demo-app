@@ -13,8 +13,8 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class ManageHolidaysComponent implements OnInit {
 
-  startYear: number = 2015;
-  endYear: number = new Date().getFullYear() + 2;
+  startYear: number = 2019;
+  endYear: number = new Date().getFullYear() + 1;
   dataRow: any;
   selectedYear: number = new Date().getFullYear();
   yearList: any = [];
