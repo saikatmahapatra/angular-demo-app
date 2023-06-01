@@ -17,28 +17,23 @@
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width: 25rem;" pSortableColumn="project_name">
+                    <th style="width: 3rem"></th>
+                    <th style="width: 40rem;" pSortableColumn="project_name">
                         <div class="flex justify-content-between align-items-center">
-                            Name
+                            Project Name & Code
                             <p-sortIcon field="project_name"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 8rem" pSortableColumn="project_start_date">
+                    <th style="width: 10rem" pSortableColumn="project_start_date">
                         <div class="flex justify-content-between align-items-center">
-                            Start
+                            Start Date
                             <p-sortIcon field="project_start_date"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 8rem" pSortableColumn="project_end_date">
+                    <th style="width: 10rem" pSortableColumn="project_end_date">
                         <div class="flex justify-content-between align-items-center">
-                            End
+                            End Date
                             <p-sortIcon field="project_end_date"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 30rem" pSortableColumn="project_desc">
-                        <div class="flex justify-content-between align-items-center">
-                            Description
-                            <p-sortIcon field="project_desc"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 8rem" pSortableColumn="project_status">
@@ -47,33 +42,34 @@
                             <p-sortIcon field="project_status"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 20rem" pSortableColumn="created_on">
+                    <th style="width: 15rem" pSortableColumn="created_on">
                         <div class="flex justify-content-between align-items-center">
                             Added On
                             <p-sortIcon field="created_on"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 20rem">Actions</th>
+                    <th style="width: 10rem">Actions</th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-rowData let-expanded="expanded">
                 <tr class="p-selectable-row">
                     <td>
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
                         <span class="p-column-title">Name</span>
                         {{rowData?.project_name}} ({{rowData?.project_number}})
                     </td>
                     <td>
-                        <span class="p-column-title">Start</span>
-                        {{rowData?.project_start_date | date: 'dd/MM/yyyy'}}
+                        <span class="p-column-title">Start Date</span>
+                        {{rowData?.project_start_date ? (rowData?.project_start_date | date: 'dd/MM/yyyy') : '-' }}
                     </td>
                     <td>
-                        <span class="p-column-title">End</span>
-                        {{rowData?.project_end_date | date: 'dd/MM/yyyy'}}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Description</span>
-                        {{rowData?.project_desc}}
+                        <span class="p-column-title">End Date</span>
+                        {{rowData?.project_end_date ? (rowData?.project_end_date | date: 'dd/MM/yyyy') : '-' }}
                     </td>
                     <td>
                         <span class="p-column-title">Status</span>
@@ -87,7 +83,7 @@
 
                     <td>
                         <span class="p-column-title">Added On</span>
-                        {{rowData?.created_on | date: 'dd/MM/yyyy h:mm:ss a'}}
+                        {{rowData?.created_on ? (rowData?.created_on | date: 'dd/MM/yyyy h:mm:ss a') : '-' }}
                     </td>
 
                     <td>
@@ -98,9 +94,31 @@
                     </td>
                 </tr>
             </ng-template>
+
+            <ng-template pTemplate="rowexpansion" let-rowData>
+                <tr>
+                    <td colspan="7">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold w-25">Description</td>
+                                    <td [innerHTML]="rowData?.project_desc || '-'"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold w-25">Updated On</td>
+                                    <td>
+                                        {{rowData?.updated_on ? (rowData?.updated_on | date: 'dd/MM/yyyy h:mm:ss a') : '-' }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </ng-template>
+
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="6">No records found.</td>
+                    <td colspan="7">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>
