@@ -22,7 +22,8 @@ export class LeaveDetailsActionsComponent implements OnInit {
     { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
     { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
     { value: 'C', text: 'Cancelled', cssClass: 'bg-warning text-dark', textClass: 'text-warning' },
-    { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' }
+    { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' },
+    { value: 'V', text: 'Verified', cssClass: 'bg-warning', textClass: 'text-warning' }
   ];
   progressBarClass = 'bg-primary';
   progressText = 'Process 1/3 completed';

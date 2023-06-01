@@ -140,14 +140,17 @@
                                 *ngIf="rowData?.supervisor_approver_status === 'R'"></app-icon>
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.supervisor_approver_status === 'C'"></app-icon>
+                            <app-icon [name]="'verified'" [styleClass]="'text-primary'"
+                                *ngIf="rowData?.supervisor_approver_status === 'V'"></app-icon>
                         </span>
-                        <span [title]="rowData?.supervisor_approver_name">{{ (rowData?.supervisor_approver_name | slice : 0: 8) + '...' }}</span>
+                        <span [title]="rowData?.supervisor_approver_name">{{ (rowData?.supervisor_approver_name | slice
+                            : 0: 8) + '...' }}</span>
 
-                        <span class="mx-2">
+                        <span class="mx-2" *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id">
                             <app-icon [name]="'arrowRight'" [styleClass]="'text-secondary'"></app-icon>
                         </span>
 
-                        <span class="mx-2">
+                        <span class="mx-2" *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id">
                             <app-icon [name]="'question'" [styleClass]="''"
                                 *ngIf="rowData?.director_approver_status === 'P'"></app-icon>
                             <app-icon [name]="'check'" [styleClass]="'text-success'"
@@ -157,7 +160,8 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
-                        <span [title]="rowData?.director_approver_name">{{ (rowData?.director_approver_name | slice : 0: 8) + '...' }}</span>
+                        <span *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id" [title]="rowData?.director_approver_name">{{ (rowData?.director_approver_name | slice : 0:
+                            8) + '...' }}</span>
 
                     </td>
 

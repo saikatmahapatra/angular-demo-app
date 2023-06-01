@@ -47,7 +47,7 @@ export class ManageLeaveComponent implements OnInit {
     { value: 'O', text: 'In Review', cssClass: 'bg-info', textClass: 'text-info' },
     { value: 'A', text: 'Approved', cssClass: 'bg-success', textClass: 'text-success' },
     { value: 'R', text: 'Rejected', cssClass: 'bg-danger', textClass: 'text-danger' },
-    { value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
+    //{ value: 'P', text: 'Pending', cssClass: 'bg-primary', textClass: 'text-secondary' },
     { value: 'C', text: 'Cancelled', cssClass: 'bg-warning', textClass: 'text-warning' },
     { value: 'X', text: 'Cancel Requested', cssClass: 'bg-warning', textClass: 'text-warning' }
   ];

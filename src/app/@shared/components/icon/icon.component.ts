@@ -56,7 +56,7 @@ export class IconComponent implements OnInit {
     'question': { primeng: 'pi pi-question-circle', bootstrap: 'bi bi-question-circle' },
     'send': { primeng: 'pi pi-send', bootstrap: 'bi bi-send-check' },
     'calendar': { primeng: 'pi pi-calendar', bootstrap: 'bi bi-calendar-check' },
-    'projects': { primeng: 'pi pi-th-large', bootstrap: 'bi bi-columns-gap' },
+    'tasks': { primeng: 'pi pi-th-large', bootstrap: 'bi bi-columns-gap' },
     'search': { primeng: 'pi pi-search', bootstrap: 'bi bi-search' },
     'settings': { primeng: 'pi pi-cog', bootstrap: 'bi bi-gear' },
     'upload': { primeng: 'pi pi-upload', bootstrap: 'bi bi-upload' },
@@ -66,7 +66,7 @@ export class IconComponent implements OnInit {
     'menu': { primeng: 'pi pi-bars', bootstrap: 'bi bi-bar' },
     'comment': { primeng: 'pi pi-comment', bootstrap: 'bi bi-comment' },
     'comments': { primeng: 'pi pi-comments', bootstrap: 'bi bi-comments' },
-    'verify': { primeng: 'pi pi-verified', bootstrap: 'bi bi-verified' }
+    'verified': { primeng: 'pi pi-verified', bootstrap: 'bi bi-verified' }
   };
 
   constructor() {
