@@ -143,7 +143,7 @@
                             <app-icon [name]="'verified'" [styleClass]="'text-primary'"
                                 *ngIf="rowData?.supervisor_approver_status === 'V'"></app-icon>
                         </span>
-                        <span [title]="rowData?.supervisor_approver_name">{{ (rowData?.supervisor_approver_name | slice
+                        <span [pTooltip]="rowData?.supervisor_approver_name">{{ (rowData?.supervisor_approver_name | slice
                             : 0: 8) + '...' }}</span>
 
                         <span class="mx-2" *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id">
@@ -160,7 +160,7 @@
                             <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.director_approver_status === 'C'"></app-icon>
                         </span>
-                        <span *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id" [title]="rowData?.director_approver_name">{{ (rowData?.director_approver_name | slice : 0:
+                        <span *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id" [pTooltip]="rowData?.director_approver_name">{{ (rowData?.director_approver_name | slice : 0:
                             8) + '...' }}</span>
 
                     </td>
