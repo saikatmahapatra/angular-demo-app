@@ -16,12 +16,12 @@
             <div class="mb-2" *ngIf="hasApprovers()">
                 <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
                     <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
-                        class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application.
+                        class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application. You can change workflow approvers (if necessary) before submitting a leave application. Click <a [routerLink]="['/emp/change-approvers']">here</a> to change.
                 </div>
                 <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
                     <strong><app-icon [name]="'info'"></app-icon> Workflow Approvers: </strong><span
                         class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> <span> and/or </span> <span
-                        class="">{{approvers[0]?.director_name}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application.
+                        class="">{{approvers[0]?.director_name}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application. You can change workflow approvers (if necessary) before submitting a leave application. Click <a [routerLink]="['/emp/change-approvers']">here</a> to change.
                 </div>
             </div>
             <div class="alert alert-danger" *ngIf="!hasLeaveBalance()">
@@ -29,8 +29,7 @@
             </div>
 
             <div class="" *ngIf="hasLeaveBalance()">
-                <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong> Your current leave balance
-                is
+                <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong>
                 <!-- <div> -->
                 <span class="me-1">CL-Casual Leave: {{leaveBalance[0]?.cl}}, </span>
                 <span class="me-1">PL-Privileged Leave: {{leaveBalance[0]?.pl}}, </span>
@@ -41,7 +40,7 @@
         </div>
     </div>
 
-    <div class="col-md-4" *ngIf="hasApprovers() && hasLeaveBalance()">
+    <div class="col-md-4 mt-3" *ngIf="hasApprovers() && hasLeaveBalance()">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" value="applyLeave" formControlName="action">
 
