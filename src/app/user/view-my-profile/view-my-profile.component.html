@@ -168,9 +168,9 @@
    <div class="my-3">
       <dl class="row">
          <dt class="col-md-4 col-lg-3">PAN No</dt>
-         <dd class="col-md-8 col-lg-9">{{userInfo?.user_pan_no}}</dd>
+         <dd class="col-md-8 col-lg-9">{{userGovtIds[0]?.user_pan_no || '-'}}</dd>
          <dt class="col-md-4 col-lg-3">UAN No</dt>
-         <dd class="col-md-8 col-lg-9">{{userInfo?.user_uan_no}}</dd>
+         <dd class="col-md-8 col-lg-9">{{userGovtIds[0]?.user_uan_no || '-'}}</dd>
       </dl>
    </div>
    <div class="my-3" *ngFor="let payroll of payrollInfo">
