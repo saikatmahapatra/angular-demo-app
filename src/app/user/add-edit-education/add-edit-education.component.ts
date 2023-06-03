@@ -52,7 +52,7 @@ export class AddEditEducationComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    qualification: ['', [Validators.required]],
+    //qualification: ['', [Validators.required]],
     degree: ['', [Validators.required]],
     newDegree: [null],
     specialization: ['', [Validators.required]],
@@ -60,7 +60,7 @@ export class AddEditEducationComponent implements OnInit {
     institute: ['', Validators.required],
     newInstitute: [null],
     //fromYear: [new Date().getFullYear(), [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
-    toYear: [new Date().getFullYear(), [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
+    toYear: [null, [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
     marks: ['', Validators.required]
   });
 
@@ -169,7 +169,7 @@ export class AddEditEducationComponent implements OnInit {
     this.myForm.patchValue({
       id: data?.id,
       action: 'edit',
-      qualification: data?.academic_qualification,
+      //qualification: data?.academic_qualification,
       degree: data?.academic_degree,
       newDegree: null,
       specialization: data?.academic_specialization,

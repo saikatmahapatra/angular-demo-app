@@ -83,11 +83,11 @@
    <p-divider align="left">
       <div class="inline-flex align-items-center">
          <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Education</h5>
+            Highest Qualification</h5>
       </div>
    </p-divider>
    <div class="my-3" *ngFor="let education of educationInfo">
-      <h6>{{education?.qualification_name}} - {{education?.degree_name}};
+      <h6>{{education?.degree_name}};
          {{education?.academic_to_year}}
       </h6>
       <div [innerHTML]="education.specialization_name"></div>

@@ -1,4 +1,4 @@
-<h1><span>{{title}}</span> Education Details</h1>
+<h1><span>{{title}}</span> Highest Qualification Details</h1>
 <div class="back-to-page">
     <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
@@ -8,21 +8,21 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label class="required" for="qualification">Qualification</label>
                 <select class="form-select" id="qualification" formControlName="qualification">
                     <option value="">Select</option>
                     <option *ngFor="let data of qualificationList" [value]="data.id" [innerHTML]="data.name"></option>
                 </select>
                 <app-validation-error [control]="myForm.controls['qualification']"></app-validation-error>
-            </div>
+            </div> -->
 
             <div class="mb-3">
-                <label class="required" for="degree">Degree</label>
+                <label class="required" for="degree">Qualification</label>
                 <select class="form-select" id="degree" formControlName="degree">
                     <option value="">Select</option>
                     <option *ngFor="let data of degreeList" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
+                    <!-- <option value="-1">Others</option> -->
                 </select>
                 <app-validation-error [control]="myForm.controls['degree']"></app-validation-error>
             </div>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="required" for="specialization">Specialization</label>
+                <label class="required" for="specialization">Specialization/Subject</label>
                 <select class="form-select" id="specialization" formControlName="specialization">
                     <option value="">Select</option>
                     <option *ngFor="let data of specializationList" [value]="data.id" [innerHTML]="data.name"></option>
@@ -52,17 +52,18 @@
             </div>
 
             <div class="mb-3">
-                <label class="required" for="institute">Institute/University/Board/Council</label>
+                <label class="required" for="institute">Institute/University</label>
                 <select class="form-select" id="institute" formControlName="institute">
                     <option value="">Select</option>
                     <option *ngFor="let data of institutionList" [value]="data.id" [innerHTML]="data.name"></option>
                     <option value="-1">Others</option>
                 </select>
+                <div class="small"><strong>Note:</strong> For school level qualification kindly select board name.</div>
                 <app-validation-error [control]="myForm.controls['institute']"></app-validation-error>
             </div>
 
             <div class="mb-3" *ngIf="myForm.value['institute'] === '-1'">
-                <!-- <label class="required" for="newInstitute">Other Institute/University/Board/Council</label> -->
+                <!-- <label class="required" for="newInstitute">Other Institute/University</label> -->
                 <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute" maxlength="30" placeholder="Other Institute">
                 <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
                 <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
@@ -81,8 +82,8 @@
             </div>
 
             <div class="mb-3">
-                <label class="required" for="marks">Marks</label>
-                <input type="text" class="form-control" id="marks" formControlName="marks" maxlength="5">
+                <label class="required" for="marks">Marks (in %)</label>
+                <input type="number" class="form-control" id="marks" formControlName="marks" maxlength="5">
                 <app-validation-error [control]="myForm.controls['marks']"></app-validation-error>
             </div>
 
