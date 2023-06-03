@@ -1,4 +1,4 @@
 {
-    "apiBaseUrl": "http://localhost/ci-emp-portal-api/",
+    "apiBaseUrl": "http://localhost/angular-demo-app/backend/",
     "maintenanceMode": false
 }

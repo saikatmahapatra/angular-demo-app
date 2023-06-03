@@ -1,0 +1,270 @@
+ALTER TABLE `cms` CHANGE `content_type` `content_type` ENUM('page','post','review','comment','news','notice','policy', 'mandatory_holiday', 'optional_holiday') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'page' COMMENT 'page,post,review,comment';
+
+
+
+ALTER TABLE `users`  ADD `workspaceSolution` ENUM('ON','OF','RE','HY') NULL DEFAULT 'ON'  AFTER `user_emp_id`,  ADD `workBaseLocation` INT NULL DEFAULT NULL  AFTER `workspaceSolution`;
+ALTER TABLE `users` ADD `workDeputedLocation` INT NULL AFTER `workBaseLocation`;
+
+
+INSERT INTO site_meta ( 
+      meta_type, 
+      meta_value) 
+SELECT type, 
+       x_field
+FROM x_table;
+
+
+
+// Degree ID migration
+SELECT distinct(academic_degree) FROM `user_academics`;
+SELECT *  FROM `site_meta` WHERE `meta_type` = 'degree' ORDER BY `id`  ASC;
+
+
+UPDATE `user_academics` SET `academic_degree`=21 WHERE `academic_degree`=1;
+UPDATE `user_academics` SET `academic_degree`=22 WHERE `academic_degree`=2;
+UPDATE `user_academics` SET `academic_degree`=26 WHERE `academic_degree`=6;
+UPDATE `user_academics` SET `academic_degree`=28 WHERE `academic_degree`=8;
+UPDATE `user_academics` SET `academic_degree`=29 WHERE `academic_degree`=9;
+UPDATE `user_academics` SET `academic_degree`=22 WHERE `academic_degree`=12;
+UPDATE `user_academics` SET `academic_degree`=33 WHERE `academic_degree`=13;
+UPDATE `user_academics` SET `academic_degree`=34 WHERE `academic_degree`=14;
+UPDATE `user_academics` SET `academic_degree`=36 WHERE `academic_degree`=16;
+UPDATE `user_academics` SET `academic_degree`=39 WHERE `academic_degree`=19;
+UPDATE `user_academics` SET `academic_degree`=40 WHERE `academic_degree`=20;
+UPDATE `user_academics` SET `academic_degree`=41 WHERE `academic_degree`=21;
+UPDATE `user_academics` SET `academic_degree`=42 WHERE `academic_degree`=22;
+UPDATE `user_academics` SET `academic_degree`=43 WHERE `academic_degree`=23;
+
+
+
+//SATTE
+UPDATE `user_addresses` SET state = '308' WHERE state ='28'
+UPDATE `user_addresses` SET state = '291' WHERE state ='11';
+
+
+// Bank
+SELECT DISTINCT (bank_id) FROM `user_bank_account` ORDER by bank_id;
+
+
+
+UPDATE `user_bank_account` SET bank_id = '348' WHERE bank_id='5';
+UPDATE `user_bank_account` SET bank_id = '349' WHERE bank_id='6';
+UPDATE `user_bank_account` SET bank_id = '350' WHERE bank_id='7';
+
+
+
+// Relationship 
+SELECT DISTINCT(relationship_with_contact) FROM `user_emergency_contacts` order by relationship_with_contact;
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '255' WHERE relationship_with_contact='1';
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '256' WHERE relationship_with_contact='2';
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '257' WHERE relationship_with_contact='3';
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '263' WHERE relationship_with_contact='9';
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '268' WHERE relationship_with_contact='14';
+UPDATE `user_emergency_contacts` SET relationship_with_contact = '275' WHERE relationship_with_contact='21';
+
+
+
+// department
+no migration needed
+
+// designation
+SELECT DISTINCT(user_designation), designation_name FROM `users` LEFT JOIN designations ON designations.`id` = users.`user_designation` ORDER by user_designation;
+
+UPDATE `users` 
+LEFT JOIN designations ON designations.`id` = users.`user_designation` LEFT JOIN site_meta ON site_meta.meta_value = designations.designation_name SET users.user_designation = site_meta.id
+
+
+
+
+SELECT DISTINCT(designation_id), designation_name FROM `user_work_exp` LEFT JOIN designations ON designations.`id` = user_work_exp.`designation_id` ORDER by designation_id
+
+UPDATE `user_work_exp` 
+LEFT JOIN designations ON designations.`id` = user_work_exp.`designation_id` LEFT JOIN site_meta ON site_meta.meta_value = designations.designation_name SET user_work_exp.designation_id = site_meta.id
+
+SELECT DISTINCT(designation_id), designation_name FROM `user_work_exp` LEFT JOIN designations ON designations.`id` = user_work_exp.`designation_id` ORDER by designation_id
+
+
+// Employment type
+UPDATE users SET user_employment_type = '248' WHERE users.user_employment_type = '1';
+UPDATE users SET user_employment_type = '249' WHERE users.user_employment_type = '2';
+UPDATE users SET user_employment_type = '252' WHERE users.user_employment_type = '5';
+
+
+// companies
+SELECT DISTINCT(company_id), company_name,  site_meta.meta_value, site_meta.id FROM `user_work_exp` LEFT JOIN companies ON companies.`id` = user_work_exp.`company_id` 
+ LEFT JOIN site_meta ON companies.company_name = site_meta.meta_value
+ORDER by company_id
+
+
+
+UPDATE `user_work_exp` 
+LEFT JOIN companies ON companies.`id` = user_work_exp.`company_id` LEFT JOIN site_meta ON site_meta.meta_value = companies.company_name SET user_work_exp.company_id = site_meta.id
+
+
+// INSTITUTE
+SELECT DISTINCT(academic_institute), institute_name,  site_meta.meta_value, site_meta.id FROM `user_academics` LEFT JOIN academic_institute ON academic_institute.`id` = user_academics.`academic_institute` 
+ LEFT JOIN site_meta ON academic_institute.institute_name = site_meta.meta_value
+ORDER by user_academics.academic_institute
+
+
+UPDATE `user_academics` 
+LEFT JOIN academic_institute ON academic_institute.`id` = user_academics.`academic_institute` LEFT JOIN site_meta ON site_meta.meta_value = academic_institute.institute_name SET user_academics.academic_institute = site_meta.id
+
+// Specialization
+
+SELECT DISTINCT(academic_specialization), specialization_name,  site_meta.meta_value, site_meta.id FROM `user_academics` LEFT JOIN academic_specialization ON academic_specialization.`id` = user_academics.`academic_specialization` 
+ LEFT JOIN site_meta ON academic_specialization.specialization_name = site_meta.meta_value
+ORDER by user_academics.academic_specialization
+
+
+UPDATE `user_academics` 
+LEFT JOIN academic_specialization ON academic_specialization.`id` = user_academics.`academic_specialization` LEFT JOIN site_meta ON site_meta.meta_value = academic_specialization.specialization_name SET user_academics.academic_specialization = site_meta.id
+
+
+
+
+UPDATE `leave_applications` SET leave_reason_id = '523', leave_reason = NULL WHERE `leave_reason` LIKE '%sick%'
+
+SELECT t1.id as orginal_id, t3.meta_value, t1.leave_reason as original_leave_reason, t2.id as legacyid, t2.leave_reason from leave_applications as t1 INNER JOIN leave_applications_legacy as t2 on t1.id = t2.id LEFT JOIN site_meta as t3 on t3.id = t1.leave_reason_id
+order by t1.id DESC LIMIT 0, 3000
+
+UPDATE leave_applications as t1 
+INNER JOIN leave_applications_legacy as t2 on t1.id = t2.id
+SET t1.leave_reason = t2.leave_reason
+
+
+
+// User Table split
+1. Backup user 
+2. import user rename to user_meta 
+3 import user 
+4. add user_id col to user_meta 
+
+
+// user tble column delete
+ALTER TABLE `users` DROP `user_email_secondary`, DROP `user_title`, DROP `user_department`, DROP `user_designation`, DROP `user_bio`, DROP `user_dob`, DROP `user_blood_group`, DROP `user_doj`, DROP `user_employment_type`, DROP `user_work_base_location_id`, DROP `user_workspace_solution_type`, DROP `user_work_deputation_loc_id`, DROP `user_work_zone_id`, DROP `user_dor`, DROP `user_emp_id`, DROP `user_profile_pic`, DROP `user_phone2`, DROP `user_pan_no`, DROP `user_aadhar_no`, DROP `user_passport_no`, DROP `user_uan_no`, DROP `account_closed_by`, DROP `account_closed_datetime`, DROP `account_closed_by_system_datetime`, DROP `account_close_comments`;
+
+ALTER TABLE `users` CHANGE `user_phone1` `user_phone` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `users` CHANGE `user_email` `user_name` VARCHAR(254) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+ALTER TABLE `users` ADD UNIQUE(`user_name`);
+ALTER TABLE `users` DROP `user_gender`, DROP `user_phone`;
+ALTER TABLE `users` CHANGE `user_display_name` `user_preferred_name` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+
+ALTER TABLE `users` CHANGE `user_registration_date` `user_created_on` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP;
+
+
+delete middle name
+
+
+
+// meta table 
+ALTER TABLE `user_meta`
+  DROP `user_email`,
+  DROP `user_password`,
+  DROP `user_title`,
+  DROP `user_firstname`,
+  DROP `user_midname`,
+  DROP `user_lastname`,
+  DROP `user_role`,
+  DROP `user_type`,
+  DROP `user_registration_date`,
+  DROP `user_registration_ip`,
+  DROP `user_reset_password_key`,
+  DROP `user_activation_key`,
+  DROP `user_status`,
+  DROP `user_login_date_time`,
+  DROP `account_closed_by`,
+  DROP `account_closed_datetime`,
+  DROP `account_closed_by_system_datetime`,
+  DROP `account_close_comments`;
+
+
+
+
+`id
+`user_name` varchar(254) NOT NULL,
+`user_password` char(128) NOT NULL,
+`user_firstname` varchar(30) DEFAULT NULL,
+`user_lastname` varchar(50) DEFAULT NULL,
+`user_role` int(2) DEFAULT NULL,
+`user_type` enum('S','U') DEFAULT 'U' COMMENT 'S=System Defined, U=User Defined Real User',
+`user_created_on` timestamp NULL DEFAULT current_timestamp(),
+`user_reset_password_key` char(128) DEFAULT NULL,
+`user_activation_key` char(128) DEFAULT NULL,
+`user_created_by` bigint(20) DEFAULT NULL,
+`user_status` enum('Y','N','A') DEFAULT 'N' COMMENT 'Y=Active, N=Inactive, A=Archived',
+`user_login_date_time` datetime DEFAULT NULL,
+`user_status_updated_on` datetime DEFAULT NULL,
+`user_status_updated_by` bigint(20) DEFAULT NULL
+
+ALTER TABLE `user_meta` CHANGE `user_email_secondary` `user_email2` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+
+
+create user_phone at users
+
+UPDATE users as t1 LEFT JOIN user_meta t2 on t1.id = t2.user_id SET t1.user_phone =  t2.user_phone1
+UPDATE users as t1 LEFT JOIN user_meta t2 on t1.id = t2.user_id SET t1.user_cust_id =  t2.user_emp_id
+
+user_emp_id chnaged to user_uid
+
+
+
+
+// Approverd merged into user_meta 
+UPDATE `user_meta` t1 RIGHT JOIN user_approvers t2 ON t1.user_id = t2.user_id SET
+t1.user_supervisor_id = t2.user_supervisor_id,
+t1.user_hr_approver_id = t2.user_hr_approver_id,
+t1.user_director_approver_id = t2.user_director_approver_id,
+t1.user_finance_approver_id = t2.user_finance_approver_id
+
+
+// User Meta 
+ALTER TABLE `user_meta`  ADD `user_supervisor_id` BIGINT(20) NULL DEFAULT NULL  AFTER `user_uan_no`,  ADD `user_hr_approver_id` BIGINT(20) NULL DEFAULT NULL  AFTER `user_supervisor_id`,  ADD `user_director_approver_id` BIGINT(20) NULL DEFAULT NULL  AFTER `user_hr_approver_id`,  ADD `user_finance_approver_id` BIGINT(20) NULL DEFAULT NULL  AFTER `user_director_approver_id`;
+
+ALTER TABLE `user_meta`  ADD `cl` FLOAT(10,2) NULL DEFAULT NULL  AFTER `user_approver_updated_by`,  ADD `sl` FLOAT(10,2) NULL DEFAULT NULL  AFTER `cl`,  ADD `pl` FLOAT(10,2) NULL DEFAULT NULL  AFTER `sl`,  ADD `ol` FLOAT(10,2) NULL DEFAULT NULL  AFTER `pl`,  ADD `co` FLOAT(10,2) NULL DEFAULT NULL  AFTER `ol`,  ADD `spl` FLOAT(10,2) NULL DEFAULT NULL  AFTER `co`,  ADD `leave_updated_on` DATETIME NULL DEFAULT NULL  AFTER `spl`,  ADD `leave_updated_by` BIGINT(20) NULL DEFAULT NULL  AFTER `leave_updated_on`,  ADD `ol_updated_by_cron_on` DATETIME NULL DEFAULT NULL  AFTER `leave_updated_by`,  ADD `cl_updated_by_cron_on` DATETIME NULL DEFAULT NULL  AFTER `ol_updated_by_cron_on`,  ADD `pl_updated_by_cron_on` DATETIME NULL DEFAULT NULL  AFTER `cl_updated_by_cron_on`;
+
+
+UPDATE `user_meta` t1 RIGHT JOIN leave_balance t2 ON t1.user_id = t2.user_id SET
+t1.sl = t2.sl,
+t1.cl = t2.cl,
+t1.pl = t2.pl,
+t1.ol = t2.ol,
+t1.co = t2.co,
+t1.spl = t2.spl,
+t1.leave_updated_on = t2.updated_on,
+t1.leave_updated_by = t2.updated_by,
+t1.ol_updated_by_cron_on = t2.ol_updated_by_cron_on,
+t1.cl_updated_by_cron_on = t2.cl_updated_by_cron_on,
+t1.pl_updated_by_cron_on = t2.pl_updated_by_cron_on
+
+
+SELECT id, `supervisor_approver_id`, `supervisor_approver_status`, `director_approver_id`, `director_approver_status` FROM `leave_applications` WHERE `supervisor_approver_id` = `director_approver_id` AND leave_status = 'R';
+
+
+
+//Update
+
+UPDATE `leave_applications` SET director_approver_status= supervisor_approver_status WHERE `supervisor_approver_id` = `director_approver_id` AND leave_status = 'R';
+
+
+
+SELECT id, `supervisor_approver_id`, `supervisor_approver_status`, `director_approver_id`, `director_approver_status` FROM `leave_applications` WHERE `supervisor_approver_id` = `director_approver_id` AND leave_status = 'A';
+
+// Update
+UPDATE `leave_applications` SET supervisor_approver_status = director_approver_status 
+WHERE `supervisor_approver_id` = `director_approver_id` AND leave_status = 'A';
+
+
+
+SELECT id, leave_status, supervisor_approver_status, director_approver_status FROM `leave_applications` WHERE supervisor_approver_status = 'A' AND director_approver_status = 'R'
+
+SELECT * FROM `site_meta` WHERE `meta_type` = 'designation' AND id NOT IN((SELECT DISTINCT(`user_designation`) FROM `user_meta` WHERE 1))
+
+
+SELECT *  FROM `site_meta` WHERE `meta_type` = 'specialization' AND `id` IN (SELECT DISTINCT(`academic_specialization`) FROM `user_academics`)
+
+SELECT *  FROM `site_meta` WHERE `meta_type` = 'specialization' AND `id` NOT IN (SELECT DISTINCT(`academic_specialization`) FROM `user_academics`)
+
+SELECT *  FROM `site_meta` WHERE `meta_type` = 'institute' AND `id` IN (SELECT DISTINCT(`academic_institute`) FROM `user_academics`)
