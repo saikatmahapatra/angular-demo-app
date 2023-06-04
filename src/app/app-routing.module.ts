@@ -26,16 +26,16 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: '',
-  //   component: DefaultLayoutComponent,
-  //   children: [
-  //     {
-  //       path: 'example',
-  //       loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule)
-  //     },
-  //   ]
-  // },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    children: [
+      {
+        path: 'example',
+        loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule)
+      },
+    ]
+  },
   {
     path: '',
     component: AuthenticatedLayoutComponent,
