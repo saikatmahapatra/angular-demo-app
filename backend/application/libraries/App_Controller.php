@@ -57,7 +57,7 @@ class App_Controller extends REST_Controller
             'meta_created_by' => $this->getUserId()
         );
         //print_r($postdata); die();
-        $countOfRecords = $this->app_model->checkIfExists($metaType, $metaValue);
+        $countOfRecords = $this->app_model->checkIfExists($metaType, trim($metaValue));
         if ($countOfRecords == 0) {
             $insert_id = $this->app_model->insert($postdata, 'site_meta');
             return $insert_id;
