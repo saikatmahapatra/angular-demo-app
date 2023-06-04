@@ -356,6 +356,17 @@ class User extends App_Controller
             'default-admin-access',
         ));
         if ($this->post('id')) {
+            $designationId = $this->post('designation');
+            $newVal = $this->post('newDesignation');
+            if ($designationId == '-1' && trim($newVal) != '') {
+                $designationId = $this->createNewSiteMeta('designation', trim($newVal));
+                if ($designationId == 'exists') {
+                    $this->responseData['status'] = 'error';
+                    $this->responseData['message'] = '"' . $newVal.'" already exists. Please verify from the list & choose accordingly.';
+                    $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    return $this->response($this->responseData, $this->statusCode);
+                }
+            }
             $postdata = array(
                 'user_full_name' => ucwords(strtolower($this->post('fullName'))),
                 'user_role' => $this->post('role') ? $this->post('role') : '3'
@@ -369,7 +380,7 @@ class User extends App_Controller
                 'user_dob' => $this->common_lib->convert_to_mysql($this->post('dateOfBirth')),
                 'user_doj' => $this->common_lib->convert_to_mysql($this->post('dateOfJoining')),
                 'user_department' => $this->post('department'),
-                'user_designation' => $this->post('designation'),
+                'user_designation' => $designationId,
                 'user_employment_type' => $this->post('employmentType'),
                 'user_phone2' => $this->post('workPhone'),
                 'user_workspace_solution_type' => $this->post('workspaceSolution'),
