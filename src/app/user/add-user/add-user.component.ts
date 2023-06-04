@@ -48,6 +48,7 @@ export class AddUserComponent implements OnInit {
     personalEmail: ['', [this.validator.validEmail]],
     personalPhone: ['', [Validators.required, this.validator.phoneNumber]],
     designation: ['', Validators.required],
+    newDesignation: [null],
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
@@ -71,6 +72,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.addNewDesignationValidator();
   }
 
   onSubmit() {
@@ -106,6 +108,21 @@ export class AddUserComponent implements OnInit {
       this.workspaceSolutionList = val?.data?.workspace_solution;
       this.baseWorkLocationList = val?.data?.work_location;
     });
+  }
+
+  addNewDesignationValidator() {
+    const dep = this.myForm.controls['designation'];
+    const field = this.myForm.controls['newDesignation'];
+    dep?.valueChanges.subscribe((val) => {
+      if (val === '-1') {
+        field.setValidators([Validators.required]);
+      } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
+        field.setErrors(null);
+      }
+    });
+    field.updateValueAndValidity();
   }
 
 }

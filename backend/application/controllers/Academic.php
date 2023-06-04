@@ -39,28 +39,31 @@ class Academic extends App_Controller
             if ($degreeId == '-1' && $this->post('newDegree') != '') {
                 $val = $this->post('newDegree');
                 $degreeId = $this->createNewSiteMeta('degree', $val);
-                if (!$degreeId) {
+                if ($degreeId == 'exists') {
                     $this->responseData['status'] = 'error';
-                    $this->responseData['message'] = 'Unable to add ' . $val;
+                    $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                     $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    return $this->response($this->responseData, $this->statusCode);
                 }
             }
             if ($specializationId == '-1' && $this->post('newSpecialization') != '') {
                 $val = $this->post('newSpecialization');
                 $specializationId = $this->createNewSiteMeta('specialization', $val);
-                if (!$specializationId) {
+                if ($specializationId == 'exists') {
                     $this->responseData['status'] = 'error';
-                    $this->responseData['message'] = 'Unable to add ' . $val;
+                    $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                     $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    return $this->response($this->responseData, $this->statusCode);
                 }
             }
             if ($instituteId == '-1' && $this->post('newInstitute') != '') {
                 $val = $this->post('newInstitute');
                 $instituteId = $this->createNewSiteMeta('institute', $val);
-                if (!$instituteId) {
+                if ($instituteId == 'exists') {
                     $this->responseData['status'] = 'error';
-                    $this->responseData['message'] = 'Unable to add ' . $val;
+                    $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                     $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    return $this->response($this->responseData, $this->statusCode);
                 }
             }
             if ($degreeId != null && $specializationId != null && $instituteId != null) {
@@ -96,28 +99,31 @@ class Academic extends App_Controller
         if ($degreeId == '-1' && $this->put('newDegree') != '') {
             $val = $this->put('newDegree');
             $degreeId = $this->createNewSiteMeta('degree', $val);
-            if (!$degreeId) {
+            if ($degreeId == 'exists') {
                 $this->responseData['status'] = 'error';
-                $this->responseData['message'] = 'Unable to add ' . $val;
+                $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                return $this->response($this->responseData, $this->statusCode);
             }
         }
         if ($specializationId == '-1' && $this->put('newSpecialization') != '') {
             $val = $this->put('newSpecialization');
             $specializationId = $this->createNewSiteMeta('specialization', $val);
-            if (!$specializationId) {
+            if ($specializationId == 'exists') {
                 $this->responseData['status'] = 'error';
-                $this->responseData['message'] = 'Unable to add ' . $val;
+                $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                return $this->response($this->responseData, $this->statusCode);
             }
         }
         if ($instituteId == '-1' && $this->put('newInstitute') != '') {
             $val = $this->put('newInstitute');
             $instituteId = $this->createNewSiteMeta('institute', $val);
-            if (!$instituteId) {
+            if ($instituteId == 'exists') {
                 $this->responseData['status'] = 'error';
-                $this->responseData['message'] = 'Unable to add ' . $val;
+                $this->responseData['message'] = '"' . $val.'" already exists. Please verify from the list & choose accordingly.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                return $this->response($this->responseData, $this->statusCode);
             }
         }
         if ($degreeId != null && $specializationId != null && $instituteId != null) {

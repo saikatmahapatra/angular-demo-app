@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
-class App_Controller extends REST_Controller {
+class App_Controller extends REST_Controller
+{
 
     var $responseData = array();
     var $statusCode = '';
@@ -56,8 +57,13 @@ class App_Controller extends REST_Controller {
             'meta_created_by' => $this->getUserId()
         );
         //print_r($postdata); die();
-        $insert_id = $this->app_model->insert($postdata, 'site_meta');
-        return $insert_id;
+        $countOfRecords = $this->app_model->checkIfExists($metaType, $metaValue);
+        if ($countOfRecords == 0) {
+            $insert_id = $this->app_model->insert($postdata, 'site_meta');
+            return $insert_id;
+        } else {
+            return 'exists';
+        }
     }
 
     function updateSiteMeta($id, $metaValue)
@@ -73,8 +79,9 @@ class App_Controller extends REST_Controller {
         return $insert_id;
     }
 
-    
-    function isUserAuthorized($checkPermissions = array()) {
+
+    function isUserAuthorized($checkPermissions = array())
+    {
         $matchCount = 0;
         $result = false;
         $userRoleId = $this->getUserRoleId();
@@ -84,21 +91,20 @@ class App_Controller extends REST_Controller {
                 $matchCount = count(array_intersect($arrUserPermissions, $checkPermissions));
                 if ($matchCount > 0) {
                     $result = true;
-                } else {                    
+                } else {
                     $result = false;
                 }
-            } else {                
+            } else {
                 $result = false;
             }
         } else {
             $result = true;
         }
-        
-        if($result == false) {
+
+        if ($result == false) {
             $this->responseData['message'] = "You do not have permission to access ot perform this operation. You account might be blocked due to multiple attempts.";
             $this->statusCode = REST_Controller::HTTP_UNAUTHORIZED;
             $this->response($this->responseData, $this->statusCode);
         }
     }
-
 }

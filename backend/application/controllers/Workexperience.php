@@ -28,10 +28,11 @@ class Workexperience extends App_Controller
         if ($id == '-1' && $newValue != '') { // add other value 
             $id =  $this->createNewSiteMeta('company', $newValue);
 
-            if (!$id) {
+            if ($id == 'exists') {
                 $this->responseData['status'] = 'error';
-                $this->responseData['message'] = 'Unable to add ' . $newValue;
+                $this->responseData['message'] = '"' . $newValue.'" already exists. Please verify from the list & choose accordingly.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                return $this->response($this->responseData, $this->statusCode);
             } else {
                 return $id;
             }
@@ -44,10 +45,11 @@ class Workexperience extends App_Controller
     {
         if ($id == '-1' && $newValue != '') {
             $id = $this->createNewSiteMeta('designation', $newValue);
-            if (!$id) {
+            if ($id == 'exists') {
                 $this->responseData['status'] = 'error';
-                $this->responseData['message'] = 'Unable to add ' . $newValue;
+                $this->responseData['message'] = '"' . $newValue.'" already exists. Please verify from the list & choose accordingly.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                return $this->response($this->responseData, $this->statusCode);
             } else {
                 return $id;
             }

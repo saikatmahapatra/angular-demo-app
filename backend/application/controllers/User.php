@@ -98,9 +98,6 @@ class User extends App_Controller
             'default-super-admin-access',
             'default-admin-access',
         ));
-        $data = array();
-        $id = $this->get('id') ? $this->get('id') : NULL;
-
         $validate = TRUE;
         if ($validate == TRUE) {
             $activation_token = $this->common_lib->generate_rand_id(6, FALSE);

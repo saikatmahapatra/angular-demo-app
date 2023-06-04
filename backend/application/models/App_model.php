@@ -68,4 +68,12 @@ class App_model extends CI_Model {
         //echo $this->db->last_query(); die();
         return $query->num_rows();
     }
+
+    function checkIfExists($metaType, $metaValue) {
+        $this->db->select('id');
+        $this->db->where_in('meta_type', $metaType);
+        $this->db->like('meta_value', $metaValue);
+        $query = $this->db->get('site_meta');
+        return $query->num_rows();
+    }
 }
