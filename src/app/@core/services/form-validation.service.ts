@@ -33,18 +33,19 @@ export class FormValidationService {
       ruleOne: 'error message 1',
       ruleTwo: 'error message 2',
       ruleThreec: 'error message 3',
-      invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number',
-      invalidDomain: 'Please enter email with @unitedexploration.co.in only',
-      notMatching: 'Confirm field value should match with Actual value',
-      passwordNotMatching: 'Confirm Password should match with Password',
-      accountNoNotMatching: 'Confirm account no should match with Account no',
-      userNameExists: 'This username is already registered',
-      invalidPAN: 'Please enter a valid PAN number',
+      invalidPassword: 'Password must be 8 chars long including at least one lower case letter, one uppercase letter, one number.',
+      invalidDomain: 'Please enter email with @unitedexploration.co.in only.',
+      notMatching: 'Confirm field value should match with Actual value.',
+      passwordNotMatching: 'Confirm Password should match with Password.',
+      accountNoNotMatching: 'Confirm account no should match with Account no.',
+      userNameExists: 'This username is already registered.',
+      invalidPAN: 'Please enter a valid PAN number.',
       minLengthArray: 'Please select at least one date from the calendar.',
       invalidAlphaNumericWithSpace: 'Please enter alpha numeric values with space & few allowed special characters.',
       invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
-      invalidNumber: 'This field should be only integer number',
-      invalidName: 'Please enter name using valid characters'
+      invalidNumber: 'This field should be only integer number.',
+      invalidName: 'Please enter name using valid characters.',
+      noSpace: 'Consecutive spaces are not allowed.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -146,6 +147,12 @@ export class FormValidationService {
     const regex = new RegExp(regEx.numeric_only);
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidNumber': true };
+  }
+
+  noSpace(control: AbstractControl) {    
+    const regex = new RegExp(regEx.consecutive_spaces);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'noSpace': true };
   }
 
 }
