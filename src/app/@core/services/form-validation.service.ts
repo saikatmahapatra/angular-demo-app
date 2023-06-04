@@ -150,11 +150,8 @@ export class FormValidationService {
   }
 
   notEmpty(control: AbstractControl) {
-    if(control.value.trim() === '') {
-      return { 'notEmpty': true }
-    } else {
-      return null;
-    }
+    const valid = control?.value ? !control?.value?.match(regEx.onlyspace) : true;
+    return valid ? null : { 'notEmpty': true };
   }
 
 }
