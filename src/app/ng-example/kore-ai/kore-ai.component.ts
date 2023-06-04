@@ -1,4 +1,3 @@
-
 import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
 import { KoreAiService } from './kore-ai.service';
@@ -9,7 +8,14 @@ import { FormControl, UntypedFormBuilder, UntypedFormGroup, Validators, FormArra
   styleUrls: ['./kore-ai.component.scss','./animations.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
+@Component({
+  selector: 'app-kore-ai',
+  templateUrl: './kore-ai.component.html',
+  styleUrls: ['./kore-ai.component.scss']
+})
 export class KoreAiComponent implements OnInit {
+
   public hookResponse: any = [];
   chatForm!: UntypedFormGroup; // Declare formGroup
   conversation: string = '';
@@ -122,5 +128,4 @@ export class KoreAiComponent implements OnInit {
     //console.log('minimizeChatWindow');
     (this.isMinimized == true) ? this.isMinimized = false : this.isMinimized = true;
   }
-
 }

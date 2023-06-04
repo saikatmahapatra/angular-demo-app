@@ -26,6 +26,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
 import { PrimeNgModule } from '../prime-ng.module';
+import { KoreAiComponent } from './kore-ai/kore-ai.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { PrimeNgModule } from '../prime-ng.module';
     AgGridTableExampleComponent,
     TranslationDemoComponent,
     PrimeNgUiKitComponent,
+    KoreAiComponent,
   ],
   exports: [
     SumDigitPipePipe

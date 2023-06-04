@@ -33,7 +33,7 @@ const routes: Routes = [
       {
         path: 'example',
         loadChildren: () => import('./ng-example/ng-example.module').then(m => m.NgExampleModule)
-      },
+      }
     ]
   },
   {
