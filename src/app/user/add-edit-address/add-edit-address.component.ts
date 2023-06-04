@@ -28,7 +28,7 @@ export class AddEditAddressComponent implements OnInit {
     id: [null],
     action: ['add'],
     addressType: ['', [Validators.required]],
-    addressLine1: ['', [Validators.required]],
+    addressLine1: ['', [Validators.required, this.validator.notEmpty]],
     addressLine2: [''],
     city: ['', Validators.required],
     newCity: [null],

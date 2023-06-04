@@ -45,7 +45,7 @@ export class FormValidationService {
       invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
       invalidNumber: 'This field should be only integer number.',
       invalidName: 'Please enter name using valid characters.',
-      notEmpty: 'The field can not be empty or blank.'
+      notEmpty: 'The field can not be empty.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
