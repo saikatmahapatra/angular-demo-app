@@ -70,7 +70,7 @@
                     </select>
                     <app-validation-error [control]="myForm.controls['designation']"></app-validation-error>
                     <div class="mt-3" *ngIf="myForm.value['designation'] === '-1'">
-                        <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation" maxlength="30" placeholder="enter other designation">
+                        <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation" maxlength="30" placeholder="Other Designation">
                         <!-- <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div> -->
                         <app-validation-error [control]="myForm.controls['newDesignation']"></app-validation-error>
                     </div>
