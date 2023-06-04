@@ -187,10 +187,12 @@ class Leave_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
-    function update_pl_balance(){
+    function update_pl_balance() {
         $this->db->set('pl', 'pl+1.5', FALSE);
         $this->db->set('pl_updated_by_cron_on', date('Y-m-d H:i:s'));
-        $this->db->update('user_meta');
+        //$this->db->join('users t2', 't2.id =  t1.user_id', 'right');
+        //$this->db->where('t2.user_status', 'Y');
+        $this->db->update('user_meta t1');
         //echo $this->db->last_query(); die();
         return ($this->db->affected_rows() > 0);
     }

@@ -268,3 +268,17 @@ SELECT *  FROM `site_meta` WHERE `meta_type` = 'specialization' AND `id` IN (SEL
 SELECT *  FROM `site_meta` WHERE `meta_type` = 'specialization' AND `id` NOT IN (SELECT DISTINCT(`academic_specialization`) FROM `user_academics`)
 
 SELECT *  FROM `site_meta` WHERE `meta_type` = 'institute' AND `id` IN (SELECT DISTINCT(`academic_institute`) FROM `user_academics`)
+
+
+
+
+SELECT `user_full_name`, user_status, pl, cl FROM `users` LEFT JOIN user_meta ON user_meta.user_id = users.id WHERE users.user_status = 'Y' AND user_type= 'U';
+
+UPDATE `users` SET pl= pl+1 LEFT JOIN user_meta ON user_meta.user_id = users.id WHERE users.user_status = 'Y' AND user_type= 'U';
+
+
+SELECT `user_full_name`, user_status, pl, cl FROM `user_meta` 
+LEFT JOIN users 
+ON users.id = user_meta.id 
+WHERE users.user_status = 'Y' 
+AND user_type= 'U';
