@@ -45,7 +45,7 @@ export class FormValidationService {
       invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
       invalidNumber: 'This field should be only integer number.',
       invalidName: 'Please enter name using valid characters.',
-      noSpace: 'Consecutive spaces are not allowed.'
+      notEmpty: 'The field can not be empty or blank.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -149,16 +149,12 @@ export class FormValidationService {
     return valid ? null : { 'invalidNumber': true };
   }
 
-  noSpace(control: AbstractControl) {    
-    const regex = new RegExp(regEx.consecutive_spaces);
-    const valid = regex.test(control.value);
-    return valid ? null : { 'noSpace': true };
-  }
-
-  required(control: AbstractControl) {
-    const regex = new RegExp(regEx.consecutive_spaces);
-    const valid = regex.test(control.value);
-    return valid ? null : { 'required': true };
+  notEmpty(control: AbstractControl) {
+    if(control.value.trim() !== '') {
+      return { 'required': true }
+    } else {
+      return null;
+    }
   }
 
 }
