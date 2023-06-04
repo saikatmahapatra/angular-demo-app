@@ -150,8 +150,8 @@ export class FormValidationService {
   }
 
   notEmpty(control: AbstractControl) {
-    if(control.value.trim() !== '') {
-      return { 'required': true }
+    if(control.value.trim() === '') {
+      return { 'notEmpty': true }
     } else {
       return null;
     }
