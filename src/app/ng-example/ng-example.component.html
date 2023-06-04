@@ -1,0 +1,7 @@
+<h5>Angular Concepts</h5>
+<ul class="nav my-4">
+  <li class="nav-item" *ngFor="let menu of menuLinks">
+    <a class="me-4" [routerLink]="[menu.link]">{{ menu.text }}</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

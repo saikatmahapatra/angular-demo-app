@@ -1,0 +1,43 @@
+<h1>Event Binding () - oneway, Property Binding [] - oneway, Twoway Binding [(ngModel)]="name"</h1>
+Remember that HTML attributes (name, value, id, class) and DOM properties (data-*) are different things, even when they have the same name.
+
+<div class="row example">
+    <div class="col-md-12">
+
+        <button class="btn {{buttonCss}}" (click)="buttonClick($event)">Click this Button</button> {{clickMessage}}
+
+        <input class="form-control my-4" type="text" name="username" placeholder="Enter Username" (keyup)="onInputKeyUp($event)" (focus)="onInputFocus($event)" (blur)="onInputBlur($event)"> {{keyUpInputData}}
+
+        <div class="my-4">
+            <h5>Property and attribute comparison</h5>
+            <label>disabled property <code>[disabled]="isDisabled ? true : false"</code></label>
+            <input class="form-control" type="text" placeholder="first name" name="fname" [disabled]="isDisabled ? true : false">
+
+            <label>disabled attribute <code>[attr.disabled]="isDisabled ? 'disabled' : 'null' "</code></label>
+            <input class="form-control" type="text" placeholder="last name" name="lname" [attr.disabled]="isDisabled ? 'disabled' : 'null' ">
+
+            <label>value property binding <code>[value]="userName"</code></label>
+            <input type="text" class="form-control" [value]="userName" placeholder="name">
+
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+
+
+        <input type="text" (input)="getValue($event)" class="form-control" placeholder="test">
+        <div>value = {{inputVal}}</div>
+
+        <h5>CSS/Style binding</h5>
+        <div [class]="myClassExpression" >This is a saple text where we are appliying multiple CSS class [class]="myClassExpression"</div>
+        <div [class.text-danger]="isDanger" >This is a saple text where we are appliying single CSS class [class.text-danger]="isDanger"</div>
+
+
+        <h5 class="mt-3">Two Way binding</h5>
+
+        <app-add-to-cart [(qty)]="productQty"></app-add-to-cart>
+
+        <p>De-sugared two-way binding</p>
+        <app-add-to-cart [qty]="productQty" (qtyChange)="productQty=$event"></app-add-to-cart>
+
+    </div>
+</div>

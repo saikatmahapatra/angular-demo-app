@@ -1,0 +1,30 @@
+<h1>Parent Component</h1>
+<div class="row parent-div" style="background-color:#cfe1f5; border: 1px solid #999; padding: 10px;">
+    <div class="col-md-6">
+        <div class="fw-bold">1) Pass data from parent to child with input binding [mycolor]="color" via child selector tag </div>
+        <div>Department : {{department}}</div>
+        <div>City : {{city}}</div>
+
+        <input type="text" name="colorName" placeholder="Color Name" ngModel #colorName="ngModel">
+
+
+        <div class="fw-bold">2) Parent listens for child event</div>
+        <div>Agreed? <span class="badge bg-primary">{{userAgreed}}</span></div>
+
+        <div class="fw-bold">3) Parent can interact with child via local variable</div>
+        <button class="btn btn-dark " (click)="myChildComp.testMethod()">Click</button>
+
+        <div class="fw-bold">4) Parent Comp should read/write child method using @ViewChild</div>
+        <div>{{result}}</div>
+
+        <div class="fw-bold">5) Parent and children communicate via a service</div>
+        <button (click)="addToCart()" class="btn btn-primary">Add To Cart</button>
+    </div>
+
+
+    <div class="col-md-6 child-div">
+        <app-child-comp [mycolor]="colorName.value" [department]="department" [mycity]="city" (agreed)="isAgreed($event)" #myChildComp></app-child-comp>
+    </div>
+
+</div>
+<!--/.parent-div-->

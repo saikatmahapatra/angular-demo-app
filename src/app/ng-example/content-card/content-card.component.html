@@ -1,0 +1,20 @@
+<h1>Content Projection : ng-content </h1>
+<p>Content projection is a pattern in which you insert, or project, the content you want to use inside another
+    component. For example, you could have a Card component that accepts content provided by another component.</p>
+
+<p>Message from parent = {{message}}</p>
+
+<div class="card">
+    <div class="card-header">This component will accept content from test.component.ts. <a routerLink="../test">Click here</a></div>
+    <div class="card-body">
+        <ng-content></ng-content>
+        <ng-content select="[slot1]"></ng-content>
+        <ng-content select="[slot2]"></ng-content>
+        <ng-content select="[slot3]"></ng-content>
+
+        <ul>
+            <li class="xyz" *ngFor="let user of users">{{ user.name }}</li>
+        </ul>
+
+    </div>
+</div>

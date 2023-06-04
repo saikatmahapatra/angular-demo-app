@@ -1,0 +1,29 @@
+<h1>Test Component</h1>
+<p class="myparagraph"> this is a text paragraph </p>
+<h2>Use of ActiveRoute, ParamMap</h2>
+{{routeData}}
+
+
+<h1>Using content card component, @ViewChild</h1>
+
+
+
+<app-content-card [message]="msg">
+    <h4 class="text-primary">Example of Single Slot</h4>
+    This content is coming from test.component.html and its a single slot projection
+
+
+    <h4 class="text-primary">Example of Multi Slot</h4>
+    <div slot3><button class="btn btn-primary">CTA Button</button></div>
+    <div slot2>sub heading1</div>
+    <div slot1><h2>Get 5% off on purchase</h2></div>
+</app-content-card>
+
+<div class="my-4">
+  <app-file-upload></app-file-upload>
+</div>
+
+
+
+<h4>JSON to Excel Export</h4>
+<button type="button" class="btn btn-success" (click)="exportToExcel()">Export Data Demo</button>

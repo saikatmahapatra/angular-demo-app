@@ -1,0 +1,80 @@
+<h1>Pipes</h1>
+<div class="row example">
+
+    <div class="col-md-12">
+        <h6>Built-in pipes |</h6>
+        <p>Angular comes with a stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe. They are all available for use in any template.</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Pipe Name/Syntax</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>date</td>
+                    <td>{{birthday}}</td>
+                    <td>{{birthday|date:"MM/dd/yyyy"}}</td>
+                </tr>
+                <tr>
+                    <td>lowercase</td>
+                    <td>{{name}}</td>
+                    <td>{{name|lowercase}}</td>
+                </tr>
+                <tr>
+                    <td>uppercase</td>
+                    <td>{{name}}</td>
+                    <td>{{name|uppercase}}</td>
+                </tr>
+                <tr>
+                    <td>currency</td>
+                    <td>{{productPrice}}</td>
+                    <td>
+                        <p>{{productPrice|currency}}</p>
+                        <p>{{productPrice|currency:'INR'}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <h6>Custom pipe Exponential Strength: {{2|exponentialStrength:'2'}}</h6>
+        <div>
+            <input type="number" ngModel placeholder="value" #val="ngModel">
+            <input type="number" ngModel placeholder="exponential" #pow="ngModel">
+            <p>Entered val={{val.value}}, pow={{pow.value}}. Exponential = {{val.value|exponentialStrength:pow.value}</p>
+        </div>
+        <p>{{'saikat.mahapatra@gmail.com'|mask:'email'}}</p>
+
+        <h6>Sum of digits in mumber</h6>
+        <input type="text" placeholder="enter number" ngModel #defaultNum="ngModel">
+        Sum of number in {{defaultNum.value}} is <span class="text-bold text-primary h5">{{defaultNum.value|sumDigit:'arg1':'arg2'}}</span> 
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <h6>OrderBy Custom Pipe </h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th [class.active]="order === 'id'" (click)="setOrder('id')">ID <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">Name <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'age'" (click)="setOrder('age')">Age <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                    <th [class.active]="order === 'mobile'" (click)="setOrder('mobile')">Phone <span [hidden]="reverse"><i class="fa fa-sort-desc"></i></span><span [hidden]="!reverse"><i class="fa fa-sort-asc"></i></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students | orderBy: order:reverse">
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.mobile }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

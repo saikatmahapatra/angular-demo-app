@@ -1,0 +1,24 @@
+<h1>Child Component</h1>
+<div style="background-color:#eee; border: 1px solid #999; padding: 10px;">
+    <div class="fw-bold">1) Values received from parent component</div>
+    <div>Department : {{department}}</div>
+    <div>City : {{mycity}}</div>
+    <div>Color: {{mycolor}} </div>
+
+
+    <div class="fw-bold">2) Parent listens for child event</div>
+    <button (click)="IsUserAgreed(true)" class="btn  btn-primary">Agree</button>
+    <button (click)="IsUserAgreed(false)" class="btn  btn-bark">Disagree</button>
+    <div>User Agreed ? <span class="badge bg-primary">{{userAgreed}}</span></div>
+
+
+    <div class="fw-bold">3) Parent can interact with child via local variable</div>
+    <div>Clicked from parent <span class="badge bg-dark">{{clickedFromParent}}</span> times</div>
+
+    <div class="fw-bold">4) Parent Comp should read/write child method using @ViewChild</div>
+    <div>{{result}}</div>
+
+    <div class="fw-bold">5) Parent and children communicate via a service</div>
+    <div>{{totalAddedToCart}} added to cart</div>
+
+</div>

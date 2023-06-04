@@ -1,0 +1,109 @@
+<h1>Reactive Forms</h1>
+<div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName">
+                    <app-validation-error [control]="myForm.controls['firstName']"></app-validation-error>
+                </div>
+                <div class="col">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                    <app-validation-error [control]="myForm.controls['lastName']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" formControlName="email">
+                    <app-validation-error [control]="myForm.controls['email']"></app-validation-error>
+                </div>
+                <div class="col">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" formControlName="phone">
+                    <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                    <app-validation-error [control]="myForm.controls['password']"></app-validation-error>
+                </div>
+
+                <div class="col">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+                    <app-validation-error [control]="myForm.controls['confirmPassword']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="city">City</label>
+                    <select class="form-select" id="city" formControlName="city">
+                        <option value="{{data.value}}" *ngFor="let data of DataCity; let i=index">{{data.name}}</option>
+                    </select>
+                    <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
+                </div>
+
+                <div class="col">
+                    <label for="note">Area Name</label>
+                    <input type="text" class="form-control" id="note" formControlName="note">
+                    <app-validation-error [control]="myForm.controls['note']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Gender</label>
+                    <div>
+                        <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
+                            <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.value}}"
+                                formControlName="gender">
+                            <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                        </div>
+                    </div>
+                    <app-validation-error [control]="myForm.controls['gender']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-check" *ngFor="let data of DataSkills; let i=index">
+                        <input class="form-check-input" type="checkbox" [value]="data.value" id="defaultCheck_{{i}}"
+                            (change)="onCheckboxChange($event)">
+                        <label class="form-check-label" for="defaultCheck_{{i}}">{{data.name}}</label>
+                    </div>
+                    <app-validation-error [control]="myForm.controls['checkArraySkill']"></app-validation-error>
+                    <p *ngIf="myForm.controls['checkArraySkill'].errors" class="validation-error-message">Please select
+                        one
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="accepted" id="defaultCheck4"
+                            formControlName="termsAccepted">
+                        <label class="form-check-label" for="defaultCheck4">I have accepted T&C</label>
+                    </div>
+                    <app-validation-error [control]="myForm.controls['termsAccepted']"></app-validation-error>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Form Values</h2>
+        <p>Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+        <p>{{myForm.value|json}}</p>
+    </div>
+</div>

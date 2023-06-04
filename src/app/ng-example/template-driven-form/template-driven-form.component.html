@@ -1,0 +1,35 @@
+<h1>Template Driven Form</h1>
+<h5>Please sign in to continue</h5>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="userName">Username</label>
+            <input type="text" class="form-control" name="userName" ngModel required minlength="4" maxlength="255">
+            <!-- <app-validation-error [control]="f.controls['userName']"></app-validation-error> -->
+            <div *ngIf="f.submitted || f.touched && f.dirty" class="text-danger">
+            <div *ngIf="f.controls['userName'].hasError('required')">This field is required</div>
+            <div *ngIf="f.controls['userName'].hasError('minlength')">Username should be at least 4 characters length</div>
+            <div *ngIf="f.controls['userName'].hasError('maxlength')">Username should not be more than 255 characters</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" ngModel required minlength="4" maxlength="20">
+            <!-- <app-validation-error [control]="f.controls['password']"></app-validation-error> -->
+            <div *ngIf="f.submitted || f.touched && f.dirty" class="text-danger">
+            <div *ngIf="f.controls['password'].hasError('required')">This field is required</div>
+            <div *ngIf="f.controls['password'].hasError('minlength')">Password should be at least 4 characters length</div>
+            <div *ngIf="f.controls['password'].hasError('maxlength')">Password should not be more than 20 characters</div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+        Sign In
+    </button>
+    <div class="mt-3"><a routerLink="../forgot-password" class="my-3">Forgot Password?</a></div>
+</form>

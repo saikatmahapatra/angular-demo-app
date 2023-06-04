@@ -1,0 +1,15 @@
+<h1>Template Data Binding</h1>
+<div class="row">
+    <div class="col-md-12">
+        <h6>Interpolation</h6>
+        <p>The sum of 1+1+9 is {{1+1+9}}</p>
+        <p>The sum of 1+1+getVal() is {{1+1+getVal()}}</p>
+        <p>Function interpolation</p>
+        <p>function from component works = {{getVal()}}</p>
+        <h6>*ngFor Loop</h6>
+        <div *ngFor="let fruit of fruits">{{fruit.name}} is {{fruit.color}}</div>
+        <h6>Two-way Binding : [(ngModel)]</h6>
+        <input type="text" ngModel placeholder="Name" #userName="ngModel">
+        Input = {{userName.value}}
+    </div>
+</div>
