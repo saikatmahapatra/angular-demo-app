@@ -155,4 +155,10 @@ export class FormValidationService {
     return valid ? null : { 'noSpace': true };
   }
 
+  required(control: AbstractControl) {
+    const regex = new RegExp(regEx.consecutive_spaces);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'required': true };
+  }
+
 }
