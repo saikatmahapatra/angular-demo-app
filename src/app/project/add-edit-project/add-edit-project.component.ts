@@ -26,11 +26,11 @@ export class AddEditProjectComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    projectNumber: ['', [Validators.required]],
-    projectName: ['', [Validators.required, this.validator.alphaNumericWithSpace]],
+    projectNumber: ['', [Validators.required, this.validator.notEmpty]],
+    projectName: ['', [Validators.required, this.validator.notEmpty, this.validator.alphaNumericWithSpace]],
     startDate: ['', [Validators.required]],
     endDate: ['', [Validators.required]],
-    description: [''],
+    description: ['', [this.validator.notEmpty]],
     status: ['Y', [Validators.required]]
   });
 

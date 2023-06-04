@@ -45,7 +45,7 @@ export class TimesheetFormComponent implements OnInit {
     project: ['', Validators.required],
     task: ['', Validators.required],
     hours: ['', Validators.required],
-    description: ['', Validators.required]
+    description: ['', [Validators.required, this.validator.notEmpty]]
   });
   projectList: any;
   taskList: any;

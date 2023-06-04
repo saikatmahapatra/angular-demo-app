@@ -21,10 +21,10 @@ export class AddEditEmergencyContactComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    contactPersonName: ['', [Validators.required]],
+    contactPersonName: ['', [Validators.required, this.validator.notEmpty]],
     relationWithContact: ['', [Validators.required]],
     phoneNo: ['', [Validators.required, this.validator.phoneNumber]],
-    communicationAddress: ['']
+    communicationAddress: ['', [this.validator.notEmpty]]
   });
 
   constructor(private fb: UntypedFormBuilder,

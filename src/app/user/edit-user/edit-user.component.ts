@@ -66,7 +66,7 @@ export class EditUserComponent {
   userBasicForm = this.fb.group({
     id: [null],
     action: ['editUser'],
-    fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32), this.validator.validName]],
+    fullName: ['', [Validators.required, this.validator.notEmpty, Validators.minLength(3), Validators.maxLength(32), this.validator.validName]],
     workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],

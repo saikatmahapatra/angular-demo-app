@@ -93,9 +93,9 @@ export class AddEditExperienceComponent implements OnInit {
     const field = this.myForm.controls['newEmployer'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }
@@ -108,9 +108,9 @@ export class AddEditExperienceComponent implements OnInit {
     const field = this.myForm.controls['newDesignation'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }

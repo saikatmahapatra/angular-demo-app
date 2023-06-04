@@ -27,10 +27,10 @@ export class ResetPasswordFormComponent implements OnInit {
   }
 
   resetPasswordForm = this.fb.group({
-    otp: ['', Validators.required],
-    email: ['', [Validators.required, this.formValidationSvc.validEmail]],
-    password: ['', [Validators.required, this.formValidationSvc.strongPassword, this.formValidationSvc.matchValidator('confirmPassword', true)]],
-    confirmPassword: ['', [Validators.required, this.formValidationSvc.matchValidator('password')]]
+    otp: ['', [Validators.required, this.formValidationSvc.notEmpty]],
+    email: ['', [Validators.required, this.formValidationSvc.notEmpty, this.formValidationSvc.validEmail]],
+    password: ['', [Validators.required, this.formValidationSvc.notEmpty, this.formValidationSvc.strongPassword, this.formValidationSvc.matchValidator('confirmPassword', true)]],
+    confirmPassword: ['', [Validators.required, this.formValidationSvc.notEmpty, this.formValidationSvc.matchValidator('password')]]
   });
 
   get f() { return this.resetPasswordForm.controls; }

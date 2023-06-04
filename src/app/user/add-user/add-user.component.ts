@@ -40,7 +40,7 @@ export class AddUserComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['createUser'],
-    fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(32), this.validator.validName]],
+    fullName: ['', [Validators.required, this.validator.notEmpty, Validators.minLength(3), Validators.maxLength(32), this.validator.validName]],
     workEmail: ['', [Validators.required, this.validator.validEmail, this.validator.validEmailDomain]],
     //workPhone: ['', [this.validator.phoneNumber]],
     dateOfBirth: ['', [Validators.required]],
@@ -115,9 +115,9 @@ export class AddUserComponent implements OnInit {
     const field = this.myForm.controls['newDesignation'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }

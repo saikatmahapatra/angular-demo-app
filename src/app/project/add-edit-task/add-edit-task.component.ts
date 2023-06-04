@@ -30,7 +30,7 @@ export class AddEditTaskComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    taskName: ['', [Validators.required]],
+    taskName: ['', [Validators.required, this.validator.notEmpty]],
     parentTaskId: [''],
     status: ['Y', [Validators.required]]
   });

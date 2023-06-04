@@ -30,7 +30,7 @@ export class ForgotPasswordFormComponent implements OnInit {
 
   fpForm = this.fb.group({
     action: ['forgotPassword'],
-    email: ['', [Validators.required, this.formValidationSvc.validEmail]],
+    email: ['', [Validators.required, this.formValidationSvc.notEmpty, this.formValidationSvc.validEmail]],
   });
 
   get f() { return this.fpForm.controls; }

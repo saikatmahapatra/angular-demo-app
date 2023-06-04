@@ -36,7 +36,7 @@ export class ManageHolidaysComponent implements OnInit {
     id: [null],
     action: ['add'],
     date: ['', [Validators.required]],
-    occasion: ['', [Validators.required]],
+    occasion: ['', [Validators.required, this.validator.notEmpty]],
     type: ['', [Validators.required]]
   });
   submitted = false;

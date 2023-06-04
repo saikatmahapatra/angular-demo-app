@@ -57,11 +57,11 @@ export class AddEditEducationComponent implements OnInit {
     newDegree: [null],
     specialization: ['', [Validators.required]],
     newSpecialization: [null],
-    institute: ['', Validators.required],
+    institute: ['', [Validators.required]],
     newInstitute: [null],
     //fromYear: [new Date().getFullYear(), [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
     toYear: [null, [Validators.required, Validators.min(this.minYear), Validators.max(this.maxYear)]],
-    marks: ['', Validators.required]
+    marks: ['', [Validators.required]]
   });
 
   onSubmit() {
@@ -113,9 +113,9 @@ export class AddEditEducationComponent implements OnInit {
     const field = this.myForm.controls['newInstitute'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }
@@ -128,9 +128,9 @@ export class AddEditEducationComponent implements OnInit {
     const field = this.myForm.controls['newSpecialization'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }
@@ -143,9 +143,9 @@ export class AddEditEducationComponent implements OnInit {
     const field = this.myForm.controls['newDegree'];
     dep?.valueChanges.subscribe((val) => {
       if (val === '-1') {
-        field.setValidators([Validators.required]);
+        field.setValidators([Validators.required, this.validator.notEmpty]);
       } else {
-        field.removeValidators([Validators.required]);
+        field.removeValidators([Validators.required, this.validator.notEmpty]);
         field.setValue(null);
         field.setErrors(null);
       }

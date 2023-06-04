@@ -24,11 +24,11 @@ export class AddEditPayrollInfoComponent implements OnInit {
     id: [null],
     action: ['add'],
     panNo: [null, [this.validator.validPAN]],
-    uanNo: [null, []],
+    uanNo: [null, [this.validator.notEmpty]],
     bank: [null, Validators.required],
-    ifscCode: [null, Validators.required],
-    accountNo: [null, [Validators.required, this.validator.matchValidator('confirmAccountNo', true)]],
-    confirmAccountNo: [null, [Validators.required, this.validator.matchValidator('accountNo')]]
+    ifscCode: [null, [Validators.required, this.validator.notEmpty]],
+    accountNo: [null, [Validators.required, this.validator.notEmpty, this.validator.matchValidator('confirmAccountNo', true)]],
+    confirmAccountNo: [null, [Validators.required, this.validator.notEmpty, this.validator.matchValidator('accountNo')]]
   });
   constructor(private fb: UntypedFormBuilder,
     private validator: FormValidationService,

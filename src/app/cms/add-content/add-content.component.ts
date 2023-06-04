@@ -37,8 +37,8 @@ export class AddContentComponent implements OnInit {
     id: [null],
     action: ['add'],
     contentCategory: ['', [Validators.required]],
-    contentHeadline: ['', [Validators.required]],
-    contentDescription: ['', [Validators.required]],
+    contentHeadline: ['', [Validators.required, this.validator.notEmpty]],
+    contentDescription: ['', [Validators.required, this.validator.notEmpty]],
     contentStatus: ['Y']
   })
 
