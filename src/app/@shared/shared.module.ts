@@ -22,7 +22,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
 import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
 import { IconComponent } from './components/icon/icon.component';
-import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+//import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 import { PrimeNgModule } from '../prime-ng.module';
 
@@ -48,7 +48,7 @@ const data = [
   StatusIndicatorDirective,
   ThemeSwitchComponent,
   IconComponent,
-  CookieConsentComponent,
+  //CookieConsentComponent,
   ScrollToTopComponent
 ];
 
