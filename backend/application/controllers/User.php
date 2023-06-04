@@ -123,7 +123,7 @@ class User extends App_Controller
                 }
 
                 $postdata = array(
-                    'user_full_name' => ucwords(strtolower($this->post('fullName'))),
+                    'user_full_name' => ucwords(strtolower(trim($this->post('fullName')))),
                     'user_email' => $email,
                     'user_phone' => $this->post('personalPhone'),
                     'user_role' => $this->post('role') ? $this->post('role') : '3',
