@@ -78,10 +78,15 @@
                     <label class="required" for="designation">Designation</label>
                     <select class="form-select" id="designation" formControlName="designation">
                         <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of designationList; let i=index">{{data.name}}
-                        </option>
+                        <option [value]="data?.id" *ngFor="let data of designationList; let i=index" [innerHTML]="data?.name"></option>
+                        <option value="-1">Others</option>
                     </select>
                     <app-validation-error [control]="userBasicForm.controls['designation']"></app-validation-error>
+                    <div class="mt-3" *ngIf="userBasicForm.value['designation'] === '-1'">
+                        <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation" maxlength="30" placeholder="Other Designation">
+                        <!-- <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div> -->
+                        <app-validation-error [control]="userBasicForm.controls['newDesignation']"></app-validation-error>
+                    </div>
                 </div>
 
                 <div class="col-md-6">

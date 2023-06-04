@@ -71,6 +71,7 @@ export class EditUserComponent {
     dateOfBirth: ['', [Validators.required]],
     gender: ['', [Validators.required]],
     designation: ['', Validators.required],
+    newDesignation: [null],
     department: ['', Validators.required],
     dateOfJoining: ['', Validators.required],
     employmentType: ['', Validators.required],
@@ -147,6 +148,7 @@ export class EditUserComponent {
   }
 
   ngOnInit(): void {
+    this.addNewDesignationValidator();
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.navigationExtras = {
       state: {manageUserPageIndex: this.routedFromPageIndex},
@@ -299,6 +301,21 @@ export class EditUserComponent {
       this.loading = false;
       this.validator.validateAllFormFields(this.leaveBalanceForm);
     }
+  }
+
+  addNewDesignationValidator() {
+    const dep = this.userBasicForm.controls['designation'];
+    const field = this.userBasicForm.controls['newDesignation'];
+    dep?.valueChanges.subscribe((val) => {
+      if (val === '-1') {
+        field.setValidators([Validators.required]);
+      } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
+        field.setErrors(null);
+      }
+    });
+    field.updateValueAndValidity();
   }
 
 
