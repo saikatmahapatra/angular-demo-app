@@ -322,6 +322,7 @@ class Project_model extends CI_Model {
 		t2.project_name,
 		t3.task_name,
 		t4.user_full_name,
+        t4.user_email,
         t5.user_full_name as timesheet_reviewed_by_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
