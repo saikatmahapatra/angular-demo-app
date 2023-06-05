@@ -4,7 +4,10 @@
         <div class="card-header">Information</div>
         <div class="card-body">
             <div>
-                <app-icon [name]="'info'"></app-icon> The "Export to XLS" feature lets you download the number of records that are displayed on each page. 500 records can be seen at most per page when using the pagination option. If there are more than 500 records, you must navigate using pagination and download as necessary from each page.
+                <app-icon [name]="'info'"></app-icon> The "Export to XLS" feature lets you download the number of
+                records that are displayed on each page. 500 records can be seen at most per page when using the
+                pagination option. If there are more than 500 records, you must navigate using pagination and download
+                as necessary from each page.
             </div>
         </div>
     </div>
@@ -45,9 +48,11 @@
                                 <app-validation-error [control]="myForm.controls['projects']"></app-validation-error>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary mt-4"
+                                <button type="submit" class="btn btn-primary mt-4 me-2"
                                     [disabled]="loading || !myForm.valid"><span *ngIf="loading"
                                         class="spinner-border spinner-border-sm me-1"></span> Search</button>
+                                <button type="button" (click)="resetForm()" class="btn btn-secondary mt-4"
+                                    [disabled]="loading || !myForm.valid">Reset</button>
                             </div>
                         </div>
                     </form>
@@ -67,25 +72,19 @@
                     </th>
                     <th style="width: 20rem" pSortableColumn="user_full_name">
                         <div class="flex justify-content-between align-items-center">
-                            Emp
+                            Employee Name
                             <p-sortIcon field="user_full_name"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 30rem" pSortableColumn="project_name">
                         <div class="flex justify-content-between align-items-center">
-                            Project
+                            Project Name
                             <p-sortIcon field="project_name"></p-sortIcon>
                         </div>
                     </th>
                     <th style="width: 20rem" pSortableColumn="task_name">
                         <div class="flex justify-content-between align-items-center">
-                            Task
-                            <p-sortIcon field="task_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 40rem" pSortableColumn="task_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Description
+                            Task Name
                             <p-sortIcon field="task_name"></p-sortIcon>
                         </div>
                     </th>
@@ -93,6 +92,12 @@
                         <div class="flex justify-content-between align-items-center">
                             Hours
                             <p-sortIcon field="timesheet_hours"></p-sortIcon>
+                        </div>
+                    </th>
+                    <th style="width: 40rem" pSortableColumn="task_name">
+                        <div class="flex justify-content-between align-items-center">
+                            Description
+                            <p-sortIcon field="task_name"></p-sortIcon>
                         </div>
                     </th>
                 </tr>
@@ -123,12 +128,12 @@
                         {{rowData?.task_name}}
                     </td>
                     <td>
-                        <span class="p-column-title">Description</span>
-                        <span [innerHTML]="rowData?.timesheet_description || '-'"></span>
-                    </td>
-                    <td>
                         <span class="p-column-title">Hours</span>
                         {{rowData?.timesheet_hours}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Description</span>
+                        <span [innerHTML]="rowData?.timesheet_description || '-'"></span>
                     </td>
                 </tr>
             </ng-template>
@@ -161,8 +166,8 @@
             </ng-template>
         </p-table>
 
-        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-            [showCurrentPageReport]="true"
+        <p-paginator *ngIf="totalRecords > 0" [rows]="itemPerPage" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
             (onPageChange)="paginate($event)"></p-paginator>
     </div>

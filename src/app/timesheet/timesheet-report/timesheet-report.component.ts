@@ -29,7 +29,7 @@ export class TimesheetReportComponent implements OnInit {
 
   myForm = this.fb.group({
     action: ['timesheetReport'],
-    dateRange: [null, [Validators.required]],
+    dateRange: [null],
     employee: [null],
     projects: [null]
   });
@@ -123,6 +123,17 @@ export class TimesheetReportComponent implements OnInit {
     }
     this.exportSvc.exportTimesheetExcel(reportData);
   }
+
+  resetForm() {
+    this.myForm.reset({
+      action: 'timesheetReport',
+      dateRange: null,
+      employee: null,
+      projects: null
+    });
+    this.getTimesheetData();
+  }
+
 }
 
 
