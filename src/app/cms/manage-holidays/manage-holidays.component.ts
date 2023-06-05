@@ -44,6 +44,7 @@ export class ManageHolidaysComponent implements OnInit {
   mode = 'add';
   formTitle = "Add Holiday";
   buttonText = "Submit";
+  showTableDataLoading = false;
 
   constructor(
     public apiSvc: ApiService,
@@ -69,9 +70,11 @@ export class ManageHolidaysComponent implements OnInit {
     }
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getHolidays, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
+      this.showTableDataLoading = false;
     });
   }
 

@@ -27,6 +27,7 @@ export class ViewHolidaysComponent implements OnInit {
     this.getHolidays();
   }
   // Pagination Config
+  showTableDataLoading = false;
   constructor(
     public apiSvc: ApiService,
     private alertSvc: AlertService
@@ -49,9 +50,11 @@ export class ViewHolidaysComponent implements OnInit {
     }
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getHolidays, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
+      this.showTableDataLoading = false;
     });
   }
 

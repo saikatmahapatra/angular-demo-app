@@ -21,6 +21,7 @@ export class ManageLeaveComponent implements OnInit {
   dataRow = [];
   loading = false;
   submitted = false;
+  showTableDataLoading = false;
   // Pagination Config
   currentPageIndex: number = 0;
   first: number = 0;
@@ -108,15 +109,23 @@ export class ManageLeaveComponent implements OnInit {
     let params = new HttpParams();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
       next: (response: any) => {
         //console.log(response);
         this.loading = false;
+        this.showTableDataLoading = false;
         this.dataRow = response?.data?.data_rows || [];
         this.totalRecords = response?.data?.num_rows || 0;
       },
-      error: () => { this.loading = false; },
-      complete: () => { this.loading = false; }
+      error: () => { 
+        this.loading = false; 
+        this.showTableDataLoading = false;
+      },
+      complete: () => { 
+        this.loading = false; 
+        this.showTableDataLoading = false;
+      }
     })
   }
 

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ManageAssetsComponent {
   dataRow = [];
+  showTableDataLoading = false;
   
   // Pagination Config
   currentPageIndex: number = 0;
