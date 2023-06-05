@@ -60,13 +60,14 @@
 
           <div class="mb-3">
             <label class="required" for="hours">Hours</label>
-            <input type="number" min="0" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
+            <input type="number" min="0.25" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
             <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
           </div>
           <div class="mb-3">
-            <label class="required" for="description">Task Description</label>
-            <textarea class="form-control" id="description" formControlName="description" maxlength="200"
-              placeholder="briefly describe in 200 characters"></textarea>
+            <label class="" for="description">Task Description</label>
+            <textarea class="form-control" id="description" formControlName="description" maxlength="150"
+              placeholder="Briefly describe in 150 characters (if necessary)" [(ngModel)]="taskDescr"></textarea>
+              <div class="small text-muted">{{(150-taskDescr.length)}} characters left</div>
             <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
           </div>
 

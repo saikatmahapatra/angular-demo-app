@@ -63,6 +63,7 @@ export class TimesheetReportComponent implements OnInit {
   ngOnInit(): void {
     this.getUserDropdown();
     this.getProjectDropdown();
+    this.getTimesheetData();
   }
 
   getUserDropdown() {

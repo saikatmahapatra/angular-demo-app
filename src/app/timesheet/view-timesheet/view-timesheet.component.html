@@ -21,7 +21,7 @@
                 <td>{{data?.project_name}}</td>
                 <td>{{data?.task_name}}</td>
                 <td>{{data?.timesheet_hours}}</td>
-                <td>{{data?.timesheet_description}}</td>
+                <td>{{data?.timesheet_description ? data?.timesheet_description : '--'}}</td>
                 <td>
                     <button [disabled]="disableButtons(data?.timesheet_date)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-secondary mr-2" (click)="editItem(data.id)"></button>
                     <button [disabled]="disableButtons(data?.timesheet_date)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" (click)="deleteItem(data.id, data.timesheet_date)"></button>

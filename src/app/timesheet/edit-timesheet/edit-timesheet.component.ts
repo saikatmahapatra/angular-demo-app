@@ -15,6 +15,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./edit-timesheet.component.scss']
 })
 export class EditTimesheetComponent implements OnInit {
+  taskDescr : any;
   myForm = this.fb.group({
     id: [null],
     date: [null],
@@ -22,7 +23,7 @@ export class EditTimesheetComponent implements OnInit {
     project: ['', Validators.required],
     task: ['', Validators.required],
     hours: ['', Validators.required],
-    description: ['', Validators.required]
+    description: ['', [this.validator.notEmpty]]
   });
   projectList: any;
   taskList: any;

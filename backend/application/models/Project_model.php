@@ -332,16 +332,16 @@ class Project_model extends CI_Model {
             $this->db->where('t1.id', $id);
         }
         if(isset($cond)){
-            if(sizeof($cond['empIds']) > 0){
+            if(isset($cond['empIds']) && sizeof($cond['empIds']) > 0){
                 $this->db->where_in('t1.timesheet_created_by', $cond['empIds']);
             }
-            if(sizeof($cond['projectIds']) > 0){
+            if(isset($cond['projectIds']) && sizeof($cond['projectIds']) > 0){
                 $this->db->where_in('t1.project_id', $cond['projectIds']);
             }
-            if($cond['fromDate'] != NULL){
+            if(isset($cond['fromDate']) && $cond['fromDate'] != NULL){
                 $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($cond['fromDate']));
             }
-            if($cond['toDate'] != NULL){
+            if(isset($cond['toDate']) && $cond['toDate'] != NULL){
                 $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($cond['toDate']));
             }
         }
@@ -352,7 +352,7 @@ class Project_model extends CI_Model {
             $this->db->limit($perPage, $offset);
         }
         $query = $this->db->get('timesheet as t1');
-        //print_r($this->db->last_query());
+        //print_r($this->db->last_query()); die();
         $num_rows = $query->num_rows();
         $result = $query->result_array();
         return array('num_rows' => $num_rows, 'data_rows' => $result);

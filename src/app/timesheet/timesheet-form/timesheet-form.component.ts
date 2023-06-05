@@ -37,6 +37,7 @@ export class TimesheetFormComponent implements OnInit {
   monthName: string = '';
   allowedMinDate = 30;
   settings: any;
+  taskDescr = '';
 
   myForm = this.fb.group({
     id: [null],
@@ -45,7 +46,7 @@ export class TimesheetFormComponent implements OnInit {
     project: ['', Validators.required],
     task: ['', Validators.required],
     hours: ['', Validators.required],
-    description: ['', [Validators.required, this.validator.notEmpty]]
+    description: ['', [this.validator.notEmpty]]
   });
   projectList: any;
   taskList: any;
@@ -158,7 +159,7 @@ export class TimesheetFormComponent implements OnInit {
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
-            this.myForm.reset();
+            this.resetTimesheetForm();
             this.getTimesheetData();
           }
         },
@@ -175,6 +176,18 @@ export class TimesheetFormComponent implements OnInit {
       this.validator.validateAllFormFields(this.myForm);
     }
 
+  }
+
+  resetTimesheetForm() {
+    this.myForm.reset({
+      id: null,
+      action: 'add',
+      timeSheetDates: null,
+      project: '',
+      task: '',
+      hours: '',
+      description: ''
+    });
   }
 
   monthYearChange(event: any) {

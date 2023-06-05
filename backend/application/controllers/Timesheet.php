@@ -52,6 +52,7 @@ class Timesheet extends App_Controller
         $validatedForm = $this->_validateFormData($this->post());
         if ($formAction === 'add' && $validatedForm) {
             $dates = $this->post('timeSheetDates');
+            $descr = trim($this->post('description')) !== '' ?  trim($this->post('description')) : NULL;
             $postdata = array();
             foreach ($dates as $key => $date) {
                 $postdata[$key] = array(
@@ -60,7 +61,7 @@ class Timesheet extends App_Controller
                     'task_id_1' => $this->post('task'),
                     //'task_id_2' => $this->post('task_id_2'),
                     'timesheet_hours' => $this->post('hours'),
-                    'timesheet_description' => $this->post('description'),
+                    'timesheet_description' => $descr,
                     'timesheet_created_by' => $this->getUserId(),
                     'timesheet_created_on' => date('Y-m-d H:i:s')
                 );
@@ -83,6 +84,7 @@ class Timesheet extends App_Controller
     {
         $formAction = $this->put('action');
         $date = $this->put('date');
+        $descr = trim($this->put('description')) !== '' ?  trim($this->put('description')) : NULL;
         $isEligible = $this->isEditDeleteEligible($date);
         if ($formAction === 'edit') {
             if($isEligible) {
@@ -90,7 +92,7 @@ class Timesheet extends App_Controller
                     'project_id' => $this->put('project'),
                     'task_id_1' => $this->put('task'),
                     'timesheet_hours' => $this->put('hours'),
-                    'timesheet_description' => $this->put('description'),
+                    'timesheet_description' => $descr,
                     'timesheet_updated_by' => $this->getUserId(),
                     'timesheet_updated_on' => date('Y-m-d H:i:s')
                 );
