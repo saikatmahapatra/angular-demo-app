@@ -14,6 +14,7 @@ export class ViewEmployeesComponent implements OnInit {
   public empList: any = [];
   loading: boolean = true;
   searchKeyword = '';
+  showTableDataLoading = false;
   // Pagination Config
   currentPageIndex: number = 0;
   first: number = 0;
@@ -56,6 +57,7 @@ export class ViewEmployeesComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     if(this.searchKeyword.trim()) {
       queryParams = queryParams.append('keywords', this.searchKeyword.trim());
     }
@@ -65,6 +67,7 @@ export class ViewEmployeesComponent implements OnInit {
         this.totalRecords = val?.data?.num_rows;
         this.empList = val?.data?.data_rows || [];
         this.loading = false;
+        this.showTableDataLoading = false;
       }
     });
   }

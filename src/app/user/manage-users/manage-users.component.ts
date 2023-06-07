@@ -23,6 +23,7 @@ export class ManageUsersComponent implements OnInit {
   public postData = {};
   subscription !: Subscription;
   loading: boolean = true;
+  showTableDataLoading = false;
 
   // Pagination Config
   currentPageIndex: number = 0;
@@ -67,11 +68,13 @@ export class ManageUsersComponent implements OnInit {
       queryParams = queryParams.append('keywords', this.searchKeyword.trim());
     }
     let options = { headers: headers, params: queryParams };
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getUsers, options).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
         this.userList = val?.data?.data_rows;
         this.loading = false;
+        this.showTableDataLoading = false;
       }
     });
   }

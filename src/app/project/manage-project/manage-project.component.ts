@@ -12,6 +12,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class ManageProjectComponent implements OnInit {
   dataRow: any;
+  showTableDataLoading = false;
 
   // Pagination Config
   currentPageIndex: number = 0;
@@ -37,9 +38,11 @@ export class ManageProjectComponent implements OnInit {
     let params = new HttpParams();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getProject, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
+      this.showTableDataLoading = false;
     });
   }
 

@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-md-12">
-        <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [loading]="loading"
+        <p-table #dt [value]="timesheetData" [loading]="showTableDataLoading" dataKey="id" [rowHover]="true" [loading]="loading"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             styleClass="p-datatable-sm table-font-sm">
             <ng-template pTemplate="caption">

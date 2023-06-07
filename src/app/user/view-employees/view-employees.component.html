@@ -1,7 +1,7 @@
 <h1>Employees</h1>
 <div class="row my-4">
     <div class="col-md-12">
-        <p-table #dt [value]="empList" dataKey="id" [rowHover]="true" [filterDelay]="0"
+        <p-table #dt [value]="empList" [loading]="showTableDataLoading" dataKey="id" [rowHover]="true" [filterDelay]="0"
             [globalFilterFields]="['id','user_full_name','user_email']"
             styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">

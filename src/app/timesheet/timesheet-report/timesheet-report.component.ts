@@ -26,6 +26,7 @@ export class TimesheetReportComponent implements OnInit {
   loading = false;
   timesheetData: any = [];
   dataForExcel: any = [];
+  showTableDataLoading = false;
 
   myForm = this.fb.group({
     action: ['timesheetReport'],
@@ -97,14 +98,16 @@ export class TimesheetReportComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value, { headers: headers }).subscribe({
       next: (response: any) => {
         this.dataForExcel = [];
         this.timesheetData = response?.data?.data_rows;
         this.totalRecords = response?.data?.num_rows;
+        this.showTableDataLoading = false;
       },
-      error: () => { this.loading = false; },
-      complete: () => { this.loading = false; }
+      error: () => { this.loading = false; this.showTableDataLoading = false;},
+      complete: () => { this.loading = false; this.showTableDataLoading = false;}
     });
   }
 

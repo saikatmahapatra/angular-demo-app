@@ -18,6 +18,7 @@ export class ViewTimesheetComponent implements OnInit {
   @Input() timeSheetLogData: any;
   currentMonth = new Date().getMonth() + 1;
   currentYear = new Date().getFullYear();
+  showTableDataLoading = false;
 
   @Output() recordDeleted = new EventEmitter<boolean>(false);
 
@@ -54,11 +55,13 @@ export class ViewTimesheetComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
+    this.showTableDataLoading = true;
     this.apiSvc.delete(AppConfig.apiUrl.deleteTimesheet, options).subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
           this.alertSvc.success(response.message);
           this.recordDeleted.emit(true);
+          this.showTableDataLoading = false;
         }
       },
       error: (err: HttpErrorResponse) => {

@@ -17,6 +17,7 @@ export class PeopleILeadComponent implements OnInit {
   itemPerPageDropdown = [10, 20, 30, 50];
   userList: any = [];
   loading: boolean = false;
+  showTableDataLoading = false;
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -36,11 +37,13 @@ export class PeopleILeadComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getReportees, { headers: headers }).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
         this.userList = val?.data?.data_rows;
         this.loading = false;
+        this.showTableDataLoading = false;
       }
     });
   }

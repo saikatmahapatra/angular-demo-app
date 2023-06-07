@@ -19,6 +19,7 @@ export class ManageTaskComponent implements OnInit {
   totalRecords: number = 0;
   itemPerPage: number = 10;
   itemPerPageDropdown = [10, 20, 30, 50];
+  showTableDataLoading = false;
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
@@ -37,9 +38,11 @@ export class ManageTaskComponent implements OnInit {
     let params = new HttpParams();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
+    this.showTableDataLoading = true;
     this.apiSvc.get(AppConfig.apiUrl.getTask, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
+      this.showTableDataLoading = false;
     });
   }
 

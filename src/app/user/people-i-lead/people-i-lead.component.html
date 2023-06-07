@@ -1,7 +1,7 @@
 <h1>My Reportees</h1>
 <div class="row my-4">
     <div class="col-md-12">
-        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" [loading]="loading"
+        <p-table #dt [value]="userList" [loading]="showTableDataLoading" dataKey="id" [rowHover]="true" [loading]="loading"
             styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
