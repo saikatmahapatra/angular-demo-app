@@ -242,7 +242,10 @@ class Leave_model extends CI_Model {
         t2.pl, 
         t2.co, 
         t2.leave_balance_updated_on,
-        t2.leave_balance_updated_by
+        t2.leave_balance_updated_by,
+        t2.ol_updated_by_cron_on,
+        t2.cl_updated_by_cron_on,
+        t2.pl_updated_by_cron_on
         ');
         if ($user_id) {
             $this->db->where('t2.user_id', $user_id);
