@@ -72,11 +72,13 @@ export class ManageLeaveComponent implements OnInit {
     }
     if (this.router.url == '/leave/requests-to-approve') {
       this.title = 'Manage Leave Workflow';
-      this.helpInfoMessage = 'You can view submitted leave applications in this page depending on whether you are an L1 or L2 workflow approver. To find the leave applications where your action is still pending, you need to search by selecting a status such as "Submitted" or "In Review" or "Cancel Requested".';
+      this.helpInfoMessage = 'You can view submitted leave applications in this page depending on whether you are an L1 or L2 workflow approver. This page by default shows leave applications for which your review action is still pending. By choosing a leave status, you can search all leave applications as well.';
       this.isManagePage = false;
       this.isHistoryPage = false;
       this.isLeaveToApprovePage = true;
       this.searchForm.controls['pageName'].setValue('leaveRequestsToApprove');
+      this.leaveStatus.unshift({ value: 'PR', text: 'Pending Review', cssClass: 'bg-primary', textClass: 'text-secondary' });
+      this.searchForm.controls['leaveStatus'].setValue('PR');
     }
 
 
