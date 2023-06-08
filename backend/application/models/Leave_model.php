@@ -234,7 +234,7 @@ class Leave_model extends CI_Model {
         return ($this->db->affected_rows() > 0);
     }
 
-    function get_leave_balance($user_id = NULL, $paginate = FALSE, $perPage = NULL, $offset = NULL) {
+    function get_leave_balance($user_id = NULL, $paginate = FALSE, $perPage = NULL, $offset = NULL, $isActive = NULL) {
         $result = array();
         $this->db->select('
         t1.user_full_name,
@@ -254,8 +254,11 @@ class Leave_model extends CI_Model {
         if ($user_id) {
             $this->db->where('t2.user_id', $user_id);
         }
-        $this->db->where('t1.user_status !=', 'A');
-        //$this->db->where('t1.user_type', 'U');
+        if($isActive == true) {
+            $this->db->where('t1.user_status', 'Y');
+        }
+        //$this->db->where('t1.user_status', 'Y');
+        $this->db->where('t1.user_type', 'U');
         //for server side pagination
         if ($paginate == true && $perPage != 0) {
             $this->db->limit($perPage, $offset);

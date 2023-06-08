@@ -42,11 +42,14 @@ class Home_model extends CI_Model {
         return $result;
     }
 
-    function get_user_count() {
+    function get_user_count($checkActive=NULL) {
         $result = array();
         $this->db->select('count(*) as total');
 		$this->db->where('t1.user_type', 'U');
-		$this->db->where('t1.user_status !=', 'A');
+        if($checkActive == true) {
+            $this->db->where('t1.user_status', 'Y');
+        }
+		//$this->db->where('t1.user_status !=', 'A');
         $query = $this->db->get('users t1');
         //print_r($this->db->last_query());
         $num_rows = $query->num_rows();

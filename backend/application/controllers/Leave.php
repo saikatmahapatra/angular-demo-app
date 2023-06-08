@@ -624,8 +624,8 @@ class Leave extends App_Controller
         $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
         $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
         $offset = $currentPageIndex * $perPage;
-        $totalRecords = $this->leave_model->get_leave_balance(NULL, FALSE, NULL, NULL);
-        $result_array = $this->leave_model->get_leave_balance(NULL, TRUE, $perPage, $offset);
+        $totalRecords = $this->leave_model->get_leave_balance(NULL, FALSE, NULL, NULL, TRUE);
+        $result_array = $this->leave_model->get_leave_balance(NULL, TRUE, $perPage, $offset, TRUE);
         if ($result_array['data_rows']) {
             $result_array['num_rows'] = $totalRecords['num_rows'];
             $this->responseData['data'] = $result_array;

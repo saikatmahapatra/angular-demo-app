@@ -21,6 +21,7 @@ class Cms extends App_Controller
         
         $dashboard_stat = [];
         $stat_user_count = $this->home_model->get_user_count();
+        $stat_active_user_count = $this->home_model->get_user_count(TRUE);
         $stat_projects_count = $this->home_model->get_user_projects();
         $stat_timesheet_user = $this->home_model->get_user_of_timesheet();
         $stat_user_applied_leave = $this->home_model->get_user_applied_leave_count();
@@ -29,7 +30,7 @@ class Cms extends App_Controller
         $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->getUserId());
 
         //<i class="fa fa-fw dash-stat-icon fa-users align-middle" aria-hidden="true" style="#6f42c1"></i>
-        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'employees', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-primary', 'icon' => 'users', 'iconCss' => '#6f42c1', 'count' => $stat_user_count['data_rows'][0]['total'], 'url' => 'emp/manage'));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'active employee accounts', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-primary', 'icon' => 'users', 'iconCss' => '#6f42c1', 'count' => $stat_active_user_count['data_rows'][0]['total'].'/'.$stat_user_count['data_rows'][0]['total'], 'url' => 'emp/manage'));
 
         array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'projects', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-secondary', 'icon' => 'projects', 'iconCss' => '#6f42c1', 'count' => $stat_projects_count['data_rows'][0]['total'], 'url' => 'project/manage-project'));
 
