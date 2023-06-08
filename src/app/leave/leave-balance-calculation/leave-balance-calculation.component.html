@@ -15,9 +15,9 @@
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
             <ng-template pTemplate="caption">
-                <div class="table-header d-flex">
-                    <button (click)="exportToExcel()" class="btn btn-primary me-3" [disabled]="dataRow.length <= 0"><app-icon [name]="'download'"></app-icon> Download Template</button>
-                    <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" url="http://portal.ueipl.co.in/api/leave/bulkUploadLeaveBalance" accept="image/*" [maxFileSize]="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+                <div class="table-header">
+                    <button (click)="exportToExcel()" class="btn btn-primary me-3 mb-3" [disabled]="dataRow.length <= 0"><app-icon [name]="'download'"></app-icon> Download Template</button>
+                    <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" url="http://portal.ueipl.co.in/api/leave/bulkUploadLeaveBalance" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" [maxFileSize]="100000" (onUpload)="onUpload($event)"></p-fileUpload>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
