@@ -14,7 +14,7 @@
                 <tr>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            Emp
+                            Active Employee Name
                         </div>
                     </th>
                     <th>
@@ -39,12 +39,17 @@
                     </th>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            Created on
+                            CO
                         </div>
                     </th>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            Updated on
+                            Updated On
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Bulk Uploaded On
                         </div>
                     </th>
                     <th>
@@ -58,32 +63,36 @@
             <ng-template pTemplate="body" let-rowData let-expanded="expanded">
                 <tr class="p-selectable-row">
                     <td>
-                        <span class="p-column-title">Name</span>
+                        <span class="p-column-title">Emp Name</span>
                         {{rowData?.user_full_name}}
                     </td>
                     <td>
                         <span class="p-column-title">CL</span>
-                        {{rowData?.cl || '-'}}
+                        {{rowData?.cl || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title">PL</span>
-                        {{rowData?.pl || '-'}}
+                        {{rowData?.pl || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title">SL</span>
-                        {{rowData?.sl || '-'}}
+                        {{rowData?.sl || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title">OL</span>
-                        {{rowData?.ol || '-'}}
+                        {{rowData?.ol || '--'}}
                     </td>
                     <td>
-                        <span class="p-column-title">Created on</span>
-                        {{rowData?.created_on || '-'}}
+                        <span class="p-column-title">CL</span>
+                        {{rowData?.ol || '--'}}
                     </td>
                     <td>
-                        <span class="p-column-title"> Updated on</span>
-                        {{rowData?.updated_on || '-'}}
+                        <span class="p-column-title"> Updated On</span>
+                        {{rowData?.leave_balance_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Bulk Uploaded On</span>
+                        {{rowData?.leave_balance_bulk_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title"> Action</span>
