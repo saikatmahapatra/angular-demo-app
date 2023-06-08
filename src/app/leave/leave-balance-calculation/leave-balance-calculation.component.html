@@ -1,13 +1,23 @@
 <h1>View & Upload Leave Balance</h1>
 <div class="row my-4">
+    <div class="card">
+        <div class="card-header">Information</div>
+        <div class="card-body">
+            <div>
+                <app-icon [name]="'info'"></app-icon> The "Download Template" & "Upload" features let you download & upload the number of
+                records that are displayed on each page. 100 records can be seen at most per page when using the
+                pagination option. If there are more than 100 records, you must navigate using pagination and download & upload
+                as necessary from each page.
+            </div>
+        </div>
+    </div>
+
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
             <ng-template pTemplate="caption">
                 <div class="table-header">
-                    List of Data
-                    <!-- <div class="d-flex mt-2">
-                        <button class="btn btn-sm btn-success">Download</button>
-                    </div> -->
+                    List of Data <br>
+                    <button class="btn btn-success mt-2" [disabled]="dataRow.length <= 0"><app-icon [name]="'download'"></app-icon> Download Template</button>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
