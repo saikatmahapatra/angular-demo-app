@@ -141,7 +141,11 @@ class Leave_model extends CI_Model {
             if($cond['leave_status'] == 'X') {
                 $this->db->where('t1.cancel_requested', 'Y');
                 $this->db->where_not_in('t1.leave_status', array('C'));
-            } else {
+            } else if($cond['leave_status'] == 'PR') { 
+                $this->db->where('((t1.supervisor_approver_id = "'.$cond['assigned_to_user_id'].'" AND t1.supervisor_approver_status = "P") OR (t1.director_approver_id = "'.$cond['assigned_to_user_id'].'" AND t1.director_approver_status = "P"))');
+                $this->db->where_not_in('t1.leave_status', array('R', 'C'));
+            }
+            else {
                 $this->db->where('t1.leave_status', $cond['leave_status']);
             } 
         }
