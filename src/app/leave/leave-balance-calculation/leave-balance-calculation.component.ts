@@ -91,7 +91,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    //this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
+    console.log(event);
   }
 
 }
