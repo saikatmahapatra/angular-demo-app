@@ -1,4 +1,4 @@
-<h1>Leave Balance</h1>
+<h1>View & Upload Leave Balance</h1>
 <div class="row my-4">
     <div class="col-md-12">
         <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
@@ -83,8 +83,8 @@
                         {{rowData?.ol || '--'}}
                     </td>
                     <td>
-                        <span class="p-column-title">CL</span>
-                        {{rowData?.ol || '--'}}
+                        <span class="p-column-title">CO</span>
+                        {{rowData?.co || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title"> Updated On</span>
