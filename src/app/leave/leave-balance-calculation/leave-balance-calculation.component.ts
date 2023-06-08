@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 //import { MessageService } from 'primeng/api';
+import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
 
 @Component({
   selector: 'app-leave-balance-calculation',
@@ -17,6 +18,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
 
   dataRow = [];
   loading = false;
+  dataForExcel: any = [];
 
   // Pagination Config
   currentPageIndex: number = 0;
@@ -33,7 +35,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private router: Router,
-    //private messageService: MessageService
+    private exportSvc: ExportExcelService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getEmpLeaveBalance, { headers: headers }).subscribe({
       next: (response: any) => {
         //console.log(response);
+        this.dataForExcel = [];
         this.loading = false;
         this.dataRow = response?.data?.data_rows || [];
         this.totalRecords = response?.data?.num_rows || 0;
@@ -59,6 +62,32 @@ export class LeaveBalanceCalculationComponent implements OnInit {
 
   editUserProfile(id: number) {
     this.router.navigate(['/emp/edit', id]);
+  }
+
+  exportToExcel() {
+    
+    this.dataRow.forEach((row: any) => {
+      //let key = Object.keys(row);
+      const rowObj = {
+        id: row?.user_id,
+        name: row?.user_full_name,
+        cl: row?.cl,
+        sl: row?.sl,
+        pl: row?.pl,
+        ol: row?.ol,
+        co: row?.co
+      };
+      this.dataForExcel.push(Object.values(rowObj))
+    })
+
+    let reportData = {
+      title: 'Emp_Leave_Balance',
+      data: this.dataForExcel,
+      //headers: Object.keys(this.dataRow[0]),
+      headers: ['ID', 'EMPLOYEE_NAME', 'CL', 'SL', 'PL', 'OL', 'CO'],
+      sheetName: 'Data'
+    }
+    this.exportSvc.exportLeaveBalanceExcel(reportData);
   }
 
   onUpload(event: any) {

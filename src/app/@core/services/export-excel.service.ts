@@ -280,7 +280,7 @@ export class ExportExcelService {
     worksheet.addRow([]);
 
     //Footer Row
-    let footerRow = worksheet.addRow([title+' Generated from '+window.location.host+' at ' + date]);
+    let footerRow = worksheet.addRow(['*** DO NOT CHANGE THE HEADER NAME OR FORMAT *** ' + title+' Generated from '+window.location.host+' at ' + date]);
     footerRow.getCell(1).fill = {
       type: 'pattern',
       pattern: 'solid',
@@ -288,7 +288,7 @@ export class ExportExcelService {
     };
 
     //Merge Cells
-    worksheet.mergeCells(`A${footerRow.number}:F${footerRow.number}`);
+    worksheet.mergeCells(`A${footerRow.number}:H${footerRow.number}`);
 
     //Generate & Save Excel File
     workbook.xlsx.writeBuffer().then((data) => {
