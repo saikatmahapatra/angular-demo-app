@@ -17,7 +17,7 @@
             <ng-template pTemplate="caption">
                 <div class="table-header d-flex">
                     <button class="btn btn-primary me-3" [disabled]="dataRow.length <= 0"><app-icon [name]="'download'"></app-icon> Download Template</button>
-                    <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+                    <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" url="http://portal.ueipl.co.in/api/leave/bulkUploadLeaveBalance" accept="image/*" [maxFileSize]="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">

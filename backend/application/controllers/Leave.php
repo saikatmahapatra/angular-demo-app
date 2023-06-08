@@ -638,4 +638,9 @@ class Leave extends App_Controller
         $this->statusCode = REST_Controller::HTTP_OK;
         $this->response($this->responseData, $this->statusCode);
     }
+
+    function bulkUploadLeaveBalance_post() {
+        $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        $this->response($this->responseData, $this->statusCode);
+    }
 }
