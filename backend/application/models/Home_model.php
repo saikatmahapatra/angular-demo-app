@@ -71,10 +71,8 @@ class Home_model extends CI_Model {
         //$this->db->where('t1.leave_status', 'B');
         $this->db->where(
 			array(
-                'YEAR(`leave_from_date`) >=' => date('Y'),
-                'MONTH(`leave_from_date`) >=' => date('m'),
-                'YEAR(`leave_to_date`) <=' => date('Y'),
-                'MONTH(`leave_to_date`) <=' => date('m')
+                'YEAR(`leave_created_on`) =' => date('Y'),
+                'MONTH(`leave_created_on`) =' => date('m')
 			)
 		);
         $query = $this->db->get('leave_applications t1');
@@ -90,10 +88,8 @@ class Home_model extends CI_Model {
         $this->db->where('t1.leave_status', 'A');
         $this->db->where(
 			array(
-                'YEAR(`leave_from_date`) >=' => date('Y'),
-                'MONTH(`leave_from_date`) >=' => date('m'),
-                'YEAR(`leave_to_date`) <=' => date('Y'),
-                'MONTH(`leave_to_date`) <=' => date('m')
+                'YEAR(`leave_created_on`) =' => date('Y'),
+                'MONTH(`leave_created_on`) =' => date('m')
 			)
         );
         $query = $this->db->get('leave_applications t1');

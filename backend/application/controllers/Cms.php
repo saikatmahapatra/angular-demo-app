@@ -29,17 +29,17 @@ class Cms extends App_Controller
         $stat_user_timesheet_stat = $this->project_model->get_timesheet_stats(date('Y'), date('m'), $this->getUserId());
 
         //<i class="fa fa-fw dash-stat-icon fa-users align-middle" aria-hidden="true" style="#6f42c1"></i>
-        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'employees', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-primary', 'icon' => 'users', 'iconCss' => '#6f42c1', 'count' => $stat_user_count['data_rows'][0]['total'], 'url' => base_url('user/manage')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'employees', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-primary', 'icon' => 'users', 'iconCss' => '#6f42c1', 'count' => $stat_user_count['data_rows'][0]['total'], 'url' => 'emp/manage'));
 
-        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'projects', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-secondary', 'icon' => 'projects', 'iconCss' => '#6f42c1', 'count' => $stat_projects_count['data_rows'][0]['total'], 'url' => base_url('project')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'projects', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-secondary', 'icon' => 'projects', 'iconCss' => '#6f42c1', 'count' => $stat_projects_count['data_rows'][0]['total'], 'url' => 'project/manage-project'));
 
-        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'employees logged tasks *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-success', 'icon' => 'calendar',  'iconCss' => '#6f42c1', 'count' => $stat_timesheet_user['data_rows'][0]['total'], 'url' => base_url('project/timesheet_report')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'employees logged tasks *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-success', 'icon' => 'calendar',  'iconCss' => '#6f42c1', 'count' => $stat_timesheet_user['data_rows'][0]['total'], 'url' => 'timesheet/report'));
 
-        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'leave approved', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-info', 'icon' => 'check', 'iconCss' => '#6f42c1', 'count' => $stat_user_approved_leave['data_rows'][0]['total'] . '/' . $stat_user_applied_leave['data_rows'][0]['total'], 'url' => base_url('leave/manage')));
+        array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'leave apps. approved *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-info', 'icon' => 'check', 'iconCss' => '#6f42c1', 'count' => $stat_user_approved_leave['data_rows'][0]['total'] . '/' . $stat_user_applied_leave['data_rows'][0]['total'], 'url' => 'leave/manage'));
 
-        array_push($dashboard_stat, array('targetRole' => '', 'heading' => 'leave awaiting for approval', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-warning', 'icon' => 'question', 'iconCss' => '#6f42c1', 'count' => $stat_pending_leave_action['data_rows'][0]['total'], 'url' => base_url('leave/manage')));
+        array_push($dashboard_stat, array('targetRole' => '3', 'heading' => 'leave apps. waiting for your review', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-warning', 'icon' => 'question', 'iconCss' => '#6f42c1', 'count' => $stat_pending_leave_action['data_rows'][0]['total'], 'url' => 'leave/requests-to-approve'));
 
-        array_push($dashboard_stat, array('targetRole' => '', 'heading' => 'days task you have logged *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-danger', 'icon' => 'clock', 'iconCss' => '#6f42c1', 'count' => $stat_user_timesheet_stat['stat_data']['total_days'], 'url' => base_url('project/timesheet')));
+        array_push($dashboard_stat, array('targetRole' => '3', 'heading' => 'days task you have logged *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-danger', 'icon' => 'clock', 'iconCss' => '#6f42c1', 'count' => $stat_user_timesheet_stat['stat_data']['total_days'], 'url' => 'timesheet/log-work'));
 
         // array_push($dashboard_stat, array('targetRole' => '', 'heading' => 'hours you have logged*', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-primary', 'icon' => 'help', 'count' => $stat_user_timesheet_stat['stat_data']['total_hrs'] ? $stat_user_timesheet_stat['stat_data']['total_hrs'] : 0, 'url' => base_url('project/timesheet')));
 
