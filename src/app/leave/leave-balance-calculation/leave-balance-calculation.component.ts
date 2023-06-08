@@ -8,7 +8,7 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 //import { MessageService } from 'primeng/api';
 import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
-
+import { Workbook } from 'exceljs';
 @Component({
   selector: 'app-leave-balance-calculation',
   templateUrl: './leave-balance-calculation.component.html',
@@ -94,4 +94,35 @@ export class LeaveBalanceCalculationComponent implements OnInit {
     console.log(event);
   }
 
+  onSelect(event: any) {
+    console.log(event);
+  }
+
+  readExcel(event: any) {
+    const workbook = new Workbook();
+    const target: DataTransfer = <DataTransfer>(event.target);
+    if (target.files.length !== 1) {
+      throw new Error('Cannot use multiple files');
+    }
+
+    /**
+     * Final Solution For Importing the Excel FILE
+     */
+
+    const arryBuffer = new Response(target.files[0]).arrayBuffer();
+    arryBuffer.then(function (data) {
+      workbook.xlsx.load(data)
+        .then(function () {
+
+          // play with workbook and worksheet now
+          console.log(workbook);
+          const worksheet = workbook.getWorksheet(1);
+          console.log('rowCount: ', worksheet.rowCount);
+          worksheet.eachRow(function (row, rowNumber) {
+            console.log('Row: ' + rowNumber + ' Value: ' + row.values);
+          });
+
+        });
+    });
+  }
 }
