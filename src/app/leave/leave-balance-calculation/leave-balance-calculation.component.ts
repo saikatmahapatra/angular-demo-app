@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
+//import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-leave-balance-calculation',
@@ -31,7 +32,8 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   // Pagination Config
   constructor(
     private apiSvc: ApiService,
-    private router: Router
+    private router: Router,
+    //private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +59,10 @@ export class LeaveBalanceCalculationComponent implements OnInit {
 
   editUserProfile(id: number) {
     this.router.navigate(['/emp/edit', id]);
+  }
+
+  onUpload(event: any) {
+    //this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
   }
 
 }
