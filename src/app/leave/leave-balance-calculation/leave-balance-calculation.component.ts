@@ -8,7 +8,7 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 //import { MessageService } from 'primeng/api';
 import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
-import { Workbook } from 'exceljs';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-leave-balance-calculation',
   templateUrl: './leave-balance-calculation.component.html',
@@ -19,6 +19,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   dataRow = [];
   loading = false;
   dataForExcel: any = [];
+  leaveBalJson !: string;
 
   // Pagination Config
   currentPageIndex: number = 0;
@@ -95,34 +96,18 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   }
 
   onSelect(event: any) {
-    console.log(event);
-  }
-
-  readExcel(event: any) {
-    const workbook = new Workbook();
-    const target: DataTransfer = <DataTransfer>(event.target);
-    if (target.files.length !== 1) {
-      throw new Error('Cannot use multiple files');
+    const selectedFile = event.files[0];
+    const fileReader = new FileReader();
+    fileReader.readAsBinaryString(selectedFile);
+    fileReader.onload = (event: any) => {
+      console.log(event);
+      let binaryData = event.target.result;
+      let workbook = XLSX.read(binaryData, {type: 'binary'});
+      console.log(workbook);
+      workbook.SheetNames.forEach(sheet=> {
+        const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet]);
+        console.log(data);
+      })
     }
-
-    /**
-     * Final Solution For Importing the Excel FILE
-     */
-
-    const arryBuffer = new Response(target.files[0]).arrayBuffer();
-    arryBuffer.then(function (data) {
-      workbook.xlsx.load(data)
-        .then(function () {
-
-          // play with workbook and worksheet now
-          console.log(workbook);
-          const worksheet = workbook.getWorksheet(1);
-          console.log('rowCount: ', worksheet.rowCount);
-          worksheet.eachRow(function (row, rowNumber) {
-            console.log('Row: ' + rowNumber + ' Value: ' + row.values);
-          });
-
-        });
-    });
   }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { ExcelService } from 'src/app/@core/services/excel.service';
 import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
@@ -55,7 +56,8 @@ export class TimesheetReportComponent implements OnInit {
     private router: Router,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
-    private exportSvc: ExportExcelService
+    private exportSvc: ExportExcelService,
+    private excelService: ExcelService
   ) {
     let today = new Date();
     this.maxDate = today;
@@ -106,12 +108,12 @@ export class TimesheetReportComponent implements OnInit {
         this.totalRecords = response?.data?.num_rows;
         this.showTableDataLoading = false;
       },
-      error: () => { this.loading = false; this.showTableDataLoading = false;},
-      complete: () => { this.loading = false; this.showTableDataLoading = false;}
+      error: () => { this.loading = false; this.showTableDataLoading = false; },
+      complete: () => { this.loading = false; this.showTableDataLoading = false; }
     });
   }
 
-  exportToExcel() {
+  exportToExcelX() {
     this.timesheetData.forEach((row: any) => {
       let key = Object.keys(row);
       this.dataForExcel.push(Object.values(row))
@@ -125,6 +127,26 @@ export class TimesheetReportComponent implements OnInit {
       sheetName: 'Data'
     }
     this.exportSvc.exportTimesheetExcel(reportData);
+  }
+
+  exportToExcel() {
+    const fileToExport = this.timesheetData.map((item: any) => {
+      return {
+        "ID": item?.id,
+        "TIMESHEET DATE": item?.timesheet_date,
+        "EMPLOYEE NAME": item?.user_full_name,
+        "PROJECT NAME": item?.project_name + ' '+item?.project_number,
+        "TASK NAME": item?.task_name,
+        "DESCRIPTION": item?.timesheet_description || '-',
+        "LOGGED HOURS": item?.timesheet_hours,
+        "LOGEED ON": item?.timesheet_created_on,
+        "UPDATED ON": item?.timesheet_updated_on || '-'
+      }
+    });
+    this.excelService.exportToExcel(
+      fileToExport,
+      'Timesheet-Report-' + new Date().getTime() + '.xlsx'
+    );
   }
 
   resetForm() {
