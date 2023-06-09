@@ -71,7 +71,8 @@ export class LeaveBalanceCalculationComponent implements OnInit {
         "SL": item?.sl || 0.00,
         "PL": item?.pl || 0.00,
         "OL": item?.ol || 0.00,
-        "CO": item?.co || 0.00
+        "CO": item?.co || 0.00,
+        "BULK_UPDATED_ON": item?.leave_balance_bulk_updated_on || '-'
       }
     });
     this.excelService.exportToExcel(fileToExport, 'Leave-Balance-Template');
