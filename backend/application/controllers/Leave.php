@@ -639,7 +639,30 @@ class Leave extends App_Controller
         $this->response($this->responseData, $this->statusCode);
     }
 
-    function uploadBalance() {
-        print_r('ok');
+    function uploadLeaveData_post() {
+        if($this->post('action') === 'updateBatch') {
+            //update batch
+            $postData = $this->post('leaveBalance');
+            $newData = array();
+            if(isset($postData) && sizeof($postData)>0) {
+                foreach($postData as $key => $val) {
+                    $newData[$key]['user_id'] = $val['UID'];
+                    $newData[$key]['cl'] = $val['CL'];
+                    $newData[$key]['pl'] = $val['PL'];
+                    $newData[$key]['sl'] = $val['SL'];
+                    $newData[$key]['ol'] = $val['OL'];
+                    $newData[$key]['co'] = $val['CO'];
+                    $newData[$key]['leave_balance_bulk_updated_on'] = date('Y-m-d H:i:s');
+                    $newData[$key]['leave_balance_bulk_updated_by'] = $this->getUserId();
+                }
+                $isUpdated = $this->leave_model->import_batch($newData);
+            } else {
+                $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            }
+            
+        } else {
+            $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        }
+        $this->response($this->responseData, $this->statusCode);
     }
 }

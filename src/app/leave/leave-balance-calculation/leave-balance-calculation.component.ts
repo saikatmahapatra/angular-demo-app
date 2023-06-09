@@ -17,6 +17,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   loading = false;
   dataForExcel: any = [];
   leaveBalJson !: string;
+  postData: any = [];
 
   // Pagination Config
   currentPageIndex: number = 0;
@@ -65,13 +66,13 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   exportToExcel() {
     const fileToExport = this.dataRow.map((item: any) => {
       return {
-        "EMP_ID": item?.user_id,
-        "EMPLOYEE_NAME": item?.user_full_name,
-        "CL": item?.cl || 0.00,
-        "SL": item?.sl || 0.00,
-        "PL": item?.pl || 0.00,
-        "OL": item?.ol || 0.00,
-        "CO": item?.co || 0.00,
+        "UID": item?.user_id || '-',
+        "EMPLOYEE_NAME": item?.user_full_name || '-',
+        "CL": item?.cl || 0,
+        "SL": item?.sl || 0,
+        "PL": item?.pl || 0,
+        "OL": item?.ol || 0,
+        "CO": item?.co || 0,
         "BULK_UPDATED_ON": item?.leave_balance_bulk_updated_on || '-'
       }
     });
@@ -90,11 +91,28 @@ export class LeaveBalanceCalculationComponent implements OnInit {
       console.log(event);
       let binaryData = event.target.result;
       let workbook = XLSX.read(binaryData, {type: 'binary'});
-      console.log(workbook);
       workbook.SheetNames.forEach(sheet=> {
         const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet]);
-        console.log(data);
-      })
+        this.postData = data;
+      });
+      // call API
+      if(this.postData.length > 0) {
+        const postData = {'action': 'updateBatch', 'leaveBalance': this.postData};
+        this.apiSvc.post(AppConfig.apiUrl.uploadLeaveData, postData).subscribe({
+          next: (response: any) => {
+            console.log(response);
+            this.postData = [];
+          },
+          error: () => { 
+            this.loading = false; 
+            this.postData = [];
+          },
+          complete: () => { 
+            this.loading = false; 
+            this.postData = [];
+          }
+        })
+      }
     }
   }
 }

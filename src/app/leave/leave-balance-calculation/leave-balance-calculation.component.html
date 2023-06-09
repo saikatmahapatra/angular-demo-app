@@ -17,7 +17,7 @@
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     <button (click)="exportToExcel()" class="btn btn-primary me-3 mb-3" [disabled]="dataRow.length <= 0"><app-icon [name]="'download'"></app-icon> Download Template</button>
-                    <p-fileUpload mode="basic" name="demo[]" [maxFileSize]="100000" (onSelect)="onSelect($event)" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Upload Template"></p-fileUpload>
+                    <p-fileUpload mode="basic" name="demo[]" [multiple]="false" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" [maxFileSize]="100000" (onSelect)="onSelect($event)" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Upload Template"></p-fileUpload>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -54,12 +54,12 @@
                     </th>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            Updated On
+                            Bulk Updated On
                         </div>
                     </th>
                     <th>
                         <div class="flex justify-content-between align-items-center">
-                            Bulk Uploaded On
+                            Updated On
                         </div>
                     </th>
                     <th>
@@ -97,12 +97,12 @@
                         {{rowData?.co || '--'}}
                     </td>
                     <td>
-                        <span class="p-column-title"> Updated On</span>
-                        {{rowData?.leave_balance_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
+                        <span class="p-column-title">Bulk Updated On</span>
+                        {{rowData?.leave_balance_bulk_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
                     </td>
                     <td>
-                        <span class="p-column-title">Bulk Uploaded On</span>
-                        {{rowData?.leave_balance_bulk_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
+                        <span class="p-column-title"> Updated On</span>
+                        {{rowData?.leave_balance_updated_on | date: 'dd/MM/yyyy h:mm:ss a' || '--'}}
                     </td>
                     <td>
                         <span class="p-column-title"> Action</span>
