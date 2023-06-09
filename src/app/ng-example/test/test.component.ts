@@ -68,9 +68,6 @@ export class TestComponent implements OnInit, AfterViewInit {
         "DEPT": item?.DEPARTMENT
       }
     });
-    this.excelService.exportToExcel(
-      fileToExport,
-      'MyFile-' + new Date().getTime()
-    );
+    this.excelService.exportToExcel(fileToExport, 'MyFile-' + new Date().getTime());
   }
 }
