@@ -14,7 +14,7 @@ import * as XLSX from 'xlsx';
 export class LeaveBalanceCalculationComponent implements OnInit {
 
   dataRow = [];
-  loading = false;
+  showTableDataLoading = false;
   dataForExcel: any = [];
   leaveBalJson !: string;
   postData: any = [];
@@ -51,12 +51,12 @@ export class LeaveBalanceCalculationComponent implements OnInit {
       next: (response: any) => {
         //console.log(response);
         this.dataForExcel = [];
-        this.loading = false;
+        this.showTableDataLoading = false;
         this.dataRow = response?.data?.data_rows || [];
         this.totalRecords = response?.data?.num_rows || 0;
       },
-      error: () => { this.loading = false; },
-      complete: () => { this.loading = false; }
+      error: () => { this.showTableDataLoading = false; },
+      complete: () => { this.showTableDataLoading = false; }
     })
   }
 
@@ -106,11 +106,11 @@ export class LeaveBalanceCalculationComponent implements OnInit {
             this.getLeaveBalance();
           },
           error: () => { 
-            this.loading = false; 
+            this.showTableDataLoading = false; 
             this.postData = [];
           },
           complete: () => { 
-            this.loading = false; 
+            this.showTableDataLoading = false; 
             this.postData = [];
           }
         })
