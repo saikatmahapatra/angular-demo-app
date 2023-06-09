@@ -34,7 +34,8 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private router: Router,
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    private alertSvc: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -100,8 +101,9 @@ export class LeaveBalanceCalculationComponent implements OnInit {
         const postData = {'action': 'updateBatch', 'leaveBalance': this.postData};
         this.apiSvc.post(AppConfig.apiUrl.uploadLeaveData, postData).subscribe({
           next: (response: any) => {
-            console.log(response);
+            this.alertSvc.success(response.message);
             this.postData = [];
+            this.getLeaveBalance();
           },
           error: () => { 
             this.loading = false; 
