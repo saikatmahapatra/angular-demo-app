@@ -64,7 +64,8 @@ class Leave_model extends CI_Model {
     }
 
     function import_batch($postData) {
-        return $this->db->update_batch('user_meta', $postData, 'user_id');
+        $this->db->update_batch('user_meta', $postData, 'user_id');
+        return $this->db->affected_rows();
     }
 
     function update($postdata, $where_array = NULL, $table = NULL) {

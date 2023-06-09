@@ -645,18 +645,36 @@ class Leave extends App_Controller
             $postData = $this->post('leaveBalance');
             $newData = array();
             if(isset($postData) && sizeof($postData)>0) {
-                foreach($postData as $key => $val) {
-                    $newData[$key]['user_id'] = $val['UID'];
-                    $newData[$key]['cl'] = $val['CL'];
-                    $newData[$key]['pl'] = $val['PL'];
-                    $newData[$key]['sl'] = $val['SL'];
-                    $newData[$key]['ol'] = $val['OL'];
-                    $newData[$key]['co'] = $val['CO'];
-                    $newData[$key]['leave_balance_bulk_updated_on'] = date('Y-m-d H:i:s');
-                    $newData[$key]['leave_balance_bulk_updated_by'] = $this->getUserId();
+                $arrayKeys = array_keys($postData[0]);
+                if(
+                    $arrayKeys[0] == 'UID' && $arrayKeys[1] == 'EMPLOYEE_NAME' 
+                    && $arrayKeys[2] == 'CL' && $arrayKeys[3] == 'SL' 
+                    && $arrayKeys[4] == 'PL' && $arrayKeys[5] == 'OL' 
+                    && $arrayKeys[6] =='CO' && $arrayKeys[7] == 'BULK_UPDATED_ON') {
+                    foreach($postData as $key => $val) {
+                        $newData[$key]['user_id'] = $val['UID'];
+                        $newData[$key]['cl'] = $val['CL'];
+                        $newData[$key]['pl'] = $val['PL'];
+                        $newData[$key]['sl'] = $val['SL'];
+                        $newData[$key]['ol'] = $val['OL'];
+                        $newData[$key]['co'] = $val['CO'];
+                        $newData[$key]['leave_balance_bulk_updated_on'] = date('Y-m-d H:i:s');
+                        $newData[$key]['leave_balance_bulk_updated_by'] = $this->getUserId();
+                    }
+                    $affectedRows = $this->leave_model->import_batch($newData);
+                    if($affectedRows) {
+                        $this->responseData['message'] = $affectedRows.' Records have been updated successfully.';
+                        $this->statusCode = REST_Controller::HTTP_OK;
+                    } else {
+                        $this->responseData['message'] = 'Error occured while updating data.';
+                        $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+                    }
+                } else {
+                    $this->responseData['message'] = 'You have either selected an invalid template or corrupted the template headers. Please try downloading a new one and only updating balance cells.';
+                    $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
                 }
-                $isUpdated = $this->leave_model->import_batch($newData);
             } else {
+                $this->responseData['message'] = 'Invalid form data.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
             
