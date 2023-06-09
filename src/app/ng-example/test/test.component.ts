@@ -70,7 +70,7 @@ export class TestComponent implements OnInit, AfterViewInit {
     });
     this.excelService.exportToExcel(
       fileToExport,
-      'MyFile-' + new Date().getTime() + '.xlsx'
+      'MyFile-' + new Date().getTime()
     );
   }
 }

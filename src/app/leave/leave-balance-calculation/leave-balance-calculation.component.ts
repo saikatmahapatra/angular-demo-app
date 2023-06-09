@@ -74,10 +74,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
         "CO": item?.co || 0.00
       }
     });
-    this.excelService.exportToExcel(
-      fileToExport,
-      'Leave-Balance-Template-' + new Date().getTime() + '.xlsx'
-    );
+    this.excelService.exportToExcel(fileToExport, 'Leave-Balance-Template');
   }
 
   onUpload(event: any) {

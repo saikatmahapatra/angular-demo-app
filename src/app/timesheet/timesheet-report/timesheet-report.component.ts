@@ -119,10 +119,7 @@ export class TimesheetReportComponent implements OnInit {
         "UPDATED ON": item?.timesheet_updated_on || '-'
       }
     });
-    this.excelService.exportToExcel(
-      fileToExport,
-      'Timesheet-Report-' + new Date().getTime() + '.xlsx'
-    );
+    this.excelService.exportToExcel(fileToExport,'Timesheet-Report');
   }
 
   resetForm() {
