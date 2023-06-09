@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef, ViewEncapsulation, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ContentCardComponent } from '../content-card/content-card.component';
-import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
+import { ExcelService } from 'src/app/@core/services/excel.service';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -33,7 +33,11 @@ export class TestComponent implements OnInit, AfterViewInit {
   @ViewChildren(ContentCardComponent)
   private childrenContentCard!: QueryList<ContentCardComponent>;
 
-  constructor(private route: ActivatedRoute, private cd : ChangeDetectorRef, private exp: ExportExcelService) { 
+  constructor(
+    private route: ActivatedRoute, 
+    private cd : ChangeDetectorRef,
+    private excelService: ExcelService
+    ) { 
 
   }
 
@@ -57,16 +61,16 @@ export class TestComponent implements OnInit, AfterViewInit {
   }
 
   exportToExcel() {
-    this.empPerformance.forEach((row: any) => {
-      this.dataForExcel.push(Object.values(row))
-    })
-
-    let reportData = {
-      title: 'Sample Report',
-      data: this.dataForExcel,
-      headers: Object.keys(this.empPerformance[0]),
-      sheetName: 'Data'
-    }
-    this.exp.exportExcel(reportData);
+    const fileToExport = this.empPerformance.map((item: any) => {
+      return {
+        "ID": item?.ID,
+        "NAME": item?.NAME,
+        "DEPT": item?.DEPARTMENT
+      }
+    });
+    this.excelService.exportToExcel(
+      fileToExport,
+      'MyFile-' + new Date().getTime() + '.xlsx'
+    );
   }
 }
