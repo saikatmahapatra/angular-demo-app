@@ -1,12 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
-import { AuthService } from 'src/app/@core/services/auth.service';
 import { ExcelService } from 'src/app/@core/services/excel.service';
-import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -51,12 +47,8 @@ export class TimesheetReportComponent implements OnInit {
 
   constructor(
     private apiSvc: ApiService,
-    private authSvc: AuthService,
-    private alertSvc: AlertService,
-    private router: Router,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
-    private exportSvc: ExportExcelService,
     private excelService: ExcelService
   ) {
     let today = new Date();
@@ -111,22 +103,6 @@ export class TimesheetReportComponent implements OnInit {
       error: () => { this.loading = false; this.showTableDataLoading = false; },
       complete: () => { this.loading = false; this.showTableDataLoading = false; }
     });
-  }
-
-  exportToExcelX() {
-    this.timesheetData.forEach((row: any) => {
-      let key = Object.keys(row);
-      this.dataForExcel.push(Object.values(row))
-    })
-
-    let reportData = {
-      title: 'Timesheet Report',
-      data: this.dataForExcel,
-      //headers: Object.keys(this.timesheetData[0]),
-      headers: ['ID', 'DATE', 'HOURS', 'DESCRIPTION', 'CREATED_ON', 'UPDATED_ON', 'STATUS', 'REVIEWED_BY', 'REVIEWED_ON', 'PROJECT_NO', 'PROJECT_NAME', 'TASK_NAME', 'EMP_NAME', 'REVIEWER_NAME'],
-      sheetName: 'Data'
-    }
-    this.exportSvc.exportTimesheetExcel(reportData);
   }
 
   exportToExcel() {

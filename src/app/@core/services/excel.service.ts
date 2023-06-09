@@ -8,7 +8,7 @@ export class ExcelService {
 
   constructor() { }
 
-  public exportToExcel(element: any, fileName: string): void {
+  exportToExcel(element: any, fileName: string): void {
     // generate workbook and add the worksheet
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(element);
     const workbook: XLSX.WorkBook = XLSX.utils.book_new();
@@ -17,5 +17,4 @@ export class ExcelService {
     XLSX.utils.book_append_sheet(workbook, ws, 'Sheet1');
     XLSX.writeFile(workbook, `${fileName}${EXCEL_EXTENSION }`);
   }
-
 }

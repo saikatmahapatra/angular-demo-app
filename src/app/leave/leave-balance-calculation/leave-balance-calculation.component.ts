@@ -1,13 +1,10 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
-import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { ExcelService } from 'src/app/@core/services/excel.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
-//import { MessageService } from 'primeng/api';
-import { ExportExcelService } from 'src/app/@core/services/export-excel.service';
 import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-leave-balance-calculation',
@@ -36,7 +33,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   constructor(
     private apiSvc: ApiService,
     private router: Router,
-    private exportSvc: ExportExcelService
+    private excelService: ExcelService
   ) { }
 
   ngOnInit(): void {
@@ -66,29 +63,21 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   }
 
   exportToExcel() {
-    
-    this.dataRow.forEach((row: any) => {
-      //let key = Object.keys(row);
-      const rowObj = {
-        id: row?.user_id,
-        name: row?.user_full_name,
-        cl: row?.cl,
-        sl: row?.sl,
-        pl: row?.pl,
-        ol: row?.ol,
-        co: row?.co
-      };
-      this.dataForExcel.push(Object.values(rowObj))
-    })
-
-    let reportData = {
-      title: 'Emp_Leave_Balance',
-      data: this.dataForExcel,
-      //headers: Object.keys(this.dataRow[0]),
-      headers: ['ID', 'EMPLOYEE_NAME', 'CL', 'SL', 'PL', 'OL', 'CO'],
-      sheetName: 'Data'
-    }
-    this.exportSvc.exportLeaveBalanceExcel(reportData);
+    const fileToExport = this.dataRow.map((item: any) => {
+      return {
+        "EMP_ID": item?.user_id,
+        "EMPLOYEE_NAME": item?.user_full_name,
+        "CL": item?.cl || 0.00,
+        "SL": item?.sl || 0.00,
+        "PL": item?.pl || 0.00,
+        "OL": item?.ol || 0.00,
+        "CO": item?.co || 0.00
+      }
+    });
+    this.excelService.exportToExcel(
+      fileToExport,
+      'Leave-Balance-Template-' + new Date().getTime() + '.xlsx'
+    );
   }
 
   onUpload(event: any) {
