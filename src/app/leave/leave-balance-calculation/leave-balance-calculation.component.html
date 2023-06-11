@@ -9,6 +9,15 @@
                 pagination option. If there are more than 100 records, you must navigate using pagination and "Download Template" & "Upload"
                 as necessary from each page.
             </div>
+            <div class="my-3">
+                <app-icon [name]="'info'"></app-icon> The downloaded template XLSX file can have maximum 100 rows. If there are more than 100 rows system will not be able to update data. In such case you might see error message.
+            </div>
+            <div class="my-3">
+                <app-icon [name]="'info'"></app-icon> Do not modify downloaded template file's column headers name. You are only advised to modify cell values of columns "CL", "SL", "PL", "OL" and "CO". 
+            </div>
+            <div class="my-3">
+                <app-icon [name]="'info'"></app-icon> If you want to edit leave balance of few employees then you are advised to click on <i class="pi pi-cog" aria-hidden="true"></i> "gear" icon  and edit from edit employee page.
+            </div>
         </div>
     </div>
     
