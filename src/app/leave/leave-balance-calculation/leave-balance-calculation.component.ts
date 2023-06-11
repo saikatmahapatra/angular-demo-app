@@ -23,8 +23,8 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   currentPageIndex: number = 0;
   first: number = 0;
   totalRecords: number = 0;
-  itemPerPage: number = 50;
-  itemPerPageDropdown = [50, 100];
+  itemPerPage: number = 100;
+  itemPerPageDropdown = [100];
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;
