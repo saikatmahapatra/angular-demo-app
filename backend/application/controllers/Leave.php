@@ -644,7 +644,7 @@ class Leave extends App_Controller
             //update batch
             $postData = $this->post('leaveBalance');
             $newData = array();
-            if(isset($postData) && sizeof($postData)>0) {
+            if(isset($postData) && sizeof($postData)>0 && sizeof($postData)<=100) {
                 $arrayKeys = array_keys($postData[0]);
                 if(
                     $arrayKeys[0] == 'UID' && $arrayKeys[1] == 'EMPLOYEE_NAME' 
@@ -663,7 +663,7 @@ class Leave extends App_Controller
                     }
                     $affectedRows = $this->leave_model->import_batch($newData);
                     if($affectedRows) {
-                        $this->responseData['message'] = $affectedRows.' Records have been updated successfully.';
+                        $this->responseData['message'] = $affectedRows.' records have been updated successfully.';
                         $this->statusCode = REST_Controller::HTTP_OK;
                     } else {
                         $this->responseData['message'] = 'Error occured while updating data.';
@@ -674,7 +674,7 @@ class Leave extends App_Controller
                     $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
                 }
             } else {
-                $this->responseData['message'] = 'Invalid form data.';
+                $this->responseData['message'] = 'Invalid Data : '.sizeof($postData).' rows were found in the uploaded template which is not allowed.';
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
             
