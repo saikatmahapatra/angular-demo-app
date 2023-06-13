@@ -89,7 +89,7 @@ export class ProjectDashboardComponent implements OnInit {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.projectId);
     const options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getProject, options).subscribe((response: any) => {
+    this.apiSvc.get(AppConfig.apiUrl.getBarChartData, options).subscribe((response: any) => {
       this.renderBarChart();
     });
   }
