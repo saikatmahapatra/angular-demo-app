@@ -26,6 +26,11 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'user/login',
+    pathMatch: 'full',
+    redirectTo: 'auth/login'
+  },
   // {
   //   path: '',
   //   component: DefaultLayoutComponent,
