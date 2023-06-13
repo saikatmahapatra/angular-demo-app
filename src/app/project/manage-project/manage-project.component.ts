@@ -50,17 +50,21 @@ export class ManageProjectComponent implements OnInit {
     this.router.navigate(['/project/edit-project', data.id]);
   }
 
-  deleteItem(data: any) {
-    let queryParams = new HttpParams();
-    if (data?.id) {
-      queryParams = queryParams.append('id', data?.id);
-    }
-    let options = {};
-    options = { params: queryParams };
-    this.apiSvc.delete(AppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
-      this.getProjects();
-    });
+  redirectPage(data: any) {
+    this.router.navigate(['/project/dashboard', data.id]);
   }
+
+  // deleteItem(data: any) {
+  //   let queryParams = new HttpParams();
+  //   if (data?.id) {
+  //     queryParams = queryParams.append('id', data?.id);
+  //   }
+  //   let options = {};
+  //   options = { params: queryParams };
+  //   this.apiSvc.delete(AppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
+  //     this.alertSvc.success(response.message);
+  //     this.getProjects();
+  //   });
+  // }
 
 }

@@ -1,5 +1,8 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/@core/services/api.service';
+import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
   selector: 'app-project-dashboard',
@@ -13,7 +16,8 @@ export class ProjectDashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private apiSvc: ApiService
   ) { }
 
   ngOnInit() {
@@ -39,12 +43,6 @@ export class ProjectDashboardComponent implements OnInit {
           backgroundColor: documentStyle.getPropertyValue('--blue-500'),
           borderColor: documentStyle.getPropertyValue('--blue-500'),
           data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'My Second dataset',
-          backgroundColor: documentStyle.getPropertyValue('--pink-500'),
-          borderColor: documentStyle.getPropertyValue('--pink-500'),
-          data: [28, 48, 40, 19, 86, 27, 90]
         }
       ]
     };
@@ -87,6 +85,12 @@ export class ProjectDashboardComponent implements OnInit {
   }
 
   getStatData() {
-    this.renderBarChart();
+    
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('id', this.projectId);
+    const options = { params: queryParams };
+    this.apiSvc.get(AppConfig.apiUrl.getProject, options).subscribe((response: any) => {
+      this.renderBarChart();
+    });
   }
 }
