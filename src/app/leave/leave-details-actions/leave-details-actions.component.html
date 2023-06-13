@@ -75,6 +75,8 @@
                     [innerHTML]="rowData?.on_apply_pl_bal ? 'PL: ' + rowData?.on_apply_pl_bal : ''"></span>
                 <span class="me-4"
                     [innerHTML]="rowData?.on_apply_sl_bal ? 'SL: ' + rowData?.on_apply_sl_bal : ''"></span>
+                <span class="me-4"
+                    [innerHTML]="rowData?.on_apply_co_bal ? 'CO: ' + rowData?.on_apply_co_bal : ''"></span>
 
             </div>
         </div>
@@ -88,6 +90,8 @@
                     [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
                 <span *ngIf="rowData?.debited_sl" class="me-4"
                     [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
+                <span *ngIf="rowData?.debited_sl" class="me-4"
+                    [innerHTML]="rowData?.debited_co ? 'CO: ' + rowData?.debited_co : ''"></span>
             </div>
         </div>
 
@@ -100,6 +104,8 @@
                     [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
                 <span *ngIf="rowData?.credited_sl" class="me-4"
                     [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
+                <span *ngIf="rowData?.credited_sl" class="me-4"
+                    [innerHTML]="rowData?.credited_co ? 'CO: ' + rowData?.credited_co : ''"></span>
             </div>
         </div>
     </div>
@@ -175,8 +181,8 @@
             <div class="mb-3">
                 <div class="input-group">
                     <input type="text" [(ngModel)]="L1WorkflowComments" class="form-control"
-                        placeholder="comments (if any)" aria-label="Comments"
-                        aria-describedby="erase-comments1" maxlength="40">
+                        placeholder="comments (if any)" aria-label="Comments" aria-describedby="erase-comments1"
+                        maxlength="40">
                     <button (click)="removeComments('L1')" class="input-group-text" id="erase-comments1">
                         <app-icon [name]="'close'"></app-icon>
                     </button>
@@ -206,7 +212,8 @@
             *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.supervisor_approver_id && rowData?.supervisor_approver_id!==rowData?.director_approver_id">
             <button (click)="approveRejectRequest(rowData?.id, 'L1', 'C', rowData?.supervisor_approver_id)"
                 type="submit" class="btn btn-warning me-4" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'"> </app-icon> Cancel</button>
+                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'"> </app-icon>
+                Cancel</button>
         </div>
     </div>
 
@@ -236,8 +243,8 @@
             <div class="mb-3">
                 <div class="input-group">
                     <input type="text" [(ngModel)]="L2WorkflowComments" class="form-control"
-                        placeholder="comments (if any)" aria-label="Comments"
-                        aria-describedby="erase-comments2" maxlength="40">
+                        placeholder="comments (if any)" aria-label="Comments" aria-describedby="erase-comments2"
+                        maxlength="40">
                     <button (click)="removeComments('L2')" class="input-group-text" id="erase-comments2">
                         <app-icon [name]="'close'"></app-icon>
                     </button>

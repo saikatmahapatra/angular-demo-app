@@ -23,6 +23,7 @@ export class ApplyLeaveComponent implements OnInit {
 
   leaveType = [
     { text: 'CL-Casual Leave', val: 'CL' },
+    { text: 'CO-Comp. Off', val: 'CO' },
     { text: 'PL-Privileged Leave', val: 'PL' },
     { text: 'SL-Sick Leave', val: 'SL' },
     //{ text: 'CO-Compensatory Off', val: 'CO' }

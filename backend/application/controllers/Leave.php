@@ -18,9 +18,9 @@ class Leave extends App_Controller
             'CL'=>'Casual Leave',
             'PL'=>'Privileged Leave',
             'SL'=>'Sick Leave',
-            'CO'=>'Compensatory Off',
-            //'OL'=>'Optional Leave',
-            //'SP'=>'Special Leave'
+            'CO'=>'Comp. Off',
+            'OL'=>'Optional Leave',
+            'SP'=>'Special Leave'
         );
         // Leave Terms
         $this->data['leave_term_arr'] = array(
@@ -415,6 +415,7 @@ class Leave extends App_Controller
                 $leave_request_id = date('mdy').$this->common_lib->generate_rand_id(4, FALSE);
 
                 $this->_validateLeaveSlot();
+                $this->_validateCOBalance($this->post('leaveType'), $this->data['leave_balance'][0]['co']);
                 $this->_isLeaveExistsDateRange($fromDate, $toDate, $userId);
 
 				$postdata = array(
@@ -471,6 +472,14 @@ class Leave extends App_Controller
     function _validateLeaveSlot(){
         if(($this->post('leaveSlot') == 'HD1' || $this->post('leaveSlot') == 'HD2') && $this->post('leaveType') != 'CL'){
             $this->responseData['message'] = 'Half Day is applicable for CL only.';
+            $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            $this->response($this->responseData, $this->statusCode);
+        }
+    }
+
+    function _validateCOBalance($leaveType, $balance){
+        if($leaveType == 'CO' && $balance <=0){
+            $this->responseData['message'] = 'You are not allowed to apply a Comp. off as you have insufficient balance.';
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             $this->response($this->responseData, $this->statusCode);
         }
