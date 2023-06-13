@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <div class="row my-2" *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl">
+        <div class="row my-2" *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl || rowData?.debited_co">
             <div class="col-md-3 fw-bold text-right">Used Leave Balance</div>
             <div class="col-md-9 text-danger">
                 <span *ngIf="rowData?.debited_cl" class="me-4"
@@ -90,12 +90,12 @@
                     [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
                 <span *ngIf="rowData?.debited_sl" class="me-4"
                     [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
-                <span *ngIf="rowData?.debited_sl" class="me-4"
+                <span *ngIf="rowData?.debited_co" class="me-4"
                     [innerHTML]="rowData?.debited_co ? 'CO: ' + rowData?.debited_co : ''"></span>
             </div>
         </div>
 
-        <div class="row my-2" *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl">
+        <div class="row my-2" *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl || rowData?.credited_co">
             <div class="col-md-3 fw-bold text-right">Adjusted Leave Balance</div>
             <div class="col-md-9 text-success">
                 <span *ngIf="rowData?.credited_cl" class="me-4"
@@ -104,7 +104,7 @@
                     [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
                 <span *ngIf="rowData?.credited_sl" class="me-4"
                     [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
-                <span *ngIf="rowData?.credited_sl" class="me-4"
+                <span *ngIf="rowData?.credited_co" class="me-4"
                     [innerHTML]="rowData?.credited_co ? 'CO: ' + rowData?.credited_co : ''"></span>
             </div>
         </div>
