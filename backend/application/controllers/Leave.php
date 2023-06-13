@@ -379,6 +379,7 @@ class Leave extends App_Controller
         if(isset($leave_data['debited_co'])){
             $postdata['credited_co'] = $leave_data['debited_co'];
         }
+        //print_r($postdata)
         $where = array('id' => $user_meta_id, 'user_id' => $applicant_user_id);
         $is_update_balance = $this->leave_model->adjust_leave_balance($postdata, $where);
 

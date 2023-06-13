@@ -232,6 +232,10 @@ class Leave_model extends CI_Model {
         if(isset($postdata['credited_ol'])){
             $this->db->set('ol', 'ol+'.$postdata['credited_ol'], FALSE);
         }
+
+        if(isset($postdata['credited_co'])){
+            $this->db->set('co', 'co+'.$postdata['credited_co'], FALSE);
+        }
         
         $this->db->where($where_array);
         $this->db->update('user_meta');
