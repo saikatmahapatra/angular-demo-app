@@ -7,6 +7,7 @@ import { ManageProjectComponent } from './manage-project/manage-project.componen
 import { ManageTaskComponent } from './manage-task/manage-task.component';
 import { ProjectLayoutComponent } from './project-layout.component';
 import { AdminGuard } from '../@core/guards/admin.guard';
+import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'edit-project/:id', component: AddEditProjectComponent },
       { path: 'add-task', component: AddEditTaskComponent },
       { path: 'edit-task/:id', component: AddEditTaskComponent },
-      { path: 'manage-tasks', component: ManageTaskComponent }
+      { path: 'manage-tasks', component: ManageTaskComponent },
+      { path: 'dashboard', component: ProjectDashboardComponent }
     ]
   },
 ];
