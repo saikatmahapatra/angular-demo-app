@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -20,7 +21,8 @@ export class ResetPasswordFormComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private formValidationSvc: FormValidationService,
     private alertSvc: AlertService,
-    private apiSvc: ApiService
+    private apiSvc: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,8 @@ export class ResetPasswordFormComponent implements OnInit {
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.success(response.message, true);
-            this.resetPasswordForm.reset();
+            //this.resetPasswordForm.reset();
+            this.router.navigate(['/auth/login']);
           }
         },
         error: (err: HttpErrorResponse) => {
