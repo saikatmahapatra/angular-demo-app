@@ -311,6 +311,7 @@ class Project_model extends CI_Model {
         $this->db->select('
         t1.id,
         t1.timesheet_date,
+        t1.project_id,
         t1.timesheet_hours,
         t1.timesheet_description,
         t1.timesheet_created_on,
