@@ -69,37 +69,41 @@ class Svc extends CI_Controller {
         return $num.'th';
     }
 
-    function updatePLBalance(){
-        /**
-         * Run per month start of day
-         * Command in cPanel
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updatePLBalance
-         */
-        $this->load->model('leave_model');
-        $result_array = $this->leave_model->update_pl_balance();
-        //echo $result_array;
-    }
+    // function updatePLBalance(){
+    //     /**
+    //      * Run per month start of day
+    //      * Command in cPanel
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updatePLBalance
+    //      */
+    //     $this->load->model('leave_model');
+    //     $result_array = $this->leave_model->update_pl_balance();
+    //     //echo $result_array;
+    // }
 
-    function updateCLBalance(){
-        /**
-         * Run 1st Jan every year
-         * Command in cPanel
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateCLBalance
-         */
-        $this->load->model('leave_model');
-        $result_array = $this->leave_model->update_cl_balance();
-        //echo $result_array;
-    }
+    // function updateCLBalance(){
+    //     /**
+    //      * Run 1st Jan every year
+    //      * Command in cPanel
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateCLBalance
+    //      */
+    //     $this->load->model('leave_model');
+    //     $result_array = $this->leave_model->update_cl_balance();
+    //     //echo $result_array;
+    // }
 
-    function updateOLBalance(){
-        /**
-         * Run 1st Jan every year
-         * Command in cPanel
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateOLBalance
-         */
-        $this->load->model('leave_model');
-        $result_array = $this->leave_model->update_ol_balance();
-        //echo $result_array;
+    // function updateOLBalance(){
+    //     /**
+    //      * Run 1st Jan every year
+    //      * Command in cPanel
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateOLBalance
+    //      */
+    //     $this->load->model('leave_model');
+    //     $result_array = $this->leave_model->update_ol_balance();
+    //     //echo $result_array;
+    // }
+
+    function checkUser() {
+        echo exec('whoami');
     }
 }
 
