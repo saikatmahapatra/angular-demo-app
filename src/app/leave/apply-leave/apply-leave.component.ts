@@ -25,8 +25,7 @@ export class ApplyLeaveComponent implements OnInit {
     { text: 'CL-Casual Leave', val: 'CL' },
     { text: 'CO-Comp. Off', val: 'CO' },
     { text: 'PL-Privileged Leave', val: 'PL' },
-    { text: 'SL-Sick Leave', val: 'SL' },
-    //{ text: 'CO-Compensatory Off', val: 'CO' }
+    { text: 'SL-Sick Leave', val: 'SL' }
   ];
 
   leaveSlot = [
