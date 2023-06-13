@@ -128,7 +128,8 @@ export class EditUserComponent {
     cl: [null, [Validators.required, Validators.max(30)]],
     sl: [null, [Validators.required, Validators.max(20)]],
     pl: [null, [Validators.required, Validators.max(100)]],
-    ol: [null, [Validators.required, Validators.max(4)]]
+    ol: [null, [Validators.max(4)]],
+    co: [null, [Validators.max(20)]]
   });
 
   constructor(
@@ -228,7 +229,8 @@ export class EditUserComponent {
       cl: this.leaveBalance?.cl,
       pl: this.leaveBalance?.pl,
       sl: this.leaveBalance?.sl,
-      ol: this.leaveBalance?.ol
+      ol: this.leaveBalance?.ol,
+      co: this.leaveBalance?.co
     });
   }
 

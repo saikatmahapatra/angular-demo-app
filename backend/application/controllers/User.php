@@ -577,6 +577,7 @@ class User extends App_Controller
                 'sl' => $this->post('sl'),
                 'pl' => $this->post('pl'),
                 'ol' => $this->post('ol'),
+                'co' => $this->post('co'),
                 'leave_balance_updated_by' => $this->getUserId(),
                 'leave_balance_updated_on' => date('Y-m-d H:i:s')
             );

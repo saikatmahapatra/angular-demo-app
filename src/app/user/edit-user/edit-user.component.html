@@ -198,9 +198,17 @@
                     <app-validation-error [control]="leaveBalanceForm.controls['pl']"></app-validation-error>
                 </div>
                 <div class="col-md-6">
-                    <label class="required" for="ol">Optional Leave</label>
+                    <label class="" for="ol">Optional Leave</label>
                     <input type="number" class="form-control" id="ol" formControlName="ol">
                     <app-validation-error [control]="leaveBalanceForm.controls['ol']"></app-validation-error>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="" for="co">Comp. Off</label>
+                    <input type="number" class="form-control" id="co" formControlName="co">
+                    <app-validation-error [control]="leaveBalanceForm.controls['co']"></app-validation-error>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="loading">
