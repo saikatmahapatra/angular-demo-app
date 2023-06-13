@@ -126,7 +126,7 @@ class Auth extends App_Controller
         if ($validate == TRUE) {
             $isValidPasswordKey = $this->user_model->check_user_password_reset_key($email, $otp);
             if($isValidPasswordKey) {
-                $postdata = array('user_password' => $password, 'user_reset_password_key' => NULL);
+                $postdata = array('user_password' => $password, 'user_reset_password_key' => NULL, 'password_updated_on' => date('Y-m-d H:i:s'));
                 $where = array('user_email' => $email, 'user_reset_password_key' => $otp);
                 $update_password = $this->user_model->update($postdata, $where);
                 if ($update_password) {

@@ -269,7 +269,7 @@ class User extends App_Controller
         if ($validate == TRUE) {
             if ($action === 'changePassword' && $currentPassword && $newPassword) {
                 if ($this->isValidCurrentPassword($currentPassword)) {
-                    $postdata = array('user_password' => md5($newPassword));
+                    $postdata = array('user_password' => md5($newPassword), 'password_updated_on' => date('Y-m-d H:i:s'));
                     $where = array('id' => $userId);
                     $res = $this->user_model->update($postdata, $where);
                     $this->responseData['status'] = 'success';
