@@ -1,6 +1,7 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -12,7 +13,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 export class ProjectDashboardComponent implements OnInit {
   data: any;
   options: any;
+  projectInfoData: any;
   projectId!: number | any;
+  chartDataLabel: any = [];
+  chartDataValue: any = [];
 
   constructor(
     private router: Router,
@@ -36,13 +40,13 @@ export class ProjectDashboardComponent implements OnInit {
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
     this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: this.chartDataLabel,
       datasets: [
         {
-          label: 'My First dataset',
+          label: 'Logged Hours',
           backgroundColor: documentStyle.getPropertyValue('--blue-500'),
           borderColor: documentStyle.getPropertyValue('--blue-500'),
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: this.chartDataValue
         }
       ]
     };
@@ -85,12 +89,29 @@ export class ProjectDashboardComponent implements OnInit {
   }
 
   getStatData() {
-    
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.projectId);
     const options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getBarChartData, options).subscribe((response: any) => {
-      this.renderBarChart();
+
+    let projectDetailsAPI = this.apiSvc.get(AppConfig.apiUrl.getProject, options);
+    let analyticsDataAPI = this.apiSvc.get(AppConfig.apiUrl.getBarChartData, options);
+
+    forkJoin([projectDetailsAPI, analyticsDataAPI]).subscribe({
+      next: (response: any) => {
+        // project info
+        this.projectInfoData = response[0]?.data?.data_rows ? response[0]?.data?.data_rows[0] : {};
+        // worklog info
+        if (response[1]?.data.length > 0) {
+          response[1]?.data.forEach((element: any) => {
+            this.chartDataLabel.push(element.user_full_name);
+            this.chartDataValue.push(element.logged_hours);
+          });
+          this.renderBarChart();
+        }
+
+      },
+      error: (response: HttpErrorResponse) => {
+      }
     });
   }
 }
