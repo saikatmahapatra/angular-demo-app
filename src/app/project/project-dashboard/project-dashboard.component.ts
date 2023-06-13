@@ -44,8 +44,8 @@ export class ProjectDashboardComponent implements OnInit {
       datasets: [
         {
           label: 'Logged Hours',
-          backgroundColor: documentStyle.getPropertyValue('--blue-500'),
-          borderColor: documentStyle.getPropertyValue('--blue-500'),
+          backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+          borderColor: documentStyle.getPropertyValue('--pink-500'),
           data: this.chartDataValue
         }
       ]
