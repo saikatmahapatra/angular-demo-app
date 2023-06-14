@@ -104,7 +104,7 @@ export const AppConfig = {
         addProject: 'project/createProject',
         updateProject: 'project/updateProject',
         deleteProject: 'project/deleteProject',
-        getBarChartData: 'timesheet/getProjectTimesheetChart',
+        getChartData: 'timesheet/getProjectTimesheetChart',
 
         // Timesheet Project Tasks
         taskFormData: 'task/formData',

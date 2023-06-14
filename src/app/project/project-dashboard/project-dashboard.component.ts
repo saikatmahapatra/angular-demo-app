@@ -15,8 +15,14 @@ export class ProjectDashboardComponent implements OnInit {
   options: any;
   projectInfoData: any;
   projectId!: number | any;
-  chartDataLabel: any = [];
-  chartDataValue: any = [];
+  chartDataLabel: any = ['A', 'B'];
+  chartDataValue: any = [10, 20];
+
+  // donought chart
+  doughnutChartData: any;
+  doughnutChartOptions: any;
+  doughnutChartLabel: any = ['A', 'B', 'C'];
+  doughnutChartValue: any = [300, 50, 100];
 
   constructor(
     private router: Router,
@@ -88,14 +94,39 @@ export class ProjectDashboardComponent implements OnInit {
     };
   }
 
+  renderDoughnutChart() {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    this.doughnutChartData = {
+      labels: this.doughnutChartLabel,
+      datasets: [
+        {
+          data: this.doughnutChartValue,
+          backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+          hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+        }
+      ]
+    };
+    this.doughnutChartOptions = {
+      cutout: '60%',
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor
+          }
+        }
+      }
+    };
+  }
+
   getStatData() {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.projectId);
     const options = { params: queryParams };
 
     let projectDetailsAPI = this.apiSvc.get(AppConfig.apiUrl.getProject, options);
-    let analyticsDataAPI = this.apiSvc.get(AppConfig.apiUrl.getBarChartData, options);
-
+    let analyticsDataAPI = this.apiSvc.get(AppConfig.apiUrl.getChartData, options);
     forkJoin([projectDetailsAPI, analyticsDataAPI]).subscribe({
       next: (response: any) => {
         // project info
@@ -107,6 +138,7 @@ export class ProjectDashboardComponent implements OnInit {
             this.chartDataValue.push(element.logged_hours);
           });
           this.renderBarChart();
+          this.renderDoughnutChart();
         }
 
       },
