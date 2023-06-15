@@ -24,7 +24,7 @@
                     'dd/MM/yyyy'}} - {{projectInfoData?.project_end_date | date: 'dd/MM/yyyy'}}
                 </div>
                 <div>
-                    <strong>Total Workkfore:</strong> {{totalWorkforce}}
+                    <strong>Total Resources:</strong> {{totalWorkforce}}
                 </div>
                 <div>
                     <strong>Total Hours Logged:</strong> {{totalBurnedHours}}
@@ -35,24 +35,22 @@
 
     <div class="card my-3">
         <div class="card-header">
-            <h5 class="">Work Log Chart</h5>
+            <h5 class="">Tasks Breakdown Chart</h5>
+        </div>
+        <div class="card-body flex justify-content-center">
+            <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
+                *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
+            <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
+        </div>
+    </div>
+
+    <div class="card my-3">
+        <div class="card-header">
+            <h5 class="">Resource Utilization Chart</h5>
         </div>
         <div class="card-body">
             <p-chart type="bar" [data]="data" [options]="options" *ngIf="chartDataValue.length>0"></p-chart>
             <div *ngIf="chartDataValue.length === 0 ">No data found to display a chart.</div>
         </div>
     </div>
-
-    <div class="card my-3">
-        <div class="card-header">
-            <h5 class="">Tasks Breakdown Chart</h5>
-        </div>
-        <div class="card-body flex justify-content-center">
-            <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions" *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
-            <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
-        </div>
-    </div>
-
 </div>
-
-
