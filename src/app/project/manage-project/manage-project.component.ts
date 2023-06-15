@@ -18,7 +18,7 @@ export class ManageProjectComponent implements OnInit {
   currentPageIndex: number = 0;
   first: number = 0;
   totalRecords: number = 0;
-  itemPerPage: number = 10;
+  itemPerPage: number = 50;
   itemPerPageDropdown = [10, 20, 30, 50];
   paginate(event: any) {
     this.itemPerPage = event.rows;
