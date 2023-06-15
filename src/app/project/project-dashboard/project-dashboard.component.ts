@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ceil } from 'lodash';
 import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
@@ -15,8 +16,10 @@ export class ProjectDashboardComponent implements OnInit {
   options: any;
   projectInfoData: any;
   projectId!: number | any;
-  chartDataLabel: any = ['A', 'B'];
-  chartDataValue: any = [10, 20];
+  chartDataLabel: any = [];
+  chartDataValue: any = [];
+  totalWorkforce = 0;
+  totalBurnedHours = 0;
 
   // donought chart
   doughnutChartData: any;
@@ -133,10 +136,16 @@ export class ProjectDashboardComponent implements OnInit {
         this.projectInfoData = response[0]?.data?.data_rows ? response[0]?.data?.data_rows[0] : {};
         // worklog info
         if (response[1]?.data.length > 0) {
+          this.totalWorkforce = response[1]?.data.length || 0;
           response[1]?.data.forEach((element: any) => {
             this.chartDataLabel.push(element.user_full_name);
             this.chartDataValue.push(element.logged_hours);
           });
+
+          this.totalBurnedHours = this.chartDataValue.reduce((accumulator: number, currentValue: number) => {
+            return (accumulator + Number(currentValue))
+          },0);
+          this.totalBurnedHours = ceil(this.totalBurnedHours);
           this.renderBarChart();
           this.renderDoughnutChart();
         }
