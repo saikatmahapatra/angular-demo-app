@@ -282,3 +282,6 @@ LEFT JOIN users
 ON users.id = user_meta.id 
 WHERE users.user_status = 'Y' 
 AND user_type= 'U';
+
+
+SELECT SUM(timesheet_hours), task_id_1, timesheet_created_by  FROM `timesheet` WHERE `project_id` = '12' GROUP by task_id_1, timesheet_created_by;
