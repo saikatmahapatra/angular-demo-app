@@ -220,10 +220,13 @@ class Timesheet extends App_Controller
     {
         $id = $this->get('id') ? $this->get('id') : null;
         $resultArray = $this->project_model->getProjectHourReport($id);
-        if (isset($resultArray)) {
+        $resultArrayTasks = $this->project_model->getProjectTaskHourReport($id);
+        if (isset($resultArray) && isset($resultArrayTasks)) {
             $this->responseData['data'] = $resultArray;
+            $this->responseData['taskData'] = $resultArrayTasks;
             $this->statusCode = REST_Controller::HTTP_OK;
-        } else {
+        }
+        else {
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
         }
         $this->response($this->responseData, $this->statusCode);
