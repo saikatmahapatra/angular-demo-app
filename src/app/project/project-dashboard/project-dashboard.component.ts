@@ -18,14 +18,14 @@ export class ProjectDashboardComponent implements OnInit {
   projectId!: number | any;
   chartDataLabel: any = [];
   chartDataValue: any = [];
-  totalWorkforce = 0;
-  totalBurnedHours = 0;
+  totalWorkforce: number = 0;
+  totalBurnedHours: number = 0;
 
   // donought chart
   doughnutChartData: any;
   doughnutChartOptions: any;
-  doughnutChartLabel: any = ['A', 'B', 'C'];
-  doughnutChartValue: any = [300, 50, 100];
+  doughnutChartLabel: any = [];
+  doughnutChartValue: any = [];
 
   constructor(
     private router: Router,
@@ -105,8 +105,8 @@ export class ProjectDashboardComponent implements OnInit {
       datasets: [
         {
           data: this.doughnutChartValue,
-          backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-          hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+          // backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+          // hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
         }
       ]
     };
@@ -142,11 +142,18 @@ export class ProjectDashboardComponent implements OnInit {
             this.chartDataValue.push(element.logged_hours);
           });
 
-          this.totalBurnedHours = this.chartDataValue.reduce((accumulator: number, currentValue: number) => {
+          let totalBurnedHours = this.chartDataValue.reduce((accumulator: number, currentValue: number) => {
             return (accumulator + Number(currentValue))
           },0);
-          this.totalBurnedHours = ceil(this.totalBurnedHours);
+          this.totalBurnedHours = totalBurnedHours.toFixed(2);
           this.renderBarChart();
+        }
+
+        if (response[1]?.taskData.length > 0) {
+          response[1]?.taskData.forEach((element: any) => {
+            this.doughnutChartLabel.push(element.task_id_1+'-'+element.task_name+' ('+element.sum_hours+')');
+            this.doughnutChartValue.push(element.sum_hours);
+          });
           this.renderDoughnutChart();
         }
 
