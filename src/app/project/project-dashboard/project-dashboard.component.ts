@@ -61,7 +61,7 @@ export class ProjectDashboardComponent implements OnInit {
     };
 
     this.options = {
-      indexAxis: 'y',
+      indexAxis: 'x',
       maintainAspectRatio: false,
       aspectRatio: 0.8,
       plugins: {
@@ -135,9 +135,13 @@ export class ProjectDashboardComponent implements OnInit {
         // project info
         this.projectInfoData = response[0]?.data?.data_rows ? response[0]?.data?.data_rows[0] : {};
         // worklog info
+        let set : any= [];
         if (response[1]?.data.length > 0) {
           this.totalWorkforce = response[1]?.data.length || 0;
           response[1]?.data.forEach((element: any) => {
+            if(!set.includes(element.task_id_1)) {
+              set.push(element.task_name)
+            }
             this.chartDataLabel.push(element.user_full_name);
             this.chartDataValue.push(element.logged_hours);
           });
