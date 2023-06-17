@@ -20,6 +20,7 @@ import { ViewEmployeesComponent } from './view-employees/view-employees.componen
 import { AdminGuard } from '../@core/guards/admin.guard';
 import { ViewMyProfileComponent } from './view-my-profile/view-my-profile.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { DataChartComponent } from './data-chart/data-chart.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,7 @@ const routes: Routes = [
       { path: 'change-approvers', component: EditApproversComponent },
       { path: 'view-employees', component: ViewEmployeesComponent },
       { path: 'view-reportees', component: PeopleILeadComponent },
+      { path: 'data-analysis-chart/:id', component: DataChartComponent }
     ]
   },
 

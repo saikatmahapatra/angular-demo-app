@@ -24,6 +24,7 @@ import { ViewEmployeesComponent } from './view-employees/view-employees.componen
 import { PrimeNgModule } from '../prime-ng.module';
 import { ViewMyProfileComponent } from './view-my-profile/view-my-profile.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { DataChartComponent } from './data-chart/data-chart.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     EditApproversComponent,
     PeopleILeadComponent,
     ViewEmployeesComponent,
-    EditUserComponent
+    EditUserComponent,
+    DataChartComponent
   ]
 })
 export class UserModule { }

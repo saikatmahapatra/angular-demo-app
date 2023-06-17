@@ -1,8 +1,7 @@
 <h1>Manage Employees</h1>
 <div class="row my-4">
     <div class="col-md-12">
-        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true"
-            styleClass="p-datatable-sm table-font-sm ">
+        <p-table #dt [value]="userList" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     List of Employees
@@ -34,7 +33,7 @@
                             <p-sortIcon field="user_uid"></p-sortIcon>
                         </div>
                     </th> -->
-                    <th style="width: 20rem" pSortableColumn="user_email">
+                    <th style="width: 15rem" pSortableColumn="user_email">
                         <div class="flex justify-content-between align-items-center">
                             Email
                             <p-sortIcon field="user_email"></p-sortIcon>
@@ -70,7 +69,7 @@
                             <p-sortIcon field="user_status"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 15rem">Actions</th>
+                    <th style="width: 20rem">Actions</th>
                 </tr>
             </ng-template>
 
@@ -91,8 +90,9 @@
                     </td> -->
                     <td>
                         <span class="p-column-title">Email</span>
-                        <span [pTooltip]="rowData?.user_email">{{ (rowData?.user_email | slice : 0: 20) + '...' }}</span>
-                        
+                        <span [pTooltip]="rowData?.user_email">{{ (rowData?.user_email | slice : 0: 20) + '...'
+                            }}</span>
+
                     </td>
                     <td>
                         <span class="p-column-title">Phone</span>
@@ -127,6 +127,9 @@
                         <button pButton pRipple type="button" icon="pi pi-user"
                             class="p-button-rounded p-button-text p-button-info"
                             (click)="redirectToProfile(rowData?.id)"></button>
+                        <!-- <button pButton pRipple type="button" icon="pi pi-chart-line"
+                            class="p-button-rounded p-button-text p-button-success"
+                            (click)="redirectToDataChart(rowData?.id)"></button> -->
                     </td>
                 </tr>
             </ng-template>
@@ -171,12 +174,13 @@
                                     <td class="fw-bold">Gender</td>
                                     <td [innerHTML]="rowData?.user_gender === 'M' ? 'Male' : 'Female'"></td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td class="fw-bold">Role Group</td>
                                     <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                     <td class="fw-bold">User Type</td>
-                                    <td [innerHTML]="rowData?.user_type === 'U' ? 'Registered User' : 'System User' || '-'">
+                                    <td
+                                        [innerHTML]="rowData?.user_type === 'U' ? 'Registered User' : 'System User' || '-'">
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,8 +191,7 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Created On</td>
-                                    <td
-                                        [innerHTML]="rowData?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a' || ''">
+                                    <td [innerHTML]="rowData?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a' || ''">
                                     </td>
                                     <td class="fw-bold">Last Login</td>
                                     <td
