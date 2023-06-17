@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 
@@ -27,7 +28,8 @@ export class DataChartComponent implements OnInit {
     private apiSvc: ApiService, 
     private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private validator: FormValidationService
     ) { }
 
   ngOnInit(): void {
@@ -35,23 +37,24 @@ export class DataChartComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.myForm.valid) {
+      this.getChartData();
+    }
+    else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.myForm);
+    }
+  }
+
+  getChartData() {
     this.submitted = true;
     this.loading = true;
-    console.log(this.myForm.value);
-    // if (this.approvers.length > 0 && this.myForm.valid && this.myForm.get('action')?.value === 'applyLeave') {
-    //   this.apiSvc.post(AppConfig.apiUrl.applyLeave, this.myForm.value).subscribe({
-    //     next: (response: any) => {
-    //       this.alertSvc.success(response.message, true);
-    //       this.resetFormValue();
-    //       this.router.navigate(['/leave/history']);
-    //     },
-    //     error: () => { this.loading = false; },
-    //     complete: () => { this.loading = false; }
-    //   });
-    // }
-    // else {
-    //   this.loading = false;
-    //   this.validator.validateAllFormFields(this.myForm);
-    // }
+    this.apiSvc.get(AppConfig.apiUrl.userDataChart, this.myForm.value).subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: () => { this.loading = false; },
+      complete: () => { this.loading = false; }
+    });
   }
 }

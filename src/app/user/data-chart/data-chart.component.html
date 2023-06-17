@@ -1,6 +1,6 @@
 <h1>Data Chart</h1>
 
-<form class="row row-cols-lg-auto g-3 align-items-center" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="col-12">
         <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
         <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" selectionMode="range" [readonlyInput]="true"

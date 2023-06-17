@@ -594,4 +594,19 @@ class User extends App_Controller
         }
         $this->response($this->responseData, $this->statusCode);
     }
+
+    function getUserDataChart_get()
+    {
+        $this->isAuthorized();
+        $id = $this->get('id') ? $this->get('id') : $this->getUserId();
+        $resultArray = $this->user_model->getUserDataChart($id);
+        if (isset($resultArray)) {
+            $this->responseData['data'] = $resultArray;
+            $this->statusCode = REST_Controller::HTTP_OK;
+        }
+        else {
+            $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        }
+        $this->response($this->responseData, $this->statusCode);
+    }
 }
