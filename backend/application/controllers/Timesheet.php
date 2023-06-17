@@ -58,8 +58,7 @@ class Timesheet extends App_Controller
                 $postdata[$key] = array(
                     'timesheet_date' => $this->common_lib->convert_to_mysql($date),
                     'project_id' => $this->post('project'),
-                    'task_id_1' => $this->post('task'),
-                    //'task_id_2' => $this->post('task_id_2'),
+                    'task_id' => $this->post('task'),
                     'timesheet_hours' => $this->post('hours'),
                     'timesheet_description' => $descr,
                     'timesheet_created_by' => $this->getUserId(),
@@ -90,7 +89,7 @@ class Timesheet extends App_Controller
             if($isEligible) {
                 $data = array(
                     'project_id' => $this->put('project'),
-                    'task_id_1' => $this->put('task'),
+                    'task_id' => $this->put('task'),
                     'timesheet_hours' => $this->put('hours'),
                     'timesheet_description' => $descr,
                     'timesheet_updated_by' => $this->getUserId(),

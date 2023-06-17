@@ -37,7 +37,7 @@ export class TimesheetReportComponent implements OnInit {
   first: number = 0;
   totalRecords: number = 0;
   itemPerPage: number = 100;
-  itemPerPageDropdown = [50, 100, 250, 500, 1000, 1500, 2000];
+  itemPerPageDropdown = [10, 20, 30, 50, 100, 250, 500, 1000, 1500, 2000];
   paginate(event: any) {
     this.itemPerPage = event.rows;
     this.currentPageIndex = event.page;

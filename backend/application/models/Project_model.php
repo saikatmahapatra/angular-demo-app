@@ -170,7 +170,7 @@ class Project_model extends CI_Model {
 		t3.task_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
-		$this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');        
+		$this->db->join('project_tasks as t3', 't3.id = t1.task_id', 'left');        
         if ($id) {
             $this->db->where('t1.id', $id);
         }
@@ -327,7 +327,7 @@ class Project_model extends CI_Model {
         t5.user_full_name as timesheet_reviewed_by_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
-		$this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');        
+		$this->db->join('project_tasks as t3', 't3.id = t1.task_id', 'left');        
 		$this->db->join('users as t4', 't4.id = t1.timesheet_created_by', 'left');
         $this->db->join('users as t5', 't5.id = t1.timesheet_reviewed_by', 'left');        
         if ($id) {
@@ -386,11 +386,11 @@ class Project_model extends CI_Model {
 
 
         // data set new
-        // $this->db->select('t1.timesheet_created_by, SUM(t1.timesheet_hours) as logged_hours, t2.user_full_name, t1.task_id_1, t3.task_name');
+        // $this->db->select('t1.timesheet_created_by, SUM(t1.timesheet_hours) as logged_hours, t2.user_full_name, t1.task_id, t3.task_name');
         // $this->db->join('users as t2', 't2.id = t1.timesheet_created_by', 'left');
-        // $this->db->join('project_tasks as t3', 't3.id = t1.task_id_1', 'left');
+        // $this->db->join('project_tasks as t3', 't3.id = t1.task_id', 'left');
 		// $this->db->where('t1.project_id', $project_id);
-		// $this->db->group_by('t1.task_id_1, t1.timesheet_created_by');
+		// $this->db->group_by('t1.task_id, t1.timesheet_created_by');
         // $query = $this->db->get('timesheet as t1');
 
         $result = $query->result_array();
@@ -400,10 +400,10 @@ class Project_model extends CI_Model {
 
     function getProjectTaskHourReport($project_id) {
         $result = array();
-        $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.task_id_1, t2.task_name');
-        $this->db->join('project_tasks as t2', 't2.id = t1.task_id_1', 'left');
+        $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.task_id, t2.task_name');
+        $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
 		$this->db->where('t1.project_id', $project_id);
-		$this->db->group_by('t1.task_id_1');
+		$this->db->group_by('t1.task_id');
         $query = $this->db->get('timesheet as t1');
         $result = $query->result_array();
         //print_r($this->db->last_query()); die();
