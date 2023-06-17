@@ -84,10 +84,11 @@ export class EditTimesheetComponent implements OnInit {
       date: data?.timesheet_date,
       action: 'edit',
       project: data?.project_id,
-      task: data?.task_id_1,
+      task: data?.task_id,
       hours: data?.timesheet_hours,
       description: data?.timesheet_description
     });
+    this.taskDescr = data?.timesheet_description || '';
   }
 
   onSubmit() {

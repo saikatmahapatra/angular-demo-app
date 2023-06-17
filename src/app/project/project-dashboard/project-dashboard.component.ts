@@ -139,7 +139,7 @@ export class ProjectDashboardComponent implements OnInit {
         if (response[1]?.data.length > 0) {
           this.totalWorkforce = response[1]?.data.length || 0;
           response[1]?.data.forEach((element: any) => {
-            if(!set.includes(element.task_id_1)) {
+            if(!set.includes(element.task_id)) {
               set.push(element.task_name)
             }
             this.chartDataLabel.push(element.user_full_name+' ID'+element?.timesheet_created_by);
@@ -155,7 +155,7 @@ export class ProjectDashboardComponent implements OnInit {
 
         if (response[1]?.taskData.length > 0) {
           response[1]?.taskData.forEach((element: any) => {
-            this.doughnutChartLabel.push(element.task_name+' ID'+element.task_id_1+' '+ '('+element.sum_hours+' hrs)');
+            this.doughnutChartLabel.push(element.task_name+' ID'+element.task_id+' '+ '('+element.sum_hours+' hrs)');
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();

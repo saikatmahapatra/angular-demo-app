@@ -31,7 +31,7 @@ export class AddEditTaskComponent implements OnInit {
     id: [null],
     action: ['add'],
     taskName: ['', [Validators.required, this.validator.notEmpty]],
-    parentTaskId: [''],
+    //parentTaskId: [''],
     status: ['Y', [Validators.required]]
   });
 
@@ -119,7 +119,7 @@ export class AddEditTaskComponent implements OnInit {
       id: data?.id,
       action: 'edit',
       taskName: data?.task_name,
-      parentTaskId: data?.task_parent_id,
+      //parentTaskId: data?.task_parent_id,
       status: data?.task_status
     });
   }

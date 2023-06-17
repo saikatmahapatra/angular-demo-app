@@ -8,8 +8,8 @@
             <input type="hidden" formControlName="id">
             <input type="hidden" formControlName="action">
             <div class="mb-3">
-                <label class="required" for="projectNumber">Project Number/ID</label>
-                <input type="text" class="form-control" id="projectNumber" maxlength="16" formControlName="projectNumber">
+                <label class="required" for="projectNumber">Project No/ID</label>
+                <input type="number" class="form-control" id="projectNumber" maxlength="16" formControlName="projectNumber">
                 <app-validation-error [control]="myForm.controls['projectNumber']"></app-validation-error>
             </div>
             <div class="mb-3">

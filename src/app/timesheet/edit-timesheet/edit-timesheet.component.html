@@ -42,7 +42,7 @@
                         <label class="" for="description">Task Description</label>
                         <textarea class="form-control" id="description" formControlName="description" maxlength="150"
                         placeholder="Briefly describe in 150 characters (if necessary)" [(ngModel)]="taskDescr"></textarea>
-                        <div class="small text-muted">{{(150-taskDescr.length)}} characters left</div>
+                        <div class="small text-muted">{{taskDescr ? (150-taskDescr.length) : '150'}} characters left</div>
                         <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
                     </div>
 

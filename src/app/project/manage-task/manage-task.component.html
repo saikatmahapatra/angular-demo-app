@@ -23,12 +23,12 @@
                             <p-sortIcon field="task_name"></p-sortIcon>
                         </div>
                     </th>
-                    <th style="width: 20rem" pSortableColumn="level">
+                    <!-- <th style="width: 20rem" pSortableColumn="level">
                         <div class="flex justify-content-between align-items-center">
                             Type
                             <p-sortIcon field="level"></p-sortIcon>
                         </div>
-                    </th>
+                    </th> -->
                     <th style="width: 8rem" pSortableColumn="task_status">
                         <div class="flex justify-content-between align-items-center">
                             Status
@@ -46,11 +46,11 @@
                         <span *ngIf="rowData?.level === '2'">{{rowData?.subtask_parent_name}} >
                         </span>{{rowData?.task_name}}
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="p-column-title">Type</span>
                         <span *ngIf="rowData?.level === '1' ">Task</span>
                         <span *ngIf="rowData?.level === '2' ">Subtask</span>
-                    </td>
+                    </td> -->
                    
                     <td>
                         <span class="p-column-title">Status</span>
@@ -72,7 +72,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="6">No records found.</td>
+                    <td colspan="3">No records found.</td>
                 </tr>
             </ng-template>
         </p-table>
