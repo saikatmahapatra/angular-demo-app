@@ -114,7 +114,7 @@
       <h6>{{userInfo?.designation_name}}</h6>
       <div [innerHTML]="orgName"></div>
       <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
-         userInfo.user_dor : 'Present'}}
+         (userInfo.user_dor| date: 'dd/MM/yyyy') : 'Present'}}
       </div>
    </div>
    <div class="my-3" *ngFor="let exp of workExp">
