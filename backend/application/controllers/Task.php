@@ -20,7 +20,7 @@ class Task extends App_Controller
 
     function formData_get()
     {
-        $this->responseData['data']['taskDropdown'] = $this->project_model->get_task_nested_dropdown(1);
+        $this->responseData['data']['taskDropdown'] = $this->project_model->get_task_dropdown();
         $this->statusCode = REST_Controller::HTTP_OK;
         $this->response($this->responseData, $this->statusCode);
     }
@@ -29,18 +29,7 @@ class Task extends App_Controller
     {
         $formAction = $this->post('action');
         if ($formAction === 'add' && $this->_taskExists($this->post('taskName')) === true) {
-            $taskParentIdDd = $this->input->post('parentTaskId');
-            $level = 1;
-            $levelData = array();
-            if ($taskParentIdDd) {
-                $levelData = $this->project_model->get_task_level($taskParentIdDd);
-            }
-            if (isset($levelData) && sizeof($levelData) > 0) {
-                $level = $levelData[0]['level'] + 1;
-            }
             $postdata = array(
-                'task_parent_id' => $taskParentIdDd,
-                'level' => $level,
                 'task_name' => $this->post('taskName'),
                 'task_status' => 'Y'
             );
@@ -88,11 +77,7 @@ class Task extends App_Controller
         $id = $this->put('id') ? $this->put('id') : null;
         $formAction = $this->put('action');
         if ($id && $formAction == 'edit' && $this->_taskExists($this->put('taskName'), $id) === true) {
-            $parentTaskId = $this->put('parentTaskId');
-            $level = $parentTaskId ? 2 : 1;
             $postdata = array(
-                'task_parent_id' => $parentTaskId,
-                'level' => $level,
                 'task_name' => $this->put('taskName'),
                 'task_status' => $this->put('status')
             );

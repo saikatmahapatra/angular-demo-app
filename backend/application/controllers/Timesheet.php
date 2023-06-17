@@ -18,7 +18,7 @@ class Timesheet extends App_Controller
     function formData_get()
     {
         $this->responseData['data']['projects'] = $this->project_model->get_project_dropdown();
-        $this->responseData['data']['tasks'] = $this->project_model->get_task_dropdown('1');
+        $this->responseData['data']['tasks'] = $this->project_model->get_task_dropdown();
         $this->responseData['data']['holidays'] = $this->project_model->get_holiday_dates('C');
         $this->responseData['data']['optionalHolidays'] = $this->project_model->get_holiday_dates('O');
         $this->responseData['data']['settings'] = $this->settings_model->get_option(array('timesheetMinDays', 'timesheetMaxDays'));

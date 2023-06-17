@@ -71,8 +71,7 @@ class Project_model extends CI_Model {
     
     function get_task_rows($id = NULL, $paginate = false, $perPage = NULL, $offset = NULL) {
         $result = array();
-        $this->db->select('t1.*, 
-            tbl_subtask.level as subtask_level, 
+        $this->db->select('t1.*,  
             tbl_subtask.id as subtask_id, 
             tbl_subtask.task_name as subtask_parent_name,
             tbl_subtask.task_parent_id as subtask_parent_id,
@@ -92,13 +91,10 @@ class Project_model extends CI_Model {
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
-    function get_task_nested_dropdown($level=NULL) {
+    function get_task_dropdown($level=NULL) {
         $result = array();
-        $this->db->select('id,task_name, task_parent_id, level, task_code');
+        $this->db->select('id,task_name, task_parent_id');
         $this->db->where('task_status','Y');
-        if(isset($level)){
-            $this->db->where('level',$level);
-        }	
         $this->db->order_by('task_name');
         $query = $this->db->get('project_tasks');
         if ($query->num_rows()) {
@@ -114,7 +110,7 @@ class Project_model extends CI_Model {
 
     function get_task_dd($level = NULL) {
         $result = array();
-        $this->db->select('id,task_name, task_parent_id, level, task_code');
+        $this->db->select('id,task_name, task_parent_id, level');
         $this->db->where('task_status','Y');	
         if(isset($level)){
             $this->db->where('level',$level);
@@ -274,33 +270,6 @@ class Project_model extends CI_Model {
                 $result[$i]["id"] = $r->id;
                 $result[$i]["text"] =$r->project_name.' - '.$r->project_number;
                 $i++;
-            }
-        }
-        return $result;
-    }
-
-	function get_task_dropdown($order=NULL, $parent_id = NULL, $req_empty_opt = TRUE) {
-        $result = [];
-        $this->db->select('id,task_name');
-        $this->db->where('task_status','Y');		
-        $this->db->order_by('task_name');
-        if($order){
-            $this->db->where('level', $order);
-        }
-        if($parent_id){
-            $this->db->where('task_parent_id', $parent_id);
-        }		
-        $query = $this->db->get('project_tasks');
-        #echo $this->db->last_query();
-        // if($req_empty_opt === true){
-        //     $result = array('' => '-Select-');
-        // }
-        if ($query->num_rows()) {
-            $res = $query->result();
-            foreach ($res as $r) {
-                $a['id'] = $r->id;
-                $a['name'] = $r->task_name;
-                array_push($result, $a);
             }
         }
         return $result;
