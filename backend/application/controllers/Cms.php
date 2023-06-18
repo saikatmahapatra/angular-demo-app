@@ -118,6 +118,9 @@ class Cms extends App_Controller
                 $this->responseData['status'] = 'success';
                 $this->responseData['message'] = 'Post created successfully.';
                 $this->statusCode = REST_Controller::HTTP_CREATED;
+                if($this->post('sendEmailNotification') == true) {
+                    $this->sendEmailNotification($postdata['content_title'], $postdata['content_text'], $res);
+                }
             } else {
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
@@ -148,6 +151,9 @@ class Cms extends App_Controller
                 $this->responseData['status'] = 'success';
                 $this->responseData['message'] = 'Post updated successfully.';
                 $this->statusCode = REST_Controller::HTTP_OK;
+                if($this->put('sendEmailNotification') == true) {
+                    $this->sendEmailNotification($postdata['content_title'], $postdata['content_text'], $this->put('id'));
+                }
             } else {
                 $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
             }
@@ -318,5 +324,20 @@ class Cms extends App_Controller
         $userId = $this->getUserId();
         $this->responseData['data'] = $this->home_model->get_events($startDate, $endDate, $userId);
         $this->response($this->responseData, $this->statusCode);
+    }
+
+    function sendEmailNotification($title, $messageContent, $postId) {
+        $sendToList = array();
+        $emailList = $this->cms_model->getEmailList();
+        if(sizeof($emailList)>0) {
+            foreach ($emailList as $key => $value) {
+                array_push($sendToList, $value['user_email']);
+            }
+        }
+        // email copy
+        $message = "";
+        $message .= $messageContent;
+        $message .= "<p><a href='http://portal.ueipl.co.in/dashboard/post-details/".$postId."'>Click here</a> to read this post from MyApp portal.</p>";
+        $this->common_lib->sendEmail($sendToList, $title, $message);
     }
 }

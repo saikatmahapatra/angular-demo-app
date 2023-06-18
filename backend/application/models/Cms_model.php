@@ -220,4 +220,14 @@ class Cms_model extends CI_Model
             return false;
         }
     }
+
+    function getEmailList() {
+        $this->db->select('t1.user_email');
+        $this->db->where('t1.user_status', 'Y');
+        $this->db->where('t1.user_type', 'U');
+        $this->db->limit(200, 0);
+        $query = $this->db->get('users t1');
+        //print_r($this->db->last_query());die();
+        return $result = $query->result_array();
+    }
 }
