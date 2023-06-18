@@ -71,7 +71,7 @@ export class DataChartComponent implements OnInit {
       next: (response: any) => {
         if (response?.data.length > 0) {
           response?.data.forEach((element: any) => {
-            this.doughnutChartLabel.push(element.task_name+' ID'+element.task_id+' '+ '('+element.sum_hours+' hrs)');
+            this.doughnutChartLabel.push(element.task_name+ ' ('+element.sum_hours+' hrs)');
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();
