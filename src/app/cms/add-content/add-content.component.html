@@ -13,21 +13,25 @@
                     <label class="required" for="contentCategory">Post Type</label>
                     <select class="form-select" id="contentCategory" formControlName="contentCategory">
                         <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}</option>
+                        <option value="{{data.id}}" *ngFor="let data of contentCategoryList; let i=index">{{data.name}}
+                        </option>
                     </select>
                     <app-validation-error [control]="myForm.controls['contentCategory']"></app-validation-error>
                 </div>
 
                 <div class="col-md-4 mb-3" *ngIf="!showEditor">
                     <label class="required d-block" for="contentDescription">Holiday Date</label>
-                    <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="contentDescription" [readonlyInput]="true" inputId="contentDescription" [showButtonBar]="false" [showIcon]="true"></p-calendar>
+                    <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="contentDescription"
+                        [readonlyInput]="true" inputId="contentDescription" [showButtonBar]="false"
+                        [showIcon]="true"></p-calendar>
                     <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
                 </div>
 
                 <div class="mb-3" [ngClass]="showEditor ? 'col-md-8': 'col-md-4'">
                     <label class="required" for="contentHeadline" *ngIf="showEditor">Title</label>
                     <label class="required" for="contentHeadline" *ngIf="!showEditor">Occasion</label>
-                    <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline" maxlength="180">
+                    <input type="text" class="form-control" id="contentHeadline" formControlName="contentHeadline"
+                        maxlength="180">
                     <app-validation-error [control]="myForm.controls['contentHeadline']"></app-validation-error>
                 </div>
             </div>
@@ -35,10 +39,27 @@
             <div class="row" *ngIf="showEditor">
                 <div class="col-md-12 mb-3">
                     <label class="required" for="contentDescription">Description</label>
-                    <div class="small mb-3">Note: Advanced features such as image upload, stylish fonts are turned off for web security purpose.</div>
-                    <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor>
+                    <div class="small mb-3">Note: Advanced features such as image upload, stylish fonts are turned off
+                        for web security purpose.</div>
+                    <!-- <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor> -->
+                    <editor formControlName="contentDescription" apiKey="1gblzpsgxtmljz50bmumyxiac8kurph70jxedvr39as8nee9" [init]="{
+                        height: 500,
+                        plugins: [
+                           'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+                          'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+                          'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+                        ],
+                        toolbar:
+                         'undo redo | casechange blocks | bold italic backcolor | \
+                         alignleft aligncenter alignright alignjustify | \
+                         bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+                      }"></editor>
                     <app-validation-error [control]="myForm.controls['contentDescription']"></app-validation-error>
                 </div>
+
+
+
+
             </div>
 
             <div class="row mb-3">
@@ -52,8 +73,9 @@
                     <app-validation-error [control]="myForm.controls['contentStatus']"></app-validation-error>
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+
+            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                    class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
         <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
         <p class="debug">{{myForm.value|json}}</p> -->
