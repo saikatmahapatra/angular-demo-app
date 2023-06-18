@@ -74,6 +74,17 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="sendEmail" id="defaultCheck4"
+                            formControlName="sendEmailNotification">
+                        <label class="form-check-label" for="defaultCheck4">Send email notification to all active employees</label>
+                    </div>
+                    <app-validation-error [control]="myForm.controls['sendEmailNotification']"></app-validation-error>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
                     class="spinner-border spinner-border-sm me-1"></span> Submit</button>
         </form>
