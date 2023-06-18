@@ -11,6 +11,7 @@ import { ViewHolidaysComponent } from './view-holidays/view-holidays.component';
 import { ViewHrPoliciesComponent } from './view-hr-policies/view-hr-policies.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ManageHolidaysComponent } from './manage-holidays/manage-holidays.compo
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    PrimeNgModule
+    PrimeNgModule,
+    EditorModule
   ],
   declarations: [
     CmsLayoutComponent,
