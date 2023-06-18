@@ -599,9 +599,9 @@ class User extends App_Controller
     {
         $this->isAuthorized();
         $id = $this->post('userId') ? $this->post('userId') : $this->getUserId();
-        $dateRange = $this->post('dateRange');
-        $fromDate = $dateRange ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
-        $toDate = $dateRange ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
+        $dateRange = $this->post('dateRange') ? $this->post('dateRange') : null;
+        $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
+        $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
         $resultArray = $this->user_model->getUserDataChart($id, $fromDate, $toDate);
         if (isset($resultArray)) {
             $this->responseData['data'] = $resultArray;
