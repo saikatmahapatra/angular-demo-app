@@ -117,7 +117,7 @@ export class ManageUsersComponent implements OnInit {
   resetPagination() {
     this.currentPageIndex = 0;
     this.totalRecords = 0;
-    this.itemPerPage = 50;
+    this.itemPerPage = 10;
     this.first = 0;
   }
 

@@ -47,7 +47,7 @@ export class ViewEmployeesComponent implements OnInit {
   resetPagination() {
     this.currentPageIndex = 0;
     this.totalRecords = 0;
-    this.itemPerPage = 50;
+    this.itemPerPage = 10;
   }
 
   getEmpList() {
