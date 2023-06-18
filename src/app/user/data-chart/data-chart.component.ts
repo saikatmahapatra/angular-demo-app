@@ -54,6 +54,8 @@ export class DataChartComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid && this.userId) {
+      this.doughnutChartLabel = [];
+      this.doughnutChartValue = [];
       this.getChartData();
     }
     else {
