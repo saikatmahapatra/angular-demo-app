@@ -612,11 +612,17 @@ class User_model extends CI_Model {
         return $qury->num_rows() > 0 ? true : false;
     }
 
-    function getUserDataChart($project_id) {
+    function getUserDataChart($userId, $fromDate=NULL, $toDate=NULL) {
         $result = array();
         $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.task_id, t2.task_name');
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
-		$this->db->where('t1.project_id', $project_id);
+		$this->db->where('t1.timesheet_created_by', $userId);
+        if(isset($fromDate)){
+            $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($fromDate));
+        }
+        if(isset($toDate)){
+            $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
+        }
 		$this->db->group_by('t1.task_id');
         $query = $this->db->get('timesheet as t1');
         $result = $query->result_array();
