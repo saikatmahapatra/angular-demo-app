@@ -17,10 +17,18 @@ export class DataChartComponent implements OnInit {
   submitted = false;
   loading = false;
   routedFromPageIndex = 0;
+  userId: any;
+
+  // donought chart
+  doughnutChartData: any;
+  doughnutChartOptions: any;
+  doughnutChartLabel: any = [];
+  doughnutChartValue: any = [];
   
   myForm = this.fb.group({
     action: ['searchData'],
-    fromToDate: ['', [Validators.required]]
+    userId: [null, Validators.required],
+    dateRange: ['', [Validators.required]]
   });
 
   constructor(
@@ -34,10 +42,18 @@ export class DataChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.userId = params.get('id');
+      this.myForm.controls['userId'].setValue(this.userId);
+    });
+
+    if(this.userId) {
+      this.getChartData();
+    }
   }
 
   onSubmit() {
-    if (this.myForm.valid) {
+    if (this.myForm.valid && this.userId) {
       this.getChartData();
     }
     else {
@@ -49,12 +65,45 @@ export class DataChartComponent implements OnInit {
   getChartData() {
     this.submitted = true;
     this.loading = true;
-    this.apiSvc.get(AppConfig.apiUrl.userDataChart, this.myForm.value).subscribe({
+    this.apiSvc.post(AppConfig.apiUrl.userDataChart, this.myForm.value).subscribe({
       next: (response: any) => {
-        console.log(response);
+        if (response?.data.length > 0) {
+          response?.data.forEach((element: any) => {
+            this.doughnutChartLabel.push(element.task_name+' ID'+element.task_id+' '+ '('+element.sum_hours+' hrs)');
+            this.doughnutChartValue.push(element.sum_hours);
+          });
+          this.renderDoughnutChart();
+        }
       },
       error: () => { this.loading = false; },
       complete: () => { this.loading = false; }
     });
   }
+
+  renderDoughnutChart() {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    this.doughnutChartData = {
+      labels: this.doughnutChartLabel,
+      datasets: [
+        {
+          data: this.doughnutChartValue,
+          // backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+          // hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+        }
+      ]
+    };
+    this.doughnutChartOptions = {
+      cutout: '60%',
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor
+          }
+        }
+      }
+    };
+  }
+
 }

@@ -1,9 +1,10 @@
 <h1>Data Chart</h1>
 
 <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="userId" readonly>
     <div class="col-12">
         <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
-        <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" selectionMode="range" [readonlyInput]="true"
+        <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
                 inputId="range" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"
                 [panelStyleClass]="'datetimepicker'"></p-calendar>
             
@@ -12,5 +13,20 @@
         <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
                 class="spinner-border spinner-border-sm me-1"></span> Search</button>
     </div>
-    <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
+    <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error>
 </form>
+
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">Tasks Logged Chart</h5>
+            </div>
+            <div class="card-body flex justify-content-center">
+                <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
+                    *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
+                <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
+            </div>
+        </div>
+    </div>
+</div>
