@@ -16,7 +16,7 @@
                         <label class="required" for="timesheetMinDays">Timesheet Enable Previous Days</label>
                         <input type="number" class="form-control" id="timesheetMinDays"
                             formControlName="timesheetMinDays">
-                        <div class="small"><strong>Info: </strong>Number of days before today to be enabled.
+                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Number of days before today to be enabled.
                             (<strong>Default value: </strong> 5)</div>
                         <app-validation-error
                             [control]="siteSettingsForm.controls['timesheetMinDays']"></app-validation-error>
@@ -28,7 +28,7 @@
                         <label class="required" for="timesheetMaxDays">Timesheet Enable Next Days</label>
                         <input type="number" class="form-control" id="timesheetMaxDays"
                             formControlName="timesheetMaxDays">
-                        <div class="small"><strong>Info: </strong>Number of days after today to be enabled.
+                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Number of days after today to be enabled.
                             (<strong>Default value: </strong> 0)</div>
                         <app-validation-error
                             [control]="siteSettingsForm.controls['timesheetMaxDays']"></app-validation-error>
@@ -37,10 +37,10 @@
 
                 <div class="row mb-3">
                     <div class="col">
-                        <label class="required" for="emailNotifyDistro">Email Distribution List ID</label>
+                        <label class="" for="emailNotifyDistro">Email Distribution List ID</label>
                         <input type="text" class="form-control" id="emailNotifyDistro"
                             formControlName="emailNotifyDistro">
-                        <div class="small"><strong>Info: </strong>Email DL ID where post related updates will be sent</div>
+                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Email DL ID where post related updates will be sent</div>
                         <app-validation-error
                             [control]="siteSettingsForm.controls['emailNotifyDistro']"></app-validation-error>
                     </div>

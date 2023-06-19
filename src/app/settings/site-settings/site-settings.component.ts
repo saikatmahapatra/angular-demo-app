@@ -21,7 +21,7 @@ export class SiteSettingsComponent implements OnInit {
     action: ['updateSettings'],
     timesheetMinDays: ['', [Validators.required, this.validator.numericOnly, Validators.min(3), Validators.max(60)]],
     timesheetMaxDays: ['', [Validators.required, this.validator.numericOnly, Validators.min(0), Validators.max(60)]],
-    emailNotifyDistro: ['', [Validators.required, this.validator.validEmail]]
+    emailNotifyDistro: ['', [this.validator.validEmail, this.validator.validEmailDomain]]
   });
 
   constructor(
