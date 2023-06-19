@@ -528,7 +528,7 @@ $config['site_view_dir'] = 'site/'; //application/views/site/
 $config['admin_view_dir'] = 'admin/'; //application/views/admin/
 
 // Email config
-$config['app_admin_email'] = 'portal@unitedexploration.co.in';
+$config['app_admin_email'] = 'portal@ueipl.co.in';
 $config['app_admin_email_cc'] = '';
 $config['app_admin_email_bcc'] = '';
 $config['app_admin_email_name'] = 'UEIPL MyApp';
