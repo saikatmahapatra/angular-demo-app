@@ -16,11 +16,12 @@ export class SiteSettingsComponent implements OnInit {
   submitted = false;
   loading = false;
 
-  timesheetSettingsForm = this.fb.group({
+  siteSettingsForm = this.fb.group({
     id: [null],
-    action: ['updateTimesheetSettings'],
+    action: ['updateSettings'],
     timesheetMinDays: ['', [Validators.required, this.validator.numericOnly, Validators.min(3), Validators.max(60)]],
-    timesheetMaxDays: ['', [Validators.required, this.validator.numericOnly, Validators.min(0), Validators.max(60)]]
+    timesheetMaxDays: ['', [Validators.required, this.validator.numericOnly, Validators.min(0), Validators.max(60)]],
+    emailNotifyDistro: ['', [Validators.required, this.validator.validEmail]]
   });
 
   constructor(
@@ -41,9 +42,10 @@ export class SiteSettingsComponent implements OnInit {
     this.apiSvc.get(AppConfig.apiUrl.getSettings).subscribe({
       next: (response: any) => {
         if(response?.data) {
-          this.timesheetSettingsForm.patchValue({
+          this.siteSettingsForm.patchValue({
             timesheetMinDays: response?.data?.timesheetMinDays,
-            timesheetMaxDays: response?.data?.timesheetMaxDays
+            timesheetMaxDays: response?.data?.timesheetMaxDays,
+            emailNotifyDistro: response?.data?.emailNotifyDistro,
           });
         }
       },
@@ -55,9 +57,9 @@ export class SiteSettingsComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    if (this.timesheetSettingsForm.valid) {
+    if (this.siteSettingsForm.valid) {
       
-      this.apiSvc.put(AppConfig.apiUrl.updateTimesheetSettings, this.timesheetSettingsForm.value).subscribe({
+      this.apiSvc.put(AppConfig.apiUrl.updateSiteSettings, this.siteSettingsForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.success(response.message, true);
           this.getSettings();
@@ -73,7 +75,7 @@ export class SiteSettingsComponent implements OnInit {
 
     } else {
       this.loading = false;
-      this.validator.validateAllFormFields(this.timesheetSettingsForm);
+      this.validator.validateAllFormFields(this.siteSettingsForm);
     }
   }
 

@@ -18,14 +18,15 @@ class Settings extends App_Controller
         ));
     }
 
-    function updateTimesheetSettings_put()
+    function updateSiteSettings_put()
     {
         $formAction = $this->put('action');
         $postdata = array(
             'timesheetMinDays' => $this->put('timesheetMinDays'),
-            'timesheetMaxDays' => $this->put('timesheetMaxDays')
+            'timesheetMaxDays' => $this->put('timesheetMaxDays'),
+            'emailNotifyDistro' => $this->put('emailNotifyDistro')
         );
-        if ($formAction === 'updateTimesheetSettings') {
+        if ($formAction === 'updateSettings') {
             $res = $this->settings_model->update_options($postdata);
             
             if ($res) {

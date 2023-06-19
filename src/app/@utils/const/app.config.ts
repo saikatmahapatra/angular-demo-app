@@ -124,6 +124,6 @@ export const AppConfig = {
 
         //Settings
         getSettings: 'settings/getSiteSettings',
-        updateTimesheetSettings: 'settings/updateTimesheetSettings'
+        updateSiteSettings: 'settings/updateSiteSettings'
     }
 };
