@@ -39,8 +39,7 @@
             <div class="row" *ngIf="showEditor">
                 <div class="col-md-12 mb-3">
                     <label class="required" for="contentDescription">Description</label>
-                    <div class="small mb-3">Note: Advanced features such as image upload, stylish fonts are turned off
-                        for web security purpose.</div>
+                    <div class="small mb-3">Note: If you switch color mode(dark/light), please reload this page to get it reflected in editor.</div>
                     <!-- <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor> -->
                     <editor formControlName="contentDescription" apiKey="1gblzpsgxtmljz50bmumyxiac8kurph70jxedvr39as8nee9" [init]="{
                         height: 500,
@@ -49,6 +48,7 @@
                           'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
                           'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
                         ],
+                        content_style: contentStyle,
                         toolbar:
                          'undo redo | casechange blocks | bold italic backcolor | \
                          alignleft aligncenter alignright alignjustify | \

@@ -19,7 +19,7 @@ export class AddContentComponent implements OnInit {
   isAdd = true;
   submitted = false;
   showEditor = true;
-
+  contentStyle = 'body { color: inherit; }';
   contentCategoryList = [
     {id: 'notice', name: 'Notice'},
     {id: 'news', name: 'News'},
@@ -65,6 +65,9 @@ export class AddContentComponent implements OnInit {
     });
     if (this.id) {
       this.getContent();
+    }
+    if(localStorage.getItem('theme') === 'dark') {
+      this.contentStyle = 'body { color: #adb5bd; }'
     }
   }
 

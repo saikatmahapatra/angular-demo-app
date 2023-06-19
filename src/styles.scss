@@ -419,6 +419,32 @@ label {
       background-color: $gray-900;
     }
   }
+
+  // tinyMCE Editor dark mode
+  .tox .tox-menubar, 
+  .tox .tox-statusbar,
+  .tox .tox-toolbar, 
+  .tox .tox-toolbar__overflow, 
+  .tox .tox-toolbar__primary, 
+  .tox .tox-edit-area__iframe,
+  .tox:not(.tox-tinymce-inline) .tox-editor-header,
+  .tox .tox-toolbar-overlord {
+    background-color: $gray-900;
+  }
+  .tox .tox-mbtn, 
+  .tox .tox-statusbar a, .tox .tox-statusbar__path-item, .tox .tox-statusbar__wordcount {
+    color: $gray-500;
+  }
+  
+  .tox .tox-tbtn svg, .tox .tox-statusbar__branding svg, .tox .tox-statusbar__resize-handle svg {
+    fill: $gray-500;
+  }
+  .tox-tinymce {
+    border-color: $gray-500;
+  }
+  .mce-content-body {
+    color: $gray-500;
+  }
 }
 
 // ############################################
