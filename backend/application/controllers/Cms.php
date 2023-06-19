@@ -14,6 +14,7 @@ class Cms extends App_Controller
         $this->load->model('project_model');
         $this->load->model('home_model');
         $this->load->model('cms_model');
+        $this->load->model('settings_model');
     }
 
     function getDashboardStat_get()
@@ -328,16 +329,22 @@ class Cms extends App_Controller
 
     function sendEmailNotification($title, $messageContent, $postId) {
         $sendToList = array();
-        $emailList = $this->cms_model->getEmailList();
-        if(sizeof($emailList)>0) {
-            foreach ($emailList as $key => $value) {
-                array_push($sendToList, $value['user_email']);
+        $emailDL = $this->settings_model->get_option(array('emailNotifyDistro'));
+        if(isset($emailDL['emailNotifyDistro']) && $emailDL['emailNotifyDistro']) {
+            array_push($sendToList, $emailDL['emailNotifyDistro']);
+        } else {
+            $emailList = $this->cms_model->getEmailList();
+            if(sizeof($emailList)>0) {
+                foreach ($emailList as $key => $value) {
+                    array_push($sendToList, $value['user_email']);
+                }
             }
         }
         // email copy
         $message = "";
         $message .= $messageContent;
         $message .= "<p><a href='http://portal.ueipl.co.in/dashboard/post-details/".$postId."'>Click here</a> to read this post from MyApp portal.</p>";
+        //print_r($sendToList); die();
         $this->common_lib->sendEmail($sendToList, $title, $message);
     }
 }

@@ -69,7 +69,7 @@ class Settings_model extends CI_Model {
         //echo $this->db->last_query(); die();
         if($num_rows>0){
             foreach ($res as $r) {
-                $result[$r['settings_key']] = $r['settings_value'];
+                $result[$r['settings_key']] = trim($r['settings_value']);
             }
             //$result =  $res;
         }
