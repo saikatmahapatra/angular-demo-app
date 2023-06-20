@@ -98,7 +98,7 @@ export class ManageUsersComponent implements OnInit {
     const navigationExtras: NavigationExtras = {
       state: {manageUserPageIndex: this.currentPageIndex},
     };
-    this.router.navigate(['/emp/data-analysis-chart', id], navigationExtras);
+    this.router.navigate(['/emp/insight', id], navigationExtras);
   }
 
   editUserProfile(id: number) {

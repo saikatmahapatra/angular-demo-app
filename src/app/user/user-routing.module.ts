@@ -50,7 +50,7 @@ const routes: Routes = [
       { path: 'change-approvers', component: EditApproversComponent },
       { path: 'view-employees', component: ViewEmployeesComponent },
       { path: 'view-reportees', component: PeopleILeadComponent },
-      { path: 'data-analysis-chart/:id', component: DataChartComponent }
+      { path: 'insight/:id', component: DataChartComponent }
     ]
   },
 
