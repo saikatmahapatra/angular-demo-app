@@ -51,7 +51,7 @@
                     <strong>Description:</strong> {{projectInfoData?.project_desc || '--'}}
                 </div>
                 <div *ngIf="projectInfoData?.project_start_date">
-                    <strong>Duration:</strong> {{projectInfoData?.project_start_date | date:
+                    <strong>Project Start - End Date:</strong> {{projectInfoData?.project_start_date | date:
                     'dd/MM/yyyy'}} - {{projectInfoData?.project_end_date | date: 'dd/MM/yyyy'}}
                 </div>
                 <div>
