@@ -36,7 +36,7 @@
             </div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
-                    *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
+                    *ngIf="doughnutChartValue.length>0" height="375px"></p-chart>
                 <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found for the selected duration to generate insight report & chart. Please try again with a different duration.</div>
             </div>
         </div>
