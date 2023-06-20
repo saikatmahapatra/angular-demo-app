@@ -24,21 +24,22 @@ export class DataChartComponent implements OnInit {
   doughnutChartOptions: any;
   doughnutChartLabel: any = [];
   doughnutChartValue: any = [];
-  
+
   myForm = this.fb.group({
-    action: ['searchData'],
+    action: ['generateChart'],
     userId: [null, Validators.required],
-    dateRange: ['', [Validators.required]]
+    duration: ['last6months', [Validators.required]],
+    //dateRange: ['', [Validators.required]]
   });
 
   constructor(
     private fb: FormBuilder,
-    private apiSvc: ApiService, 
+    private apiSvc: ApiService,
     private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private validator: FormValidationService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
@@ -47,15 +48,13 @@ export class DataChartComponent implements OnInit {
       this.myForm.controls['userId'].setValue(this.userId);
     });
 
-    if(this.userId) {
+    if (this.userId) {
       this.getChartData();
     }
   }
 
   onSubmit() {
     if (this.myForm.valid && this.userId) {
-      this.doughnutChartLabel = [];
-      this.doughnutChartValue = [];
       this.getChartData();
     }
     else {
@@ -67,11 +66,13 @@ export class DataChartComponent implements OnInit {
   getChartData() {
     this.submitted = true;
     this.loading = true;
-    this.apiSvc.post(AppConfig.apiUrl.userDataChart, this.myForm.value).subscribe({
+    this.doughnutChartLabel = [];
+    this.doughnutChartValue = [];
+    this.apiSvc.post(AppConfig.apiUrl.userInsight, this.myForm.value).subscribe({
       next: (response: any) => {
         if (response?.data.length > 0) {
           response?.data.forEach((element: any) => {
-            this.doughnutChartLabel.push(element.task_name+ ' ('+element.sum_hours+' hrs)');
+            this.doughnutChartLabel.push(element.task_name + ' (' + element.sum_hours + ' hrs)');
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();

@@ -612,11 +612,31 @@ class User_model extends CI_Model {
         return $qury->num_rows() > 0 ? true : false;
     }
 
-    function getUserDataChart($userId, $fromDate=NULL, $toDate=NULL) {
+    function getUserDataChart($userId, $duration=NULL, $fromDate=NULL, $toDate=NULL) {
         $result = array();
         $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.timesheet_created_by, t1.task_id, t2.task_name');
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
 		$this->db->where('t1.timesheet_created_by', $userId);
+
+        if($duration == 'currentMonth') {
+            $this->db->where('MONTH(`timesheet_date`) = MONTH(CURRENT_DATE()) AND YEAR(`timesheet_date`) = YEAR(CURRENT_DATE())');
+        }
+
+        if($duration == 'last1Month') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 1 MONTH)');
+        }
+
+        if($duration == 'last3months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 3 MONTH)');
+        }
+
+        if($duration == 'last6months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 6 MONTH)');
+        }
+
+        if($duration == 'last12months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
+        }
 
         if(isset($fromDate) && !isset($toDate)){
             $this->db->where('t1.timesheet_date', $this->common_lib->convert_to_mysql($fromDate));

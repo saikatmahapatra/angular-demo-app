@@ -1,26 +1,38 @@
 <h1>Employee Insight</h1>
 
-<form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="userId" readonly>
+    <input type="hidden" formControlName="action" readonly>
     <div class="col-12">
-        <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
-        <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
-                inputId="range" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"
-                [panelStyleClass]="'datetimepicker'"></p-calendar>
-            
+        <label class="visually-hidden" for="duration">Duration</label>
+        <select formControlName="duration" class="form-select">
+            <option value="currentMonth">Current month</option>
+            <option value="last1Month">Last 1 month</option>
+            <option value="last3months">Last 3 months</option>
+            <option value="last6months">Last 6 months</option>
+            <option value="last12months">Last 12 months</option>
+            <option value="all">All Duration</option>
+        </select>
     </div>
+    <!-- <div class="col-12">
+        <label class="visually-hidden" for="dateRange">Date Range</label>
+        <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
+            inputId="range" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"
+            [panelStyleClass]="'datetimepicker'"></p-calendar>
+
+    </div> -->
     <div class="col-12">
         <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
-                class="spinner-border spinner-border-sm me-1"></span> Search</button>
+                class="spinner-border spinner-border-sm me-1"></span> Generate Report</button>
     </div>
-    <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error>
+    <!-- <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error> -->
 </form>
 
 <div class="row my-4">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="">Tasks</h5>
+                <h5 class="">Tasks Log</h5>
             </div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
@@ -30,3 +42,18 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="row my-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">Project Engagement</h5>
+            </div>
+            <div class="card-body flex justify-content-center">
+                <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
+                    *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
+                <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -54,7 +54,7 @@ export const AppConfig = {
         getEmployees: 'user/getEmp',
         getReportees: 'user/getReportees',
         saveLeaveBalance: 'user/saveLeaveBalance',
-        userDataChart: 'user/getUserDataChart',
+        userInsight: 'user/userInsight',
 
         // Address
         getAddress: 'address/getAddress',
