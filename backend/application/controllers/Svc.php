@@ -11,15 +11,20 @@ class Svc extends CI_Controller {
         parent::__construct();
         /**
          * Command in cPanel
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/index.php svc test_cron_job
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc test_cron_job
          */
         
     }
 
+    function index()
+	{
+		$this->load->view('welcome_message');
+	}
+
     function sendBirthdayEmail(){
         /**
          * Command in cPanel (daily 1 time)
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc sendBirthdayEmail
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc sendBirthdayEmail
          */
         $this->load->model('user_model');
         $result_array = $this->user_model->find_birthday();
@@ -39,7 +44,7 @@ class Svc extends CI_Controller {
     function sendWorkAnniversaryEmail(){
         /**
          * Command in cPanel (daily 1 time)
-         * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc sendWorkAnniversaryEmail
+         * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc sendWorkAnniversaryEmail
          */
         $this->load->model('user_model');
         $result_array = $this->user_model->get_employee_anniversary();
@@ -73,7 +78,7 @@ class Svc extends CI_Controller {
     //     /**
     //      * Run per month start of day
     //      * Command in cPanel
-    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updatePLBalance
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc updatePLBalance
     //      */
     //     $this->load->model('leave_model');
     //     $result_array = $this->leave_model->update_pl_balance();
@@ -84,7 +89,7 @@ class Svc extends CI_Controller {
     //     /**
     //      * Run 1st Jan every year
     //      * Command in cPanel
-    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateCLBalance
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc updateCLBalance
     //      */
     //     $this->load->model('leave_model');
     //     $result_array = $this->leave_model->update_cl_balance();
@@ -95,7 +100,7 @@ class Svc extends CI_Controller {
     //     /**
     //      * Run 1st Jan every year
     //      * Command in cPanel
-    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/api/index.php svc updateOLBalance
+    //      * /usr/local/bin/php /home/unitedeipl/public_html/portal/backend/index.php svc updateOLBalance
     //      */
     //     $this->load->model('leave_model');
     //     $result_array = $this->leave_model->update_ol_balance();
