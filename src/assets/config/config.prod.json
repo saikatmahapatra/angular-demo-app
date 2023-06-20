@@ -1,4 +1,4 @@
 {
-    "apiBaseUrl": "http://portal.ueipl.co.in/api/",
+    "apiBaseUrl": "http://portal.ueipl.co.in/backend/api/",
     "maintenanceMode": false
 }
