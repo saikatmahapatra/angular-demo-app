@@ -215,19 +215,26 @@ class Timesheet extends App_Controller
         $this->response($this->responseData, $this->statusCode);
     }
 
-    function getProjectTimesheetChart_get()
+    function timesheetChartData_post()
     {
-        $id = $this->get('id') ? $this->get('id') : null;
-        $resultArray = $this->project_model->getProjectHourReport($id);
-        $resultArrayTasks = $this->project_model->getProjectTaskHourReport($id);
-        if (isset($resultArray) && isset($resultArrayTasks)) {
-            $this->responseData['data'] = $resultArray;
-            $this->responseData['taskData'] = $resultArrayTasks;
-            $this->statusCode = REST_Controller::HTTP_OK;
-        }
-        else {
+        $projectId = $this->post('projectId') ? $this->post('projectId') : null;
+        $duration = $this->post('duration') ? $this->post('duration') : null;
+        $action = $this->post('action') ? $this->post('action') : null;
+        if($action == 'generateChart') {
+            $resultArray = $this->project_model->getProjectHourReport($projectId, $duration);
+            $resultArrayTasks = $this->project_model->getProjectTaskHourReport($projectId, $duration);
+            if (isset($resultArray) && isset($resultArrayTasks)) {
+                $this->responseData['data'] = $resultArray;
+                $this->responseData['taskData'] = $resultArrayTasks;
+                $this->statusCode = REST_Controller::HTTP_OK;
+            }
+            else {
+                $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            }
+        } else {
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
         }
+        
         $this->response($this->responseData, $this->statusCode);
     }
 }

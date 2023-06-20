@@ -1,9 +1,11 @@
 import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ceil } from 'lodash';
 import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -12,6 +14,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
   styleUrls: ['./project-dashboard.component.scss']
 })
 export class ProjectDashboardComponent implements OnInit {
+  loading = false;
   data: any;
   options: any;
   projectInfoData: any;
@@ -27,15 +30,26 @@ export class ProjectDashboardComponent implements OnInit {
   doughnutChartLabel: any = [];
   doughnutChartValue: any = [];
 
+  // search form
+  myForm = this.fb.group({
+    action: ['generateChart'],
+    projectId: ['', [Validators.required]],
+    duration: ['currentMonth', [Validators.required]],
+    //dateRange: ['', [Validators.required]]
+  });
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private apiSvc: ApiService
+    private apiSvc: ApiService,
+    private fb: FormBuilder,
+    private validator: FormValidationService
   ) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectId = params.get('projectId');
+      this.myForm.controls['projectId'].setValue(this.projectId);
     });
     if (this.projectId) {
       this.getStatData();
@@ -129,7 +143,7 @@ export class ProjectDashboardComponent implements OnInit {
     const options = { params: queryParams };
 
     let projectDetailsAPI = this.apiSvc.get(AppConfig.apiUrl.getProject, options);
-    let analyticsDataAPI = this.apiSvc.get(AppConfig.apiUrl.getChartData, options);
+    let analyticsDataAPI = this.apiSvc.post(AppConfig.apiUrl.timesheetChartData, this.myForm.value);
     forkJoin([projectDetailsAPI, analyticsDataAPI]).subscribe({
       next: (response: any) => {
         // project info
@@ -165,5 +179,19 @@ export class ProjectDashboardComponent implements OnInit {
       error: (response: HttpErrorResponse) => {
       }
     });
+  }
+
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.doughnutChartLabel = [];
+      this.doughnutChartValue = [];
+      this.chartDataLabel = [];
+      this.chartDataValue = [];
+      this.getStatData();
+    }
+    else {
+      this.loading = false;
+      this.validator.validateAllFormFields(this.myForm);
+    }
   }
 }

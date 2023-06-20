@@ -345,11 +345,32 @@ class Project_model extends CI_Model {
         return  $result;
     }
 
-    function getProjectHourReport($project_id) {
+    function getProjectHourReport($project_id, $duration) {
         $result = array();
         $this->db->select('t1.timesheet_created_by, SUM(t1.timesheet_hours) as logged_hours, t2.user_full_name');
         $this->db->join('users as t2', 't2.id = t1.timesheet_created_by', 'left');
 		$this->db->where('t1.project_id', $project_id);
+
+        if($duration == 'currentMonth') {
+            $this->db->where('MONTH(`timesheet_date`) = MONTH(CURRENT_DATE()) AND YEAR(`timesheet_date`) = YEAR(CURRENT_DATE())');
+        }
+
+        if($duration == 'last1Month') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 1 MONTH)');
+        }
+
+        if($duration == 'last3months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 3 MONTH)');
+        }
+
+        if($duration == 'last6months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 6 MONTH)');
+        }
+
+        if($duration == 'last12months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
+        }
+
 		$this->db->group_by('t1.timesheet_created_by');
         $query = $this->db->get('timesheet as t1');
 
@@ -367,11 +388,33 @@ class Project_model extends CI_Model {
         return  $result;
     }
 
-    function getProjectTaskHourReport($project_id) {
+    function getProjectTaskHourReport($project_id, $duration) {
         $result = array();
         $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.task_id, t2.task_name');
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
 		$this->db->where('t1.project_id', $project_id);
+        
+        if($duration == 'currentMonth') {
+            $this->db->where('MONTH(`timesheet_date`) = MONTH(CURRENT_DATE()) AND YEAR(`timesheet_date`) = YEAR(CURRENT_DATE())');
+        }
+
+        if($duration == 'last1Month') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 1 MONTH)');
+        }
+
+        if($duration == 'last3months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 3 MONTH)');
+        }
+
+        if($duration == 'last6months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 6 MONTH)');
+        }
+
+        if($duration == 'last12months') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
+        }
+        
+
 		$this->db->group_by('t1.task_id');
         $query = $this->db->get('timesheet as t1');
         $result = $query->result_array();
