@@ -1,7 +1,8 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
@@ -68,17 +69,27 @@ export class DataChartComponent implements OnInit {
     this.loading = true;
     this.doughnutChartLabel = [];
     this.doughnutChartValue = [];
-    this.apiSvc.post(AppConfig.apiUrl.userInsight, this.myForm.value).subscribe({
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('id', this.userId);
+    const options = { params: queryParams };
+
+    let userDataAPI = this.apiSvc.get(AppConfig.apiUrl.userData, options);
+    let userInsightAPI = this.apiSvc.post(AppConfig.apiUrl.userInsight, this.myForm.value);
+
+    forkJoin([userDataAPI, userInsightAPI]).subscribe({
       next: (response: any) => {
-        if (response?.data.length > 0) {
-          response?.data.forEach((element: any) => {
+        if (response[1]?.data.length > 0) {
+          response[1]?.data.forEach((element: any) => {
             this.doughnutChartLabel.push(element.task_name + ' (' + element.sum_hours + ' hrs)');
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();
         }
       },
-      error: () => { this.loading = false; },
+      error: (response: HttpErrorResponse) => {
+        this.loading = false;
+      },
       complete: () => { this.loading = false; }
     });
   }
