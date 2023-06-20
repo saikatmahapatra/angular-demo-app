@@ -34,7 +34,7 @@ export class ProjectDashboardComponent implements OnInit {
   myForm = this.fb.group({
     action: ['generateChart'],
     projectId: ['', [Validators.required]],
-    duration: ['currentMonth', [Validators.required]],
+    duration: ['all', [Validators.required]],
     //dateRange: ['', [Validators.required]]
   });
 
@@ -138,6 +138,14 @@ export class ProjectDashboardComponent implements OnInit {
   }
 
   getStatData() {
+    this.doughnutChartLabel = [];
+    this.doughnutChartValue = [];
+    this.chartDataLabel = [];
+    this.chartDataValue = [];
+    this.projectInfoData = {};
+    this.totalWorkforce = 0;
+    this.totalBurnedHours = 0;
+
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.projectId);
     const options = { params: queryParams };
@@ -183,10 +191,6 @@ export class ProjectDashboardComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid) {
-      this.doughnutChartLabel = [];
-      this.doughnutChartValue = [];
-      this.chartDataLabel = [];
-      this.chartDataValue = [];
       this.getStatData();
     }
     else {

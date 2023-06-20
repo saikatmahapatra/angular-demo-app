@@ -13,7 +13,7 @@
                     <option value="last3months">Last 3 months</option>
                     <option value="last6months">Last 6 months</option>
                     <option value="last12months">Last 12 months</option>
-                    <option value="all">All</option>
+                    <option value="all">All Duration</option>
                 </select>
             </div>
             <!-- <div class="col-12">
@@ -71,7 +71,7 @@
         <div class="card-body flex justify-content-center">
             <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
                 *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
-            <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found to generate a chart.</div>
+            <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found to produce a chart for the selected duration. Please try again with a different duration.</div>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
         </div>
         <div class="card-body">
             <p-chart type="bar" [data]="data" [options]="options" *ngIf="chartDataValue.length>0"></p-chart>
-            <div *ngIf="chartDataValue.length === 0 ">No timesheet records found to generate a chart.</div>
+            <div *ngIf="chartDataValue.length === 0 ">No timesheet records found to produce a chart for the selected duration. Please try again with a different duration.</div>
         </div>
     </div>
 
