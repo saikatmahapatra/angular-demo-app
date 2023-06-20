@@ -142,7 +142,7 @@ export class ProjectDashboardComponent implements OnInit {
     this.doughnutChartValue = [];
     this.chartDataLabel = [];
     this.chartDataValue = [];
-    this.projectInfoData = {};
+    //this.projectInfoData = {};
     this.totalWorkforce = 0;
     this.totalBurnedHours = 0;
 
