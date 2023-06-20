@@ -599,21 +599,27 @@ class User extends App_Controller
     {
         $this->isAuthorized();
         $id = $this->post('userId') ? $this->post('userId') : $this->getUserId();
-        $action = $this->post('action') ? $this->post('action') : null;
-        $duration = $this->post('duration') ? $this->post('duration') : null;
-
-        $dateRange = $this->post('dateRange') ? $this->post('dateRange') : null;
-        $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
-        $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
-
-        $resultArray = $this->user_model->getUserDataChart($id, $duration, $fromDate, $toDate);
-        if (isset($resultArray)) {
-            $this->responseData['data'] = $resultArray;
-            $this->statusCode = REST_Controller::HTTP_OK;
-        }
-        else {
+        if($this->getUserRoleId() !== '1' && $id !== $this->getUserId()) {
+            //$this->responseData['message'] = 'You are not authorized to view this page';
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        } else {
+            $action = $this->post('action') ? $this->post('action') : null;
+            $duration = $this->post('duration') ? $this->post('duration') : null;
+
+            $dateRange = $this->post('dateRange') ? $this->post('dateRange') : null;
+            $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
+            $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
+
+            $resultArray = $this->user_model->getUserDataChart($id, $duration, $fromDate, $toDate);
+            if (isset($resultArray)) {
+                $this->responseData['data'] = $resultArray;
+                $this->statusCode = REST_Controller::HTTP_OK;
+            }
+            else {
+                $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            }
         }
+        
         $this->response($this->responseData, $this->statusCode);
     }
 }

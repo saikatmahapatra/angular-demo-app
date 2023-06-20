@@ -217,6 +217,10 @@ class Timesheet extends App_Controller
 
     function timesheetChartData_post()
     {
+        $this->isUserAuthorized(array(
+            'default-super-admin-access',
+            'default-admin-access',
+        ));
         $projectId = $this->post('projectId') ? $this->post('projectId') : null;
         $duration = $this->post('duration') ? $this->post('duration') : null;
         $action = $this->post('action') ? $this->post('action') : null;
