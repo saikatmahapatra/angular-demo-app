@@ -19,6 +19,7 @@ export class DataChartComponent implements OnInit {
   loading = false;
   routedFromPageIndex = 0;
   userId: any;
+  userDetails: any;
 
   // donought chart
   doughnutChartData: any;
@@ -79,6 +80,10 @@ export class DataChartComponent implements OnInit {
 
     forkJoin([userDataAPI, userInsightAPI]).subscribe({
       next: (response: any) => {
+        console.log(response[0]?.data?.user[0]);
+        if (response[0]?.data?.user[0]) {
+          this.userDetails = response[0]?.data?.user[0];
+        }
         if (response[1]?.data.length > 0) {
           response[1]?.data.forEach((element: any) => {
             this.doughnutChartLabel.push(element.task_name + ' (' + element.sum_hours + ' hrs)');
