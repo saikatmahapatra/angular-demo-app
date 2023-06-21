@@ -6,7 +6,6 @@ export const environment = {
   name: 'dev',
   version: require('../../package.json').version + '-dev',
   production: false,
-  productName: "MyApp",
   apiBaseUrl: "http://localhost/ci-emp-portal-api/",
   mockAPIUrl: "http://localhost:7878/",
   useMockServer: false
