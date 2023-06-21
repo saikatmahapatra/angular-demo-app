@@ -3,7 +3,6 @@ import { environment } from "@env/environment";
 export const AppConfig = {
     name: environment.name,
     production: environment.production,
-    title: environment.title,
     productName: environment.productName,
     copyrightInfo: environment.copyrightInfo,
     apiBaseUrl: environment.apiBaseUrl,

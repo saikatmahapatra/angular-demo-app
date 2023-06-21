@@ -8,7 +8,6 @@ import { AppConfig } from '../@utils/const/app.config';
 })
 export class AuthLayoutComponent implements OnInit {
   imgPath = 'assets/img/7.svg';
-  isProd = AppConfig.production;
 
   constructor() { 
   }

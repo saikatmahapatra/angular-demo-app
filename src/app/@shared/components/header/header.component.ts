@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   productName = AppConfig.productName;
   user: any;
-  isProd = AppConfig.production;
   isOpened = true;
   resolution = 'lg';
   constructor(private authSvc: AuthService, private navService: NavigationService, private commonSvc: CommonService) { }

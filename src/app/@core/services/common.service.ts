@@ -1,4 +1,5 @@
 import { Inject, Injectable, EventEmitter, Output, HostListener } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   // we declare that this service should be created
@@ -8,8 +9,10 @@ import { Inject, Injectable, EventEmitter, Output, HostListener } from '@angular
 
 export class CommonService {
 
-  constructor(
-  ) { }
+  constructor(private titleService: Title) {
+
+  }
+
   showAppLogs = true;
   pData: any;
   globalData: any;
@@ -122,6 +125,14 @@ export class CommonService {
 
     else {
       return Math.round(elapsed / msPerYear) + ' years ago';
+    }
+  }
+
+  setHTMLPageTitle(title?: string) {
+    if (title) {
+      this.titleService.setTitle('MyApp - ' + title);
+    } else {
+      this.titleService.setTitle('MyApp - UEIPL');
     }
   }
 }

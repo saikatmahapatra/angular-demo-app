@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, NgForm, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
@@ -18,12 +19,15 @@ export class ForgotPasswordFormComponent implements OnInit {
   loading = false;
 
   constructor(
+    private titleService: Title,
     private alertSvc: AlertService,
     private apiSvc: ApiService,
     private fb: UntypedFormBuilder,
     private formValidationSvc: FormValidationService,
     private router: Router
-  ) { }
+  ) { 
+    this.titleService.setTitle('MyApp - Forgot Password');
+  }
 
   ngOnInit(): void {
   }

@@ -8,8 +8,7 @@
         <app-icon *ngIf="resolution =='lg' || resolution =='xl'" [name]="'menu'" [styleClass]="'f-24'"></app-icon>
       </button>
       <a class="navbar-brand" [routerLink]="['/']">
-        <img *ngIf="!isProd" style="width: 24px;" src="assets/img/logo.svg" alt="logo" />
-        <img *ngIf="isProd" style="width: 48px;" src="assets/img/logo-prod.svg" alt="logo" />
+        <img style="width: 48px;" src="assets/img/logo.svg" alt="logo" />
         {{productName}}
       </a>
 

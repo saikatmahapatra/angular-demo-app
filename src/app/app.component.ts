@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private meta: Meta
   ) {
-    this.titleService.setTitle(AppConfig?.title || 'App');
+    //this.titleService.setTitle('MyApp - Angular');
 
     this.router.events.subscribe((event: Event) => {
       if (!(event instanceof NavigationEnd)) {

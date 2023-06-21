@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class LoginFormComponent implements OnInit {
   loading = false;
 
   constructor(
+    private commonSvc: CommonService,
     private fb: UntypedFormBuilder,
     private authSvc: AuthService,
     private alertSvc: AlertService,
@@ -24,6 +26,7 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private formValidationSvc: FormValidationService
   ) {
+    this.commonSvc.setHTMLPageTitle('Login');
   }
 
   loginForm = this.fb.group({

@@ -9,8 +9,7 @@
       <div class="d-flex justify-content-end mt-2"><app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
       </div>
       <div class="col-md-6 signin-form-container">
-        <img *ngIf="!isProd" class="mb-4" style="width: 48px;" src="assets/img/logo.svg" alt="logo" />
-        <img *ngIf="isProd" class="mb-2" style="width: 96px;" src="assets/img/logo-prod.svg" alt="United Exploration" />
+        <img class="mb-2" style="width: 96px;" src="assets/img/logo.svg" alt="Brand Logo" />
         <router-outlet></router-outlet>
       </div>
       <div class="slider-container col-md-6">
