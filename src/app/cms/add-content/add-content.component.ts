@@ -4,6 +4,7 @@ import { UntypedFormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -45,13 +46,15 @@ export class AddContentComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private validationSvc: FormValidationService,
+    private commonSvc: CommonService,
     private router: Router,
     private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
     private apiSvc: ApiService,
     private validator: FormValidationService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle(this.title+' Content');
+  }
 
   ngOnInit(): void {
     if (this.router.url.indexOf('edit') != -1) {
