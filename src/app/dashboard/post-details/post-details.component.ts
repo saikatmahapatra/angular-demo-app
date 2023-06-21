@@ -14,11 +14,15 @@ export class PostDetailsComponent implements OnInit {
   post: any = [];
   itemId!: string | null;
   paginationPageNumber!: string | null;
-  constructor(private apiSvc: ApiService,
+  constructor(
+    private commonSvc: CommonService, 
+    private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute,
-    private commonSvc: CommonService,
     private authSvc: AuthService
-    ) { }
+    ) { 
+      this.commonSvc.setTitle('Post Details');
+      
+    }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(param => {

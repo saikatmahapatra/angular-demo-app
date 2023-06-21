@@ -4,6 +4,7 @@ import { FormControl, UntypedFormBuilder, FormGroup, Validators } from '@angular
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -36,6 +37,7 @@ export class AddEditTaskComponent implements OnInit {
   });
 
   constructor(
+    private commonSvc: CommonService,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
@@ -61,6 +63,8 @@ export class AddEditTaskComponent implements OnInit {
     if (this.id) {
       this.getTask();
     }
+    this.commonSvc.setTitle(this.title + ' Task');
+    
   }
 
   getFormData() {

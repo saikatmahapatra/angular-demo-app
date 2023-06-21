@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
   selector: 'app-leave-details-actions',
@@ -34,12 +35,15 @@ export class LeaveDetailsActionsComponent implements OnInit {
   L1WorkflowComments = '';
   L2WorkflowComments = '';
   constructor(
+    private commonSvc: CommonService,
     private alertSvc: AlertService,
     private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute,
     private authSvc: AuthService,
     private router: Router
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('Leave Details');
+  }
 
   ngOnInit(): void {
     this.userId = this.authSvc.getUserId();

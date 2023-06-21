@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ceil } from 'lodash';
 import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -39,12 +40,16 @@ export class ProjectDashboardComponent implements OnInit {
   });
 
   constructor(
+    private commonSvc: CommonService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private apiSvc: ApiService,
     private fb: FormBuilder,
     private validator: FormValidationService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('Project Insight');
+    
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {

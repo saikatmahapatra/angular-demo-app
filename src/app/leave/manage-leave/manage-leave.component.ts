@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -54,6 +55,7 @@ export class ManageLeaveComponent implements OnInit {
   ];
 
   constructor(
+    private commonSvc: CommonService,
     private fb: FormBuilder,
     private alertSvc: AlertService,
     private router: Router,
@@ -61,7 +63,6 @@ export class ManageLeaveComponent implements OnInit {
     private apiSvc: ApiService,
     private activatedRoute: ActivatedRoute
   ) {
-
     if (this.router.url == '/leave/history') {
       this.title = 'Leave History';
       this.helpInfoMessage = '';
@@ -80,7 +81,7 @@ export class ManageLeaveComponent implements OnInit {
       this.leaveStatus.unshift({ value: 'PR', text: 'Pending Review', cssClass: 'bg-primary', textClass: 'text-secondary' });
       this.searchForm.controls['leaveStatus'].setValue('PR');
     }
-
+    this.commonSvc.setTitle(this.title);
 
   }
 

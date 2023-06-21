@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -27,7 +28,14 @@ export class ManageTaskComponent implements OnInit {
   }
   // Pagination Config
 
-  constructor(public apiSvc: ApiService, private alertSvc: AlertService, private router: Router) { }
+  constructor(
+    private commonSvc: CommonService,
+    public apiSvc: ApiService, 
+    private alertSvc: AlertService, 
+    private router: Router
+    ) { 
+      this.commonSvc.setTitle('Manage Tasks');    
+    }
 
   ngOnInit(): void {
     this.getTasks();

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { ExcelService } from 'src/app/@core/services/excel.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import * as XLSX from 'xlsx';
@@ -32,11 +33,14 @@ export class LeaveBalanceCalculationComponent implements OnInit {
   }
   // Pagination Config
   constructor(
+    private commonSvc: CommonService,
     private apiSvc: ApiService,
     private router: Router,
     private excelService: ExcelService,
     private alertSvc: AlertService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('View & Upload Leave Balance');
+  }
 
   ngOnInit(): void {
     this.getLeaveBalance();
