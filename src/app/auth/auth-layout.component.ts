@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfig } from '../@utils/const/app.config';
+import { CommonService } from '../@core/services/common.service';
 
 @Component({
   selector: 'app-auth-layout',
@@ -9,7 +10,9 @@ import { AppConfig } from '../@utils/const/app.config';
 export class AuthLayoutComponent implements OnInit {
   imgPath = 'assets/img/7.svg';
 
-  constructor() { 
+  constructor(private commonSvc: CommonService) { 
+    this.commonSvc.setTitle('Auth');
+    
   }
 
   ngOnInit(): void {

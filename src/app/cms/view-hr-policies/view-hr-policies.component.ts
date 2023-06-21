@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/@core/services/common.service';
 
 @Component({
   selector: 'app-view-hr-policies',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewHrPoliciesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonSvc: CommonService) { 
+    this.commonSvc.setTitle('HR Policies');
+  }
 
   ngOnInit(): void {
   }

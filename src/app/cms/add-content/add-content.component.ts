@@ -53,7 +53,6 @@ export class AddContentComponent implements OnInit {
     private apiSvc: ApiService,
     private validator: FormValidationService
   ) { 
-    this.commonSvc.setTitle(this.title+' Content');
   }
 
   ngOnInit(): void {
@@ -72,6 +71,7 @@ export class AddContentComponent implements OnInit {
     if(localStorage.getItem('theme') === 'dark') {
       this.contentStyle = 'body { color: #adb5bd; }'
     }
+    this.commonSvc.setTitle(this.title+' Content');
   }
 
   onSubmit() {

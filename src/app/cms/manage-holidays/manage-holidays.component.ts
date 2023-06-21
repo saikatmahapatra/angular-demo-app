@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -47,12 +48,13 @@ export class ManageHolidaysComponent implements OnInit {
   showTableDataLoading = false;
 
   constructor(
+    private commonSvc: CommonService,
     public apiSvc: ApiService,
     private alertSvc: AlertService,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService
   ) {
-
+    this.commonSvc.setTitle('Manage Holidays');
   }
 
   ngOnInit(): void {

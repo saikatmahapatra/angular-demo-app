@@ -2,6 +2,7 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -29,10 +30,11 @@ export class ViewHolidaysComponent implements OnInit {
   // Pagination Config
   showTableDataLoading = false;
   constructor(
+    private commonSvc: CommonService,
     public apiSvc: ApiService,
     private alertSvc: AlertService
   ) {
-
+    this.commonSvc.setTitle('Holidays');
    }
 
   ngOnInit(): void {
