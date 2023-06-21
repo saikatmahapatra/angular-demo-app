@@ -4,6 +4,7 @@ import { FormControl, UntypedFormBuilder, FormGroup, Validators, FormArray } fro
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -30,7 +31,10 @@ export class AddEditBasicInfoComponent implements OnInit {
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService,
-    private router: Router) { }
+    private commonSvc: CommonService,
+    private router: Router) { 
+      this.commonSvc.setTitle('Basic Info');
+    }
 
   ngOnInit(): void {
     this.getUserData('');

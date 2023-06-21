@@ -5,6 +5,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable, forkJoin, of } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
@@ -138,7 +139,8 @@ export class EditUserComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: UntypedFormBuilder,
-    private validator: FormValidationService
+    private validator: FormValidationService,
+    private commonSvc: CommonService
   ) {
     let today = new Date();
     this.minDateDob.setFullYear(today.getFullYear() - 100);
@@ -146,6 +148,7 @@ export class EditUserComponent {
 
     //this.minDateDoj.setFullYear(today.getFullYear() - 100);
     this.maxDateDoj.setDate(today.getDate());
+    this.commonSvc.setTitle('Edit Profile');
   }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -25,11 +26,14 @@ export class AddEditEducationComponent implements OnInit {
   maxYear = new Date().getFullYear() + 2;
 
   constructor(private fb: UntypedFormBuilder,
+    private commonSvc: CommonService,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router,
     private alertSvc: AlertService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) { 
+      
+    }
 
   ngOnInit(): void {
     this.addNewDegreeValidator();
@@ -47,6 +51,7 @@ export class AddEditEducationComponent implements OnInit {
     if (this.id) {
       this.getEducation();
     }
+    this.commonSvc.setTitle(this.title + ' Education');
   }
 
   myForm = this.fb.group({

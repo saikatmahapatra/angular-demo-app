@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
@@ -24,9 +25,14 @@ export class ViewMyProfileComponent implements OnInit {
   selfAccount = false;
   leaveBalance: any = [];
 
-  constructor(private apiSvc: ApiService, private alertSvc: AlertService,
+  constructor(
+    private apiSvc: ApiService,
+    private commonSvc: CommonService,
+    private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+      this.commonSvc.setTitle('My Profile');
+  }
 
   ngOnInit(): void {
     this.getProfile();

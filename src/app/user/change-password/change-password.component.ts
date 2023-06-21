@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -22,9 +23,12 @@ export class ChangePasswordComponent implements OnInit {
   });
 
   constructor(private fb: UntypedFormBuilder,
+    private commonSvc: CommonService,
     private validator: FormValidationService,
     private apiSvc: ApiService,
-    private alertSvc: AlertService) { }
+    private alertSvc: AlertService) { 
+      this.commonSvc.setTitle('Change Password');
+    }
 
   ngOnInit(): void {
 

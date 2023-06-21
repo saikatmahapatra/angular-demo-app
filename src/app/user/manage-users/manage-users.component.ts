@@ -47,7 +47,7 @@ export class ManageUsersComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
     ) {
-
+      this.commonSvc.setTitle('Manage Employees');
   }
 
   ngOnInit() {

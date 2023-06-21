@@ -32,7 +32,7 @@ export class SiteSettingsComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private validator: FormValidationService
   ) { 
-    this.commonSvc.setTitle('Site Settings');
+    this.commonSvc.setTitle('Settings');
   }
 
 

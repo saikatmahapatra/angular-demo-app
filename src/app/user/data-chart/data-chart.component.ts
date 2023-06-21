@@ -5,6 +5,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
@@ -36,12 +37,15 @@ export class DataChartComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private commonSvc: CommonService,
     private apiSvc: ApiService,
     private alertSvc: AlertService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private validator: FormValidationService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('Employee Insight');
+  }
 
   ngOnInit(): void {
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;

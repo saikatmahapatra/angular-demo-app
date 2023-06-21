@@ -3,6 +3,7 @@ import { FormControl, UntypedFormBuilder, FormGroup, Validators, FormArray } fro
 import { min } from 'lodash';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -57,7 +58,10 @@ export class AddUserComponent implements OnInit {
     baseWorkLocation: ['', Validators.required],
   });
 
-  constructor(private fb: UntypedFormBuilder, private validator: FormValidationService,
+  constructor(
+    private fb: UntypedFormBuilder, 
+    private commonSvc: CommonService, 
+    private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService) {
     this.getFormData();
@@ -69,6 +73,7 @@ export class AddUserComponent implements OnInit {
     //this.minDateDoj.setFullYear(today.getFullYear() - 100);
     this.maxDateDoj.setDate(today.getDate());
 
+    this.commonSvc.setTitle('Add New Employee');
   }
 
   ngOnInit(): void {

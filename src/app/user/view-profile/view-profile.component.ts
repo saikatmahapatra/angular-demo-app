@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
@@ -18,16 +19,21 @@ export class ViewProfileComponent implements OnInit {
   educationInfo: any = [];
   emergencyContact: any = [];
   approvers: any = [];
-  userGovtIds: any ;
+  userGovtIds: any;
   userPhoto: any;
   leaveBalance: any = [];
   orgName = 'UEIPL';
   selfAccount = false;
   routedFromPageIndex = 0;
 
-  constructor(private apiSvc: ApiService, private alertSvc: AlertService,
+  constructor(
+    private apiSvc: ApiService,
+    private alertSvc: AlertService,
+    private commonSvc: CommonService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) { 
+      this.commonSvc.setTitle('Profile');
+    }
 
   ngOnInit(): void {
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
@@ -140,7 +146,7 @@ export class ViewProfileComponent implements OnInit {
 
   navigateTo(routeLink: any) {
     const navigationExtras: NavigationExtras = {
-      state: {manageUserPageIndex: this.routedFromPageIndex},
+      state: { manageUserPageIndex: this.routedFromPageIndex },
     };
     this.router.navigate(routeLink, navigationExtras);
   }

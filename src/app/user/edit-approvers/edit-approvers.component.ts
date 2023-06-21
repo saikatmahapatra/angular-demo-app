@@ -2,6 +2,7 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -27,8 +28,11 @@ export class EditApproversComponent implements OnInit {
   // Pagination Config
   constructor(
     private apiSvc: ApiService,
-    private alertSvc: AlertService
-  ) { }
+    private alertSvc: AlertService,
+    private commonSvc: CommonService,
+  ) { 
+    this.commonSvc.setTitle('Change Workflow Approvers');
+  }
 
   ngOnInit(): void {
     this.getApprovers();

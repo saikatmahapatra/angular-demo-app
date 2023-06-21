@@ -4,6 +4,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -36,11 +37,13 @@ export class AddEditExperienceComponent implements OnInit {
   });
 
   constructor(private fb: UntypedFormBuilder,
+    private commonSvc: CommonService,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private router: Router,
     private activatedRouters: ActivatedRoute,
-    private alertSvc: AlertService) { }
+    private alertSvc: AlertService) {
+    }
 
   ngOnInit(): void {
     this.addNewEmployerValidator();
@@ -57,6 +60,7 @@ export class AddEditExperienceComponent implements OnInit {
     if (this.itemId) {
       this.getWorkExperience();
     }
+    this.commonSvc.setTitle(this.title + ' Work Experience');
   }
 
   onSubmit() {

@@ -4,6 +4,7 @@ import { FormControl, UntypedFormBuilder, FormGroup, Validators, FormArray } fro
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -31,11 +32,13 @@ export class AddEditPayrollInfoComponent implements OnInit {
     confirmAccountNo: [null, [Validators.required, this.validator.notEmpty, this.validator.matchValidator('accountNo')]]
   });
   constructor(private fb: UntypedFormBuilder,
+    private commonSvc: CommonService,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private alertSvc: AlertService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) { 
+    }
 
   ngOnInit(): void {
     this.getFormData();
@@ -50,6 +53,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
     if (this.id) {
       this.getData();
     }
+    this.commonSvc.setTitle(this.title + ' Payroll Info');
   }
 
   getFormData() {

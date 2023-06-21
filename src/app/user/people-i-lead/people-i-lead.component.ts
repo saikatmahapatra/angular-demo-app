@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
@@ -26,8 +27,11 @@ export class PeopleILeadComponent implements OnInit {
   // Pagination Config
 
   constructor(
-    private apiSvc: ApiService
-  ) { }
+    private apiSvc: ApiService,
+    private commonSvc: CommonService
+  ) { 
+    this.commonSvc.setTitle('My Reportees');
+  }
 
   ngOnInit(): void {
     this.getUsersList();

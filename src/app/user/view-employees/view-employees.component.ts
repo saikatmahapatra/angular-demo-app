@@ -32,7 +32,9 @@ export class ViewEmployeesComponent implements OnInit {
     private apiSvc: ApiService,
     private commonSvc: CommonService,
     private alertService: AlertService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('Employees');
+  }
 
   ngOnInit(): void {
     this.getEmpList();
