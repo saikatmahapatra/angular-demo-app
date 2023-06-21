@@ -8,7 +8,7 @@ import { CommonService } from '../@core/services/common.service';
 })
 export class SettingsLayoutComponent {
   constructor(private commonSvc: CommonService,) {
-    this.commonSvc.setTitle('Site Settings');
+    this.commonSvc.setTitle('Settings');
     
   }
 }

@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { ExcelService } from 'src/app/@core/services/excel.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
@@ -46,6 +47,7 @@ export class TimesheetReportComponent implements OnInit {
   // Pagination Config
 
   constructor(
+    private commonSvc: CommonService,
     private apiSvc: ApiService,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
@@ -53,6 +55,8 @@ export class TimesheetReportComponent implements OnInit {
   ) {
     let today = new Date();
     this.maxDate = today;
+    this.commonSvc.setTitle('Timesheet Report');
+    
   }
 
   ngOnInit(): void {

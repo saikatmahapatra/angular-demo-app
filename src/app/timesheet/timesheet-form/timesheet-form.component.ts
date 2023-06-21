@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -66,15 +67,15 @@ export class TimesheetFormComponent implements OnInit {
   // Pagination Config
 
   constructor(
+    private commonSvc: CommonService,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService,
     private apiSvc: ApiService,
     private authSvc: AuthService,
-    private alertSvc: AlertService,
-    private router: Router,
-    private cdRef: ChangeDetectorRef
+    private alertSvc: AlertService
   ) {
-
+    this.commonSvc.setTitle('Log Timesheet');
+    
   }
 
   // get timeSheetDates() {

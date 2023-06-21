@@ -4,6 +4,7 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
@@ -25,13 +26,14 @@ export class SiteSettingsComponent implements OnInit {
   });
 
   constructor(
+    private commonSvc: CommonService,
     private apiSvc: ApiService,
     private alertSvc: AlertService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private fb: UntypedFormBuilder,
     private validator: FormValidationService
-  ) { }
+  ) { 
+    this.commonSvc.setTitle('Site Settings');
+  }
 
 
   ngOnInit() {
