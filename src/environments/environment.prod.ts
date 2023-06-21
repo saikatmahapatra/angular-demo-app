@@ -5,6 +5,5 @@ export const environment = {
   productName: "MyApp",
   apiBaseUrl: "http://portalapi.ueipl.co.in/api/",
   mockAPIUrl: "http://localhost:7878/",
-  useMockServer: false,
-  copyrightInfo: "Copyright &copy; 2023 United Exploration India"
+  useMockServer: false
 };

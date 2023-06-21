@@ -4,7 +4,7 @@ export const AppConfig = {
     name: environment.name,
     production: environment.production,
     productName: environment.productName,
-    copyrightInfo: environment.copyrightInfo,
+    copyrightInfo: 'Copyright &copy; 2023 United Exploration India Pvt. Ltd.',
     apiBaseUrl: environment.apiBaseUrl,
     useMockServer: environment.useMockServer,
     version: environment.version,
