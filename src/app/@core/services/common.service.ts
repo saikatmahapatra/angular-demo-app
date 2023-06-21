@@ -128,11 +128,7 @@ export class CommonService {
     }
   }
 
-  setHTMLPageTitle(title?: string) {
-    if (title) {
-      this.titleService.setTitle('MyApp - ' + title);
-    } else {
-      this.titleService.setTitle('MyApp - UEIPL');
-    }
+  setTitle(title: string) {
+    this.titleService.setTitle('MyApp - ' + title);
   }
 }

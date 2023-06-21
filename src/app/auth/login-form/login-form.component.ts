@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private formValidationSvc: FormValidationService
   ) {
-    this.commonSvc.setHTMLPageTitle('Login');
+    this.commonSvc.setTitle('Login');
   }
 
   loginForm = this.fb.group({

@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
+import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
@@ -19,14 +20,14 @@ export class ResetPasswordFormComponent implements OnInit {
   loading = false;
 
   constructor(
-    private titleService: Title,
+    private commonSvc: CommonService,
     private fb: UntypedFormBuilder,
     private formValidationSvc: FormValidationService,
     private alertSvc: AlertService,
     private apiSvc: ApiService,
     private router: Router
-  ) { 
-    this.titleService.setTitle('MyApp - Reset Password');
+  ) {
+    this.commonSvc.setTitle('Reset Password');
   }
 
   ngOnInit(): void {
