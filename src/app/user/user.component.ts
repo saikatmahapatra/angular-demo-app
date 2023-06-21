@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../@core/services/common.service';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonSvc: CommonService) { 
+    this.commonSvc.setTitle('Employee');
+    
+  }
 
   ngOnInit() {
   }

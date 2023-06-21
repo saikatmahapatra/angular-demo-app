@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonService } from '../@core/services/common.service';
 
 @Component({
   selector: 'app-settings-layout',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings-layout.component.scss']
 })
 export class SettingsLayoutComponent {
-
+  constructor(private commonSvc: CommonService,) {
+    this.commonSvc.setTitle('Site Settings');
+    
+  }
 }

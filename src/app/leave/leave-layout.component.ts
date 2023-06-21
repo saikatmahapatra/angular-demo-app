@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../@core/services/common.service';
 
 @Component({
   selector: 'app-leave-layout',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonSvc: CommonService) { 
+    this.commonSvc.setTitle('Leave');
+  }
 
   ngOnInit(): void {
   }

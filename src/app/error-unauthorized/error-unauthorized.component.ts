@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from '../@core/services/common.service';
 
 @Component({
   selector: 'app-error-unauthorized',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class ErrorUnauthorizedComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private commonSvc: CommonService, private router: Router) { 
+    this.commonSvc.setTitle('Error Unauthorized');
+    
+  }
 
   ngOnInit() {
   }

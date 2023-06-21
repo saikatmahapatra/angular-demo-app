@@ -29,7 +29,9 @@ export class NgExampleComponent implements OnInit {
     { link: '/example/prime-ng', text: 'PrimeNG Theme'}
   ];
 
-  constructor(private commonSvc: CommonService) { }
+  constructor(private commonSvc: CommonService) { 
+    this.commonSvc.setTitle('Angular Concepts Example');
+  }
 
   /**
    * Life cycle hooks
