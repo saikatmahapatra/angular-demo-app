@@ -1,4 +1,4 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -42,7 +42,9 @@ export class AddContentComponent implements OnInit {
     contentDescription: ['', [Validators.required, this.validator.notEmpty]],
     contentStatus: ['Y'],
     sendEmailNotification: [true]
-  })
+  });
+
+  emailNotifyDistro = '';
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -72,6 +74,7 @@ export class AddContentComponent implements OnInit {
       this.contentStyle = 'body { color: #adb5bd; }'
     }
     this.commonSvc.setTitle(this.title+' Content');
+    this.getSettings();
   }
 
   onSubmit() {
@@ -133,6 +136,20 @@ export class AddContentComponent implements OnInit {
       contentHeadline: data?.content_title,
       contentDescription: data?.content_text,
       contentStatus: data?.content_status
+    });
+  }
+
+  getSettings() {
+    this.apiSvc.get(AppConfig.apiUrl.getSettings).subscribe({
+      next: (response: any) => {
+        if(response?.data) {
+          if(response?.data?.emailNotifyDistro) {
+            this.emailNotifyDistro = response?.data?.emailNotifyDistro || '';
+          }
+        }
+      },
+      error: (response: HttpErrorResponse) => {
+      }
     });
   }
 
