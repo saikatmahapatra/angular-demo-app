@@ -39,6 +39,7 @@ export class TimesheetFormComponent implements OnInit {
   allowedMinDate = 30;
   settings: any;
   taskDescr = '';
+  loggedInUserId = '';
 
   myForm = this.fb.group({
     id: [null],
@@ -83,6 +84,7 @@ export class TimesheetFormComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.loggedInUserId = this.authSvc.getUserId()
     let today = new Date();
     this.month = today.getMonth() + 1;
     this.year = today.getFullYear();

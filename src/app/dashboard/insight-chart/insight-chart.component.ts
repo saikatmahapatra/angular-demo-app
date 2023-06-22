@@ -70,9 +70,9 @@ export class InsightChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.router.url.indexOf('my-insight') != -1) {
-      this.pageTitle = 'My Insight Dashboard';
-    }
+    // if (this.router.url.indexOf('my-insight') != -1) {
+    //   this.pageTitle = 'Insight Dashboard';
+    // }
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.activatedRoute.paramMap.subscribe(params => {
       this.entityId = params.get('entityId');

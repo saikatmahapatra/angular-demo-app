@@ -284,6 +284,7 @@ class Project_model extends CI_Model {
         t1.timesheet_hours,
         t1.timesheet_description,
         t1.timesheet_created_on,
+        t1.timesheet_created_by,
         t1.timesheet_updated_on,
         t1.timesheet_review_status,
         t1.timesheet_reviewed_by,
