@@ -58,7 +58,7 @@ export class ManageProjectComponent implements OnInit {
   }
 
   redirectPage(data: any) {
-    this.router.navigate(['/project/insight', data.id]);
+    this.router.navigate(['/dashboard/insight/project/', data.id]);
   }
 
   // deleteItem(data: any) {
