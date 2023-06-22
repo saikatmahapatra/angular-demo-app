@@ -20,7 +20,7 @@ import { UiButtonComponent } from './components/ui-button/ui-button.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { StatusIndicatorDirective } from './directives/status-indicator.directive';
-import { ThemeSwitchComponent } from './component/theme-switch/theme-switch.component';
+import { ThemeSwitchComponent } from './components/theme-switch/theme-switch.component';
 import { IconComponent } from './components/icon/icon.component';
 //import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
