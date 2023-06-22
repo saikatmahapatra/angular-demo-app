@@ -58,7 +58,7 @@ export class InsightChartComponent implements OnInit {
     private router: Router,
     private validator: FormValidationService
   ) {
-    this.commonSvc.setTitle('Employee Insight');
+    this.commonSvc.setTitle('Insight Dashboard');
   }
 
   ngOnInit(): void {
@@ -71,9 +71,11 @@ export class InsightChartComponent implements OnInit {
     });
 
     if (this.entity === 'emp' && this.entityId) {
+      this.myForm.controls['duration'].setValue('all');
       this.getEmpChartData();
     }
     if (this.entity === 'project' && this.entityId) {
+      this.myForm.controls['duration'].setValue('currentMonth');
       this.getProjectStatData();
     }
   }
