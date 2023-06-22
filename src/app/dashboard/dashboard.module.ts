@@ -10,6 +10,7 @@ import { SharedModule } from '../@shared/shared.module';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { InsightChartComponent } from './insight-chart/insight-chart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     PostComponent,
     DashboardStatComponent,
     EventCalendarComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    InsightChartComponent
   ],
   imports: [
     CommonModule,

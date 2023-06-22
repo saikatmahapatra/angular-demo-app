@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { InsightChartComponent } from './insight-chart/insight-chart.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'post-details/:id', component: PostDetailsComponent }
+  { path: 'post-details/:id', component: PostDetailsComponent },
+  { path: 'insight', component: InsightChartComponent }
 ];
 @NgModule({
   imports: [
