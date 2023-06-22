@@ -10,7 +10,6 @@ import { SharedModule } from '../@shared/shared.module';
 import { ManageProjectComponent } from './manage-project/manage-project.component';
 import { ManageTaskComponent } from './manage-task/manage-task.component';
 import { PrimeNgModule } from '../prime-ng.module';
-import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
 
 
 @NgModule({
@@ -19,8 +18,7 @@ import { ProjectDashboardComponent } from './project-dashboard/project-dashboard
     AddEditTaskComponent,
     ProjectLayoutComponent,
     ManageProjectComponent,
-    ManageTaskComponent,
-    ProjectDashboardComponent
+    ManageTaskComponent
   ],
   imports: [
     CommonModule,
