@@ -1,4 +1,7 @@
 <h1>Insight Dashboard</h1>
+<span class="badge rounded-pill bg-success" *ngIf="entity=== 'emp'">Employee Insight</span>
+<span class="badge rounded-pill bg-info text-dark" *ngIf="entity=== 'project'">Project Insight</span>
+
 <form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="entityId" readonly>
     <input type="hidden" formControlName="entity" readonly>

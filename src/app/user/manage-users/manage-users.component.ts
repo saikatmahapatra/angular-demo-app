@@ -94,13 +94,6 @@ export class ManageUsersComponent implements OnInit {
     this.router.navigate(['/emp/view-emp-profile', id], navigationExtras);
   }
 
-  redirectToDataChart(id: number) {
-    const navigationExtras: NavigationExtras = {
-      state: {manageUserPageIndex: this.currentPageIndex},
-    };
-    this.router.navigate(['/emp/insight', id], navigationExtras);
-  }
-
   editUserProfile(id: number) {
     const navigationExtras: NavigationExtras = {
       state: {manageUserPageIndex: this.currentPageIndex},
