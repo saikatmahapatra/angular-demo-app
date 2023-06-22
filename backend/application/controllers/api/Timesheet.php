@@ -221,7 +221,7 @@ class Timesheet extends App_Controller
             'default-super-admin-access',
             'default-admin-access',
         ));
-        $projectId = $this->post('projectId') ? $this->post('projectId') : null;
+        $projectId = $this->post('entityId') ? $this->post('entityId') : null;
         $duration = $this->post('duration') ? $this->post('duration') : null;
         $action = $this->post('action') ? $this->post('action') : null;
         if($action == 'generateChart') {

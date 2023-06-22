@@ -598,8 +598,8 @@ class User extends App_Controller
     function userInsight_post()
     {
         $this->isAuthorized();
-        $id = $this->post('userId') ? $this->post('userId') : $this->getUserId();
-        if($this->getUserRoleId() !== '1' && $id !== $this->getUserId()) {
+        $userId = $this->post('entityId') ? $this->post('entityId') : $this->getUserId();
+        if($this->getUserRoleId() !== '1' && $userId !== $this->getUserId()) {
             //$this->responseData['message'] = 'You are not authorized to view this page';
             $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
         } else {
@@ -610,7 +610,7 @@ class User extends App_Controller
             $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
             $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
 
-            $resultArray = $this->user_model->getUserDataChart($id, $duration, $fromDate, $toDate);
+            $resultArray = $this->user_model->getUserDataChart($userId, $duration, $fromDate, $toDate);
             if (isset($resultArray)) {
                 $this->responseData['data'] = $resultArray;
                 $this->statusCode = REST_Controller::HTTP_OK;

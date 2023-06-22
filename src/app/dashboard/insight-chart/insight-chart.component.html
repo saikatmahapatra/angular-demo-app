@@ -2,16 +2,16 @@
 
 <form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="entityId" readonly>
-    <input type="hidden" formControlName="entityCode" readonly>
+    <input type="hidden" formControlName="entity" readonly>
     <input type="hidden" formControlName="action" readonly>
     <div class="col-12">
         <label class="visually-hidden" for="duration">Duration</label>
-        <select formControlName="duration" class="form-select">
+        <select formControlName="duration" class="form-select" id="duration">
             <option value="currentMonth">Current month</option>
-            <option value="last1Month">Last 1 month</option>
-            <option value="last3months">Last 3 months</option>
-            <option value="last6months">Last 6 months</option>
-            <option value="last12months">Last 12 months</option>
+            <option value="last1Month">Past 1 month</option>
+            <option value="last3months">Past 3 months</option>
+            <option value="last6months">Past 6 months</option>
+            <option value="last12months">Past 12 months</option>
             <option value="all">All Duration</option>
         </select>
     </div>
@@ -27,6 +27,8 @@
                 class="spinner-border spinner-border-sm me-1"></span> Generate</button>
     </div>
     <!-- <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error> -->
+
+    {{myForm.status}}
 </form>
 
 <div class="row my-4">
@@ -40,57 +42,51 @@
                     <table class="table table-sm table-responsive table-bordered">
                         <tbody>
                             <tr>
-                                <td class="fw-bold">Project Name:</td>
-                                <td colspan="5">
+                                <td class="fw-bold" style="width: 25%;">Project Name:</td>
+                                <td>
                                     {{projectInfoData?.project_name}}
+                                </td>
+                                <td class="fw-bold" style="width: 25%;">Project No:</td>
+                                <td>
+                                    {{projectInfoData?.project_number}}
                                 </td>
                             </tr>
                             <tr>
-                                <td class="fw-bold">Project No:</td>
+                                <td class="fw-bold">Status:</td>
                                 <td>
-                                    {{projectInfoData?.project_number}}
+                                    {{projectInfoData?.project_status}}
                                 </td>
                                 <td class="fw-bold">Added On:</td>
                                 <td>
                                     {{projectInfoData?.created_on | date: 'dd/MM/yyyy'}}
                                 </td>
-                                <td class="fw-bold">Status:</td>
-                                <td>
-                                    {{projectInfoData?.project_status}}
-                                </td>
                             </tr>
                             <tr>
-                                
+
                                 <td class="fw-bold">Start Date:</td>
                                 <td>
-                                    {{projectInfoData?.project_start_date | date:
-                                        'dd/MM/yyyy'}}
+                                    {{projectInfoData?.project_start_date | date:'dd/MM/yyyy'}}
                                 </td>
                                 <td class="fw-bold">End Date:</td>
                                 <td>
                                     {{projectInfoData?.project_end_date | date: 'dd/MM/yyyy'}}
                                 </td>
-                                <td class="fw-bold">-</td>
-                                <td>-</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Description:</td>
-                                <td colspan="5">
+                                <td colspan="3">
                                     {{projectInfoData?.project_desc || '--'}}
                                 </td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">Total Resources Worked:</td>
                                 <td>
-                                    {{projectInfoData?.project_status}}
+                                    {{totalWorkforce}}
                                 </td>
                                 <td class="fw-bold">Total Hours Logged</td>
                                 <td>
-                                    {{projectInfoData?.project_start_date | date:
-                                        'dd/MM/yyyy'}}
+                                    {{totalBurnedHours}}
                                 </td>
-                                <td class="fw-bold">--</td>
-                                <td>--</td>
                             </tr>
                         </tbody>
                     </table>
@@ -174,8 +170,10 @@
                 <h5 class="">Resource Utilization Chart</h5>
             </div>
             <div class="card-body">
-                <p-chart type="bar" [data]="barChartData" [options]="barChartOptions" *ngIf="barChartDataValue.length>0"></p-chart>
-                <div *ngIf="barChartDataValue.length === 0 ">No timesheet records found for the selected duration to generate insight report & chart. Please try again with a different duration.</div>
+                <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"
+                    *ngIf="barChartDataValue.length>0"></p-chart>
+                <div *ngIf="barChartDataValue.length === 0 ">No timesheet records found for the selected duration to
+                    generate insight report & chart. Please try again with a different duration.</div>
             </div>
         </div>
     </div>

@@ -82,8 +82,8 @@ export class InsightChartComponent implements OnInit {
     if (this.myForm.valid && this.entity === 'emp' && this.entityId) {
       this.getEmpChartData();
     }
-    else if (this.myForm.valid && this.entity === 'project' && this.entityId) {
-      //this.getEmpChartData();
+    if (this.myForm.valid && this.entity === 'project' && this.entityId) {
+      this.getProjectStatData();
     }
     else {
       this.loading = false;
