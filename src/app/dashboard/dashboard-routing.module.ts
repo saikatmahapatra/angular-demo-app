@@ -6,7 +6,7 @@ import { InsightChartComponent } from './insight-chart/insight-chart.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'post-details/:id', component: PostDetailsComponent },
-  { path: 'insight/:entityName/:id', component: InsightChartComponent }
+  { path: 'insight/:entity/:entityId', component: InsightChartComponent }
 ];
 @NgModule({
   imports: [
