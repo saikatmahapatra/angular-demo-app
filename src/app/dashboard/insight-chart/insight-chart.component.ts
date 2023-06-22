@@ -45,7 +45,7 @@ export class InsightChartComponent implements OnInit {
     action: ['generateChart'],
     entityId: [null, Validators.required],
     entity: [null, Validators.required],
-    duration: ['last6months', [Validators.required]],
+    duration: ['all', [Validators.required]],
     //dateRange: ['', [Validators.required]]
   });
 
