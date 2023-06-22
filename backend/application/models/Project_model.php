@@ -351,6 +351,22 @@ class Project_model extends CI_Model {
         $this->db->join('users as t2', 't2.id = t1.timesheet_created_by', 'left');
 		$this->db->where('t1.project_id', $project_id);
 
+        if($duration == 'today') {
+            $this->db->where('timesheet_date = "'.date('Y-m-d').'" ');
+        }
+        
+        if($duration == 'last2weeks') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 2 WEEK)');
+        }
+
+        if($duration == 'last1week') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 1 WEEK)');
+        }
+        
+        if($duration == 'last2weeks') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 2 WEEK)');
+        }
+
         if($duration == 'currentMonth') {
             $this->db->where('MONTH(`timesheet_date`) = MONTH(CURRENT_DATE()) AND YEAR(`timesheet_date`) = YEAR(CURRENT_DATE())');
         }
@@ -394,6 +410,22 @@ class Project_model extends CI_Model {
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
 		$this->db->where('t1.project_id', $project_id);
         
+        if($duration == 'today') {
+            $this->db->where('timesheet_date = "'.date('Y-m-d').'" ');
+        }
+        
+        if($duration == 'last2weeks') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 2 WEEK)');
+        }
+
+        if($duration == 'last1week') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 1 WEEK)');
+        }
+        
+        if($duration == 'last2weeks') {
+            $this->db->where('timesheet_date >= (NOW() - INTERVAL 2 WEEK)');
+        }
+
         if($duration == 'currentMonth') {
             $this->db->where('MONTH(`timesheet_date`) = MONTH(CURRENT_DATE()) AND YEAR(`timesheet_date`) = YEAR(CURRENT_DATE())');
         }

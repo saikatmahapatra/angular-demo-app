@@ -1,5 +1,4 @@
 <h1>Insight Dashboard</h1>
-
 <form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="entityId" readonly>
     <input type="hidden" formControlName="entity" readonly>
@@ -7,6 +6,9 @@
     <div class="col-12">
         <label class="visually-hidden" for="duration">Duration</label>
         <select formControlName="duration" class="form-select" id="duration">
+            <option value="today">Today</option>
+            <option value="last1week">Past 1 week</option>
+            <option value="last2weeks">Past 2 weeks</option>
             <option value="currentMonth">Current month</option>
             <option value="last1Month">Past 1 month</option>
             <option value="last3months">Past 3 months</option>
