@@ -1,4 +1,4 @@
-<h1>Insight Dashboard</h1>
+<h1>{{pageTitle}}</h1>
 <span class="badge rounded-pill bg-success" *ngIf="entity=== 'emp'">Employee Insight</span>
 <span class="badge rounded-pill bg-info text-dark" *ngIf="entity=== 'project'">Project Insight</span>
 
@@ -29,7 +29,7 @@
     </div> -->
     <div class="col-12">
         <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
-                class="spinner-border spinner-border-sm me-1"></span> Generate</button>
+                class="spinner-border spinner-border-sm me-1"></span> View Details</button>
     </div>
     <!-- <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error> -->
 </form>
@@ -79,16 +79,6 @@
                                 <td class="fw-bold">Description:</td>
                                 <td colspan="3">
                                     {{projectInfoData?.project_desc || '--'}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-bold">Total Resources Worked:</td>
-                                <td>
-                                    {{totalWorkforce}}
-                                </td>
-                                <td class="fw-bold">Total Hours Logged</td>
-                                <td>
-                                    {{totalBurnedHours}}
                                 </td>
                             </tr>
                         </tbody>
@@ -155,28 +145,46 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-md-12">
+<div class="row">
+    <div [ngClass]="entity==='emp' ? 'col-md-6': 'col-md-12' ">
         <div class="card">
             <div class="card-header">
-                <h5 class="">Task Utilization Chart</h5>
+                <h5 class="">
+                    Task Utilization Chart ({{totalHoursLogged}} hours)
+                </h5>
             </div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
                     *ngIf="doughnutChartValue.length>0" height="375px"></p-chart>
-                <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found for the selected duration to
-                    generate insight report & chart. Please try again with a different duration.</div>
+                <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found to display insight.</div>
             </div>
         </div>
-        <div class="card my-3">
+    </div>
+    <div class="col-md-6" *ngIf="entity==='emp'">
+        <div class="card">
             <div class="card-header">
-                <h5 class="">Resource Utilization Chart</h5>
+                <h5 class="">Project Engagement Chart ({{totalNumberOfProjectsWorked}} projects)</h5>
+            </div>
+            <div class="card-body flex justify-content-center">
+                <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions" height="375px" *ngIf="pieChartValue.length > 0"></p-chart>
+                <div *ngIf="pieChartValue.length === 0 ">No timesheet records found to display insight.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="entity==='project'">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">Resource Utilization Chart ({{totalNumberOfEmployeesWorked}} employees)</h5>
             </div>
             <div class="card-body">
                 <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"
                     *ngIf="barChartDataValue.length>0"></p-chart>
-                <div *ngIf="barChartDataValue.length === 0 ">No timesheet records found for the selected duration to
-                    generate insight report & chart. Please try again with a different duration.</div>
+                <div *ngIf="barChartDataValue.length === 0 ">No timesheet records found to display insight.</div>
             </div>
         </div>
     </div>

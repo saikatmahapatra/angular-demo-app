@@ -612,10 +612,17 @@ class User_model extends CI_Model {
         return $qury->num_rows() > 0 ? true : false;
     }
 
-    function getUserDataChart($userId, $duration=NULL, $fromDate=NULL, $toDate=NULL) {
+    function getUserDataChart($userId, $duration=NULL, $fromDate=NULL, $toDate=NULL, $groupBy='task') {
         $result = array();
-        $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.timesheet_created_by, t1.task_id, t2.task_name');
-        $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
+        if($groupBy == 'task') {
+            $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.timesheet_created_by, t1.task_id, t2.task_name');
+            $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
+        }
+        if($groupBy == 'project') {
+            $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.timesheet_created_by, t1.project_id, t2.project_name');
+        $this->db->join('projects as t2', 't2.id = t1.project_id', 'left');
+        }
+        
 		$this->db->where('t1.timesheet_created_by', $userId);
 
         if($duration == 'today') {
@@ -663,7 +670,13 @@ class User_model extends CI_Model {
             $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
         }
 
-		$this->db->group_by('t1.task_id');
+        if($groupBy == 'task') {
+            $this->db->group_by('t1.task_id');
+        }
+        if($groupBy == 'project') {
+            $this->db->group_by('t1.project_id');
+        }
+		
         $query = $this->db->get('timesheet as t1');
         $result = $query->result_array();
         //print_r($this->db->last_query()); die();

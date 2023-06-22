@@ -18,6 +18,7 @@ export class InsightChartComponent implements OnInit {
   submitted = false;
   loading = false;
   routedFromPageIndex = 0;
+  pageTitle = 'Insight Dashboard';
 
   // url
   entityId: any;
@@ -25,8 +26,9 @@ export class InsightChartComponent implements OnInit {
 
   // entity specific
   projectInfoData: any;
-  totalWorkforce: number = 0;
-  totalBurnedHours: number = 0;
+  totalNumberOfEmployeesWorked: number = 0;
+  totalHoursLogged: number = 0;
+  totalNumberOfProjectsWorked: number = 0;
   userDetails: any;
 
   // common bar chart
@@ -40,6 +42,12 @@ export class InsightChartComponent implements OnInit {
   doughnutChartOptions: any;
   doughnutChartLabel: any = [];
   doughnutChartValue: any = [];
+
+  // pie chart
+  pieChartData: any;
+  pieChartOptions: any;
+  pieChartLabel: any = [];
+  pieChartValue: any = [];
 
   myForm = this.fb.group({
     action: ['generateChart'],
@@ -62,6 +70,9 @@ export class InsightChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.router.url.indexOf('my-insight') != -1) {
+      this.pageTitle = 'My Insight Dashboard';
+    }
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.activatedRoute.paramMap.subscribe(params => {
       this.entityId = params.get('entityId');
@@ -71,7 +82,7 @@ export class InsightChartComponent implements OnInit {
     });
 
     if (this.entity === 'emp' && this.entityId) {
-      this.myForm.controls['duration'].setValue('all');
+      this.myForm.controls['duration'].setValue('last3months');
       this.getEmpChartData();
     }
     if (this.entity === 'project' && this.entityId) {
@@ -99,8 +110,8 @@ export class InsightChartComponent implements OnInit {
     this.barChartDataLabel = [];
     this.barChartDataValue = [];
     //this.projectInfoData = {};
-    this.totalWorkforce = 0;
-    this.totalBurnedHours = 0;
+    this.totalNumberOfEmployeesWorked = 0;
+    this.totalHoursLogged = 0;
 
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.entityId);
@@ -113,27 +124,27 @@ export class InsightChartComponent implements OnInit {
         // project info
         this.projectInfoData = response[0]?.data?.data_rows ? response[0]?.data?.data_rows[0] : {};
         // worklog info
-        let set : any= [];
+        let set: any = [];
         if (response[1]?.data.length > 0) {
-          this.totalWorkforce = response[1]?.data.length || 0;
+          this.totalNumberOfEmployeesWorked = response[1]?.data.length || 0;
           response[1]?.data.forEach((element: any) => {
-            if(!set.includes(element.task_id)) {
+            if (!set.includes(element.task_id)) {
               set.push(element.task_name)
             }
             this.barChartDataLabel.push(element.user_full_name);
             this.barChartDataValue.push(element.logged_hours);
           });
 
-          let totalBurnedHours = this.barChartDataValue.reduce((accumulator: number, currentValue: number) => {
+          let hrsLogged = this.barChartDataValue.reduce((accumulator: number, currentValue: number) => {
             return (accumulator + Number(currentValue))
-          },0);
-          this.totalBurnedHours = totalBurnedHours.toFixed(2);
+          }, 0);
+          this.totalHoursLogged = hrsLogged.toFixed(2);
           this.renderBarChart();
         }
 
         if (response[1]?.taskData.length > 0) {
           response[1]?.taskData.forEach((element: any) => {
-            this.doughnutChartLabel.push(element.task_name+' ('+element.sum_hours+' hrs)');
+            this.doughnutChartLabel.push(element.task_name + ' (' + element.sum_hours + ' hrs)');
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();
@@ -151,6 +162,12 @@ export class InsightChartComponent implements OnInit {
     this.doughnutChartLabel = [];
     this.doughnutChartValue = [];
 
+    this.pieChartLabel = [];
+    this.pieChartValue = [];
+
+    this.totalNumberOfProjectsWorked = 0;
+    this.totalHoursLogged = 0;
+
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.entityId);
     const options = { params: queryParams };
@@ -160,7 +177,7 @@ export class InsightChartComponent implements OnInit {
 
     forkJoin([userDataAPI, userInsightAPI]).subscribe({
       next: (response: any) => {
-        console.log(response[0]?.data?.user[0]);
+        //console.log(response[0]?.data?.user[0]);
         if (response[0]?.data?.user[0]) {
           this.userDetails = response[0]?.data?.user[0];
         }
@@ -170,6 +187,18 @@ export class InsightChartComponent implements OnInit {
             this.doughnutChartValue.push(element.sum_hours);
           });
           this.renderDoughnutChart();
+        }
+        if (response[1]?.dataProject.length > 0) {
+          this.totalNumberOfProjectsWorked = response[1]?.dataProject.length || 0;
+          response[1]?.dataProject.forEach((element: any) => {
+            this.pieChartLabel.push(element.project_name + ' (' + element.sum_hours + ' hrs)');
+            this.pieChartValue.push(element.sum_hours);
+          });
+          let hrsLogged = this.pieChartValue.reduce((accumulator: number, currentValue: number) => {
+            return (accumulator + Number(currentValue))
+          }, 0);
+          this.totalHoursLogged = hrsLogged.toFixed(2);
+          this.renderPieChart();
         }
       },
       error: (response: HttpErrorResponse) => {
@@ -259,4 +288,32 @@ export class InsightChartComponent implements OnInit {
       }
     };
   }
+
+  renderPieChart() {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+
+    this.pieChartData = {
+      labels: this.pieChartLabel,
+      datasets: [
+        {
+          data: this.pieChartValue,
+          // backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+          // hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+        }
+      ]
+    };
+
+    this.pieChartOptions = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            color: textColor
+          }
+        }
+      }
+    };
+  }
+
 }

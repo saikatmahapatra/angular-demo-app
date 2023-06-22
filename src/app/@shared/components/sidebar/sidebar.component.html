@@ -14,6 +14,9 @@
           <li>
             <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="nav-link">Dashboard</a>
           </li>
+          <li>
+            <a [routerLink]="['/dashboard/my-insight/emp/', loggedInUserId]" [routerLinkActive]="['active-nav-link']" class="nav-link">My Insight</a>
+          </li>
         </ul>
       </div>
     </li>

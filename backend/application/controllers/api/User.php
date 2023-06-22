@@ -610,9 +610,11 @@ class User extends App_Controller
             $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
             $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
 
-            $resultArray = $this->user_model->getUserDataChart($userId, $duration, $fromDate, $toDate);
-            if (isset($resultArray)) {
-                $this->responseData['data'] = $resultArray;
+            $resultArrayTask = $this->user_model->getUserDataChart($userId, $duration, $fromDate, $toDate, 'task');
+            $resultArrayProject = $this->user_model->getUserDataChart($userId, $duration, $fromDate, $toDate, 'project');
+            if (isset($resultArrayTask) && isset($resultArrayProject)) {
+                $this->responseData['data'] = $resultArrayTask;
+                $this->responseData['dataProject'] = $resultArrayProject;
                 $this->statusCode = REST_Controller::HTTP_OK;
             }
             else {

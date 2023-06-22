@@ -16,11 +16,13 @@ export class SidebarComponent implements OnInit {
   // @Input() navWidth: number = window.innerWidth;
   // @Input() direction: SideNavDirection = SideNavDirection.Left;
   userRole = '';
+  loggedInUserId = '';
   welcomeUserText = '';
   constructor(private navService: NavigationService, private commonSvc: CommonService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
     this.userRole = this.authSvc.getRoleId();
+    this.loggedInUserId = this.authSvc.getUserId();
     const user = this.authSvc.getUser();
     this.welcomeUserText =  user.user_full_name;
   }
