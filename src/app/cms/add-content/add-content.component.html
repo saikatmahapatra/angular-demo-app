@@ -39,7 +39,7 @@
             <div class="row" *ngIf="showEditor">
                 <div class="col-md-12 mb-3">
                     <label class="required" for="contentDescription">Description</label>
-                    <div class="small mb-3">Note: If you switch color mode(dark/light), please reload this page to get it reflected in editor.</div>
+                    <div class="small mb-3">Note: If you copy & paste contents here kindly make it proper format using editors toolbar. If you switch dark/light theme from this page it's suggedted to reload the page.</div>
                     <!-- <p-editor formControlName="contentDescription" [style]="{'height':'320px'}"></p-editor> -->
                     <editor formControlName="contentDescription" apiKey="1gblzpsgxtmljz50bmumyxiac8kurph70jxedvr39as8nee9" [init]="{
                         height: 500,
@@ -80,7 +80,7 @@
                         <input class="form-check-input" type="checkbox" value="sendEmail" id="defaultCheck4"
                             formControlName="sendEmailNotification">
                         <label class="form-check-label" for="defaultCheck4">
-                            Send email notification to all active employees.
+                            Send email notification.
                             <span *ngIf="emailNotifyDistro">Email notification will be sent to <span class="fw-bold">{{emailNotifyDistro}}</span></span>
                             <span *ngIf="!emailNotifyDistro">Email notification will be sent to individuals email ID which might take time longer than expecetd. Its suggested to add an email distribution list from settings.</span>
                         </label>
