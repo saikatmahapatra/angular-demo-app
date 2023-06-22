@@ -1,4 +1,4 @@
-<h1>Insight</h1>
+<h1>Insight Dashboard</h1>
 
 <form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="entityId" readonly>
@@ -31,7 +31,74 @@
 
 <div class="row my-4">
     <div class="col-md-12">
-        <div class="card">
+        <div class="card" *ngIf="entity === 'project'">
+            <div class="card-header">
+                <h5 class="">Project Info</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-responsive table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Project Name:</td>
+                                <td colspan="5">
+                                    {{projectInfoData?.project_name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Project No:</td>
+                                <td>
+                                    {{projectInfoData?.project_number}}
+                                </td>
+                                <td class="fw-bold">Added On:</td>
+                                <td>
+                                    {{projectInfoData?.created_on | date: 'dd/MM/yyyy'}}
+                                </td>
+                                <td class="fw-bold">Status:</td>
+                                <td>
+                                    {{projectInfoData?.project_status}}
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td class="fw-bold">Start Date:</td>
+                                <td>
+                                    {{projectInfoData?.project_start_date | date:
+                                        'dd/MM/yyyy'}}
+                                </td>
+                                <td class="fw-bold">End Date:</td>
+                                <td>
+                                    {{projectInfoData?.project_end_date | date: 'dd/MM/yyyy'}}
+                                </td>
+                                <td class="fw-bold">-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Description:</td>
+                                <td colspan="5">
+                                    {{projectInfoData?.project_desc || '--'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Total Resources Worked:</td>
+                                <td>
+                                    {{projectInfoData?.project_status}}
+                                </td>
+                                <td class="fw-bold">Total Hours Logged</td>
+                                <td>
+                                    {{projectInfoData?.project_start_date | date:
+                                        'dd/MM/yyyy'}}
+                                </td>
+                                <td class="fw-bold">--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" *ngIf="entity === 'emp'">
             <div class="card-header">
                 <h5>Employee Info</h5>
             </div>
@@ -56,7 +123,9 @@
                             <tr>
                                 <td class="fw-bold">Email</td>
                                 <td>
-                                    <span [pTooltip]="userDetails?.user_email" tooltipPosition="top">{{(userDetails?.user_email | slice : 0: 15) + '...'}}</span>
+                                    <span [pTooltip]="userDetails?.user_email"
+                                        tooltipPosition="top">{{(userDetails?.user_email | slice : 0: 15) +
+                                        '...'}}</span>
                                 </td>
                                 <td class="fw-bold">Phone</td>
                                 <td>
@@ -87,10 +156,11 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="">Tasks Log</h5>
+                <h5 class="">Tasks</h5>
             </div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
@@ -99,20 +169,14 @@
                     generate insight report & chart. Please try again with a different duration.</div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- <div class="row my-4">
-    <div class="col-md-12">
-        <div class="card">
+        <div class="card my-3">
             <div class="card-header">
-                <h5 class="">Project Engagement</h5>
+                <h5 class="">Resource Utilization Chart</h5>
             </div>
-            <div class="card-body flex justify-content-center">
-                <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
-                    *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
-                <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
+            <div class="card-body">
+                <p-chart type="bar" [data]="barChartData" [options]="barChartOptions" *ngIf="barChartDataValue.length>0"></p-chart>
+                <div *ngIf="barChartDataValue.length === 0 ">No timesheet records found for the selected duration to generate insight report & chart. Please try again with a different duration.</div>
             </div>
         </div>
     </div>
-</div> -->
+</div>
