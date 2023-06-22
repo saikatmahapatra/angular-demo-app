@@ -11,6 +11,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { InsightChartComponent } from './insight-chart/insight-chart.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { InsightChartComponent } from './insight-chart/insight-chart.component';
     RouterModule,
     DashboardRoutingModule,
     PrimeNgModule,
-    FullCalendarModule 
+    FullCalendarModule ,
+    ReactiveFormsModule,
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

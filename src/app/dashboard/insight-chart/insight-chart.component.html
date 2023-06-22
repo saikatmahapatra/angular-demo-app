@@ -1,1 +1,118 @@
-<p>insight-chart works!</p>
+<h1>Insight</h1>
+
+<form class="row row-cols-sm-auto g-3 align-items-center my-4" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="entityId" readonly>
+    <input type="hidden" formControlName="entityCode" readonly>
+    <input type="hidden" formControlName="action" readonly>
+    <div class="col-12">
+        <label class="visually-hidden" for="duration">Duration</label>
+        <select formControlName="duration" class="form-select">
+            <option value="currentMonth">Current month</option>
+            <option value="last1Month">Last 1 month</option>
+            <option value="last3months">Last 3 months</option>
+            <option value="last6months">Last 6 months</option>
+            <option value="last12months">Last 12 months</option>
+            <option value="all">All Duration</option>
+        </select>
+    </div>
+    <!-- <div class="col-12">
+        <label class="visually-hidden" for="dateRange">Date Range</label>
+        <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
+            inputId="range" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"
+            [panelStyleClass]="'datetimepicker'"></p-calendar>
+
+    </div> -->
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
+                class="spinner-border spinner-border-sm me-1"></span> Generate Report</button>
+    </div>
+    <!-- <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error> -->
+</form>
+
+<div class="row my-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Employee Info</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-responsive table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Name</td>
+                                <td>
+                                    {{userDetails?.user_full_name}}
+                                </td>
+                                <td class="fw-bold">Designation</td>
+                                <td>
+                                    {{userDetails?.designation_name}}
+                                </td>
+                                <td class="fw-bold">Department</td>
+                                <td>
+                                    {{userDetails?.department_name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Email</td>
+                                <td>
+                                    <span [pTooltip]="userDetails?.user_email" tooltipPosition="top">{{(userDetails?.user_email | slice : 0: 15) + '...'}}</span>
+                                </td>
+                                <td class="fw-bold">Phone</td>
+                                <td>
+                                    {{userDetails?.user_phone}} {{userDetails?.user_phone2}}
+                                </td>
+                                <td class="fw-bold">Emp Code</td>
+                                <td>
+                                    {{userDetails?.user_uid}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Work Base Location</td>
+                                <td>
+                                    {{userDetails?.base_work_location_name}}
+                                </td>
+                                <td class="fw-bold">Emp Type</td>
+                                <td>
+                                    {{userDetails?.employment_type_name}}
+                                </td>
+                                <td class="fw-bold">Workspace Type</td>
+                                <td>
+                                    {{userDetails?.workspace_type_name}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">Tasks Log</h5>
+            </div>
+            <div class="card-body flex justify-content-center">
+                <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
+                    *ngIf="doughnutChartValue.length>0" height="375px"></p-chart>
+                <div *ngIf="doughnutChartValue.length === 0 ">No timesheet records found for the selected duration to
+                    generate insight report & chart. Please try again with a different duration.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row my-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">Project Engagement</h5>
+            </div>
+            <div class="card-body flex justify-content-center">
+                <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
+                    *ngIf="doughnutChartValue.length>0" height="475px"></p-chart>
+                <div *ngIf="doughnutChartValue.length === 0 ">No data found to display a chart.</div>
+            </div>
+        </div>
+    </div>
+</div> -->
