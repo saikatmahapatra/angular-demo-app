@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InsightChartComponent } from './insight-chart.component';
+import { AnalyticsComponent } from './analytics.component';
 
 describe('InsightChartComponent', () => {
-  let component: InsightChartComponent;
-  let fixture: ComponentFixture<InsightChartComponent>;
+  let component: AnalyticsComponent;
+  let fixture: ComponentFixture<AnalyticsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InsightChartComponent ]
+      declarations: [ AnalyticsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InsightChartComponent);
+    fixture = TestBed.createComponent(AnalyticsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -115,7 +115,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Emp</span>
-                        <a [pTooltip]="'View employee insight'" tooltipPosition="top" [routerLink]="['/dashboard/insight/emp/', rowData.timesheet_created_by]" target="_blank">
+                        <a [pTooltip]="'View employee analytics'" tooltipPosition="top" [routerLink]="['/dashboard/analytics/emp/', rowData.timesheet_created_by]" target="_blank">
                             <app-icon [name]="'linechart'" [styleClass]="'me-1 text-success'"></app-icon>
                         </a>
                         {{rowData?.user_full_name}}
@@ -123,7 +123,7 @@
 
                     <td>
                         <span class="p-column-title">Project</span>
-                        <a [pTooltip]="'View project insight'" tooltipPosition="top" [routerLink]="['/dashboard/insight/project/', rowData.project_id]" target="_blank">
+                        <a [pTooltip]="'View project analytics'" tooltipPosition="top" [routerLink]="['/dashboard/analytics/project/', rowData.project_id]" target="_blank">
                             <app-icon [name]="'linechart'" [styleClass]="'me-1 text-info'"></app-icon>
                         </a>
                         {{rowData?.project_name}}

@@ -10,7 +10,7 @@ import { SharedModule } from '../@shared/shared.module';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { InsightChartComponent } from './insight-chart/insight-chart.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardStatComponent,
     EventCalendarComponent,
     PostDetailsComponent,
-    InsightChartComponent
+    AnalyticsComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +31,9 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     FullCalendarModule ,
     ReactiveFormsModule,
     FormsModule
+  ],
+  exports: [
+    AnalyticsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

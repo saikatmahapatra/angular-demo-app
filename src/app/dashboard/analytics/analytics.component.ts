@@ -10,15 +10,15 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-insight-chart',
-  templateUrl: './insight-chart.component.html',
-  styleUrls: ['./insight-chart.component.scss']
+  selector: 'app-analytics',
+  templateUrl: './analytics.component.html',
+  styleUrls: ['./analytics.component.scss']
 })
-export class InsightChartComponent implements OnInit {
+export class AnalyticsComponent implements OnInit {
   submitted = false;
   loading = false;
   routedFromPageIndex = 0;
-  pageTitle = 'Insight Dashboard';
+  pageTitle = 'Analytics';
 
   // url
   entityId: any;
@@ -70,7 +70,7 @@ export class InsightChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (this.router.url.indexOf('my-insight') != -1) {
+    // if (this.router.url.indexOf('my-analytics') != -1) {
     //   this.pageTitle = 'Insight Dashboard';
     // }
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
