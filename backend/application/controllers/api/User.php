@@ -595,7 +595,7 @@ class User extends App_Controller
         $this->response($this->responseData, $this->statusCode);
     }
 
-    function userInsight_post()
+    function userAnalytics_post()
     {
         $this->isAuthorized();
         $userId = $this->post('entityId') ? $this->post('entityId') : $this->getUserId();

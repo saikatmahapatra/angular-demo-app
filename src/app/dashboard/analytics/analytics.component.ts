@@ -66,12 +66,12 @@ export class AnalyticsComponent implements OnInit {
     private router: Router,
     private validator: FormValidationService
   ) {
-    this.commonSvc.setTitle('Insight Dashboard');
+    this.commonSvc.setTitle('Analytics');
   }
 
   ngOnInit(): void {
     // if (this.router.url.indexOf('my-analytics') != -1) {
-    //   this.pageTitle = 'Insight Dashboard';
+    //   this.pageTitle = 'Analytics';
     // }
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.activatedRoute.paramMap.subscribe(params => {
@@ -173,9 +173,9 @@ export class AnalyticsComponent implements OnInit {
     const options = { params: queryParams };
 
     let userDataAPI = this.apiSvc.get(AppConfig.apiUrl.userData, options);
-    let userInsightAPI = this.apiSvc.post(AppConfig.apiUrl.userInsight, this.myForm.value);
+    let userAnalyticsAPI = this.apiSvc.post(AppConfig.apiUrl.userAnalytics, this.myForm.value);
 
-    forkJoin([userDataAPI, userInsightAPI]).subscribe({
+    forkJoin([userDataAPI, userAnalyticsAPI]).subscribe({
       next: (response: any) => {
         //console.log(response[0]?.data?.user[0]);
         if (response[0]?.data?.user[0]) {
