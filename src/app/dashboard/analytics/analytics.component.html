@@ -120,9 +120,14 @@
                                 <td>
                                     {{userDetails?.user_phone}} {{userDetails?.user_phone2}}
                                 </td>
-                                <td class="fw-bold">Emp Code</td>
+                                <td class="fw-bold">Account Status</td>
                                 <td>
-                                    {{userDetails?.user_uid}}
+                                    <span *ngIf="userDetails?.user_status === 'Y' "
+                                        class="badge rounded-pill bg-success">Active</span>
+                                    <span *ngIf="userDetails?.user_status === 'N' "
+                                        class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                                    <span *ngIf="userDetails?.user_status === 'A' "
+                                        class="badge rounded-pill bg-danger">Archived</span>
                                 </td>
                             </tr>
                             <tr>
@@ -168,7 +173,8 @@
                 <h5 class="">Projects ({{totalNumberOfProjectsWorked}} projects)</h5>
             </div>
             <div class="card-body flex justify-content-center">
-                <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions" height="375px" *ngIf="pieChartValue.length > 0"></p-chart>
+                <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions" height="375px"
+                    *ngIf="pieChartValue.length > 0"></p-chart>
                 <div *ngIf="pieChartValue.length === 0 ">No timesheet records found to display analytics.</div>
             </div>
         </div>
