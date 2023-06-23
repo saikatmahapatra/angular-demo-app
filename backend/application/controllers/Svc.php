@@ -110,6 +110,31 @@ class Svc extends CI_Controller {
     function checkUser() {
         echo exec('whoami');
     }
+
+    function sendEmail() {
+        $to = $this->input->post('to');
+        $sub = $this->input->post('subject');
+        $msg = $this->input->post('message');
+
+
+        if($to) {
+            $config['mailtype'] = 'html';
+            $this->email->initialize($config);
+            $this->email->to($to);
+            $this->email->from('noreply@unitedexploration.co.in', 'MyApp ESS Portal');
+            $this->email->subject($sub);
+            $message = '<html><body><div style="border-top: 5px solid #1976d2; border-bottom: 5px solid #1976d2; padding-top: 20px; padding-bottom: 20px;">';
+            $message .= $msg;
+            $message .= "<p>*** This is a system generated email. Please do not reply.</p>";
+            $message .= "</div></body></html>";
+            $this->email->message($message);
+            $this->email->send();
+            echo "Email Sent ".date('Y-m-d h:i:s tt');
+        }
+
+
+        $this->load->view('sendEmail');
+    }
 }
 
 ?>
