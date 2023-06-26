@@ -1,13 +1,14 @@
 <h1>Role Based Access Control</h1>
 
 
-<div class="row">
+<div class="row my-4">
     <div class="col-md-6">
         <p-table #dt [value]="dataPermissions" dataKey="id" [rowHover]="true"
             styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
                     Permissions
+                    <button type="button" class="btn btn-success btn-sm">Add New Permission</button>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
@@ -90,7 +91,7 @@
         <p-table #dt [value]="dataRoles" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
             <ng-template pTemplate="caption">
                 <div class="table-header">
-                    Roles
+                    Roles <button type="button" class="btn btn-success btn-sm">Add New Role</button>
                 </div>
             </ng-template>
             <ng-template pTemplate="header">
