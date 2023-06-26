@@ -1,1 +1,155 @@
-<h1>SRBAC</h1>
+<h1>Role Based Access Control</h1>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <p-table #dt [value]="dataPermissions" dataKey="id" [rowHover]="true"
+            styleClass="p-datatable-sm table-font-sm ">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    Permissions
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Name
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Status
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Name</span>
+                        {{rowData?.permission_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        {{rowData?.permission_status}}
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData>
+                <tr>
+                    <td colspan="3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold w-25">Is Reserved</td>
+                                    <td>
+                                        {{rowData?.is_reserved}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold w-25">Description</td>
+                                    <td>
+                                        {{rowData?.permission_description}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold w-25">Created On</td>
+                                    <td>
+                                        {{rowData?.permission_created_on}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold w-25">Created By</td>
+                                    <td>
+                                        {{rowData?.permission_created_by}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="3">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="col-md-6">
+        <p-table #dt [value]="dataRoles" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    Roles
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Role Name
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex justify-content-between align-items-center">
+                            Assigned Permissions
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                <tr class="p-selectable-row">
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="rowData"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Role Name</span>
+                        {{rowData?.role_name}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Status</span>
+                        {{rowData?.role_status}}
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-rowData>
+                <tr>
+                    <td colspan="3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold w-25">Assigned Permissions</td>
+                                    <td>
+                                        {{rowData?.role_permissions}}
+                                        {{rowData?.permissions}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="3">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

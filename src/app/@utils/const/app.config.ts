@@ -123,6 +123,10 @@ export const AppConfig = {
 
         //Settings
         getSettings: 'settings/getSiteSettings',
-        updateSiteSettings: 'settings/updateSiteSettings'
+        updateSiteSettings: 'settings/updateSiteSettings',
+
+        //SRBAC
+        getRoles: 'srbac/getRoles',
+        getPermissions: 'srbac/getPermissions',
     }
 };

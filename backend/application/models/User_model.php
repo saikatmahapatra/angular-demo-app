@@ -680,4 +680,32 @@ class User_model extends CI_Model {
         //print_r($this->db->last_query()); die();
         return  $result;
     }
+
+
+    function getRoles($id, $limit=NULL, $offset=NULL) {
+        $this->db->select('t1.*');
+        if($id) {
+            $this->db->where(array('t1.id' => $id));
+        }
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        $query = $this->db->get('srbac_roles as t1');$num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
+    function getPermissions($id, $limit=NULL, $offset=NULL) {
+        $this->db->select('t1.*');
+        if($id) {
+            $this->db->where(array('t1.id' => $id));
+        }
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        $query = $this->db->get('srbac_permissions as t1');
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
 }
