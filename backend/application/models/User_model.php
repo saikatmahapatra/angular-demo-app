@@ -134,7 +134,7 @@ class User_model extends CI_Model {
                 )");
         }
         $this->db->join('user_meta t8', 't1.id = t8.user_id', 'left');
-        $this->db->join('srbac_role t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('srbac_roles t2', 't1.user_role=t2.id', 'left');
         $this->db->join('site_meta t3', 't8.user_department=t3.id', 'left');
         $this->db->join('site_meta t4', 't8.user_designation=t4.id', 'left');
         $this->db->join('site_meta t5', 't8.user_employment_type=t5.id', 'left');
