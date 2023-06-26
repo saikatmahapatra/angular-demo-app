@@ -8,13 +8,15 @@ import { SiteMetaComponent } from './site-meta/site-meta.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../@shared/shared.module';
+import { SrbacComponent } from './srbac/srbac.component';
 
 
 @NgModule({
   declarations: [
     SettingsLayoutComponent,
     SiteSettingsComponent,
-    SiteMetaComponent
+    SiteMetaComponent,
+    SrbacComponent
   ],
   imports: [
     CommonModule,
