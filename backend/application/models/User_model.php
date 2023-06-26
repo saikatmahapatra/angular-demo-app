@@ -134,7 +134,7 @@ class User_model extends CI_Model {
                 )");
         }
         $this->db->join('user_meta t8', 't1.id = t8.user_id', 'left');
-        $this->db->join('role_permissions t2', 't1.user_role=t2.id', 'left');
+        $this->db->join('srbac_role t2', 't1.user_role=t2.id', 'left');
         $this->db->join('site_meta t3', 't8.user_department=t3.id', 'left');
         $this->db->join('site_meta t4', 't8.user_designation=t4.id', 'left');
         $this->db->join('site_meta t5', 't8.user_employment_type=t5.id', 'left');
@@ -168,7 +168,7 @@ class User_model extends CI_Model {
         t2.role_weight,
         t1.user_login_date_time
         ');
-		$this->db->join('role_permissions t2', 't1.user_role=t2.id');
+		$this->db->join('srbac_roles t2', 't1.user_role=t2.id');
         $this->db->where(array(
             't1.user_email' => $user_email,
             't1.user_password' => $user_password
@@ -250,7 +250,7 @@ class User_model extends CI_Model {
     function get_user_role_permission($role_id) {
         $this->db->select('t1.id, t1.role_code, t1.role_code, t1.role_permissions');
         $this->db->where(array('t1.id' => $role_id));
-        $query = $this->db->get('role_permissions as t1');
+        $query = $this->db->get('srbac_roles as t1');
         $result = $query->result_array();
         $main_res = array();
         if (isset($result) && sizeof($result) > 0 &&  strlen($result[0]['role_permissions']) > 0) {
