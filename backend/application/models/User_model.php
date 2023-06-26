@@ -74,7 +74,6 @@ class User_model extends CI_Model {
             t8.user_pan_no,
             t8.user_uan_no,
             t2.role_name, 
-            t2.role_weight,
             t3.meta_value as department_name, 
             t4.meta_value as designation_name, 
             t5.meta_value as employment_type_name, 
@@ -165,7 +164,6 @@ class User_model extends CI_Model {
         t1.user_status,
         t1.user_status,
         t2.role_name,
-        t2.role_weight,
         t1.user_login_date_time
         ');
 		$this->db->join('srbac_roles t2', 't1.user_role=t2.id');
