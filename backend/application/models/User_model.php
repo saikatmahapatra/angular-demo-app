@@ -245,8 +245,8 @@ class User_model extends CI_Model {
         }
     }
 
-    function get_user_role_permission($role_id) {
-        $this->db->select('t1.id, t1.role_code, t1.role_code, t1.role_permissions');
+    function get_user_permission($role_id) {
+        $this->db->select('t1.id, t1.role_code, t1.role_permissions');
         $this->db->where(array('t1.id' => $role_id));
         $query = $this->db->get('srbac_roles as t1');
         $result = $query->result_array();
