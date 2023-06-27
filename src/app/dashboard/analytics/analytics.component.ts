@@ -19,6 +19,9 @@ export class AnalyticsComponent implements OnInit {
   loading = false;
   routedFromPageIndex = 0;
   pageTitle = 'Analytics';
+  rangeDates!: Date[];
+  minDate!: Date;
+  maxDate!: Date;
 
   // url
   entityId: any;
@@ -54,7 +57,7 @@ export class AnalyticsComponent implements OnInit {
     entityId: [null, Validators.required],
     entity: [null, Validators.required],
     duration: ['all', [Validators.required]],
-    //dateRange: ['', [Validators.required]]
+    dateRange: ['']
   });
 
   constructor(
@@ -67,12 +70,16 @@ export class AnalyticsComponent implements OnInit {
     private validator: FormValidationService
   ) {
     this.commonSvc.setTitle('Analytics');
+    let today = new Date();
+    this.maxDate = today;
+    this.minDate = new Date('2018/01/01');
   }
 
   ngOnInit(): void {
     // if (this.router.url.indexOf('my-analytics') != -1) {
     //   this.pageTitle = 'Analytics';
     // }
+    this.dateRangeValidator();
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.activatedRoute.paramMap.subscribe(params => {
       this.entityId = params.get('entityId');
@@ -89,6 +96,21 @@ export class AnalyticsComponent implements OnInit {
       this.myForm.controls['duration'].setValue('currentMonth');
       this.getProjectStatData();
     }
+  }
+
+  dateRangeValidator() {
+    const dep = this.myForm.controls['duration'];
+    const field = this.myForm.controls['dateRange'];
+    dep?.valueChanges.subscribe((val) => {
+      if (val === 'customDateRange') {
+        field.setValidators([Validators.required]);
+      } else {
+        field.removeValidators([Validators.required]);
+        field.setValue(null);
+        field.setErrors(null);
+      }
+    });
+    field.updateValueAndValidity();
   }
 
   onSubmit() {

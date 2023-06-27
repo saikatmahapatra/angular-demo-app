@@ -17,23 +17,23 @@
             <option value="last3months">Past 3 months</option>
             <option value="last6months">Past 6 months</option>
             <option value="last12months">Past 12 months</option>
+            <option value="customDateRange">Specific Period</option>
             <option value="all">All Duration</option>
         </select>
     </div>
-    <!-- <div class="col-12">
+    <div class="col-12" *ngIf="myForm.controls['duration'].value == 'customDateRange' ">
         <label class="visually-hidden" for="dateRange">Date Range</label>
-        <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
+        <p-calendar placeholder="Select date range" dateFormat="dd/mm/yy" formControlName="dateRange" selectionMode="range" [readonlyInput]="true"
             inputId="range" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"
-            [panelStyleClass]="'datetimepicker'"></p-calendar>
+            [panelStyleClass]="'datetimepicker'" [minDate]="minDate" [maxDate]="maxDate" [(ngModel)]="rangeDates"></p-calendar>
 
-    </div> -->
+    </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span *ngIf="loading"
                 class="spinner-border spinner-border-sm me-1"></span> View Details</button>
     </div>
-    <!-- <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error> -->
+    <app-validation-error *ngIf="myForm.controls['duration'].value == 'customDateRange' " [control]="myForm.controls['dateRange']"></app-validation-error>
 </form>
-
 <div class="row my-4">
     <div class="col-md-12">
         <div class="card" *ngIf="entity === 'project'">
