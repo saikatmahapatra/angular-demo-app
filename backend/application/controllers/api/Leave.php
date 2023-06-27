@@ -627,9 +627,8 @@ class Leave extends App_Controller
     }
 
     function getEmpLeaveBalance_get() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
         $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index

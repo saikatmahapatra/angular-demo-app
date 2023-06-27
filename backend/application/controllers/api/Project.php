@@ -11,9 +11,8 @@ class Project extends App_Controller
     {
         parent::__construct();
         $this->isAuthorized();
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $this->load->model('project_model');
     }

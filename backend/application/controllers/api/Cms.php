@@ -60,9 +60,8 @@ class Cms extends App_Controller
     {
         $pageName = $this->get('pageName') ? $this->get('pageName') : null; 
         if($pageName === 'managePosts') {
-            $this->isUserAuthorized(array(
-                'default-super-admin-access',
-                'default-admin-access',
+            $this->checkRolePermissions(array(
+                'adminAccess',
             ));
         }
         $id = $this->get('id') ? $this->get('id') : null;
@@ -100,9 +99,8 @@ class Cms extends App_Controller
     }
 
     function createPost_post() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $formAction = $this->post('action');
         $postdata = array(
@@ -132,9 +130,8 @@ class Cms extends App_Controller
     }
 
     function updatePost_put() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $formAction = $this->put('action');
         $postdata = array(
@@ -166,9 +163,8 @@ class Cms extends App_Controller
 
     function deletePost_delete()
     {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $id = $_REQUEST['id'] ? $_REQUEST['id'] : null;
         if ($id) {
@@ -232,9 +228,8 @@ class Cms extends App_Controller
     }
     
     function addHoliday_post() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $formAction = $this->post('action');
         $date = $this->common_lib->convert_to_mysql($this->post('date'));
@@ -262,9 +257,8 @@ class Cms extends App_Controller
     }
 
     function updateHoliday_put() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $formAction = $this->put('action');
         $date = $this->common_lib->convert_to_mysql($this->put('date'));
@@ -293,9 +287,8 @@ class Cms extends App_Controller
 
     function deleteHoliday_delete()
     {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $id = $_REQUEST['id'] ? $_REQUEST['id'] : null;
         if ($id) {

@@ -33,8 +33,8 @@ export class SrbacComponent implements OnInit {
 
   getRolePermissions() {
     const roleAPI = this.apiSvc.get(AppConfig.apiUrl.getRoles);
-    const permissionAPI = this.apiSvc.get(AppConfig.apiUrl.getPermissions);
-    forkJoin([roleAPI, permissionAPI]).subscribe({
+    //const permissionAPI = this.apiSvc.get(AppConfig.apiUrl.getPermissions);
+    forkJoin([roleAPI]).subscribe({
       next: (response: any) => {
         if(response[0]) {
           this.dataRoles = response[0]?.data?.data_rows;

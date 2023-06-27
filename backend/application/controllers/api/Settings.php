@@ -12,9 +12,8 @@ class Settings extends App_Controller
         parent::__construct();
         $this->isAuthorized();
         $this->load->model('settings_model');
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
     }
 

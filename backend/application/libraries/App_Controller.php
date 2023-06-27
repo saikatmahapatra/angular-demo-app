@@ -80,13 +80,12 @@ class App_Controller extends REST_Controller
     }
 
 
-    function isUserAuthorized($checkPermissions = array())
+    function checkRolePermissions($checkPermissions = array())
     {
         $matchCount = 0;
         $result = false;
         $userRoleId = $this->getUserRoleId();
         $arrUserPermissions = $this->user_model->get_user_permission($userRoleId);
-        print_r($arrUserPermissions);
         if (isset($checkPermissions) && count($checkPermissions) > 0) {
             if (isset($arrUserPermissions) && count($arrUserPermissions) > 0) {
                 $matchCount = count(array_intersect($arrUserPermissions, $checkPermissions));

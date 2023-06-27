@@ -21,9 +21,8 @@ class User extends App_Controller
         $id = $this->get('id') ? $this->get('id') : NULL;
         $pageName = $this->get('pageName') ? $this->get('pageName') : NULL;
 
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
 
 
@@ -94,9 +93,8 @@ class User extends App_Controller
     function createUser_post()
     {
         $this->isAuthorized();
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $validate = TRUE;
         if ($validate == TRUE) {
@@ -208,9 +206,8 @@ class User extends App_Controller
         $pageName = $this->get('pageName') ? $this->get('pageName') : NULL;
         $isAdmin = $pageName === 'viewEmpProfile' ? TRUE : FALSE;
         if ($pageName == 'viewEmpProfile') {
-            $this->isUserAuthorized(array(
-                'default-super-admin-access',
-                'default-admin-access',
+            $this->checkRolePermissions(array(
+                'adminAccess',
             ));
             $userId = $this->get('id') ? $this->get('id') : NULL;
         } else {
@@ -351,9 +348,8 @@ class User extends App_Controller
     function updateUser_post()
     {
         $this->isAuthorized();
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         if ($this->post('id')) {
             $designationId = $this->post('designation');
@@ -404,9 +400,8 @@ class User extends App_Controller
     function updateUserStatus_post()
     {
         $this->isAuthorized();
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
 
         if ($this->post('id')) {
@@ -566,9 +561,8 @@ class User extends App_Controller
     function saveLeaveBalance_post()
     {
         $this->isAuthorized();
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $userId = $this->post('userId') ? $this->post('userId') : null;
         if ($userId) {

@@ -182,9 +182,8 @@ class Timesheet extends App_Controller
     }
 
     function getReport_post() {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $dateRange = $this->post('dateRange');
         $fromDate = date("Y-m-d", strtotime($dateRange[0]));
@@ -217,9 +216,8 @@ class Timesheet extends App_Controller
 
     function timesheetChartData_post()
     {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $projectId = $this->post('entityId') ? $this->post('entityId') : null;
         $duration = $this->post('duration') ? $this->post('duration') : null;

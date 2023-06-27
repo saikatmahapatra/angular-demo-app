@@ -16,9 +16,8 @@ class Srbac extends App_Controller
 
     function getRoles_get()
     {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $id = $this->get('id') ? $this->get('id') : null;
 
@@ -47,9 +46,8 @@ class Srbac extends App_Controller
 
     function getPermissions_get()
     {
-        $this->isUserAuthorized(array(
-            'default-super-admin-access',
-            'default-admin-access',
+        $this->checkRolePermissions(array(
+            'adminAccess',
         ));
         $id = $this->get('id') ? $this->get('id') : null;
 
