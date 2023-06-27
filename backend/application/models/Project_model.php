@@ -346,7 +346,7 @@ class Project_model extends CI_Model {
         return  $result;
     }
 
-    function getProjectHourReport($project_id, $duration) {
+    function getProjectHourReport($project_id, $duration, $fromDate = NULL, $toDate= NULL) {
         $result = array();
         $this->db->select('t1.timesheet_created_by, SUM(t1.timesheet_hours) as logged_hours, t2.user_full_name');
         $this->db->join('users as t2', 't2.id = t1.timesheet_created_by', 'left');
@@ -387,6 +387,17 @@ class Project_model extends CI_Model {
         if($duration == 'last12months') {
             $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
         }
+        
+        if($duration == 'customDateRange') {
+            if(isset($fromDate) && !isset($toDate)){
+                $this->db->where('timesheet_date', $this->common_lib->convert_to_mysql($fromDate));
+            }
+    
+            if(isset($fromDate) && isset($toDate)){
+                $this->db->where('timesheet_date >=', $this->common_lib->convert_to_mysql($fromDate));
+                $this->db->where('timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
+            }
+        }
 
 		$this->db->group_by('t1.timesheet_created_by');
         $query = $this->db->get('timesheet as t1');
@@ -405,7 +416,7 @@ class Project_model extends CI_Model {
         return  $result;
     }
 
-    function getProjectTaskHourReport($project_id, $duration) {
+    function getProjectTaskHourReport($project_id, $duration, $fromDate = NULL, $toDate= NULL) {
         $result = array();
         $this->db->select('SUM(t1.timesheet_hours) as sum_hours, t1.task_id, t2.task_name');
         $this->db->join('project_tasks as t2', 't2.id = t1.task_id', 'left');
@@ -447,6 +458,16 @@ class Project_model extends CI_Model {
             $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
         }
         
+        if($duration == 'customDateRange') {
+            if(isset($fromDate) && !isset($toDate)){
+                $this->db->where('timesheet_date', $this->common_lib->convert_to_mysql($fromDate));
+            }
+    
+            if(isset($fromDate) && isset($toDate)){
+                $this->db->where('timesheet_date >=', $this->common_lib->convert_to_mysql($fromDate));
+                $this->db->where('timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
+            }
+        }
 
 		$this->db->group_by('t1.task_id');
         $query = $this->db->get('timesheet as t1');

@@ -79,6 +79,7 @@ export class AnalyticsComponent implements OnInit {
     // if (this.router.url.indexOf('my-analytics') != -1) {
     //   this.pageTitle = 'Analytics';
     // }
+    this.loading = false;
     this.dateRangeValidator();
     this.routedFromPageIndex = history.state['manageUserPageIndex'] || 0;
     this.activatedRoute.paramMap.subscribe(params => {

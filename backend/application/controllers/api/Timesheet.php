@@ -222,9 +222,12 @@ class Timesheet extends App_Controller
         $projectId = $this->post('entityId') ? $this->post('entityId') : null;
         $duration = $this->post('duration') ? $this->post('duration') : null;
         $action = $this->post('action') ? $this->post('action') : null;
+        $dateRange = $this->post('dateRange') ? $this->post('dateRange') : null;
+        $fromDate = $dateRange[0] ? date("Y-m-d", strtotime($dateRange[0])) : NULL;
+        $toDate = $dateRange[1] ? date("Y-m-d", strtotime($dateRange[1])) : NULL;
         if($action == 'generateChart') {
-            $resultArray = $this->project_model->getProjectHourReport($projectId, $duration);
-            $resultArrayTasks = $this->project_model->getProjectTaskHourReport($projectId, $duration);
+            $resultArray = $this->project_model->getProjectHourReport($projectId, $duration, $fromDate, $toDate);
+            $resultArrayTasks = $this->project_model->getProjectTaskHourReport($projectId, $duration, $fromDate, $toDate);
             if (isset($resultArray) && isset($resultArrayTasks)) {
                 $this->responseData['data'] = $resultArray;
                 $this->responseData['taskData'] = $resultArrayTasks;

@@ -659,13 +659,15 @@ class User_model extends CI_Model {
             $this->db->where('timesheet_date >= (NOW() - INTERVAL 12 MONTH)');
         }
 
-        if(isset($fromDate) && !isset($toDate)){
-            $this->db->where('t1.timesheet_date', $this->common_lib->convert_to_mysql($fromDate));
-        }
-
-        if(isset($fromDate) && isset($toDate)){
-            $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($fromDate));
-            $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
+        if($duration == 'customDateRange') {
+            if(isset($fromDate) && !isset($toDate)){
+                $this->db->where('t1.timesheet_date', $this->common_lib->convert_to_mysql($fromDate));
+            }
+    
+            if(isset($fromDate) && isset($toDate)){
+                $this->db->where('t1.timesheet_date >=', $this->common_lib->convert_to_mysql($fromDate));
+                $this->db->where('t1.timesheet_date <=', $this->common_lib->convert_to_mysql($toDate));
+            }
         }
 
         if($groupBy == 'task') {
