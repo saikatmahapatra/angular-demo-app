@@ -8,10 +8,11 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { SharedModule } from '../@shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TwoFactorAuthComponent } from './login-form/two-factor-auth/two-factor-auth.component';
 
 @NgModule({
   declarations: [
-    AuthLayoutComponent, LoginFormComponent, ForgotPasswordFormComponent, ResetPasswordFormComponent
+    AuthLayoutComponent, LoginFormComponent, ForgotPasswordFormComponent, ResetPasswordFormComponent, TwoFactorAuthComponent
   ],
   imports: [
     CommonModule,

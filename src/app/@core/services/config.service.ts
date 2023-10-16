@@ -32,6 +32,7 @@ export class ConfigService {
             // AppConfig.copyrightInfo = config?.copyrightInfo;
             // AppConfig.version = config?.version;
             AppConfig.maintenanceMode = config.maintenanceMode || false;
+            AppConfig.mfaEnabled = config.mfaEnabled;
             return resolve(config);
           },
           err => {
