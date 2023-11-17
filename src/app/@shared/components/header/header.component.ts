@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   user: any;
   isOpened = true;
   resolution = 'lg';
+  logo = AppConfig.logo;
   constructor(private authSvc: AuthService, private navService: NavigationService, private commonSvc: CommonService) { }
 
   ngOnInit(): void {

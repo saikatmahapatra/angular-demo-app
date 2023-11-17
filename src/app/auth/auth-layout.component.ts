@@ -9,6 +9,7 @@ import { CommonService } from '../@core/services/common.service';
 })
 export class AuthLayoutComponent implements OnInit {
   imgPath = 'assets/img/7.svg';
+  logo = AppConfig.logo;
 
   constructor(private commonSvc: CommonService) { 
     this.commonSvc.setTitle('Auth');

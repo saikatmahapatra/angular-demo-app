@@ -1,5 +1,8 @@
 {
     "apiBaseUrl": "http://localhost/angular-demo-app/backend/api/",
     "maintenanceMode": false,
-    "mfaEnabled": true
+    "mfaEnabled": true,
+    "productName": "MyApp CRM",
+    "logo": "assets/img/logo-angular.svg",
+    "copyrightText": "Copyright &copy; 2023 MyApp CRM"
 }

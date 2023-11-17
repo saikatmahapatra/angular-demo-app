@@ -1,5 +1,8 @@
 {
     "apiBaseUrl": "http://portal.ueipl.co.in/backend/api/",
     "maintenanceMode": false,
-    "mfaEnabled": true
+    "mfaEnabled": true,
+    "productName": "MyApp",
+    "logo": "assets/img/logo.svg",
+    "copyrightText": "Copyright &copy; 2023 United Exploration India"
 }

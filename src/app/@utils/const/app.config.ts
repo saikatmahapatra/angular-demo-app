@@ -3,14 +3,15 @@ import { environment } from "@env/environment";
 export const AppConfig = {
     name: environment.name,
     production: environment.production,
-    productName: 'MyApp',
-    copyrightInfo: 'Copyright &copy; 2023 United Exploration India',
+    productName: environment.productName,
+    copyrightInfo: environment.copyrightInfo,
     apiBaseUrl: environment.apiBaseUrl,
     useMockServer: environment.useMockServer,
     version: environment.version,
     timestamp:  '',
     maintenanceMode: false,
     mfaEnabled: false,
+    logo: environment.logo,
     apiUrl: {
         // Authentication, JWT Validation
         authenticate: 'auth/authenticate',
