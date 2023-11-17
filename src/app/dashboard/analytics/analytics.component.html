@@ -37,9 +37,7 @@
 <div class="row my-4">
     <div class="col-md-12">
         <div class="card" *ngIf="entity === 'project'">
-            <div class="card-header">
-                <h5 class="">Project Info</h5>
-            </div>
+            <div class="card-header">Project Info</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-sm table-responsive table-bordered">
@@ -88,9 +86,7 @@
         </div>
 
         <div class="card" *ngIf="entity === 'emp'">
-            <div class="card-header">
-                <h5>Employee Info</h5>
-            </div>
+            <div class="card-header">Employee Info</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-sm table-responsive table-bordered">
@@ -155,11 +151,7 @@
 <div class="row">
     <div [ngClass]="entity==='emp' ? 'col-md-6': 'col-md-12' ">
         <div class="card">
-            <div class="card-header">
-                <h5 class="">
-                    Tasks ({{totalHoursLogged}} hours)
-                </h5>
-            </div>
+            <div class="card-header">Tasks ({{totalHoursLogged}} hours)</div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="doughnut" [data]="doughnutChartData" [options]="doughnutChartOptions"
                     *ngIf="doughnutChartValue.length>0" height="375px"></p-chart>
@@ -169,9 +161,7 @@
     </div>
     <div class="col-md-6" *ngIf="entity==='emp'">
         <div class="card">
-            <div class="card-header">
-                <h5 class="">Projects ({{totalNumberOfProjectsWorked}} projects)</h5>
-            </div>
+            <div class="card-header">Projects ({{totalNumberOfProjectsWorked}} projects)</div>
             <div class="card-body flex justify-content-center">
                 <p-chart type="pie" [data]="pieChartData" [options]="pieChartOptions" height="375px"
                     *ngIf="pieChartValue.length > 0"></p-chart>
@@ -184,9 +174,7 @@
 <div class="row" *ngIf="entity==='project'">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="">Resource Utilization ({{totalNumberOfEmployeesWorked}} employees)</h5>
-            </div>
+            <div class="card-header">Resource Utilization ({{totalNumberOfEmployeesWorked}} employees)</div>
             <div class="card-body">
                 <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"
                     *ngIf="barChartDataValue.length>0"></p-chart>
