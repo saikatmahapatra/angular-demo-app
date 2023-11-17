@@ -180,15 +180,6 @@ label {
 }
 
 // End of Sidebar & Main Content wrapper
-
-.card-top-border {
-  border-top: 4px solid $primary;
-}
-
-.card-header {
-  font-weight: bold;
-}
-
 @mixin linear-gradient($from, $to) {
   background: $to;
   background: -moz-linear-gradient(top, $from 0%, $to 100%);
@@ -253,14 +244,6 @@ label {
 .box-shadow {
   box-shadow: 0px 2px 20px rgb(126 126 126 / 25%);
   border-radius: 8px;
-}
-
-.card {
-  border: 0;
-
-  .card-header {
-    border: 0;
-  }
 }
 
 .navbar {
