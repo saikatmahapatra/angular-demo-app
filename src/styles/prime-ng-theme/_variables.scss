@@ -907,5 +907,10 @@ $imagePreviewActionIconBorderRadius: 50% !default;
     --highlight-bg: #{$highlightBg};
     --highlight-text-color: #{$highlightTextColor};
     --focus-ring: #{$focusShadow};
+    --body-bg: #EBEDEF;    
     color-scheme: light;
+}
+
+[data-bs-theme="dark"] {
+    --body-bg: #212529;
 }
