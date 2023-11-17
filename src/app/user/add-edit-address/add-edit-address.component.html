@@ -2,74 +2,85 @@
 <div class="back-to-page">
     <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row my-4">
-    <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
 
-            <div class="mb-3">
-                <label class="required" for="addressType">Address Type</label>
-                <select class="form-select" id="addressType" formControlName="addressType">
-                    <option value="">Select</option>
-                    <option value="{{data.id}}" *ngFor="let data of addressType; let i=index">{{data.name}}</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['addressType']"></app-validation-error>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><span>{{title}}</span> Communication Address</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-5 col-xl-4">
+                        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="id">
+                            <input type="hidden" formControlName="action">
+                
+                            <div class="mb-3">
+                                <label class="required" for="addressType">Address Type</label>
+                                <select class="form-select" id="addressType" formControlName="addressType">
+                                    <option value="">Select</option>
+                                    <option value="{{data.id}}" *ngFor="let data of addressType; let i=index">{{data.name}}</option>
+                                </select>
+                                <app-validation-error [control]="myForm.controls['addressType']"></app-validation-error>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="required" for="addressLine1">Address Line 1</label>
+                                <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1" maxlength="80" placeholder="Apt/Suite/Building/Street">
+                                <app-validation-error [control]="myForm.controls['addressLine1']"></app-validation-error>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="optional" for="addressLine2">Address Line 2</label>
+                                <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" maxlength="50" placeholder="Locality">
+                                <app-validation-error [control]="myForm.controls['addressLine2']"></app-validation-error>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="required" for="city">City/Town</label>
+                                <!-- <input type="text" class="form-control" id="city" formControlName="city" maxlength="10"> -->
+                                <select class="form-select" id="city" formControlName="city">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of cityList" [value]="data.id" [innerHTML]="data.name"></option>
+                                    <option value="-1">Others</option>
+                                </select>
+                                <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
+                            </div>
+                
+                            <div class="mb-3" *ngIf="myForm.value['city'] === '-1'">
+                                <input type="text" class="form-control" id="newCity" formControlName="newCity" maxlength="30" placeholder="Other city/town name">
+                                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
+                                <app-validation-error [control]="myForm.controls['newCity']"></app-validation-error>
+                            </div>
+                
+                            <div class="mb-3">
+                                <label class="required" for="state">State</label>
+                                <select class="form-select" id="state" formControlName="state">
+                                    <option value="">Select</option>
+                                    <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option>
+                                </select>
+                                <app-validation-error [control]="myForm.controls['state']"></app-validation-error>
+                            </div>
+                            <div class="mb-3">
+                                <label class="required" for="zip">Postal ZIP</label>
+                                <input type="text" class="form-control" id="zip" formControlName="zip" maxlength="8">
+                                <app-validation-error [control]="myForm.controls['zip']"></app-validation-error>
+                            </div>
+                            <div class="mb-3">
+                                <label class="optional" for="landmark">Landmark</label>
+                                <input type="text" class="form-control" id="landmark" formControlName="landmark" maxlength="50">
+                                <app-validation-error [control]="myForm.controls['landmark']"></app-validation-error>
+                            </div>
+                            <div class="mb-3">
+                                <label class="optional" for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" formControlName="phone" maxlength="10">
+                                <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
             </div>
-
-            <div class="mb-3">
-                <label class="required" for="addressLine1">Address Line 1</label>
-                <input type="text" class="form-control" id="addressLine1" formControlName="addressLine1" maxlength="80" placeholder="Apt/Suite/Building/Street">
-                <app-validation-error [control]="myForm.controls['addressLine1']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="optional" for="addressLine2">Address Line 2</label>
-                <input type="text" class="form-control" id="addressLine2" formControlName="addressLine2" maxlength="50" placeholder="Locality">
-                <app-validation-error [control]="myForm.controls['addressLine2']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="city">City/Town</label>
-                <!-- <input type="text" class="form-control" id="city" formControlName="city" maxlength="10"> -->
-                <select class="form-select" id="city" formControlName="city">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of cityList" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['city']"></app-validation-error>
-            </div>
-
-            <div class="mb-3" *ngIf="myForm.value['city'] === '-1'">
-                <input type="text" class="form-control" id="newCity" formControlName="newCity" maxlength="30" placeholder="Other city/town name">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
-                <app-validation-error [control]="myForm.controls['newCity']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="state">State</label>
-                <select class="form-select" id="state" formControlName="state">
-                    <option value="">Select</option>
-                    <option value="{{state.id}}" *ngFor="let state of stateList">{{state.name}}</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['state']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="zip">Postal ZIP</label>
-                <input type="text" class="form-control" id="zip" formControlName="zip" maxlength="8">
-                <app-validation-error [control]="myForm.controls['zip']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="optional" for="landmark">Landmark</label>
-                <input type="text" class="form-control" id="landmark" formControlName="landmark" maxlength="50">
-                <app-validation-error [control]="myForm.controls['landmark']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="optional" for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" formControlName="phone" maxlength="10">
-                <app-validation-error [control]="myForm.controls['phone']"></app-validation-error>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-        </form>
+        </div>
     </div>
 </div>
