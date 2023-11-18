@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">List of Employees</div>
             <div class="card-body">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-auto"><app-search-input (inputValue)="getSearchKeyword($event)"
                             [placeHolderText]="'Search Employees'"></app-search-input></div>
                     <div class="col-auto"><a [routerLink]="['/emp/add']" class="btn btn-success">
