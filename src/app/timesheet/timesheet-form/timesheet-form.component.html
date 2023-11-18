@@ -89,9 +89,9 @@
     </div>
 
     <div class="card mt-3">
-      <div class="card-header">Work Log</div>
+      <div class="card-header">Work Log - {{monthName}}, {{year}}</div>
       <div class="card-body">
-        <h5 class="card-title">Showing timesheet of {{monthName}}, {{year}}</h5>
+        <h5 class="card-title"></h5>
         <app-view-timesheet [timeSheetLogData]="timesheetData"
           (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
       </div>
