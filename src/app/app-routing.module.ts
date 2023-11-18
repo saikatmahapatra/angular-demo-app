@@ -48,32 +48,50 @@ const routes: Routes = [
       {
         path: 'dashboard',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        data: {
+          breadcrumb: 'Dashboard'
+        },
       },
       {
         path: 'emp',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+        data: {
+          breadcrumb: 'Employee'
+        },
       },
       {
         path: 'cms',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
+        loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule),
+        data: {
+          breadcrumb: 'CMS'
+        },
       },
       {
         path: 'timesheet',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule)
+        loadChildren: () => import('./timesheet/timesheet.module').then(m => m.TimesheetModule),
+        data: {
+          breadcrumb: 'Timesheet'
+        },
       },
       {
         path: 'project',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./project/project.module').then(m => m.ProjectModule)
+        loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+        data: {
+          breadcrumb: 'Project'
+        },
       },
       {
         path: 'leave',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./leave/leave.module').then(m => m.LeaveModule)
+        loadChildren: () => import('./leave/leave.module').then(m => m.LeaveModule),
+        data: {
+          breadcrumb: 'Leave'
+        },
       },
       // {
       //   path: 'asset-management',
@@ -83,14 +101,20 @@ const routes: Routes = [
       {
         path: 'settings',
         canActivateChild: [AuthGuard],
-        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
+        data: {
+          breadcrumb: 'Settings'
+        },
       }
 
     ]
   },
   {
     path: 'error',
-    component: ErrorPageComponent
+    component: ErrorPageComponent,
+    data: {
+      breadcrumb: 'Error'
+    },
   },
   {
     path: 'unauthorized',
@@ -98,7 +122,10 @@ const routes: Routes = [
   },
   {
     path: '**', // wildcard will be at always last
-    component: ErrorPageNotFoundComponent
+    component: ErrorPageNotFoundComponent,
+    data: {
+      breadcrumb: 'Error'
+    },
   }
 ];
 

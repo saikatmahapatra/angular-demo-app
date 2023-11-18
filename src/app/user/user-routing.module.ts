@@ -25,12 +25,12 @@ const routes: Routes = [
   {
     path: '', component: UserComponent,
     children: [
-      { path: '', component: ViewMyProfileComponent },
-      { path: 'my-profile', component: ViewMyProfileComponent },
-      { path: 'view-emp-profile/:id', component: ViewProfileComponent, canActivate: [AdminGuard] },
-      { path: 'edit/:id', component: EditUserComponent, canActivate: [AdminGuard] },
-      { path: 'add', canActivate: [AdminGuard], component: AddUserComponent },
-      { path: 'manage', canActivate: [AdminGuard], component: ManageUsersComponent },
+      { path: '', component: ViewMyProfileComponent, data: { breadcrumb: 'My Profile'} },
+      { path: 'my-profile', component: ViewMyProfileComponent, data: { breadcrumb: 'My Profile'}},
+      { path: 'view-emp-profile/:id', component: ViewProfileComponent, canActivate: [AdminGuard], data: { breadcrumb: 'Employee Profile'} },
+      { path: 'edit/:id', component: EditUserComponent, canActivate: [AdminGuard], data: { breadcrumb: 'Edit Profile'} },
+      { path: 'add', canActivate: [AdminGuard], component: AddUserComponent, data: { breadcrumb: 'Add New Employee'} },
+      { path: 'manage', canActivate: [AdminGuard], component: ManageUsersComponent, data: { breadcrumb: 'Manage Employees'} },
       { path: 'edit/:id', canActivate: [AdminGuard], component: ManageUsersComponent },
       { path: 'edit-basic-info', component: AddEditBasicInfoComponent },
       { path: 'add-address', component: AddEditAddressComponent },
