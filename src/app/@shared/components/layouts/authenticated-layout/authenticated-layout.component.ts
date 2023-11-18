@@ -17,9 +17,9 @@ export class AuthenticatedLayoutComponent implements OnInit {
     this.showSideNav = this.navService.getShowNav();
   }
 
-  closeSideBar() {
-    if (this.commonSvc.getScreenResolutionBreakPoint() === 'xs' || this.commonSvc.getScreenResolutionBreakPoint() === 'sm' || this.commonSvc.getScreenResolutionBreakPoint() === 'md') {
-      this.navService.toggleNavState();
-    }
-  }
+  // closeSideBar() {
+  //   if (this.commonSvc.getScreenResolutionBreakPoint() === 'xs' || this.commonSvc.getScreenResolutionBreakPoint() === 'sm' || this.commonSvc.getScreenResolutionBreakPoint() === 'md') {
+  //     this.navService.toggleNavState();
+  //   }
+  // }
 }

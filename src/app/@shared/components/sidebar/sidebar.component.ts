@@ -22,33 +22,21 @@ export class SidebarComponent implements OnInit {
     this.userRole = this.authSvc.getRoleId();
     this.loggedInUserId = this.authSvc.getUserId();
     const user = this.authSvc.getUser();
-    this.welcomeUserText =  user.user_full_name;
-  }
-
-  // onSidebarClose() {
-  //   this.navService.setShowNav(false);
-  // }
-
-  // getSideNavBarStyle(showNav: any) {
-  //   let navBarStyle: any = {};
-  //   navBarStyle.transition = this.direction + ' ' + this.duration + 's, visibility ' + this.duration + 's';
-  //   navBarStyle.width = this.navWidth + 'px';
-  //   navBarStyle[this.direction] = (showNav ? 0 : (this.navWidth * -1)) + 'px';
-  //   return navBarStyle;
-  // }
-
-  closeSideBar() {
-    if (this.commonSvc.getScreenResolutionBreakPoint() === 'small' || this.commonSvc.getScreenResolutionBreakPoint() === 'min') {
-      this.navService.toggleNavState();
-    }
+    this.welcomeUserText = user.user_full_name;
   }
 
   transform(value: string, size: number = 10): string {
     if (!value) {
-        return '';
+      return '';
     }
     const limit = size > 0 ? size : 10;
     return value.length > limit ? value.substring(0, limit) + '...' : value;
-}
+  }
+
+  closeSideBar() {
+    if (this.commonSvc.getScreenResolutionBreakPoint() === 'xs' || this.commonSvc.getScreenResolutionBreakPoint() === 'sm' || this.commonSvc.getScreenResolutionBreakPoint() === 'md') {
+      this.navService.toggleNavState();
+    }
+  }
 
 }
