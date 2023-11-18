@@ -1,49 +1,59 @@
 <h1><span>{{title}}</span> Emergency Contact</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row my-3">
-    <div class="col-md-6 col-lg-5 col-xl-4">
+<div class="row">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">Form</div>
             <div class="card-body">
-                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-                    <input type="hidden" formControlName="id">
-                    <input type="hidden" formControlName="action">
+                <div class="row">
+                    <div class="col-md-6 col-lg-5 col-xl-4">
+                        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="id">
+                            <input type="hidden" formControlName="action">
 
-                    <div class="mb-3">
-                        <label class="required" for="contactPersonName">Name</label>
-                        <input type="text" class="form-control" id="contactPersonName"
-                            formControlName="contactPersonName" maxlength="30">
-                        <app-validation-error [control]="myForm.controls['contactPersonName']"></app-validation-error>
+                            <div class="mb-3">
+                                <label class="required" for="contactPersonName">Name</label>
+                                <input type="text" class="form-control" id="contactPersonName"
+                                    formControlName="contactPersonName" maxlength="30">
+                                <app-validation-error
+                                    [control]="myForm.controls['contactPersonName']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="required" for="phoneNo">Phone</label>
+                                <input type="text" class="form-control" id="phoneNo" formControlName="phoneNo"
+                                    maxlength="10">
+                                <app-validation-error [control]="myForm.controls['phoneNo']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="required" for="relationWithContact">Relation</label>
+                                <select class="form-select" id="relationWithContact"
+                                    formControlName="relationWithContact">
+                                    <option value="">Select</option>
+                                    <option *ngFor="let data of relationDataList" [value]="data.id"
+                                        [innerHTML]="data.name">
+                                    </option>
+                                </select>
+                                <app-validation-error
+                                    [control]="myForm.controls['relationWithContact']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="optional" for="communicationAddress">Address</label>
+                                <textarea class="form-control" id="communicationAddress"
+                                    formControlName="communicationAddress" maxlength="180"></textarea>
+                                <app-validation-error
+                                    [control]="myForm.controls['communicationAddress']"></app-validation-error>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label class="required" for="phoneNo">Phone</label>
-                        <input type="text" class="form-control" id="phoneNo" formControlName="phoneNo" maxlength="10">
-                        <app-validation-error [control]="myForm.controls['phoneNo']"></app-validation-error>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="required" for="relationWithContact">Relation</label>
-                        <select class="form-select" id="relationWithContact" formControlName="relationWithContact">
-                            <option value="">Select</option>
-                            <option *ngFor="let data of relationDataList" [value]="data.id" [innerHTML]="data.name">
-                            </option>
-                        </select>
-                        <app-validation-error [control]="myForm.controls['relationWithContact']"></app-validation-error>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="optional" for="communicationAddress">Address</label>
-                        <textarea class="form-control" id="communicationAddress" formControlName="communicationAddress"
-                            maxlength="180"></textarea>
-                        <app-validation-error
-                            [control]="myForm.controls['communicationAddress']"></app-validation-error>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
             </div>
         </div>
     </div>

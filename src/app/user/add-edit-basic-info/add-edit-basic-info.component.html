@@ -1,48 +1,57 @@
 <h1>Edit Basic Information</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="['/emp/my-profile']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row my-3">
-    <div class="col-md-6 col-lg-5 col-xl-4">
+<div class="row">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">Form</div>
             <div class="card-body">
-                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-                    <input type="hidden" formControlName="id">
-                    <input type="hidden" formControlName="action">
-                    
-                    <div class="mb-3">
-                        <label class="required" for="personalEmail">Personal Email</label>
-                        <input type="text" class="form-control" id="personalEmail" formControlName="personalEmail">
-                        <app-validation-error [control]="myForm.controls['personalEmail']"></app-validation-error>
-                    </div>
-        
-                    <div class="mb-3">
-                        <label class="required" for="personalPhone">Personal Phone</label>
-                        <input type="text" class="form-control" id="personalPhone" formControlName="personalPhone"
-                            maxlength="10">
-                        <app-validation-error [control]="myForm.controls['personalPhone']"></app-validation-error>
-                    </div>
-        
-                    <div class="mb-3">
-                        <label class="optional" for="workPhone">Work Phone</label>
-                        <input type="text" class="form-control" id="workPhone" formControlName="workPhone"
-                            maxlength="10">
-                        <app-validation-error [control]="myForm.controls['workPhone']"></app-validation-error>
-                    </div>
-        
-                    <div class="mb-3">
-                        <label class="optional" for="bloodGroup">Blood Group</label>
-                        <select class="form-select" id="bloodGroup" formControlName="bloodGroup">
-                            <option value="{{data.id}}" *ngFor="let data of bloodGroupList; let i=index">{{data.name}}
-                            </option>
-                        </select>
-                        <app-validation-error [control]="myForm.controls['bloodGroup']"></app-validation-error>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+                <div class="row">
+                    <div class="col-md-6 col-lg-5 col-xl-4">
+                        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="id">
+                            <input type="hidden" formControlName="action">
+
+                            <div class="mb-3">
+                                <label class="required" for="personalEmail">Personal Email</label>
+                                <input type="text" class="form-control" id="personalEmail"
+                                    formControlName="personalEmail">
+                                <app-validation-error
+                                    [control]="myForm.controls['personalEmail']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="required" for="personalPhone">Personal Phone</label>
+                                <input type="text" class="form-control" id="personalPhone"
+                                    formControlName="personalPhone" maxlength="10">
+                                <app-validation-error
+                                    [control]="myForm.controls['personalPhone']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="optional" for="workPhone">Work Phone</label>
+                                <input type="text" class="form-control" id="workPhone" formControlName="workPhone"
+                                    maxlength="10">
+                                <app-validation-error [control]="myForm.controls['workPhone']"></app-validation-error>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="optional" for="bloodGroup">Blood Group</label>
+                                <select class="form-select" id="bloodGroup" formControlName="bloodGroup">
+                                    <option value="{{data.id}}" *ngFor="let data of bloodGroupList; let i=index">
+                                        {{data.name}}
+                                    </option>
+                                </select>
+                                <app-validation-error [control]="myForm.controls['bloodGroup']"></app-validation-error>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
                 <p class="debug">{{myForm.value|json}}</p> -->
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
