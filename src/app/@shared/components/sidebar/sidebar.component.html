@@ -1,14 +1,14 @@
 <div class="sbar-links p-3">
   <div class="text-center pb-2 mb-3 border-bottom">
     <!-- <div class="fw-bold">{{productName}}</div> -->
-    <app-icon [name]="'user'" [styleClass]="'me-1'"></app-icon> Welcome, {{transform(welcomeUserText, 15)}}
+    <app-icon [name]="'user'" [styleClass]="'me-2'"></app-icon> Welcome, {{transform(welcomeUserText, 15)}}
   </div>
   <ul class="list-unstyled pb-2"> <!--/.border-bottom-->
     <li class="my-1">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
           aria-expanded="false">
-          <app-icon [name]="'home'"></app-icon> Getting Started
+          <app-icon [name]="'home'" [styleClass]="'me-2'"></app-icon> Getting Started
         </button>
       </div>
 
@@ -28,7 +28,7 @@
     <li class="my-1" *ngIf="userRole === '1' ">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
-          aria-expanded="false"><app-icon [name]="'admin'"></app-icon> Admin Menu</button>
+          aria-expanded="false"><app-icon [name]="'admin'" [styleClass]="'me-2'"></app-icon> Admin Menu</button>
       </div>
       <div class="collapse ms-2" id="admin-menu">
         <ul class="list-unstyled">
@@ -80,7 +80,7 @@
     <li class="my-1">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
-          aria-expanded="false"><app-icon [name]="'tasks'"></app-icon> My Tasks</button>
+          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-2'"></app-icon> My Tasks</button>
       </div>
       <div class="collapse ms-2" id="my-tasks">
         <ul class="list-unstyled">
@@ -95,7 +95,7 @@
     <li class="my-1">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
-          aria-expanded="false"><app-icon [name]="'selfService'"></app-icon> Self Services</button>
+          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-2'"></app-icon> Self Services</button>
       </div>
       <div class="collapse ms-2" id="self-service">
         <ul class="list-unstyled">
@@ -121,7 +121,7 @@
     <li class="my-1">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
-            [name]="'globe'"></app-icon> Organization</button>
+            [name]="'globe'" [styleClass]="'me-2'"></app-icon> Organization</button>
       </div>
       <div class="collapse ms-2" id="org">
         <ul class="list-unstyled">
@@ -144,7 +144,7 @@
     <li class="my-1">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
-          aria-expanded="false"><app-icon [name]="'user'"></app-icon> My Account</button>
+          aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-2'"></app-icon> My Account</button>
       </div>
       <div class="collapse ms-2" id="my-account">
         <ul class="list-unstyled">
