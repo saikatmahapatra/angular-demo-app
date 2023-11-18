@@ -2,7 +2,7 @@
 <div class="back-to-page">
     <a [routerLink]="['/cms/manage-cms']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row my-4">
+<div class="row my-3">
     <div class="col-12">
         <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
             <input type="hidden" formControlName="id">

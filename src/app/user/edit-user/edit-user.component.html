@@ -4,7 +4,7 @@
             [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
 </div>
 
-<div class="row my-4" *ngIf="userInfo.id">
+<div class="row my-3" *ngIf="userInfo.id">
     <h4 class="">{{userInfo?.user_full_name}}</h4>
     <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
     <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
@@ -171,7 +171,7 @@
 
 
 
-<div *ngIf="userInfo?.user_status !== 'A'" class="row my-4">
+<div *ngIf="userInfo?.user_status !== 'A'" class="row my-3">
     <h5 class="text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
     <hr>
 
@@ -231,7 +231,7 @@
 
 
 
-<div *ngIf="userInfo?.user_status !== 'A'" class="row my-4">
+<div *ngIf="userInfo?.user_status !== 'A'" class="row my-3">
     <h5 class="text-primary"><app-icon [name]="'settings'"></app-icon> Account Activation & Deactivation Setup</h5>
     <hr>
     <div class="2-col-form col-md-9 col-lg-6">
