@@ -2,7 +2,6 @@
     "apiBaseUrl": "http://localhost/angular-demo-app/backend/api/",
     "maintenanceMode": false,
     "mfaEnabled": true,
-    "productName": "MyApp CRM",
-    "logo": "assets/img/logo-angular.svg",
-    "copyrightInfo": "Copyright &copy; 2023 MyApp CRM"
+    "productName": "MyApp",
+    "copyrightInfo": "Copyright &copy; 2023 Brand Name"
 }
