@@ -1,92 +1,100 @@
 <h1>Log Timesheet</h1>
-<a [routerLink]="['/dashboard/my-analytics/emp/', loggedInUserId]" class="mt-3 btn btn-outline-success">
-  <app-icon [name]="'linechart'"></app-icon> View Analytics
-</a>
-<div class="row my-3">
-  <div class="col-md-9">
-    <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-      <input type="hidden" formControlName="id">
-      <input type="hidden" formControlName="action" value="add">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label class="required d-block" for="cal">Select Dates</label>
-            <p-calendar styleClass='w-100' dateFormat="dd/mm/yy" [inline]="true" selectionMode="multiple"
-              [showWeek]="false" [minDate]="minDate" [maxDate]="maxDate" formControlName="timeSheetDates"
-              [maxDateCount]="maxDateCount" (onMonthChange)="monthYearChange($event)"
-              (onYearChange)="monthYearChange($event)">
-              <ng-template pTemplate="date" let-date>
-                <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
-              </ng-template>
-            </p-calendar>
-            <div id="cal" class="form-text text-muted"><strong>Note: </strong>You are allowed to select maximum
-              {{maxDateCount}}
-              days.</div>
-
-            <div class="indicator mt-2 form-text">
-              <strong>Indicators: </strong>
-              <span class="date-filled">DD</span>
-              <span class="mx-1">task logged,</span>
-
-              <span class="date-holiday-opt">DD</span>
-              <span class="mx-1">optional holidays,</span>
-
-              <span class="date-holiday">DD</span>
-              <span class="mx-1">holidays.</span>
-            </div>
-
-            <div class="my-1 py-2 alert alert-danger"
-              *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
-              <app-icon class="me-2" [name]="'error'"></app-icon>
-              <span>Please choose at least one day from the calendar.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label class="required" for="project">Project</label>
-            <select class="form-select" id="project" formControlName="project">
-              <option value="">Select</option>
-              <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
-            </select>
-            <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
-          </div>
-
-          <div class="mb-3">
-            <label class="required" for="task">Task</label>
-            <select class="form-select" id="task" formControlName="task">
-              <option value="">Select</option>
-              <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
-            </select>
-            <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
-          </div>
-
-          <div class="mb-3">
-            <label class="required" for="hours">Hours</label>
-            <input type="number" min="0.25" max="9" step="0.5" class="form-control" id="hours" formControlName="hours">
-            <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
-          </div>
-          <div class="mb-3">
-            <label class="" for="description">Task Description</label>
-            <textarea class="form-control" id="description" formControlName="description" maxlength="150"
-              placeholder="Briefly describe in 150 characters (if necessary)" [(ngModel)]="taskDescr"></textarea>
-              <div class="small text-muted">{{(150-taskDescr.length)}} characters left</div>
-            <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
-          </div>
-
-
-          <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
-              class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-md-12">
-    <h4 class="mb-3">Showing timesheet of {{monthName}}, {{year}}</h4>
-    <app-view-timesheet [timeSheetLogData]="timesheetData"
-      (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
+    <div class="card">
+      <div class="card-header">Timesheet Form</div>
+      <div class="card-body">
+        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+          <input type="hidden" formControlName="id">
+          <input type="hidden" formControlName="action" value="add">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="required d-block" for="cal">Select Dates</label>
+                <p-calendar styleClass='w-100' dateFormat="dd/mm/yy" [inline]="true" selectionMode="multiple"
+                  [showWeek]="false" [minDate]="minDate" [maxDate]="maxDate" formControlName="timeSheetDates"
+                  [maxDateCount]="maxDateCount" (onMonthChange)="monthYearChange($event)"
+                  (onYearChange)="monthYearChange($event)">
+                  <ng-template pTemplate="date" let-date>
+                    <span [ngClass]="getCSSClass(date)">{{date.day}}</span>
+                  </ng-template>
+                </p-calendar>
+                <div id="cal" class="form-text text-muted"><strong>Note: </strong>You are allowed to select maximum
+                  {{maxDateCount}}
+                  days.</div>
+
+                <div class="indicator mt-2 form-text">
+                  <strong>Indicators: </strong>
+                  <span class="date-filled">DD</span>
+                  <span class="mx-1">task logged,</span>
+
+                  <span class="date-holiday-opt">DD</span>
+                  <span class="mx-1">optional holidays,</span>
+
+                  <span class="date-holiday">DD</span>
+                  <span class="mx-1">holidays.</span>
+                </div>
+
+                <div class="my-1 py-2 alert alert-danger"
+                  *ngIf="(myForm.controls['timeSheetDates'].touched || submitted ) && myForm.controls['timeSheetDates'].errors">
+                  <app-icon class="me-2" [name]="'error'"></app-icon>
+                  <span>Please choose at least one day from the calendar.</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="required" for="project">Project</label>
+                <select class="form-select" id="project" formControlName="project">
+                  <option value="">Select</option>
+                  <option value="{{project.id}}" *ngFor="let project of projectList">{{project.name}}</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['project']"></app-validation-error>
+              </div>
+
+              <div class="mb-3">
+                <label class="required" for="task">Task</label>
+                <select class="form-select" id="task" formControlName="task">
+                  <option value="">Select</option>
+                  <option value="{{task.id}}" *ngFor="let task of taskList">{{task.name}}</option>
+                </select>
+                <app-validation-error [control]="myForm.controls['task']"></app-validation-error>
+              </div>
+
+              <div class="mb-3">
+                <label class="required" for="hours">Hours</label>
+                <input type="number" min="0.25" max="9" step="0.5" class="form-control" id="hours"
+                  formControlName="hours">
+                <app-validation-error [control]="myForm.controls['hours']"></app-validation-error>
+              </div>
+              <div class="mb-3">
+                <label class="" for="description">Task Description</label>
+                <textarea class="form-control" id="description" formControlName="description" maxlength="150"
+                  placeholder="Briefly describe in 150 characters (if necessary)" [(ngModel)]="taskDescr"></textarea>
+                <div class="small text-muted">{{(150-taskDescr.length)}} characters left</div>
+                <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+              </div>
+
+
+              <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                  class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+            </div>
+          </div>
+        </form>
+        <a [routerLink]="['/dashboard/my-analytics/emp/', loggedInUserId]" class="btn btn-sm btn-success">
+          <app-icon [name]="'linechart'"></app-icon> View Analytics
+        </a>
+      </div>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">Work Log</div>
+      <div class="card-body">
+        <h5 class="card-title">Showing timesheet of {{monthName}}, {{year}}</h5>
+        <app-view-timesheet [timeSheetLogData]="timesheetData"
+          (recordDeleted)="isDeleteComplete($event)"></app-view-timesheet>
+      </div>
+    </div>
   </div>
 </div>

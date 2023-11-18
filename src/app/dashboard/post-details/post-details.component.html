@@ -6,12 +6,17 @@
     </a>
 </div>
 
-<div class="row my-3" *ngIf="post?.id">
+<div class="row mt-3" *ngIf="post?.id">
     <div class="col-12">
-        <!-- <h4 [innerHTML]="post?.content_title"></h4> -->
-        <div class="text-muted small mb-2">
-            {{getTimeStampInfo(post)}} <span class="badge rounded-pill bg-light text-dark ms-2" >{{post?.content_type}}</span>
+        <div class="card">
+            <div class="card-header">Details <span class="badge rounded-pill bg-primary" >{{post?.content_type}}</span></div>
+            <div class="card-body">
+                <!-- <h4 class="card-title" [innerHTML]="post?.content_title"></h4> -->
+                <div class="main-content-description-wrapper" [innerHTML]="post?.content_text"></div>
+            </div>
+            <div class="card-footer">
+                <span class="small text-secondary">{{getTimeStampInfo(post)}}</span>
+            </div>
         </div>
-        <div class="main-content-description-wrapper" [innerHTML]="post?.content_text"></div>
     </div>
 </div>

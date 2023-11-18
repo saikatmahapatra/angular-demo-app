@@ -1,325 +1,320 @@
 <h1>My Profile</h1>
-<section class="my-4">
-   <h3>{{userInfo?.user_full_name}}</h3>
-   <div>{{userInfo?.designation_name}}</div>
-   <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-   <div>{{userInfo?.user_phone}}</div>
-   <div>
-      <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-      <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-      <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+
+<div class="row">
+   <div class="col-md-12">
+      <div class="card">
+         <div class="card-header">Profile</div>
+         <div class="card-body">
+            <section class="card-title">
+               <h5>{{userInfo?.user_full_name}}</h5>
+               <div>{{userInfo?.designation_name}}</div>
+               <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+               <div>{{userInfo?.user_phone}}</div>
+               <div>
+                  <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+                  <span *ngIf="userInfo?.user_status === 'N' "
+                     class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                  <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+               </div>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Basic Info</h5>
+               <dl class="row">
+                  <dt class="fw-sbold col-md-4 col-lg-3">Employee ID</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_uid}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Designation</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Employment Type</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Work Location</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.base_work_location_name}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Workspace Type</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.workspace_type_name}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Department</dt>
+                  <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Date of Joining</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd/MM/yyyy'}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Personal Email</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_email2 || '-'}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Work Phone</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Date of Birth</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd/MM/yyyy'}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Gender</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Blood Group</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
+               </dl>
+               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
+                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Address</h5>
+               <a *ngIf="selfAccount && addressInfo.length < 2" [routerLink]="['/emp/add-address']"
+                  class="btn btn-outline-success btn-sm ">
+                  <app-icon [name]="'add'"></app-icon> Add </a>
+               <div class="my-3" *ngFor="let addr of addressInfo">
+                  <h5 [innerHTML]="getAddressType(addr.address_type)"></h5>
+                  <address>
+                     {{addr?.address}}, {{addr?.locality}}, {{addr?.city_name}}, {{addr?.state_name}},
+                     {{addr?.zip}} <br>
+                     Phone: {{addr?.phone1}} <br>
+                     Landmark: {{addr?.landmark}}
+                  </address>
+                  <div *ngIf="selfAccount">
+                     <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-text p-button-secondary mr-2"
+                        (click)="navigateTo(['/emp/edit-address/', addr.id])"></button>
+                     <button pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-text p-button-secondary"
+                        (click)="deleteAddress(addr.id)"></button>
+                  </div>
+               </div>
+               <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
+                  <div class="text-muted">
+                     <app-icon [name]="'info'"></app-icon> No records found.
+                  </div>
+               </div>
+
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Highest Qualification</h5>
+               <a *ngIf="selfAccount && educationInfo.length < 1" [routerLink]="['/emp/add-education']"
+                  class="btn btn-outline-success btn-sm ">
+                  <app-icon [name]="'add'"></app-icon>
+                  Add</a>
+               <div class="my-3" *ngFor="let education of educationInfo">
+                  <h5>{{education?.degree_name}};
+                     {{education?.academic_to_year}}
+                  </h5>
+                  <div [innerHTML]="education.specialization_name"></div>
+                  <div [innerHTML]="education.institute_name"></div>
+                  <div>{{education.academic_marks_percentage}}%</div>
+                  <div *ngIf="selfAccount">
+                     <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-text p-button-secondary mr-2"
+                        (click)="navigateTo(['/emp/edit-education/', education.id])"></button>
+                     <button pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-text p-button-secondary"
+                        (click)="deleteEducation(education.id)"></button>
+                  </div>
+               </div>
+               <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
+                  <div class="text-muted">
+                     <app-icon [name]="'info'"></app-icon> No records found.
+                  </div>
+               </div>
+
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Work Experience
+               </h5>
+               <a *ngIf="selfAccount && workExp.length < 2" [routerLink]="['/emp/add-work-experience']"
+                  class="btn btn-outline-success btn-sm ">
+                  <app-icon [name]="'add'"></app-icon>
+                  Add</a>
+               <div class="my-3">
+                  <h5>{{userInfo?.designation_name}}</h5>
+                  <div [innerHTML]="orgName"></div>
+                  <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
+                     (userInfo.user_dor| date: 'dd/MM/yyyy') : 'Present'}}
+                  </div>
+               </div>
+               <div class="my-3" *ngFor="let exp of workExp">
+                  <h5>{{exp?.designation_name}}</h5>
+                  <div>
+                     <span [innerHTML]="exp.company_name"></span>
+                     <span *ngIf="exp.job_location_name">, </span>
+                     <span [innerHTML]="exp.job_location_name"></span>
+                  </div>
+                  <div class="text-muted">{{exp?.from_date | date: 'dd/MM/yyyy'}} - {{exp?.to_date | date:
+                     'dd/MM/yyyy'}}
+                  </div>
+
+                  <div *ngIf="selfAccount">
+                     <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-text p-button-secondary mr-2"
+                        (click)="navigateTo(['/emp/edit-work-experience/', exp.id])"></button>
+                     <button pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-text p-button-secondary"
+                        (click)="deleteWorkExp(exp.id)"></button>
+                  </div>
+
+               </div>
+
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'currency'"
+                     [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+               <a *ngIf="selfAccount && payrollInfo.length < 1" [routerLink]="['/emp/add-payroll-info']"
+                  class="btn btn-outline-success btn-sm ">
+                  <app-icon [name]="'add'"></app-icon>
+                  Add</a>
+               <div class="my-3">
+                  <dl class="row">
+                     <dt class="fw-sbold col-md-4 col-lg-3">PAN No</dt>
+                     <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_pan_no : '-'}}</dd>
+                     <dt class="fw-sbold col-md-4 col-lg-3">UAN No</dt>
+                     <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_uan_no : '-'}}</dd>
+                  </dl>
+               </div>
+               <div class="my-3" *ngFor="let payroll of payrollInfo">
+                  <h5>{{payroll?.bank_name}}</h5>
+                  <div [innerHTML]="payroll.bank_account_no"></div>
+                  <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
+                  <div *ngIf="selfAccount">
+                     <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-text p-button-secondary mr-2"
+                        (click)="navigateTo(['/emp/edit-payroll-info/', payroll.id])"></button>
+                     <button pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-text p-button-secondary"
+                        (click)="deletePayrollInfo(payroll.id)"></button>
+                  </div>
+               </div>
+               <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
+                  <div class="text-muted">
+                     <app-icon [name]="'info'"></app-icon> No records found.
+                  </div>
+               </div>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'heart'"
+                     [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Emergency Contacts
+               </h5>
+               <a *ngIf="selfAccount && emergencyContact.length < 2" [routerLink]="['/emp/add-emergency-contact']"
+                  class="btn btn-outline-success btn-sm ">
+                  <app-icon [name]="'add'"></app-icon> Add</a>
+               <div class="my-3" *ngFor="let contact of emergencyContact">
+                  <h5>{{contact?.contact_person_name}}</h5>
+                  <div class="text-muted" [innerHTML]="contact.relationship"></div>
+                  <div>{{contact?.contact_person_address}}</div>
+                  <div>Phone: {{contact?.contact_person_phone1}}</div>
+                  <div *ngIf="selfAccount">
+                     <button pButton pRipple type="button" icon="pi pi-pencil"
+                        class="p-button-rounded p-button-text p-button-secondary mr-2"
+                        (click)="navigateTo(['/emp/edit-emergency-contact/', contact.id])"></button>
+                     <button pButton pRipple type="button" icon="pi pi-trash"
+                        class="p-button-rounded p-button-text p-button-secondary"
+                        (click)="deleteContact(contact.id)"></button>
+                  </div>
+               </div>
+               <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
+                  <div class="text-muted">
+                     <app-icon [name]="'info'"></app-icon> No records found.
+                  </div>
+               </div>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'users'"
+                     [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow Approvers</h5>
+               <div *ngIf="selfAccount">
+                  <button type="button" class="btn btn-sm btn-outline-success me-2"
+                     (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
+               </div>
+               <dl class="row mt-4">
+                  <dt class="fw-sbold col-md-4 col-lg-3">L1 Workflow Approver</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     <div
+                        [innerHTML]="approvers?.user_supervisor_id ? (approvers?.supervisor_name + ' ('+approvers?.supervisor_email+')'):  '-'">
+                     </div>
+                  </dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">L2 Workflow Approver</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     <div
+                        [innerHTML]="approvers?.director_name ? (approvers?.director_name + ' ('+approvers?.director_email+')'):  '-'">
+                     </div>
+                  </dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">HR Approver</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     <div [innerHTML]="approvers?.hr_name ? (approvers?.hr_name + ' ('+approvers?.hr_email+')'):  '-'">
+                     </div>
+                  </dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Finance Approver</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     <div
+                        [innerHTML]="approvers?.finance_name ? (approvers?.finance_name + ' ('+approvers?.finance_email+')'):  '-'">
+                     </div>
+                  </dd>
+               </dl>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Leave
+                  Balance</h5>
+               <dl class="row" *ngIf="leaveBalance?.id">
+                  <dt class="fw-sbold col-md-3">Casual Leave (CL)</dt>
+                  <dd class="col-md-3">
+                     <span [innerHTML]="leaveBalance?.cl ? leaveBalance?.cl : '-'"></span>
+                  </dd>
+                  <dt class="fw-sbold col-md-3">Sick Leave (SL)</dt>
+                  <dd class="col-md-3">
+                     <span [innerHTML]="leaveBalance?.sl ? leaveBalance?.sl : '-'"></span>
+                  </dd>
+
+                  <dt class="fw-sbold col-md-3">Privileged Leave (PL)</dt>
+                  <dd class="col-md-3">
+                     <span [innerHTML]="leaveBalance?.pl ? leaveBalance?.pl : '-'"></span>
+                  </dd>
+
+                  <dt class="fw-sbold col-md-3">Optional Leave (OL)</dt>
+                  <dd class="col-md-3">
+                     <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
+                  </dd>
+
+                  <dt class="fw-sbold col-md-3">Comp. Off (CO)</dt>
+                  <dd class="col-md-3">
+                     <span [innerHTML]="leaveBalance?.co ? leaveBalance?.co : '-'"></span>
+                  </dd>
+               </dl>
+            </section>
+
+            <section class="my-3">
+               <h5 class="text-primary mb-3"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Account Information
+               </h5>
+               <dl class="row">
+                  <dt class="fw-sbold col-md-4 col-lg-3">Account Status</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+                     <span *ngIf="userInfo?.user_status === 'N' "
+                        class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                     <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
+                  </dd>
+                  <dt class="fw-sbold col-md-4 col-lg-3">Status Updated On</dt>
+                  <dd class="col-md-8 col-lg-9">
+                     {{userInfo?.user_status_updated_on | date:
+                     'dd/MM/yyyy h:mm:ss a'}}
+                     <span *ngIf="userInfo?.user_status_updated_on === null">-</span>
+                  </dd>
+
+                  <dt class="fw-sbold col-md-4 col-lg-3">Permitted Role/Access</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
+
+                  <dt class="fw-sbold col-md-4 col-lg-3">User Since</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
+
+                  <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Date of Release</dt>
+                  <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor |
+                     date:'dd-MM-y'}}</dd>
+
+                  <dt class="fw-sbold col-md-4 col-lg-3">Last Login</dt>
+                  <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
+               </dl>
+            </section>
+         </div>
+      </div>
    </div>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Basic
-            Info</h5>
-      </div>
-   </p-divider>
-   <dl class="row">
-      <dt class="col-md-4 col-lg-3">Employee ID</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_uid}}</dd>
-      <dt class="col-md-4 col-lg-3">Designation</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
-      <dt class="col-md-4 col-lg-3">Employment Type</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
-      <dt class="col-md-4 col-lg-3">Work Location</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.base_work_location_name}}</dd>
-      <dt class="col-md-4 col-lg-3">Workspace Type</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.workspace_type_name}}</dd>
-      <dt class="col-md-4 col-lg-3">Department</dt>
-      <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
-      <dt class="col-md-4 col-lg-3">Date of Joining</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd/MM/yyyy'}}</dd>
-      <dt class="col-md-4 col-lg-3">Personal Email</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_email2 || '-'}}</dd>
-      <dt class="col-md-4 col-lg-3">Work Phone</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
-      <dt class="col-md-4 col-lg-3">Date of Birth</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd/MM/yyyy'}}</dd>
-      <dt class="col-md-4 col-lg-3">Gender</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
-      <dt class="col-md-4 col-lg-3">Blood Group</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
-   </dl>
-   <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
-      (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Address</h5>
-      </div>
-   </p-divider>
-   <a *ngIf="selfAccount && addressInfo.length < 2" [routerLink]="['/emp/add-address']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'add'"></app-icon> Add </a>
-   <div class="my-3" *ngFor="let addr of addressInfo">
-      <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
-      <address>
-         {{addr?.address}}, {{addr?.locality}}, {{addr?.city_name}}, {{addr?.state_name}},
-         {{addr?.zip}} <br>
-         Phone: {{addr?.phone1}} <br>
-         Landmark: {{addr?.landmark}}
-      </address>
-      <div *ngIf="selfAccount">
-         <button pButton pRipple type="button" icon="pi pi-pencil"
-            class="p-button-rounded p-button-text p-button-secondary mr-2"
-            (click)="navigateTo(['/emp/edit-address/', addr.id])"></button>
-         <button pButton pRipple type="button" icon="pi pi-trash"
-            class="p-button-rounded p-button-text p-button-secondary" (click)="deleteAddress(addr.id)"></button>
-      </div>
-   </div>
-   <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
-      <div class="text-muted">
-         <app-icon [name]="'info'"></app-icon> No records found.
-      </div>
-   </div>
-
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Highest Qualification</h5>
-      </div>
-   </p-divider>
-   <a *ngIf="selfAccount && educationInfo.length < 1" [routerLink]="['/emp/add-education']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'add'"></app-icon>
-      Add</a>
-   <div class="my-3" *ngFor="let education of educationInfo">
-      <h6>{{education?.degree_name}};
-         {{education?.academic_to_year}}
-      </h6>
-      <div [innerHTML]="education.specialization_name"></div>
-      <div [innerHTML]="education.institute_name"></div>
-      <div>{{education.academic_marks_percentage}}%</div>
-      <div *ngIf="selfAccount">
-         <button pButton pRipple type="button" icon="pi pi-pencil"
-            class="p-button-rounded p-button-text p-button-secondary mr-2"
-            (click)="navigateTo(['/emp/edit-education/', education.id])"></button>
-         <button pButton pRipple type="button" icon="pi pi-trash"
-            class="p-button-rounded p-button-text p-button-secondary" (click)="deleteEducation(education.id)"></button>
-      </div>
-   </div>
-   <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
-      <div class="text-muted">
-         <app-icon [name]="'info'"></app-icon> No records found.
-      </div>
-   </div>
-
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Work
-            Experience
-         </h5>
-      </div>
-   </p-divider>
-   <a *ngIf="selfAccount && workExp.length < 2" [routerLink]="['/emp/add-work-experience']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'add'"></app-icon>
-      Add</a>
-   <div class="my-3">
-      <h6>{{userInfo?.designation_name}}</h6>
-      <div [innerHTML]="orgName"></div>
-      <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
-         (userInfo.user_dor| date: 'dd/MM/yyyy') : 'Present'}}
-      </div>
-   </div>
-   <div class="my-3" *ngFor="let exp of workExp">
-      <h6>{{exp?.designation_name}}</h6>
-      <div>
-         <span [innerHTML]="exp.company_name"></span>
-         <span *ngIf="exp.job_location_name">, </span>
-         <span [innerHTML]="exp.job_location_name"></span>
-      </div>
-      <div class="text-muted">{{exp?.from_date | date: 'dd/MM/yyyy'}} - {{exp?.to_date | date:
-         'dd/MM/yyyy'}}
-      </div>
-
-      <div *ngIf="selfAccount">
-         <button pButton pRipple type="button" icon="pi pi-pencil"
-            class="p-button-rounded p-button-text p-button-secondary mr-2"
-            (click)="navigateTo(['/emp/edit-work-experience/', exp.id])"></button>
-         <button pButton pRipple type="button" icon="pi pi-trash"
-            class="p-button-rounded p-button-text p-button-secondary" (click)="deleteWorkExp(exp.id)"></button>
-      </div>
-
-   </div>
-
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Payroll Info</h5>
-      </div>
-   </p-divider>
-   <a *ngIf="selfAccount && payrollInfo.length < 1" [routerLink]="['/emp/add-payroll-info']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'add'"></app-icon>
-      Add</a>
-   <div class="my-3">
-      <dl class="row">
-         <dt class="col-md-4 col-lg-3">PAN No</dt>
-         <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_pan_no : '-'}}</dd>
-         <dt class="col-md-4 col-lg-3">UAN No</dt>
-         <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_uan_no : '-'}}</dd>
-      </dl>
-   </div>
-   <div class="my-3" *ngFor="let payroll of payrollInfo">
-      <h6>{{payroll?.bank_name}}</h6>
-      <div [innerHTML]="payroll.bank_account_no"></div>
-      <div class="text-muted" [innerHTML]="payroll.ifsc_code"></div>
-      <div *ngIf="selfAccount">
-         <button pButton pRipple type="button" icon="pi pi-pencil"
-            class="p-button-rounded p-button-text p-button-secondary mr-2"
-            (click)="navigateTo(['/emp/edit-payroll-info/', payroll.id])"></button>
-         <button pButton pRipple type="button" icon="pi pi-trash"
-            class="p-button-rounded p-button-text p-button-secondary" (click)="deletePayrollInfo(payroll.id)"></button>
-      </div>
-   </div>
-   <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
-      <div class="text-muted">
-         <app-icon [name]="'info'"></app-icon> No records found.
-      </div>
-   </div>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Emergency Contacts
-         </h5>
-      </div>
-   </p-divider>
-   <a *ngIf="selfAccount && emergencyContact.length < 2" [routerLink]="['/emp/add-emergency-contact']" class="btn btn-outline-success btn-sm ">
-      <app-icon [name]="'add'"></app-icon> Add</a>
-   <div class="my-3" *ngFor="let contact of emergencyContact">
-      <h6>{{contact?.contact_person_name}}</h6>
-      <div class="text-muted" [innerHTML]="contact.relationship"></div>
-      <div>{{contact?.contact_person_address}}</div>
-      <div>Phone: {{contact?.contact_person_phone1}}</div>
-      <div *ngIf="selfAccount">
-         <button pButton pRipple type="button" icon="pi pi-pencil"
-            class="p-button-rounded p-button-text p-button-secondary mr-2"
-            (click)="navigateTo(['/emp/edit-emergency-contact/', contact.id])"></button>
-         <button pButton pRipple type="button" icon="pi pi-trash"
-            class="p-button-rounded p-button-text p-button-secondary" (click)="deleteContact(contact.id)"></button>
-      </div>
-   </div>
-   <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
-      <div class="text-muted">
-         <app-icon [name]="'info'"></app-icon> No records found.
-      </div>
-   </div>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Workflow
-            Approvers</h5>
-      </div>
-   </p-divider>
-   <div *ngIf="selfAccount">
-      <button type="button" class="btn btn-sm btn-outline-success me-2"
-         (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
-   </div>
-   <dl class="row mt-4">
-      <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
-      <dd class="col-md-8 col-lg-9">
-         <div [innerHTML]="approvers?.user_supervisor_id ? (approvers?.supervisor_name + ' ('+approvers?.supervisor_email+')'):  '-'"></div>
-      </dd>
-      <dt class="col-md-4 col-lg-3">L2 Workflow Approver</dt>
-      <dd class="col-md-8 col-lg-9">
-         <div [innerHTML]="approvers?.director_name ? (approvers?.director_name + ' ('+approvers?.director_email+')'):  '-'"></div>
-      </dd>
-      <dt class="col-md-4 col-lg-3">HR Approver</dt>
-      <dd class="col-md-8 col-lg-9">
-         <div [innerHTML]="approvers?.hr_name ? (approvers?.hr_name + ' ('+approvers?.hr_email+')'):  '-'"></div>
-      </dd>
-      <dt class="col-md-4 col-lg-3">Finance Approver</dt>
-      <dd class="col-md-8 col-lg-9">
-         <div [innerHTML]="approvers?.finance_name ? (approvers?.finance_name + ' ('+approvers?.finance_email+')'):  '-'"></div>
-      </dd>
-   </dl>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon> Leave
-            Balance</h5>
-      </div>
-   </p-divider>
-   <dl class="row" *ngIf="leaveBalance?.id">
-      <dt class="col-md-3">Casual Leave (CL)</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.cl ? leaveBalance?.cl : '-'"></span>
-      </dd>
-      <dt class="col-md-3">Sick Leave (SL)</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.sl ? leaveBalance?.sl : '-'"></span>
-      </dd>
-
-      <dt class="col-md-3">Privileged Leave (PL)</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.pl ? leaveBalance?.pl : '-'"></span>
-      </dd>
-
-      <dt class="col-md-3">Optional Leave (OL)</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
-      </dd>
-
-      <dt class="col-md-3">Comp. Off (CO)</dt>
-      <dd class="col-md-3">
-         <span [innerHTML]="leaveBalance?.co ? leaveBalance?.co : '-'"></span>
-      </dd>
-   </dl>
-</section>
-
-<section class="my-4">
-   <p-divider align="left">
-      <div class="inline-flex align-items-center">
-         <h5 class="my-2 text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-            Account Information
-         </h5>
-      </div>
-   </p-divider>
-   <dl class="row">
-      <dt class="col-md-4 col-lg-3">Account Status</dt>
-      <dd class="col-md-8 col-lg-9">
-         <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-         <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-         <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
-      </dd>
-      <dt class="col-md-4 col-lg-3">Status Updated On</dt>
-      <dd class="col-md-8 col-lg-9">
-         {{userInfo?.user_status_updated_on | date:
-         'dd/MM/yyyy h:mm:ss a'}}
-         <span *ngIf="userInfo?.user_status_updated_on === null">-</span>
-      </dd>
-
-      <dt class="col-md-4 col-lg-3">Permitted Role/Access</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
-
-      <dt class="col-md-4 col-lg-3">User Since</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
-
-      <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Date of Release</dt>
-      <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor | date:'dd-MM-y'}}</dd>
-
-      <dt class="col-md-4 col-lg-3">Last Login</dt>
-      <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
-   </dl>
-</section>
+</div>
