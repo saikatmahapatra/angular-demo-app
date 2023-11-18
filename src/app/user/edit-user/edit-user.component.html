@@ -4,304 +4,334 @@
             [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
 </div>
 
-<div class="row my-3" *ngIf="userInfo.id">
-    <h4 class="">{{userInfo?.user_full_name}}</h4>
-    <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
-    <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
-    <div>{{userInfo?.user_phone}}; {{userInfo?.user_phone2}}</div>
-    <div>{{userInfo?.employment_type_name}}</div>
-    <div>
-        <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
-        <span *ngIf="userInfo?.user_status === 'N' " class="badge rounded-pill bg-warning text-dark">Inactive</span>
-        <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
-    </div>
-</div>
 
-<div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
-    <app-icon class="me-2" [name]="'info'"></app-icon> The account has been permanently closed. After an account has
-    been closed, you are not permitted to alter any information.
-</div>
-
-<div *ngIf="userInfo?.user_status !== 'A' " class="row mt-4">
-    <h5 class="text-primary"><app-icon [name]="'user'"></app-icon> Edit Basic Information</h5>
-    <hr>
-    <div class="2-col-form col-md-9 col-lg-6">
-        <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action" value="editUser">
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="fullName">Full Name (as per govt id)</label>
-                    <input type="text" minlength="3" maxlength="32" class="form-control" id="fullName" formControlName="fullName">
-                    <app-validation-error [control]="userBasicForm.controls['fullName']"></app-validation-error>
+<div class="row my-3">
+    <div class="col-12">
+        <div class="card" *ngIf="userInfo.id">
+            <div class="card-header">Employee Information</div>
+            <div class="card-body">
+                <div class="alert alert-danger my-4" *ngIf="userInfo?.user_status === 'A'">
+                    <app-icon class="me-2" [name]="'info'"></app-icon> The account has been permanently closed. After an
+                    account has
+                    been closed, you are not permitted to alter any information.
                 </div>
-                <!-- <div class="col-md-6">
-                    <label class="required" for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" formControlName="lastName">
-                    <app-validation-error [control]="userBasicForm.controls['lastName']"></app-validation-error>
-                </div> -->
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="dateOfBirth">Date of Birth</label>
-                    <p-calendar dateFormat="dd/mm/yy" formControlName="dateOfBirth" [readonlyInput]="true"
-                        inputId="dateOfBirth" styleClass="w-100" [minDate]="minDateDob" [maxDate]="maxDateDob"
-                        [showButtonBar]="false" [showIcon]="true" appendTo="body"
-                        [panelStyleClass]="'datetimepicker'"></p-calendar>
-                    <app-validation-error [control]="userBasicForm.controls['dateOfBirth']"></app-validation-error>
-                </div>
-                <div class="col-md-6">
-                    <label class="required" for="gender">Gender</label>
-                    <div>
-                        <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
-                            <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.id}}"
-                                formControlName="gender">
-                            <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
-                        </div>
-                    </div>
-                    <app-validation-error [control]="userBasicForm.controls['gender']"></app-validation-error>
+                <h4 class="">{{userInfo?.user_full_name}}</h4>
+                <div>{{userInfo?.designation_name}} | {{userInfo?.department_name}}</div>
+                <div><a href="mailto:{{userInfo?.user_email}}">{{userInfo?.user_email}}</a></div>
+                <div>{{userInfo?.user_phone}}; {{userInfo?.user_phone2}}</div>
+                <div>{{userInfo?.employment_type_name}}</div>
+                <div>
+                    <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
+                    <span *ngIf="userInfo?.user_status === 'N' "
+                        class="badge rounded-pill bg-warning text-dark">Inactive</span>
+                    <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
                 </div>
             </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="workPhone">Work Phone</label>
-                    <input type="text" class="form-control" id="workPhone" formControlName="workPhone" maxlength="10">
-                    <app-validation-error [control]="userBasicForm.controls['workPhone']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="designation">Designation</label>
-                    <select class="form-select" id="designation" formControlName="designation">
-                        <option value="">Select</option>
-                        <option [value]="data?.id" *ngFor="let data of designationList; let i=index" [innerHTML]="data?.name"></option>
-                        <option value="-1">Others</option>
-                    </select>
-                    <app-validation-error [control]="userBasicForm.controls['designation']"></app-validation-error>
-                    <div class="mt-3" *ngIf="userBasicForm.value['designation'] === '-1'">
-                        <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation" maxlength="30" placeholder="Other Designation">
-                        <!-- <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div> -->
-                        <app-validation-error [control]="userBasicForm.controls['newDesignation']"></app-validation-error>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="required" for="department">Department</label>
-                    <select class="form-select" id="department" formControlName="department">
-                        <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of departmentList; let i=index">{{data.name}}
-                        </option>
-                    </select>
-                    <app-validation-error [control]="userBasicForm.controls['department']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="dateOfJoining">Date of Joining</label>
-                    <p-calendar dateFormat="dd/mm/yy" formControlName="dateOfJoining" [readonlyInput]="true"
-                        inputId="dateOfJoining" styleClass="w-100" [maxDate]="minDateDoj" [showButtonBar]="false"
-                        [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
-                    <app-validation-error [control]="userBasicForm.controls['dateOfJoining']"></app-validation-error>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="required" for="employmentType">Employment Type</label>
-                    <select class="form-select" id="employmentType" formControlName="employmentType">
-                        <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of employmentTypeList; let i=index">{{data.name}}
-                        </option>
-                    </select>
-                    <app-validation-error [control]="userBasicForm.controls['employmentType']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="workspaceSolution">Workspace Type</label>
-                    <select class="form-select" id="workspaceSolution" formControlName="workspaceSolution">
-                        <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of workspaceSolutionList; let i=index">
-                            {{data.name}}
-                        </option>
-                    </select>
-                    <app-validation-error
-                        [control]="userBasicForm.controls['workspaceSolution']"></app-validation-error>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="required" for="baseWorkLocation">Base Work Location</label>
-                    <select class="form-select" id="baseWorkLocation" formControlName="baseWorkLocation">
-                        <option value="">Select</option>
-                        <option value="{{data.id}}" *ngFor="let data of baseWorkLocationList; let i=index">{{data.name}}
-                        </option>
-                    </select>
-                    <app-validation-error [control]="userBasicForm.controls['baseWorkLocation']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <label class="required me-4" for="role">User Role</label>
-
-                    <div class="form-check form-check-inline" *ngFor="let data of userRole; let i=index">
-                        <input class="form-check-input" type="radio" id="inlineRadioUserRole_{{i}}" value="{{data.id}}"
-                            formControlName="role">
-                        <label class="form-check-label" for="inlineRadioUserRole_{{i}}">{{data.name}}</label>
-                    </div>
-                    <div class="small alert alert-info" *ngIf="userBasicForm.controls['role'].value === '1'">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> <strong>Note: </strong>Employees with the "administrator" role have access to "restricted" organizational data or information and may add, alter, or delete it. It is advised to select the role as "user" while registering an employee in the portal.
-                    </div>
-
-                    <app-validation-error [control]="userBasicForm.controls['role']"></app-validation-error>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                Submit
-            </button>
-        </form>
-    </div>
-</div>
-
-
-
-<div *ngIf="userInfo?.user_status !== 'A'" class="row my-3">
-    <h5 class="text-primary"><app-icon [name]="'info'"></app-icon> Leave Balance</h5>
-    <hr>
-
-    <div class="2-col-form col-md-9 col-lg-6">
-        <form [formGroup]="leaveBalanceForm" class="form app-form" (ngSubmit)="saveLeaveBalance()">
-            <input type="hidden" formControlName="userId">
-            <input type="hidden" formControlName="id">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="cl">Casual Leave</label>
-                    <input type="number" class="form-control" id="cl" formControlName="cl">
-                    <app-validation-error [control]="leaveBalanceForm.controls['cl']"></app-validation-error>
-                </div>
-                <div class="col-md-6">
-                    <label class="required" for="sl">Sick Leave</label>
-                    <input type="number" class="form-control" id="sl" formControlName="sl">
-                    <app-validation-error [control]="leaveBalanceForm.controls['sl']"></app-validation-error>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="required" for="pl">Priviledge Leave</label>
-                    <input type="number" class="form-control" id="pl" formControlName="pl">
-                    <app-validation-error [control]="leaveBalanceForm.controls['pl']"></app-validation-error>
-                </div>
-                <div class="col-md-6">
-                    <label class="" for="ol">Optional Leave</label>
-                    <input type="number" class="form-control" id="ol" formControlName="ol">
-                    <app-validation-error [control]="leaveBalanceForm.controls['ol']"></app-validation-error>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="" for="co">Comp. Off</label>
-                    <input type="number" class="form-control" id="co" formControlName="co">
-                    <app-validation-error [control]="leaveBalanceForm.controls['co']"></app-validation-error>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                Submit
-            </button>
-        </form>
-    </div>
-    <div class="col-md-3 col-lg-6">
-        <div class="small mt-4">
-            <div><strong>Leave balance updated on: </strong>{{leaveBalance?.leave_balance_updated_on || '-'}}</div>
-            <div><strong>Leave balance bulk updated on: </strong>{{leaveBalance?.leave_balance_bulk_updated_on || '-'}}</div>
-            <div><strong>Comp. Off auto updated on: </strong>{{leaveBalance?.co_updated_by_cron_on || '-'}}</div>
-            <!-- <div><strong>PL auto updated on: </strong>{{leaveBalance?.pl_updated_by_cron_on || '-'}}</div>
-            <div><strong>CL auto updated on: </strong>{{leaveBalance?.cl_updated_by_cron_on || '-'}}</div>
-            <div><strong>OL auto updated on: </strong>{{leaveBalance?.ol_updated_by_cron_on || '-'}}</div> -->
         </div>
-    </div>
-</div>
 
+        <div *ngIf="userInfo?.user_status !== 'A' " class="card my-3">
+            <div class="card-header"><app-icon [name]="'user'"></app-icon> Edit Basic Information</div>
+            <div class="card-body">
+                <form [formGroup]="userBasicForm" class="form app-form" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action" value="editUser">
 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="fullName">Full Name (as per govt id)</label>
+                            <input type="text" minlength="3" maxlength="32" class="form-control" id="fullName"
+                                formControlName="fullName">
+                            <app-validation-error [control]="userBasicForm.controls['fullName']"></app-validation-error>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <label class="required" for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                            <app-validation-error [control]="userBasicForm.controls['lastName']"></app-validation-error>
+                        </div> -->
+                    </div>
 
-<div *ngIf="userInfo?.user_status !== 'A'" class="row my-3">
-    <h5 class="text-primary"><app-icon [name]="'settings'"></app-icon> Account Activation & Deactivation Setup</h5>
-    <hr>
-    <div class="2-col-form col-md-9 col-lg-6">
-        <form [formGroup]="userStatusForm" class="form app-form" (ngSubmit)="onSubmitUserStatus()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action" value="editUserStatus">
-            <div class="row mb-3">
-                <div class="col-md-12">
-                    <label class="required" for="accountStatus">Account Status</label>
-                    <div>
-                        <div class="form-check form-check-inline" *ngFor="let data of accountStatus; let i=index">
-                            <input class="form-check-input" type="radio" id="inlineRadioStatus_{{i}}" [value]="data.id"
-                                formControlName="accountStatus">
-                            <label class="form-check-label" for="inlineRadioStatus_{{i}}">{{data.name}}</label>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="dateOfBirth">Date of Birth</label>
+                            <p-calendar dateFormat="dd/mm/yy" formControlName="dateOfBirth" [readonlyInput]="true"
+                                inputId="dateOfBirth" styleClass="w-100" [minDate]="minDateDob" [maxDate]="maxDateDob"
+                                [showButtonBar]="false" [showIcon]="true" appendTo="body"
+                                [panelStyleClass]="'datetimepicker'"></p-calendar>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['dateOfBirth']"></app-validation-error>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="required" for="gender">Gender</label>
+                            <div>
+                                <div class="form-check form-check-inline" *ngFor="let data of DataGender; let i=index">
+                                    <input class="form-check-input" type="radio" id="inlineRadio_{{i}}"
+                                        value="{{data.id}}" formControlName="gender">
+                                    <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                                </div>
+                            </div>
+                            <app-validation-error [control]="userBasicForm.controls['gender']"></app-validation-error>
                         </div>
                     </div>
-                    <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Access to the portal is permitted for active employees only.
-                    </div>
-                    <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Employees who are inactive won't be able to use the portal or log in. If necessary, you can modify it to "Active".
 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="workPhone">Work Phone</label>
+                            <input type="text" class="form-control" id="workPhone" formControlName="workPhone"
+                                maxlength="10">
+                            <app-validation-error
+                                [control]="userBasicForm.controls['workPhone']"></app-validation-error>
+                        </div>
                     </div>
 
-                    <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                        <app-icon class="me-2" [name]="'info'"></app-icon> Close Account signifies that you're soft deleting the employee. Employee's activity and records will be stored in the database for future reference until those are manually deleted. Employee's access to the portal or reactivation will be permanently restricted. It is advised to select this option when employee leave the organization.
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="designation">Designation</label>
+                            <select class="form-select" id="designation" formControlName="designation">
+                                <option value="">Select</option>
+                                <option [value]="data?.id" *ngFor="let data of designationList; let i=index"
+                                    [innerHTML]="data?.name"></option>
+                                <option value="-1">Others</option>
+                            </select>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['designation']"></app-validation-error>
+                            <div class="mt-3" *ngIf="userBasicForm.value['designation'] === '-1'">
+                                <input type="text" class="form-control" id="newDesignation"
+                                    formControlName="newDesignation" maxlength="30" placeholder="Other Designation">
+                                <!-- <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div> -->
+                                <app-validation-error
+                                    [control]="userBasicForm.controls['newDesignation']"></app-validation-error>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="required" for="department">Department</label>
+                            <select class="form-select" id="department" formControlName="department">
+                                <option value="">Select</option>
+                                <option value="{{data.id}}" *ngFor="let data of departmentList; let i=index">
+                                    {{data.name}}
+                                </option>
+                            </select>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['department']"></app-validation-error>
+                        </div>
                     </div>
 
-                    <app-validation-error [control]="userStatusForm.controls['accountStatus']"></app-validation-error>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="dateOfJoining">Date of Joining</label>
+                            <p-calendar dateFormat="dd/mm/yy" formControlName="dateOfJoining" [readonlyInput]="true"
+                                inputId="dateOfJoining" styleClass="w-100" [maxDate]="minDateDoj"
+                                [showButtonBar]="false" [showIcon]="true" appendTo="body"
+                                [panelStyleClass]="'datetimepicker'"></p-calendar>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['dateOfJoining']"></app-validation-error>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="required" for="employmentType">Employment Type</label>
+                            <select class="form-select" id="employmentType" formControlName="employmentType">
+                                <option value="">Select</option>
+                                <option value="{{data.id}}" *ngFor="let data of employmentTypeList; let i=index">
+                                    {{data.name}}
+                                </option>
+                            </select>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['employmentType']"></app-validation-error>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="workspaceSolution">Workspace Type</label>
+                            <select class="form-select" id="workspaceSolution" formControlName="workspaceSolution">
+                                <option value="">Select</option>
+                                <option value="{{data.id}}" *ngFor="let data of workspaceSolutionList; let i=index">
+                                    {{data.name}}
+                                </option>
+                            </select>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['workspaceSolution']"></app-validation-error>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="required" for="baseWorkLocation">Base Work Location</label>
+                            <select class="form-select" id="baseWorkLocation" formControlName="baseWorkLocation">
+                                <option value="">Select</option>
+                                <option value="{{data.id}}" *ngFor="let data of baseWorkLocationList; let i=index">
+                                    {{data.name}}
+                                </option>
+                            </select>
+                            <app-validation-error
+                                [control]="userBasicForm.controls['baseWorkLocation']"></app-validation-error>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="required me-4" for="role">User Role</label>
+
+                            <div class="form-check form-check-inline" *ngFor="let data of userRole; let i=index">
+                                <input class="form-check-input" type="radio" id="inlineRadioUserRole_{{i}}"
+                                    value="{{data.id}}" formControlName="role">
+                                <label class="form-check-label" for="inlineRadioUserRole_{{i}}">{{data.name}}</label>
+                            </div>
+                            <div class="small alert alert-info" *ngIf="userBasicForm.controls['role'].value === '1'">
+                                <app-icon class="me-2" [name]="'info'"></app-icon> <strong>Note: </strong>Employees with
+                                the
+                                "administrator" role have access to "restricted" organizational data or information and
+                                may add,
+                                alter, or delete it. It is advised to select the role as "user" while registering an
+                                employee in
+                                the portal.
+                            </div>
+
+                            <app-validation-error [control]="userBasicForm.controls['role']"></app-validation-error>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div *ngIf="userInfo?.user_status !== 'A'" class="card my-3">
+            <div class="card-header"><app-icon [name]="'info'"></app-icon> Edit Leave Balance</div>
+            <div class="card-body">
+                <form [formGroup]="leaveBalanceForm" class="form app-form" (ngSubmit)="saveLeaveBalance()">
+                    <input type="hidden" formControlName="userId">
+                    <input type="hidden" formControlName="id">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="cl">Casual Leave</label>
+                            <input type="number" class="form-control" id="cl" formControlName="cl">
+                            <app-validation-error [control]="leaveBalanceForm.controls['cl']"></app-validation-error>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="required" for="sl">Sick Leave</label>
+                            <input type="number" class="form-control" id="sl" formControlName="sl">
+                            <app-validation-error [control]="leaveBalanceForm.controls['sl']"></app-validation-error>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="required" for="pl">Priviledge Leave</label>
+                            <input type="number" class="form-control" id="pl" formControlName="pl">
+                            <app-validation-error [control]="leaveBalanceForm.controls['pl']"></app-validation-error>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="" for="ol">Optional Leave</label>
+                            <input type="number" class="form-control" id="ol" formControlName="ol">
+                            <app-validation-error [control]="leaveBalanceForm.controls['ol']"></app-validation-error>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="" for="co">Comp. Off</label>
+                            <input type="number" class="form-control" id="co" formControlName="co">
+                            <app-validation-error [control]="leaveBalanceForm.controls['co']"></app-validation-error>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                        Submit
+                    </button>
+                </form>
+
+                <div class="small mt-4">
+                    <div><strong>Leave balance updated on: </strong>{{leaveBalance?.leave_balance_updated_on || '-'}}</div>
+                    <div><strong>Leave balance bulk updated on: </strong>{{leaveBalance?.leave_balance_bulk_updated_on || '-'}}
+                    </div>
+                    <div><strong>Comp. Off auto updated on: </strong>{{leaveBalance?.co_updated_by_cron_on || '-'}}</div>
+                    <!-- <div><strong>PL auto updated on: </strong>{{leaveBalance?.pl_updated_by_cron_on || '-'}}</div>
+                    <div><strong>CL auto updated on: </strong>{{leaveBalance?.cl_updated_by_cron_on || '-'}}</div>
+                    <div><strong>OL auto updated on: </strong>{{leaveBalance?.ol_updated_by_cron_on || '-'}}</div> -->
                 </div>
             </div>
+        </div>
 
-            <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                <!-- <div class="col-md-6">
-                    <label [ngClass]="isRequiredStatusChangeReason ? 'required' : '' " for="statusChangeReason">Reason
-                        of Status Change</label>
-                    <select class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
-                        <option value="">Select</option>
-                        <option [value]="data.id" *ngFor="let data of accountStatusReason; let i=index"
-                            [innerHTML]="data.name"></option>
-                    </select>
-                    <app-validation-error
-                        [control]="userStatusForm.controls['statusChangeReason']"></app-validation-error>
-                </div> -->
-                <div class="col-md-6">
-                    <label [ngClass]="isRequiredDateOfRelease ? 'required' : '' " for="dateOfRelease">Date of
-                        Release</label>
-                    <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="DateOfRel" formControlName="dateOfRelease"
-                        [readonlyInput]="true" inputId="dateOfRelease" styleClass="w-100" [showButtonBar]="false"
-                        [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
-                    <app-validation-error [control]="userStatusForm.controls['dateOfRelease']"></app-validation-error>
-                </div>
-
+        <div *ngIf="userInfo?.user_status !== 'A'" class="card my-3">
+            <div class="card-header"><app-icon [name]="'settings'"></app-icon> Account Activation & Deactivation Setup</div>
+            <div class="card-body">
+                <form [formGroup]="userStatusForm" class="form app-form" (ngSubmit)="onSubmitUserStatus()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action" value="editUserStatus">
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="required" for="accountStatus">Account Status</label>
+                            <div>
+                                <div class="form-check form-check-inline" *ngFor="let data of accountStatus; let i=index">
+                                    <input class="form-check-input" type="radio" id="inlineRadioStatus_{{i}}" [value]="data.id"
+                                        formControlName="accountStatus">
+                                    <label class="form-check-label" for="inlineRadioStatus_{{i}}">{{data.name}}</label>
+                                </div>
+                            </div>
+                            <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'Y' ">
+                                <app-icon class="me-2" [name]="'info'"></app-icon> Access to the portal is permitted for active
+                                employees only.
+                            </div>
+                            <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'N' ">
+                                <app-icon class="me-2" [name]="'info'"></app-icon> Employees who are inactive won't be able to
+                                use the portal or log in. If necessary, you can modify it to "Active".
+        
+                            </div>
+        
+                            <div class="small alert alert-info" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
+                                <app-icon class="me-2" [name]="'info'"></app-icon> Close Account signifies that you're soft
+                                deleting the employee. Employee's activity and records will be stored in the database for future
+                                reference until those are manually deleted. Employee's access to the portal or reactivation will
+                                be permanently restricted. It is advised to select this option when employee leave the
+                                organization.
+                            </div>
+        
+                            <app-validation-error [control]="userStatusForm.controls['accountStatus']"></app-validation-error>
+                        </div>
+                    </div>
+        
+                    <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
+                        <!-- <div class="col-md-6">
+                            <label [ngClass]="isRequiredStatusChangeReason ? 'required' : '' " for="statusChangeReason">Reason
+                                of Status Change</label>
+                            <select class="form-select" id="statusChangeReason" formControlName="statusChangeReason">
+                                <option value="">Select</option>
+                                <option [value]="data.id" *ngFor="let data of accountStatusReason; let i=index"
+                                    [innerHTML]="data.name"></option>
+                            </select>
+                            <app-validation-error
+                                [control]="userStatusForm.controls['statusChangeReason']"></app-validation-error>
+                        </div> -->
+                        <div class="col-md-4">
+                            <label [ngClass]="isRequiredDateOfRelease ? 'required' : '' " for="dateOfRelease">Date of
+                                Release</label>
+                            <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="DateOfRel" formControlName="dateOfRelease"
+                                [readonlyInput]="true" inputId="dateOfRelease" styleClass="w-100" [showButtonBar]="false"
+                                [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                            <app-validation-error [control]="userStatusForm.controls['dateOfRelease']"></app-validation-error>
+                        </div>
+        
+                    </div>
+        
+                    <!-- <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
+                        <div class="col-md-12">
+                            <label for="accountCloseComments"
+                                [ngClass]="isRequiredAccountCloseComments ? 'required' : '' ">Comments</label>
+                            <input type="text" class="form-control" id="accountCloseComments"
+                                formControlName="accountCloseComments" maxlength="150" placeholder="Write brief comments...">
+                            <app-validation-error
+                                [control]="userStatusForm.controls['accountCloseComments']"></app-validation-error>
+                        </div>
+                    </div> -->
+        
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                        Submit
+                    </button>
+                </form>
             </div>
+        </div>
 
-            <!-- <div class="row mb-3" *ngIf="userStatusForm.controls['accountStatus'].value === 'A' ">
-                <div class="col-md-12">
-                    <label for="accountCloseComments"
-                        [ngClass]="isRequiredAccountCloseComments ? 'required' : '' ">Comments</label>
-                    <input type="text" class="form-control" id="accountCloseComments"
-                        formControlName="accountCloseComments" maxlength="150" placeholder="Write brief comments...">
-                    <app-validation-error
-                        [control]="userStatusForm.controls['accountCloseComments']"></app-validation-error>
-                </div>
-            </div> -->
-
-            <button type="submit" class="btn btn-primary" [disabled]="loading">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                Submit
-            </button>
-        </form>
     </div>
 </div>
