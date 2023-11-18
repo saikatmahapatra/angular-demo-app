@@ -3,7 +3,7 @@
 <div class="row">
    <div class="col-md-12">
       <div class="card">
-         <div class="card-header">Profile</div>
+         <div class="card-header">Employee Information</div>
          <div class="card-body">
             <section class="card-title">
                <h5>{{userInfo?.user_full_name}}</h5>
@@ -19,8 +19,9 @@
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'user'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Basic Info</h5>
+               <hr class="mt-0">
                <dl class="row">
                   <dt class="fw-sbold col-md-4 col-lg-3">Employee ID</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_uid}}</dd>
@@ -52,13 +53,14 @@
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'map'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Address</h5>
+               <hr class="mt-0">
                <a *ngIf="selfAccount && addressInfo.length < 2" [routerLink]="['/emp/add-address']"
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon> Add </a>
                <div class="my-3" *ngFor="let addr of addressInfo">
-                  <h5 [innerHTML]="getAddressType(addr.address_type)"></h5>
+                  <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
                   <address>
                      {{addr?.address}}, {{addr?.locality}}, {{addr?.city_name}}, {{addr?.state_name}},
                      {{addr?.zip}} <br>
@@ -74,25 +76,24 @@
                         (click)="deleteAddress(addr.id)"></button>
                   </div>
                </div>
-               <div class="my-3" *ngIf="selfAccount && addressInfo.length === 0">
-                  <div class="text-muted">
-                     <app-icon [name]="'info'"></app-icon> No records found.
-                  </div>
+               <div class="my-3 text-muted" *ngIf="selfAccount && addressInfo.length === 0">
+                  No records found.
                </div>
 
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'book'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Highest Qualification</h5>
+               <hr class="mt-0">
                <a *ngIf="selfAccount && educationInfo.length < 1" [routerLink]="['/emp/add-education']"
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon>
                   Add</a>
                <div class="my-3" *ngFor="let education of educationInfo">
-                  <h5>{{education?.degree_name}};
+                  <h6>{{education?.degree_name}};
                      {{education?.academic_to_year}}
-                  </h5>
+                  </h6>
                   <div [innerHTML]="education.specialization_name"></div>
                   <div [innerHTML]="education.institute_name"></div>
                   <div>{{education.academic_marks_percentage}}%</div>
@@ -105,24 +106,23 @@
                         (click)="deleteEducation(education.id)"></button>
                   </div>
                </div>
-               <div class="my-3" *ngIf="selfAccount && educationInfo.length === 0">
-                  <div class="text-muted">
-                     <app-icon [name]="'info'"></app-icon> No records found.
-                  </div>
+               <div class="my-3 text-muted" *ngIf="selfAccount && educationInfo.length === 0">
+                  No records found.
                </div>
 
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'job'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Work Experience
                </h5>
+               <hr class="mt-0">
                <a *ngIf="selfAccount && workExp.length < 2" [routerLink]="['/emp/add-work-experience']"
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon>
                   Add</a>
                <div class="my-3">
-                  <h5>{{userInfo?.designation_name}}</h5>
+                  <h6>{{userInfo?.designation_name}}</h6>
                   <div [innerHTML]="orgName"></div>
                   <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
                      (userInfo.user_dor| date: 'dd/MM/yyyy') : 'Present'}}
@@ -153,8 +153,9 @@
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'currency'"
-                     [styleCSS]="{'font-size': 'inherit'}"></app-icon> Payroll Info</h5>
+               <h5 class="text-primary"><app-icon [name]="'currency'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Payroll Info</h5>
+               <hr class="mt-0">
                <a *ngIf="selfAccount && payrollInfo.length < 1" [routerLink]="['/emp/add-payroll-info']"
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon>
@@ -180,23 +181,21 @@
                         (click)="deletePayrollInfo(payroll.id)"></button>
                   </div>
                </div>
-               <div class="my-3" *ngIf="selfAccount && payrollInfo.length === 0">
-                  <div class="text-muted">
-                     <app-icon [name]="'info'"></app-icon> No records found.
-                  </div>
+               <div class="my-3 text-muted" *ngIf="selfAccount && payrollInfo.length === 0">
+                  No records found.
                </div>
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'heart'"
-                     [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'heart'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Emergency Contacts
                </h5>
+               <hr class="mt-0">
                <a *ngIf="selfAccount && emergencyContact.length < 2" [routerLink]="['/emp/add-emergency-contact']"
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon> Add</a>
                <div class="my-3" *ngFor="let contact of emergencyContact">
-                  <h5>{{contact?.contact_person_name}}</h5>
+                  <h6>{{contact?.contact_person_name}}</h6>
                   <div class="text-muted" [innerHTML]="contact.relationship"></div>
                   <div>{{contact?.contact_person_address}}</div>
                   <div>Phone: {{contact?.contact_person_phone1}}</div>
@@ -209,16 +208,15 @@
                         (click)="deleteContact(contact.id)"></button>
                   </div>
                </div>
-               <div class="my-3" *ngIf="selfAccount && emergencyContact.length === 0">
-                  <div class="text-muted">
-                     <app-icon [name]="'info'"></app-icon> No records found.
-                  </div>
+               <div class="my-3 text-muted" *ngIf="selfAccount && emergencyContact.length === 0">
+                  No records found.
                </div>
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'users'"
-                     [styleCSS]="{'font-size': 'inherit'}"></app-icon> Workflow Approvers</h5>
+               <h5 class="text-primary"><app-icon [name]="'users'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Workflow Approvers</h5>
+               <hr class="mt-0">
                <div *ngIf="selfAccount">
                   <button type="button" class="btn btn-sm btn-outline-success me-2"
                      (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
@@ -251,9 +249,9 @@
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
-                  Leave
-                  Balance</h5>
+               <h5 class="text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+                  Leave Balance</h5>
+               <hr class="mt-0">
                <dl class="row" *ngIf="leaveBalance?.id">
                   <dt class="fw-sbold col-md-3">Casual Leave (CL)</dt>
                   <dd class="col-md-3">
@@ -279,12 +277,16 @@
                      <span [innerHTML]="leaveBalance?.co ? leaveBalance?.co : '-'"></span>
                   </dd>
                </dl>
+               <div class="my-3 text-muted" *ngIf="selfAccount && !leaveBalance?.id">
+                  No records found.
+               </div>
             </section>
 
             <section class="my-3">
-               <h5 class="text-primary mb-3"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
+               <h5 class="text-primary"><app-icon [name]="'info'" [styleCSS]="{'font-size': 'inherit'}"></app-icon>
                   Account Information
                </h5>
+               <hr class="mt-0">
                <dl class="row">
                   <dt class="fw-sbold col-md-4 col-lg-3">Account Status</dt>
                   <dd class="col-md-8 col-lg-9">
