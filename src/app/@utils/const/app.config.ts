@@ -11,7 +11,6 @@ export const AppConfig = {
     timestamp:  '',
     maintenanceMode: false,
     mfaEnabled: false,
-    logo: environment.logo,
     apiUrl: {
         // Authentication, JWT Validation
         authenticate: 'auth/authenticate',

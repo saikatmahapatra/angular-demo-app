@@ -30,7 +30,6 @@ export class ConfigService {
             // AppConfig.title = config.title;
             AppConfig.productName = config?.productName;
             AppConfig.copyrightInfo = config?.copyrightInfo;
-            AppConfig.logo = config?.logo;
             // AppConfig.version = config?.version;
             AppConfig.maintenanceMode = config.maintenanceMode || false;
             AppConfig.mfaEnabled = config.mfaEnabled;

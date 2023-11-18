@@ -1,10 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { NavigationService } from 'src/app/@core/services/navigation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
-import { SideNavDirection } from 'src/app/@utils/enums/side-nav-direction';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -19,8 +16,6 @@ export class SidebarComponent implements OnInit {
   userRole = '';
   loggedInUserId = '';
   welcomeUserText = '';
-  logo = AppConfig.logo;
-  productName = AppConfig.productName;
   constructor(private navService: NavigationService, private commonSvc: CommonService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
