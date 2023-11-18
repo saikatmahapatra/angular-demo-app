@@ -23,29 +23,29 @@
                   Basic Info</h5>
                <hr class="mt-0">
                <dl class="row">
-                  <dt class="fw-sbold col-md-4 col-lg-3">Employee ID</dt>
+                  <dt class="col-md-4 col-lg-3">Employee ID</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_uid}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Designation</dt>
+                  <dt class="col-md-4 col-lg-3">Designation</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.designation_name}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Employment Type</dt>
+                  <dt class="col-md-4 col-lg-3">Employment Type</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.employment_type_name}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Work Location</dt>
+                  <dt class="col-md-4 col-lg-3">Work Location</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.base_work_location_name}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Workspace Type</dt>
+                  <dt class="col-md-4 col-lg-3">Workspace Type</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.workspace_type_name}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Department</dt>
+                  <dt class="col-md-4 col-lg-3">Department</dt>
                   <dd class="col-md-8 col-lg-9" [innerHTML]="userInfo?.department_name || '-'"></dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Date of Joining</dt>
+                  <dt class="col-md-4 col-lg-3">Date of Joining</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_doj | date:'dd/MM/yyyy'}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Personal Email</dt>
+                  <dt class="col-md-4 col-lg-3">Personal Email</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_email2 || '-'}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Work Phone</dt>
+                  <dt class="col-md-4 col-lg-3">Work Phone</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_phone2 || '-'}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Date of Birth</dt>
+                  <dt class="col-md-4 col-lg-3">Date of Birth</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_dob | date:'dd/MM/yyyy'}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Gender</dt>
+                  <dt class="col-md-4 col-lg-3">Gender</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_gender}}</dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Blood Group</dt>
+                  <dt class="col-md-4 col-lg-3">Blood Group</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
                </dl>
                <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
@@ -60,7 +60,7 @@
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon> Add </a>
                <div class="my-3" *ngFor="let addr of addressInfo">
-                  <h6 [innerHTML]="getAddressType(addr.address_type)"></h6>
+                  <h6 class="fw-bold" [innerHTML]="getAddressType(addr.address_type)"></h6>
                   <address>
                      {{addr?.address}}, {{addr?.locality}}, {{addr?.city_name}}, {{addr?.state_name}},
                      {{addr?.zip}} <br>
@@ -91,7 +91,7 @@
                   <app-icon [name]="'add'"></app-icon>
                   Add</a>
                <div class="my-3" *ngFor="let education of educationInfo">
-                  <h6>{{education?.degree_name}};
+                  <h6 class="fw-bold">{{education?.degree_name}};
                      {{education?.academic_to_year}}
                   </h6>
                   <div [innerHTML]="education.specialization_name"></div>
@@ -122,7 +122,7 @@
                   <app-icon [name]="'add'"></app-icon>
                   Add</a>
                <div class="my-3">
-                  <h6>{{userInfo?.designation_name}}</h6>
+                  <h6 class="fw-bold">{{userInfo?.designation_name}}</h6>
                   <div [innerHTML]="orgName"></div>
                   <div class="text-muted">{{userInfo?.user_doj | date:'dd/MM/yyyy'}} - {{userInfo?.user_dor ?
                      (userInfo.user_dor| date: 'dd/MM/yyyy') : 'Present'}}
@@ -162,9 +162,9 @@
                   Add</a>
                <div class="my-3">
                   <dl class="row">
-                     <dt class="fw-sbold col-md-4 col-lg-3">PAN No</dt>
+                     <dt class="col-md-4 col-lg-3">PAN No</dt>
                      <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_pan_no : '-'}}</dd>
-                     <dt class="fw-sbold col-md-4 col-lg-3">UAN No</dt>
+                     <dt class="col-md-4 col-lg-3">UAN No</dt>
                      <dd class="col-md-8 col-lg-9">{{userGovtIds ? userGovtIds[0]?.user_uan_no : '-'}}</dd>
                   </dl>
                </div>
@@ -195,7 +195,7 @@
                   class="btn btn-outline-success btn-sm ">
                   <app-icon [name]="'add'"></app-icon> Add</a>
                <div class="my-3" *ngFor="let contact of emergencyContact">
-                  <h6>{{contact?.contact_person_name}}</h6>
+                  <h6 class="fw-bold">{{contact?.contact_person_name}}</h6>
                   <div class="text-muted" [innerHTML]="contact.relationship"></div>
                   <div>{{contact?.contact_person_address}}</div>
                   <div>Phone: {{contact?.contact_person_phone1}}</div>
@@ -222,24 +222,24 @@
                      (click)="navigateTo(['/emp/change-approvers/'])">Add or Change</button>
                </div>
                <dl class="row mt-4">
-                  <dt class="fw-sbold col-md-4 col-lg-3">L1 Workflow Approver</dt>
+                  <dt class="col-md-4 col-lg-3">L1 Workflow Approver</dt>
                   <dd class="col-md-8 col-lg-9">
                      <div
                         [innerHTML]="approvers?.user_supervisor_id ? (approvers?.supervisor_name + ' ('+approvers?.supervisor_email+')'):  '-'">
                      </div>
                   </dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">L2 Workflow Approver</dt>
+                  <dt class="col-md-4 col-lg-3">L2 Workflow Approver</dt>
                   <dd class="col-md-8 col-lg-9">
                      <div
                         [innerHTML]="approvers?.director_name ? (approvers?.director_name + ' ('+approvers?.director_email+')'):  '-'">
                      </div>
                   </dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">HR Approver</dt>
+                  <dt class="col-md-4 col-lg-3">HR Approver</dt>
                   <dd class="col-md-8 col-lg-9">
                      <div [innerHTML]="approvers?.hr_name ? (approvers?.hr_name + ' ('+approvers?.hr_email+')'):  '-'">
                      </div>
                   </dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Finance Approver</dt>
+                  <dt class="col-md-4 col-lg-3">Finance Approver</dt>
                   <dd class="col-md-8 col-lg-9">
                      <div
                         [innerHTML]="approvers?.finance_name ? (approvers?.finance_name + ' ('+approvers?.finance_email+')'):  '-'">
@@ -253,26 +253,26 @@
                   Leave Balance</h5>
                <hr class="mt-0">
                <dl class="row" *ngIf="leaveBalance?.id">
-                  <dt class="fw-sbold col-md-3">Casual Leave (CL)</dt>
+                  <dt class="col-md-3">Casual Leave (CL)</dt>
                   <dd class="col-md-3">
                      <span [innerHTML]="leaveBalance?.cl ? leaveBalance?.cl : '-'"></span>
                   </dd>
-                  <dt class="fw-sbold col-md-3">Sick Leave (SL)</dt>
+                  <dt class="col-md-3">Sick Leave (SL)</dt>
                   <dd class="col-md-3">
                      <span [innerHTML]="leaveBalance?.sl ? leaveBalance?.sl : '-'"></span>
                   </dd>
 
-                  <dt class="fw-sbold col-md-3">Privileged Leave (PL)</dt>
+                  <dt class="col-md-3">Privileged Leave (PL)</dt>
                   <dd class="col-md-3">
                      <span [innerHTML]="leaveBalance?.pl ? leaveBalance?.pl : '-'"></span>
                   </dd>
 
-                  <dt class="fw-sbold col-md-3">Optional Leave (OL)</dt>
+                  <dt class="col-md-3">Optional Leave (OL)</dt>
                   <dd class="col-md-3">
                      <span [innerHTML]="leaveBalance?.ol ? leaveBalance?.ol : '-'"></span>
                   </dd>
 
-                  <dt class="fw-sbold col-md-3">Comp. Off (CO)</dt>
+                  <dt class="col-md-3">Comp. Off (CO)</dt>
                   <dd class="col-md-3">
                      <span [innerHTML]="leaveBalance?.co ? leaveBalance?.co : '-'"></span>
                   </dd>
@@ -288,31 +288,31 @@
                </h5>
                <hr class="mt-0">
                <dl class="row">
-                  <dt class="fw-sbold col-md-4 col-lg-3">Account Status</dt>
+                  <dt class="col-md-4 col-lg-3">Account Status</dt>
                   <dd class="col-md-8 col-lg-9">
                      <span *ngIf="userInfo?.user_status === 'Y' " class="badge rounded-pill bg-success">Active</span>
                      <span *ngIf="userInfo?.user_status === 'N' "
                         class="badge rounded-pill bg-warning text-dark">Inactive</span>
                      <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
                   </dd>
-                  <dt class="fw-sbold col-md-4 col-lg-3">Status Updated On</dt>
+                  <dt class="col-md-4 col-lg-3">Status Updated On</dt>
                   <dd class="col-md-8 col-lg-9">
                      {{userInfo?.user_status_updated_on | date:
                      'dd/MM/yyyy h:mm:ss a'}}
                      <span *ngIf="userInfo?.user_status_updated_on === null">-</span>
                   </dd>
 
-                  <dt class="fw-sbold col-md-4 col-lg-3">Permitted Role/Access</dt>
+                  <dt class="col-md-4 col-lg-3">Permitted Role/Access</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.role_name}}</dd>
 
-                  <dt class="fw-sbold col-md-4 col-lg-3">User Since</dt>
+                  <dt class="col-md-4 col-lg-3">User Since</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
 
                   <dt *ngIf="userInfo?.user_status === 'A' " class="col-md-4 col-lg-3">Date of Release</dt>
                   <dd *ngIf="userInfo?.user_status === 'A' " class="col-md-8 col-lg-9">{{userInfo?.user_dor |
                      date:'dd-MM-y'}}</dd>
 
-                  <dt class="fw-sbold col-md-4 col-lg-3">Last Login</dt>
+                  <dt class="col-md-4 col-lg-3">Last Login</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'}}</dd>
                </dl>
             </section>

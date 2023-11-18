@@ -1,106 +1,104 @@
 <h1>Employees</h1>
-<div class="row my-3">
+<div class="row">
     <div class="col-md-12">
-        <p-table #dt [value]="empList" dataKey="id" [rowHover]="true" [filterDelay]="0"
-            [globalFilterFields]="['id','user_full_name','user_email']"
-            styleClass="p-datatable-sm table-font-sm ">
-            <ng-template pTemplate="caption">
-                <div class="table-header">
-                    <div class="row mt-2">
-                        <app-search-input (inputValue)="getSearchKeyword($event)"
-                            [placeHolderText]="'Search...'"></app-search-input>
-                    </div>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <!-- <th style="width: 3rem"></th> -->
-                    <th style="width: 30rem" pSortableColumn="user_full_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Name
-                            <p-sortIcon field="user_full_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 15rem" pSortableColumn="user_email">
-                        <div class="flex justify-content-between align-items-center">
-                            Email
-                            <p-sortIcon field="user_email"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 12rem" pSortableColumn="user_full_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Emp ID
-                            <p-sortIcon field="user_uid"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 20rem" pSortableColumn="designation_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Designation
-                            <p-sortIcon field="designation_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 20rem" pSortableColumn="designation_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Department
-                            <p-sortIcon field="designation_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 20rem" pSortableColumn="base_work_location_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Work Loc.
-                            <p-sortIcon field="base_work_location_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    
-                    <th style="width: 10rem" pSortableColumn="user_phone">
-                        <div class="flex justify-content-between align-items-center">
-                            Phone
-                            <p-sortIcon field="user_phone"></p-sortIcon>
-                        </div>
-                    </th>
-                </tr>
-            </ng-template>
+        <div class="card">
+            <div class="card-header">List of Employees</div>
+            <div class="card-body">
+                <app-search-input (inputValue)="getSearchKeyword($event)"
+                    [placeHolderText]="'Search...'"></app-search-input>
+                <p-table #dt [value]="empList" dataKey="id" [rowHover]="true" [filterDelay]="0"
+                    [globalFilterFields]="['id','user_full_name','user_email']"
+                    styleClass="p-datatable-sm table-font-sm ">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <!-- <th style="width: 3rem"></th> -->
+                            <th style="width: 30rem" pSortableColumn="user_full_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Name
+                                    <p-sortIcon field="user_full_name"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 15rem" pSortableColumn="user_email">
+                                <div class="flex justify-content-between align-items-center">
+                                    Email
+                                    <p-sortIcon field="user_email"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 12rem" pSortableColumn="user_full_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Emp ID
+                                    <p-sortIcon field="user_uid"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 20rem" pSortableColumn="designation_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Designation
+                                    <p-sortIcon field="designation_name"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 20rem" pSortableColumn="designation_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Department
+                                    <p-sortIcon field="designation_name"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 20rem" pSortableColumn="base_work_location_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Work Loc.
+                                    <p-sortIcon field="base_work_location_name"></p-sortIcon>
+                                </div>
+                            </th>
 
-            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
-                <tr class="p-selectable-row">
-                    <!-- <td>
+                            <th style="width: 10rem" pSortableColumn="user_phone">
+                                <div class="flex justify-content-between align-items-center">
+                                    Phone
+                                    <p-sortIcon field="user_phone"></p-sortIcon>
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                        <tr class="p-selectable-row">
+                            <!-- <td>
                         <button type="button" pButton pRipple [pRowToggler]="rowData"
                             class="p-button-text p-button-rounded p-button-plain"
                             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                     </td> -->
-                    <td>
-                        <span class="p-column-title">Name</span>
-                        {{rowData?.user_full_name}}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Email</span>
-                        <span [pTooltip]="rowData?.user_email">{{ (rowData?.user_email | slice : 0: 20) + '...' }}</span>
-                    </td>
-                    <td>
-                        <span class="p-column-title">Emp ID</span>
-                        {{rowData?.user_uid}}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Designation</span>
-                        {{rowData?.designation_name}}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Department</span>
-                        {{rowData?.department_name}}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Work Location</span>
-                        {{rowData?.base_work_location_name}}
-                    </td>
-                    
-                    <td>
-                        <span class="p-column-title">Phone</span>
-                        {{rowData?.user_phone}}
-                    </td>
+                            <td>
+                                <span class="p-column-title">Name</span>
+                                {{rowData?.user_full_name}}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Email</span>
+                                <span [pTooltip]="rowData?.user_email">{{ (rowData?.user_email | slice : 0: 20) + '...'
+                                    }}</span>
+                            </td>
+                            <td>
+                                <span class="p-column-title">Emp ID</span>
+                                {{rowData?.user_uid}}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Designation</span>
+                                {{rowData?.designation_name}}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Department</span>
+                                {{rowData?.department_name}}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Work Location</span>
+                                {{rowData?.base_work_location_name}}
+                            </td>
 
-                </tr>
-            </ng-template>
-            <!-- <ng-template pTemplate="rowexpansion" let-rowData>
+                            <td>
+                                <span class="p-column-title">Phone</span>
+                                {{rowData?.user_phone}}
+                            </td>
+
+                        </tr>
+                    </ng-template>
+                    <!-- <ng-template pTemplate="rowexpansion" let-rowData>
                 <tr>
                     <td colspan="8">
                         <table class="table table-bordered">
@@ -128,16 +126,18 @@
                     </td>
                 </tr>
             </ng-template> -->
-            <ng-template pTemplate="emptymessage">
-                <tr>
-                    <td colspan="9">No records found.</td>
-                </tr>
-            </ng-template>
-        </p-table>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="9">No records found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
 
-        <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-            [showCurrentPageReport]="true"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
-            (onPageChange)="paginate($event)"></p-paginator>
-
+                <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords"
+                    [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    (onPageChange)="paginate($event)"></p-paginator>
+            </div>
+        </div>
     </div>
+</div>
