@@ -1,282 +1,303 @@
 <h1>Leave Details</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="[backToPageUrl]" [state]="{ leaveManagerPageIndex: routedFromPageIndex }">
         <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
 </div>
 
-<div *ngIf="rowData?.id" class="row my-3">
-    <div class="col-md-12 table-responsive">
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Application Status</div>
-            <div class="col-md-9">
-                <span style="font-size: 14px;" [innerHTML]="getStatusText(rowData?.leave_status)?.text"
-                    class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
-            </div>
-        </div>
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Application No</div>
-            <div class="col-md-9">{{rowData?.leave_req_id}}</div>
-        </div>
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Submitted On</div>
-            <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
-        </div>
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold">Applicant Name</div>
-            <div class="col-md-9">
-                <div class="me-2">{{rowData?.user_full_name}}</div>
-            </div>
-        </div>
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold">Applicant Email</div>
-            <div class="col-md-9">
-                {{rowData?.user_email}}
-            </div>
-        </div>
-
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold">Applicant Phone</div>
-            <div class="col-md-9">
-                {{rowData?.user_phone}}; {{rowData?.user_phone2}}
-            </div>
-        </div>
-
-        <div class="row my-2 mt-4">
-            <div class="col-md-3 fw-bold text-right">Leave Type</div>
-            <div class="col-md-9">
-                {{rowData?.leave_type}} - {{rowData?.leave_term}}
-            </div>
-        </div>
-
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold">Leave From-To Date</div>
-            <div class="col-md-9">
-                <span>{{rowData?.leave_from_date| date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date:
-                    'dd/MM/yyyy'}}</span>
-                <span class="ms-2">
-                    {{rowData?.applied_for_days_count}} <span
-                        [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>
-                </span>
-            </div>
-        </div>
-
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Reason</div>
-            <div class="col-md-9"
-                [innerHTML]="rowData?.leave_reason_text ? rowData?.leave_reason_text : rowData?.leave_reason"></div>
-        </div>
-
-        <div class="row my-2">
-            <div class="col-md-3 fw-bold text-right">Leave Balance</div>
-            <div class="col-md-9">
-                <span class="me-4"
-                    [innerHTML]="rowData?.on_apply_cl_bal ? 'CL: ' + rowData?.on_apply_cl_bal : ''"></span>
-                <span class="me-4"
-                    [innerHTML]="rowData?.on_apply_pl_bal ? 'PL: ' + rowData?.on_apply_pl_bal : ''"></span>
-                <span class="me-4"
-                    [innerHTML]="rowData?.on_apply_sl_bal ? 'SL: ' + rowData?.on_apply_sl_bal : ''"></span>
-                <span class="me-4"
-                    [innerHTML]="rowData?.on_apply_co_bal ? 'CO: ' + rowData?.on_apply_co_bal : ''"></span>
-
-            </div>
-        </div>
-
-        <div class="row my-2" *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl || rowData?.debited_co">
-            <div class="col-md-3 fw-bold text-right">Used Leave Balance</div>
-            <div class="col-md-9 text-danger">
-                <span *ngIf="rowData?.debited_cl" class="me-4"
-                    [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
-                <span *ngIf="rowData?.debited_pl" class="me-4"
-                    [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
-                <span *ngIf="rowData?.debited_sl" class="me-4"
-                    [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
-                <span *ngIf="rowData?.debited_co" class="me-4"
-                    [innerHTML]="rowData?.debited_co ? 'CO: ' + rowData?.debited_co : ''"></span>
-            </div>
-        </div>
-
-        <div class="row my-2" *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl || rowData?.credited_co">
-            <div class="col-md-3 fw-bold text-right">Adjusted Leave Balance</div>
-            <div class="col-md-9 text-success">
-                <span *ngIf="rowData?.credited_cl" class="me-4"
-                    [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
-                <span *ngIf="rowData?.credited_pl" class="me-4"
-                    [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
-                <span *ngIf="rowData?.credited_sl" class="me-4"
-                    [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
-                <span *ngIf="rowData?.credited_co" class="me-4"
-                    [innerHTML]="rowData?.credited_co ? 'CO: ' + rowData?.credited_co : ''"></span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<div *ngIf="rowData?.id" class="row">
-    <h5>Workflow</h5>
+<div class="row">
     <div class="col-12">
-        <div class="progress mt-2 mb-4">
-            <div class="progress-bar" [ngClass]="progressBarClass" role="progressbar"
-                [style]="{'width': progressValue+'%'}" [attr.aria-valuenow]="progressValue" aria-valuemin="0"
-                aria-valuemax="100">{{progressText}}</div>
-        </div>
-    </div>
-    <div class="small col-md-4  mb-4">
-        <h6><app-icon [name]="'send'" [styleClass]="'me-2 fw-bold'"></app-icon> Application
-            <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
-        </h6>
+        <div class="card">
+            <div class="card-header">Online Leave Application Details</div>
+            <div class="card-body">
+                <div *ngIf="rowData?.id">
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold">Applicant Name</div>
+                        <div class="col-md-9">
+                            <div class="me-2">{{rowData?.user_full_name}}</div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold">Applicant Email</div>
+                        <div class="col-md-9">
+                            {{rowData?.user_email}}
+                        </div>
+                    </div>
 
-        <div class="">{{rowData?.user_full_name}}</div>
-        <div class="small">{{rowData?.user_email}}</div>
-        <div class="small">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}} Submitted</div>
-        <div *ngIf="rowData?.cancel_request_datetime" class="small">
-            {{rowData?.cancel_request_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Cancel requested </div>
-        <div *ngIf="rowData?.cancellation_datetime" class="small">
-            {{rowData?.cancellation_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Withdrawn </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold">Applicant Phone</div>
+                        <div class="col-md-9">
+                            {{rowData?.user_phone}}; {{rowData?.user_phone2}}
+                        </div>
+                    </div>
 
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Leave Type</div>
+                        <div class="col-md-9">
+                            {{rowData?.leave_type}} - {{rowData?.leave_term}}
+                        </div>
+                    </div>
 
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold">Leave From-To Date</div>
+                        <div class="col-md-9">
+                            <span>{{rowData?.leave_from_date| date: 'dd/MM/yyyy'}} - {{rowData?.leave_to_date | date:
+                                'dd/MM/yyyy'}}</span>
+                            <span class="ms-2">
+                                {{rowData?.applied_for_days_count}} <span
+                                    [innerHTML]="rowData?.applied_for_days_count<=1 ? 'day' :'days'"></span>
+                            </span>
+                        </div>
+                    </div>
 
-        <div class="my-4"
-            *ngIf="(userId===rowData?.user_id) && (rowData?.leave_status === 'B' || rowData?.leave_status === 'O' || rowData?.leave_status === 'P')">
-            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)" type="button"
-                class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> Withdraw Application</button>
-        </div>
-        <div class="my-4"
-            *ngIf="(userId ===rowData?.user_id) && rowData?.leave_status === 'A' && rowData?.cancel_requested !== 'Y'">
-            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)" type="button"
-                class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> Request Leave Cancellation</button>
-        </div>
-    </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Leave Reason</div>
+                        <div class="col-md-9"
+                            [innerHTML]="rowData?.leave_reason_text ? rowData?.leave_reason_text : rowData?.leave_reason">
+                        </div>
+                    </div>
 
-    <div class="small col-md-4  mb-4">
-        <h6>
-            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
-                *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
-            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
-                *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
-            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
-                *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
-            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
-                *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
-            <app-icon [name]="'verified'" [styleClass]="'me-2 fw-bold text-primary'"
-                *ngIf="rowData?.supervisor_approver_status==='V'"></app-icon>
-            L1 Workflow {{getStatusText(rowData?.supervisor_approver_status)?.text}}
-        </h6>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Status</div>
+                        <div class="col-md-9">
+                            <span style="font-size: 14px;" [innerHTML]="getStatusText(rowData?.leave_status)?.text"
+                                class="badge {{getStatusText(rowData?.leave_status)?.cssClass}}"></span>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Application No</div>
+                        <div class="col-md-9">{{rowData?.leave_req_id}}</div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Submitted On</div>
+                        <div class="col-md-9">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+                    </div>
 
-        <div class="">
-            {{rowData?.supervisor_approver_name}}
-        </div>
-        <div class="small">{{rowData?.supervisor_email}}</div>
-        <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
-        <div class="small" *ngIf="rowData?.supervisor_approver_comment">
-            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon> {{rowData?.supervisor_approver_comment}}
-        </div>
+                    <div class="row my-2">
+                        <div class="col-md-3 fw-bold text-right">Leave Balance</div>
+                        <div class="col-md-9">
+                            Existing
+                            <span class="me-2"
+                                [innerHTML]="rowData?.on_apply_cl_bal ? 'CL: ' + rowData?.on_apply_cl_bal : ''"></span>
+                            <span class="me-2"
+                                [innerHTML]="rowData?.on_apply_pl_bal ? 'PL: ' + rowData?.on_apply_pl_bal : ''"></span>
+                            <span class="me-2"
+                                [innerHTML]="rowData?.on_apply_sl_bal ? 'SL: ' + rowData?.on_apply_sl_bal : ''"></span>
+                            <span class="me-2"
+                                [innerHTML]="rowData?.on_apply_co_bal ? 'CO: ' + rowData?.on_apply_co_bal : ''"></span>
 
-        <div class="my-4"
-            *ngIf="(rowData?.leave_status !== 'C') && rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id) && (rowData?.supervisor_approver_id!==rowData?.director_approver_id)">
+                            <span class="mx-2 text-danger"
+                                *ngIf="rowData?.debited_cl || rowData?.debited_pl || rowData?.debited_sl || rowData?.debited_co">
+                                -
+                                <span *ngIf="rowData?.debited_cl" class="me-2"
+                                    [innerHTML]="rowData?.debited_cl ? 'CL: ' + rowData?.debited_cl : ''"></span>
+                                <span *ngIf="rowData?.debited_pl" class="me-2"
+                                    [innerHTML]="rowData?.debited_pl ? 'PL: ' + rowData?.debited_pl : ''"></span>
+                                <span *ngIf="rowData?.debited_sl" class="me-2"
+                                    [innerHTML]="rowData?.debited_sl ? 'SL: ' + rowData?.debited_sl : ''"></span>
+                                <span *ngIf="rowData?.debited_co" class="me-2"
+                                    [innerHTML]="rowData?.debited_co ? 'CO: ' + rowData?.debited_co : ''"></span>
 
-            <div class="mb-3">
-                <div class="input-group">
-                    <input type="text" [(ngModel)]="L1WorkflowComments" class="form-control"
-                        placeholder="comments (if any)" aria-label="Comments" aria-describedby="erase-comments1"
-                        maxlength="40">
-                    <button (click)="removeComments('L1')" class="input-group-text" id="erase-comments1">
-                        <app-icon [name]="'close'"></app-icon>
-                    </button>
+                            </span>
+
+                            <span class="text-success"
+                                *ngIf="rowData?.credited_cl || rowData?.credited_pl || rowData?.credited_sl || rowData?.credited_co">
+                                +
+                                <span *ngIf="rowData?.credited_cl" class="me-2"
+                                    [innerHTML]="rowData?.credited_cl ? 'CL: ' + rowData?.credited_cl : ''"></span>
+                                <span *ngIf="rowData?.credited_pl" class="me-2"
+                                    [innerHTML]="rowData?.credited_pl ? 'PL: ' + rowData?.credited_pl : ''"></span>
+                                <span *ngIf="rowData?.credited_sl" class="me-2"
+                                    [innerHTML]="rowData?.credited_sl ? 'SL: ' + rowData?.credited_sl : ''"></span>
+                                <span *ngIf="rowData?.credited_co" class="me-2"
+                                    [innerHTML]="rowData?.credited_co ? 'CO: ' + rowData?.credited_co : ''"></span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="small text-muted">{{40-L1WorkflowComments.length}} characters left</div>
-            </div>
-            <div>
-                <button
-                    (click)="approveRejectRequest(rowData?.id, 'L1', 'V', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                    type="submit" class="btn btn-primary me-3 mb-3" [disabled]="loading"><span *ngIf="loading"
-                        class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'verified'"></app-icon>
-                    Accept</button>
-                <button
-                    (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                    type="submit" class="btn btn-success me-3 mb-3" [disabled]="loading"><span *ngIf="loading"
-                        class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'success'"></app-icon>
-                    Approve</button>
-                <button
-                    (click)="approveRejectRequest(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                    type="submit" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
-                        class="spinner-border spinner-border-sm"></span> <app-icon [name]="'cross'"></app-icon>
-                    Reject</button>
-            </div>
-        </div>
 
-        <div class="my-4"
-            *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.supervisor_approver_id && rowData?.supervisor_approver_id!==rowData?.director_approver_id">
-            <button (click)="approveRejectRequest(rowData?.id, 'L1', 'C', rowData?.supervisor_approver_id)"
-                type="submit" class="btn btn-warning me-4" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'"> </app-icon>
-                Cancel</button>
-        </div>
-    </div>
+                <div *ngIf="rowData?.id" class="row mt-3">
+                    <h5>Workflow</h5>
+                    <div class="col-12">
+                        <div class="progress mt-2 mb-4">
+                            <div class="progress-bar" [ngClass]="progressBarClass" role="progressbar"
+                                [style]="{'width': progressValue+'%'}" [attr.aria-valuenow]="progressValue"
+                                aria-valuemin="0" aria-valuemax="100">{{progressText}}</div>
+                        </div>
+                    </div>
+                    <div class="small col-md-4  mb-4">
+                        <h6><app-icon [name]="'send'" [styleClass]="'me-2 fw-bold'"></app-icon> Application
+                            <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
+                        </h6>
 
-    <div class="small col-md-4 mb-4">
-        <h6>
-            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
-                *ngIf="rowData?.director_approver_status==='P'"></app-icon>
-            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
-                *ngIf="rowData?.director_approver_status==='A'"></app-icon>
-            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
-                *ngIf="rowData?.director_approver_status==='R'"></app-icon>
-            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
-                *ngIf="rowData?.director_approver_status==='C'"></app-icon>
-            L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
-        </h6>
+                        <div class="">{{rowData?.user_full_name}}</div>
+                        <div class="small">{{rowData?.user_email}}</div>
+                        <div class="small">{{rowData?.leave_created_on | date: 'dd/MM/yyyy h:mm:ss a'}} Submitted</div>
+                        <div *ngIf="rowData?.cancel_request_datetime" class="small">
+                            {{rowData?.cancel_request_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Cancel requested </div>
+                        <div *ngIf="rowData?.cancellation_datetime" class="small">
+                            {{rowData?.cancellation_datetime | date: 'dd/MM/yyyy h:mm:ss a'}} Withdrawn </div>
 
-        <div class="">{{rowData?.director_approver_name}}</div>
-        <div class="small">{{rowData?.director_email}}</div>
-        <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
-        <div class="small" *ngIf="rowData?.director_approver_comment">
-            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon> {{rowData?.director_approver_comment}}
-        </div>
 
-        <div class="my-4"
-            *ngIf="(rowData?.leave_status === 'B' || rowData?.leave_status === 'O') && rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
 
-            <div class="mb-3">
-                <div class="input-group">
-                    <input type="text" [(ngModel)]="L2WorkflowComments" class="form-control"
-                        placeholder="comments (if any)" aria-label="Comments" aria-describedby="erase-comments2"
-                        maxlength="40">
-                    <button (click)="removeComments('L2')" class="input-group-text" id="erase-comments2">
-                        <app-icon [name]="'close'"></app-icon>
-                    </button>
+                        <div class="my-4"
+                            *ngIf="(userId===rowData?.user_id) && (rowData?.leave_status === 'B' || rowData?.leave_status === 'O' || rowData?.leave_status === 'P')">
+                            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)"
+                                type="button" class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span> Withdraw Application</button>
+                        </div>
+                        <div class="my-4"
+                            *ngIf="(userId ===rowData?.user_id) && rowData?.leave_status === 'A' && rowData?.cancel_requested !== 'Y'">
+                            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)"
+                                type="button" class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span> Request Leave
+                                Cancellation</button>
+                        </div>
+                    </div>
+
+                    <div class="small col-md-4  mb-4">
+                        <h6>
+                            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
+                                *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
+                            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
+                                *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
+                            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
+                                *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
+                            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
+                                *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
+                            <app-icon [name]="'verified'" [styleClass]="'me-2 fw-bold text-primary'"
+                                *ngIf="rowData?.supervisor_approver_status==='V'"></app-icon>
+                            L1 Workflow {{getStatusText(rowData?.supervisor_approver_status)?.text}}
+                        </h6>
+
+                        <div class="">
+                            {{rowData?.supervisor_approver_name}}
+                        </div>
+                        <div class="small">{{rowData?.supervisor_email}}</div>
+                        <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}
+                        </div>
+                        <div class="small" *ngIf="rowData?.supervisor_approver_comment">
+                            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon>
+                            {{rowData?.supervisor_approver_comment}}
+                        </div>
+
+                        <div class="my-4"
+                            *ngIf="(rowData?.leave_status !== 'C') && rowData?.supervisor_approver_status==='P' && (userId === rowData?.supervisor_approver_id) && (rowData?.supervisor_approver_id!==rowData?.director_approver_id)">
+
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="L1WorkflowComments" class="form-control"
+                                        placeholder="comments (if any)" aria-label="Comments"
+                                        aria-describedby="erase-comments1" maxlength="40">
+                                    <button (click)="removeComments('L1')" class="input-group-text"
+                                        id="erase-comments1">
+                                        <app-icon [name]="'close'"></app-icon>
+                                    </button>
+                                </div>
+                                <div class="small text-muted">{{40-L1WorkflowComments.length}} characters left</div>
+                            </div>
+                            <div>
+                                <button
+                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'V', rowData?.supervisor_approver_id, L1WorkflowComments)"
+                                    type="submit" class="btn btn-primary me-3 mb-3" [disabled]="loading"><span
+                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
+                                        [name]="'verified'"></app-icon>
+                                    Accept</button>
+                                <button
+                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id, L1WorkflowComments)"
+                                    type="submit" class="btn btn-success me-3 mb-3" [disabled]="loading"><span
+                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
+                                        [name]="'success'"></app-icon>
+                                    Approve</button>
+                                <button
+                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id, L1WorkflowComments)"
+                                    type="submit" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
+                                        class="spinner-border spinner-border-sm"></span> <app-icon
+                                        [name]="'cross'"></app-icon>
+                                    Reject</button>
+                            </div>
+                        </div>
+
+                        <div class="my-4"
+                            *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.supervisor_approver_id && rowData?.supervisor_approver_id!==rowData?.director_approver_id">
+                            <button
+                                (click)="approveRejectRequest(rowData?.id, 'L1', 'C', rowData?.supervisor_approver_id)"
+                                type="submit" class="btn btn-warning me-4" [disabled]="loading"><span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'">
+                                </app-icon>
+                                Cancel</button>
+                        </div>
+                    </div>
+
+                    <div class="small col-md-4 mb-4">
+                        <h6>
+                            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
+                                *ngIf="rowData?.director_approver_status==='P'"></app-icon>
+                            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
+                                *ngIf="rowData?.director_approver_status==='A'"></app-icon>
+                            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
+                                *ngIf="rowData?.director_approver_status==='R'"></app-icon>
+                            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
+                                *ngIf="rowData?.director_approver_status==='C'"></app-icon>
+                            L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
+                        </h6>
+
+                        <div class="">{{rowData?.director_approver_name}}</div>
+                        <div class="small">{{rowData?.director_email}}</div>
+                        <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
+                        <div class="small" *ngIf="rowData?.director_approver_comment">
+                            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon>
+                            {{rowData?.director_approver_comment}}
+                        </div>
+
+                        <div class="my-4"
+                            *ngIf="(rowData?.leave_status === 'B' || rowData?.leave_status === 'O') && rowData?.director_approver_status==='P' && (userId === rowData?.director_approver_id)">
+
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" [(ngModel)]="L2WorkflowComments" class="form-control"
+                                        placeholder="comments (if any)" aria-label="Comments"
+                                        aria-describedby="erase-comments2" maxlength="40">
+                                    <button (click)="removeComments('L2')" class="input-group-text"
+                                        id="erase-comments2">
+                                        <app-icon [name]="'close'"></app-icon>
+                                    </button>
+                                </div>
+                                <div class="small text-muted">{{40-L2WorkflowComments.length}} characters left</div>
+                            </div>
+
+                            <div>
+                                <button
+                                    (click)="approveRejectRequest(rowData?.id, 'L2', 'A', rowData?.director_approver_id, L2WorkflowComments)"
+                                    type="button" class="btn btn-success me-3 mb-3" [disabled]="loading"><span
+                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
+                                        [name]="'success'"></app-icon>
+                                    Approve</button>
+                                <button
+                                    (click)="approveRejectRequest(rowData.id, 'L2', 'R', rowData?.director_approver_id, L2WorkflowComments)"
+                                    type="button" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
+                                        class="spinner-border spinner-border-sm me-1"></span> <app-icon
+                                        [name]="'cross'"></app-icon>
+                                    Reject</button>
+                            </div>
+                        </div>
+
+                        <div class="my-4"
+                            *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.director_approver_id">
+                            <button (click)="approveRejectRequest(rowData.id, 'L2', 'C', rowData?.director_approver_id)"
+                                type="button" class="btn btn-warning" [disabled]="loading"><span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span> <app-icon
+                                    [name]="'cross'"></app-icon>
+                                Cancel</button>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="small text-muted">{{40-L2WorkflowComments.length}} characters left</div>
-            </div>
 
-            <div>
-                <button
-                    (click)="approveRejectRequest(rowData?.id, 'L2', 'A', rowData?.director_approver_id, L2WorkflowComments)"
-                    type="button" class="btn btn-success me-3 mb-3" [disabled]="loading"><span *ngIf="loading"
-                        class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'success'"></app-icon>
-                    Approve</button>
-                <button
-                    (click)="approveRejectRequest(rowData.id, 'L2', 'R', rowData?.director_approver_id, L2WorkflowComments)"
-                    type="button" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
-                        class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'"></app-icon>
-                    Reject</button>
-            </div>
-        </div>
+                <div *ngIf="!rowData?.id">
+                    No records found.
+                </div>
 
-        <div class="my-4"
-            *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.director_approver_id">
-            <button (click)="approveRejectRequest(rowData.id, 'L2', 'C', rowData?.director_approver_id)" type="button"
-                class="btn btn-warning" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'"></app-icon>
-                Cancel</button>
-        </div>
-
+            </div> <!--/.card-body-->
+        </div> <!--/.card-->
     </div>
-</div>
-
-<div *ngIf="!rowData?.id">
-    No records found.
 </div>

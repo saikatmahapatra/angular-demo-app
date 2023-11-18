@@ -1,91 +1,100 @@
 <h1>Apply Leave</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="['/leave/history']">
         Leave History<app-icon [name]="'angleRight'" [styleClass]="'ms-1'"></app-icon></a>
 </div>
-<div class="row my-3">
-    <div class="card">
-        <div class="card-header">Information</div>
-        <div class="card-body">
-
-            <div class="alert alert-danger"
-                *ngIf="!hasApprovers()">
-                <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow
-                    approvers</a> before applying.
-            </div>
-            <div class="mb-2" *ngIf="hasApprovers()">
-                <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
-                    <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
-                        class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> will review and take action on your leave application. You can change workflow approvers (if necessary) before submitting a leave application. Click <a [routerLink]="['/emp/change-approvers']">here</a> to change.
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Online Leave Application</div>
+            <div class="card-body">
+                <h5 class="card-title">Information:</h5>
+                <div class="alert alert-danger" *ngIf="!hasApprovers()">
+                    <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need
+                    to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow
+                        approvers</a> before applying.
                 </div>
-                <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
-                    <strong><app-icon [name]="'info'"></app-icon> Workflow Approvers: </strong><span
-                        class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> <span> and/or </span> <span
-                        class="">{{approvers[0]?.director_name}} ({{approvers[0]?.director_email}})</span> will review and take action on your leave application. You can change workflow approvers (if necessary) before submitting a leave application. Click <a [routerLink]="['/emp/change-approvers']">here</a> to change.
+                <div class="mb-2" *ngIf="hasApprovers()">
+                    <div *ngIf="approvers[0]?.user_supervisor_id === approvers[0]?.user_director_approver_id">
+                        <strong><app-icon [name]="'info'"></app-icon> Workflow Approver: </strong> <span
+                            class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span> will
+                        review and take action on your leave application. You can change workflow approvers (if
+                        necessary) before submitting a leave application. Click <a
+                            [routerLink]="['/emp/change-approvers']">here</a> to change.
+                    </div>
+                    <div *ngIf="approvers[0]?.user_supervisor_id !== approvers[0]?.user_director_approver_id">
+                        <strong><app-icon [name]="'info'"></app-icon> Workflow Approvers: </strong><span
+                            class="">{{approvers[0]?.supervisor_name}} ({{approvers[0]?.supervisor_email}})</span>
+                        <span> and/or </span> <span class="">{{approvers[0]?.director_name}}
+                            ({{approvers[0]?.director_email}})</span> will review and take action on your leave
+                        application. You can change workflow approvers (if necessary) before submitting a leave
+                        application. Click <a [routerLink]="['/emp/change-approvers']">here</a> to change.
+                    </div>
+                </div>
+                <div class="alert alert-danger" *ngIf="!hasLeaveBalance()">
+                    <strong><app-icon [name]="'error'"></app-icon> Error: </strong> Your leave balance information is
+                    missing from the database. Records of leave balances must be updated in order to apply for leave.
+                    For further process, kindly get in touch with admin or HR.
+                </div>
+
+                <div class="" *ngIf="hasLeaveBalance()">
+                    <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong>
+                    <!-- <div> -->
+                    <span class="me-1">CL-Casual Leave: {{leaveBalance[0]?.cl}}, </span>
+                    <span class="me-1">PL-Privileged Leave: {{leaveBalance[0]?.pl}}, </span>
+                    <span class="me-1">SL-Sick Leave: {{leaveBalance[0]?.sl}}, </span>
+                    <span class="me-1">CO-Comp. Off: {{leaveBalance[0]?.co}}</span>
+                    <!-- </div> -->
+                </div>
+
+                <div class="col-md-4 mt-3" *ngIf="hasApprovers() && hasLeaveBalance()">
+                    <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                        <input type="hidden" value="applyLeave" formControlName="action">
+            
+                        <div class="mb-3">
+                            <label class="required" for="fromToDate">Leave Date(s)</label>
+                            <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" [(ngModel)]="rangeDates"
+                                selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate"
+                                [showButtonBar]="false" [showIcon]="true" appendTo="body"
+                                [panelStyleClass]="'datetimepicker'"></p-calendar>
+                            <div class="small">Note: You can select from-to date range from the date picker</div>
+                            <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
+            
+                        </div>
+                        <div class="mb-3">
+                            <label class="required" for="leaveType">Leave Type</label>
+                            <select class="form-select" id="leaveType" formControlName="leaveType">
+                                <option value="">Select</option>
+                                <option [value]="data?.val" *ngFor="let data of leaveType" [innerHTML]="data.text"></option>
+                            </select>
+                            <app-validation-error [control]="myForm.controls['leaveType']"></app-validation-error>
+                        </div>
+                        <div class="mb-3">
+                            <label class="required" for="leaveSlot">Leave Slot</label>
+                            <select class="form-select" id="leaveSlot" formControlName="leaveSlot">
+                                <option value="">Select</option>
+                                <option [value]="data?.val" *ngFor="let data of leaveSlot" [innerHTML]="data.text"></option>
+                            </select>
+                            <app-validation-error [control]="myForm.controls['leaveSlot']"></app-validation-error>
+                        </div>
+                        <div class="mb-3">
+                            <label class="required" for="leaveReasonId">Select Leave Reason</label>
+                            <select class="form-select" id="leaveReasonId" formControlName="leaveReasonId">
+                                <option value="">Select</option>
+                                <option [value]="data?.id" *ngFor="let data of leaveReasonList" [innerHTML]="data.name"></option>
+                            </select>
+                            <app-validation-error [control]="myForm.controls['leaveReasonId']"></app-validation-error>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label class="" for="leaveReason">Brief Description</label>
+                            <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
+                            <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
+                        </div> -->
+                        <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                                class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+                    </form>
                 </div>
             </div>
-            <div class="alert alert-danger" *ngIf="!hasLeaveBalance()">
-                <strong><app-icon [name]="'error'"></app-icon> Error: </strong> Your leave balance information is missing from the database. Records of leave balances must be updated in order to apply for leave. For further process, kindly get in touch with admin or HR.
-            </div>
-
-            <div class="" *ngIf="hasLeaveBalance()">
-                <strong><app-icon [name]="'info'"></app-icon> Leave Balance: </strong>
-                <!-- <div> -->
-                <span class="me-1">CL-Casual Leave: {{leaveBalance[0]?.cl}}, </span>
-                <span class="me-1">PL-Privileged Leave: {{leaveBalance[0]?.pl}}, </span>
-                <span class="me-1">SL-Sick Leave: {{leaveBalance[0]?.sl}}, </span>
-                <span class="me-1">CO-Comp. Off: {{leaveBalance[0]?.co}}</span>
-                <!-- </div> -->
-            </div>
-
         </div>
-    </div>
-
-    <div class="col-md-4 mt-3" *ngIf="hasApprovers() && hasLeaveBalance()">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" value="applyLeave" formControlName="action">
-
-            <div class="mb-3">
-                <label class="required" for="fromToDate">Leave Date(s)</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="fromToDate" [(ngModel)]="rangeDates"
-                    selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100" [maxDate]="maxDate"
-                    [showButtonBar]="false" [showIcon]="true" appendTo="body"
-                    [panelStyleClass]="'datetimepicker'"></p-calendar>
-                <div class="small">Note: You can select from-to date range from the date picker</div>
-                <app-validation-error [control]="myForm.controls['fromToDate']"></app-validation-error>
-
-            </div>
-            <div class="mb-3">
-                <label class="required" for="leaveType">Leave Type</label>
-                <select class="form-select" id="leaveType" formControlName="leaveType">
-                    <option value="">Select</option>
-                    <option [value]="data?.val" *ngFor="let data of leaveType" [innerHTML]="data.text"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['leaveType']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="leaveSlot">Leave Slot</label>
-                <select class="form-select" id="leaveSlot" formControlName="leaveSlot">
-                    <option value="">Select</option>
-                    <option [value]="data?.val" *ngFor="let data of leaveSlot" [innerHTML]="data.text"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['leaveSlot']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="leaveReasonId">Select Leave Reason</label>
-                <select class="form-select" id="leaveReasonId" formControlName="leaveReasonId">
-                    <option value="">Select</option>
-                    <option [value]="data?.id" *ngFor="let data of leaveReasonList" [innerHTML]="data.name"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['leaveReasonId']"></app-validation-error>
-            </div>
-            <!-- <div class="mb-3">
-                <label class="" for="leaveReason">Brief Description</label>
-                <input type="text" class="form-control" id="leaveReason" formControlName="leaveReason" maxlength="100">
-                <app-validation-error [control]="myForm.controls['leaveReason']"></app-validation-error>
-            </div> -->
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
-                    class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-        </form>
     </div>
 </div>
