@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">Online Leave Application</div>
             <div class="card-body">
-                <h5 class="card-title">Information:</h5>
+                <h6 class="fw-bold">Information:</h6>
                 <div class="alert alert-danger" *ngIf="!hasApprovers()">
                     <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need
                     to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow

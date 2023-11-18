@@ -89,8 +89,7 @@
 
                     <p-paginator *ngIf="totalRecords>0" [rows]="itemPerPage" [totalRecords]="totalRecords"
                         [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
-                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                        styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" (onPageChange)="paginate($event)"></p-paginator>
                 </div>
             </div>
         </div>
