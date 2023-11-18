@@ -2,7 +2,7 @@
     "apiBaseUrl": "http://portal.ueipl.co.in/backend/api/",
     "maintenanceMode": false,
     "mfaEnabled": true,
-    "productName": "MyApp",
+    "productName": "MyApp HRMS",
     "logo": "assets/img/logo.svg",
-    "copyrightText": "Copyright &copy; 2023 United Exploration India"
+    "copyrightInfo": "Copyright &copy; 2023 United Exploration India Pvt Ltd (“UEIPL”)"
 }

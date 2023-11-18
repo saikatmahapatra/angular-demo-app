@@ -4,5 +4,5 @@
     "mfaEnabled": true,
     "productName": "MyApp CRM",
     "logo": "assets/img/logo-angular.svg",
-    "copyrightText": "Copyright &copy; 2023 MyApp CRM"
+    "copyrightInfo": "Copyright &copy; 2023 MyApp CRM"
 }
