@@ -1,52 +1,58 @@
 <h1><span>{{title}}</span> Project</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="['/project/manage-project']"><app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
-<div class="row my-3">
+<div class="row">
     <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
-            <div class="mb-3">
-                <label class="required" for="projectNumber">Project No/ID</label>
-                <input type="number" class="form-control" id="projectNumber" maxlength="16" formControlName="projectNumber">
-                <app-validation-error [control]="myForm.controls['projectNumber']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="projectName">Project Name</label>
-                <input type="text" class="form-control" id="projectName" formControlName="projectName" >
-                <app-validation-error [control]="myForm.controls['projectName']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="startDate">Start Date</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="startDate" [readonlyInput]="true" inputId="startDate" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"></p-calendar>
-                <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="required" for="endDate">End Date</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="endDate" [readonlyInput]="true" inputId="endDate" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"></p-calendar>
-                <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
-            </div>
-            <div class="mb-3">
-                <label class="optional" for="description">Description</label>
-                <textarea class="form-control" id="description" formControlName="description"
-                    maxlength="150"></textarea>
-                <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="status">Status</label>
-                <div>
-                    <div class="form-check form-check-inline" *ngFor="let data of DataStatus; let i=index">
-                        <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.id}}"
-                            formControlName="status">
-                        <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+        <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action">
+                    <div class="mb-3">
+                        <label class="required" for="projectNumber">Project No/ID</label>
+                        <input type="number" class="form-control" id="projectNumber" maxlength="16" formControlName="projectNumber">
+                        <app-validation-error [control]="myForm.controls['projectNumber']"></app-validation-error>
                     </div>
-                </div>
-                <app-validation-error [control]="myForm.controls['status']"></app-validation-error>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                    <div class="mb-3">
+                        <label class="required" for="projectName">Project Name</label>
+                        <input type="text" class="form-control" id="projectName" formControlName="projectName" >
+                        <app-validation-error [control]="myForm.controls['projectName']"></app-validation-error>
+                    </div>
+                    <div class="mb-3">
+                        <label class="required" for="startDate">Start Date</label>
+                        <p-calendar dateFormat="dd/mm/yy" formControlName="startDate" [readonlyInput]="true" inputId="startDate" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"></p-calendar>
+                        <app-validation-error [control]="myForm.controls['startDate']"></app-validation-error>
+                    </div>
+                    <div class="mb-3">
+                        <label class="required" for="endDate">End Date</label>
+                        <p-calendar dateFormat="dd/mm/yy" formControlName="endDate" [readonlyInput]="true" inputId="endDate" styleClass="w-100" [showButtonBar]="false" [showIcon]="true" appendTo="body"></p-calendar>
+                        <app-validation-error [control]="myForm.controls['endDate']"></app-validation-error>
+                    </div>
+                    <div class="mb-3">
+                        <label class="optional" for="description">Description</label>
+                        <textarea class="form-control" id="description" formControlName="description"
+                            maxlength="150"></textarea>
+                        <app-validation-error [control]="myForm.controls['description']"></app-validation-error>
+                    </div>
+        
+                    <div class="mb-3">
+                        <label class="required" for="status">Status</label>
+                        <div>
+                            <div class="form-check form-check-inline" *ngFor="let data of DataStatus; let i=index">
+                                <input class="form-check-input" type="radio" id="inlineRadio_{{i}}" value="{{data.id}}"
+                                    formControlName="status">
+                                <label class="form-check-label" for="inlineRadio_{{i}}">{{data.name}}</label>
+                            </div>
+                        </div>
+                        <app-validation-error [control]="myForm.controls['status']"></app-validation-error>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div> <!--/.card-body-->
+        </div> <!--/.card-->
+        
     </div>
 </div>

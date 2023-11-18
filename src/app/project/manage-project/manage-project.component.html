@@ -1,133 +1,130 @@
 <h1>Manage Projects</h1>
-<div class="row my-3">
-    <div class="col-md-12">
-        <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
-            <ng-template pTemplate="caption">
-                <div class="table-header">
-                    List of Projects
-                    <div class="row my-2">
-                        <div class="col-auto">
-                            <a [routerLink]="['/project/add-project']" class="btn btn-success me-2">
-                                <app-icon [name]="'add'"></app-icon>
-                                Add New
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width: 3rem"></th>
-                    <th style="width: 40rem;" pSortableColumn="project_name">
-                        <div class="flex justify-content-between align-items-center">
-                            Project Name & Code
-                            <p-sortIcon field="project_name"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 10rem" pSortableColumn="project_start_date">
-                        <div class="flex justify-content-between align-items-center">
-                            Start Date
-                            <p-sortIcon field="project_start_date"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 10rem" pSortableColumn="project_end_date">
-                        <div class="flex justify-content-between align-items-center">
-                            End Date
-                            <p-sortIcon field="project_end_date"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 8rem" pSortableColumn="project_status">
-                        <div class="flex justify-content-between align-items-center">
-                            Status
-                            <p-sortIcon field="project_status"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 15rem" pSortableColumn="created_on">
-                        <div class="flex justify-content-between align-items-center">
-                            Added On
-                            <p-sortIcon field="created_on"></p-sortIcon>
-                        </div>
-                    </th>
-                    <th style="width: 10rem">Actions</th>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="body" let-rowData let-expanded="expanded">
-                <tr class="p-selectable-row">
-                    <td>
-                        <button type="button" pButton pRipple [pRowToggler]="rowData"
-                            class="p-button-text p-button-rounded p-button-plain"
-                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-                    </td>
-                    <td>
-                        <span class="p-column-title">Name</span>
-                        {{rowData?.project_name}} ({{rowData?.project_number}})
-                    </td>
-                    <td>
-                        <span class="p-column-title">Start Date</span>
-                        {{rowData?.project_start_date ? (rowData?.project_start_date | date: 'dd/MM/yyyy') : '-' }}
-                    </td>
-                    <td>
-                        <span class="p-column-title">End Date</span>
-                        {{rowData?.project_end_date ? (rowData?.project_end_date | date: 'dd/MM/yyyy') : '-' }}
-                    </td>
-                    <td>
-                        <span class="p-column-title">Status</span>
-                        <span *ngIf="rowData?.project_status === 'Y' " class="" title="Active">
-                            <app-icon [name]="'circle'" [styleClass]="'text-success f-10'"></app-icon>
-                        </span>
-                        <span *ngIf="rowData?.project_status === 'N' " class="" title="Inactive">
-                            <app-icon [name]="'circle'" [styleClass]="'text-warning f-10'"></app-icon>
-                        </span>
-                    </td>
-
-                    <td>
-                        <span class="p-column-title">Added On</span>
-                        {{rowData?.created_on ? (rowData?.created_on | date: 'dd/MM/yyyy h:mm:ss a') : '-' }}
-                    </td>
-
-                    <td>
-                        <button (click)="editItem(rowData)" pButton pRipple type="button" icon="pi pi-pencil"
-                            class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
-                        <a [routerLink]="['/dashboard/analytics/project/', rowData.id]" target="_blank" pButton pRipple
-                            type="button" icon="pi pi-chart-line"
-                            class="p-button-rounded p-button-text p-button-info text-decoration-none"></a>
-                    </td>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="rowexpansion" let-rowData>
-                <tr>
-                    <td colspan="7">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td class="fw-bold w-25">Description</td>
-                                    <td [innerHTML]="rowData?.project_desc || '-'"></td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-bold w-25">Updated On</td>
-                                    <td>
-                                        {{rowData?.updated_on ? (rowData?.updated_on | date: 'dd/MM/yyyy h:mm:ss a') :
-                                        '-' }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="emptymessage">
-                <tr>
-                    <td colspan="7">No records found.</td>
-                </tr>
-            </ng-template>
-        </p-table>
-
-        <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
-            [showCurrentPageReport]="true"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
-            (onPageChange)="paginate($event)"></p-paginator>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">List of Projects</div>
+            <div class="card-body">
+                <a [routerLink]="['/project/add-project']" class="btn btn-success mb-3">
+                    <app-icon [name]="'add'"></app-icon>
+                    Add New
+                </a>
+                <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm ">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem"></th>
+                            <th style="width: 40rem;" pSortableColumn="project_name">
+                                <div class="flex justify-content-between align-items-center">
+                                    Project Name & Code
+                                    <p-sortIcon field="project_name"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 10rem" pSortableColumn="project_start_date">
+                                <div class="flex justify-content-between align-items-center">
+                                    Start Date
+                                    <p-sortIcon field="project_start_date"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 10rem" pSortableColumn="project_end_date">
+                                <div class="flex justify-content-between align-items-center">
+                                    End Date
+                                    <p-sortIcon field="project_end_date"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 8rem" pSortableColumn="project_status">
+                                <div class="flex justify-content-between align-items-center">
+                                    Status
+                                    <p-sortIcon field="project_status"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 15rem" pSortableColumn="created_on">
+                                <div class="flex justify-content-between align-items-center">
+                                    Added On
+                                    <p-sortIcon field="created_on"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 10rem">Actions</th>
+                        </tr>
+                    </ng-template>
+        
+                    <ng-template pTemplate="body" let-rowData let-expanded="expanded">
+                        <tr class="p-selectable-row">
+                            <td>
+                                <button type="button" pButton pRipple [pRowToggler]="rowData"
+                                    class="p-button-text p-button-rounded p-button-plain"
+                                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                            </td>
+                            <td>
+                                <span class="p-column-title">Name</span>
+                                {{rowData?.project_name}} ({{rowData?.project_number}})
+                            </td>
+                            <td>
+                                <span class="p-column-title">Start Date</span>
+                                {{rowData?.project_start_date ? (rowData?.project_start_date | date: 'dd/MM/yyyy') : '-' }}
+                            </td>
+                            <td>
+                                <span class="p-column-title">End Date</span>
+                                {{rowData?.project_end_date ? (rowData?.project_end_date | date: 'dd/MM/yyyy') : '-' }}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Status</span>
+                                <span *ngIf="rowData?.project_status === 'Y' " class="" title="Active">
+                                    <app-icon [name]="'circle'" [styleClass]="'text-success f-10'"></app-icon>
+                                </span>
+                                <span *ngIf="rowData?.project_status === 'N' " class="" title="Inactive">
+                                    <app-icon [name]="'circle'" [styleClass]="'text-warning f-10'"></app-icon>
+                                </span>
+                            </td>
+        
+                            <td>
+                                <span class="p-column-title">Added On</span>
+                                {{rowData?.created_on ? (rowData?.created_on | date: 'dd/MM/yyyy h:mm:ss a') : '-' }}
+                            </td>
+        
+                            <td>
+                                <button (click)="editItem(rowData)" pButton pRipple type="button" icon="pi pi-pencil"
+                                    class="me-2 p-button-rounded p-button-text p-button-secondary"></button>
+                                <a [routerLink]="['/dashboard/analytics/project/', rowData.id]" target="_blank" pButton pRipple
+                                    type="button" icon="pi pi-chart-line"
+                                    class="p-button-rounded p-button-text p-button-info text-decoration-none"></a>
+                            </td>
+                        </tr>
+                    </ng-template>
+        
+                    <ng-template pTemplate="rowexpansion" let-rowData>
+                        <tr>
+                            <td colspan="7">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold w-25">Description</td>
+                                            <td [innerHTML]="rowData?.project_desc || '-'"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold w-25">Updated On</td>
+                                            <td>
+                                                {{rowData?.updated_on ? (rowData?.updated_on | date: 'dd/MM/yyyy h:mm:ss a') :
+                                                '-' }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </ng-template>
+        
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">No records found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+        
+                <p-paginator [rows]="itemPerPage" [totalRecords]="totalRecords" [rowsPerPageOptions]="itemPerPageDropdown"
+                    [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    (onPageChange)="paginate($event)"></p-paginator>
+            </div> <!--/.card-body-->
+        </div> <!--/.card-->
+        
     </div>
 </div>
