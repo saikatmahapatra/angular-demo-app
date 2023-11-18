@@ -4,94 +4,106 @@
 </div>
 <div class="row my-3">
     <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
+        <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action">
 
-            <!-- <div class="mb-3">
-                <label class="required" for="qualification">Qualification</label>
-                <select class="form-select" id="qualification" formControlName="qualification">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of qualificationList" [value]="data.id" [innerHTML]="data.name"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['qualification']"></app-validation-error>
-            </div> -->
+                    <!-- <div class="mb-3">
+                        <label class="required" for="qualification">Qualification</label>
+                        <select class="form-select" id="qualification" formControlName="qualification">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of qualificationList" [value]="data.id" [innerHTML]="data.name"></option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['qualification']"></app-validation-error>
+                    </div> -->
 
-            <div class="mb-3">
-                <label class="required" for="degree">Qualification</label>
-                <select class="form-select" id="degree" formControlName="degree">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of degreeList" [value]="data.id" [innerHTML]="data.name"></option>
-                    <!-- <option value="-1">Others</option> -->
-                </select>
-                <app-validation-error [control]="myForm.controls['degree']"></app-validation-error>
+                    <div class="mb-3">
+                        <label class="required" for="degree">Qualification</label>
+                        <select class="form-select" id="degree" formControlName="degree">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of degreeList" [value]="data.id" [innerHTML]="data.name"></option>
+                            <!-- <option value="-1">Others</option> -->
+                        </select>
+                        <app-validation-error [control]="myForm.controls['degree']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3" *ngIf="myForm.value['degree'] === '-1'">
+                        <!-- <label class="required" for="newDegree">Other Degree</label> -->
+                        <input type="text" class="form-control" id="newDegree" formControlName="newDegree"
+                            maxlength="30" placeholder="Other Degree">
+                        <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
+                        <app-validation-error [control]="myForm.controls['newDegree']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="required" for="specialization">Specialization/Subject</label>
+                        <select class="form-select" id="specialization" formControlName="specialization">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of specializationList" [value]="data.id" [innerHTML]="data.name">
+                            </option>
+                            <option value="-1">Others</option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['specialization']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3" *ngIf="myForm.value['specialization'] === '-1'">
+                        <!-- <label class="required" for="newSpecialization">Other Specialization</label> -->
+                        <input type="text" class="form-control" id="newSpecialization"
+                            formControlName="newSpecialization" maxlength="30" placeholder="Other Specialization">
+                        <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
+                        <app-validation-error [control]="myForm.controls['newSpecialization']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="required" for="institute">Institute/University</label>
+                        <select class="form-select" id="institute" formControlName="institute">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of institutionList" [value]="data.id" [innerHTML]="data.name">
+                            </option>
+                            <option value="-1">Others</option>
+                        </select>
+                        <div class="small"><strong>Note:</strong> For school level qualification kindly select board
+                            name.</div>
+                        <app-validation-error [control]="myForm.controls['institute']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3" *ngIf="myForm.value['institute'] === '-1'">
+                        <!-- <label class="required" for="newInstitute">Other Institute/University</label> -->
+                        <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute"
+                            maxlength="30" placeholder="Other Institute">
+                        <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
+                        <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
+                    </div>
+
+                    <!-- <div class="mb-3">
+                        <label class="required" for="fromYear">From (Year)</label>
+                        <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
+                        <app-validation-error [control]="myForm.controls['fromYear']"></app-validation-error>
+                    </div> -->
+
+                    <div class="mb-3">
+                        <label class="required" for="toYear">Year of Passout</label>
+                        <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="toYear"
+                            formControlName="toYear" maxlength="4">
+                        <app-validation-error [control]="myForm.controls['toYear']"></app-validation-error>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="required" for="marks">Marks (in %)</label>
+                        <input type="number" class="form-control" id="marks" formControlName="marks" maxlength="5">
+                        <app-validation-error [control]="myForm.controls['marks']"></app-validation-error>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+                    <p class="debug">{{myForm.value|json}}</p> -->
+                </form>
             </div>
-
-            <div class="mb-3" *ngIf="myForm.value['degree'] === '-1'">
-                <!-- <label class="required" for="newDegree">Other Degree</label> -->
-                <input type="text" class="form-control" id="newDegree" formControlName="newDegree" maxlength="30" placeholder="Other Degree">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
-                <app-validation-error [control]="myForm.controls['newDegree']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="specialization">Specialization/Subject</label>
-                <select class="form-select" id="specialization" formControlName="specialization">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of specializationList" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['specialization']"></app-validation-error>
-            </div>
-
-            <div class="mb-3" *ngIf="myForm.value['specialization'] === '-1'">
-                <!-- <label class="required" for="newSpecialization">Other Specialization</label> -->
-                <input type="text" class="form-control" id="newSpecialization" formControlName="newSpecialization" maxlength="30" placeholder="Other Specialization">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
-                <app-validation-error [control]="myForm.controls['newSpecialization']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="institute">Institute/University</label>
-                <select class="form-select" id="institute" formControlName="institute">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of institutionList" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
-                </select>
-                <div class="small"><strong>Note:</strong> For school level qualification kindly select board name.</div>
-                <app-validation-error [control]="myForm.controls['institute']"></app-validation-error>
-            </div>
-
-            <div class="mb-3" *ngIf="myForm.value['institute'] === '-1'">
-                <!-- <label class="required" for="newInstitute">Other Institute/University</label> -->
-                <input type="text" class="form-control" id="newInstitute" formControlName="newInstitute" maxlength="30" placeholder="Other Institute">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.</div>
-                <app-validation-error [control]="myForm.controls['newInstitute']"></app-validation-error>
-            </div>
-
-            <!-- <div class="mb-3">
-                <label class="required" for="fromYear">From (Year)</label>
-                <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="fromYear" formControlName="fromYear" maxlength="4">
-                <app-validation-error [control]="myForm.controls['fromYear']"></app-validation-error>
-            </div> -->
-
-            <div class="mb-3">
-                <label class="required" for="toYear">Year of Passout</label>
-                <input type="number" [min]="minYear" max="maxYear" step="1" class="form-control" id="toYear" formControlName="toYear" maxlength="4">
-                <app-validation-error [control]="myForm.controls['toYear']"></app-validation-error>
-            </div>
-
-            <div class="mb-3">
-                <label class="required" for="marks">Marks (in %)</label>
-                <input type="number" class="form-control" id="marks" formControlName="marks" maxlength="5">
-                <app-validation-error [control]="myForm.controls['marks']"></app-validation-error>
-            </div>
-
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
-            
-            <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-            <p class="debug">{{myForm.value|json}}</p> -->
-        </form>
+        </div>
     </div>
 </div>

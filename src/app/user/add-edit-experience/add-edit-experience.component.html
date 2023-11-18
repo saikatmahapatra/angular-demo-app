@@ -4,62 +4,79 @@
 </div>
 <div class="row my-3">
     <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
+        <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action">
 
-            <div class="mb-3">
-                <label class="required" for="employer">Company Name</label>
-                <select class="form-select" id="employer" formControlName="employer">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of employers" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['employer']"></app-validation-error>
-            </div>
-            <div class="mb-3" *ngIf="myForm.value['employer'] === '-1'">
-                <input type="text" class="form-control" id="newEmployer" formControlName="newEmployer" maxlength="30" placeholder="Other Employer">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry. Write only company name. Avoid long description, work location etc.</div>
-                <app-validation-error [control]="myForm.controls['newEmployer']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="employer">Company Name</label>
+                        <select class="form-select" id="employer" formControlName="employer">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of employers" [value]="data.id" [innerHTML]="data.name"></option>
+                            <option value="-1">Others</option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['employer']"></app-validation-error>
+                    </div>
+                    <div class="mb-3" *ngIf="myForm.value['employer'] === '-1'">
+                        <input type="text" class="form-control" id="newEmployer" formControlName="newEmployer"
+                            maxlength="30" placeholder="Other Employer">
+                        <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry. Write
+                            only company name. Avoid long description, work location etc.</div>
+                        <app-validation-error [control]="myForm.controls['newEmployer']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="designation">Designation</label>
-                <select class="form-select" id="designation" formControlName="designation">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of designations" [value]="data.id" [innerHTML]="data.name"></option>
-                    <option value="-1">Others</option>
-                </select>
-                <app-validation-error [control]="myForm.controls['designation']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="designation">Designation</label>
+                        <select class="form-select" id="designation" formControlName="designation">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of designations" [value]="data.id" [innerHTML]="data.name">
+                            </option>
+                            <option value="-1">Others</option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['designation']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3" *ngIf="myForm.value['designation'] === '-1'">
-                <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation" maxlength="30" placeholder="Other Designation">
-                <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry. Designation should be unique. Avoid long description, work location etc.</div>
-                <app-validation-error [control]="myForm.controls['newDesignation']"></app-validation-error>
-            </div>
+                    <div class="mb-3" *ngIf="myForm.value['designation'] === '-1'">
+                        <input type="text" class="form-control" id="newDesignation" formControlName="newDesignation"
+                            maxlength="30" placeholder="Other Designation">
+                        <div class="small"><strong>Note:</strong> Make sure you are not adding duplicate entry.
+                            Designation should be unique. Avoid long description, work location etc.</div>
+                        <app-validation-error [control]="myForm.controls['newDesignation']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="optional" for="locationId">Job Location</label>
-                <select class="form-select" id="locationId" formControlName="locationId">
-                    <option value="">Select</option>
-                    <option *ngFor="let data of jobLocationList" [value]="data.id" [innerHTML]="data.name"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['locationId']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="optional" for="locationId">Job Location</label>
+                        <select class="form-select" id="locationId" formControlName="locationId">
+                            <option value="">Select</option>
+                            <option *ngFor="let data of jobLocationList" [value]="data.id" [innerHTML]="data.name">
+                            </option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['locationId']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="fromDate">From</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="fromDate" [readonlyInput]="true" inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
-                <app-validation-error [control]="myForm.controls['fromDate']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="fromDate">From</label>
+                        <p-calendar dateFormat="dd/mm/yy" formControlName="fromDate" [readonlyInput]="true"
+                            inputId="fromDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true"
+                            appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
+                        <app-validation-error [control]="myForm.controls['fromDate']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="toDate">To</label>
-                <p-calendar dateFormat="dd/mm/yy" formControlName="toDate" [readonlyInput]="true" inputId="toDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body" [panelStyleClass]="'datetimepicker'"></p-calendar>
-                <app-validation-error [control]="myForm.controls['toDate']"></app-validation-error>
+                    <div class="mb-3">
+                        <label class="required" for="toDate">To</label>
+                        <p-calendar dateFormat="dd/mm/yy" formControlName="toDate" [readonlyInput]="true"
+                            inputId="toDate" styleClass="w-100" [showButtonBar]="true" [showIcon]="true" appendTo="body"
+                            [panelStyleClass]="'datetimepicker'"></p-calendar>
+                        <app-validation-error [control]="myForm.controls['toDate']"></app-validation-error>
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading"
+                            class="spinner-border spinner-border-sm me-1"></span> Submit</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="loading"><span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> Submit</button>
-        </form>
+        </div>
+
     </div>
 </div>

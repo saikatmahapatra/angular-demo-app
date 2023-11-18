@@ -4,53 +4,61 @@
 </div>
 <div class="row my-3">
     <div class="col-md-6 col-lg-5 col-xl-4">
-        <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
-            <input type="hidden" formControlName="id">
-            <input type="hidden" formControlName="action">
-            <h5>Govt ID</h5>
-            <div class="mb-3">
-                <label class="optional" for="panNo">PAN No</label>
-                <input type="text" class="form-control" id="panNo" formControlName="panNo">
-                <app-validation-error [control]="myForm.controls['panNo']"></app-validation-error>
-            </div>
+        <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+                <form [formGroup]="myForm" class="form app-form" (ngSubmit)="onSubmit()">
+                    <input type="hidden" formControlName="id">
+                    <input type="hidden" formControlName="action">
+                    <h5>Govt ID</h5>
+                    <div class="mb-3">
+                        <label class="optional" for="panNo">PAN No</label>
+                        <input type="text" class="form-control" id="panNo" formControlName="panNo">
+                        <app-validation-error [control]="myForm.controls['panNo']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="optional" for="uanNo">UAN No</label>
-                <input type="text" class="form-control" id="uanNo" formControlName="uanNo">
-                <app-validation-error [control]="myForm.controls['uanNo']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="optional" for="uanNo">UAN No</label>
+                        <input type="text" class="form-control" id="uanNo" formControlName="uanNo">
+                        <app-validation-error [control]="myForm.controls['uanNo']"></app-validation-error>
+                    </div>
 
-            <h5>Salary Account</h5>
-            <div class="mb-3">
-                <label class="required" for="accountNo">Account No</label>
-                <input type="text" class="form-control" id="accountNo" formControlName="accountNo">
-                <app-validation-error [control]="myForm.controls['accountNo']"></app-validation-error>
-            </div>
+                    <h5>Salary Account</h5>
+                    <div class="mb-3">
+                        <label class="required" for="accountNo">Account No</label>
+                        <input type="text" class="form-control" id="accountNo" formControlName="accountNo">
+                        <app-validation-error [control]="myForm.controls['accountNo']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="confirmAccountNo">Confirm Account No</label>
-                <input type="text" class="form-control" id="confirmAccountNo" formControlName="confirmAccountNo">
-                <app-validation-error [control]="myForm.controls['confirmAccountNo']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="confirmAccountNo">Confirm Account No</label>
+                        <input type="text" class="form-control" id="confirmAccountNo"
+                            formControlName="confirmAccountNo">
+                        <app-validation-error [control]="myForm.controls['confirmAccountNo']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="bank">Select Bank</label>
-                <select class="form-select" id="bank" formControlName="bank">
-                    <option value="">-</option>
-                    <option [value]="data.id" *ngFor="let data of bankList; let i=index" [innerHTML]="data.name"></option>
-                </select>
-                <app-validation-error [control]="myForm.controls['bank']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="bank">Select Bank</label>
+                        <select class="form-select" id="bank" formControlName="bank">
+                            <option value="">-</option>
+                            <option [value]="data.id" *ngFor="let data of bankList; let i=index"
+                                [innerHTML]="data.name"></option>
+                        </select>
+                        <app-validation-error [control]="myForm.controls['bank']"></app-validation-error>
+                    </div>
 
-            <div class="mb-3">
-                <label class="required" for="ifscCode">IFSC Code</label>
-                <input type="text" class="form-control" id="ifscCode" formControlName="ifscCode">
-                <app-validation-error [control]="myForm.controls['ifscCode']"></app-validation-error>
-            </div>
+                    <div class="mb-3">
+                        <label class="required" for="ifscCode">IFSC Code</label>
+                        <input type="text" class="form-control" id="ifscCode" formControlName="ifscCode">
+                        <app-validation-error [control]="myForm.controls['ifscCode']"></app-validation-error>
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
-        <p class="debug">{{myForm.value|json}}</p> -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <!-- <p class="debug">Form Status: <span class="text-bold">{{ myForm.status }}</span></p>
+                <p class="debug">{{myForm.value|json}}</p> -->
+            </div>
+        </div>
+
     </div>
 </div>

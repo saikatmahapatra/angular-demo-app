@@ -1,84 +1,98 @@
 <h1>Change Workflow Approvers</h1>
-<div class="table-responsive my-4">
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <th scope="row" class="w-25">
-                    L1 Workflow Approver
-                </th>
-                <td>
-                    <div
-                        [innerHTML]="currentApprovers?.user_supervisor_id ? (currentApprovers?.supervisor_name + ' ('+currentApprovers?.supervisor_email+')'):  '-'">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="w-25">
-                    L2 Workflow Approver
-                </th>
-                <td>
-                    <div
-                        [innerHTML]="currentApprovers?.user_director_approver_id ? (currentApprovers?.director_name + ' ('+currentApprovers?.director_email+')'):  '-'">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="w-25">
-                    HR Approver
-                </th>
-                <td>
-                    <div
-                        [innerHTML]="currentApprovers?.user_hr_approver_id ? (currentApprovers?.hr_name + ' ('+currentApprovers?.hr_email+')'):  '-'">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row" class="w-25">
-                    Finance Approver
-                </th>
-                <td>
-                    <div
-                        [innerHTML]="currentApprovers?.user_finance_approver_id ? (currentApprovers?.finance_name + ' ('+currentApprovers?.finance_email+')'):  '-'">
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">My Approvers</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="w-25">
+                                    L1 Workflow Approver
+                                </th>
+                                <td>
+                                    <div
+                                        [innerHTML]="currentApprovers?.user_supervisor_id ? (currentApprovers?.supervisor_name + ' ('+currentApprovers?.supervisor_email+')'):  '-'">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="w-25">
+                                    L2 Workflow Approver
+                                </th>
+                                <td>
+                                    <div
+                                        [innerHTML]="currentApprovers?.user_director_approver_id ? (currentApprovers?.director_name + ' ('+currentApprovers?.director_email+')'):  '-'">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="w-25">
+                                    HR Approver
+                                </th>
+                                <td>
+                                    <div
+                                        [innerHTML]="currentApprovers?.user_hr_approver_id ? (currentApprovers?.hr_name + ' ('+currentApprovers?.hr_email+')'):  '-'">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="w-25">
+                                    Finance Approver
+                                </th>
+                                <td>
+                                    <div
+                                        [innerHTML]="currentApprovers?.user_finance_approver_id ? (currentApprovers?.finance_name + ' ('+currentApprovers?.finance_email+')'):  '-'">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
+        <div class="card mt-3">
+            <div class="card-header">Change or Set Approvers</div>
+            <div class="card-body">
+                <app-search-input (inputValue)="getSearchInputVal($event)"
+                    [placeHolderText]="'Search Name/Email...'"></app-search-input>
 
+                <div class="" *ngIf="totalRecords>0">
+                    <strong>Note:</strong> You need get in touch with your local HR/Admin to set the appropriate staff
+                    as your
+                    approvers.
+                </div>
+                <div class="table-responsive" *ngIf="totalRecords>0">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let user of data">
+                                <td>
+                                    <div class="">{{user?.user_full_name}}</div>
+                                    <div class="text-muted small">{{user?.user_email}}</div>
+                                    <div class="text-muted small">{{user?.designation_name}}</div>
+                                </td>
+                                <td>
+                                    <select class="form-select" (change)="setApprover($event, user)"
+                                        style="width: 160px;">
+                                        <option value="">Set as</option>
+                                        <option value="L1">L1 Workflow Approver</option>
+                                        <option value="L2">L2 Workflow Approver</option>
+                                        <option value="HR">HR Approver</option>
+                                        <option value="FIN">Finance Approver</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-<app-search-input (inputValue)="getSearchInputVal($event)"
-    [placeHolderText]="'Search Name/Email...'"></app-search-input>
-
-<div class="my-4" *ngIf="totalRecords>0">
-    <strong>Note:</strong> You need get in touch with your local HR/Admin to set the appropriate staff as your
-    approvers.
-</div>
-<div class="table-responsive my-4" *ngIf="totalRecords>0">
-    <table class="table">
-        <tbody>
-            <tr *ngFor="let user of data">
-                <td>
-                    <div class="">{{user?.user_full_name}}</div>
-                    <div class="text-muted small">{{user?.user_email}}</div>
-                    <div class="text-muted small">{{user?.designation_name}}</div>
-                </td>
-                <td>
-                    <select class="form-select" (change)="setApprover($event, user)" style="width: 160px;">
-                        <option value="">Set as</option>
-                        <option value="L1">L1 Workflow Approver</option>
-                        <option value="L2">L2 Workflow Approver</option>
-                        <option value="HR">HR Approver</option>
-                        <option value="FIN">Finance Approver</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p-paginator *ngIf="totalRecords>0" [rows]="itemPerPage" [totalRecords]="totalRecords"
-        [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="my-4"
-        (onPageChange)="paginate($event)"></p-paginator>
+                    <p-paginator *ngIf="totalRecords>0" [rows]="itemPerPage" [totalRecords]="totalRecords"
+                        [rowsPerPageOptions]="itemPerPageDropdown" [showCurrentPageReport]="true"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        styleClass="my-4" (onPageChange)="paginate($event)"></p-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
