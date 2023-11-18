@@ -1,57 +1,73 @@
-<div class="sbar-links ms-2 my-3">
-  <div class="mt-4">
-    <a class="btn btn-primary d-flex justify-content-center align-items-center mx-3 me-4 fw-normal"
-      [routerLink]="['/emp/my-profile']">
-      <app-icon [name]="'user'" [styleClass]="'me-2'"></app-icon>
-      {{transform(welcomeUserText, 18)}}
-    </a>
-  </div>
-  <ul class="list-unstyled mb-0 py-3 pt-md-1">
-    <li class="my-3">
-      <h6 class="mx-2"><app-icon [name]="'home'" [styleClass]="'me-2 f-18'"></app-icon> Getting Started</h6>
-      <div class="collapse show" id="getting-started-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+<div class="sbar-links p-3">
+
+  <!-- <a class="btn btn-primary d-flex justify-content-center align-items-centerfw-normal mb-3"
+    [routerLink]="['/emp/my-profile']">
+    <app-icon [name]="'user'" [styleClass]="'me-1'"></app-icon> {{transform(welcomeUserText, 18)}}
+  </a> -->
+
+  <ul class="list-unstyled">
+    <li class="my-1">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
+          aria-expanded="false">
+          <app-icon [name]="'home'"></app-icon> Getting Started
+        </button>
+      </div>
+
+      <div class="collapse ms-2" id="getting-started-collapse">
+        <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="nav-link">Dashboard</a>
           </li>
           <li>
-            <a [routerLink]="['/dashboard/my-analytics/emp/', loggedInUserId]" [routerLinkActive]="['active-nav-link']" class="nav-link">Analytics</a>
+            <a [routerLink]="['/dashboard/my-analytics/emp/', loggedInUserId]" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Analytics</a>
           </li>
         </ul>
       </div>
     </li>
 
-    <li class="my-3" *ngIf="userRole === '1' ">
-      <h6 class="mx-2"><app-icon [name]="'admin'" [styleClass]="'me-2 f-18'"></app-icon> Admin Menu</h6>
-      <div class="collapse show" id="getting-started-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+    <li class="my-1" *ngIf="userRole === '1' ">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
+          aria-expanded="false"><app-icon [name]="'admin'"></app-icon> Admin Menu</button>
+      </div>
+      <div class="collapse ms-2" id="admin-menu">
+        <ul class="list-unstyled">
           <li>
-            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Employees</a>
+            <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
+              Employees</a>
           </li>
           <!-- <li>
             <a [routerLink]="['/emp/add']" [routerLinkActive]="['active-nav-link']" class="nav-link">Add New Employee</a>
           </li> -->
           <li>
-            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Contents</a>
+            <a [routerLink]="['/cms/manage-cms']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
+              Contents</a>
           </li>
           <li>
-            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Holidays</a>
+            <a [routerLink]="['/cms/holiday-management']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Manage Holidays</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Leave Applications</a>
+            <a [routerLink]="['/leave/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Leave
+              Applications</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="nav-link">View & Upload Leave Balance</a>
+            <a [routerLink]="['/leave/balance']" [routerLinkActive]="['active-nav-link']" class="nav-link">View & Upload
+              Leave Balance</a>
           </li>
           <li>
-            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet Report</a>
+            <a [routerLink]="['/timesheet/report']" [routerLinkActive]="['active-nav-link']" class="nav-link">Timesheet
+              Report</a>
           </li>
           <li>
             <a [routerLink]="['/project/manage-project']" [routerLinkActive]="['active-nav-link']"
               class="nav-link">Manage Projects</a>
           </li>
           <li>
-            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Tasks</a>
+            <a [routerLink]="['/project/manage-tasks']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
+              Tasks</a>
           </li>
           <!-- <li>
             <a [routerLink]="['/asset-management']" [routerLinkActive]="['active-nav-link']" class="nav-link">Asset Management</a>
@@ -63,23 +79,31 @@
       </div>
     </li>
 
-    <li class="my-3">
-      <h6 class="mx-2"><app-icon [name]="'tasks'" [styleClass]="'me-2 f-18'"></app-icon> My Tasks</h6>
-      <div class="collapse show" id="customize-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+    <li class="my-1">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
+          aria-expanded="false"><app-icon [name]="'tasks'"></app-icon> My Tasks</button>
+      </div>
+      <div class="collapse ms-2" id="my-tasks">
+        <ul class="list-unstyled">
           <li>
-            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage Leave Applications</a>
+            <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']"
+              class="nav-link">Manage Leave Applications</a>
           </li>
         </ul>
       </div>
     </li>
 
-    <li class="my-3">
-      <h6 class="mx-2"><app-icon [name]="'selfService'" [styleClass]="'me-2 f-18'"></app-icon> Self Services</h6>
-      <div class="collapse show" id="customize-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+    <li class="my-1">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
+          aria-expanded="false"><app-icon [name]="'selfService'"></app-icon> Self Services</button>
+      </div>
+      <div class="collapse ms-2" id="self-service">
+        <ul class="list-unstyled">
           <li>
-            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log Timesheet</a>
+            <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log
+              Timesheet</a>
           </li>
           <li>
             <a [routerLink]="['/emp/change-approvers']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
@@ -89,16 +113,20 @@
             <a [routerLink]="['/leave/apply']" [routerLinkActive]="['active-nav-link']" class="nav-link">Apply Leave</a>
           </li>
           <li>
-            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave History</a>
+            <a [routerLink]="['/leave/history']" [routerLinkActive]="['active-nav-link']" class="nav-link">Leave
+              History</a>
           </li>
         </ul>
       </div>
     </li>
 
-    <li class="my-3">
-      <h6 class="mx-2"><app-icon [name]="'globe'" [styleClass]="'me-2 f-18'"></app-icon> Organization</h6>
-      <div class="collapse show" id="customize-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+    <li class="my-1">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
+            [name]="'globe'"></app-icon> Organization</button>
+      </div>
+      <div class="collapse ms-2" id="org">
+        <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']"
               class="nav-link">Employees</a>
@@ -115,13 +143,16 @@
       </div>
     </li>
 
-    <li class="my-3">
-      <h6 class="mx-2"><app-icon [name]="'user'" [styleClass]="'me-2 f-18'"></app-icon> My Account</h6>
-
-      <div class="collapse show" id="layout-collapse">
-        <ul class="list-unstyled fw-normal pb-1 ">
+    <li class="my-1">
+      <div class="d-grid gap-1">
+        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
+          aria-expanded="false"><app-icon [name]="'user'"></app-icon> My Account</button>
+      </div>
+      <div class="collapse ms-2" id="my-account">
+        <ul class="list-unstyled">
           <li>
-            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My Profile</a>
+            <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My
+              Profile</a>
           </li>
           <li>
             <a [routerLink]="['/emp/change-password']" [routerLinkActive]="['active-nav-link']" class="nav-link">Change
@@ -137,70 +168,3 @@
     </li>
   </ul>
 </div>
-
-<!-- <div class="flex-shrink-0 p-3">
-  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-    <svg class="bi me-2" width="30" height="24">
-      <use xlink:href="#bootstrap"></use>
-    </svg>
-    <span class="fs-5 fw-semibold">Collapsible</span>
-  </a>
-  <ul class="list-unstyled ps-0">
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse"
-        data-bs-target="#home-collapse" aria-expanded="true">
-        Home
-      </button>
-      <div class="collapse show" id="home-collapse" style="">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Overview</a></li>
-          <li><a href="#" class="link-dark rounded">Updates</a></li>
-          <li><a href="#" class="link-dark rounded">Reports</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#dashboard-collapse" aria-expanded="false">
-        Dashboard
-      </button>
-      <div class="collapse" id="dashboard-collapse" style="">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">Overview</a></li>
-          <li><a href="#" class="link-dark rounded">Weekly</a></li>
-          <li><a href="#" class="link-dark rounded">Monthly</a></li>
-          <li><a href="#" class="link-dark rounded">Annually</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#orders-collapse" aria-expanded="false">
-        Orders
-      </button>
-      <div class="collapse" id="orders-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">New</a></li>
-          <li><a href="#" class="link-dark rounded">Processed</a></li>
-          <li><a href="#" class="link-dark rounded">Shipped</a></li>
-          <li><a href="#" class="link-dark rounded">Returned</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="border-top my-3"></li>
-    <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-        data-bs-target="#account-collapse" aria-expanded="false">
-        Account
-      </button>
-      <div class="collapse" id="account-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="#" class="link-dark rounded">New...</a></li>
-          <li><a href="#" class="link-dark rounded">Profile</a></li>
-          <li><a href="#" class="link-dark rounded">Settings</a></li>
-          <li><a href="#" class="link-dark rounded">Sign out</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</div> -->
