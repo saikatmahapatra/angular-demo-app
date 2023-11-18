@@ -1,56 +1,66 @@
 <h1>Settings</h1>
-<div class="back-to-page">
+<div class="back-to-page mb-3">
     <a [routerLink]="['/']"> <app-icon [name]="'angleLeft'" [styleClass]="'me-2'"></app-icon>Back</a>
 </div>
 
-<div class="row my-3">
-    <div class="col-md-12">
-        <h5 class="text-primary"><app-icon [name]="'settings'"></app-icon> Site Settings</h5>
-        <hr>
-        <div class="col-md-4">
-            <form [formGroup]="siteSettingsForm" class="form app-form" (ngSubmit)="onSubmit()">
-                <input type="hidden" formControlName="action" value="updateSettings">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Site Settings</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form [formGroup]="siteSettingsForm" class="form app-form" (ngSubmit)="onSubmit()">
+                            <input type="hidden" formControlName="action" value="updateSettings">
 
-                <div class="row mb-3">
-                    <div class="col">
-                        <label class="required" for="timesheetMinDays">Timesheet Enable Previous Days</label>
-                        <input type="number" class="form-control" id="timesheetMinDays"
-                            formControlName="timesheetMinDays">
-                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Number of days before today to be enabled.
-                            (<strong>Default value: </strong> 5)</div>
-                        <app-validation-error
-                            [control]="siteSettingsForm.controls['timesheetMinDays']"></app-validation-error>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="required" for="timesheetMinDays">Timesheet Enable Previous
+                                        Days</label>
+                                    <input type="number" class="form-control" id="timesheetMinDays"
+                                        formControlName="timesheetMinDays">
+                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
+                                        Number of days before today to be enabled.
+                                        (<strong>Default value: </strong> 5)</div>
+                                    <app-validation-error
+                                        [control]="siteSettingsForm.controls['timesheetMinDays']"></app-validation-error>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="required" for="timesheetMaxDays">Timesheet Enable Next Days</label>
+                                    <input type="number" class="form-control" id="timesheetMaxDays"
+                                        formControlName="timesheetMaxDays">
+                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
+                                        Number of days after today to be enabled.
+                                        (<strong>Default value: </strong> 0)</div>
+                                    <app-validation-error
+                                        [control]="siteSettingsForm.controls['timesheetMaxDays']"></app-validation-error>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="" for="emailNotifyDistro">Email Distribution List ID</label>
+                                    <input type="text" class="form-control" id="emailNotifyDistro"
+                                        formControlName="emailNotifyDistro">
+                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
+                                        Email DL ID where post related updates will be sent</div>
+                                    <app-validation-error
+                                        [control]="siteSettingsForm.controls['emailNotifyDistro']"></app-validation-error>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" [disabled]="loading">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
+            </div> <!--/.card-body-->
+        </div> <!--/.card-->
 
-                <div class="row mb-3">
-                    <div class="col">
-                        <label class="required" for="timesheetMaxDays">Timesheet Enable Next Days</label>
-                        <input type="number" class="form-control" id="timesheetMaxDays"
-                            formControlName="timesheetMaxDays">
-                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Number of days after today to be enabled.
-                            (<strong>Default value: </strong> 0)</div>
-                        <app-validation-error
-                            [control]="siteSettingsForm.controls['timesheetMaxDays']"></app-validation-error>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col">
-                        <label class="" for="emailNotifyDistro">Email Distribution List ID</label>
-                        <input type="text" class="form-control" id="emailNotifyDistro"
-                            formControlName="emailNotifyDistro">
-                        <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon> Email DL ID where post related updates will be sent</div>
-                        <app-validation-error
-                            [control]="siteSettingsForm.controls['emailNotifyDistro']"></app-validation-error>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary" [disabled]="loading">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                    Submit
-                </button>
-            </form>
-        </div>
     </div>
 </div>
