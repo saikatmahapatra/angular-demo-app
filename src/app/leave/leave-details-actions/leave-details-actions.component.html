@@ -176,7 +176,7 @@
                         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}
                         </div>
                         <div class="small" *ngIf="rowData?.supervisor_approver_comment">
-                            <app-icon [name]="'comment'"></app-icon>
+                            <app-icon [name]="'comment'" [styleClass]="'f-18 me-1'" ></app-icon>
                             {{rowData?.supervisor_approver_comment}}
                         </div>
 
@@ -245,7 +245,7 @@
                         <div class="small">{{rowData?.director_email}}</div>
                         <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
                         <div class="small" *ngIf="rowData?.director_approver_comment">
-                            <app-icon [name]="'comment'"></app-icon>
+                            <app-icon [name]="'comment'" [styleClass]="'f-18 me-1'"></app-icon>
                             {{rowData?.director_approver_comment}}
                         </div>
 
