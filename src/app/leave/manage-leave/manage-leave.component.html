@@ -10,7 +10,7 @@
 
                 <!-- <span class="me-4" *ngIf="isHistoryPage">Showing your Leave History</span> -->
                 <a [routerLink]="['/leave/apply']" class="btn btn-success mb-3" *ngIf="isHistoryPage"><app-icon
-                        [name]="'send'" [styleClass]="'me-2'"></app-icon> Apply Leave</a>
+                        [name]="'send'" [styleClass]=""></app-icon> Apply Leave</a>
                 <form [formGroup]="searchForm" class="form app-form my-2" (ngSubmit)="onSubmit()"
                     *ngIf="!isHistoryPage">
                     <input type="hidden" value="search" formControlName="action">

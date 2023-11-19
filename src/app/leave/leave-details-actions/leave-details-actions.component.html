@@ -1,7 +1,7 @@
 <h1>Leave Details</h1>
 <div class="back-to-page mb-3">
     <a [routerLink]="[backToPageUrl]" [state]="{ leaveManagerPageIndex: routedFromPageIndex }">
-        <app-icon [name]="'chevronLeft'" [styleClass]="'me-2'"></app-icon>Back </a>
+        <app-icon [name]="'chevronLeft'" [styleClass]=""></app-icon>Back </a>
 </div>
 
 <div class="row">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="small col-md-4  mb-4">
-                        <h6><app-icon [name]="'send'" [styleClass]="'me-2 fw-bold'"></app-icon> Application
+                        <h6><app-icon [name]="'send'"></app-icon> Application
                             <span [innerHTML]="rowData?.leave_status !== 'C' ? 'Submitted' : 'Withdrawn'"></span>
                         </h6>
 
@@ -156,15 +156,15 @@
 
                     <div class="small col-md-4  mb-4">
                         <h6>
-                            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
+                            <app-icon [name]="'question'"
                                 *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
-                            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
+                            <app-icon [name]="'check'" [styleClass]="'text-success'"
                                 *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
-                            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
+                            <app-icon [name]="'cross'" [styleClass]="'text-danger'"
                                 *ngIf="rowData?.supervisor_approver_status==='R'"></app-icon>
-                            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
+                            <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.supervisor_approver_status==='C'"></app-icon>
-                            <app-icon [name]="'verified'" [styleClass]="'me-2 fw-bold text-primary'"
+                            <app-icon [name]="'verified'" [styleClass]="'text-primary'"
                                 *ngIf="rowData?.supervisor_approver_status==='V'"></app-icon>
                             L1 Workflow {{getStatusText(rowData?.supervisor_approver_status)?.text}}
                         </h6>
@@ -176,7 +176,7 @@
                         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}
                         </div>
                         <div class="small" *ngIf="rowData?.supervisor_approver_comment">
-                            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon>
+                            <app-icon [name]="'comment'"></app-icon>
                             {{rowData?.supervisor_approver_comment}}
                         </div>
 
@@ -230,13 +230,13 @@
 
                     <div class="small col-md-4 mb-4">
                         <h6>
-                            <app-icon [name]="'question'" [styleClass]="'me-2 fw-bold'"
+                            <app-icon [name]="'question'"
                                 *ngIf="rowData?.director_approver_status==='P'"></app-icon>
-                            <app-icon [name]="'check'" [styleClass]="'me-2 fw-bold text-success'"
+                            <app-icon [name]="'check'" [styleClass]="'text-success'"
                                 *ngIf="rowData?.director_approver_status==='A'"></app-icon>
-                            <app-icon [name]="'cross'" [styleClass]="'me-2 fw-bold text-danger'"
+                            <app-icon [name]="'cross'" [styleClass]="'text-danger'"
                                 *ngIf="rowData?.director_approver_status==='R'"></app-icon>
-                            <app-icon [name]="'error'" [styleClass]="'me-2 fw-bold text-warning'"
+                            <app-icon [name]="'error'" [styleClass]="'text-warning'"
                                 *ngIf="rowData?.director_approver_status==='C'"></app-icon>
                             L2 Workflow {{getStatusText(rowData?.director_approver_status)?.text}}
                         </h6>
@@ -245,7 +245,7 @@
                         <div class="small">{{rowData?.director_email}}</div>
                         <div class="small">{{rowData?.director_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}</div>
                         <div class="small" *ngIf="rowData?.director_approver_comment">
-                            <app-icon [name]="'comment'" [styleClass]="'me-1 mt-1'"></app-icon>
+                            <app-icon [name]="'comment'"></app-icon>
                             {{rowData?.director_approver_comment}}
                         </div>
 
