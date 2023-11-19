@@ -8,12 +8,12 @@
         text-align: left;
 
         &:hover {
-            background-color: rgba(0, 82, 204, 0.1);
+            background-color: rgba(25, 118, 210, 0.1);
         }
 
         &:focus {
-            background-color: rgba(0, 82, 204, 0.1);
-            box-shadow: 0 0 0 1px rgb(0 82 204 / 70%);
+            background-color: rgba(25, 118, 210, 0.1);
+            box-shadow: 0 0 0 1px rgb(25 118 210 / 70%);
         }
 
         &:focus:not(:focus-visible) {
@@ -40,12 +40,12 @@
             font-size: 14px;
             border-radius: .375rem;
             &:hover {
-                background-color: rgba(0, 82, 204, 0.1);
+                background-color: rgba(25, 118, 210, 0.1);
             }
         }
 
         a.active-nav-link {
-            background-color: rgba(0, 82, 204, 0.1);
+            background-color: rgba(25, 118, 210, 0.1);
         }
     }
 }
