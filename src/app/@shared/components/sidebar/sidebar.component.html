@@ -7,13 +7,10 @@
   </div>
   <ul class="list-unstyled pb-2"> <!--/.border-bottom-->
     <li class="my-2">
-      <div class="d-grid gap-1">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
-          aria-expanded="false">
-          <app-icon [name]="'home'" [styleClass]=""></app-icon> Getting Started
-        </button>
-      </div>
-
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
+        aria-expanded="false">
+        <app-icon [name]="'home'" [styleClass]="'me-1'"></app-icon> Getting Started
+      </button>
       <div class="collapse ms-3" id="getting-started-collapse" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -28,10 +25,8 @@
     </li>
 
     <li class="my-2" *ngIf="userRole === '1' ">
-      <div class="d-grid gap-1">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
-          aria-expanded="false"><app-icon [name]="'admin'" [styleClass]=""></app-icon> Admin Menu</button>
-      </div>
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
+        aria-expanded="false"><app-icon [name]="'admin'" [styleClass]="'me-1'"></app-icon> Admin Menu</button>
       <div class="collapse ms-3" id="admin-menu" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -80,10 +75,8 @@
     </li>
 
     <li class="my-2">
-      <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
-          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]=""></app-icon> My Tasks</button>
-      </div>
+          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-1'"></app-icon> My Tasks</button>
       <div class="collapse ms-3" id="my-tasks" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -95,10 +88,8 @@
     </li>
 
     <li class="my-2">
-      <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
-          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]=""></app-icon> Self Services</button>
-      </div>
+          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-1'"></app-icon> Self Services</button>
       <div class="collapse ms-3" id="self-service" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -121,10 +112,8 @@
     </li>
 
     <li class="my-2">
-      <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
-            [name]="'globe'" [styleClass]=""></app-icon> Organization</button>
-      </div>
+            [name]="'globe'" [styleClass]="'me-1'"></app-icon> Organization</button>
       <div class="collapse ms-3" id="org" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -144,10 +133,8 @@
     </li>
 
     <li class="my-2">
-      <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
-          aria-expanded="false"><app-icon [name]="'user'" [styleClass]=""></app-icon> My Account</button>
-      </div>
+          aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-1'"></app-icon> My Account</button>
       <div class="collapse ms-3" id="my-account" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -167,8 +154,5 @@
       </div>
     </li>
   </ul>
-  <!-- <a href="https://unitedexploration.co.in/" target="_blank">Corporate</a> -->
-  <!-- <div class="d-grid gap-1">
-    <a [routerLink]="['/auth/login']" [routerLinkActive]="['active-nav-link']" [queryParams]="{logout: true}" class="btn btn-success">Sign Out</a>
-  </div> -->
+  <!-- <a href="https://unitedexploration.co.in/" target="_blank">website</a> -->
 </div>
