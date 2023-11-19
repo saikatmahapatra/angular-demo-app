@@ -2,10 +2,11 @@
   <div class="pb-2 mb-3 border-bottom">
     <!-- <div class="fw-bold">{{productName}}</div> -->
     <!-- <app-icon [name]="'user'" [styleClass]=""></app-icon>  -->
+    <!-- <h6 class="fw-semibold">UNITED EXPLORATION INDIA PVT. LTD.</h6> -->
     Welcome, {{transform(welcomeUserText, 15)}}
   </div>
   <ul class="list-unstyled pb-2"> <!--/.border-bottom-->
-    <li class="my-1">
+    <li class="my-2">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
           aria-expanded="false">
@@ -26,7 +27,7 @@
       </div>
     </li>
 
-    <li class="my-1" *ngIf="userRole === '1' ">
+    <li class="my-2" *ngIf="userRole === '1' ">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
           aria-expanded="false"><app-icon [name]="'admin'" [styleClass]=""></app-icon> Admin Menu</button>
@@ -78,7 +79,7 @@
       </div>
     </li>
 
-    <li class="my-1">
+    <li class="my-2">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
           aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]=""></app-icon> My Tasks</button>
@@ -93,7 +94,7 @@
       </div>
     </li>
 
-    <li class="my-1">
+    <li class="my-2">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
           aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]=""></app-icon> Self Services</button>
@@ -119,7 +120,7 @@
       </div>
     </li>
 
-    <li class="my-1">
+    <li class="my-2">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
             [name]="'globe'" [styleClass]=""></app-icon> Organization</button>
@@ -142,7 +143,7 @@
       </div>
     </li>
 
-    <li class="my-1">
+    <li class="my-2">
       <div class="d-grid gap-1">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
           aria-expanded="false"><app-icon [name]="'user'" [styleClass]=""></app-icon> My Account</button>
@@ -170,5 +171,4 @@
   <!-- <div class="d-grid gap-1">
     <a [routerLink]="['/auth/login']" [routerLinkActive]="['active-nav-link']" [queryParams]="{logout: true}" class="btn btn-success">Sign Out</a>
   </div> -->
-  
 </div>
