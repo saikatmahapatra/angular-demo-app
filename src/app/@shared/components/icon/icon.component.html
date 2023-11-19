@@ -2,4 +2,4 @@
   <use attr.xlink:href="bootstrap-icons/bootstrap-icons.svg#{{name}}" />
 </svg> -->
 <i *ngIf="lib !== 'material'" [class]="getIconClass()" [ngClass]="styleClass" [style]="styleCSS" aria-hidden="true"></i>
-<span *ngIf="lib === 'material'" class="material-icons-outlined" aria-hidden="true" style="vertical-align: bottom;">info</span>
+<span *ngIf="lib === 'material'" class="material-icons-outlined" aria-hidden="true" style="vertical-align: bottom;" [innerHTML]="getIconClass()"></span>
