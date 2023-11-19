@@ -28,13 +28,13 @@
 
         &::after {
             flex-shrink: 0;
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 1rem;
+            height: 1rem;
             margin-left: auto;
             content: "";
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-size: 1.25rem;
+            background-size: 1rem;
             transition: transform .2s ease-in-out;
         }
         &[aria-expanded="true"]::after {
