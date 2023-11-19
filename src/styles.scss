@@ -61,7 +61,7 @@ label {
   z-index: 100;
   padding: 0;
   box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
-  width: 275px;
+  width: 280px;
   margin-left: 0px;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
@@ -80,7 +80,7 @@ label {
   }
 
   &.toggled-nav {
-    margin-left: -275px;
+    margin-left: -280px;
   }
 }
 
@@ -90,7 +90,7 @@ label {
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
   padding-top: 70px;
-  margin-left: 275px;
+  margin-left: 280px;
   &.toggled-nav {
     margin-left: 0px;
   }
@@ -99,7 +99,7 @@ label {
 // desktop
 @media (max-width: 991px) {
   #sidebar-wrapper {
-    margin-left: -275px;
+    margin-left: -280px;
     &.toggled-nav {
       margin-left: 0px;
     }
@@ -107,7 +107,7 @@ label {
   #main-content-wrapper {
     margin-left: 0px;
     &.toggled-nav {
-      //margin-left: 275px;
+      //margin-left: 280px;
       opacity: .5;
     }
   }
