@@ -17,8 +17,9 @@ export class IconComponent implements OnInit {
 
   // Icons
   icons: any = {
-    'home': { primeng: 'pi pi-home', bootstrap: 'bi bi-speedometer' },
-    'user': { primeng: 'pi pi-user', bootstrap: 'bi bi-person' },
+    'home': { primeng: 'pi pi-home', bootstrap: 'bi bi-house' },
+    'dashboard': { primeng: 'pi pi-home', bootstrap: 'bi bi-speedometer' },
+    'user': { primeng: 'pi pi-user', bootstrap: 'bi bi-person-circle' },
     'users': { primeng: 'pi pi-users', bootstrap: 'bi bi-people' },
     'add': { primeng: 'pi pi-plus', bootstrap: 'bi bi-plus-lg' },
     'edit': { primeng: 'pi pi-pencil', bootstrap: 'bi bi-pencil' },
@@ -63,7 +64,7 @@ export class IconComponent implements OnInit {
     'download': { primeng: 'pi pi-download', bootstrap: 'bi bi-download' },
     'exportxls': { primeng: 'pi pi-file-excel', bootstrap: 'bi bi-file-earmark-excel' },
     'exportpdf': { primeng: 'pi pi-file-pdf', bootstrap: 'bi bi-filetype-pdf' },
-    'menu': { primeng: 'pi pi-bars', bootstrap: 'bi bi-bar' },
+    'menu': { primeng: 'pi pi-bars', bootstrap: 'bi bi-list' },
     'comment': { primeng: 'pi pi-comment', bootstrap: 'bi bi-comment' },
     'comments': { primeng: 'pi pi-comments', bootstrap: 'bi bi-comments' },
     'verified': { primeng: 'pi pi-verified', bootstrap: 'bi bi-verified' }
