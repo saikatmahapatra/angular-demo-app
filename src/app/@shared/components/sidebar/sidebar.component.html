@@ -1,7 +1,8 @@
 <div class="sbar-links p-3">
-  <div class="text-center pb-2 mb-3 border-bottom">
+  <div class="pb-2 mb-3 border-bottom">
     <!-- <div class="fw-bold">{{productName}}</div> -->
-    <app-icon [name]="'user'" [styleClass]=""></app-icon> Welcome, {{transform(welcomeUserText, 15)}}
+    <!-- <app-icon [name]="'user'" [styleClass]=""></app-icon>  -->
+    Welcome, {{transform(welcomeUserText, 15)}}
   </div>
   <ul class="list-unstyled pb-2"> <!--/.border-bottom-->
     <li class="my-1">
@@ -12,7 +13,7 @@
         </button>
       </div>
 
-      <div class="collapse ms-2" id="getting-started-collapse" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="getting-started-collapse" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/dashboard']" [routerLinkActive]="['active-nav-link']" class="nav-link">Dashboard</a>
@@ -30,7 +31,7 @@
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
           aria-expanded="false"><app-icon [name]="'admin'" [styleClass]=""></app-icon> Admin Menu</button>
       </div>
-      <div class="collapse ms-2" id="admin-menu" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="admin-menu" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/emp/manage']" [routerLinkActive]="['active-nav-link']" class="nav-link">Manage
@@ -82,7 +83,7 @@
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
           aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]=""></app-icon> My Tasks</button>
       </div>
-      <div class="collapse ms-2" id="my-tasks" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="my-tasks" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/leave/requests-to-approve']" [routerLinkActive]="['active-nav-link']"
@@ -97,7 +98,7 @@
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
           aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]=""></app-icon> Self Services</button>
       </div>
-      <div class="collapse ms-2" id="self-service" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="self-service" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/timesheet/log-work']" [routerLinkActive]="['active-nav-link']" class="nav-link">Log
@@ -123,7 +124,7 @@
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
             [name]="'globe'" [styleClass]=""></app-icon> Organization</button>
       </div>
-      <div class="collapse ms-2" id="org" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="org" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/emp/view-employees']" [routerLinkActive]="['active-nav-link']"
@@ -146,7 +147,7 @@
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
           aria-expanded="false"><app-icon [name]="'user'" [styleClass]=""></app-icon> My Account</button>
       </div>
-      <div class="collapse ms-2" id="my-account" (click)="closeSideBar()">
+      <div class="collapse ms-3" id="my-account" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/emp/my-profile']" [routerLinkActive]="['active-nav-link']" class="nav-link">My
