@@ -108,13 +108,13 @@
                                 <span class="p-column-title">Status</span>
                                 <!-- {{rowData?.user_status}} -->
                                 <span *ngIf="rowData?.user_status === 'Y' " class="" title="Active">
-                                    <app-icon [name]="'circle'" [styleClass]="'text-success f-10'"></app-icon>
+                                    <app-icon [name]="'circle'" [styleClass]="'text-success f-14'"></app-icon>
                                 </span>
                                 <span *ngIf="rowData?.user_status === 'N' " class="" title="Inactive">
-                                    <app-icon [name]="'circle'" [styleClass]="'text-warning f-10'"></app-icon>
+                                    <app-icon [name]="'circle'" [styleClass]="'text-warning f-14'"></app-icon>
                                 </span>
                                 <span *ngIf="rowData?.user_status === 'A' " class="" title="Deleted">
-                                    <app-icon [name]="'circle'" [styleClass]="'text-danger f-10'"></app-icon>
+                                    <app-icon [name]="'circle'" [styleClass]="'text-danger f-14'"></app-icon>
                                 </span>
                             </td>
 
