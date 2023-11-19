@@ -1,4 +1,5 @@
 <!-- <svg *ngIf="lib === 'bootstrap-icon' && svg" class="bi" [attr.width]="width" [attr.height]="height" [attr.fill]="fill">
   <use attr.xlink:href="bootstrap-icons/bootstrap-icons.svg#{{name}}" />
 </svg> -->
-<i [class]="getIconClass()" [ngClass]="styleClass" [style]="styleCSS" aria-hidden="true"></i>
+<i *ngIf="lib !== 'material'" [class]="getIconClass()" [ngClass]="styleClass" [style]="styleCSS" aria-hidden="true"></i>
+<i *ngIf="lib === 'material'" class="material-icons" aria-hidden="true">info</i>
