@@ -1,7 +1,5 @@
 {
     "apiBaseUrl": "http://localhost/angular-demo-app/backend/api/",
     "maintenanceMode": false,
-    "mfaEnabled": true,
-    "productName": "MyApp",
-    "copyrightInfo": "Copyright &copy; 2023 Brand Name"
+    "mfaEnabled": true
 }

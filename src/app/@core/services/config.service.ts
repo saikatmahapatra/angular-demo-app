@@ -28,8 +28,8 @@ export class ConfigService {
             AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
             // AppConfig.useMockServer = config.useMockServer;
             // AppConfig.title = config.title;
-            AppConfig.productName = config?.productName;
-            AppConfig.copyrightInfo = config?.copyrightInfo;
+            // AppConfig.productName = config?.productName;
+            // AppConfig.copyrightInfo = config?.copyrightInfo;
             // AppConfig.version = config?.version;
             AppConfig.maintenanceMode = config.maintenanceMode || false;
             AppConfig.mfaEnabled = config.mfaEnabled;

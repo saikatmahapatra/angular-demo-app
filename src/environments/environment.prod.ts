@@ -7,5 +7,5 @@ export const environment = {
   useMockServer: false,
   productName: "MyApp",
   logo: "assets/img/logo.svg",
-  copyrightInfo: "Copyright &copy; 2023 United Exploration India"
+  copyrightInfo: "Copyright &copy; 2023 United Exploration India Pvt Ltd (UEIPL)"
 };
