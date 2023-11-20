@@ -24,40 +24,35 @@
   </div>
 </div> -->
 
-<div class="vh-100 d-flex flex-row align-items-center">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-7">
-        <app-alert-message></app-alert-message>
-        <div class="card-group d-block d-md-flex row">
-          <div class="card col-md-7 py-3 mb-0">
-            <div class="card-body">
-              <img class="mb-2" style="width: 64px;" src="assets/img/logo.svg" alt="Brand Logo" />
-              <router-outlet></router-outlet>
+<div class="container">
+  <div class="min-vh-100 row d-flex justify-content-center align-items-center">
+    <div class="col-md-8 col-lg-7">
+      <app-alert-message></app-alert-message>
+      <div class="d-flex justify-content-end"><app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
+      </div>
+      <div class="row card-group">
+        <div class="card col-md-6 py-3 mb-0">
+          <div class="card-body">
+            <img class="mb-2" style="width: 64px;" src="assets/img/logo.svg" alt="Brand Logo" />
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <!-- <div class="card col-md-5 text-white bg-primary py-5">
+          <div class="card-body text-center">
+            <div>
+              <h2>Sign up</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
             </div>
           </div>
-          <!-- <div class="card col-md-5 text-white bg-primary py-5">
-            <div class="card-body text-center">
-              <div>
-                <h2>Sign up</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button>
-              </div>
-            </div>
-          </div> -->
-          <div class="card col-md-5 p-0">
-            <div class="card-body">
-              <app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
-              <img [src]="imgPath" class="img-fluid" alt="Brand Signup card">
-            </div>
+        </div> -->
+        <div class="card col-md-6 p-0">
+          <div class="card-body">
+            <img [src]="imgPath" class="img-fluid" alt="Brand Signup card">
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <app-footer></app-footer>
-        </div>
-      </div>
+      <app-footer></app-footer>
     </div>
   </div>
 </div>
