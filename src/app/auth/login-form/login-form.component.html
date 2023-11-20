@@ -1,28 +1,39 @@
-<h1>Sign in</h1>
+<h1>Login</h1>
+<p class="text-medium-emphasis">Sign In to your account</p>
 <form [formGroup]="loginForm" class="app-form unauth-form-max-w" (ngSubmit)="onSubmit()">
   <div class="row mb-3">
     <div class="col">
-      <label for="userName">Username</label>
-      <input type="text" class="form-control" formControlName="userName"
-        [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1"><app-icon [name]="'username'" [styleClass]="''"></app-icon></span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+          aria-describedby="basic-addon1" formControlName="userName"
+          [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+      </div>
       <app-validation-error [control]="f['userName']"></app-validation-error>
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" formControlName="password"
-        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon2"><app-icon [name]="'password'" [styleClass]="''"></app-icon></span>
+        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+          aria-describedby="basic-addon2" formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+      </div>
       <app-validation-error [control]="f['password']"></app-validation-error>
     </div>
   </div>
 
-  <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-primary" [disabled]="loading">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-      Sign In
-    </button>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-primary px-4" [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+        Login
+      </button>
+    </div>
+    <div class="col-md-6 text-end">
+      <a class="btn btn-link px-0" routerLink="../forgot-password">Forgot Password?</a>
+    </div>
   </div>
-  <div class="my-3"><a routerLink="../forgot-password">Forgot Password?</a></div>
 </form>
