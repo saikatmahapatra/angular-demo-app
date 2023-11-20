@@ -9,7 +9,7 @@
     <li class="my-2">
       <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
         aria-expanded="false">
-        <app-icon [name]="'home'" [styleClass]="'me-1'"></app-icon> Getting Started
+        <app-icon [name]="'home'" [styleClass]="'me-3'"></app-icon> Getting Started
       </button>
       <div class="collapse ms-3" id="getting-started-collapse" (click)="closeSideBar()">
         <ul class="list-unstyled">
@@ -26,7 +26,7 @@
 
     <li class="my-2" *ngIf="userRole === '1' ">
       <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#admin-menu"
-        aria-expanded="false"><app-icon [name]="'admin'" [styleClass]="'me-1'"></app-icon> Admin Menu</button>
+        aria-expanded="false"><app-icon [name]="'admin'" [styleClass]="'me-3'"></app-icon> Admin Menu</button>
       <div class="collapse ms-3" id="admin-menu" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -76,7 +76,7 @@
 
     <li class="my-2">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
-          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-1'"></app-icon> My Tasks</button>
+          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-3'"></app-icon> My Tasks</button>
       <div class="collapse ms-3" id="my-tasks" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -89,7 +89,7 @@
 
     <li class="my-2">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
-          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-1'"></app-icon> Self Services</button>
+          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-3'"></app-icon> Self Services</button>
       <div class="collapse ms-3" id="self-service" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -113,7 +113,7 @@
 
     <li class="my-2">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
-            [name]="'globe'" [styleClass]="'me-1'"></app-icon> Organization</button>
+            [name]="'globe'" [styleClass]="'me-3'"></app-icon> Organization</button>
       <div class="collapse ms-3" id="org" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -134,7 +134,7 @@
 
     <li class="my-2">
         <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
-          aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-1'"></app-icon> My Account</button>
+          aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-3'"></app-icon> My Account</button>
       <div class="collapse ms-3" id="my-account" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>

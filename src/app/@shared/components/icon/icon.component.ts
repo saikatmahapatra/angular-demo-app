@@ -67,7 +67,10 @@ export class IconComponent implements OnInit {
     'exportpdf': { material: 'picture_as_pdf', primeng: 'pi pi-file-pdf', bootstrap: 'bi bi-filetype-pdf' },
     'menu': { material: 'menu', primeng: 'pi pi-bars', bootstrap: 'bi bi-list' },
     'comment': { material: 'comment', primeng: 'pi pi-comment', bootstrap: 'bi bi-comment' },
-    'verified': { material: 'verified', primeng: 'pi pi-verified', bootstrap: 'bi bi-verified' }
+    'verified': { material: 'verified', primeng: 'pi pi-verified', bootstrap: 'bi bi-verified' },
+    'projects': { material: 'list_alt', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
+    'calendarclock': { material: 'calendar_clock', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
+    'pendingaction': { material: 'pending_actions', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
   };
 
   constructor() {

@@ -41,7 +41,7 @@ class Cms extends App_Controller
             array_push($dashboard_stat, array('targetRole' => '1', 'heading' => 'leave apps. approved *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-info', 'icon' => 'check', 'iconCss' => '#6f42c1', 'count' => $stat_user_approved_leave['data_rows'][0]['total'] . '/' . $stat_user_applied_leave['data_rows'][0]['total'], 'url' => 'leave/manage'));
         }
 
-        array_push($dashboard_stat, array('targetRole' => '3', 'heading' => 'leave apps. waiting for your review', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-warning', 'icon' => 'question', 'iconCss' => '#6f42c1', 'count' => $stat_pending_leave_action['data_rows'][0]['total'], 'url' => 'leave/requests-to-approve'));
+        array_push($dashboard_stat, array('targetRole' => '3', 'heading' => 'leave apps. waiting for your review', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-warning', 'icon' => 'pendingaction', 'iconCss' => '#6f42c1', 'count' => $stat_pending_leave_action['data_rows'][0]['total'], 'url' => 'leave/requests-to-approve'));
 
         array_push($dashboard_stat, array('targetRole' => '3', 'heading' => 'days task you have logged *', 'infoText' => '', 'textCSS' => '', 'bg_css' => '', 'digitCSS' => 'text-danger', 'icon' => 'clock', 'iconCss' => '#6f42c1', 'count' => $stat_user_timesheet_stat['stat_data']['total_days'], 'url' => 'timesheet/log-work'));
 
