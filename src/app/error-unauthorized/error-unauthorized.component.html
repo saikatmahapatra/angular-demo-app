@@ -1,9 +1,10 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>401 Unauthorized Access</h1>
+        <div class="col-md-12 mt-4">
+            <h1>Error 401</h1>
+            <h5>Unauthorized Access</h5>
             <p>It seems you are attempting to visit a page or URL that you are not authorised to view.</p>
-            <button class="btn btn-primary px-4" (click)="goToHome()">Back to home</button>
+            <button class="btn btn-primary px-4" (click)="goToHome()">Go to home page <app-icon [name]="'chevronRight'" [styleClass]="'f-20'"></app-icon></button>
         </div>
     </div>
 </div>
