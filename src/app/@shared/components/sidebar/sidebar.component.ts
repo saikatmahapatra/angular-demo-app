@@ -23,8 +23,8 @@ export class SidebarComponent implements OnInit {
       icon: "home",
       isAdminMenu: false,
       items: [
-        { id: 1, label: "Dashboard", icon: "", url: "/dashboard" },
-        { id: 2, label: "Analytics", icon: "", url: "/dashboard/my-analytics/emp/" }
+        { id: 1, label: "Dashboard", icon: "", url: ["/dashboard"] },
+        { id: 2, label: "Analytics", icon: "", url: ["/dashboard/my-analytics/emp/"] }
       ]
     },
     {
@@ -33,17 +33,17 @@ export class SidebarComponent implements OnInit {
       icon: "admin",
       isAdminMenu: true,
       items: [
-        { id: 1, label: "Manage Employees", icon: "", url: "/emp/manage" },
-        // { id: 119, label: "Add New Employee", icon: "", url: "/emp/add" },
-        { id: 2, label: "Manage Site Contents", icon: "", url: "/cms/manage-cms" },
-        { id: 3, label: "Manage Holidays", icon: "", url: "/cms/holiday-management" },
-        { id: 4, label: "Manage Leave Applications", icon: "", url: "/leave/manage" },
-        { id: 5, label: "View & Upload Leave Balance", icon: "", url: "/leave/balance" },
-        { id: 6, label: "Timesheet Report", icon: "", url: "/timesheet/report" },
-        { id: 7, label: "Manage Projects", icon: "", url: "/project/manage-project" },
-        { id: 8, label: "Manage Tasks", icon: "", url: "/project/manage-tasks" },
-        // { id: 9, label: "Asset Management", icon: "", url: "/asset-management" },
-        { id: 10, label: "Settings", icon: "", url: "/settings" }
+        { id: 1, label: "Manage Employees", icon: "", url: ["/emp/manage"] },
+        // { id: 119, label: "Add New Employee", icon: "", url: ["/emp/add"] },
+        { id: 2, label: "Manage Site Contents", icon: "", url: ["/cms/manage-cms"] },
+        { id: 3, label: "Manage Holidays", icon: "", url: ["/cms/holiday-management"] },
+        { id: 4, label: "Manage Leave Applications", icon: "", url: ["/leave/manage"] },
+        { id: 5, label: "View & Upload Leave Balance", icon: "", url: ["/leave/balance"] },
+        { id: 6, label: "Timesheet Report", icon: "", url: ["/timesheet/report"] },
+        { id: 7, label: "Manage Projects", icon: "", url: ["/project/manage-project"] },
+        { id: 8, label: "Manage Tasks", icon: "", url: ["/project/manage-tasks"] },
+        // { id: 9, label: "Asset Management", icon: "", url: ["/asset-management"] },
+        { id: 10, label: "Settings", icon: "", url: ["/settings"] }
       ]
     },
     {
@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit {
       icon: "tasks",
       isAdminMenu: false,
       items: [
-        { id: 1, label: "Manage Leave Applications", icon: "", url: "/leave/requests-to-approve" }
+        { id: 1, label: "Manage Leave Applications", icon: "", url: ["/leave/requests-to-approve"] }
       ]
     },
     {
@@ -61,10 +61,10 @@ export class SidebarComponent implements OnInit {
       icon: "selfService",
       isAdminMenu: false,
       items: [
-        { id: 1, label: "Log Timesheet", icon: "", url: "/timesheet/log-work" },
-        { id: 2, label: "Change Workflow Approvers", icon: "", url: "/emp/change-approvers" },
-        { id: 3, label: "Apply Leave", icon: "", url: "/leave/apply" },
-        { id: 4, label: "Leave History", icon: "", url: "/leave/history" }
+        { id: 1, label: "Log Timesheet", icon: "", url: ["/timesheet/log-work"] },
+        { id: 2, label: "Change Workflow Approvers", icon: "", url: ["/emp/change-approvers"] },
+        { id: 3, label: "Apply Leave", icon: "", url: ["/leave/apply"] },
+        { id: 4, label: "Leave History", icon: "", url: ["/leave/history"] }
       ]
     },
     {
@@ -73,9 +73,9 @@ export class SidebarComponent implements OnInit {
       icon: "globe",
       isAdminMenu: false,
       items: [
-        { id: 1, label: "Employees", icon: "", url: "/emp/view-employees" },
-        { id: 2, label: "My Reportees", icon: "", url: "/emp/view-reportees" },
-        { id: 3, label: "Holidays", icon: "", url: "/cms/holiday-calendar" }
+        { id: 1, label: "Employees", icon: "", url: ["/emp/view-employees"] },
+        { id: 2, label: "My Reportees", icon: "", url: ["/emp/view-reportees"] },
+        { id: 3, label: "Holidays", icon: "", url: ["/cms/holiday-calendar"] }
       ]
     },
     {
@@ -84,9 +84,9 @@ export class SidebarComponent implements OnInit {
       icon: "user",
       isAdminMenu: false,
       items: [
-        { id: 1, label: "Employees", icon: "", url: "/emp/my-profile" },
-        { id: 2, label: "Change Password", icon: "", url: "/emp/change-password" },
-        { id: 3, label: "Logout", icon: "", url: "/auth/logout" }
+        { id: 1, label: "Employees", icon: "", url: ["/emp/my-profile"] },
+        { id: 2, label: "Change Password", icon: "", url: ["/emp/change-password"] },
+        { id: 3, label: "Logout", icon: "", url: ["/auth/logout"] }
       ]
     },
   ];

@@ -17,7 +17,7 @@
           <!--2nd level-->
           <ul class="list-unstyled" *ngIf="menuLevel1?.items && menuLevel1.items.length > 0">
             <li *ngFor="let menuLevel2 of menuLevel1?.items">
-              <a [routerLink]="[menuLevel2?.url]" [routerLinkActive]="['active-nav-link']" class="nav-link"
+              <a [routerLink]="menuLevel2?.url" [routerLinkActive]="['active-nav-link']" class="nav-link"
                 [innerHTML]="menuLevel2?.label"></a>
             </li>
           </ul>
