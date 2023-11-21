@@ -44,7 +44,7 @@ export class SidebarComponent implements OnInit {
         items: [
           { id: 1, label: "Manage Employees", icon: "", url: ["/emp/manage"] },
           // { id: 119, label: "Add New Employee", icon: "", url: ["/emp/add"] },
-          { id: 2, label: "Manage Site Contents", icon: "", url: ["/cms/manage-cms"] },
+          { id: 2, label: "Manage Contents", icon: "", url: ["/cms/manage-cms"] },
           { id: 3, label: "Manage Holidays", icon: "", url: ["/cms/holiday-management"] },
           { id: 4, label: "Manage Leave Applications", icon: "", url: ["/leave/manage"] },
           { id: 5, label: "View & Upload Leave Balance", icon: "", url: ["/leave/balance"] },
