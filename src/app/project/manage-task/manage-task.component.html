@@ -5,8 +5,8 @@
             <div class="card-header">List of Tasks</div>
             <div class="card-body">
                 <a [routerLink]="['/project/add-task']" class="btn btn-success mb-3">
-                    <app-icon [name]="'add'"></app-icon>
-                    Add New
+                    <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon>
+                    Add New Task
                 </a>
                 <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
                     <ng-template pTemplate="header">

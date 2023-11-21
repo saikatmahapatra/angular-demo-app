@@ -7,10 +7,12 @@
                 <div class="row mb-2">
                     <div class="col-auto"><app-search-input (inputValue)="getSearchKeyword($event)"
                             [placeHolderText]="'Search Employees'"></app-search-input></div>
-                    <div class="col-auto"><a [routerLink]="['/emp/add']" class="btn btn-success">
-                            <app-icon [name]="'add'"></app-icon>
-                            Add New
-                        </a></div>
+                    <div class="col-auto">
+                        <a [routerLink]="['/emp/add']" class="btn btn-success">
+                            <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon>
+                            Add New Employee
+                        </a>
+                    </div>
                 </div>
                 <p-table #dt [value]="userList" dataKey="id" [rowHover]="true"
                     styleClass="p-datatable-sm table-font-sm ">

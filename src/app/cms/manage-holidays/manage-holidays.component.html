@@ -50,9 +50,8 @@
                             [showClear]="false" (onChange)="yearChange()"></p-dropdown>
                     </div>
                     <div class="col-auto" *ngIf="mode === 'update'">
-                        <button type="button" class="btn btn-success me-4" (click)="setAddMode();"><app-icon
-                                [name]="'add'"></app-icon> Add
-                            New</button>
+                        <button type="button" class="btn btn-success me-4" (click)="setAddMode();">
+                            <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon> Add New Holiday</button>
                     </div>
                 </div>
                 <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm">
