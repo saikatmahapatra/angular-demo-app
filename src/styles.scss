@@ -22,12 +22,6 @@ body {
   background-color: var(--body-bg);
 }
 
-.invalid-feedback,
-.validation-error-message {
-  font-size: 90%;
-  color: $red;
-}
-
 label {
   margin-bottom: .5rem;
 
@@ -204,43 +198,51 @@ label {
 
 // Font Size
 .f-10 {
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .f-12 {
-  font-size: 12px;
+  font-size: .75rem;
 }
 
 .f-14 {
-  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.f-15 {
+  font-size: 0.9375rem;
+}
+
+.f-16 {
+  font-size: 1rem;
 }
 
 .f-18 {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .f-20 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .f-24 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .f-28 {
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 
 .f-32 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 
 .f-36 {
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 .f-48 {
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 .fc.fc-theme-standard a {
@@ -268,19 +270,6 @@ label {
     background-size: 100%;
   }
 
-  .signin-wrapper {
-    max-width: 890px;
-
-    .signin-container {
-      background: $white;
-    }
-
-    .signin-form-container {
-      padding: 30px;
-      border-right: 2px solid #f1f1f1;
-    }
-  }
-
   .badge-cms-type {
     color: $gray-800;
     background-color: $gray-100;
@@ -296,23 +285,9 @@ label {
 // Dark Mode UI fix
 // ############################################
 [data-bs-theme="dark"] {
-
   .bg-login {
     background: url(../src/assets/img/subtle-prism-dark.svg) transparent;
     background-size: 100%;
-  }
-
-  .signin-wrapper {
-    max-width: 890px;
-
-    .signin-container {
-      background: $gray-900;
-    }
-
-    .signin-form-container {
-      padding: 30px;
-      border-right: 2px solid $gray-900;
-    }
   }
 
   .p-datatable .p-datatable-thead>tr>th,
