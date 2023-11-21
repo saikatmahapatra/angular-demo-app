@@ -48,9 +48,7 @@
                     </div>
                 </form>
                 <button (click)="exportToExcel()" class="btn btn-primary mt-2"
-                    [disabled]="timesheetData.length <= 0"><app-icon [name]="'exportxls'"></app-icon> Export
-                    to
-                    XLS</button>
+                    [disabled]="timesheetData.length <= 0"><app-icon [name]="'exportxls'"></app-icon> Download</button>
 
                 <p-table #dt [value]="timesheetData" dataKey="id" [rowHover]="true" [loading]="loading"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"

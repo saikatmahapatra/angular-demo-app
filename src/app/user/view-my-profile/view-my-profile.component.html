@@ -48,8 +48,8 @@
                   <dt class="col-md-4 col-lg-3">Blood Group</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
                </dl>
-               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-primary btn-sm mt-2"
-                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'"></app-icon> Edit</button>
+               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-outline-primary btn-sm px-4"
+                  (click)="navigateTo(['/emp/edit-basic-info'])">Edit</button>
             </section>
 
             <section class="my-3">
