@@ -93,7 +93,7 @@ export class SidebarComponent implements OnInit {
         icon: "user",
         isAdminMenu: false,
         items: [
-          { id: 1, label: "Employees", icon: "", url: ["/emp/my-profile"] },
+          { id: 1, label: "My Profile", icon: "", url: ["/emp/my-profile"] },
           { id: 2, label: "Change Password", icon: "", url: ["/emp/change-password"] },
           { id: 3, label: "Logout", icon: "", url: ["/auth/logout"] }
         ]
