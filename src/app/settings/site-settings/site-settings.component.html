@@ -19,11 +19,11 @@
                                         Days</label>
                                     <input type="number" class="form-control" id="timesheetMinDays"
                                         formControlName="timesheetMinDays">
-                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
-                                        Number of days before today to be enabled.
-                                        (<strong>Default value: </strong> 5)</div>
                                     <app-validation-error
                                         [control]="siteSettingsForm.controls['timesheetMinDays']"></app-validation-error>
+                                    <div class="small mt-2"><app-icon [name]="'info'" styleClass="f-20"></app-icon>
+                                        Number of days before today to be enabled.
+                                        (<strong>Default value: </strong> 5)</div>
                                 </div>
                             </div>
 
@@ -32,11 +32,12 @@
                                     <label class="required" for="timesheetMaxDays">Timesheet Enable Next Days</label>
                                     <input type="number" class="form-control" id="timesheetMaxDays"
                                         formControlName="timesheetMaxDays">
-                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
-                                        Number of days after today to be enabled.
-                                        (<strong>Default value: </strong> 0)</div>
                                     <app-validation-error
                                         [control]="siteSettingsForm.controls['timesheetMaxDays']"></app-validation-error>
+                                    <div class="small mt-2"><app-icon [name]="'info'" styleClass="f-20"></app-icon>
+                                        Number of days after today to be enabled.
+                                        (<strong>Default value: </strong> 0)</div>
+
                                 </div>
                             </div>
 
@@ -45,10 +46,11 @@
                                     <label class="" for="emailNotifyDistro">Email Distribution List ID</label>
                                     <input type="text" class="form-control" id="emailNotifyDistro"
                                         formControlName="emailNotifyDistro">
-                                    <div class="small"><app-icon [name]="'info'" styleClass="mt-1 f-14"></app-icon>
-                                        Email DL ID where post related updates will be sent</div>
                                     <app-validation-error
                                         [control]="siteSettingsForm.controls['emailNotifyDistro']"></app-validation-error>
+                                    <div class="small mt-2"><app-icon [name]="'info'" styleClass="f-20"></app-icon>
+                                        Email DL ID where post related updates will be sent</div>
+
                                 </div>
                             </div>
 
