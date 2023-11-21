@@ -8,6 +8,7 @@ import { AuthenticatedLayoutComponent } from './@shared/components/layouts/authe
 import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
 import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthorized.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FaqComponent } from './faq/faq.component';
 
 // Routing with lazy loading
 const routes: Routes = [
@@ -87,6 +88,10 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
   },
   {
     path: 'error',

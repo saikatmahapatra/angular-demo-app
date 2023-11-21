@@ -18,6 +18,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
 import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthorized.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FaqComponent } from './faq/faq.component';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     ErrorPageNotFoundComponent,
     ErrorUnauthorizedComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
