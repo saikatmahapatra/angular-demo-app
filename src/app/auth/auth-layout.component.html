@@ -2,7 +2,7 @@
   <div class="min-vh-100 row d-flex justify-content-center align-items-center">
     <div class="col-md-8 col-lg-7">
       <app-alert-message></app-alert-message>
-      <div class="d-flex justify-content-end"><app-theme-switch (themeName)="getThemeName($event)"></app-theme-switch>
+      <div class="d-flex justify-content-end"><app-theme-switch (themeName)="getThemeName($event)" [showTooltip]="false" [showBtnIcon]="true" [showBtnText]="true"></app-theme-switch>
       </div>
       <div class="row card-group">
         <div class="card col-md-6 py-3 mb-0">

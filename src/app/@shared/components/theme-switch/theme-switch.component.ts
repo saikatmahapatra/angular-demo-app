@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-theme-switch',
@@ -9,6 +9,9 @@ export class ThemeSwitchComponent implements OnInit {
 
   theme = 'light';
   @Output() themeName = new EventEmitter<string>();
+  @Input() showBtnIcon = true;
+  @Input() showBtnText = false;
+  @Input() showTooltip = true;
 
   constructor() { }
 
