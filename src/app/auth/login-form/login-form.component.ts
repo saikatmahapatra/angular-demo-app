@@ -38,8 +38,7 @@ export class LoginFormComponent implements OnInit {
     if (this.authSvc.isLoggedIn()) {
       this.router.navigate(['/']);
     }
-    const logout = this.route.snapshot.queryParamMap.get('logout');
-    if (logout) {
+    if (this.router.url === '/auth/logout') {
       this.logout();
     }
   }
