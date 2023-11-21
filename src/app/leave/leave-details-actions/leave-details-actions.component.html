@@ -198,19 +198,19 @@
                             <div>
                                 <button
                                     (click)="approveRejectRequest(rowData?.id, 'L1', 'V', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-primary me-3 mb-3 px-4" [disabled]="loading"><span
+                                    type="submit" class="btn btn-primary me-3 mb-3" [disabled]="loading"><span
                                         *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
                                         [name]="'verified'"></app-icon>
                                     Accept</button>
                                 <button
                                     (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-success me-3 mb-3 px-4" [disabled]="loading"><span
+                                    type="submit" class="btn btn-success me-3 mb-3" [disabled]="loading"><span
                                         *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
                                         [name]="'success'"></app-icon>
                                     Approve</button>
                                 <button
                                     (click)="approveRejectRequest(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-danger mb-3 px-4" [disabled]="loading"><span *ngIf="loading"
+                                    type="submit" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
                                         class="spinner-border spinner-border-sm"></span> <app-icon
                                         [name]="'cross'"></app-icon>
                                     Reject</button>

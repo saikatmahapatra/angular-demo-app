@@ -142,7 +142,7 @@
 
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary px-4" [disabled]="loading || !myForm.valid"><span
+                        <button type="submit" class="btn btn-primary" [disabled]="loading || !myForm.valid"><span
                                 *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> View Details</button>
                     </div>
                     <app-validation-error *ngIf="myForm.controls['duration'].value == 'customDateRange' "
