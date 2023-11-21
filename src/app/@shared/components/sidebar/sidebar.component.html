@@ -5,7 +5,7 @@
     <!-- <h6 class="fw-semibold">UNITED EXPLORATION INDIA PVT. LTD.</h6> -->
     Welcome, {{transform(welcomeUserText, 15)}}
   </div>
-  <ul class="list-unstyled pb-2"> <!--/.border-bottom-->
+  <ul class="d-none list-unstyled pb-2"> <!--/.border-bottom-->
     <li class="my-2">
       <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse"
         aria-expanded="false">
@@ -75,8 +75,8 @@
     </li>
 
     <li class="my-2">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
-          aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-3'"></app-icon> My Tasks</button>
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-tasks"
+        aria-expanded="false"><app-icon [name]="'tasks'" [styleClass]="'me-3'"></app-icon> My Tasks</button>
       <div class="collapse ms-3" id="my-tasks" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -88,8 +88,8 @@
     </li>
 
     <li class="my-2">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
-          aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-3'"></app-icon> Self Services</button>
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#self-service"
+        aria-expanded="false"><app-icon [name]="'selfService'" [styleClass]="'me-3'"></app-icon> Self Services</button>
       <div class="collapse ms-3" id="self-service" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -112,8 +112,8 @@
     </li>
 
     <li class="my-2">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
-            [name]="'globe'" [styleClass]="'me-3'"></app-icon> Organization</button>
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#org" aria-expanded="false"><app-icon
+          [name]="'globe'" [styleClass]="'me-3'"></app-icon> Organization</button>
       <div class="collapse ms-3" id="org" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -133,8 +133,8 @@
     </li>
 
     <li class="my-2">
-        <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
-          aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-3'"></app-icon> My Account</button>
+      <button class="btn expandable" data-bs-toggle="collapse" data-bs-target="#my-account"
+        aria-expanded="false"><app-icon [name]="'user'" [styleClass]="'me-3'"></app-icon> My Account</button>
       <div class="collapse ms-3" id="my-account" (click)="closeSideBar()">
         <ul class="list-unstyled">
           <li>
@@ -152,6 +152,27 @@
           </li>
         </ul>
       </div>
+    </li>
+  </ul>
+
+  <ul class="list-unstyled pb-2">
+    <!--1st level-->
+    <li class="my-2" *ngFor="let menuLevel1 of sideBarMenuItems">
+      <ng-container *ngIf="menuLevel1.isAdminMenu ? userRole === '1' : true">
+        <button class="btn expandable" data-bs-toggle="collapse" attr.data-bs-target="#target-{{menuLevel1?.id}}"
+          aria-expanded="false">
+          <app-icon [name]="menuLevel1?.icon || ''" [styleClass]="'me-3'"></app-icon> {{menuLevel1?.label}}
+        </button>
+        <div class="collapse ms-3" id="target-{{menuLevel1?.id}}" (click)="closeSideBar()">
+          <!--2nd level-->
+          <ul class="list-unstyled" *ngIf="menuLevel1?.items && menuLevel1.items.length > 0">
+            <li *ngFor="let menuLevel2 of menuLevel1?.items">
+              <a [routerLink]="[menuLevel2?.url]" [routerLinkActive]="['active-nav-link']" class="nav-link"
+                [innerHTML]="menuLevel2?.label"></a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
     </li>
   </ul>
   <!-- <a href="https://unitedexploration.co.in/" target="_blank">website</a> -->

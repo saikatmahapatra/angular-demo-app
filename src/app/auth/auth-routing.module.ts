@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
     { path: '', component: LoginFormComponent},
     { path: 'login', component: LoginFormComponent},
+    { path: 'logout', component: LoginFormComponent},
     { path: 'mfa', component: TwoFactorAuthComponent},
     { path: 'forgot-password', component: ForgotPasswordFormComponent},
     { path: 'reset-password', component: ResetPasswordFormComponent}
