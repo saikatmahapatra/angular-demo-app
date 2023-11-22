@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="rowData?.id" class="row mt-3">
+                <div *ngIf="rowData?.id" class="row mt-4 pt-4 border-top">
                     <h5>Workflow</h5>
                     <div class="col-12">
                         <div class="progress mt-2 mb-4">
@@ -141,23 +141,21 @@
 
                         <div class="my-4"
                             *ngIf="(userId===rowData?.user_id) && (rowData?.leave_status === 'B' || rowData?.leave_status === 'O' || rowData?.leave_status === 'P')">
-                            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)"
-                                type="button" class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
+                            <button (click)="updateLeaveApplication(rowData?.id, 'U', 'W', rowData?.user_id)"
+                                type="button" class="btn btn-secondary" [disabled]="loading"><span *ngIf="loading"
                                     class="spinner-border spinner-border-sm me-1"></span> Withdraw Application</button>
                         </div>
                         <div class="my-4"
                             *ngIf="(userId ===rowData?.user_id) && rowData?.leave_status === 'A' && rowData?.cancel_requested !== 'Y'">
-                            <button (click)="approveRejectRequest(rowData?.id, 'U', 'W', rowData?.user_id)"
-                                type="button" class="btn btn-primary me-4" [disabled]="loading"><span *ngIf="loading"
-                                    class="spinner-border spinner-border-sm me-1"></span> Request Leave
-                                Cancellation</button>
+                            <button (click)="updateLeaveApplication(rowData?.id, 'U', 'W', rowData?.user_id)"
+                                type="button" class="btn btn-secondary" [disabled]="loading"><span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span> Cancel Application</button>
                         </div>
                     </div>
 
                     <div class="small col-md-4  mb-4">
                         <h6>
-                            <app-icon [name]="'question'"
-                                *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
+                            <app-icon [name]="'question'" *ngIf="rowData?.supervisor_approver_status==='P'"></app-icon>
                             <app-icon [name]="'check'" [styleClass]="'text-success'"
                                 *ngIf="rowData?.supervisor_approver_status==='A'"></app-icon>
                             <app-icon [name]="'cross'" [styleClass]="'text-danger'"
@@ -176,7 +174,7 @@
                         <div class="small">{{rowData?.supervisor_approver_datetime | date: 'dd/MM/yyyy h:mm:ss a'}}
                         </div>
                         <div class="small" *ngIf="rowData?.supervisor_approver_comment">
-                            <app-icon [name]="'comment'" [styleClass]="'f-18 me-1'" ></app-icon>
+                            <app-icon [name]="'comment'" [styleClass]="'f-18 me-1'"></app-icon>
                             {{rowData?.supervisor_approver_comment}}
                         </div>
 
@@ -186,7 +184,7 @@
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="text" [(ngModel)]="L1WorkflowComments" class="form-control"
-                                        placeholder="comments (if any)" aria-label="Comments"
+                                        placeholder="comments (optional, if any)" aria-label="Comments"
                                         aria-describedby="erase-comments1" maxlength="40">
                                     <button (click)="removeComments('L1')" class="input-group-text"
                                         id="erase-comments1">
@@ -195,43 +193,38 @@
                                 </div>
                                 <div class="small text-muted">{{40-L1WorkflowComments.length}} characters left</div>
                             </div>
-                            <div>
-                                <button
-                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'V', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-primary me-3 mb-3" [disabled]="loading"><span
-                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
-                                        [name]="'verified'"></app-icon>
-                                    Accept</button>
-                                <button
-                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-success me-3 mb-3" [disabled]="loading"><span
-                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
-                                        [name]="'success'"></app-icon>
-                                    Approve</button>
-                                <button
-                                    (click)="approveRejectRequest(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id, L1WorkflowComments)"
-                                    type="submit" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
-                                        class="spinner-border spinner-border-sm"></span> <app-icon
-                                        [name]="'cross'"></app-icon>
-                                    Reject</button>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-bs-toggle="dropdown" aria-expanded="false" [disabled]="loading">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>Pending Action
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><button (click)="updateLeaveApplication(rowData?.id, 'L1', 'V', rowData?.supervisor_approver_id, L1WorkflowComments)" class="dropdown-item" type="button"><app-icon [name]="'verified'" [styleClass]="'text-primary'"></app-icon> Accept, Delegate to L2</button></li>
+
+                                    <li><button (click)="updateLeaveApplication(rowData?.id, 'L1', 'A', rowData?.supervisor_approver_id, L1WorkflowComments)" class="dropdown-item" type="button"><app-icon [name]="'success'" [styleClass]="'text-success'"></app-icon> Approve</button></li>
+
+                                    <li><button (click)="updateLeaveApplication(rowData?.id, 'L1', 'R', rowData?.supervisor_approver_id, L1WorkflowComments)" class="dropdown-item" type="button"><app-icon [name]="'cross'" [styleClass]="'text-danger'"></app-icon> Reject</button></li>
+                                </ul>
                             </div>
                         </div>
 
                         <div class="my-4"
                             *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.supervisor_approver_id && rowData?.supervisor_approver_id!==rowData?.director_approver_id">
-                            <button
-                                (click)="approveRejectRequest(rowData?.id, 'L1', 'C', rowData?.supervisor_approver_id)"
-                                type="submit" class="btn btn-warning me-4" [disabled]="loading"><span *ngIf="loading"
-                                    class="spinner-border spinner-border-sm me-1"></span> <app-icon [name]="'cross'">
-                                </app-icon>
-                                Cancel</button>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4"
+                                        data-bs-toggle="dropdown" aria-expanded="false" [disabled]="loading">
+                                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>Pending Action
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                                        <li><button (click)="updateLeaveApplication(rowData?.id, 'L1', 'C', rowData?.supervisor_approver_id)" class="dropdown-item" type="button"><app-icon [name]="'cross'" [styleClass]="'text-warning'"></app-icon> Cancel Leave</button></li>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
 
                     <div class="small col-md-4 mb-4">
                         <h6>
-                            <app-icon [name]="'question'"
-                                *ngIf="rowData?.director_approver_status==='P'"></app-icon>
+                            <app-icon [name]="'question'" *ngIf="rowData?.director_approver_status==='P'"></app-icon>
                             <app-icon [name]="'check'" [styleClass]="'text-success'"
                                 *ngIf="rowData?.director_approver_status==='A'"></app-icon>
                             <app-icon [name]="'cross'" [styleClass]="'text-danger'"
@@ -255,7 +248,7 @@
                             <div class="mb-3">
                                 <div class="input-group">
                                     <input type="text" [(ngModel)]="L2WorkflowComments" class="form-control"
-                                        placeholder="comments (if any)" aria-label="Comments"
+                                        placeholder="comments (optional, if any)" aria-label="Comments"
                                         aria-describedby="erase-comments2" maxlength="40">
                                     <button (click)="removeComments('L2')" class="input-group-text"
                                         id="erase-comments2">
@@ -264,30 +257,30 @@
                                 </div>
                                 <div class="small text-muted">{{40-L2WorkflowComments.length}} characters left</div>
                             </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
+                                    data-bs-toggle="dropdown" aria-expanded="false" [disabled]="loading">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>Pending Action
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                    <li><button (click)="updateLeaveApplication(rowData?.id, 'L2', 'A', rowData?.director_approver_id, L2WorkflowComments)" class="dropdown-item" type="button"><app-icon [name]="'success'" [styleClass]="'text-success'"></app-icon> Approve</button></li>
 
-                            <div>
-                                <button
-                                    (click)="approveRejectRequest(rowData?.id, 'L2', 'A', rowData?.director_approver_id, L2WorkflowComments)"
-                                    type="button" class="btn btn-success me-3 mb-3" [disabled]="loading"><span
-                                        *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> <app-icon
-                                        [name]="'success'"></app-icon>
-                                    Approve</button>
-                                <button
-                                    (click)="approveRejectRequest(rowData.id, 'L2', 'R', rowData?.director_approver_id, L2WorkflowComments)"
-                                    type="button" class="btn btn-danger mb-3" [disabled]="loading"><span *ngIf="loading"
-                                        class="spinner-border spinner-border-sm me-1"></span> <app-icon
-                                        [name]="'cross'"></app-icon>
-                                    Reject</button>
+                                    <li><button (click)="updateLeaveApplication(rowData.id, 'L2', 'R', rowData?.director_approver_id, L2WorkflowComments)" class="dropdown-item" type="button"><app-icon [name]="'cross'" [styleClass]="'text-danger'"></app-icon> Reject</button></li>
+                                </ul>
                             </div>
                         </div>
 
                         <div class="my-4"
                             *ngIf="rowData?.leave_status === 'A' && rowData?.cancel_requested === 'Y' && userId === rowData?.director_approver_id">
-                            <button (click)="approveRejectRequest(rowData.id, 'L2', 'C', rowData?.director_approver_id)"
-                                type="button" class="btn btn-warning" [disabled]="loading"><span *ngIf="loading"
-                                    class="spinner-border spinner-border-sm me-1"></span> <app-icon
-                                    [name]="'cross'"></app-icon>
-                                Cancel</button>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu5"
+                                        data-bs-toggle="dropdown" aria-expanded="false" [disabled]="loading">
+                                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>Pending Action
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                                        <li><button (click)="updateLeaveApplication(rowData.id, 'L2', 'C', rowData?.director_approver_id)" class="dropdown-item" type="button"><app-icon [name]="'cross'" [styleClass]="'text-warning'"></app-icon> Cancel Leave</button></li>
+                                    </ul>
+                                </div>
                         </div>
 
                     </div>

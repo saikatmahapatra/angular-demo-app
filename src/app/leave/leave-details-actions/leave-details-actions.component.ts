@@ -113,7 +113,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
     })
   }
 
-  approveRejectRequest(leaveId: any, workFlow: string, status: string, userId: string, commentsText?: string) {
+  updateLeaveApplication(leaveId: any, workFlow: string, status: string, userId: string, commentsText?: string) {
     //console.log(leaveId, workFlow, status);
     this.loading = true;
     const postData = { id: leaveId, userId: userId, workflow: workFlow, newStatus: status, comments:  commentsText};
