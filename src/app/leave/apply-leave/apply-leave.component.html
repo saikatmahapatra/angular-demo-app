@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h6 class="fw-bold">Information:</h6>
                 <div class="alert alert-danger" *ngIf="!hasApprovers()">
-                    <strong><app-icon [name]="'error'"></app-icon> Error: </strong>No workflow approvers found. You need
+                    <strong><app-icon [name]="'error'"></app-icon></strong>No workflow approvers found. You need
                     to choose <a class="reset" [routerLink]="['/emp/change-approvers']">your workflow
                         approvers</a> before applying.
                 </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="alert alert-danger" *ngIf="!hasLeaveBalance()">
-                    <strong><app-icon [name]="'error'"></app-icon> Error: </strong> Your leave balance information is
+                    <strong><app-icon [name]="'error'"></app-icon></strong> Your leave balance information is
                     missing from the database. Records of leave balances must be updated in order to apply for leave.
                     For further process, kindly get in touch with admin or HR.
                 </div>
