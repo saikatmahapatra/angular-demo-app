@@ -27,7 +27,7 @@
 
 
 <button (click)="toggleTheme()" class="btn btn-link nav-link mt-auto d-flex align-items-center" id="app-theme" type="button" [pTooltip]="showTooltip ? (theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode') : ''" [tooltipPosition]="'left'">
-  <app-icon *ngIf="showBtnIcon && theme === 'dark' " [name]="'sun'"></app-icon>
-  <app-icon *ngIf="showBtnIcon && theme === 'light' " [name]="'moon'"></app-icon>
-  <span class="ms-2" *ngIf="showBtnText" [innerHTML]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"></span>
+  <app-icon *ngIf="showBtnIcon && theme === 'dark' " [name]="'sun'" [styleClass]="iconClass"></app-icon>
+  <app-icon *ngIf="showBtnIcon && theme === 'light' " [name]="'moon'" [styleClass]="iconClass"></app-icon>
+  <span [ngClass]="textClass" class="ms-2" *ngIf="showBtnText" [innerHTML]="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"></span>
 </button>

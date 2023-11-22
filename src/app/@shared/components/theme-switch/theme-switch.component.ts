@@ -12,6 +12,8 @@ export class ThemeSwitchComponent implements OnInit {
   @Input() showBtnIcon = true;
   @Input() showBtnText = false;
   @Input() showTooltip = true;
+  @Input() iconClass = '';
+  @Input() textClass = '';
 
   constructor() { }
 
