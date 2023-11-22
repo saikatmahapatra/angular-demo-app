@@ -1,5 +1,4 @@
 <h1>My Profile</h1>
-
 <div class="row">
    <div class="col-md-12">
       <div class="card">
@@ -48,8 +47,8 @@
                   <dt class="col-md-4 col-lg-3">Blood Group</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
                </dl>
-               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-outline-primary"
-                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'" [styleClass]="'f-20'"></app-icon> Edit Basic Information</button>
+               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-sm btn-outline-secondary"
+                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'" [styleClass]="'f-20'"></app-icon> Edit Information</button>
             </section>
 
             <section class="my-3">
@@ -57,7 +56,7 @@
                   Address</h5>
                <hr class="mt-0">
                <a *ngIf="selfAccount && addressInfo.length < 2" [routerLink]="['/emp/add-address']"
-                  class="btn btn-outline-success">
+                  class="btn btn-sm btn-outline-success">
                   <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon> Add New Address</a>
                <div class="my-3" *ngFor="let addr of addressInfo">
                   <h6 class="fw-bold" [innerHTML]="getAddressType(addr.address_type)"></h6>
@@ -87,7 +86,7 @@
                   Highest Qualification</h5>
                <hr class="mt-0">
                <a *ngIf="selfAccount && educationInfo.length < 1" [routerLink]="['/emp/add-education']"
-                  class="btn btn-outline-success">
+                  class="btn btn-sm btn-outline-success">
                   <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon>
                   Add Qualification
                </a>
@@ -119,7 +118,7 @@
                </h5>
                <hr class="mt-0">
                <a *ngIf="selfAccount && workExp.length < 2" [routerLink]="['/emp/add-work-experience']"
-                  class="btn btn-outline-success">
+                  class="btn btn-sm btn-outline-success">
                   <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon>
                   Add Work Experience
                </a>
@@ -159,7 +158,7 @@
                   Payroll Info</h5>
                <hr class="mt-0">
                <a *ngIf="selfAccount && payrollInfo.length < 1" [routerLink]="['/emp/add-payroll-info']"
-                  class="btn btn-outline-success">
+                  class="btn btn-sm btn-outline-success">
                   <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon>
                   Add Payroll Info</a>
                <div class="my-3">
@@ -194,7 +193,7 @@
                </h5>
                <hr class="mt-0">
                <a *ngIf="selfAccount && emergencyContact.length < 2" [routerLink]="['/emp/add-emergency-contact']"
-                  class="btn btn-outline-success">
+                  class="btn btn-sm btn-outline-success">
                   <app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon> Add New Contact</a>
                <div class="my-3" *ngFor="let contact of emergencyContact">
                   <h6 class="fw-bold">{{contact?.contact_person_name}}</h6>
@@ -220,7 +219,7 @@
                   Workflow Approvers</h5>
                <hr class="mt-0">
                <div *ngIf="selfAccount">
-                  <button type="button" class="btn btn-outline-success"
+                  <button type="button" class="btn btn-sm btn-outline-success"
                      (click)="navigateTo(['/emp/change-approvers/'])"><app-icon [name]="'add'" [styleClass]="'f-20'"></app-icon> Add or Change Approvers</button>
                </div>
                <dl class="row mt-4">
