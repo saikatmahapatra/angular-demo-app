@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivateChild {
 
     this.authService.validateToken().subscribe({
       error: (error: HttpErrorResponse) => {
-        this.authService.logout();
+        this.authService.logout('JWT Token either expired or not matched. Please login to continue.');
       }
     });
 
