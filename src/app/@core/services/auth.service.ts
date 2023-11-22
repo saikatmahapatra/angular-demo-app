@@ -49,12 +49,13 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('loginData') || '') || {};
   }
 
-  logout() {
+  logout(msg?: string) {
+    const message = msg || 'You have been logged out. Please login to continue.'
     localStorage.removeItem('loginData');
     localStorage.removeItem('access_token');
     //localStorage.clear();
     this.loggedInUserSubject.next(null);
-    this.alertSvc.info('You have been logged out!', true);
+    this.alertSvc.info(message, true);
     this.router.navigate(['auth/login']);
   }
 
