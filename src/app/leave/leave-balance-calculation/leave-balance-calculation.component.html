@@ -35,7 +35,7 @@
                     Template</button>
                 <p-fileUpload mode="basic" name="demo[]" [multiple]="false"
                     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" [maxFileSize]="100000"
-                    (onSelect)="onSelect($event)" [auto]="true" chooseLabel="Upload Template" chooseStyleClass="p-button-success"></p-fileUpload>
+                    (onSelect)="onSelect($event)" [auto]="true" chooseLabel="Upload Template" styleClass="bg-success"></p-fileUpload>
 
                 <p-table #dt [value]="dataRow" dataKey="id" [rowHover]="true" styleClass="p-datatable-sm table-font-sm mt-3">
                     <ng-template pTemplate="header">
