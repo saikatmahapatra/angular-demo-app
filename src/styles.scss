@@ -28,8 +28,10 @@ label {
   &.required {
     &::after {
       content: '*';
-      margin-left: 5px;
-      color: rgb(255, 0, 0);
+      margin-left: .25rem;
+      color: var(--bs-form-invalid-color);
+      font-size: 1rem;
+      font-weight: 700;
     }
   }
 }
