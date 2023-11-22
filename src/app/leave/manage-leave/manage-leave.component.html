@@ -125,7 +125,7 @@
                             </td>
                             <td class="">
                                 <span class="p-column-title">Workflow Status</span>
-                                <span class="mx-2">
+                                <span class="me-2">
                                     <app-icon [name]="'question'" [styleClass]="''"
                                         *ngIf="rowData?.supervisor_approver_status === 'P'"></app-icon>
                                     <app-icon [name]="'check'" [styleClass]="'text-success'"
@@ -141,12 +141,12 @@
                                     (rowData?.supervisor_approver_name | slice
                                     : 0: 8) + '...' }}</span>
 
-                                <span class="mx-2"
+                                <span class=""
                                     *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id">
                                     <app-icon [name]="'arrowRight'" [styleClass]="'text-secondary'"></app-icon>
                                 </span>
 
-                                <span class="mx-2"
+                                <span class="me-2"
                                     *ngIf="rowData?.supervisor_approver_id !== rowData?.director_approver_id">
                                     <app-icon [name]="'question'" [styleClass]="''"
                                         *ngIf="rowData?.director_approver_status === 'P'"></app-icon>
