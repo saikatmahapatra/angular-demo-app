@@ -74,7 +74,7 @@ class Auth extends App_Controller
         $credData['userRoleId'] = null;
         $credData['userEmail'] = null;
         $tokenData = $this->authorization_token->generateToken($credData);
-        $this->responseData['data'] = $login_result['data'];
+        $this->responseData['data'] = array();
         $this->responseData['token'] = $tokenData;
         $this->statusCode = REST_Controller::HTTP_OK;
         $this->response($this->responseData, $this->statusCode);
