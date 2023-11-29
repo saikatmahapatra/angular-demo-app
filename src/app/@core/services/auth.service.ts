@@ -49,7 +49,11 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('loginData') || '') || {};
   }
 
-  logout(msg?: string) {
+  logoutSessionToken() {
+    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.logout);
+  }
+
+  clearStorageData(msg?: string) {
     const message = msg || 'You have been logged out. Please login to continue.'
     localStorage.removeItem('loginData');
     localStorage.removeItem('access_token');

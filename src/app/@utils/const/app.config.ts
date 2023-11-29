@@ -14,6 +14,7 @@ export const AppConfig = {
     apiUrl: {
         // Authentication, JWT Validation
         authenticate: 'auth/authenticate',
+        logout: 'auth/logout',
         validateToken: 'auth/validateToken',
         validateRolePermissions: 'auth/validateRolePermissions',
         checkEmail: 'auth/checkEmail',

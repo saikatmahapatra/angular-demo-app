@@ -65,6 +65,6 @@ export class TwoFactorAuthComponent {
   }
 
   logout() {
-    this.authSvc.logout();
+    this.authSvc.clearStorageData();
   }
 }

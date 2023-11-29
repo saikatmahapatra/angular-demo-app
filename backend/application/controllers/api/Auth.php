@@ -67,6 +67,19 @@ class Auth extends App_Controller
         $this->response($this->responseData, $this->statusCode);
     }
 
+    function logout_get()
+    {
+        $this->responseData['message'] = 'Logout Successfull';
+        $credData['userId'] = null;
+        $credData['userRoleId'] = null;
+        $credData['userEmail'] = null;
+        $tokenData = $this->authorization_token->generateToken($credData);
+        $this->responseData['data'] = $login_result['data'];
+        $this->responseData['token'] = $tokenData;
+        $this->statusCode = REST_Controller::HTTP_OK;
+        $this->response($this->responseData, $this->statusCode);
+    }
+
     function isEmailRegistered($email)
     {
         $res = $this->user_model->check_is_email_registered($email);

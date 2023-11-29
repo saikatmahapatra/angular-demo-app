@@ -39,7 +39,18 @@ export class LoginFormComponent implements OnInit {
       this.router.navigate(['/']);
     }
     if (this.router.url === '/auth/logout') {
-      this.logout();
+      this.loading = true;
+      this.authSvc.logoutSessionToken().subscribe({
+        next: (response: any) => {
+          this.authSvc.clearStorageData();
+        },
+        error: () => {
+          this.loading = false;
+          this.authSvc.clearStorageData();
+        },
+        complete: () => { this.loading = false; }
+      });
+
     }
   }
 
@@ -65,9 +76,4 @@ export class LoginFormComponent implements OnInit {
     }
 
   }
-
-  logout() {
-    this.authSvc.logout();
-  }
-
 }
