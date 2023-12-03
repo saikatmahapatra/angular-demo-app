@@ -77,6 +77,7 @@ class Auth extends App_Controller
         $this->responseData['data'] = array();
         $this->responseData['token'] = $tokenData;
         $this->statusCode = REST_Controller::HTTP_OK;
+        session_destroy();
         $this->response($this->responseData, $this->statusCode);
     }
 
