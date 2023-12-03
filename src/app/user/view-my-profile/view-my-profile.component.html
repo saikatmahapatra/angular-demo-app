@@ -15,6 +15,8 @@
                      class="badge rounded-pill bg-warning text-dark">Inactive</span>
                   <span *ngIf="userInfo?.user_status === 'A' " class="badge rounded-pill bg-danger">Archived</span>
                </div>
+               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-sm btn-outline-secondary mt-3"
+                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'" [styleClass]="'f-20'"></app-icon> Edit</button>
             </section>
 
             <section class="my-3">
@@ -47,8 +49,6 @@
                   <dt class="col-md-4 col-lg-3">Blood Group</dt>
                   <dd class="col-md-8 col-lg-9">{{userInfo?.user_blood_group || '-'}}</dd>
                </dl>
-               <button *ngIf="userInfo?.user_status !== 'A'" type="button" class="btn btn-sm btn-outline-secondary"
-                  (click)="navigateTo(['/emp/edit-basic-info'])"><app-icon [name]="'edit'" [styleClass]="'f-20'"></app-icon> Edit Information</button>
             </section>
 
             <section class="my-3">

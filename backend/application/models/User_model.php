@@ -205,7 +205,7 @@ class User_model extends CI_Model {
             }
         } else {
             $login_status = 'error';
-            $message = 'The information you entered is incorrect. Please try again.';
+            $message = 'Incorrect username or password. Please try again.';
             $auth_result = array('status' => $login_status, 'message' => $message, 'data' => $loggedin_data);
             return $auth_result;
         }
