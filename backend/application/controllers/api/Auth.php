@@ -115,7 +115,7 @@ class Auth extends App_Controller
                         $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
                     }
                 } else {
-                    $this->responseData['message'] = 'Email is not registered';
+                    $this->responseData['message'] = 'The email id is not registered with us. Please try with a correct email id.';
                     $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
                 }
             } else {
