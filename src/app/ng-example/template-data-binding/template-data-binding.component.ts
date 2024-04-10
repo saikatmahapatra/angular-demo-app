@@ -6,7 +6,7 @@ import { CommonService } from '../../@core/services/common.service';
   providers: []
 })
 export class TemplateDataBindingComponent implements OnInit {
-  title = "Template basic";
+  title = "Data Binding in Template";
   fruits = [
     { "name": "Banana", "color": "yellow" },
     { "name": "Mango", "color": "green" },

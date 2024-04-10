@@ -9,10 +9,9 @@ export class NgExampleComponent implements OnInit {
   title = 'Angular4';
   subtitle = 'Fundamental of Angular 2';
 
-  menuLinks = [
-    { link: '/', text: 'App Home' },
-    { link: '/example/test', text: 'Test' },
-    { link: '/example/template-basic', text: 'Template Basic' },
+  menuLinks = [    
+    { link: '/example/test', text: 'Test Component' },
+    { link: '/example/template-basic', text: 'Template Basic (Data, Event Binding etc)' },
     { link: '/example/types-of-angular-directive', text: 'Directive' },
     { link: '/example/pipes', text: 'Pipes' },
     { link: '/example/user-input-binding', text: 'Data Binding' },
