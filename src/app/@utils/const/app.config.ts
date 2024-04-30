@@ -35,6 +35,11 @@ export const AppConfig = {
         updateHoliday: 'cms/updateHoliday',
         deleteHoliday: 'cms/deleteHoliday',
         getEvents: 'cms/getEvents',
+        
+        // site meta
+        getMetaType: 'cms/getMetaType',
+        getSiteMeta: 'cms/getSiteMeta',
+        addSiteMeta: 'cms/addSiteMeta',
 
         // User
         getUsers: 'user/getUser',

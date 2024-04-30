@@ -340,4 +340,69 @@ class Cms extends App_Controller
         //print_r($sendToList); die();
         $this->common_lib->sendEmail($sendToList, $title, $message);
     }
+
+    function getMetaType_get()
+    {
+        $this->responseData['data']['metaType'] = $this->cms_model->get_metaType_dropdown();
+        $this->statusCode = REST_Controller::HTTP_OK;
+        $this->response($this->responseData, $this->statusCode);
+    }
+
+    function getSiteMeta_get()
+    {
+        $site_meta = $this->get('selectedMetaType') ? $this->get('selectedMetaType') : null;   
+        $perPage = isset($_SERVER['HTTP_PERPAGE']) ? $_SERVER['HTTP_PERPAGE'] : 30; // rows per page
+        $currentPageIndex = isset($_SERVER['HTTP_PAGE']) ? $_SERVER['HTTP_PAGE'] : 0; // page number array index
+        $offset = $currentPageIndex * $perPage;
+        $totalRecords = $this->cms_model->get_sitemeta(NULL, NULL, NULL, $site_meta);
+        $result_array = $this->cms_model->get_sitemeta(NULL, $perPage, $offset, $site_meta);
+        if (isset($result_array)) {
+            if (sizeof($result_array['data_rows']) > 0) {
+                $result_array['num_rows'] = $totalRecords['num_rows'];
+                $this->responseData['data'] = $result_array;
+                $this->statusCode = REST_Controller::HTTP_OK;
+            }
+            else {
+                $this->responseData['data'] = [];
+                $this->responseData['message'] = 'No results found.';
+                $this->statusCode = REST_Controller::HTTP_OK;
+            }
+        } else {
+            $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        }
+        $this->response($this->responseData, $this->statusCode);
+    }
+    
+    function addSiteMeta_post() {
+        $this->checkRolePermissions(array(
+            'adminAccess',
+        ));
+        $formAction = $this->post('action');
+
+        $metaExists = $this->cms_model->metaExists($this->post('metaType'), $this->post('metaValue'), NULL);
+        if($formAction === 'add' && !$metaExists) {
+            $metaType  = $this->post('metaType') == '-1' ? trim($this->post('newMetaType')) : $this->post('metaType');
+            $postdata = array(
+                'meta_type' => $metaType,
+                'meta_value' => trim($this->post('metaValue')),
+                'meta_status' => $this->post('metaStatus'),
+                'meta_code' => trim($this->post('metaCode')),
+            );
+
+            //print_r($postdata); die();
+            $res = $this->cms_model->insert($postdata, 'site_meta');
+            if ($res) {
+                $this->responseData['status'] = 'success';
+                $this->responseData['message'] = 'Meta added successfully.';
+                $this->statusCode = REST_Controller::HTTP_CREATED;
+            } else {
+                $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+            }
+        } else {
+            $this->responseData['message'] = 'Already exists';
+            $this->statusCode = REST_Controller::HTTP_BAD_REQUEST;
+        }
+        
+        $this->response($this->responseData, $this->statusCode);
+    }
 }

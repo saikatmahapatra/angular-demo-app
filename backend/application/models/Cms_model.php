@@ -102,6 +102,59 @@ class Cms_model extends CI_Model
         return array('num_rows' => $num_rows, 'data_rows' => $result);
     }
 
+    function get_metaType_dropdown() {
+        $result = [];
+        $this->db->select('distinct(t1.meta_type) as meta_type');
+        $query = $this->db->get('site_meta as t1');
+        if ($query->num_rows()) {
+            $res = $query->result();
+            foreach ($res as $r) {
+                $a['id'] = $r->meta_type;
+                $a['name'] = $r->meta_type;
+                array_push($result, $a);
+            }
+        }
+        return $result;
+    }
+
+    function get_sitemeta($id = NULL, $limit = NULL, $offset = NULL, $metaType = NULL)
+    {
+        $result = array();
+        $this->db->select('t1.*');
+        if ($id) {
+            $this->db->where('t1.id', $id);
+        }
+        if($metaType) {
+            $this->db->where('t1.meta_type', $metaType);
+        }
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        $this->db->order_by('t1.meta_created_on');
+        $query = $this->db->get('site_meta as t1');
+        //print_r($this->db->last_query()); die();
+        $num_rows = $query->num_rows();
+        $result = $query->result_array();
+        return array('num_rows' => $num_rows, 'data_rows' => $result);
+    }
+
+    function metaExists($type, $val, $id=null) {
+        $this->db->select('t1.id');
+        $this->db->where('t1.meta_type', $type);
+        $this->db->where('t1.meta_value', $val);
+        if($id) {
+            $this->db->where('t1.id !=', $id);
+        }
+        $query = $this->db->get('site_meta t1');
+        //print_r($this->db->last_query());die();
+        $num_rows = $query->num_rows();
+        if($num_rows > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function get_uploads($id = NULL, $limit = NULL, $offset = NULL, $dataTable = FALSE, $checkPaging = TRUE, $cond = NULL)
     {
         $result = array();
