@@ -12,10 +12,16 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width: 3rem"></th>
-                            <th style="width: 40rem;" pSortableColumn="project_name">
+                            <th style="width: 30rem;" pSortableColumn="project_name">
                                 <div class="flex justify-content-between align-items-center">
-                                    Project Name & Code
+                                    Name
                                     <p-sortIcon field="project_name"></p-sortIcon>
+                                </div>
+                            </th>
+                            <th style="width: 10rem;" pSortableColumn="project_code">
+                                <div class="flex justify-content-between align-items-center">
+                                    Code
+                                    <p-sortIcon field="project_code"></p-sortIcon>
                                 </div>
                             </th>
                             <th style="width: 10rem" pSortableColumn="project_start_date">
@@ -55,7 +61,11 @@
                             </td>
                             <td>
                                 <span class="p-column-title">Name</span>
-                                {{rowData?.project_name}} ({{rowData?.project_number}})
+                                {{rowData?.project_name}}
+                            </td>
+                            <td>
+                                <span class="p-column-title">Code</span>
+                                {{rowData?.project_code}}
                             </td>
                             <td>
                                 <span class="p-column-title">Start Date</span>

@@ -112,6 +112,7 @@ export const AppConfig = {
         updateProject: 'project/updateProject',
         deleteProject: 'project/deleteProject',
         timesheetChartData: 'timesheet/timesheetChartData',
+        projectFormData: 'project/formData',
 
         // Timesheet Project Tasks
         taskFormData: 'task/formData',

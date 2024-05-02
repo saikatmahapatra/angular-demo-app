@@ -20,15 +20,19 @@ class Project extends App_Controller
     function createProject_post()
     {
         $formAction = $this->post('action');
+        $category = explode('-', $this->post('category'));
         $postdata = array(
-            'project_number' => $this->post('projectNumber'),
+            'project_code' => $this->post('projectCode'),
             'project_name' => $this->post('projectName'),
             'project_desc' => $this->post('description'),
             'project_status' => $this->post('status'),
             'project_start_date' => $this->common_lib->convert_to_mysql($this->post('startDate')),
-            'project_end_date' => $this->common_lib->convert_to_mysql($this->post('endDate')),
+            'project_end_date' => $this->post('endDate') ? $this->common_lib->convert_to_mysql($this->post('endDate')) : null,
             'created_on' => date('Y-m-d H:i:s'),
-            'created_by' => $this->getUserId()
+            'created_by' => $this->getUserId(),
+            'project_category_id' => $category ? $category[0] : null,
+            'project_commencement_year' => $this->post('commencementYear'),
+            'project_serial_no' => $this->post('refNumber')
         );
 
         if ($formAction === 'add') {
@@ -74,16 +78,20 @@ class Project extends App_Controller
     {
         $id = $this->put('id') ? $this->put('id') : null;
         $formAction = $this->put('action');
+        $category = explode('-', $this->put('category'));
         if ($id && $formAction == 'edit') {
             $postdata = array(
-                'project_number' => $this->put('projectNumber'),
+                'project_code' => $this->put('projectCode'),
                 'project_name' => $this->put('projectName'),
                 'project_desc' => $this->put('description'),
                 'project_status' => $this->put('status'),
                 'project_start_date' => $this->common_lib->convert_to_mysql($this->put('startDate')),
-                'project_end_date' => $this->common_lib->convert_to_mysql($this->put('endDate')),
+                'project_end_date' => $this->put('endDate') ? $this->common_lib->convert_to_mysql($this->put('endDate')) : null,
                 'updated_on' => date('Y-m-d H:i:s'),
-                'updated_by' => $this->getUserId()
+                'updated_by' => $this->getUserId(),
+                'project_category_id' => $category ? $category[0] : null,
+                'project_commencement_year' => $this->put('commencementYear'),
+                'project_serial_no' => $this->put('refNumber')
             );
             $where = array('id' => $this->put('id'));
             $res = $this->project_model->update($postdata, $where);
@@ -124,6 +132,13 @@ class Project extends App_Controller
     function projectDropdown_get() {
         $this->isAuthorized();
         $this->responseData['data']= $this->project_model->get_project_dropdown();
+        $this->statusCode = REST_Controller::HTTP_OK;
+        $this->response($this->responseData, $this->statusCode);
+    }
+
+    function formData_get() {
+        $this->isAuthorized();
+        $this->responseData['data']['projectType']= $this->app_model->get_meta_dropdown(array('project_type'), true);
         $this->statusCode = REST_Controller::HTTP_OK;
         $this->response($this->responseData, $this->statusCode);
     }

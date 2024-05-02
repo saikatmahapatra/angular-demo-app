@@ -17,32 +17,37 @@
                                 <input type="text" class="form-control" id="projectName" formControlName="projectName">
                                 <app-validation-error [control]="myForm.controls['projectName']"></app-validation-error>
                             </div>
-                            <!-- <div class="mb-3">
-                                <label class="required" for="projectNumber">Project Category</label>
-                                <input type="text" class="form-control" id="category" maxlength="16"
-                                    formControlName="category">
+                            <div class="mb-3">
+                                <label class="required" for="category">Project Category</label>
+                                <!-- <input type="text" class="form-control" id="category" maxlength="16"
+                                    formControlName="category"> -->
+                                <select class="form-control" formControlName="category" (change)="setProjectCode()">
+                                    <option value="">-</option>
+                                    <option *ngFor="let cat of categoryList" [value]="cat.id">{{cat.name}}</option>
+                                </select>
                                 <app-validation-error [control]="myForm.controls['category']"></app-validation-error>
                             </div>
                             <div class="mb-3">
                                 <label class="required" for="commencementYear">Commencement Year</label>
                                 <input type="number" min="2014" max="2099" step="1" class="form-control"
-                                    id="commencementYear" maxlength="4" formControlName="commencementYear">
+                                    id="commencementYear" maxlength="4" formControlName="commencementYear"
+                                    (blur)="setProjectCode()">
                                 <app-validation-error
                                     [control]="myForm.controls['commencementYear']"></app-validation-error>
                             </div>
                             <div class="mb-3">
                                 <label class="required" for="refNumber">Reference Number</label>
                                 <input type="text" class="form-control" id="refNumber" maxlength="16"
-                                    formControlName="refNumber">
+                                    formControlName="refNumber" (blur)="setProjectCode()">
                                 <app-validation-error [control]="myForm.controls['refNumber']"></app-validation-error>
-                            </div> -->
+                            </div>
 
                             <div class="mb-3">
-                                <label class="required" for="projectNumber">Project Code</label>
-                                <input type="text" class="form-control" id="projectNumber" maxlength="16"
-                                    formControlName="projectNumber">
-                                <app-validation-error
-                                    [control]="myForm.controls['projectNumber']"></app-validation-error>
+                                <label class="required" for="projectCode">Project Code</label>
+                                <input type="text" class="form-control" id="projectCode" maxlength="16"
+                                    formControlName="projectCode" [readOnly]="!editProjectCode">
+                                <div class="small" *ngIf="!editProjectCode">This code is auto generated based on your input. Do you want to edit it? <a class="btn btn-sm btn-link py-0" (click)="editProjectCode = true">Edit code</a></div>
+                                <app-validation-error [control]="myForm.controls['projectCode']"></app-validation-error>
                             </div>
 
                             <div class="mb-3">

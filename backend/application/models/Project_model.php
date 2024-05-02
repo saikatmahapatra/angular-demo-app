@@ -55,13 +55,14 @@ class Project_model extends CI_Model {
 
     function get_rows($id = NULL, $paginate = false, $perPage = NULL, $offset = NULL) {
         $result = array();
-        $this->db->select('t1.*');
+        $this->db->select('t1.*, t2.meta_value, t2.meta_code');
         if ($id) {
             $this->db->where('t1.id', $id);
         }
         if ($paginate == true && $perPage != 0) {
             $this->db->limit($perPage, $offset);
         }
+        $this->db->join('site_meta t2', 't1.project_category_id = t2.id', 'left');
         $this->db->order_by('t1.id', 'desc');        
         $query = $this->db->get('projects as t1');
         $num_rows = $query->num_rows();
@@ -162,7 +163,7 @@ class Project_model extends CI_Model {
         $this->db->select('
 		t1.*,
         t2.project_name,
-        t2.project_number,
+        t2.project_code,
 		t3.task_name
 		');
 		$this->db->join('projects as t2', 't2.id = t1.project_id', 'left');        
@@ -238,7 +239,7 @@ class Project_model extends CI_Model {
 	
 	function get_project_dropdown() {
         $result = [];
-        $this->db->select('id,project_name,project_number');		
+        $this->db->select('id,project_name,project_code');		
         $this->db->where('project_status','Y');
         $this->db->order_by('project_name');		
         $query = $this->db->get('projects');
@@ -246,7 +247,7 @@ class Project_model extends CI_Model {
             $res = $query->result();
             foreach ($res as $r) {
                 $a['id'] = $r->id;
-                $a['name'] = $r->project_name.' - '.$r->project_number;
+                $a['name'] = $r->project_name.' - '.$r->project_code;
                 array_push($result, $a);
             }
         }
@@ -255,11 +256,11 @@ class Project_model extends CI_Model {
 
 	function get_project_dropdown_searchable($keywords) {
         $result = array();
-        $this->db->select('id,project_name,project_number');		
+        $this->db->select('id,project_name,project_code');		
         $this->db->where('project_status','Y');
         //$this->db->order_by('project_name');	
         $this->db->like('project_name', $keywords);
-        $this->db->or_like('project_number', $keywords);
+        $this->db->or_like('project_code', $keywords);
         $query = $this->db->get('projects');
         #echo $this->db->last_query();
         //$result = array('' => 'Select');
@@ -268,7 +269,7 @@ class Project_model extends CI_Model {
             $i=0;
             foreach ($res as $r) {
                 $result[$i]["id"] = $r->id;
-                $result[$i]["text"] =$r->project_name.' - '.$r->project_number;
+                $result[$i]["text"] =$r->project_name.' - '.$r->project_code;
                 $i++;
             }
         }
@@ -289,7 +290,7 @@ class Project_model extends CI_Model {
         t1.timesheet_review_status,
         t1.timesheet_reviewed_by,
         t1.timesheet_reviewed_on,
-		t2.project_number,
+		t2.project_code,
 		t2.project_name,
 		t3.task_name,
 		t4.user_full_name,

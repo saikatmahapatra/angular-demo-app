@@ -30,9 +30,9 @@ class App_model extends CI_Model {
         return $result;
     }
 
-    function get_meta_dropdown($types) {
+    function get_meta_dropdown($types, $requiredCode = false) {
         $result = [];
-        $this->db->select('id, meta_value');
+        $this->db->select('id, meta_value, meta_code');
         $this->db->where('meta_status','Y');
         $this->db->where_in('meta_type', $types);
 		$this->db->order_by('meta_value');
@@ -40,7 +40,11 @@ class App_model extends CI_Model {
         if ($query->num_rows()) {
             $res = $query->result();
             foreach ($res as $r) {
-                $a['id'] = $r->id;
+                if($requiredCode) {
+                    $a['id'] = $r->id.'-'.$r->meta_code;
+                } else {
+                    $a['id'] = $r->id;
+                }
                 $a['name'] = $r->meta_value;
                 array_push($result, $a);
             }

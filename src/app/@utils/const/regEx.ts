@@ -47,5 +47,6 @@ export const regEx = {
     message_body: /^[^=\"'<>]*$/,
     pan_number: /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/,
     alphanumericWithSpaceAllowedChars: /^[A-Za-z0-9\.\-\'\s,&()]*$/,
-    onlyspace: /^\s*$/
+    onlyspace: /^\s*$/,
+    alphanumericWithoutSpace: /^[a-zA-Z0-9]*$/
 };

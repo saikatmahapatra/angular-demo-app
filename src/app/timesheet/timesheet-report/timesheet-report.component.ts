@@ -115,7 +115,7 @@ export class TimesheetReportComponent implements OnInit {
         "ID": item?.id,
         "TIMESHEET DATE": item?.timesheet_date,
         "EMPLOYEE NAME": item?.user_full_name,
-        "PROJECT NAME": item?.project_name + ' '+item?.project_number,
+        "PROJECT NAME": item?.project_name + ' '+item?.project_code,
         "TASK NAME": item?.task_name,
         "DESCRIPTION": item?.timesheet_description || '-',
         "LOGGED HOURS": item?.timesheet_hours,

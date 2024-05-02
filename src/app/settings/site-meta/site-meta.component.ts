@@ -35,7 +35,7 @@ export class SiteMetaComponent {
     action: ['add'],
     metaType: ['', [Validators.required]],
     metaValue: ['', [Validators.required, this.validator.notEmpty]],
-    metaCode: [''],
+    metaCode: ['', [this.validator.alphaNumericWithoutSpace]],
     metaStatus: ['Y', [Validators.required]],
     newMetaType: [null]
   });

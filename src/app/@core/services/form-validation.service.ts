@@ -45,7 +45,9 @@ export class FormValidationService {
       invalidNumericTwoDecimal: 'Numeric upto two decimal is accepted.',
       invalidNumber: 'This field should be only integer number.',
       invalidName: 'Please enter name using valid characters.',
-      notEmpty: 'The field can not be empty.'
+      notEmpty: 'The field can not be empty.',
+      pattern: 'The format is invalid',
+      invalidAlphaNumericWithoutSpace: 'Please enter the alpha-numeric values without any space or special characters.'
   };
   if(errorMessage[rule]) {
       return errorMessage[rule];
@@ -135,6 +137,12 @@ export class FormValidationService {
     const regex = new RegExp(regEx.alphanumericWithSpaceAllowedChars);
     const valid = regex.test(control.value);
     return valid ? null : { 'invalidAlphaNumericWithSpace': true };
+  }
+
+  alphaNumericWithoutSpace(control: AbstractControl) {
+    const regex = new RegExp(regEx.alphanumericWithoutSpace);
+    const valid = regex.test(control.value);
+    return valid ? null : { 'invalidAlphaNumericWithoutSpace': true };
   }
 
   numericTwoDecimal(control: AbstractControl) {    

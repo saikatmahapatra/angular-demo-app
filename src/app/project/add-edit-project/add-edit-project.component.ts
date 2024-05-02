@@ -18,6 +18,7 @@ export class AddEditProjectComponent implements OnInit {
   id: any = '';
   isAdd = true;
   title = 'Add';
+  editProjectCode = true;
 
   DataStatus: Array<any> = [
     { id: 'Y', name: 'Active' },
@@ -29,15 +30,15 @@ export class AddEditProjectComponent implements OnInit {
   myForm = this.fb.group({
     id: [null],
     action: ['add'],
-    projectNumber: ['', [Validators.required, this.validator.notEmpty]],
+    projectCode: ['', [Validators.required, this.validator.notEmpty]],
     projectName: ['', [Validators.required, this.validator.notEmpty, this.validator.alphaNumericWithSpace]],
     startDate: ['', [Validators.required]],
     endDate: [''],
     description: ['', [this.validator.notEmpty]],
     status: ['Y', [Validators.required]],
-    // category: ['', [Validators.required]],
-    // commencementYear: ['', [Validators.required]],
-    // refNumber: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    commencementYear: ['', [Validators.required]],
+    refNumber: ['', [Validators.required]],
   });
 
   constructor(
@@ -48,10 +49,11 @@ export class AddEditProjectComponent implements OnInit {
     private alertSvc: AlertService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) { 
+  ) {
   }
 
   ngOnInit(): void {
+    this.getFormData();
     if (this.router.url.indexOf('edit-project') != -1) {
       this.isAdd = false;
       this.title = 'Edit';
@@ -65,6 +67,12 @@ export class AddEditProjectComponent implements OnInit {
       this.getProject();
     }
     this.commonSvc.setTitle(this.title + ' Project');
+  }
+
+  getFormData() {
+    this.apiSvc.get(AppConfig.apiUrl.projectFormData).subscribe((val: any) => {
+      this.categoryList = val?.data?.projectType;
+    });
   }
 
   onSubmit() {
@@ -113,15 +121,35 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   patchFormValue(data: any) {
+    const cat = data?.meta_code.length > 0 ? data?.project_category_id + '-' + data?.meta_code : data?.project_category_id;
     this.myForm.patchValue({
       id: data?.id,
       action: 'edit',
-      projectNumber: data?.project_number,
+      projectCode: data?.project_code,
       projectName: data?.project_name,
-      startDate: new Date(data?.project_start_date),
-      endDate: new Date(data?.project_end_date),
+      startDate: data?.project_start_date ? new Date(data?.project_start_date) : '',
+      endDate: data?.project_end_date ? new Date(data?.project_end_date) : '',
       description: data?.project_desc,
-      status: data?.project_status
+      status: data?.project_status,
+      category: cat,
+      commencementYear: data?.project_commencement_year,
+      refNumber: data?.project_serial_no,
     });
+  }
+
+  setProjectCode() {
+    const category = this.myForm.controls['category'].value || '';
+    const cYear = this.myForm.controls['commencementYear'].value || '';
+    const refNo = this.myForm.controls['refNumber'].value || '';
+    const catCode = category.split('-')[1];
+    if (catCode && cYear && refNo) {
+      const projectCode = catCode + '' + cYear + '' + refNo;
+      this.myForm.controls['projectCode'].setValue(projectCode);
+      this.editProjectCode = false;
+    }
+    else {
+      this.myForm.controls['projectCode'].setValue('');
+      this.editProjectCode = true;
+    }
   }
 }
