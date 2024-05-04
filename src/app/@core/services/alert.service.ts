@@ -30,22 +30,22 @@ export class AlertService {
 
   success(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'success', text: message });
+    this.subject.next({ type: 'success', summary: 'Success', text: message });
   }
 
   error(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'error', text: message });
+    this.subject.next({ type: 'error', summary: 'Error', text: message });
   }
 
   info(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'info', text: message });
+    this.subject.next({ type: 'info', summary: 'Info', text: message });
   }
 
   warning(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'warning', text: message });
+    this.subject.next({ type: 'warning', summary: 'Warning', text: message });
   }
 
   clear() {

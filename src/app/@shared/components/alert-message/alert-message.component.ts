@@ -11,20 +11,21 @@ import { Message, MessageService } from 'primeng/api';
 export class AlertMessageComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription;
-  messages!: Message[];
+  messages: Message[] = [];
   constructor(private alertService: AlertService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.subscription = this.alertService.getAlert()
       .subscribe(message => {
         window.scrollTo(0, 0);
-        this.messages = [{ severity: message.type, summary: this.capitalizeFLetter(String(message.type)), detail: message.text }];
-        //this.messageService.add({ severity: message.type, summary: message.type, detail: message.text });
+        if (message.type) {
+          this.messages = [{ severity: message.type, summary: message.summary, detail: message.text }];
+          //this.messageService.add({ severity: message.type, summary: message.summary, detail: message.text });
+        } else {
+          this.messages = [];
+          //this.messageService.clear();
+        }
       });
-  }
-
-  capitalizeFLetter(string: string) {
-    return (string.charAt(0).toUpperCase() + string.slice(1));
   }
 
   ngOnDestroy() {

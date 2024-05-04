@@ -1,2 +1,2 @@
-<p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
-<!-- <p-toast position="top-center" styleClass="w-75" [life]="6000"></p-toast> -->
+<p-messages *ngIf="messages" [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+<!-- <p-toast position="top-center" style="width: 100%;" [life]="6000"></p-toast> -->
