@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivateChild {
       routeMessage = "Your session has expired."
     }
 
-    if (routeMessage) this.alertService.error(routeMessage, false);
+    if (routeMessage) this.alertService.setAlert('error', routeMessage, false);
     //console.log(routeMessage);
 
     this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });

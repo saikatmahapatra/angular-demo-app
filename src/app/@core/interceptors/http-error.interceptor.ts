@@ -26,7 +26,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.message}`;
           handled = this.handleServerSideError(returnedError);
         }
-        //console.error("ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
+        //console.setAlert('error', "ERROR HttpErrorInterceptor : ", errorMessage ? errorMessage : returnedError);
         if (!handled) {
           return throwError(returnedError);
         } else {
@@ -42,26 +42,26 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     switch (error.status) {
       case 400:
         let message = error?.error?.message ? error.error.message : 'We are unable to process your request at this moment. Please try after sometime.';
-        this.alertSvc.error(message, false);
+        this.alertSvc.setAlert('error', message, false);
         handled = true;
         break;
 
       case 401:
         if (this.router.url != '/login') {
-          this.alertSvc.error('You are not authorized to access this page. Please login to continue.', false);
+          this.alertSvc.setAlert('error', 'You are not authorized to access this page. Please login to continue.', false);
           this.authSvc.clearStorageData();
           handled = true;
         }
         break;
 
       case 403:
-        this.alertSvc.error('Please login to continue.', false);
+        this.alertSvc.setAlert('error', 'Please login to continue.', false);
         this.authSvc.clearStorageData();
         handled = true;
         break;
 
       default:
-        this.alertSvc.error(error.message, false);
+        this.alertSvc.setAlert('error', error.message, false);
         break;
     }
 

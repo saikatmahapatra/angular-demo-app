@@ -107,7 +107,7 @@ export class KoreAiComponent implements OnInit {
         return true;
       },
       error => {
-        console.error("Error in fetching data from KORE AI BOT URL");
+        console.error('error', "Error in fetching data from KORE AI BOT URL");
         return observableThrowError(error);
       }
     );

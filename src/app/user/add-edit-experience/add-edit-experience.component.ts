@@ -69,7 +69,7 @@ export class AddEditExperienceComponent implements OnInit {
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addExperience, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.myForm.reset();
           this.router.navigate(['emp/my-profile']);
         },
@@ -79,7 +79,7 @@ export class AddEditExperienceComponent implements OnInit {
     } else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updateExperience, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.myForm.reset();
           this.router.navigate(['emp/my-profile']);
         },

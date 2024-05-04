@@ -24,28 +24,13 @@ export class AlertService {
     });
   }
 
+  setAlert(type: string, message: string, keepAfterRouteChange = false) {
+    this.keepAfterRouteChange = keepAfterRouteChange;
+    this.subject.next({ type: type, summary: type, text: message });
+  }
+
   getAlert(): Observable<any> {
     return this.subject.asObservable();
-  }
-
-  success(message: string, keepAfterRouteChange = false) {
-    this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'success', summary: 'Success', text: message });
-  }
-
-  error(message: string, keepAfterRouteChange = false) {
-    this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'error', summary: 'Error', text: message });
-  }
-
-  info(message: string, keepAfterRouteChange = false) {
-    this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'info', summary: 'Info', text: message });
-  }
-
-  warning(message: string, keepAfterRouteChange = false) {
-    this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'warning', summary: 'Warning', text: message });
   }
 
   clear() {

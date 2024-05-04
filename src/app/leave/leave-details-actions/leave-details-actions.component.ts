@@ -119,7 +119,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
     const postData = { id: leaveId, userId: userId, workflow: workFlow, newStatus: status, comments:  commentsText};
     this.apiSvc.post(AppConfig.apiUrl.updateLeave, postData).subscribe({
       next: (response: any) => {
-        this.alertSvc.success(response.message, true);
+        this.alertSvc.setAlert('success', response.message, true);
         this.loading = false;
         this.getLeaveData();
       },

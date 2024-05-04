@@ -109,7 +109,7 @@ export class ManageHolidaysComponent implements OnInit {
     this.apiSvc.delete(AppConfig.apiUrl.deleteHoliday, options).subscribe({
       next: (response: any) => {
         this.setAddMode();
-        this.alertSvc.success(response.message);
+        this.alertSvc.setAlert('success', response.message);
         this.getHolidays();
       }
     });
@@ -121,7 +121,7 @@ export class ManageHolidaysComponent implements OnInit {
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addHoliday, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.getHolidays();
           this.setAddMode();
         },
@@ -132,7 +132,7 @@ export class ManageHolidaysComponent implements OnInit {
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updateHoliday, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.getHolidays();
           this.setAddMode();
         },

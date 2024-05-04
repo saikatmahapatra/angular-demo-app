@@ -34,12 +34,12 @@ export class CommonService {
   }
   warn(msg: any) {
     if (this.showAppLogs === true) {
-      console.warn(msg);
+      console.warn('warn', msg);
     }
   }
   error(msg: any) {
     if (this.showAppLogs === true) {
-      console.error(msg);
+      console.error('error', msg);
     }
   }
 

@@ -76,7 +76,7 @@ export class AddEditEducationComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addEducation, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['emp/my-profile']);
           }
@@ -89,7 +89,7 @@ export class AddEditEducationComponent implements OnInit {
       this.apiSvc.put(AppConfig.apiUrl.updateEducation, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['emp/my-profile']);
           }

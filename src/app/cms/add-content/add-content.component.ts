@@ -84,7 +84,7 @@ export class AddContentComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addPost, this.myForm.value).subscribe({
         next: (response: any) => {
           this.router.navigate(['cms/manage-cms']);
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }
@@ -94,7 +94,7 @@ export class AddContentComponent implements OnInit {
       this.apiSvc.put(AppConfig.apiUrl.updatePost, this.myForm.value).subscribe({
         next: (response: any) => {
           this.router.navigate(['cms/manage-cms']);
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
         },
         error: () => { this.loading = false; },
         complete: () => { this.loading = false; }

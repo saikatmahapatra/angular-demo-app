@@ -136,7 +136,7 @@ export class SiteMetaComponent {
   //   this.apiSvc.delete(AppConfig.apiUrl.deleteHoliday, options).subscribe({
   //     next: (response: any) => {
   //       this.setAddMode();
-  //       this.alertSvc.success(response.message);
+  //       this.alertSvc.setAlert('success', response.message);
   //       this.getSiteMeta();
   //     }
   //   });
@@ -148,7 +148,7 @@ export class SiteMetaComponent {
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
       this.apiSvc.post(AppConfig.apiUrl.addSiteMeta, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.getSiteMeta();
           this.setAddMode();
         },
@@ -159,7 +159,7 @@ export class SiteMetaComponent {
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
       this.apiSvc.put(AppConfig.apiUrl.updateHoliday, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.getSiteMeta();
           this.setAddMode();
         },

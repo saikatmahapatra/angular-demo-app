@@ -80,7 +80,7 @@ export class AddEditTaskComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addTask, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['project/manage-tasks']);
           }
@@ -93,7 +93,7 @@ export class AddEditTaskComponent implements OnInit {
       this.apiSvc.put(AppConfig.apiUrl.updateTask, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['project/manage-tasks']);
           }

@@ -17,6 +17,7 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.alertService.getAlert()
       .subscribe(message => {
+        console.log('alertService.getAlert');
         window.scrollTo(0, 0);
         if (message.type) {
           this.messages = [{ severity: message.type, summary: message.summary, detail: message.text }];

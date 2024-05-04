@@ -161,7 +161,7 @@ export class TimesheetFormComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addTimesheet, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.resetTimesheetForm();
             this.getTimesheetData();
           }

@@ -105,7 +105,7 @@ export class LeaveBalanceCalculationComponent implements OnInit {
         const postData = {'action': 'updateBatch', 'leaveBalance': this.postData};
         this.apiSvc.post(AppConfig.apiUrl.uploadLeaveData, postData).subscribe({
           next: (response: any) => {
-            this.alertSvc.success(response.message);
+            this.alertSvc.setAlert('success', response.message);
             this.postData = [];
             this.getLeaveBalance();
           },

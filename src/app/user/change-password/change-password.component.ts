@@ -41,7 +41,7 @@ export class ChangePasswordComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.changePassword, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message);
+            this.alertSvc.setAlert('success', response.message);
             this.myForm.reset();
           }
         },

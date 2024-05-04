@@ -102,7 +102,7 @@ export class AddEditAddressComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addAddress, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['emp/my-profile']);
           }
@@ -115,7 +115,7 @@ export class AddEditAddressComponent implements OnInit {
       this.apiSvc.put(AppConfig.apiUrl.updateAddress, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message, true);
+            this.alertSvc.setAlert('success', response.message, true);
             this.myForm.reset();
             this.router.navigate(['emp/my-profile']);
           }

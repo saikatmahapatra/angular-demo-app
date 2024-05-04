@@ -59,7 +59,7 @@ export class AuthService {
     localStorage.removeItem('access_token');
     //localStorage.clear();
     this.loggedInUserSubject.next(null);
-    this.alertSvc.info(message, true);
+    this.alertSvc.setAlert('info', message, true);
     this.router.navigate(['auth/login']);
   }
 

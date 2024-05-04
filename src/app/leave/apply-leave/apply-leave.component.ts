@@ -78,7 +78,7 @@ export class ApplyLeaveComponent implements OnInit {
     if (this.approvers.length > 0 && this.myForm.valid && this.myForm.get('action')?.value === 'applyLeave') {
       this.apiSvc.post(AppConfig.apiUrl.applyLeave, this.myForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.success(response.message, true);
+          this.alertSvc.setAlert('success', response.message, true);
           this.resetFormValue();
           this.router.navigate(['/leave/history']);
         },

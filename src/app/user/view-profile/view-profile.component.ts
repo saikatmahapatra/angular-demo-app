@@ -87,7 +87,7 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteAddress, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
+      this.alertSvc.setAlert('success', response.message);
       this.getProfileData();
     });
   }
@@ -100,7 +100,7 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteEducation, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
+      this.alertSvc.setAlert('success', response.message);
       this.getProfileData();
     });
   }
@@ -113,7 +113,7 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteExperience, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
+      this.alertSvc.setAlert('success', response.message);
       this.getProfileData();
     });
   }
@@ -126,7 +126,7 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deletePayroll, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
+      this.alertSvc.setAlert('success', response.message);
       this.getProfileData();
     });
   }
@@ -139,7 +139,7 @@ export class ViewProfileComponent implements OnInit {
     let options = {};
     options = { params: queryParams };
     this.apiSvc.delete(AppConfig.apiUrl.deleteEmergencyContact, options).subscribe((response: any) => {
-      this.alertSvc.success(response.message);
+      this.alertSvc.setAlert('success', response.message);
       this.getProfileData();
     });
   }

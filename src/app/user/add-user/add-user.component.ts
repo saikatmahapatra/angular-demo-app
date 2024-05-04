@@ -87,7 +87,7 @@ export class AddUserComponent implements OnInit {
       this.apiSvc.post(AppConfig.apiUrl.addUser, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
-            this.alertSvc.success(response.message);
+            this.alertSvc.setAlert('success', response.message);
             this.myForm.reset();
             this.loading = false;
           }

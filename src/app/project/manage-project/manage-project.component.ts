@@ -69,7 +69,7 @@ export class ManageProjectComponent implements OnInit {
   //   let options = {};
   //   options = { params: queryParams };
   //   this.apiSvc.delete(AppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
-  //     this.alertSvc.success(response.message);
+  //     this.alertSvc.setAlert('success', response.message);
   //     this.getProjects();
   //   });
   // }
