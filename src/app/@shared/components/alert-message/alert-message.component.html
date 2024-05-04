@@ -1,8 +1,2 @@
-<div *ngIf="message && message.text" class="alert d-flex align-items-center alert-dismissible fade show sticky-alert" [ngClass]="message.cssClass">
-  <app-icon *ngIf="message.icon == 'success' " [name]="'success'"></app-icon>
-  <app-icon *ngIf="message.icon == 'error' " [name]="'error'"></app-icon>
-  <app-icon *ngIf="message.icon == 'info' " [name]="'info'"></app-icon>
-  <app-icon *ngIf="message.icon == 'warning' " [name]="'warning'"></app-icon>
-  <span class="ms-2" [innerHTML]="message.text"></span>
-  <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
-</div>
+<p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+<!-- <p-toast position="top-center" styleClass="w-75" [life]="6000"></p-toast> -->
