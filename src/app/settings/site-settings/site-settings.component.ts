@@ -63,7 +63,7 @@ export class SiteSettingsComponent implements OnInit {
       
       this.apiSvc.put(AppConfig.apiUrl.updateSiteSettings, this.siteSettingsForm.value).subscribe({
         next: (response: any) => {
-          this.alertSvc.setAlert('success', response.message, true);
+          this.alertSvc.setAlert('success', response.message, false);
           this.getSettings();
         },
         error: (response: HttpErrorResponse) => {

@@ -18,7 +18,7 @@ export class AlertService {
           this.keepAfterRouteChange = false;
         } else {
           // clear alert message
-          this.clear();
+          this.clearAlert();
         }
       }
     });
@@ -33,7 +33,7 @@ export class AlertService {
     return this.subject.asObservable();
   }
 
-  clear() {
+  clearAlert() {
     // clear by calling subject.next() without parameters
     this.subject.next({});
   }
