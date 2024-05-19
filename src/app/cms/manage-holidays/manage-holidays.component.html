@@ -13,7 +13,7 @@
                             <!-- <label class="required d-block" for="date">Holiday</label> -->
                             <p-calendar dateFormat="dd/mm/yy" styleClass="w-100" formControlName="date"
                                 [readonlyInput]="true" inputId="date" [showButtonBar]="false" [showIcon]="true"
-                                placeholder="Holiday Date"></p-calendar>
+                                placeholder="Holiday Date" [iconDisplay]="'input'"></p-calendar>
                             <app-validation-error [control]="myForm.controls['date']"></app-validation-error>
                         </div>
                         <div class="col-md-6 mb-3">
