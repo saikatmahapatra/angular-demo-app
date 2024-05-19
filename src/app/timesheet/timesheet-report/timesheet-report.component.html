@@ -20,7 +20,7 @@
                             <label for="range">Date Range</label>
                             <p-calendar dateFormat="dd/mm/yy" formControlName="dateRange" [(ngModel)]="rangeDates"
                                 selectionMode="range" [readonlyInput]="true" inputId="range" styleClass="w-100"
-                                [maxDate]="maxDate" [showButtonBar]="false" [iconDisplay]="'input'" [showIcon]="true" appendTo="body"
+                                [maxDate]="maxDate" [showButtonBar]="false" [showIcon]="true" appendTo="body"
                                 [panelStyleClass]="'datetimepicker'"></p-calendar>
                             <app-validation-error [control]="myForm.controls['dateRange']"></app-validation-error>
                         </div>
