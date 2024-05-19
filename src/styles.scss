@@ -1,17 +1,23 @@
-// Custom.scss
-// Option A: Include all of Bootstrap
-// Include any default variable overrides here (though functions won't be available)
-@import "./styles/variables";
-@import "../node_modules/bootstrap/scss/bootstrap";
+// Section 1: Customized Bootstrap Theme
+// ###################################################################################
+@import "./styles/variables"; // override bootstrap variables here
+@import "../node_modules/bootstrap/scss/bootstrap"; // import actual Bootstrap scss src file
 
-// Then add additional custom code here (this need to remove as we are using primeNG)
+
+// Section 2: Third-party/vendor styles
+// ###################################################################################
 @import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 @import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 
-// PrimgNG Brand Theme
-//@import "./styles/prime-ng-theme/theme";
-@import "./styles/primeng-sass-theme-16.9.1/themes/saga-blue-customized-theme/theme.scss";
 
+// Section 3: Customized Bootstrap Theme PrimgNG Brand Theme
+// ###################################################################################
+//@import "./styles/prime-ng-theme/theme";
+@import "./styles/primeng-sass-theme-16.9.1/themes/saga-blue-customized-theme/theme";
+
+
+// Section 4: Additional customization/override styles of Bootstrap, PrimeNg or any vendor styles
+// ###################################################################################
 html,
 body {
   height: 100%;
