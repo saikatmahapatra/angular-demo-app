@@ -183,6 +183,27 @@
         <h5 class="fw-bold my-2">Calendar</h5>
         <label class="d-block" for="icon">Icon</label>
         <p-calendar dateFormat="dd/mm/yy" class="mb-2 w-100" [showIcon]="true" inputId="icon"></p-calendar>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="buttondisplay" class="font-bold block mb-2"> Button </label>
+                <p-calendar [showIcon]="true" inputId="buttondisplay" [showOnFocus]="false" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="icondisplay" class="font-bold block mb-2"> Default Icon </label>
+                <p-calendar [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="templatedisplay" class="font-bold block mb-2"> Custom Icon </label>
+                <p-calendar [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
+                    <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+                        <i class="pi pi-clock pointer-events-none pointer-events-none"
+                            (click)="clickCallBack($event)"></i>
+                    </ng-template>
+                </p-calendar>
+            </div>
+        </div>
 
         <!-- <label class="d-block">Inline</label>
       <p-calendar class="mb-2" [inline]="true" [showWeek]="true"></p-calendar> -->
