@@ -26,7 +26,7 @@ $colors: (
 //reused color variables
 $shade0000: #ffffff !default; // to be fixed later to support dark theme
 $shade000: var(--bs-body-bg, #fff) !default; //surface
-$shade100: var(--bs-secondary-bg-subtle, #f8f9fa)!default; //header background #f8f9fa
+$shade100: var(--bs-secondary-bg-subtle, #f8f9fa) !default; //header background #f8f9fa
 $shade200: #e9ecef !default; //hover background #e9ecef
 $shade300: var(--bs-border-color) !default; //border, divider #dee2e6
 $shade400: #ced4da !default; //input border
@@ -909,9 +909,10 @@ $imagePreviewActionIconBorderRadius: 50% !default;
     --highlight-bg: #{$highlightBg};
     --highlight-text-color: #{$highlightTextColor};
     --focus-ring: #{$focusShadow};
-    --body-bg: #EBEDEF;    
+    --body-bg: #EBEDEF;
     color-scheme: light;
-    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"
+    );
 }
 
 [data-bs-theme="dark"] {
