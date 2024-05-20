@@ -24,14 +24,15 @@ $colors: (
     "primary": $primaryColor) !default;
 
 //reused color variables
-$shade000: #ffffff !default; //surface
-$shade100: #f8f9fa !default; //header background
-$shade200: #e9ecef !default; //hover background
-$shade300: #dee2e6 !default; //border, divider
-$shade400: #ced4da !default; //input border
+$shade0000: #ffffff !default; // to be fixed later to support dark theme
+$shade000: var(--bs-body-bg, #fff) !default; //surface
+$shade100: var(--bs-secondary-bg-subtle, #f8f9fa) !default; //header background
+$shade200: var(--bs-list-group-action-hover-bg, #e9ecef) !default; //hover background
+$shade300: var(--bs-border-color) !default; //border, divider
+$shade400: #ced4da !default; //input border var(--bs-border-color, #ced4da)
 $shade500: #adb5bd !default; //input icon
-$shade600: #6c757d !default; //text secondary color
-$shade700: #495057 !default; //text color
+$shade600: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !default; //text secondary color
+$shade700: var(--bs-body-color, #212529) !default; //text color
 $shade800: #343a40 !default; //unused
 $shade900: #212529 !default; //unused
 
@@ -46,11 +47,11 @@ $fontFamily: -apple-system,
     "Apple Color Emoji",
     "Segoe UI Emoji",
     "Segoe UI Symbol" !default;
-$fontSize: 1rem !default;
+$fontSize: $font-size-base !default;
 $fontWeight: normal !default;
 $textColor: $shade700 !default;
 $textSecondaryColor: $shade600 !default;
-$borderRadius: 3px !default;
+$borderRadius: $border-radius !default;
 $transitionDuration: .2s !default;
 $formElementTransition: background-color $transitionDuration,
     color $transitionDuration,
@@ -60,7 +61,7 @@ $actionIconTransition: background-color $transitionDuration,
     color $transitionDuration,
     box-shadow $transitionDuration !default;
 $listItemTransition: box-shadow $transitionDuration !default;
-$primeIconFontSize: 1rem !default;
+$primeIconFontSize: $fontSize !default;
 $divider: 1px solid $shade300 !default;
 $inlineSpacing: .5rem !default;
 $disabledOpacity: .6 !default;
@@ -91,7 +92,7 @@ $actionIconBorderRadius: 50% !default;
 
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding: .5rem .5rem !default;
-$inputTextFontSize: 1rem !default;
+$inputTextFontSize: $fontSize !default;
 
 $inputBg: $shade000 !default;
 $inputTextColor: $shade700 !default;
@@ -382,7 +383,7 @@ $panelHeaderTextHoverColor: $shade700 !default;
 
 $panelContentBorderColor: $shade300 !default;
 $panelContentBorder: 1px solid $shade300 !default;
-$panelContentBg: $shade000 !default;
+$panelContentBg: $shade0000 !default;
 $panelContentEvenRowBg: $shade200 !default;
 $panelContentTextColor: $shade700 !default;
 $panelContentPadding: 1rem !default;
@@ -519,7 +520,7 @@ $tableSortableColumnBadgeSize: 1.143rem !default;
 
 $tableBodyRowBg: $shade000 !default;
 $tableBodyRowTextColor: $shade700 !default;
-$tableBodyRowEvenBg: scale-color($tableBodyRowBg, $lightness: -1%) !default;
+$tableBodyRowEvenBg: scale-color($shade0000, $lightness: -1%) !default;
 $tableBodyRowHoverBg: $shade200 !default;
 $tableBodyRowTextHoverColor: $shade700 !default;
 $tableBodyCellBorder: 1px solid $shade200 !default;
@@ -586,14 +587,14 @@ $messageMargin: 1rem 0 !default;
 $messagePadding: 1rem 1.5rem !default;
 $messageBorderWidth: 0 0 0 6px !default;
 $messageIconFontSize: 1.5rem !default;
-$messageTextFontSize: 1rem !default;
+$messageTextFontSize: $fontSize !default;
 $messageTextFontWeight: 500 !default;
 
 //inline message
 $inlineMessagePadding: $inputPadding !default;
 $inlineMessageMargin: 0 !default;
-$inlineMessageIconFontSize: 1rem !default;
-$inlineMessageTextFontSize: 1rem !default;
+$inlineMessageIconFontSize: $fontSize !default;
+$inlineMessageTextFontSize: $fontSize !default;
 $inlineMessageBorderWidth: 0px !default;
 
 //toast
@@ -913,5 +914,13 @@ $imagePreviewActionIconBorderRadius: 50% !default;
     --highlight-bg: #{$highlightBg};
     --highlight-text-color: #{$highlightTextColor};
     --focus-ring: #{$focusShadow};
-    color-scheme: light;
+    --body-bg: #EBEDEF;
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"
+    );
+color-scheme: light;
+}
+
+[data-bs-theme="dark"] {
+    --body-bg: #212529;
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236ea8fe'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
