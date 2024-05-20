@@ -1,7 +1,6 @@
 // Section 1: Customized Bootstrap Theme
 // ###################################################################################
-@import "./styles/variables"; // override bootstrap variables here
-@import "../node_modules/bootstrap/scss/bootstrap"; // import actual Bootstrap scss src file
+@import "./styles/bootstrap/bootstrap-theme";
 
 
 // Section 2: Third-party/vendor styles
@@ -12,9 +11,7 @@
 
 // Section 3: Customized Bootstrap Theme PrimgNG Brand Theme
 // ###################################################################################
-@import "./styles/primeng-sass-theme-12/themes/my-custom-saga-blue/theme";
-//@import "./styles/primeng-sass-theme-16.9.1/themes/saga-blue-customized-theme/theme";
-
+@import "./styles/primeng/primeng-sass-theme-12/themes/my-custom-saga-blue/theme";
 
 // Section 4: Additional customization/override styles of Bootstrap, PrimeNg or any vendor styles
 // ###################################################################################

@@ -1,4 +1,6 @@
-$primaryColor: #1976d2 !default; // #004386 dark blue old
+@import "../../../../variables";
+
+$primaryColor: $primary !default; // #004386 dark blue old
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
 $primaryDarkerColor: scale-color($primaryColor, $lightness: -20%) !default;
