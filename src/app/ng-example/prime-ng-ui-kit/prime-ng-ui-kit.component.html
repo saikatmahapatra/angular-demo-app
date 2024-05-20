@@ -1,3 +1,4 @@
+<p-toast position="top-center" styleClass="csps-toast w-100"></p-toast>
 <h3 class="mb-4">PrimeNG Custom Theme</h3>
 <h5 class="exmple-heading">Basic</h5>
 <p-button label="Submit" class="me-2"></p-button>
@@ -329,3 +330,55 @@
         </div>
     </div>
 </div>
+
+<h5 class="exmple-heading">CSV Upload</h5>
+<p-button label="Link" styleclass="me-2 p-button-link" (onClick)="openUploadModal()"></p-button>
+<p-dialog header="Dialog Title" [(visible)]="displayUploadModal" [modal]="true"
+    [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+    <div class="m-0">
+      <div class="mb-3">Download a sample CSV file</div>
+      <div class="">
+        <p-fileUpload #myFileUploader [disabled]="disableFileUploader" styleClass="csps-uploader" name="myfile[]"
+          accept=".csv" [maxFileSize]="5242880" [auto]="true" chooseLabel="Choose File"
+          chooseStyleClass="p-button-rounded" chooseIcon="" [customUpload]="true"
+          (uploadHandler)="uploadHandler($event)" (onRemove)="removeClearFile()"
+          invalidFileSizeMessageDetail="File size exceeded"
+          invalidFileTypeMessageDetail="Invalid file format">
+          <ng-template pTemplate="toolbar">
+            <span class="">or</span>
+          </ng-template>
+          <ng-template let-file pTemplate="file">
+            <div class="row">
+              <div class="col-md-12 text-center font-weight-bold">{{file.name}}</div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="content" let-files>
+            <p-messages styleClass="mb-3" [(value)]="fileHandlerMessages" [enableService]="false"
+              [closable]="true"></p-messages>
+            <div class="csps-upload-content-text text-center">
+              <i class="pi font-2x pi-cloud-upload font-weight-bold mr-2" aria-hidden="true"></i>
+              <div class="d-inline">
+                Drag file here
+              </div>
+            </div>
+          </ng-template>
+        </p-fileUpload>
+        <div class="text-right">
+          <button (click)="saveCSVData()" [disabled]="disableManualFileUploadBtn" pButton pRipple type="button"
+            class="btn-csps p-button-rounded my-3">Upload
+            <div class="spinner-border text-light spinner-border-sm ml-2" role="status"
+              *ngIf="showUploadProgressLoader">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </button>
+        </div>
+        <p-messages [(value)]="csvFileUploadMessage" [enableService]="false" [closable]="true" />
+        <div *ngIf="csvFileUploadLog.length > 0">
+          <h6>Result</h6>
+          <div class="csv-upload-log p-2">
+            <div *ngFor="let log of csvFileUploadLog">{{log?.row}}: {{log?.detail}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-dialog>

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MenuItem, Message, MessageService } from 'primeng/api';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-prime-ng-ui-kit',
   templateUrl: './prime-ng-ui-kit.component.html',
-  styleUrls: ['./prime-ng-ui-kit.component.scss']
+  styleUrls: ['./prime-ng-ui-kit.component.scss'],
+  providers: [MessageService]
 })
 export class PrimeNgUiKitComponent implements OnInit {
 
@@ -171,7 +173,20 @@ export class PrimeNgUiKitComponent implements OnInit {
   activeStepIndex: number = 0;
   steps: MenuItem[] = [];
 
-  constructor() { }
+  // file uploader related
+  displayUploadModal = false;
+  fileUploadEventObj: any
+  disableFileUploader = false;
+  disableManualFileUploadBtn = true;
+  showUploadProgressLoader = false;
+  @ViewChild('myFileUploader') myFileUploader!: FileUpload;
+  fileHandlerMessages: Message[] = [];
+  csvFileUploadLog: any = [];
+  csvFileUploadMessage: Message[] = [];
+  csvPayload: any = [];
+  // file uploader related ends here
+
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
     // Steps
@@ -188,6 +203,84 @@ export class PrimeNgUiKitComponent implements OnInit {
       label: 'Confirmation'
     }
     ];
+  }
+
+  openUploadModal() {
+    this.removeClearFile();
+    this.displayUploadModal = true;
+    this.csvFileUploadLog = [];
+    this.csvFileUploadMessage = [];
+  }
+
+  removeClearFile() {
+    this.myFileUploader.clear();
+    this.fileUploadEventObj = null;
+    this.disableManualFileUploadBtn = true;
+  }
+
+  uploadHandler(fileUploadEvent: any) {
+    this.fileUploadEventObj = fileUploadEvent;
+    // Read CSV File and create payload
+    if (this.fileUploadEventObj) {
+      const file = this.fileUploadEventObj.files[0] as File;
+      const reader: FileReader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        this.csvFileUploadLog = [];
+        this.csvFileUploadMessage = [];
+        const csv: any = reader.result;
+        const csvData = csv.split('\n') || [];
+        this.csvPayload = [];
+        if (csvData.length > 0) {
+          csvData.forEach((csvRow: string, index: number) => {
+            if (csvRow.length > 0) {
+              const csvRowData = csvRow.replace(/\;/g, ',').split('\,');
+              if (csvRowData.length > 10) {
+                this.csvFileUploadLog.push({ row: index + 1, detail: 'Count of max allowed columns exceeded.' });
+              }
+              // if (csvRowData.length > 5) {
+              //   this.csvFileUploadLog.push({ row: index + 1, detail: 'Maximum 5 rows are allowed, found ' + csvRowData.length + ' rows.' });
+              // }
+
+              if (this.csvFileUploadLog.length == 0) {
+                const payloadItem = {
+                  groupName: csvRowData[2],
+                  orderType: csvRowData[3],
+                  discountCode: csvRowData[4],
+                  pcc: csvRowData[5],
+                  partNumber: csvRowData[6],
+                  validityFromToc: csvRowData[7],
+                  validityToToc: csvRowData[8],
+                  discountToc: csvRowData[9].replace('\r', '')
+                };
+                this.csvPayload.push(payloadItem);
+              }
+            }
+          });
+          if (this.csvFileUploadLog.length == 0) {
+            this.disableManualFileUploadBtn = false;
+          }
+        }
+      }
+    }
+  }
+
+  saveCSVData() {
+    if (this.csvFileUploadLog.length == 0 && this.csvPayload.length > 0) {
+      console.log("this.csvPayload==", this.csvPayload);
+      this.showUploadProgressLoader = true;
+      this.disableManualFileUploadBtn = true;
+      //====== For fake API call time delay we are setting here timeout for demo, in your real code never use setTimeout
+      setTimeout(() => {
+        // if success or error stop showing loader
+        this.showUploadProgressLoader = false;
+
+        // on upload success/error clear object
+        this.removeClearFile();
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'File has been uploaded successfully!' });
+      }, 5000)
+      //====== end of For fake API call time delay we are setting here timeout for demo, in your real code never use setTimeout
+    }
   }
 
 }

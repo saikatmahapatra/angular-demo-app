@@ -1,3 +1,9 @@
 .exmple-heading {
     margin: 1.5rem 0 0.5rem 0;
 }
+
+.csv-upload-log {
+    max-height: 100px;
+    overflow-y: scroll;
+    background-color: var(--gray-50);
+}
