@@ -214,16 +214,16 @@
     <div class="col-md-6">
         <h5 class="exmple-heading">RadioButton (Inline)</h5>
         <span *ngFor="let radio of optionCategoriesInline" class="me-3">
-            <p-radioButton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key" [(ngModel)]="selectedRadio"
-                [disabled]="radio.key === 'R'"></p-radioButton>
+            <p-radioButton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key"
+                [(ngModel)]="selectedRadio" [disabled]="radio.key === 'R'"></p-radioButton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === 'R' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
         </span>
 
         <h5 class="exmple-heading">RadioButton (Block)</h5>
         <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
-            <p-radioButton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key" [(ngModel)]="selectedRadio2"
-                [disabled]="radio.key === '3'"></p-radioButton>
+            <p-radioButton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key"
+                [(ngModel)]="selectedRadio2" [disabled]="radio.key === '3'"></p-radioButton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === '3' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
         </div>
@@ -286,5 +286,46 @@
                 </tr>
             </ng-template>
         </p-table>
+    </div>
+</div>
+
+<h5 class="exmple-heading">Steps</h5>
+<div class="">
+    <p-steps [model]="steps" [(activeIndex)]="activeStepIndex" [readonly]="true" styleClass="my-4"></p-steps>
+    <div *ngIf="activeStepIndex === 0" class="py-4">
+        <h6 class="mb-5">{{steps[0]?.label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-end">
+            <button pButton pRipple type="button" label="Next" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 1"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 1" class="py-4">
+        <h6 class="mb-5">{{steps[1]?.label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-between">
+            <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
+                (click)="activeStepIndex = 0"></button>
+            <button pButton pRipple type="button" label="Next" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 2"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 2" class="py-4">
+        <h6 class="mb-5">{{steps[2]?.label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-between">
+            <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
+                (click)="activeStepIndex = 1"></button>
+            <button pButton pRipple type="button" label="Pay" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 3"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 3" class="py-4">
+        <h6 class="mb-5">{{steps[3]?.label}}</h6>
+        <p>[success or error message goes here]</p>
+        <div class="d-flex justify-content-end">
+            <button pButton pRipple type="button" label="Book another ticket"
+                class="btn-csps p-button-rounded p-button-secondary" (click)="activeStepIndex = 0"></button>
+        </div>
     </div>
 </div>
