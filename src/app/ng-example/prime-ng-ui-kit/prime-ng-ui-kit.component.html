@@ -211,8 +211,8 @@
     </div>
     <div class="col-md-6">
         <h5 class="fw-bold mb-3">RadioButton (Inline)</h5>
-        <span *ngFor="let radio of optionCategoriesInline" class="mr-4">
-            <p-radioButton [inputId]="radio.key" name="radioInline" [value]="radio.key" [(ngModel)]="selectedRadio"
+        <span *ngFor="let radio of optionCategoriesInline" class="me-3">
+            <p-radioButton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key" [(ngModel)]="selectedRadio"
                 [disabled]="radio.key === 'R'"></p-radioButton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === 'R' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
@@ -220,15 +220,15 @@
 
         <h5 class="fw-bold my-3">RadioButton (Block)</h5>
         <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
-            <p-radioButton [inputId]="radio.key" name="radioBlock" [value]="radio.key" [(ngModel)]="selectedRadio2"
+            <p-radioButton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key" [(ngModel)]="selectedRadio2"
                 [disabled]="radio.key === '3'"></p-radioButton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === '3' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
         </div>
 
         <h5 class="fw-bold my-3">Checkbox (Inline)</h5>
-        <span *ngFor="let category of checkboxCategoriesInline" class="mr-4">
-            <p-checkbox [inputId]="category.key" name="groupnameInline" [value]="category"
+        <span *ngFor="let category of checkboxCategoriesInline" class="me-3">
+            <p-checkbox [inputId]="category.key" name="groupnameInline" styleClass="me-2" [value]="category"
                 [(ngModel)]="selectedCheckboxCategories1" [disabled]="category.key === 'op3'"></p-checkbox>
             <label class="mb-0 ml-2" [ngClass]="category.key === 'op3' ? 'text-muted': '' "
                 [for]="category.key">{{category.name}}</label>
@@ -236,7 +236,7 @@
 
         <h5 class="fw-bold my-3">Checkbox (Block)</h5>
         <div *ngFor="let category of checkboxCategoriesBlock" class="mb-2">
-            <p-checkbox [inputId]="category.key" name="groupnameBlock" [value]="category"
+            <p-checkbox [inputId]="category.key" name="groupnameBlock" styleClass="me-2" [value]="category"
                 [(ngModel)]="selectedCheckboxCategories2" [disabled]="category.key === 'o3'"></p-checkbox>
             <label class="mb-0 ml-2" [ngClass]="category.key === 'o3' ? 'text-muted': '' "
                 [for]="category.key">{{category.name}}</label>
