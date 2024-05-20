@@ -24,12 +24,13 @@ $colors: (
     "primary": $primaryColor) !default;
 
 //reused color variables
-$shade0000: #ffffff !default; // to be fixed later to support dark theme
+$shade0000: #ffffff !default; // added to fix $shade000 to be fixed later to support dark theme
 $shade000: var(--bs-body-bg, #fff) !default; //surface
 $shade100: var(--bs-secondary-bg-subtle, #f8f9fa) !default; //header background
-$shade200: var(--bs-list-group-action-hover-bg, #e9ecef) !default; //hover background
+$shade200: var(--bs-light-border-subtle, #e9ecef) !default; //hover background // alternative --bs-list-group-action-hover-bg is not exported in BS
 $shade300: var(--bs-border-color) !default; //border, divider
-$shade400: #ced4da !default; //input border var(--bs-border-color, #ced4da)
+$shade400: var(--bs-border-color, #ced4da) !default; //input border
+$shade4000: #ced4da !default; // added to fix $shade400 to be fixed later to support dark theme
 $shade500: #adb5bd !default; //input icon
 $shade600: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !default; //text secondary color
 $shade700: var(--bs-body-color, #212529) !default; //text color
@@ -363,7 +364,7 @@ $inputSwitchHandleBorderRadius: 50% !default;
 $inputSwitchSliderPadding: .25rem !default;
 $inputSwitchSliderOffBg: $shade400 !default;
 $inputSwitchHandleOffBg: $shade000 !default;
-$inputSwitchSliderOffHoverBg: scale-color($shade400, $lightness: -10%) !default;
+$inputSwitchSliderOffHoverBg: scale-color($shade4000, $lightness: -10%) !default;
 $inputSwitchSliderOnBg: $primaryColor !default;
 $inputSwitchSliderOnHoverBg: $primaryDarkColor !default;
 $inputSwitchHandleOnBg: $shade000 !default;
@@ -914,13 +915,11 @@ $imagePreviewActionIconBorderRadius: 50% !default;
     --highlight-bg: #{$highlightBg};
     --highlight-text-color: #{$highlightTextColor};
     --focus-ring: #{$focusShadow};
-    --body-bg: #EBEDEF;
     --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"
     );
 color-scheme: light;
 }
 
 [data-bs-theme="dark"] {
-    --body-bg: #212529;
     --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236ea8fe'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
