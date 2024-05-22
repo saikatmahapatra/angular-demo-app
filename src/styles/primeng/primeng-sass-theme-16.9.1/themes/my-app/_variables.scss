@@ -24,20 +24,22 @@ $colors: (
 ) !default;
 
 //reused color variables
-$shade000:#ffffff !default;    //surface
-$shade100:#f8f9fa !default;    //header background
-$shade200:#e9ecef !default;    //hover background
-$shade300:#dee2e6 !default;    //border, divider
-$shade400:#ced4da !default;    //input border
+$shade000: var(--bs-body-bg,#ffffff) !default;    //surface
+$shade0000: #ffffff !default;   // added to fix $shade000 to be fixed later to support dark theme
+$shade100: var(--bs-secondary-bg-subtle, #f8f9fa) !default;    //header background
+$shade200: var(--bs-light-border-subtle, #e9ecef) !default;    //hover background
+$shade300: var(--bs-border-color, #dee2e6) !default;    //border, divider
+$shade400: var(--bs-border-color,#ced4da) !default;    //input border
+$shade4000: #ced4da !default;   // added to fix $shade400 to be fixed later to support dark theme
 $shade500:#adb5bd !default;    //input icon
-$shade600:#6c757d !default;    //text secondary color
-$shade700:#495057 !default;    //text color
+$shade600: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !default;    //text secondary color
+$shade700: var(--bs-body-color,#495057) !default;    //text color
 $shade800:#343a40 !default;    //unused
 $shade900:#212529 !default;    //unused
 
 //global
 $fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$fontSize:1rem !default;
+$fontSize:$font-size-base !default;
 $fontWeight:normal !default;
 $textColor:$shade700 !default;
 $textSecondaryColor:$shade600 !default;
@@ -46,7 +48,7 @@ $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
 $listItemTransition:box-shadow $transitionDuration !default;
-$primeIconFontSize:1rem !default;
+$primeIconFontSize:$fontSize !default;
 $divider:1px solid $shade300 !default;
 $inlineSpacing:.5rem !default;
 $disabledOpacity:.6 !default;
@@ -77,7 +79,7 @@ $actionIconBorderRadius:50% !default;
 
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding:.5rem .5rem !default;
-$inputTextFontSize:1rem !default;
+$inputTextFontSize:$fontSize !default;
 
 $inputBg:$shade000 !default;
 $inputTextColor:$shade700 !default;
@@ -346,7 +348,7 @@ $inputSwitchHandleBorderRadius:50% !default;
 $inputSwitchSliderPadding:.25rem !default;
 $inputSwitchSliderOffBg:$shade400 !default;
 $inputSwitchHandleOffBg:$shade000 !default;
-$inputSwitchSliderOffHoverBg:scale-color($shade400, $lightness: -10%) !default;
+$inputSwitchSliderOffHoverBg:scale-color($shade4000, $lightness: -10%) !default;
 $inputSwitchSliderOnBg:$primaryColor !default;
 $inputSwitchSliderOnHoverBg:$primaryDarkColor !default;
 $inputSwitchHandleOnBg:$shade000 !default;
@@ -366,7 +368,7 @@ $panelHeaderTextHoverColor:$shade700 !default;
 
 $panelContentBorderColor: $shade300 !default;
 $panelContentBorder:1px solid $shade300 !default;
-$panelContentBg:$shade000 !default;
+$panelContentBg:$shade0000 !default;
 $panelContentEvenRowBg: $shade200 !default;
 $panelContentTextColor:$shade700 !default;
 $panelContentPadding:1rem !default;
@@ -502,7 +504,7 @@ $tableSortableColumnBadgeSize:1.143rem !default;
 
 $tableBodyRowBg:$shade000 !default;
 $tableBodyRowTextColor:$shade700 !default;
-$tableBodyRowEvenBg:scale-color($tableBodyRowBg, $lightness: -1%) !default;
+$tableBodyRowEvenBg:scale-color($shade0000, $lightness: -1%) !default;
 $tableBodyRowHoverBg:$shade200 !default;
 $tableBodyRowTextHoverColor:$shade700 !default;
 $tableBodyCellBorder:1px solid $shade200 !default;
@@ -563,14 +565,14 @@ $messageMargin:1rem 0 !default;
 $messagePadding:1rem 1.5rem !default;
 $messageBorderWidth:0 0 0 6px !default;
 $messageIconFontSize:1.5rem !default;
-$messageTextFontSize:1rem !default;
+$messageTextFontSize:$fontSize !default;
 $messageTextFontWeight:500 !default;
 
 //inline message
 $inlineMessagePadding:$inputPadding !default;
 $inlineMessageMargin:0 !default;
-$inlineMessageIconFontSize:1rem !default;
-$inlineMessageTextFontSize:1rem !default;
+$inlineMessageIconFontSize:$fontSize !default;
+$inlineMessageTextFontSize:$fontSize !default;
 $inlineMessageBorderWidth:0px !default;
 
 //toast
