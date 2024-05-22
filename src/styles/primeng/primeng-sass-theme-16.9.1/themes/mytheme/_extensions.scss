@@ -1,1 +1,10 @@
 /* Customizations to the designer theme should be defined here */
+@layer primeng {
+    .p-steps {
+        .p-steps-item {
+            .p-menuitem-link {
+                background: var(--bs-body-bg, transparent);
+            }
+        }
+    }
+}
