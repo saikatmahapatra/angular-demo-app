@@ -112,17 +112,17 @@ label {
   }
 }
 
-// @include color-mode(light) {
-//   #sidebar-wrapper {
-//     background-color: darken($white, 2%);
-//   }
-// }
+[data-bs-theme="light"] {
+  #sidebar-wrapper {
+    background-color: darken(#ffffff, 2%);
+  }
+}
 
-// @include color-mode(dark) {
-//   #sidebar-wrapper {
-//     background-color: darken(#212529, 2%);
-//   }
-// }
+[data-bs-theme="dark"] {
+  #sidebar-wrapper {
+    background-color: darken(#212529, 2%);
+  }
+}
 
 // End of Sidebar & Main Content wrapper
 // @mixin linear-gradient($from, $to) {
