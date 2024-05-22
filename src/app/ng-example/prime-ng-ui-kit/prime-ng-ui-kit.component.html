@@ -304,7 +304,7 @@
 <div class="">
     <p-steps [model]="steps" [(activeIndex)]="activeStepIndex" [readonly]="true" styleClass="my-4"></p-steps>
     <div *ngIf="activeStepIndex === 0" class="py-4">
-        <h6 class="mb-5">{{steps[0]?.label}}</h6>
+        <h6 class="mb-5">{{steps[0].label}}</h6>
         <p>[form elements goes here]</p>
         <div class="d-flex justify-content-end">
             <button pButton pRipple type="button" label="Next" class="btn-csps p-button-rounded"
@@ -312,7 +312,7 @@
         </div>
     </div>
     <div *ngIf="activeStepIndex === 1" class="py-4">
-        <h6 class="mb-5">{{steps[1]?.label}}</h6>
+        <h6 class="mb-5">{{steps[1].label}}</h6>
         <p>[form elements goes here]</p>
         <div class="d-flex justify-content-between">
             <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
@@ -322,7 +322,7 @@
         </div>
     </div>
     <div *ngIf="activeStepIndex === 2" class="py-4">
-        <h6 class="mb-5">{{steps[2]?.label}}</h6>
+        <h6 class="mb-5">{{steps[2].label}}</h6>
         <p>[form elements goes here]</p>
         <div class="d-flex justify-content-between">
             <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
@@ -332,7 +332,7 @@
         </div>
     </div>
     <div *ngIf="activeStepIndex === 3" class="py-4">
-        <h6 class="mb-5">{{steps[3]?.label}}</h6>
+        <h6 class="mb-5">{{steps[3].label}}</h6>
         <p>[success or error message goes here]</p>
         <div class="d-flex justify-content-end">
             <button pButton pRipple type="button" label="Book another ticket"
@@ -383,7 +383,7 @@
             <div *ngIf="csvFileUploadLog.length > 0">
                 <h6>Result</h6>
                 <div class="csv-upload-log p-2">
-                    <div *ngFor="let log of csvFileUploadLog">{{log?.row}}: {{log?.detail}}</div>
+                    <div *ngFor="let log of csvFileUploadLog">{{log.row}}: {{log.detail}}</div>
                 </div>
             </div>
         </div>
