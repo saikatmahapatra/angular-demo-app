@@ -7,7 +7,7 @@
 }
 
 // based on parents css class or attribute add style to your component
-// if ancestor has data-module="ng-example" then apply css
-:host-context([data-module="ng-example"]) h1 {
+// if ancestor has data-module="angular-demo" then apply css
+:host-context([data-module="angular-demo"]) h1 {
     color: #b20000;
 }

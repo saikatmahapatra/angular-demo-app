@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NgExampleService } from '../ng-example.service';
+import { AngularDemoService } from '../angular-demo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-angular-services',
   templateUrl: './angular-services.component.html',
-  providers: [NgExampleService]
+  providers: [AngularDemoService]
 })
 export class AngularServicesComponent implements OnInit {
   subtitle = 'This is AngularServicesComponent. ';
-  constructor(private mySvc: NgExampleService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private mySvc: AngularDemoService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.subtitle += this.mySvc.test();

@@ -3,8 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../@shared/shared.module';
-import { NgExampleRoutingModule } from './ng-example-routing.module';
-import { NgExampleComponent } from './ng-example.component';
+import { AngularDemoRoutingModule } from './angular-demo-routing.module';
+import { AngularDemoComponent } from './angular-demo.component';
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';
 import { AngularDirectiveComponent } from './angular-directive/angular-directive.component';
 import { PipesComponent } from './pipes/pipes.component';
@@ -35,13 +35,13 @@ import { KoreAiComponent } from './kore-ai/kore-ai.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    NgExampleRoutingModule,
+    AngularDemoRoutingModule,
     AgGridModule,
     TranslateModule,
     PrimeNgModule
   ],
   declarations: [
-    NgExampleComponent,
+    AngularDemoComponent,
     AngularDirectiveComponent,
     PipesComponent,
     FormInputBindingComponent,
@@ -67,4 +67,4 @@ import { KoreAiComponent } from './kore-ai/kore-ai.component';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class NgExampleModule { }
+export class AngularDemoModule { }

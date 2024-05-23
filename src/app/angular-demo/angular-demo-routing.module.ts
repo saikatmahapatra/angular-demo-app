@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 // import ActivateRoute, ParamMap for query string related things
 import { Routes, RouterModule, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { NgExampleComponent } from './ng-example.component';
+import { AngularDemoComponent } from './angular-demo.component';
 import { TemplateDataBindingComponent } from './template-data-binding/template-data-binding.component';
 import { AngularDirectiveComponent } from './angular-directive/angular-directive.component';
 import { PipesComponent } from './pipes/pipes.component';
@@ -23,7 +23,7 @@ import { KoreAiComponent } from './kore-ai/kore-ai.component';
 
 const routes: Routes = [{
   path: '',
-  component: NgExampleComponent,
+  component: AngularDemoComponent,
   children: [
     { path: '', component: TemplateDataBindingComponent },
     { path: 'test', component: TestComponent },
@@ -52,4 +52,4 @@ const routes: Routes = [{
     RouterModule.forChild(routes)
   ],
 })
-export class NgExampleRoutingModule { }
+export class AngularDemoRoutingModule { }
