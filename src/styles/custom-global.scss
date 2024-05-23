@@ -1,6 +1,8 @@
-// Custom.scss
-// priority order lowest to highest
-@layer vendor, bootstrap-r, primeng;
+// Custom-global.scss
+// Contains customized global styles and this file is imported in the main styles.scss file
+
+// CSS Layer: priority order lowest to highest
+@layer vendor, bootstrap-r, primeng, my-app;
 
 // Include (parts of) Bootstrap v5
 // Copied from "../../node_modules\bootstrap\scss\bootstrap.scss" keeping exact order on import
