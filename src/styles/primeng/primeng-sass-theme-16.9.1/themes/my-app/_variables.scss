@@ -31,7 +31,7 @@ $shade300: var(--bs-border-color, #dee2e6) !default;    //border, divider
 $shade400: var(--bs-border-color,#ced4da) !default;    //input border
 $shade4000: #ced4da !default;   // added to fix $shade400 to be fixed later to support dark theme
 $shade500:#adb5bd !default;    //input icon
-$shade600: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !default;    //text secondary color
+$shade600: var(--bs-secondary, #6c757d) !default;    //text secondary color
 $shade700: var(--bs-body-color,#495057) !default;    //text color
 $shade800:#343a40 !default;    //unused
 $shade900:#212529 !default;    //unused
