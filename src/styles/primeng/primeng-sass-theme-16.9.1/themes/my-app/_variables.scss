@@ -25,8 +25,8 @@ $colors: (
 //reused color variables
 $shade000: var(--bs-body-bg,#ffffff) !default;    //surface
 $shade0000: #ffffff !default;   // added to fix $shade000 to be fixed later to support dark theme
-$shade100: var(--bs-secondary-bg-subtle, #f8f9fa) !default;    //header background
-$shade200: var(--bs-light-border-subtle, #e9ecef) !default;    //hover background, alternative --bs-list-group-action-hover-bg is not exported in BS
+$shade100: var(--bs-tertiary-bg, #f8f9fa) !default;    //header background
+$shade200: var(--bs-secondary-bg, #e9ecef) !default;    //hover background, alternative --bs-list-group-action-hover-bg is not exported in BS
 $shade300: var(--bs-border-color, #dee2e6) !default;    //border, divider
 $shade400: var(--bs-border-color,#ced4da) !default;    //input border
 $shade4000: #ced4da !default;   // added to fix $shade400 to be fixed later to support dark theme
