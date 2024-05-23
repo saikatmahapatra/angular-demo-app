@@ -41,6 +41,7 @@ import { TreeSelectModule } from "primeng/treeselect";
 import { ChipsModule } from 'primeng/chips';
 import { DividerModule } from 'primeng/divider';
 import { StepsModule } from 'primeng/steps';
+import { ChartModule } from 'primeng/chart';
 
 // Add primeNG classess/interfaces here so that it can be used in both import, export
 const data = [
@@ -83,7 +84,8 @@ const data = [
   TreeSelectModule,
   ChipsModule,
   DividerModule,
-  StepsModule
+  StepsModule,
+  ChartModule
 ];
 
 @NgModule({
