@@ -8,6 +8,7 @@ import { FileUpload } from 'primeng/fileupload';
   styleUrls: ['./prime-ng-ui-kit.component.scss'],
   providers: [MessageService]
 })
+
 export class PrimeNgUiKitComponent implements OnInit {
 
   checked = true;
@@ -187,6 +188,19 @@ export class PrimeNgUiKitComponent implements OnInit {
   // file uploader related ends here
 
   serverSideMsg: Message[] = [];
+
+  // Paginator config
+  first: number = 10;
+  rows: number = 10;
+  page: number = 0;
+  pageCount: number = 0;
+  totalRecords: number = 120;
+  rowsPerPageOptions = [10, 20, 30, 50];
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
+  // Paginator config ends here
 
   constructor(private messageService: MessageService) { }
 

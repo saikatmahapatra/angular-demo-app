@@ -300,6 +300,11 @@
     </div>
 </div>
 
+<h5 class="exmple-heading">Paginator</h5>
+<div class="d-flex justify-content-center">
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="rowsPerPageOptions"></p-paginator>
+</div>
+
 <h5 class="exmple-heading">Steps</h5>
 <div class="">
     <p-steps [model]="steps" [(activeIndex)]="activeStepIndex" [readonly]="true" styleClass="my-4"></p-steps>
