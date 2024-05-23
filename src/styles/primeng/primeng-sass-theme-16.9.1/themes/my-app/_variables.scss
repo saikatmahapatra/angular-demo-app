@@ -588,20 +588,20 @@ $toastDetailMargin:$inlineSpacing 0 0 0 !default;
 //severities
 $infoMessageBg:#B3E5FC !default;
 $infoMessageBorder:solid scale-color($infoMessageBg, $lightness: -50%) !default;
-$infoMessageTextColor:scale-color($infoMessageBg, $lightness: -75%) !default;
-$infoMessageIconColor:scale-color($infoMessageBg, $lightness: -75%) !default;
+$infoMessageTextColor:scale-color($infoMessageBg, $lightness: -50%) !default;
+$infoMessageIconColor:scale-color($infoMessageBg, $lightness: -50%) !default;
 $successMessageBg:#C8E6C9 !default;
 $successMessageBorder:solid scale-color($successMessageBg, $lightness: -50%) !default;
-$successMessageTextColor:scale-color($successMessageBg, $lightness: -75%) !default;
-$successMessageIconColor:scale-color($successMessageBg, $lightness: -75%) !default;
+$successMessageTextColor:scale-color($successMessageBg, $lightness: -50%) !default;
+$successMessageIconColor:scale-color($successMessageBg, $lightness: -50%) !default;
 $warningMessageBg:#FFECB3 !default;
 $warningMessageBorder:solid scale-color($warningMessageBg, $lightness: -50%) !default;
-$warningMessageTextColor:scale-color($warningMessageBg, $lightness: -75%) !default;
-$warningMessageIconColor:scale-color($warningMessageBg, $lightness: -75%) !default;
+$warningMessageTextColor:scale-color($warningMessageBg, $lightness: -50%) !default;
+$warningMessageIconColor:scale-color($warningMessageBg, $lightness: -50%) !default;
 $errorMessageBg:#FFCDD2 !default;
 $errorMessageBorder:solid scale-color($errorMessageBg, $lightness: -50%) !default;
-$errorMessageTextColor:scale-color($errorMessageBg, $lightness: -75%) !default;
-$errorMessageIconColor:scale-color($errorMessageBg, $lightness: -75%) !default;
+$errorMessageTextColor:scale-color($errorMessageBg, $lightness: -50%) !default;
+$errorMessageIconColor:scale-color($errorMessageBg, $lightness: -50%) !default;
 
 //overlays
 $overlayContentBorder:0 none !default;
