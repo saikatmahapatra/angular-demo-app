@@ -1,4 +1,3 @@
-@import "../../../../variables";
 $primaryColor: $primary !default;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
