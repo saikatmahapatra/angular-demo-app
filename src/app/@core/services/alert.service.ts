@@ -24,9 +24,9 @@ export class AlertService {
     });
   }
 
-  setAlert(type: string, message: string, keepAfterRouteChange = false) {
+  setAlert(severity: string, message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: type, summary: type, text: message });
+    this.subject.next({ severity: severity, summary: severity, text: message });
   }
 
   getAlert(): Observable<any> {

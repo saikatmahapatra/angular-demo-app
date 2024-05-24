@@ -53,14 +53,13 @@ export class AuthService {
     return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.logout);
   }
 
-  clearStorageData(msg?: string) {
-    const message = msg || 'You have been logged out. Please login to continue.'
+  clearStorageData() {
     localStorage.removeItem('loginData');
     localStorage.removeItem('access_token');
-    //localStorage.clear();
     this.loggedInUserSubject.next(null);
-    this.alertSvc.setAlert('info', message, true);
-    this.router.navigate(['auth/login']);
+    setTimeout(() => {
+      this.router.navigate(['auth/login']);
+    }, 3000);
   }
 
   validateToken() {

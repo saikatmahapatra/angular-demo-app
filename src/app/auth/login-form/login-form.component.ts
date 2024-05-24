@@ -42,13 +42,15 @@ export class LoginFormComponent implements OnInit {
       this.loading = true;
       this.authSvc.logoutSessionToken().subscribe({
         next: (response: any) => {
-          this.authSvc.clearStorageData();
         },
         error: () => {
           this.loading = false;
-          this.authSvc.clearStorageData();
         },
-        complete: () => { this.loading = false; }
+        complete: () => { 
+          this.loading = false; 
+          this.alertSvc.setAlert('success', 'You have been logged out.');
+          this.authSvc.clearStorageData();
+        }
       });
 
     }

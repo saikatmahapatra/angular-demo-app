@@ -23,13 +23,14 @@ export class AlertMessageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.alertService.getAlert()
       .subscribe(message => {
-        if (message.type) {
+        if (message.severity) {
           // messages
-          this.messages = [{ severity: message.type, summary: this.messageSummary[message.summary], detail: message.text }];
+          this.messages = [{ severity: message.severity, summary: this.messageSummary[message.summary], detail: message.text }];
           // toast message
-          this.messageService.add({ severity: message.type, summary: this.messageSummary[message.summary], detail: message.text });
+          this.messageService.add({ severity: message.severity, summary: this.messageSummary[message.summary], detail: message.text });
         } else {
           this.messages = [];
+          this.messageService.clear();
           //this.messageService.clear();
         }
       });

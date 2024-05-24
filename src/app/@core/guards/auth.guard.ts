@@ -16,7 +16,8 @@ export class AuthGuard  {
 
     this.authService.validateToken().subscribe({
       error: (error: HttpErrorResponse) => {
-        this.authService.clearStorageData('JWT Token either expired or not matched. Please login to continue.');
+        this.alertService.setAlert('info', 'JWT Token either expired or not matched. Please login to continue.', true);
+        this.authService.clearStorageData();
       }
     });
 
