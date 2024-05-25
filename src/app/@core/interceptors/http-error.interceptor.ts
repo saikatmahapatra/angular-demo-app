@@ -49,14 +49,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       case 401:
         if (this.router.url != '/login') {
           this.authSvc.clearStorageData();
-          this.alertSvc.setAlert('error', 'Please login to continue.', false);
+          this.alertSvc.setAlert('error', 'Please login to continue.', true);
           handled = true;
         }
         break;
 
       case 403:
         this.authSvc.clearStorageData();
-        this.alertSvc.setAlert('error', 'Please login to continue.', false);
+        this.alertSvc.setAlert('error', 'Please login to continue.', true);
         handled = true;
         break;
 

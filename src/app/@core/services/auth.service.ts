@@ -57,9 +57,7 @@ export class AuthService {
     localStorage.removeItem('loginData');
     localStorage.removeItem('access_token');
     this.loggedInUserSubject.next(null);
-    setTimeout(() => {
-      this.router.navigate(['auth/login']);
-    }, 3000);
+    this.router.navigate(['auth/login']);
   }
 
   validateToken() {

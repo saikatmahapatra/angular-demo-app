@@ -65,7 +65,7 @@ export class TwoFactorAuthComponent {
   }
 
   logout() {
-    this.alertSvc.setAlert('success', 'You have been logged out.');
+    this.alertSvc.setAlert('success', 'You have been logged out.', true);
     this.authSvc.clearStorageData();
   }
 }
