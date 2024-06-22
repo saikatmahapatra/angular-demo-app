@@ -4,7 +4,7 @@
     <app-icon [name]="'language'" [styleClass]="iconClass"></app-icon>
   </button>
   <ul class="dropdown-menu" aria-labelledby="langSwitchButton">
-    <li *ngFor="let lang of availableLanguageList" (click)="changeLanguage(lang)">
+    <li *ngFor="let lang of languageList" (click)="changeLanguage(lang)">
       <button type="button" class="dropdown-item d-flex align-items-center">{{lang}}</button>
     </li>
   </ul>

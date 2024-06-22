@@ -7,32 +7,31 @@ import { languageList } from 'src/app/@utils/const/language.list';
   styleUrl: './language-switch.component.scss'
 })
 export class LanguageSwitchComponent implements OnInit {
-  theme = 'light';
-  @Output() themeName = new EventEmitter<string>();
   @Input() showBtnIcon = true;
   @Input() showBtnText = false;
   @Input() showTooltip = true;
   @Input() iconClass = '';
   @Input() textClass = '';
-  availableLanguageList!: Array<string>;
-  selectedLang: string = localStorage.getItem('appLang') || 'en_US';
+  userSelectedLang: string = localStorage.getItem('appLang') || 'en_US';
+  languageList: Array<string> = [];
 
   constructor(private tranlateSvc: TranslateService) {
-    tranlateSvc.addLangs(languageList);
-    this.availableLanguageList = this.tranlateSvc.getLangs();
-    tranlateSvc.setDefaultLang('en_US');
-    if (this.availableLanguageList.includes(this.selectedLang)) {
-      tranlateSvc.use(this.selectedLang);
+    this.languageList = languageList;
+    this.tranlateSvc.addLangs(this.languageList);
+    const allowedLanguageList = this.tranlateSvc.getLangs();
+    if (allowedLanguageList.includes(this.userSelectedLang)) {
+      this.tranlateSvc.use(this.userSelectedLang);
     }
   }
 
   ngOnInit() {
+
   }
 
   changeLanguage(lang: string) {
     if (lang) {
       localStorage.setItem('appLang', lang);
-      window.location.reload();
+      this.tranlateSvc.use(lang);
     }
   }
 }
