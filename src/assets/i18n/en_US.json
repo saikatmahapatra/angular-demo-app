@@ -1,7 +1,28 @@
 {
-    "welcomeMessage": "Welcome, {{ firstName }}!",
-    "login": {
-      "username": "Enter your username",
-      "password": "Enter your Password"
-    }
+  "appName": "MyApp",
+  "version": "",
+  "copyRight": "",
+  "welcomeMessage": "Welcome, {{ firstName }}!",
+  "error": {
+    "required": "The field is required",
+    "validEmail": "Please enter a valid email address i.e name@example.com"
+  },
+  "success": {
+    "add": "Added successfully.",
+    "update": "Updated successfully.",
+    "delete": "Deleted successfully."
+  },
+  "formLabel": {},
+  "actions": {
+    "submit": "Submit",
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add"
+  },
+  "login": {
+    "username": "Enter your username",
+    "password": "Enter your Password"
   }
+}
