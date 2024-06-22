@@ -3,11 +3,11 @@
   "version": "",
   "copyRight": "",
   "welcomeMessage": "স্বাগত, {{ firstName }}!",
-  "error": {
+  "errorMessage": {
     "required": "ক্ষেত্রটি প্রয়োজন",
     "validEmail": "অনুগ্রহ করে একটি বৈধ ইমেল ঠিকানা লিখুন যেমন name@example.com"
   },
-  "success": {
+  "successMessage": {
     "add": "সফলভাবে যোগ করা হয়েছে.",
     "update": "সফলভাবে আপডেট করা হয়েছে৷",
     "delete": "সফলভাবে মুছে ফেলা হয়েছে৷"

@@ -3,11 +3,11 @@
   "version": "",
   "copyRight": "",
   "welcomeMessage": "Bienvenido, {{ firstName }}!",
-  "error": {
+  "errorMessage": {
     "required": "El campo es obligatorio",
     "validEmail": "Introduzca una dirección de correo electrónico válida, es decir, nombre@ejemplo.com"
   },
-  "success": {
+  "successMessage": {
     "add": "Agregado exitosamente.",
     "update": "Actualizado con éxito.",
     "delete": "Borrado exitosamente."
