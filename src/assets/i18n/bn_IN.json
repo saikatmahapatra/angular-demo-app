@@ -1,7 +1,28 @@
 {
-    "welcomeMessage": "স্বাগত, {{ firstName }}!",
-    "login": {
-      "username": "আপনার ব্যবহারকারীর নাম লিখুন",
-      "password": "আপনার পাসওয়ার্ড লিখুন"
-    }
+  "appName": "মাইঅ্যাপ",
+  "version": "",
+  "copyRight": "",
+  "welcomeMessage": "স্বাগত, {{ firstName }}!",
+  "error": {
+    "required": "ক্ষেত্রটি প্রয়োজন",
+    "validEmail": "অনুগ্রহ করে একটি বৈধ ইমেল ঠিকানা লিখুন যেমন name@example.com"
+  },
+  "success": {
+    "add": "সফলভাবে যোগ করা হয়েছে.",
+    "update": "সফলভাবে আপডেট করা হয়েছে৷",
+    "delete": "সফলভাবে মুছে ফেলা হয়েছে৷"
+  },
+  "formLabel": {},
+  "actions": {
+    "submit": "জমা দিন",
+    "apply": "আবেদন করুন",
+    "cancel": "বাতিল করুন",
+    "delete": "মুছে ফেলা",
+    "edit": "সম্পাদনা করুন",
+    "add": "যোগ করুন"
+  },
+  "login": {
+    "username": "আপনার ব্যবহারকারীর নাম লিখুন",
+    "password": "আপনার পাসওয়ার্ড লিখুন"
   }
+}

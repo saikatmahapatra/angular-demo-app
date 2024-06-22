@@ -1,7 +1,28 @@
 {
-    "welcomeMessage": "Bienvenidas, {{ firstName }}!",
-    "login": {
-      "username": "Ingrese su nombre de usuario",
-      "password": "Ingresa tu contraseña"
-    }
+  "appName": "Mi aplicación",
+  "version": "",
+  "copyRight": "",
+  "welcomeMessage": "Bienvenido, {{ firstName }}!",
+  "error": {
+    "required": "El campo es obligatorio",
+    "validEmail": "Introduzca una dirección de correo electrónico válida, es decir, nombre@ejemplo.com"
+  },
+  "success": {
+    "add": "Agregado exitosamente.",
+    "update": "Actualizado con éxito.",
+    "delete": "Borrado exitosamente."
+  },
+  "formLabel": {},
+  "actions": {
+    "submit": "Entregar",
+    "apply": "Aplicar",
+    "cancel": "Cancelar",
+    "delete": "Borrar",
+    "edit": "Editar",
+    "add": "Agregar"
+  },
+  "login": {
+    "username": "Ingrese su nombre de usuario",
+    "password": "Ingresa tu contraseña"
   }
+}
