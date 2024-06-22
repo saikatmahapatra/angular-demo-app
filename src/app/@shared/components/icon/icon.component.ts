@@ -72,7 +72,8 @@ export class IconComponent implements OnInit {
     'calendarclock': { material: 'calendar_clock', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
     'pendingaction': { material: 'pending_actions', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
     'username': { material: 'person', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
-    'password': { material: 'password', primeng: 'pi pi-info', bootstrap: 'bi bi-info' }
+    'password': { material: 'password', primeng: 'pi pi-info', bootstrap: 'bi bi-info' },
+    'language': { material: 'language', primeng: 'pi pi-globe', bootstrap: 'bi bi-globe' },
   };
 
   constructor() {

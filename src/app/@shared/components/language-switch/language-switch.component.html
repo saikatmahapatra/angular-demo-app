@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <button class="btn btn-link nav-link mt-auto d-flex align-items-center" type="button" id="langSwitchButton"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    <app-icon [name]="'language'" [styleClass]="iconClass"></app-icon>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="langSwitchButton">
+    <li *ngFor="let lang of availableLanguageList" (click)="changeLanguage(lang)">
+      <button type="button" class="dropdown-item d-flex align-items-center">{{lang}}</button>
+    </li>
+  </ul>
+</div>

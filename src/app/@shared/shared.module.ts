@@ -26,6 +26,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 import { PrimeNgModule } from '../prime-ng.module';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
 
 const data = [
@@ -51,7 +52,8 @@ const data = [
   IconComponent,
   //CookieConsentComponent,
   ScrollToTopComponent,
-  BreadcrumbComponent
+  BreadcrumbComponent,
+  LanguageSwitchComponent
 ];
 
 @NgModule({
