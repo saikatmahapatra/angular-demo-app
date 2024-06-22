@@ -1,16 +1,8 @@
-<h1 class="page-title">i18n Example</h1>
-
-<select (change)="languageSwitch($event)" class="my-4">
-    <option value="">Language</option>
-    <option *ngFor="let lang of availableLanguageList" [value]="lang" [selected]="lang == selectedLang">{{lang}}</option>
-</select>
+<h1 class="page-title">Internationalization i18n Example (multi-lingual)</h1>
 
 <h4>{{ 'welcomeMessage' | translate: user }}</h4>
-
-<!-- <label>{{ 'login.username' | translate: user }}</label> -->
-
-<label translate="login.username"></label>
+<label>{{'login.username' | translate }}</label>
 <input type="text" class="form-control">
 <br>
-<label translate='login.password'></label>
+<label>{{'login.password' | translate }}</label>
 <input type="password" class="form-control">

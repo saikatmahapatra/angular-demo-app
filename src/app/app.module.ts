@@ -1,5 +1,4 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -12,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './@core/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './@core/interceptors/http-error.interceptor';
 import { ConfigService } from './@core/services/config.service';
-import { AppConfig } from './@utils/const/app.config';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
@@ -37,9 +35,10 @@ export function initializeApp(
   };
 }
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,9 +57,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoreModule,
     SharedModule,
     TranslateModule.forRoot({
+      defaultLanguage: 'en_US',
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
     }),

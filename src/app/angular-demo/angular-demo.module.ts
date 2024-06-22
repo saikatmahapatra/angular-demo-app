@@ -22,7 +22,7 @@ import { SumDigitPipePipe } from './pipes/custom-pipes/sum-digit-pipe.pipe';
 import { ContentCardComponent } from './content-card/content-card.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
 import { PrimeNgModule } from '../prime-ng.module';

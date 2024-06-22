@@ -9,19 +9,10 @@ import { languageList } from 'src/app/@utils/const/language.list';
 })
 export class TranslationDemoComponent implements OnInit {
   user!: { firstName: string; lastName: string; };
+  pageContent!: any;
   welcome!: string;
-  usernameLabel!: string;
-  passwordLabel!: string;
-  availableLanguageList!: Array<string>;
-  selectedLang: string = localStorage.getItem('appLang') || 'en_US';
 
-  constructor(private tranlateSvc: TranslateService) { 
-    tranlateSvc.addLangs(languageList);
-    this.availableLanguageList = this.tranlateSvc.getLangs();
-    tranlateSvc.setDefaultLang('en_US');
-    if(this.availableLanguageList.includes(this.selectedLang)) {
-      tranlateSvc.use(this.selectedLang);
-    }
+  constructor(private tranlateSvc: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -34,16 +25,7 @@ export class TranslationDemoComponent implements OnInit {
     // asynchronous - gets translations then completes.
     this.tranlateSvc.get(['login'])
       .subscribe(data => {
-        this.usernameLabel = data['login.username'];
-        this.passwordLabel = data['login.password'];
+        this.pageContent = data;
       });
   }
-
-  languageSwitch(event: any) {
-    if(event.target.value) {
-      localStorage.setItem('appLang', event.target.value);
-      window.location.reload();
-    }
-  }
-
 }
