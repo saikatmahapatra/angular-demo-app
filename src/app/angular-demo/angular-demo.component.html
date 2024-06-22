@@ -1,7 +1,7 @@
 <h1 class="page-title">Angular Concepts Demo</h1>
 <app-theme-switch [showTooltip]="true" [showBtnIcon]="true" [showBtnText]="true" [iconClass]="'f-20'"
   [textClass]="'small'"></app-theme-switch>
-  <app-language-switch></app-language-switch>
+  <app-language-switch [showBtnText]="true"></app-language-switch>
 <ul class="nav my-4">
   <li class="nav-item" *ngFor="let menu of menuLinks">
     <a class="me-4" [routerLink]="[menu.link]">{{ menu.text }}</a>

@@ -12,14 +12,16 @@ export class LanguageSwitchComponent implements OnInit {
   @Input() showTooltip = true;
   @Input() iconClass = '';
   @Input() textClass = '';
+  @Input() buttonText = '';
   userSelectedLang: string = localStorage.getItem('appLang') || 'en_US';
   languageList: Array<string> = [];
+  allowedLanguageList: Array<string> = [];
 
   constructor(private tranlateSvc: TranslateService) {
     this.languageList = languageList;
     this.tranlateSvc.addLangs(this.languageList);
-    const allowedLanguageList = this.tranlateSvc.getLangs();
-    if (allowedLanguageList.includes(this.userSelectedLang)) {
+    this.allowedLanguageList = this.tranlateSvc.getLangs();
+    if (this.allowedLanguageList.includes(this.userSelectedLang)) {
       this.tranlateSvc.use(this.userSelectedLang);
     }
   }
@@ -29,9 +31,10 @@ export class LanguageSwitchComponent implements OnInit {
   }
 
   changeLanguage(lang: string) {
-    if (lang) {
+    if (lang && this.allowedLanguageList.includes(lang)) {
       localStorage.setItem('appLang', lang);
-      this.tranlateSvc.use(lang);
+      this.userSelectedLang = lang;
+      window.location.reload();
     }
   }
 }
