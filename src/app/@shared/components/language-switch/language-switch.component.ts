@@ -13,28 +13,38 @@ export class LanguageSwitchComponent implements OnInit {
   @Input() iconClass = '';
   @Input() textClass = '';
   @Input() buttonText = '';
-  userSelectedLang: string = localStorage.getItem('appLang') || 'en_US';
-  languageList: Array<string> = [];
+  selectedLang: string = localStorage.getItem('appLang') || 'en_US';
+  selectedLangLabel: string = '';
+  languageListDropdown = languageList;
   allowedLanguageList: Array<string> = [];
 
   constructor(private tranlateSvc: TranslateService) {
-    this.languageList = languageList;
-    this.tranlateSvc.addLangs(this.languageList);
+    const list: Array<string> = [];
+    languageList.forEach((lang) => {
+      list.push(lang.code);
+    });
+    this.tranlateSvc.addLangs(list);
     this.allowedLanguageList = this.tranlateSvc.getLangs();
-    if (this.allowedLanguageList.includes(this.userSelectedLang)) {
-      this.tranlateSvc.use(this.userSelectedLang);
+    if (this.allowedLanguageList.includes(this.selectedLang)) {
+      this.tranlateSvc.use(this.selectedLang);
     }
   }
 
   ngOnInit() {
-
+    this.getSelectedLangLabel();
   }
 
-  changeLanguage(lang: string) {
-    if (lang && this.allowedLanguageList.includes(lang)) {
-      localStorage.setItem('appLang', lang);
-      this.userSelectedLang = lang;
+  changeLanguage(langCode: string) {
+    if (langCode && this.allowedLanguageList.includes(langCode)) {
+      localStorage.setItem('appLang', langCode);
+      this.selectedLang = langCode;
       window.location.reload();
+      this.getSelectedLangLabel();
     }
+  }
+
+  getSelectedLangLabel() {
+    const lang = languageList.find((lang) => lang.code === this.selectedLang);
+    this.selectedLangLabel = lang ? lang.label : 'EN';
   }
 }
