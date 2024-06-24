@@ -11,12 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './@core/interceptors/auth.interceptor';
 import { HttpErrorInterceptor } from './@core/interceptors/http-error.interceptor';
 import { ConfigService } from './@core/services/config.service';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorPageNotFoundComponent } from './error-page-not-found/error-page-not-found.component';
 import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthorized.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FaqComponent } from './faq/faq.component';
+import { TranslateLangModule } from './translate-language.module';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
@@ -34,11 +33,6 @@ export function initializeApp(
     // inactivityService.initialize();
   };
 }
-// AoT requires an exported function for factories
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,14 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     CoreModule,
     SharedModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en_US',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
+    TranslateLangModule,
     // Routing modules must be at the last and AppRouting Module must be the last one.
     AppRoutingModule
   ],
