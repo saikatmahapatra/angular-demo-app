@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../@core/services/common.service';
 @Component({
-  selector: 'app-form-input-binding',
-  templateUrl: './form-input-binding.component.html',
-  providers: []
+    selector: 'app-form-input-binding',
+    templateUrl: './form-input-binding.component.html',
+    providers: [],
+    standalone: false
 })
 export class FormInputBindingComponent implements OnInit {
   clickMessage = '';

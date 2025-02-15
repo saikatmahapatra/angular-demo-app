@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'mask'
+    name: 'mask',
+    standalone: false
 })
 export class MaskPipe implements PipeTransform {
   private replaceChar = 'x';

@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+    selector: 'app-add-user',
+    templateUrl: './add-user.component.html',
+    styleUrls: ['./add-user.component.scss'],
+    standalone: false
 })
 export class AddUserComponent implements OnInit {
 

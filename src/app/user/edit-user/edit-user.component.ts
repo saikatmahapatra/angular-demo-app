@@ -11,9 +11,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+    selector: 'app-edit-user',
+    templateUrl: './edit-user.component.html',
+    styleUrls: ['./edit-user.component.scss'],
+    standalone: false
 })
 export class EditUserComponent {
   userId: string | number | undefined;

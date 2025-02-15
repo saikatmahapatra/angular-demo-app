@@ -5,9 +5,10 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+    selector: 'app-post',
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.scss'],
+    standalone: false
 })
 export class PostComponent implements OnInit {
   post: any = [];

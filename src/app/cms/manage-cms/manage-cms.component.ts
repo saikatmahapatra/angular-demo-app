@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-manage-cms',
-  templateUrl: './manage-cms.component.html',
-  styleUrls: ['./manage-cms.component.scss']
+    selector: 'app-manage-cms',
+    templateUrl: './manage-cms.component.html',
+    styleUrls: ['./manage-cms.component.scss'],
+    standalone: false
 })
 export class ManageCmsComponent implements OnInit {
   dataRow: any;

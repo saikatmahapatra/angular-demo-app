@@ -3,9 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { languageList } from 'src/app/@utils/const/language.list';
 
 @Component({
-  selector: 'app-translation-demo',
-  templateUrl: './translation-demo.component.html',
-  styleUrls: ['./translation-demo.component.scss']
+    selector: 'app-translation-demo',
+    templateUrl: './translation-demo.component.html',
+    styleUrls: ['./translation-demo.component.scss'],
+    standalone: false
 })
 export class TranslationDemoComponent implements OnInit {
   user!: { firstName: string; lastName: string; };

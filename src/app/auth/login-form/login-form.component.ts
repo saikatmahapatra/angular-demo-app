@@ -8,10 +8,11 @@ import { CommonService } from 'src/app/@core/services/common.service';
 
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
-  providers: [AuthService, FormValidationService]
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss'],
+    providers: [AuthService, FormValidationService],
+    standalone: false
 })
 export class LoginFormComponent implements OnInit {
   submitted = false;

@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">List of Employees</div>
+            <div class="card-header">List of Employees1</div>
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-auto"><app-search-input (inputValue)="getSearchKeyword($event)"
@@ -170,7 +170,7 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Date of Birth</td>
-                                            <td [innerHTML]="rowData?.user_dob | date: 'dd/MM/yyyy' || 'NA'"></td>
+                                            <td [innerHTML]="rowData?.user_dob | date: 'dd/MM/yyyy'"></td>
                                             <td class="fw-bold">Gender</td>
                                             <td [innerHTML]="rowData?.user_gender === 'M' ? 'Male' : 'Female'"></td>
                                         </tr>
@@ -180,23 +180,23 @@
                                             <td [innerHTML]="rowData?.user_role+'-'+rowData?.role_name"></td>
                                             <td class="fw-bold">User Type</td>
                                             <td
-                                                [innerHTML]="rowData?.user_type === 'U' ? 'Registered User' : 'System User' || '-'">
+                                                [innerHTML]="rowData?.user_type === 'U' ? 'Registered User' : 'System User'">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Date of Joining</td>
-                                            <td [innerHTML]="rowData?.user_doj | date: 'dd/MM/yyyy' || '-'"></td>
+                                            <td [innerHTML]="rowData?.user_doj | date: 'dd/MM/yyyy'"></td>
                                             <td class="fw-bold">Date of Release</td>
-                                            <td [innerHTML]="rowData?.user_dor | date: 'dd/MM/yyyy' || 'NA'"></td>
+                                            <td [innerHTML]="rowData?.user_dor | date: 'dd/MM/yyyy'"></td>
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Created On</td>
                                             <td
-                                                [innerHTML]="rowData?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a' || ''">
+                                                [innerHTML]="rowData?.user_created_on | date: 'dd/MM/yyyy h:mm:ss a'">
                                             </td>
                                             <td class="fw-bold">Last Login</td>
                                             <td
-                                                [innerHTML]="rowData?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a' || '-'">
+                                                [innerHTML]="rowData?.user_login_date_time | date: 'dd/MM/yyyy h:mm:ss a'">
                                             </td>
                                         </tr>
                                         <!-- <tr>
@@ -221,7 +221,7 @@
                                             </td>
                                             <td class="fw-bold">Status Updated On</td>
                                             <td
-                                                [innerHTML]="rowData?.user_status_updated_on  | date: 'dd/MM/yyyy h:mm:ss a' || 'NA'">
+                                                [innerHTML]="rowData?.user_status_updated_on  | date: 'dd/MM/yyyy h:mm:ss a'">
                                             </td>
                                         </tr>
                                     </tbody>

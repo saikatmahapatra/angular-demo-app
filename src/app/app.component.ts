@@ -4,9 +4,10 @@ import { LoaderService } from './@core/services/loader.service';
 import { Meta, Title } from "@angular/platform-browser";
 import { AppConfig } from './@utils/const/app.config';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'app';

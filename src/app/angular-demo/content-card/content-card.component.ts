@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-content-card',
-  templateUrl: './content-card.component.html',
-  styleUrls: ['./content-card.component.scss']
+    selector: 'app-content-card',
+    templateUrl: './content-card.component.html',
+    styleUrls: ['./content-card.component.scss'],
+    standalone: false
 })
 export class ContentCardComponent implements OnInit {
 

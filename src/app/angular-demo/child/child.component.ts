@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrdersService } from '../parent/orders.service';
 @Component({
-  selector: 'app-child-comp',
-  templateUrl: './child.component.html',
-  providers: [OrdersService]
+    selector: 'app-child-comp',
+    templateUrl: './child.component.html',
+    providers: [OrdersService],
+    standalone: false
 })
 export class ChildComponent implements OnInit {
   @Input()

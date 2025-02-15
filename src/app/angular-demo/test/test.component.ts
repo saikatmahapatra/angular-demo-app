@@ -3,10 +3,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ContentCardComponent } from '../content-card/content-card.component';
 import { ExcelService } from 'src/app/@core/services/excel.service';
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss'],
-  //encapsulation: ViewEncapsulation.None
+    selector: 'app-test',
+    templateUrl: './test.component.html',
+    styleUrls: ['./test.component.scss'],
+    standalone: false
 })
 export class TestComponent implements OnInit, AfterViewInit {
 

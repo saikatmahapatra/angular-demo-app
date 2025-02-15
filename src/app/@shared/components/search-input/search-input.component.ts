@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-search-input',
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+    selector: 'app-search-input',
+    templateUrl: './search-input.component.html',
+    styleUrls: ['./search-input.component.scss'],
+    standalone: false
 })
 export class SearchInputComponent implements OnInit {
   @Output() inputValue = new EventEmitter<string>();

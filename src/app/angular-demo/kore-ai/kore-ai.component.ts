@@ -3,16 +3,18 @@ import { AfterViewChecked, ElementRef, ViewChild, Component, OnInit, ViewEncapsu
 import { KoreAiService } from './kore-ai.service';
 import { FormControl, UntypedFormBuilder, UntypedFormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
-  selector: 'app-kore-ai',
-  templateUrl: './kore-ai.component.html',
-  styleUrls: ['./kore-ai.component.scss','./animations.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-kore-ai',
+    templateUrl: './kore-ai.component.html',
+    styleUrls: ['./kore-ai.component.scss', './animations.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 
 @Component({
-  selector: 'app-kore-ai',
-  templateUrl: './kore-ai.component.html',
-  styleUrls: ['./kore-ai.component.scss']
+    selector: 'app-kore-ai',
+    templateUrl: './kore-ai.component.html',
+    styleUrls: ['./kore-ai.component.scss'],
+    standalone: false
 })
 export class KoreAiComponent implements OnInit {
 

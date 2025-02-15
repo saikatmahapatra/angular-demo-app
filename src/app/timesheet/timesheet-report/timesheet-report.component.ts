@@ -9,9 +9,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 
 
 @Component({
-  selector: 'app-timesheet-report',
-  templateUrl: './timesheet-report.component.html',
-  styleUrls: ['./timesheet-report.component.scss']
+    selector: 'app-timesheet-report',
+    templateUrl: './timesheet-report.component.html',
+    styleUrls: ['./timesheet-report.component.scss'],
+    standalone: false
 })
 export class TimesheetReportComponent implements OnInit {
   rangeDates!: Date[];

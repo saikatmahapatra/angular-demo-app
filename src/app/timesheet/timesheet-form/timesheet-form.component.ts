@@ -10,10 +10,11 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-timesheet-form',
-  templateUrl: './timesheet-form.component.html',
-  styleUrls: ['./timesheet-form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-timesheet-form',
+    templateUrl: './timesheet-form.component.html',
+    styleUrls: ['./timesheet-form.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TimesheetFormComponent implements OnInit {
   maxDateCount = 5;

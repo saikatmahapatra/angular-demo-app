@@ -3,9 +3,10 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { NavigationService } from 'src/app/@core/services/navigation.service';
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: false
 })
 export class SidebarComponent implements OnInit {
   // showSideNav: Observable<any> | undefined;

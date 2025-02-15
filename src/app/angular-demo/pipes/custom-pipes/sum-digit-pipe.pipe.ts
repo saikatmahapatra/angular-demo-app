@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sumDigit'
+    name: 'sumDigit',
+    standalone: false
 })
 export class SumDigitPipePipe implements PipeTransform {
 

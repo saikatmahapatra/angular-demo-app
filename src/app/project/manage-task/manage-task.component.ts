@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-manage-task',
-  templateUrl: './manage-task.component.html',
-  styleUrls: ['./manage-task.component.scss']
+    selector: 'app-manage-task',
+    templateUrl: './manage-task.component.html',
+    styleUrls: ['./manage-task.component.scss'],
+    standalone: false
 })
 export class ManageTaskComponent implements OnInit {
 

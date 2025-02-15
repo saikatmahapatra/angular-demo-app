@@ -4,9 +4,10 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 @Component({
-  selector: 'app-ag-grid-table-example',
-  templateUrl: './ag-grid-table-example.component.html',
-  styleUrls: ['./ag-grid-table-example.component.scss']
+    selector: 'app-ag-grid-table-example',
+    templateUrl: './ag-grid-table-example.component.html',
+    styleUrls: ['./ag-grid-table-example.component.scss'],
+    standalone: false
 })
 
 export class AgGridTableExampleComponent implements OnInit {

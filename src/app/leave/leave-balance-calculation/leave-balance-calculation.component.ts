@@ -8,9 +8,10 @@ import { ExcelService } from 'src/app/@core/services/excel.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import * as XLSX from 'xlsx';
 @Component({
-  selector: 'app-leave-balance-calculation',
-  templateUrl: './leave-balance-calculation.component.html',
-  styleUrls: ['./leave-balance-calculation.component.scss']
+    selector: 'app-leave-balance-calculation',
+    templateUrl: './leave-balance-calculation.component.html',
+    styleUrls: ['./leave-balance-calculation.component.scss'],
+    standalone: false
 })
 export class LeaveBalanceCalculationComponent implements OnInit {
 

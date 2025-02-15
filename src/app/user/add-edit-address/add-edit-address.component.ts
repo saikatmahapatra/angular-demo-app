@@ -10,9 +10,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 import { State } from 'src/app/@utils/models/IState';
 
 @Component({
-  selector: 'app-add-edit-address',
-  templateUrl: './add-edit-address.component.html',
-  styleUrls: ['./add-edit-address.component.scss']
+    selector: 'app-add-edit-address',
+    templateUrl: './add-edit-address.component.html',
+    styleUrls: ['./add-edit-address.component.scss'],
+    standalone: false
 })
 export class AddEditAddressComponent implements OnInit {
 

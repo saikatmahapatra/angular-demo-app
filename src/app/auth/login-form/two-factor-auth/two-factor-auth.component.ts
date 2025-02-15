@@ -6,9 +6,10 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 @Component({
-  selector: 'app-two-factor-auth',
-  templateUrl: './two-factor-auth.component.html',
-  styleUrls: ['./two-factor-auth.component.scss']
+    selector: 'app-two-factor-auth',
+    templateUrl: './two-factor-auth.component.html',
+    styleUrls: ['./two-factor-auth.component.scss'],
+    standalone: false
 })
 export class TwoFactorAuthComponent {
   submitted = false;

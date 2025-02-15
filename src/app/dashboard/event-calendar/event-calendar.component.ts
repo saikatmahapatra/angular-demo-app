@@ -11,9 +11,10 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 
 
 @Component({
-  selector: 'app-event-calendar',
-  templateUrl: './event-calendar.component.html',
-  styleUrls: ['./event-calendar.component.scss']
+    selector: 'app-event-calendar',
+    templateUrl: './event-calendar.component.html',
+    styleUrls: ['./event-calendar.component.scss'],
+    standalone: false
 })
 export class EventCalendarComponent implements OnInit {
 

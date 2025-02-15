@@ -3,9 +3,10 @@ import { AngularDemoService } from '../angular-demo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-angular-services',
-  templateUrl: './angular-services.component.html',
-  providers: [AngularDemoService]
+    selector: 'app-angular-services',
+    templateUrl: './angular-services.component.html',
+    providers: [AngularDemoService],
+    standalone: false
 })
 export class AngularServicesComponent implements OnInit {
   subtitle = 'This is AngularServicesComponent. ';

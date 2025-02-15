@@ -4,9 +4,10 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { CommonService } from '../@core/services/common.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    standalone: false
 })
 export class DashboardComponent implements OnInit {
   constructor(private commonSvc: CommonService,) {

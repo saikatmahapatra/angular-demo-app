@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 @Component({
-  selector: 'app-view-profile',
-  templateUrl: './view-my-profile.component.html',
-  styleUrls: ['./view-my-profile.component.scss']
+    selector: 'app-view-profile',
+    templateUrl: './view-my-profile.component.html',
+    styleUrls: ['./view-my-profile.component.scss'],
+    standalone: false
 })
 export class ViewMyProfileComponent implements OnInit {
   userInfo: any;

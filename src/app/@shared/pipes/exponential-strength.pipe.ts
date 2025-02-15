@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'exponentialStrength'
+    name: 'exponentialStrength',
+    standalone: false
 })
 export class ExponentialStrengthPipe implements PipeTransform {
 

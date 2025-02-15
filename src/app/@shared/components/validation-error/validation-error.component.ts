@@ -2,10 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { FormValidationService } from '../../../@core/services/form-validation.service';
 @Component({
-  selector: 'app-validation-error',
-  templateUrl: './validation-error.component.html',
-  styleUrls: ['./validation-error.component.scss'],
-  providers: [FormValidationService]
+    selector: 'app-validation-error',
+    templateUrl: './validation-error.component.html',
+    styleUrls: ['./validation-error.component.scss'],
+    providers: [FormValidationService],
+    standalone: false
 })
 export class ValidationErrorComponent implements OnInit {
 

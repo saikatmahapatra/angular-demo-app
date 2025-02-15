@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../@core/services/common.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styles: []
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styles: [],
+    standalone: false
 })
 export class UserComponent implements OnInit {
 

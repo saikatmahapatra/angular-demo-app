@@ -8,9 +8,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-edit-payroll-info',
-  templateUrl: './add-edit-payroll-info.component.html',
-  styleUrls: ['./add-edit-payroll-info.component.scss']
+    selector: 'app-add-edit-payroll-info',
+    templateUrl: './add-edit-payroll-info.component.html',
+    styleUrls: ['./add-edit-payroll-info.component.scss'],
+    standalone: false
 })
 export class AddEditPayrollInfoComponent implements OnInit {
 

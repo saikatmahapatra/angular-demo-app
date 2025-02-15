@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, inject, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -52,7 +52,10 @@ export function initializeApp(
         TranslateLangModule,
         // Routing modules must be at the last and AppRouting Module must be the last one.
         AppRoutingModule], providers: [
-        { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [ConfigService], multi: true },
+        provideAppInitializer(() => {
+        const initializerFn = (initializeApp)(inject(ConfigService));
+        return initializerFn();
+      }),
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),

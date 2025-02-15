@@ -6,9 +6,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-edit-approvers',
-  templateUrl: './edit-approvers.component.html',
-  styleUrls: ['./edit-approvers.component.scss']
+    selector: 'app-edit-approvers',
+    templateUrl: './edit-approvers.component.html',
+    styleUrls: ['./edit-approvers.component.scss'],
+    standalone: false
 })
 export class EditApproversComponent implements OnInit {
   data: any;

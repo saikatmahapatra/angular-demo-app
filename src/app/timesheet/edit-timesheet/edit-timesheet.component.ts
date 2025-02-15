@@ -11,9 +11,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-edit-timesheet',
-  templateUrl: './edit-timesheet.component.html',
-  styleUrls: ['./edit-timesheet.component.scss']
+    selector: 'app-edit-timesheet',
+    templateUrl: './edit-timesheet.component.html',
+    styleUrls: ['./edit-timesheet.component.scss'],
+    standalone: false
 })
 export class EditTimesheetComponent implements OnInit {
   taskDescr : any;

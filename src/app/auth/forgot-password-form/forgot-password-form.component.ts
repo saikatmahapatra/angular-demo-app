@@ -9,9 +9,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-forgot-password-form',
-  templateUrl: './forgot-password-form.component.html',
-  styleUrls: ['./forgot-password-form.component.scss']
+    selector: 'app-forgot-password-form',
+    templateUrl: './forgot-password-form.component.html',
+    styleUrls: ['./forgot-password-form.component.scss'],
+    standalone: false
 })
 export class ForgotPasswordFormComponent implements OnInit {
 

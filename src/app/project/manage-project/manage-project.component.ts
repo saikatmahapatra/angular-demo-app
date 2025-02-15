@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-manage-project',
-  templateUrl: './manage-project.component.html',
-  styleUrls: ['./manage-project.component.scss']
+    selector: 'app-manage-project',
+    templateUrl: './manage-project.component.html',
+    styleUrls: ['./manage-project.component.scss'],
+    standalone: false
 })
 export class ManageProjectComponent implements OnInit {
   dataRow: any;

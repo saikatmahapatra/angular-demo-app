@@ -5,9 +5,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-people-i-lead',
-  templateUrl: './people-i-lead.component.html',
-  styleUrls: ['./people-i-lead.component.scss']
+    selector: 'app-people-i-lead',
+    templateUrl: './people-i-lead.component.html',
+    styleUrls: ['./people-i-lead.component.scss'],
+    standalone: false
 })
 export class PeopleILeadComponent implements OnInit {
   // Pagination Config

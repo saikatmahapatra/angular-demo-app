@@ -6,9 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 @Component({
-  selector: 'app-post-details',
-  templateUrl: './post-details.component.html',
-  styleUrls: ['./post-details.component.scss']
+    selector: 'app-post-details',
+    templateUrl: './post-details.component.html',
+    styleUrls: ['./post-details.component.scss'],
+    standalone: false
 })
 export class PostDetailsComponent implements OnInit {
   post: any = [];

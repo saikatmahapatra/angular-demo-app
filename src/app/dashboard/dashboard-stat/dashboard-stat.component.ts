@@ -5,9 +5,10 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-dashboard-stat',
-  templateUrl: './dashboard-stat.component.html',
-  styleUrls: ['./dashboard-stat.component.scss']
+    selector: 'app-dashboard-stat',
+    templateUrl: './dashboard-stat.component.html',
+    styleUrls: ['./dashboard-stat.component.scss'],
+    standalone: false
 })
 export class DashboardStatComponent implements OnInit {
 

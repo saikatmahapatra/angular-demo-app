@@ -6,9 +6,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+    selector: 'app-change-password',
+    templateUrl: './change-password.component.html',
+    styleUrls: ['./change-password.component.scss'],
+    standalone: false
 })
 export class ChangePasswordComponent implements OnInit {
 

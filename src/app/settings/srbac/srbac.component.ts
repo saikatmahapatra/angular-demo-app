@@ -7,9 +7,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-srbac',
-  templateUrl: './srbac.component.html',
-  styleUrls: ['./srbac.component.scss']
+    selector: 'app-srbac',
+    templateUrl: './srbac.component.html',
+    styleUrls: ['./srbac.component.scss'],
+    standalone: false
 })
 export class SrbacComponent implements OnInit {
 

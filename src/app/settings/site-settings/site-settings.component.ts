@@ -9,9 +9,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-site-settings',
-  templateUrl: './site-settings.component.html',
-  styleUrls: ['./site-settings.component.scss']
+    selector: 'app-site-settings',
+    templateUrl: './site-settings.component.html',
+    styleUrls: ['./site-settings.component.scss'],
+    standalone: false
 })
 export class SiteSettingsComponent implements OnInit {
   submitted = false;

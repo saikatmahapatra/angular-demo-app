@@ -6,9 +6,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-view-employees',
-  templateUrl: './view-employees.component.html',
-  styleUrls: ['./view-employees.component.scss']
+    selector: 'app-view-employees',
+    templateUrl: './view-employees.component.html',
+    styleUrls: ['./view-employees.component.scss'],
+    standalone: false
 })
 export class ViewEmployeesComponent implements OnInit {
   public empList: any = [];

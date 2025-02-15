@@ -8,9 +8,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-edit-emergency-contact',
-  templateUrl: './add-edit-emergency-contact.component.html',
-  styleUrls: ['./add-edit-emergency-contact.component.scss']
+    selector: 'app-add-edit-emergency-contact',
+    templateUrl: './add-edit-emergency-contact.component.html',
+    styleUrls: ['./add-edit-emergency-contact.component.scss'],
+    standalone: false
 })
 export class AddEditEmergencyContactComponent implements OnInit {
   submitted = false;

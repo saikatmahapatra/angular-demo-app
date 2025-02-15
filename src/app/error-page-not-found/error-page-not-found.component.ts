@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CommonService } from '../@core/services/common.service';
 
 @Component({
-  selector: 'app-error-page-not-found',
-  templateUrl: './error-page-not-found.component.html',
-  styleUrls: ['./error-page-not-found.component.scss']
+    selector: 'app-error-page-not-found',
+    templateUrl: './error-page-not-found.component.html',
+    styleUrls: ['./error-page-not-found.component.scss'],
+    standalone: false
 })
 export class ErrorPageNotFoundComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CommonService } from '../@core/services/common.service';
 
 @Component({
-  selector: 'app-error-unauthorized',
-  templateUrl: './error-unauthorized.component.html',
-  styleUrls: ['./error-unauthorized.component.scss']
+    selector: 'app-error-unauthorized',
+    templateUrl: './error-unauthorized.component.html',
+    styleUrls: ['./error-unauthorized.component.scss'],
+    standalone: false
 })
 export class ErrorUnauthorizedComponent implements OnInit {
 

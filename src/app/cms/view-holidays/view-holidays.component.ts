@@ -6,9 +6,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-view-holidays',
-  templateUrl: './view-holidays.component.html',
-  styleUrls: ['./view-holidays.component.scss']
+    selector: 'app-view-holidays',
+    templateUrl: './view-holidays.component.html',
+    styleUrls: ['./view-holidays.component.scss'],
+    standalone: false
 })
 export class ViewHolidaysComponent implements OnInit {
   startYear: number = 2019;

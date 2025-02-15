@@ -3,10 +3,11 @@ import { Subscription } from 'rxjs';
 import { AlertService } from '../../../@core/services/alert.service';
 import { Message, MessageService } from 'primeng/api';
 @Component({
-  selector: 'app-alert-message',
-  templateUrl: './alert-message.component.html',
-  styleUrls: ['./alert-message.component.scss'],
-  providers: [MessageService]
+    selector: 'app-alert-message',
+    templateUrl: './alert-message.component.html',
+    styleUrls: ['./alert-message.component.scss'],
+    providers: [MessageService],
+    standalone: false
 })
 export class AlertMessageComponent implements OnInit, OnDestroy {
 

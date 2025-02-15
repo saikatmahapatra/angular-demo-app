@@ -8,9 +8,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-site-meta',
-  templateUrl: './site-meta.component.html',
-  styleUrls: ['./site-meta.component.scss']
+    selector: 'app-site-meta',
+    templateUrl: './site-meta.component.html',
+    styleUrls: ['./site-meta.component.scss'],
+    standalone: false
 })
 export class SiteMetaComponent {
   dataRow: any;

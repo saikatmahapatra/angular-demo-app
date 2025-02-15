@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-manage-assets',
-  templateUrl: './manage-assets.component.html',
-  styleUrls: ['./manage-assets.component.scss']
+    selector: 'app-manage-assets',
+    templateUrl: './manage-assets.component.html',
+    styleUrls: ['./manage-assets.component.scss'],
+    standalone: false
 })
 export class ManageAssetsComponent {
   dataRow = [];

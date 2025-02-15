@@ -9,9 +9,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-add-edit-task',
-  templateUrl: './add-edit-task.component.html',
-  styleUrls: ['./add-edit-task.component.scss']
+    selector: 'app-add-edit-task',
+    templateUrl: './add-edit-task.component.html',
+    styleUrls: ['./add-edit-task.component.scss'],
+    standalone: false
 })
 export class AddEditTaskComponent implements OnInit {
 

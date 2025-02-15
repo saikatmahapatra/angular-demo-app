@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-theme-switch',
-  templateUrl: './theme-switch.component.html',
-  styleUrls: ['./theme-switch.component.scss']
+    selector: 'app-theme-switch',
+    templateUrl: './theme-switch.component.html',
+    styleUrls: ['./theme-switch.component.scss'],
+    standalone: false
 })
 export class ThemeSwitchComponent implements OnInit {
 

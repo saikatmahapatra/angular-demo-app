@@ -8,9 +8,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-manage-holidays',
-  templateUrl: './manage-holidays.component.html',
-  styleUrls: ['./manage-holidays.component.scss']
+    selector: 'app-manage-holidays',
+    templateUrl: './manage-holidays.component.html',
+    styleUrls: ['./manage-holidays.component.scss'],
+    standalone: false
 })
 export class ManageHolidaysComponent implements OnInit {
 

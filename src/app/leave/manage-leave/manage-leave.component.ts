@@ -9,9 +9,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-manage-leave',
-  templateUrl: './manage-leave.component.html',
-  styleUrls: ['./manage-leave.component.scss']
+    selector: 'app-manage-leave',
+    templateUrl: './manage-leave.component.html',
+    styleUrls: ['./manage-leave.component.scss'],
+    standalone: false
 })
 export class ManageLeaveComponent implements OnInit {
   title = 'Manage Leave Applications';

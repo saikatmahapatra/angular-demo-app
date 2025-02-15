@@ -1,7 +1,8 @@
 import { Directive, Input, HostListener, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[stausIndicator]'
+    selector: '[stausIndicator]',
+    standalone: false
 })
 export class StatusIndicatorDirective {
 

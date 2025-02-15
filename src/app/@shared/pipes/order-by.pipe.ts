@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'orderBy'
+    name: 'orderBy',
+    standalone: false
 })
 export class OrderByPipe implements PipeTransform {
 
@@ -35,7 +36,7 @@ export class OrderByPipe implements PipeTransform {
    * @param a
    * @param b
    */
-  static caseInsensitiveSort(a: any, b: any) {
+  static caseInsensitiveSort(a: string, b: string) {
     if (OrderByPipe.isString(a) && OrderByPipe.isString(b)) {
       return a.localeCompare(b);
     }

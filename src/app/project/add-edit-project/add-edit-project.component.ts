@@ -8,9 +8,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-edit-project',
-  templateUrl: './add-edit-project.component.html',
-  styleUrls: ['./add-edit-project.component.scss']
+    selector: 'app-add-edit-project',
+    templateUrl: './add-edit-project.component.html',
+    styleUrls: ['./add-edit-project.component.scss'],
+    standalone: false
 })
 export class AddEditProjectComponent implements OnInit {
   submitted = false;

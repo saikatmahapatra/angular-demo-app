@@ -7,9 +7,10 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-leave-details-actions',
-  templateUrl: './leave-details-actions.component.html',
-  styleUrls: ['./leave-details-actions.component.scss']
+    selector: 'app-leave-details-actions',
+    templateUrl: './leave-details-actions.component.html',
+    styleUrls: ['./leave-details-actions.component.scss'],
+    standalone: false
 })
 export class LeaveDetailsActionsComponent implements OnInit {
   rowData: any = [];

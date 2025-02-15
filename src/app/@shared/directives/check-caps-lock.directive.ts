@@ -1,7 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appCheckCapsLock]'
+    selector: '[appCheckCapsLock]',
+    standalone: false
 })
 export class CheckCapsLockDirective {
 

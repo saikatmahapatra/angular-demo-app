@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../@core/services/common.service';
 
 @Component({
-  selector: 'app-timesheet-layout',
-  templateUrl: './timesheet-layout.component.html',
-  styleUrls: ['./timesheet-layout.component.scss']
+    selector: 'app-timesheet-layout',
+    templateUrl: './timesheet-layout.component.html',
+    styleUrls: ['./timesheet-layout.component.scss'],
+    standalone: false
 })
 export class TimesheetLayoutComponent implements OnInit {
 

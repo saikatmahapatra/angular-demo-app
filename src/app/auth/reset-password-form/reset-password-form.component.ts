@@ -9,10 +9,11 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-reset-password-form',
-  templateUrl: './reset-password-form.component.html',
-  styleUrls: ['./reset-password-form.component.scss'],
-  providers: [FormValidationService]
+    selector: 'app-reset-password-form',
+    templateUrl: './reset-password-form.component.html',
+    styleUrls: ['./reset-password-form.component.scss'],
+    providers: [FormValidationService],
+    standalone: false
 })
 export class ResetPasswordFormComponent implements OnInit {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../@core/services/common.service';
 @Component({
-  selector: 'app-demo',
-  templateUrl: './angular-demo.component.html',
-  providers: []
+    selector: 'app-demo',
+    templateUrl: './angular-demo.component.html',
+    providers: [],
+    standalone: false
 })
 export class AngularDemoComponent implements OnInit {
   title = 'Angular4';

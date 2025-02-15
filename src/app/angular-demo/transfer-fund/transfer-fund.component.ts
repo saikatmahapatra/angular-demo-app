@@ -3,9 +3,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 @Component({
-  selector: 'app-transfer-fund',
-  templateUrl: './transfer-fund.component.html',
-  styleUrls: ['./transfer-fund.component.scss']
+    selector: 'app-transfer-fund',
+    templateUrl: './transfer-fund.component.html',
+    styleUrls: ['./transfer-fund.component.scss'],
+    standalone: false
 })
 export class TransferFundComponent implements OnInit {
 

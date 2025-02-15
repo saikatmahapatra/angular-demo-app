@@ -8,9 +8,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-edit-education',
-  templateUrl: './add-edit-education.component.html',
-  styleUrls: ['./add-edit-education.component.scss']
+    selector: 'app-add-edit-education',
+    templateUrl: './add-edit-education.component.html',
+    styleUrls: ['./add-edit-education.component.scss'],
+    standalone: false
 })
 export class AddEditEducationComponent implements OnInit {
   submitted = false;

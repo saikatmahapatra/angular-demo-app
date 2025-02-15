@@ -8,9 +8,10 @@ import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
 import { AppConfig } from 'src/app/@utils/const/app.config';
 @Component({
-  selector: 'app-add-content',
-  templateUrl: './add-content.component.html',
-  styleUrls: ['./add-content.component.scss']
+    selector: 'app-add-content',
+    templateUrl: './add-content.component.html',
+    styleUrls: ['./add-content.component.scss'],
+    standalone: false
 })
 export class AddContentComponent implements OnInit {
   post = [];

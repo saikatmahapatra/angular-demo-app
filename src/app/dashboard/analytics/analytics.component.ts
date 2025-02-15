@@ -10,9 +10,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-analytics',
-  templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.scss']
+    selector: 'app-analytics',
+    templateUrl: './analytics.component.html',
+    styleUrls: ['./analytics.component.scss'],
+    standalone: false
 })
 export class AnalyticsComponent implements OnInit {
   submitted = false;

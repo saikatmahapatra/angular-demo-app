@@ -2,9 +2,10 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 import { OrdersService } from './orders.service';
 @Component({
-  selector: 'app-parent',
-  templateUrl: './parent.component.html',
-  providers: [OrdersService]
+    selector: 'app-parent',
+    templateUrl: './parent.component.html',
+    providers: [OrdersService],
+    standalone: false
 })
 export class ParentComponent implements OnInit {
   department = 'Information Technology 344'; // pass from parent to child

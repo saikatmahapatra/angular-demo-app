@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 @Component({
-  selector: 'app-view-timesheet',
-  templateUrl: './view-timesheet.component.html',
-  styleUrls: ['./view-timesheet.component.scss']
+    selector: 'app-view-timesheet',
+    templateUrl: './view-timesheet.component.html',
+    styleUrls: ['./view-timesheet.component.scss'],
+    standalone: false
 })
 export class ViewTimesheetComponent implements OnInit {
   // timesheetData: any = [];

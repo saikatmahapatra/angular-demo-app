@@ -8,9 +8,10 @@ import { FormValidationService } from 'src/app/@core/services/form-validation.se
 import { AppConfig } from 'src/app/@utils/const/app.config';
 
 @Component({
-  selector: 'app-apply-leave',
-  templateUrl: './apply-leave.component.html',
-  styleUrls: ['./apply-leave.component.scss']
+    selector: 'app-apply-leave',
+    templateUrl: './apply-leave.component.html',
+    styleUrls: ['./apply-leave.component.scss'],
+    standalone: false
 })
 export class ApplyLeaveComponent implements OnInit {
   submitted = false;

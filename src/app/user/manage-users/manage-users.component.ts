@@ -10,9 +10,10 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-manage-users',
-  templateUrl: './manage-users.component.html',
-  providers: [ApiService]
+    selector: 'app-manage-users',
+    templateUrl: './manage-users.component.html',
+    providers: [ApiService],
+    standalone: false
 })
 export class ManageUsersComponent implements OnInit {
 
