@@ -27,9 +27,9 @@
     "@fullcalendar/interaction": "^6.1.6",
     "@fullcalendar/list": "^6.1.6",
     "@fullcalendar/timegrid": "^6.1.6",
-    "@ngrx/effects": "^17.2.0",
-    "@ngrx/store": "^17.2.0",
-    "@ngrx/store-devtools": "^17.2.0",
+    "@ngrx/effects": "^19.0.1",
+    "@ngrx/store": "^19.0.1",
+    "@ngrx/store-devtools": "^19.0.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@tinymce/tinymce-angular": "^7.0.0",
@@ -44,7 +44,8 @@
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@ngrx/operators": "^18.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.1.7",
