@@ -1,13 +1,13 @@
 <div class="container">
   <div class="min-vh-100 row d-flex justify-content-center align-items-center">
-    <div class="col-md-8 col-lg-7">
+    <div class="col-md-4">
       <app-alert-message></app-alert-message>
       <div class="d-flex justify-content-end pt-2 pb-3"><app-theme-switch (themeName)="getThemeName($event)"
           [showTooltip]="true" [showBtnIcon]="true" [showBtnText]="false" [iconClass]="'f-20'"
           [textClass]="'small'"></app-theme-switch>
       </div>
       <div class="row card-group">
-        <div class="card col-md-6 py-3 mb-0">
+        <div class="card col-md-12 py-3 mb-0">
           <div class="card-body">
             <img class="mb-2" style="width: 64px;" src="assets/img/logo.svg" alt="Brand Logo" />
             <router-outlet></router-outlet>
@@ -22,11 +22,11 @@
             </div>
           </div>
         </div> -->
-        <div class="card col-md-6 p-0">
+        <!-- <div class="card col-md-6 p-0">
           <div class="card-body">
             <img [src]="imgPath" class="img-fluid" alt="Brand Signup card">
           </div>
-        </div>
+        </div> -->
       </div>
       <app-footer></app-footer>
     </div>
