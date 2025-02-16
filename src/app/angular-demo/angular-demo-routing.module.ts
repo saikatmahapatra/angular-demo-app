@@ -19,7 +19,7 @@ import { ContentCardComponent } from './content-card/content-card.component';
 import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-table-example.component';
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
-import { KoreAiComponent } from './kore-ai/kore-ai.component';
+//import { KoreAiComponent } from './kore-ai/kore-ai.component';
 
 const routes: Routes = [{
   path: '',
@@ -42,7 +42,7 @@ const routes: Routes = [{
     { path: 'content-projection', component: ContentCardComponent },
     { path: 'ag-grid', component: AgGridTableExampleComponent },
     { path: 'translate', component: TranslationDemoComponent},
-    { path: 'kore-ai', component: KoreAiComponent},
+    //{ path: 'kore-ai', component: KoreAiComponent},
     { path: 'prime-ng', component: PrimeNgUiKitComponent}
   ]
 }];

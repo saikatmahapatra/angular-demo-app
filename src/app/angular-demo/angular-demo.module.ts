@@ -25,7 +25,7 @@ import { AgGridTableExampleComponent } from './ag-grid-table-example/ag-grid-tab
 import { TranslationDemoComponent } from './translation-demo/translation-demo.component';
 import { PrimeNgUiKitComponent } from './prime-ng-ui-kit/prime-ng-ui-kit.component';
 import { PrimeNgModule } from '../prime-ng.module';
-import { KoreAiComponent } from './kore-ai/kore-ai.component';
+//import { KoreAiComponent } from './kore-ai/kore-ai.component';
 import { TranslateLangModule } from '../translate-language.module';
 
 @NgModule({
@@ -60,7 +60,7 @@ import { TranslateLangModule } from '../translate-language.module';
     AgGridTableExampleComponent,
     TranslationDemoComponent,
     PrimeNgUiKitComponent,
-    KoreAiComponent,
+    //KoreAiComponent,
   ],
   exports: [
     SumDigitPipePipe
