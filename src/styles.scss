@@ -87,8 +87,9 @@ $to_color: #cf1180;
 // Include PrimeNG styles
 //=================================================================================
 @layer primeng {
-  @import "./styles/primeng/primeng-sass-theme-16.9.1/themes/my-app/theme";
-  @import "node_modules/primeng/resources/primeng";
+  //@import "./styles/primeng/primeng-sass-theme-16.9.1/themes/my-app/theme";
+  @import "./styles/primeng/primeng-sass-theme/themes/saga/saga-blue/theme.scss";
+  //@import "node_modules/primeng/resources/primeng";
   @import "node_modules/primeicons/primeicons";
 }
 

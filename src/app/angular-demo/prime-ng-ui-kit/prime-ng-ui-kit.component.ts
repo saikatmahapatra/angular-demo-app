@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuItem, Message, MessageService } from 'primeng/api';
+import { MenuItem, ToastMessageOptions, MessageService } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 
 @Component({
@@ -182,13 +182,13 @@ export class PrimeNgUiKitComponent implements OnInit {
   disableManualFileUploadBtn = true;
   showUploadProgressLoader = false;
   @ViewChild('myFileUploader') myFileUploader!: FileUpload;
-  fileHandlerMessages: Message[] = [];
+  fileHandlerMessages: ToastMessageOptions[] = [];
   csvFileUploadLog: any = [];
-  csvFileUploadMessage: Message[] = [];
+  csvFileUploadMessage: ToastMessageOptions[] = [];
   csvPayload: any = [];
   // file uploader related ends here
 
-  serverSideMsg: Message[] = [];
+  serverSideMsg: ToastMessageOptions[] = [];
 
   // Paginator config
   first: number = 10;

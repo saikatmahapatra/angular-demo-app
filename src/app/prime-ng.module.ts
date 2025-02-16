@@ -17,7 +17,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { FileUploadModule } from "primeng/fileupload";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { InputTextModule } from "primeng/inputtext";
-import { InputTextareaModule } from "primeng/inputtextarea";
+import { TextareaModule } from 'primeng/textarea';
 import { KeyFilterModule } from "primeng/keyfilter";
 import { ListboxModule } from "primeng/listbox";
 import { MessageModule } from "primeng/message";
@@ -38,7 +38,6 @@ import { TabViewModule } from "primeng/tabview";
 import { ToastModule } from "primeng/toast";
 import { TooltipModule } from "primeng/tooltip";
 import { TreeSelectModule } from "primeng/treeselect";
-import { ChipsModule } from 'primeng/chips';
 import { DividerModule } from 'primeng/divider';
 import { StepsModule } from 'primeng/steps';
 import { ChartModule } from 'primeng/chart';
@@ -61,7 +60,7 @@ const data = [
   RadioButtonModule,
   ProgressBarModule,
   BadgeModule,
-  InputTextareaModule,
+  TextareaModule,
   CalendarModule,
   SliderModule,
   RatingModule,
@@ -82,7 +81,6 @@ const data = [
   SplitterModule,
   BreadcrumbModule,
   TreeSelectModule,
-  ChipsModule,
   DividerModule,
   StepsModule,
   ChartModule

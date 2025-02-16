@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../../../@core/services/alert.service';
-import { Message, MessageService } from 'primeng/api';
+import { ToastMessageOptions, MessageService } from 'primeng/api';
 @Component({
     selector: 'app-alert-message',
     templateUrl: './alert-message.component.html',
@@ -12,7 +12,7 @@ import { Message, MessageService } from 'primeng/api';
 export class AlertMessageComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription = new Subscription;
-  messages: Message[] = [];
+  messages: ToastMessageOptions[] = [];
   messageSummary: any = {
     success: "Success",
     error: "Error",
