@@ -7,7 +7,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 import { addressType, userStatus } from 'src/app/@utils/const/data.array';
 
 @Component({
@@ -170,8 +170,8 @@ export class EditUserComponent {
       let options = {};
       options = { params: queryParams };
 
-      let formDataAPI = this.apiSvc.get(AppConfig.apiUrl.userFormData);
-      let userDataAPI = this.apiSvc.get(AppConfig.apiUrl.userDetails, options);
+      let formDataAPI = this.apiSvc.get(CustomAppConfig.apiUrl.userFormData);
+      let userDataAPI = this.apiSvc.get(CustomAppConfig.apiUrl.userDetails, options);
 
       forkJoin([formDataAPI, userDataAPI]).subscribe({
         next: (response: any) => {
@@ -242,7 +242,7 @@ export class EditUserComponent {
     this.submitted = true;
     this.loading = true;
     if (this.userBasicForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.updateUser, this.userBasicForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);
@@ -266,7 +266,7 @@ export class EditUserComponent {
     this.submitted = true;
     this.loading = true;
     if (this.userStatusForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.updateUserStatus, this.userStatusForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);
@@ -290,7 +290,7 @@ export class EditUserComponent {
     this.submitted = true;
     this.loading = true;
     if (this.leaveBalanceForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.saveLeaveBalance, this.leaveBalanceForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.saveLeaveBalance, this.leaveBalanceForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.router.navigate(['/emp/view-emp-profile/', this.userId], this.navigationExtras);

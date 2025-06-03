@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-timesheet-form',
     templateUrl: './timesheet-form.component.html',
@@ -104,7 +104,7 @@ export class TimesheetFormComponent implements OnInit {
     let today = new Date();
     this.holidays = [];
     this.optionalHolidays = [];
-    this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
       this.holidaysFound = true;
       this.projectList = response?.data?.projects;
       this.taskList = response?.data?.tasks;
@@ -141,7 +141,7 @@ export class TimesheetFormComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     let options = { headers: headers, params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getTimesheet, options).subscribe({
       next: (response: any) => {
         this.entryFound = true;
         this.timesheetData = response?.data?.data_rows;
@@ -159,7 +159,7 @@ export class TimesheetFormComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addTimesheet, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addTimesheet, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);

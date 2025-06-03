@@ -5,7 +5,7 @@ import { ApiService } from '../../@core/services/api.service';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { of, Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
@@ -70,7 +70,7 @@ export class ManageUsersComponent implements OnInit {
     }
     let options = { headers: headers, params: queryParams };
     this.showTableDataLoading = true;
-    this.apiSvc.get(AppConfig.apiUrl.getUsers, options).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getUsers, options).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
         this.userList = val?.data?.data_rows;
@@ -82,7 +82,7 @@ export class ManageUsersComponent implements OnInit {
 
   // getUserInterval() {
   //   this.subscription = timer(0, 10000).pipe(
-  //     switchMap(() => this.apiSvc.get(AppConfig.apiUrl.getUsers))
+  //     switchMap(() => this.apiSvc.get(CustomAppConfig.apiUrl.getUsers))
   //   ).subscribe((val: any) => {
   //     this.userList = val?.data?.data_rows;
   //   });

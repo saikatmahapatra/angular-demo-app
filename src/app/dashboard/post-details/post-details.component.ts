@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/services/api.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
@@ -37,7 +37,7 @@ export class PostDetailsComponent implements OnInit {
     queryParams = queryParams.append('pageName', 'dashboardPosts');
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getPosts, options).subscribe({
       next: (response: any) => {
         this.post = response?.data['data_rows'][0];
       },
@@ -56,7 +56,7 @@ export class PostDetailsComponent implements OnInit {
 
   markAsRead() {
     const data = { id: this.itemId, postType: 'post', userId: this.authSvc.getUserId() };
-    this.apiSvc.put(AppConfig.apiUrl.markAsRead, data).subscribe({
+    this.apiSvc.put(CustomAppConfig.apiUrl.markAsRead, data).subscribe({
       next: (response: any) => {
         console.log(response);
       }

@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-edit-payroll-info',
     templateUrl: './add-edit-payroll-info.component.html',
@@ -58,7 +58,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.payrollFormData).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.payrollFormData).subscribe((response: any) => {
       this.bankList = response?.data?.banks;
       this.myForm.controls['panNo'].setValue(response?.data?.govtIDs[0]?.user_pan_no);
       this.myForm.controls['uanNo'].setValue(response?.data?.govtIDs[0]?.user_uan_no);
@@ -69,7 +69,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addPayroll, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addPayroll, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -82,7 +82,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updatePayroll, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updatePayroll, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -107,7 +107,7 @@ export class AddEditPayrollInfoComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getPayroll, options).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getPayroll, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.payrollInfo[0]);
     });
   }

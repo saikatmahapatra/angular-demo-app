@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-edit-experience',
     templateUrl: './add-edit-experience.component.html',
@@ -68,7 +68,7 @@ export class AddEditExperienceComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addExperience, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addExperience, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.myForm.reset();
@@ -78,7 +78,7 @@ export class AddEditExperienceComponent implements OnInit {
         complete: () => { this.loading = false; }
       });
     } else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateExperience, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateExperience, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.myForm.reset();
@@ -124,7 +124,7 @@ export class AddEditExperienceComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.experienceFormData).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.experienceFormData).subscribe((val: any) => {
       this.employers = val?.data?.employer;
       this.designations = val?.data?.designation;
       this.jobLocationList = val?.data?.jobLocation;
@@ -138,7 +138,7 @@ export class AddEditExperienceComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getExperience, options).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getExperience, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.jobExp[0]);
     });
   }

@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-site-settings',
@@ -42,7 +42,7 @@ export class SiteSettingsComponent implements OnInit {
   }
 
   getSettings() {
-    this.apiSvc.get(AppConfig.apiUrl.getSettings).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getSettings).subscribe({
       next: (response: any) => {
         if(response?.data) {
           this.siteSettingsForm.patchValue({
@@ -62,7 +62,7 @@ export class SiteSettingsComponent implements OnInit {
     this.loading = true;
     if (this.siteSettingsForm.valid) {
       
-      this.apiSvc.put(AppConfig.apiUrl.updateSiteSettings, this.siteSettingsForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateSiteSettings, this.siteSettingsForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, false);
           this.getSettings();

@@ -5,7 +5,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-apply-leave',
@@ -62,7 +62,7 @@ export class ApplyLeaveComponent implements OnInit {
   }
 
   getLeaveFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.getLeaveFormData).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getLeaveFormData).subscribe({
       next: (response: any) => {
         this.approvers = response?.data?.approvers;
         this.leaveBalance = response?.data?.leave_balance;
@@ -77,7 +77,7 @@ export class ApplyLeaveComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.approvers.length > 0 && this.myForm.valid && this.myForm.get('action')?.value === 'applyLeave') {
-      this.apiSvc.post(AppConfig.apiUrl.applyLeave, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.applyLeave, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.resetFormValue();

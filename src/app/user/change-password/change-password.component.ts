@@ -4,7 +4,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-change-password',
     templateUrl: './change-password.component.html',
@@ -39,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
     this.loading = true;
     this.submitted = true;
     if (this.myForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.changePassword, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.changePassword, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message);

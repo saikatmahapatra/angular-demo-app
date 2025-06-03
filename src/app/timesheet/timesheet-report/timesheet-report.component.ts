@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { ExcelService } from 'src/app/@core/services/excel.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 
 @Component({
@@ -67,7 +67,7 @@ export class TimesheetReportComponent implements OnInit {
   }
 
   getUserDropdown() {
-    this.apiSvc.get(AppConfig.apiUrl.userDropdown).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.userDropdown).subscribe({
       next: (response: any) => {
         this.userList = response?.data;
       }
@@ -75,7 +75,7 @@ export class TimesheetReportComponent implements OnInit {
   }
 
   getProjectDropdown() {
-    this.apiSvc.get(AppConfig.apiUrl.projectDropdown).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.projectDropdown).subscribe({
       next: (response: any) => {
         this.projectList = response?.data;
       }
@@ -98,7 +98,7 @@ export class TimesheetReportComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     this.showTableDataLoading = true;
-    this.apiSvc.post(AppConfig.apiUrl.timesheetReport, this.myForm.value, { headers: headers }).subscribe({
+    this.apiSvc.post(CustomAppConfig.apiUrl.timesheetReport, this.myForm.value, { headers: headers }).subscribe({
       next: (response: any) => {
         this.dataForExcel = [];
         this.timesheetData = response?.data?.data_rows;

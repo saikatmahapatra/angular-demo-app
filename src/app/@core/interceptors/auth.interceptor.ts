@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { finalize, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { LoaderService } from '../services/loader.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 import { AlertService } from '../services/alert.service';
 
 
@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const authToken = this.authSvc.getToken();
-    const isMockServer = AppConfig.useMockServer;
+    const isMockServer = CustomAppConfig.useMockServer;
     this.loader.show();
     //this.alertSvc.clear();
     if(authToken && !isMockServer) {

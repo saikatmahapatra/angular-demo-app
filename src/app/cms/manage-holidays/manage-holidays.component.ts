@@ -5,7 +5,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-manage-holidays',
@@ -74,7 +74,7 @@ export class ManageHolidaysComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     this.showTableDataLoading = true;
-    this.apiSvc.get(AppConfig.apiUrl.getHolidays, { headers: headers, params: params }).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getHolidays, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
       this.showTableDataLoading = false;
@@ -107,7 +107,7 @@ export class ManageHolidaysComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.delete(AppConfig.apiUrl.deleteHoliday, options).subscribe({
+    this.apiSvc.delete(CustomAppConfig.apiUrl.deleteHoliday, options).subscribe({
       next: (response: any) => {
         this.setAddMode();
         this.alertSvc.setAlert('success', response.message);
@@ -120,7 +120,7 @@ export class ManageHolidaysComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addHoliday, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addHoliday, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.getHolidays();
@@ -131,7 +131,7 @@ export class ManageHolidaysComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateHoliday, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateHoliday, this.myForm.value).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message, true);
           this.getHolidays();

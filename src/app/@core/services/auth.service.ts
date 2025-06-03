@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../@utils/const/app.config';
+import { CustomAppConfig } from '../../@utils/const/custom-app.config';
 import { AlertService } from './alert.service';
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   authenticate(postData: any) {
-    return this.http.post<any>(AppConfig.apiBaseUrl + AppConfig.apiUrl.authenticate, postData)
+    return this.http.post<any>(CustomAppConfig.apiBaseUrl + CustomAppConfig.apiUrl.authenticate, postData)
       .pipe(map(response => {
         localStorage.setItem('loginData', JSON.stringify(response.data));
         localStorage.setItem('access_token', response.token);
@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   logoutSessionToken() {
-    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.logout);
+    return this.http.get(CustomAppConfig.apiBaseUrl + CustomAppConfig.apiUrl.logout);
   }
 
   clearStorageData() {
@@ -61,11 +61,11 @@ export class AuthService {
   }
 
   validateToken() {
-    return this.http.get(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateToken);
+    return this.http.get(CustomAppConfig.apiBaseUrl + CustomAppConfig.apiUrl.validateToken);
   }
 
   validateRolePermissions() {
-    return this.http.get<any>(AppConfig.apiBaseUrl + AppConfig.apiUrl.validateRolePermissions);
+    return this.http.get<any>(CustomAppConfig.apiBaseUrl + CustomAppConfig.apiUrl.validateRolePermissions);
   }
 
   getUserId() {

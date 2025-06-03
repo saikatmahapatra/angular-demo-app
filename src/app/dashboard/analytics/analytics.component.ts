@@ -7,7 +7,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-analytics',
@@ -141,8 +141,8 @@ export class AnalyticsComponent implements OnInit {
     queryParams = queryParams.append('id', this.entityId);
     const options = { params: queryParams };
 
-    let projectDetailsAPI = this.apiSvc.get(AppConfig.apiUrl.getProject, options);
-    let analyticsDataAPI = this.apiSvc.post(AppConfig.apiUrl.timesheetChartData, this.myForm.value);
+    let projectDetailsAPI = this.apiSvc.get(CustomAppConfig.apiUrl.getProject, options);
+    let analyticsDataAPI = this.apiSvc.post(CustomAppConfig.apiUrl.timesheetChartData, this.myForm.value);
     forkJoin([projectDetailsAPI, analyticsDataAPI]).subscribe({
       next: (response: any) => {
         // project info
@@ -196,8 +196,8 @@ export class AnalyticsComponent implements OnInit {
     queryParams = queryParams.append('id', this.entityId);
     const options = { params: queryParams };
 
-    let userDataAPI = this.apiSvc.get(AppConfig.apiUrl.userData, options);
-    let userAnalyticsAPI = this.apiSvc.post(AppConfig.apiUrl.userAnalytics, this.myForm.value);
+    let userDataAPI = this.apiSvc.get(CustomAppConfig.apiUrl.userData, options);
+    let userAnalyticsAPI = this.apiSvc.post(CustomAppConfig.apiUrl.userAnalytics, this.myForm.value);
 
     forkJoin([userDataAPI, userAnalyticsAPI]).subscribe({
       next: (response: any) => {

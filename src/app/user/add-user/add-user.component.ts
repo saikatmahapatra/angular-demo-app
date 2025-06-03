@@ -5,7 +5,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-user',
     templateUrl: './add-user.component.html',
@@ -85,7 +85,7 @@ export class AddUserComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid) {
-      this.apiSvc.post(AppConfig.apiUrl.addUser, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addUser, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message);
@@ -107,7 +107,7 @@ export class AddUserComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.userFormData).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.userFormData).subscribe((val: any) => {
       this.designationList = val?.data.designations;
       this.departmentList = val?.data?.departments;
       this.employmentTypeList = val?.data?.employmentTypes;

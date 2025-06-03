@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-manage-leave',
@@ -114,7 +114,7 @@ export class ManageLeaveComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     this.showTableDataLoading = true;
-    this.apiSvc.post(AppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
+    this.apiSvc.post(CustomAppConfig.apiUrl.getLeaves, this.searchForm.value, { headers: headers }).subscribe({
       next: (response: any) => {
         //console.log(response);
         this.loading = false;

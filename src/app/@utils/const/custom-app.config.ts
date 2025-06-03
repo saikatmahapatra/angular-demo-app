@@ -1,6 +1,6 @@
 import { environment } from "@env/environment";
 
-export const AppConfig = {
+export const CustomAppConfig = {
     name: environment.name,
     production: environment.production,
     productName: environment.productName,

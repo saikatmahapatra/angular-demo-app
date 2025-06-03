@@ -26,7 +26,7 @@ export function initializeApp(
 ) {
   return async () => {
     await configService.initializeApp();
-    // config.baseUrl = AppConfig.BASE_URL;
+    // config.baseUrl = CustomAppConfig.BASE_URL;
     // config.applicationGearId = CommonConfig.gearId;
     // await authService.initializePermissions();
     // userService.setUserPermissions(authService.permissions);

@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-forgot-password-form',
@@ -45,7 +45,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.loading = true;
     if (this.fpForm.valid) {
       const postData = this.fpForm.value;
-      this.apiSvc.post(AppConfig.apiUrl.checkEmail, postData).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.checkEmail, postData).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);

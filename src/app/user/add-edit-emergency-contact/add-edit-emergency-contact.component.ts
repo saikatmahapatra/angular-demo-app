@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-edit-emergency-contact',
     templateUrl: './add-edit-emergency-contact.component.html',
@@ -56,7 +56,7 @@ export class AddEditEmergencyContactComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.emergencyContactFormData).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.emergencyContactFormData).subscribe((val: any) => {
       this.relationDataList = val?.data?.relation
     });
   }
@@ -65,7 +65,7 @@ export class AddEditEmergencyContactComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addEmergencyContact, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addEmergencyContact, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -78,7 +78,7 @@ export class AddEditEmergencyContactComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateEmergencyContact, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateEmergencyContact, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -103,7 +103,7 @@ export class AddEditEmergencyContactComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getEmergencyContact, options).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getEmergencyContact, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.contact[0]);
     });
   }

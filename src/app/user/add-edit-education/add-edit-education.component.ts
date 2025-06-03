@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-edit-education',
     templateUrl: './add-edit-education.component.html',
@@ -74,7 +74,7 @@ export class AddEditEducationComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addEducation, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addEducation, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -87,7 +87,7 @@ export class AddEditEducationComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateEducation, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateEducation, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -106,7 +106,7 @@ export class AddEditEducationComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.academicFormData).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.academicFormData).subscribe((val: any) => {
       this.qualificationList = val?.data?.qualification;
       this.degreeList = val?.data?.degree;
       this.institutionList = val?.data?.inst;
@@ -166,7 +166,7 @@ export class AddEditEducationComponent implements OnInit {
     }
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getEducation, options).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getEducation, options).subscribe((val: any) => {
       this.patchFormValue(val?.data?.education[0]);
     });
   }

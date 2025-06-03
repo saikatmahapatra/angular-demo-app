@@ -2,7 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-people-i-lead',
@@ -43,7 +43,7 @@ export class PeopleILeadComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     this.showTableDataLoading = true;
-    this.apiSvc.get(AppConfig.apiUrl.getReportees, { headers: headers }).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getReportees, { headers: headers }).subscribe({
       next: (val: any) => {
         this.totalRecords = val?.data?.num_rows;
         this.userList = val?.data?.data_rows;

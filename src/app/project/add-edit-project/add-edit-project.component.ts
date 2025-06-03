@@ -6,7 +6,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-add-edit-project',
     templateUrl: './add-edit-project.component.html',
@@ -71,7 +71,7 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.projectFormData).subscribe((val: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.projectFormData).subscribe((val: any) => {
       this.categoryList = val?.data?.projectType;
     });
   }
@@ -80,7 +80,7 @@ export class AddEditProjectComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'add') {
-      this.apiSvc.post(AppConfig.apiUrl.addProject, this.myForm.value).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.addProject, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -93,7 +93,7 @@ export class AddEditProjectComponent implements OnInit {
       });
     }
     else if (this.myForm.valid && this.myForm.get('action')?.value === 'edit' && this.myForm.get('id')?.value) {
-      this.apiSvc.put(AppConfig.apiUrl.updateProject, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateProject, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
@@ -116,7 +116,7 @@ export class AddEditProjectComponent implements OnInit {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.id);
     const options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getProject, options).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getProject, options).subscribe((response: any) => {
       this.patchFormValue(response.data.data_rows[0]);
     });
   }

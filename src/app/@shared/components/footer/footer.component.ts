@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-footer',
@@ -14,9 +14,9 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.copy = AppConfig.copyrightInfo;
-    this.appVersion = AppConfig.version;
-    this.buildTimestamp = AppConfig.timestamp;
+    this.copy = CustomAppConfig.copyrightInfo;
+    this.appVersion = CustomAppConfig.version;
+    this.buildTimestamp = CustomAppConfig.timestamp;
   }
 
 }

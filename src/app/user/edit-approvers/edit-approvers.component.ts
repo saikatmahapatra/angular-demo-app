@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-edit-approvers',
@@ -40,7 +40,7 @@ export class EditApproversComponent implements OnInit {
   }
 
   getApprovers() {
-    this.apiSvc.get(AppConfig.apiUrl.approvers).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.approvers).subscribe((response: any) => {
       this.currentApprovers = response?.data ? response?.data[0] : {};
     });
   }
@@ -59,7 +59,7 @@ export class EditApproversComponent implements OnInit {
     let headers = new HttpHeaders();
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
-    this.apiSvc.post(AppConfig.apiUrl.searchUser, postData, { headers: headers }).subscribe({
+    this.apiSvc.post(CustomAppConfig.apiUrl.searchUser, postData, { headers: headers }).subscribe({
       next: (response: any) => {
         this.data = response?.data?.data_rows;
         this.totalRecords = response?.data?.num_rows;
@@ -70,7 +70,7 @@ export class EditApproversComponent implements OnInit {
   setApprover(event: any, user?: any) {
     if (event.target.value) {
       const data = { approverType: event.target.value, userDetails: user }
-      this.apiSvc.post(AppConfig.apiUrl.changeApprovers, data).subscribe({
+      this.apiSvc.post(CustomAppConfig.apiUrl.changeApprovers, data).subscribe({
         next: (response: any) => {
           this.alertSvc.setAlert('success', response.message);
           this.getApprovers();

@@ -2,7 +2,7 @@ import { Component, VERSION, OnInit } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from '@angular/router';
 import { LoaderService } from './@core/services/loader.service';
 import { Meta, Title } from "@angular/platform-browser";
-import { AppConfig } from './@utils/const/app.config';
+import { CustomAppConfig } from './@utils/const/custom-app.config';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (AppConfig.production) {
+    if (CustomAppConfig.production) {
       this.meta.addTags([
         { name: 'description', content: 'Employee Portal of United Exploration India Private Limited. United Exploration India Private Limited delivers GIS, Remote Sensing and Minining Services across India and overseas.' }
       ]);

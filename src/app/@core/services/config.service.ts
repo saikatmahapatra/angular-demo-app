@@ -1,6 +1,6 @@
 import { Injectable, VERSION } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppConfig } from '../../@utils/const/app.config';
+import { CustomAppConfig } from '../../@utils/const/custom-app.config';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -25,14 +25,14 @@ export class ConfigService {
       this.http.get(configJSONFile)
         .subscribe(
           (config: any) => {
-            AppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
-            // AppConfig.useMockServer = config.useMockServer;
-            // AppConfig.title = config.title;
-            // AppConfig.productName = config?.productName;
-            // AppConfig.copyrightInfo = config?.copyrightInfo;
-            // AppConfig.version = config?.version;
-            AppConfig.maintenanceMode = config.maintenanceMode || false;
-            AppConfig.mfaEnabled = config.mfaEnabled;
+            CustomAppConfig.apiBaseUrl = config.useMockServer ? config.mockAPIUrl : config.apiBaseUrl;
+            // CustomAppConfig.useMockServer = config.useMockServer;
+            // CustomAppConfig.title = config.title;
+            // CustomAppConfig.productName = config?.productName;
+            // CustomAppConfig.copyrightInfo = config?.copyrightInfo;
+            // CustomAppConfig.version = config?.version;
+            CustomAppConfig.maintenanceMode = config.maintenanceMode || false;
+            CustomAppConfig.mfaEnabled = config.mfaEnabled;
             return resolve(config);
           },
           err => {

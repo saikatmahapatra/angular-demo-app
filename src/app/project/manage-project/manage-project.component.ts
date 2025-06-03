@@ -4,7 +4,7 @@ import { Route, Router } from '@angular/router';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-manage-project',
@@ -47,7 +47,7 @@ export class ManageProjectComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     this.showTableDataLoading = true;
-    this.apiSvc.get(AppConfig.apiUrl.getProject, { headers: headers, params: params }).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getProject, { headers: headers, params: params }).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.dataRow = response?.data['data_rows'];
       this.showTableDataLoading = false;
@@ -69,7 +69,7 @@ export class ManageProjectComponent implements OnInit {
   //   }
   //   let options = {};
   //   options = { params: queryParams };
-  //   this.apiSvc.delete(AppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
+  //   this.apiSvc.delete(CustomAppConfig.apiUrl.deleteProject, options).subscribe((response: any) => {
   //     this.alertSvc.setAlert('success', response.message);
   //     this.getProjects();
   //   });

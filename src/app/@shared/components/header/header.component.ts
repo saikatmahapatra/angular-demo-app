@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { NavigationService } from 'src/app/@core/services/navigation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-header',
@@ -13,7 +13,7 @@ import { AppConfig } from 'src/app/@utils/const/app.config';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
-  productName = AppConfig.productName;
+  productName = CustomAppConfig.productName;
   user: any;
   isOpened = true;
   resolution = 'lg';

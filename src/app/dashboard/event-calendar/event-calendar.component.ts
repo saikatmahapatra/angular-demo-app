@@ -7,7 +7,7 @@ import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from '../event-utils';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 
 @Component({
@@ -57,7 +57,7 @@ export class EventCalendarComponent implements OnInit {
     let queryParams = new HttpParams();
     let headers = new HttpHeaders();
     let options = { headers: headers, params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getEvents, options).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getEvents, options).subscribe((response: any) => {
       
     });
   }

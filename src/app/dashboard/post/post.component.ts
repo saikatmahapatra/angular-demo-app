@@ -3,7 +3,7 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-post',
     templateUrl: './post.component.html',
@@ -51,7 +51,7 @@ export class PostComponent implements OnInit {
     headers = headers.set('perPage', String(this.itemPerPage));
     headers = headers.set('page', String(this.currentPageIndex));
     let options = { headers: headers, params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getPosts, options).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.getPosts, options).subscribe((response: any) => {
       this.totalRecords = response?.data['num_rows'];
       this.post = response?.data['data_rows'];
     });

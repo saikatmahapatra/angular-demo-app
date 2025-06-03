@@ -4,7 +4,7 @@ import { forkJoin } from 'rxjs';
 import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-srbac',
@@ -33,8 +33,8 @@ export class SrbacComponent implements OnInit {
   }
 
   getRolePermissions() {
-    const roleAPI = this.apiSvc.get(AppConfig.apiUrl.getRoles);
-    //const permissionAPI = this.apiSvc.get(AppConfig.apiUrl.getPermissions);
+    const roleAPI = this.apiSvc.get(CustomAppConfig.apiUrl.getRoles);
+    //const permissionAPI = this.apiSvc.get(CustomAppConfig.apiUrl.getPermissions);
     forkJoin([roleAPI]).subscribe({
       next: (response: any) => {
         if(response[0]) {

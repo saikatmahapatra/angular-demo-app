@@ -5,7 +5,7 @@ import { AlertService } from 'src/app/@core/services/alert.service';
 import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 @Component({
     selector: 'app-leave-details-actions',
     templateUrl: './leave-details-actions.component.html',
@@ -78,7 +78,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
 
     let options = {};
     options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getLeaves, options).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getLeaves, options).subscribe({
       next: (response: any) => {
         //console.log(response);
         this.loading = false;
@@ -118,7 +118,7 @@ export class LeaveDetailsActionsComponent implements OnInit {
     //console.log(leaveId, workFlow, status);
     this.loading = true;
     const postData = { id: leaveId, userId: userId, workflow: workFlow, newStatus: status, comments:  commentsText};
-    this.apiSvc.post(AppConfig.apiUrl.updateLeave, postData).subscribe({
+    this.apiSvc.post(CustomAppConfig.apiUrl.updateLeave, postData).subscribe({
       next: (response: any) => {
         this.alertSvc.setAlert('success', response.message, true);
         this.loading = false;

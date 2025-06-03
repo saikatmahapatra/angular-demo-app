@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/@core/services/api.service';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { CommonService } from 'src/app/@core/services/common.service';
 import { FormValidationService } from 'src/app/@core/services/form-validation.service';
-import { AppConfig } from 'src/app/@utils/const/app.config';
+import { CustomAppConfig } from 'src/app/@utils/const/custom-app.config';
 
 @Component({
     selector: 'app-edit-timesheet',
@@ -63,7 +63,7 @@ export class EditTimesheetComponent implements OnInit {
   }
 
   getFormData() {
-    this.apiSvc.get(AppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
+    this.apiSvc.get(CustomAppConfig.apiUrl.timesheetFormData).subscribe((response: any) => {
       this.projectList = response?.data?.projects;
       this.taskList = response?.data?.tasks;
     });
@@ -73,7 +73,7 @@ export class EditTimesheetComponent implements OnInit {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', this.id);
     let options = { params: queryParams };
-    this.apiSvc.get(AppConfig.apiUrl.getTimesheet, options).subscribe({
+    this.apiSvc.get(CustomAppConfig.apiUrl.getTimesheet, options).subscribe({
       next: (response: any) => {
         this.timesheetData = response?.data?.data_rows[0];
         this.patchFormValue(response?.data?.data_rows[0])
@@ -98,7 +98,7 @@ export class EditTimesheetComponent implements OnInit {
     this.submitted = true;
     this.loading = true;
     if (this.myForm.valid && this.myForm.get('action')?.value === 'edit') {
-      this.apiSvc.put(AppConfig.apiUrl.updateTimesheet, this.myForm.value).subscribe({
+      this.apiSvc.put(CustomAppConfig.apiUrl.updateTimesheet, this.myForm.value).subscribe({
         next: (response: any) => {
           if (response.status == 'success') {
             this.alertSvc.setAlert('success', response.message, true);
