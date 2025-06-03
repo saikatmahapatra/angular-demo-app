@@ -1,8 +1,18 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, inject, provideAppInitializer } from '@angular/core';
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  provideAppInitializer,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './@core/core.module';
@@ -16,14 +26,15 @@ import { ErrorUnauthorizedComponent } from './error-unauthorized/error-unauthori
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FaqComponent } from './faq/faq.component';
 import { TranslateLangModule } from './translate-language.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
 }
 
-export function initializeApp(
-  configService: ConfigService
-) {
+export function initializeApp(configService: ConfigService) {
   return async () => {
     await configService.initializeApp();
     // config.baseUrl = CustomAppConfig.BASE_URL;
@@ -33,31 +44,46 @@ export function initializeApp(
     // inactivityService.initialize();
   };
 }
-@NgModule({ declarations: [
-        AppComponent,
-        ErrorPageNotFoundComponent,
-        ErrorUnauthorizedComponent,
-        ErrorPageComponent,
-        FaqComponent
-    ],
-    exports: [BrowserAnimationsModule, ErrorPageComponent, ErrorPageNotFoundComponent, ErrorUnauthorizedComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule,
-        FormsModule,
-        ReactiveFormsModule,
-        CoreModule,
-        SharedModule,
-        TranslateLangModule,
-        // Routing modules must be at the last and AppRouting Module must be the last one.
-        AppRoutingModule], providers: [
-        provideAppInitializer(() => {
-        const initializerFn = (initializeApp)(inject(ConfigService));
-        return initializerFn();
-      }),
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
-export class AppModule { }
+@NgModule({
+  declarations: [
+    AppComponent,
+    ErrorPageNotFoundComponent,
+    ErrorUnauthorizedComponent,
+    ErrorPageComponent,
+    FaqComponent,
+  ],
+  exports: [
+    BrowserAnimationsModule,
+    ErrorPageComponent,
+    ErrorPageNotFoundComponent,
+    ErrorUnauthorizedComponent,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CoreModule,
+    SharedModule,
+    TranslateLangModule,
+    // Routing modules must be at the last and AppRouting Module must be the last one.
+    AppRoutingModule,
+  ],
+  providers: [
+    provideAppInitializer(() => {
+      const initializerFn = initializeApp(inject(ConfigService));
+      return initializerFn();
+    }),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    provideHttpClient(withInterceptorsFromDi()),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: { preset: Aura },
+    }),
+  ],
+})
+export class AppModule {}
