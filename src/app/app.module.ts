@@ -29,6 +29,7 @@ import { TranslateLangModule } from './translate-language.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
+import MyPreset from './mypreset';
 
 export function init_app(configSvc: ConfigService) {
   return () => configSvc.initializeApp();
@@ -82,7 +83,7 @@ export function initializeApp(configService: ConfigService) {
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
     providePrimeNG({
-      theme: { preset: Aura },
+      theme: { preset: MyPreset },
     }),
   ],
 })
