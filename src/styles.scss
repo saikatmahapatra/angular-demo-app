@@ -359,43 +359,6 @@ label {
     background-size: 100%;
   }
 
-  .p-datatable .p-datatable-thead>tr>th,
-  .p-datatable .p-datatable-header,
-  .p-datatable .p-datatable-tbody>tr>td {
-    border-color: var(--bs-light-border-subtle);
-  }
-
-  .p-datatable .p-sortable-column:not(.p-highlight):hover,
-  .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody>tr:not(.p-highlight):hover {
-    background: var(--bs-light-bg-subtle);
-  }
-
-  .p-datepicker table td.p-datepicker-today>span {
-    color: var(--gray-900);
-  }
-
-  .p-paginator .p-paginator-pages .p-paginator-page.p-highlight,
-  .p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover,
-  .p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
-  .p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
-  .p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
-  .p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
-    background: var(--gray-800);
-    border-color: var(--gray-800);
-    color: var(--gray-200);
-  }
-
-  .p-button.p-button-text.p-button-plain:enabled:hover {
-    background: var(--gray-800);
-    color: var(--gray-200);
-  }
-
-  .p-divider {
-    .p-divider-content {
-      background-color: var(--gray-900);
-    }
-  }
-
   // tinyMCE Editor dark mode
   .tox .tox-menubar,
   .tox .tox-statusbar,
