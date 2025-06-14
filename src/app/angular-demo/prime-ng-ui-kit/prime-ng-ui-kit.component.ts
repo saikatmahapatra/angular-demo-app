@@ -3,16 +3,20 @@ import { MenuItem, ToastMessageOptions, MessageService } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 
 @Component({
-    selector: 'app-prime-ng-ui-kit',
-    templateUrl: './prime-ng-ui-kit.component.html',
-    styleUrls: ['./prime-ng-ui-kit.component.scss'],
-    providers: [MessageService],
-    standalone: false
+  selector: 'app-prime-ng-ui-kit',
+  templateUrl: './prime-ng-ui-kit.component.html',
+  styleUrls: ['./prime-ng-ui-kit.component.scss'],
+  providers: [MessageService],
+  standalone: false
 })
 
 export class PrimeNgUiKitComponent implements OnInit {
 
   checked = true;
+  value1: number = 42723;
+  value2: number = 58151;
+  value3: number = 2351.35;
+  value4: number = 50;
   sliderVal: number = 30;
   ratingVal: number = 3;
   selectedRadio: string = 'R';

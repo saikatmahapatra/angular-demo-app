@@ -1,8 +1,400 @@
-<p-button label="Primary" />
-<p-button label="Secondary" severity="secondary" />
-<p-button label="Success" severity="success" />
-<p-button label="Info" severity="info" />
-<p-button label="Warn" severity="warn" />
-<p-button label="Help" severity="help" />
-<p-button label="Danger" severity="danger" />
-<p-button label="Contrast" severity="contrast" />
+<p-toast position="top-center" styleClass="csps-toast w-100"></p-toast>
+<h3 class="mb-4">PrimeNG Custom Theme</h3>
+
+<h5 class="exmple-heading">Basic Button, Link</h5>
+<p-button label="Submit" styleClass="me-2" />
+<p-button label="Link" [link]="true" styleClass="me-2" />
+<a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" class="p-button font-bold me-2">
+    External
+</a>
+<a routerLink="/" class="p-button font-bold me-2">
+    Router
+</a>
+
+
+<h5 class="exmple-heading">Button with Icons</h5>
+<p-button class="me-2" icon="pi pi-check"></p-button>
+<p-button class="me-2" label="Submit" icon="pi pi-check"></p-button>
+<p-button class="me-2" label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+
+<h5 class="exmple-heading">Button withSeverities</h5>
+<p-button label="Primary" styleClass="me-2" />
+<p-button label="Secondary" severity="secondary" styleClass="me-2" />
+<p-button label="Success" severity="success" styleClass="me-2" />
+<p-button label="Info" severity="info" styleClass="me-2" />
+<p-button label="Warn" severity="warn" styleClass="me-2" />
+<p-button label="Help" severity="help" styleClass="me-2" />
+<p-button label="Danger" severity="danger" styleClass="me-2" />
+<p-button label="Contrast" severity="contrast" styleClass="me-2" />
+
+<h5 class="exmple-heading">Raised Buttons</h5>
+<p-button label="Primary" [raised]="true" styleClass="me-2" />
+<p-button label="Secondary" [raised]="true" severity="secondary" styleClass="me-2" />
+<p-button label="Success" [raised]="true" severity="success" styleClass="me-2" />
+<p-button label="Info" [raised]="true" severity="info" styleClass="me-2" />
+<p-button label="Warn" [raised]="true" severity="warn" styleClass="me-2" />
+<p-button label="Help" [raised]="true" severity="help" styleClass="me-2" />
+<p-button label="Danger" [raised]="true" severity="danger" styleClass="me-2" />
+<p-button label="Contrast" [raised]="true" severity="contrast" styleClass="me-2" />
+
+<h5 class="exmple-heading">Rounded Buttons</h5>
+<p-button label="Primary" [rounded]="true" styleClass="me-2" />
+<p-button label="Secondary" [rounded]="true" severity="secondary" styleClass="me-2" />
+<p-button label="Success" [rounded]="true" severity="success" styleClass="me-2" />
+<p-button label="Info" [rounded]="true" severity="info" styleClass="me-2" />
+<p-button label="Warn" [rounded]="true" severity="warn" styleClass="me-2" />
+<p-button label="Help" [rounded]="true" severity="help" styleClass="me-2" />
+<p-button label="Danger" [rounded]="true" severity="danger" styleClass="me-2" />
+<p-button label="Contrast" [rounded]="true" severity="contrast" styleClass="me-2" />
+
+<h5 class="exmple-heading">Text Buttons</h5>
+<p-button label="Primary" variant="text" styleClass="me-2" />
+<p-button label="Secondary" variant="text" severity="secondary" styleClass="me-2" />
+<p-button label="Success" variant="text" severity="success" styleClass="me-2" />
+<p-button label="Info" variant="text" severity="info" styleClass="me-2" />
+<p-button label="Warn" variant="text" severity="warn" styleClass="me-2" />
+<p-button label="Help" variant="text" severity="help" styleClass="me-2" />
+<p-button label="Danger" variant="text" severity="danger" styleClass="me-2" />
+<p-button label="Plain" variant="text" styleClass="me-2" />
+
+<h5 class="exmple-heading">Raised Text Buttons</h5>
+<p-button label="Primary" variant="text" [raised]="true" />
+<p-button label="Secondary" variant="text" [raised]="true" severity="secondary" styleClass="me-2" />
+<p-button label="Success" variant="text" [raised]="true" severity="success" styleClass="me-2" />
+<p-button label="Info" variant="text" [raised]="true" severity="info" styleClass="me-2" />
+<p-button label="Warn" variant="text" [raised]="true" severity="warn" styleClass="me-2" />
+<p-button label="Help" variant="text" [raised]="true" severity="help" styleClass="me-2" />
+<p-button label="Danger" variant="text" [raised]="true" severity="danger" styleClass="me-2" />
+<p-button label="Plain" variant="text" [raised]="true" styleClass="me-2" />
+
+<h5 class="exmple-heading">Outlined Buttons</h5>
+<p-button label="Primary" variant="outlined" />
+<p-button label="Secondary" variant="outlined" severity="secondary" />
+<p-button label="Success" variant="outlined" severity="success" />
+<p-button label="Info" variant="outlined" severity="info" />
+<p-button label="Warn" variant="outlined" severity="warn" />
+<p-button label="Help" variant="outlined" severity="help" />
+<p-button label="Danger" variant="outlined" severity="danger" />
+<p-button label="Contrast" variant="outlined" severity="contrast" />
+
+<h5 class="exmple-heading">Icon Only</h5>
+<div class="">
+    <div class="d-flex gap-3 mb-4">
+        <p-button icon="pi pi-check" />
+        <p-button icon="pi pi-bookmark" severity="secondary" />
+        <p-button icon="pi pi-search" severity="success" />
+        <p-button icon="pi pi-user" severity="info" />
+        <p-button icon="pi pi-bell" severity="warn" />
+        <p-button icon="pi pi-heart" severity="help" />
+        <p-button icon="pi pi-times" severity="danger" />
+    </div>
+    <div class="d-flex gap-3 mb-4">
+        <p-button icon="pi pi-check" [rounded]="true" />
+        <p-button icon="pi pi-bookmark" [rounded]="true" severity="secondary" />
+        <p-button icon="pi pi-search" [rounded]="true" severity="success" />
+        <p-button icon="pi pi-user" [rounded]="true" severity="info" />
+        <p-button icon="pi pi-bell" [rounded]="true" severity="warn" />
+        <p-button icon="pi pi-heart" [rounded]="true" severity="help" />
+        <p-button icon="pi pi-times" [rounded]="true" severity="danger" />
+    </div>
+    <div class="d-flex gap-3 mb-4">
+        <p-button icon="pi pi-check" [rounded]="true" [outlined]="true" />
+        <p-button icon="pi pi-bookmark" [rounded]="true" severity="secondary" [outlined]="true" />
+        <p-button icon="pi pi-search" [rounded]="true" severity="success" [outlined]="true" />
+        <p-button icon="pi pi-user" [rounded]="true" severity="info" [outlined]="true" />
+        <p-button icon="pi pi-bell" [rounded]="true" severity="warn" [outlined]="true" />
+        <p-button icon="pi pi-heart" [rounded]="true" severity="help" [outlined]="true" />
+        <p-button icon="pi pi-times" [rounded]="true" severity="danger" [outlined]="true" />
+    </div>
+    <div class="d-flex gap-3 mb-4">
+        <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" />
+        <p-button icon="pi pi-bookmark" [rounded]="true" [text]="true" [raised]="true" severity="secondary" />
+        <p-button icon="pi pi-search" [rounded]="true" [text]="true" [raised]="true" severity="success" />
+        <p-button icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info" />
+        <p-button icon="pi pi-bell" [rounded]="true" [text]="true" [raised]="true" severity="warn" />
+        <p-button icon="pi pi-heart" [rounded]="true" [text]="true" [raised]="true" severity="help" />
+        <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" />
+    </div>
+    <div class="d-flex gap-3 mb-4">
+        <p-button icon="pi pi-check" [rounded]="true" [text]="true" />
+        <p-button icon="pi pi-bookmark" [rounded]="true" [text]="true" severity="secondary" />
+        <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="success" />
+        <p-button icon="pi pi-user" [rounded]="true" [text]="true" severity="info" />
+        <p-button icon="pi pi-bell" [rounded]="true" [text]="true" severity="warn" />
+        <p-button icon="pi pi-heart" [rounded]="true" [text]="true" severity="help" />
+        <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger" />
+    </div>
+</div>
+
+
+<h5 class="exmple-heading">Badges</h5>
+<p-button label="Emails" badge="2" styleClass="m-0 me-2" />
+<p-button label="Messages" icon="pi pi-users" badge="2" badgeSeverity="contrast" styleClass="m-0" [outlined]="true" />
+
+<h5 class="exmple-heading">Button Set/Group</h5>
+<p-buttongroup>
+    <p-button label="Save" icon="pi pi-check" />
+    <p-button label="Delete" icon="pi pi-trash" />
+    <p-button label="Cancel" icon="pi pi-times" />
+</p-buttongroup>
+
+<h5 class="exmple-heading">Sizes</h5>
+<div class="sizes">
+    <p-button label="Small" icon="pi pi-check" size="small" />
+    <p-button label="Normal" icon="pi pi-check" />
+    <p-button label="Large" icon="pi pi-check" size="large" />
+</div>
+
+<h5 class="exmple-heading">Toggle Switch</h5>
+<p-toggleswitch [(ngModel)]="checked" />
+
+<div class="row mb-4">
+    <!--Form Controls Example-->
+    <div class="col-md-6">
+        <h5 class="exmple-heading">InputText</h5>
+        <input type="text" pInputText placeholder="input text" />
+        <input type="text" pInputText placeholder="inout text (disabled)" [disabled]="true" />
+
+        <h5 class="exmple-heading">Float Label</h5>
+        <p-floatlabel>
+            <input id="username" pInputText />
+            <label for="username">Username</label>
+        </p-floatlabel>
+
+        <h5 class="exmple-heading">Input Number</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="integeronly">Integer Only</label>
+                <p-inputnumber inputId="integeronly" [(ngModel)]="value1" />
+            </div>
+            <div class="col-md-6">
+                <label for="withoutgrouping">Without Grouping</label>
+                <p-inputnumber [(ngModel)]="value2" mode="decimal" inputId="withoutgrouping" [useGrouping]="false" />
+            </div>
+            <div class="col-md-6">
+                <label for="minmaxfraction">Min-Max Fraction Digits</label>
+                <p-inputnumber [(ngModel)]="value3" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                    [maxFractionDigits]="5" />
+            </div>
+            <div class="col-md-6">
+                <label for="minmax">Min-Max Boundaries</label>
+                <p-inputnumber [(ngModel)]="value4" inputId="minmax" mode="decimal" [min]="0" [max]="100" />
+            </div>
+        </div>
+
+        <h5 class="exmple-heading">Input Mask</h5>
+        <p-inputmask mask="99-999999" placeholder="99-999999" />
+
+        <h5 class="exmple-heading">Input OTP</h5>
+        <p-inputotp/>
+
+        <h5 class="exmple-heading">Calendar is now DatePicker (PrimeNg v19)</h5>
+        <label class="d-block" for="icon">Icon</label>
+        <p-calendar dateFormat="dd/mm/yy" class="mb-2 w-100" [showIcon]="true" inputId="icon"></p-calendar>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="buttondisplay" class="font-bold block mb-2"> Button </label>
+                <p-datepicker [showIcon]="true" inputId="buttondisplay" [showOnFocus]="false" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="icondisplay" class="font-bold block mb-2"> Default Icon </label>
+                <p-datepicker [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+            </div>
+
+            <div class="col-md-4">
+                <label for="templatedisplay" class="font-bold block mb-2"> Custom Icon & Time Picker</label>
+                <p-datepicker [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay">
+                    <ng-template #inputicon let-clickCallBack="clickCallBack">
+                        <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                    </ng-template>
+                </p-datepicker>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="exmple-heading">RadioButton (Inline)</h5>
+        <span *ngFor="let radio of optionCategoriesInline" class="me-3">
+            <p-radioButton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key"
+                [(ngModel)]="selectedRadio" [disabled]="radio.key === 'R'"></p-radioButton>
+            <label class="mb-0 ml-2" [ngClass]="radio.key === 'R' ? 'text-muted': '' "
+                [for]="radio.key">{{radio.name}}</label>
+        </span>
+
+        <h5 class="exmple-heading">RadioButton (Block)</h5>
+        <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
+            <p-radioButton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key"
+                [(ngModel)]="selectedRadio2" [disabled]="radio.key === '3'"></p-radioButton>
+            <label class="mb-0 ml-2" [ngClass]="radio.key === '3' ? 'text-muted': '' "
+                [for]="radio.key">{{radio.name}}</label>
+        </div>
+
+        <h5 class="exmple-heading">Checkbox (Inline)</h5>
+        <span *ngFor="let category of checkboxCategoriesInline" class="me-3">
+            <p-checkbox [inputId]="category.key" name="groupnameInline" styleClass="me-2" [value]="category"
+                [(ngModel)]="selectedCheckboxCategories1" [disabled]="category.key === 'op3'"></p-checkbox>
+            <label class="mb-0 ml-2" [ngClass]="category.key === 'op3' ? 'text-muted': '' "
+                [for]="category.key">{{category.name}}</label>
+        </span>
+
+        <h5 class="exmple-heading">Checkbox (Block)</h5>
+        <div *ngFor="let category of checkboxCategoriesBlock" class="mb-2">
+            <p-checkbox [inputId]="category.key" name="groupnameBlock" styleClass="me-2" [value]="category"
+                [(ngModel)]="selectedCheckboxCategories2" [disabled]="category.key === 'o3'"></p-checkbox>
+            <label class="mb-0 ml-2" [ngClass]="category.key === 'o3' ? 'text-muted': '' "
+                [for]="category.key">{{category.name}}</label>
+        </div>
+
+        <h5 class="exmple-heading">Listbox</h5>
+        <p-listbox [options]="listboxOptions" [(ngModel)]="selectedListboxOptions" [metaKeySelection]="false"
+            [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="name" [listStyle]="{'max-height':'250px'}">
+            <ng-template let-option pTemplate="item">
+                <div class="option-item">
+                    <div>{{option.name}}</div>
+                </div>
+            </ng-template>
+        </p-listbox>
+
+        <h5 class="exmple-heading">Dropdown</h5>
+        <p-dropdown styleClass="w-100" [options]="cities" [(ngModel)]="selectedCity1" placeholder="Select a City"
+            optionLabel="name" [showClear]="true"></p-dropdown>
+
+        <h5 class="exmple-heading">MultiSelect - Chips</h5>
+        <p-multiSelect styleClass="w-100" [options]="cities" [(ngModel)]="selectedCities2" defaultLabel="Select a City"
+            optionLabel="name" display="chip"></p-multiSelect>
+    </div>
+    <!--End of Form Controls Example-->
+</div>
+
+<h5 class="exmple-heading">Toast and Messages</h5>
+<p-messages [(value)]="serverSideMsg" [enableService]="false"></p-messages>
+<p>To display a toast message in full width we need to use <code>position="top-center" styleClass="w-100"</code>
+    attributes. For additional customization refer to PrimeNG official documentation.</p>
+<button type="button" pButton pRipple (click)="showSuccess()" label="Success Toast"
+    class="p-button-success me-3"></button>
+<button type="button" pButton pRipple (click)="showInfo()" label="Info Toast" class="p-button-info me-3"></button>
+<button type="button" pButton pRipple (click)="showWarn()" label="Warn Toast" class="p-button-warning me-3"></button>
+<button type="button" pButton pRipple (click)="showError()" label="Error Toast" class="p-button-danger me-3"></button>
+
+<h5 class="exmple-heading">Table</h5>
+<div class="row my-3">
+    <div class="col-md-12">
+        <p-table [value]="products">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.code}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.quantity}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<h5 class="exmple-heading">Paginator</h5>
+<div class="d-flex justify-content-center">
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
+        [rowsPerPageOptions]="rowsPerPageOptions"></p-paginator>
+</div>
+
+<h5 class="exmple-heading">Steps</h5>
+<div class="">
+    <p-steps [model]="steps" [(activeIndex)]="activeStepIndex" [readonly]="true" styleClass="my-4"></p-steps>
+    <div *ngIf="activeStepIndex === 0" class="py-4">
+        <h6 class="mb-5">{{steps[0].label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-end">
+            <button pButton pRipple type="button" label="Next" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 1"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 1" class="py-4">
+        <h6 class="mb-5">{{steps[1].label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-between">
+            <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
+                (click)="activeStepIndex = 0"></button>
+            <button pButton pRipple type="button" label="Next" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 2"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 2" class="py-4">
+        <h6 class="mb-5">{{steps[2].label}}</h6>
+        <p>[form elements goes here]</p>
+        <div class="d-flex justify-content-between">
+            <button pButton pRipple type="button" label="Back" class="btn-csps p-button-rounded p-button-secondary"
+                (click)="activeStepIndex = 1"></button>
+            <button pButton pRipple type="button" label="Pay" class="btn-csps p-button-rounded"
+                (click)="activeStepIndex = 3"></button>
+        </div>
+    </div>
+    <div *ngIf="activeStepIndex === 3" class="py-4">
+        <h6 class="mb-5">{{steps[3].label}}</h6>
+        <p>[success or error message goes here]</p>
+        <div class="d-flex justify-content-end">
+            <button pButton pRipple type="button" label="Book another ticket"
+                class="btn-csps p-button-rounded p-button-secondary" (click)="activeStepIndex = 0"></button>
+        </div>
+    </div>
+</div>
+
+<h5 class="exmple-heading">File Upload</h5>
+<p-button label="Open Dialog" styleclass="me-2 p-button-link" (onClick)="openUploadModal()"></p-button>
+<p-dialog header="Dialog Title" [(visible)]="displayUploadModal" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="m-0">
+        <div class="mb-3">Download a sample CSV file</div>
+        <div class="">
+            <p-fileUpload #myFileUploader [disabled]="disableFileUploader" styleClass="csps-uploader" name="myfile[]"
+                accept=".csv" [maxFileSize]="5242880" [auto]="true" chooseLabel="Choose File"
+                chooseStyleClass="p-button-rounded" chooseIcon="" [customUpload]="true"
+                (uploadHandler)="uploadHandler($event)" (onRemove)="removeClearFile()"
+                invalidFileSizeMessageDetail="File size exceeded" invalidFileTypeMessageDetail="Invalid file format">
+                <ng-template pTemplate="toolbar">
+                    <span class="">or</span>
+                </ng-template>
+                <ng-template let-file pTemplate="file">
+                    <div class="row">
+                        <div class="col-md-12 text-center font-weight-bold">{{file.name}}</div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content" let-files>
+                    <p-messages styleClass="mb-3" [(value)]="fileHandlerMessages" [enableService]="false"
+                        [closable]="true"></p-messages>
+                    <div class="csps-upload-content-text text-center">
+                        <i class="pi font-2x pi-cloud-upload font-weight-bold mr-2" aria-hidden="true"></i>
+                        <div class="d-inline">
+                            Drag file here
+                        </div>
+                    </div>
+                </ng-template>
+            </p-fileUpload>
+            <div class="text-right">
+                <button (click)="saveCSVData()" [disabled]="disableManualFileUploadBtn" pButton pRipple type="button"
+                    class="btn-csps p-button-rounded my-3">Upload
+                    <div class="spinner-border text-light spinner-border-sm ms-2" role="status"
+                        *ngIf="showUploadProgressLoader"></div>
+                </button>
+            </div>
+            <p-messages [(value)]="csvFileUploadMessage" [enableService]="false" [closable]="true" />
+            <div *ngIf="csvFileUploadLog.length > 0">
+                <h6>Result</h6>
+                <div class="csv-upload-log p-2">
+                    <div *ngFor="let log of csvFileUploadLog">{{log.row}}: {{log.detail}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<h5 class="exmple-heading">Chart.js</h5>
+<p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>

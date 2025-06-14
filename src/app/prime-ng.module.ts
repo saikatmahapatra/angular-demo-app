@@ -41,6 +41,12 @@ import { TreeSelectModule } from "primeng/treeselect";
 import { DividerModule } from 'primeng/divider';
 import { StepsModule } from 'primeng/steps';
 import { ChartModule } from 'primeng/chart';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputOtpModule } from 'primeng/inputotp';
 
 // Add primeNG classess/interfaces here so that it can be used in both import, export
 const data = [
@@ -83,7 +89,13 @@ const data = [
   TreeSelectModule,
   DividerModule,
   StepsModule,
-  ChartModule
+  ChartModule,
+  ToggleSwitchModule,
+  DatePickerModule,
+  FloatLabelModule,
+  InputNumberModule,
+  InputMaskModule,
+  InputOtpModule
 ];
 
 @NgModule({
