@@ -1,4 +1,4 @@
-<p-toast position="top-center" styleClass="csps-toast w-100"></p-toast>
+<p-toast position="top-right" styleClass=""></p-toast>
 <h3 class="mb-4">PrimeNG Custom Theme</h3>
 
 <h5 class="exmple-heading">Basic Button, Link</h5>
@@ -215,16 +215,16 @@
     <div class="col-md-6">
         <h5 class="exmple-heading">RadioButton (Inline)</h5>
         <span *ngFor="let radio of optionCategoriesInline" class="me-3">
-            <p-radioButton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key"
-                [(ngModel)]="selectedRadio" [disabled]="radio.key === 'R'"></p-radioButton>
+            <p-radiobutton [inputId]="radio.key" styleClass="me-2" name="radioInline" [value]="radio.key"
+                [(ngModel)]="selectedRadio" [disabled]="radio.key === 'R'"></p-radiobutton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === 'R' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
         </span>
 
         <h5 class="exmple-heading">RadioButton (Block)</h5>
         <div *ngFor="let radio of optionCategoriesBlock" class="mb-2">
-            <p-radioButton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key"
-                [(ngModel)]="selectedRadio2" [disabled]="radio.key === '3'"></p-radioButton>
+            <p-radiobutton [inputId]="radio.key" name="radioBlock" styleClass="me-2" [value]="radio.key"
+                [(ngModel)]="selectedRadio2" [disabled]="radio.key === '3'"></p-radiobutton>
             <label class="mb-0 ml-2" [ngClass]="radio.key === '3' ? 'text-muted': '' "
                 [for]="radio.key">{{radio.name}}</label>
         </div>
@@ -260,8 +260,8 @@
             optionLabel="name" [showClear]="true"></p-dropdown>
 
         <h5 class="exmple-heading">MultiSelect - Chips</h5>
-        <p-multiSelect styleClass="w-100" [options]="cities" [(ngModel)]="selectedCities2" defaultLabel="Select a City"
-            optionLabel="name" display="chip"></p-multiSelect>
+        <p-multiselect styleClass="w-100" [options]="cities" [(ngModel)]="selectedCities2" defaultLabel="Select a City"
+            optionLabel="name" display="chip"></p-multiselect>
     </div>
     <!--End of Form Controls Example-->
 </div>
