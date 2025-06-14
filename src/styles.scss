@@ -98,6 +98,8 @@ $to_color: #cf1180;
 html,
 body {
   height: 100%;
+  font-size: var(--bs-body-font-size, 0.9375rem);
+  font-family: var(--bs-body-font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
 }
 
 body {
